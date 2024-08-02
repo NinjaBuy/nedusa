@@ -1,4 +1,4 @@
-import { Discount } from "@medusajs/medusa"
+import { Discount } from "@ninjajs/ninja"
 import { end, parse } from "iso8601-duration"
 
 export enum PromotionStatus {

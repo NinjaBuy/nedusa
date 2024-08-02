@@ -145,8 +145,8 @@ export const SearchHits = ({
     <div
       className={clsx(
         "overflow-auto",
-        "[&_mark]:bg-medusa-bg-highlight",
-        "[&_mark]:text-medusa-fg-interactive"
+        "[&_mark]:bg-ninja-bg-highlight",
+        "[&_mark]:text-ninja-fg-interactive"
       )}
     >
       {Object.keys(grouped).map((groupName, index) => (
@@ -157,8 +157,8 @@ export const SearchHits = ({
               className={clsx(
                 "gap-docs_0.25 relative flex flex-1 flex-col p-docs_0.5",
                 "overflow-x-hidden text-ellipsis whitespace-nowrap break-words",
-                "hover:bg-medusa-bg-base-hover",
-                "focus:bg-medusa-bg-base-hover",
+                "hover:bg-ninja-bg-base-hover",
+                "focus:bg-ninja-bg-base-hover",
                 "last:mb-docs_1 focus:outline-none"
               )}
               key={index}
@@ -173,7 +173,7 @@ export const SearchHits = ({
             >
               <span
                 className={clsx(
-                  "text-compact-small-plus text-medusa-fg-base",
+                  "text-compact-small-plus text-ninja-fg-base",
                   "max-w-full"
                 )}
               >
@@ -191,7 +191,7 @@ export const SearchHits = ({
                 />
               </span>
               {item.type !== "lvl1" && (
-                <span className="text-compact-small text-medusa-fg-subtle">
+                <span className="text-compact-small text-ninja-fg-subtle">
                   <Snippet
                     attribute={
                       item.content

@@ -5,12 +5,12 @@ import {
 import { getModelExtensionsMap } from "./helpers/get-model-extension-map"
 import glob from "glob"
 import path from "path"
-import { ClassConstructor, MedusaContainer } from "../types/global"
+import { ClassConstructor, NinjaContainer } from "../types/global"
 import { EntitySchema } from "typeorm"
 import { asClass, asValue } from "awilix"
 
 type ModelLoaderParams = {
-  container: MedusaContainer
+  container: NinjaContainer
   isTest?: boolean
   rootDirectory?: string
   corePathGlob?: string

@@ -5,7 +5,7 @@ import clsx from "clsx"
 import { useSelect } from "@/hooks"
 import { SelectDropdown, SelectProps } from ".."
 import { Badge } from "docs-ui"
-import { ChevronUpDown, XMarkMini } from "@medusajs/icons"
+import { ChevronUpDown, XMarkMini } from "@ninjajs/icons"
 
 export const SelectInput = ({
   value,
@@ -45,17 +45,17 @@ export const SelectInput = ({
     <div
       className={clsx(
         "px-docs_0.75 relative py-[9px]",
-        "border-medusa-border-base rounded-docs_sm border border-solid",
-        "bg-medusa-bg-field shadow-button-neutral dark:shadow-button-neutral-dark",
-        "hover:bg-medusa-bg-field-hover",
+        "border-ninja-border-base rounded-docs_sm border border-solid",
+        "bg-ninja-bg-field shadow-button-neutral dark:shadow-button-neutral-dark",
+        "hover:bg-ninja-bg-field-hover",
         "active:shadow-active dark:active:shadow-active-dark",
         "focus:shadow-active dark:focus:shadow-active-dark",
-        "text-medusa-fg-base text-compact-medium",
-        "disabled:bg-medusa-bg-disabled",
-        "disabled:text-medusa-fg-disabled",
+        "text-ninja-fg-base text-compact-medium",
+        "disabled:bg-ninja-bg-disabled",
+        "disabled:text-ninja-fg-disabled",
         "flex items-center gap-docs_0.5",
-        !hasSelectedValues && "placeholder:text-medusa-fg-muted",
-        hasSelectedValues && "placeholder:text-medusa-fg-base",
+        !hasSelectedValues && "placeholder:text-ninja-fg-muted",
+        hasSelectedValues && "placeholder:text-ninja-fg-base",
         className
       )}
       ref={ref}
@@ -80,7 +80,7 @@ export const SelectInput = ({
           </span>
           {showClearButton && (
             <XMarkMini
-              className="text-medusa-tag-neutral-icon"
+              className="text-ninja-tag-neutral-icon"
               onClick={(e) => {
                 e.stopPropagation()
                 setSelected?.([])
@@ -99,7 +99,7 @@ export const SelectInput = ({
           ? selectedValues[0].label
           : props.placeholder}
       </span>
-      <ChevronUpDown className="text-medusa-fg-muted" />
+      <ChevronUpDown className="text-ninja-fg-muted" />
       <input
         type="hidden"
         name={props.name}

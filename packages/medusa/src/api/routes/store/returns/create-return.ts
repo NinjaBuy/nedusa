@@ -9,14 +9,14 @@ import {
 } from "class-validator"
 
 import { Type } from "class-transformer"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import EventBusService from "../../../../services/event-bus"
 import IdempotencyKeyService from "../../../../services/idempotency-key"
 import ReturnService from "../../../../services/return"
 import { validator } from "../../../../utils/validator"
 import { defaultRelations } from "."
-import { Logger } from "@medusajs/types"
+import { Logger } from "@ninjajs/types"
 
 /**
  * @oas [post] /store/returns
@@ -25,7 +25,7 @@ import { Logger } from "@medusajs/types"
  * description: "Create a Return for an Order. If a return shipping method is specified, the return is automatically fulfilled."
  * externalDocs:
  *   description: "How to create a return in a storefront"
- *   url: "https://docs.medusajs.com/modules/orders/storefront/create-return"
+ *   url: "https://docs.ninjajs.com/modules/orders/storefront/create-return"
  * requestBody:
  *   content:
  *     application/json:
@@ -37,9 +37,9 @@ import { Logger } from "@medusajs/types"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.returns.create({
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.returns.create({
  *         order_id,
  *         items: [
  *           {
@@ -52,10 +52,10 @@ import { Logger } from "@medusajs/types"
  *         console.log(data.return.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useCreateReturn } from "medusa-react"
+ *       import { useCreateReturn } from "ninja-react"
  *
  *       type CreateReturnData = {
  *         items: {
@@ -220,8 +220,8 @@ export default async (req, res) => {
                       }
                     )
                   if (!returnOrders.length) {
-                    throw new MedusaError(
-                      MedusaError.Types.INVALID_DATA,
+                    throw new NinjaError(
+                      NinjaError.Types.INVALID_DATA,
                       `Return not found`
                     )
                   }

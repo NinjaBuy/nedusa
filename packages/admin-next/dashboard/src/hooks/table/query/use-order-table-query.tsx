@@ -1,4 +1,4 @@
-import { AdminGetOrdersParams } from "@medusajs/medusa"
+import { AdminGetOrdersParams } from "@ninjajs/ninja"
 import { useQueryParams } from "../../use-query-params"
 
 type UseOrderTableQueryProps = {

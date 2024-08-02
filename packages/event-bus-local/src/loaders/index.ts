@@ -1,4 +1,4 @@
-import { LoaderOptions } from "@medusajs/modules-sdk"
+import { LoaderOptions } from "@ninjajs/modules-sdk"
 
 export default async ({ logger }: LoaderOptions): Promise<void> => {
   logger?.warn(

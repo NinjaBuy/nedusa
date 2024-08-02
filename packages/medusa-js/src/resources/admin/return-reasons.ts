@@ -4,20 +4,20 @@ import {
   AdminReturnReasonsDeleteRes,
   AdminReturnReasonsListRes,
   AdminPostReturnReasonsReasonReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Return Reason API Routes](https://docs.medusajs.com/api/admin#return-reasons). All its method
- * are available in the JS Client under the `medusa.admin.returnReasons` property.
+ * This class is used to send requests to [Admin Return Reason API Routes](https://docs.ninjajs.com/api/admin#return-reasons). All its method
+ * are available in the JS Client under the `ninja.admin.returnReasons` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Return reasons are key-value pairs that are used to specify why an order return is being created.
  * Admins can manage available return reasons, and they can be used by both admins and customers when creating a return.
  * 
- * Related Guide: [How to manage return reasons](https://docs.medusajs.com/modules/orders/admin/manage-returns#manage-return-reasons).
+ * Related Guide: [How to manage return reasons](https://docs.ninjajs.com/modules/orders/admin/manage-returns#manage-return-reasons).
  */
 class AdminReturnReasonsResource extends BaseResource {
   /**
@@ -27,10 +27,10 @@ class AdminReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnReasonsRes>} Resolves to the return reason's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.returnReasons.create({
+   * ninja.admin.returnReasons.create({
    *   label: "Damaged",
    *   value: "damaged"
    * })
@@ -54,10 +54,10 @@ class AdminReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnReasonsRes>} Resolves to the return reason's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.returnReasons.update(returnReasonId, {
+   * ninja.admin.returnReasons.update(returnReasonId, {
    *   label: "Damaged"
    * })
    * .then(({ return_reason }) => {
@@ -80,10 +80,10 @@ class AdminReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnReasonsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.returnReasons.delete(returnReasonId)
+   * ninja.admin.returnReasons.delete(returnReasonId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * });
@@ -103,10 +103,10 @@ class AdminReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnReasonsRes>} Resolves to the return reason's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.returnReasons.retrieve(returnReasonId)
+   * ninja.admin.returnReasons.retrieve(returnReasonId)
    * .then(({ return_reason }) => {
    *   console.log(return_reason.id);
    * });
@@ -125,10 +125,10 @@ class AdminReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnReasonsListRes>} Resolves to the list of return reasons.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.returnReasons.list()
+   * ninja.admin.returnReasons.list()
    * .then(({ return_reasons }) => {
    *   console.log(return_reasons.length);
    * });

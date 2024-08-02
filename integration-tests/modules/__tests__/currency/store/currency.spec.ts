@@ -1,13 +1,13 @@
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 const storeHeaders = {
   headers: {},
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ api }) => {
     describe("Currency - Store", () => {

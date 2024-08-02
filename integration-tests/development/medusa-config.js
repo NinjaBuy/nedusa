@@ -6,7 +6,7 @@ const DB_NAME = process.env.DB_NAME
 module.exports = {
   plugins: [
     {
-      resolve: `./packages/medusa-payment-stripe`,
+      resolve: `./packages/ninja-payment-stripe`,
       options: {
         api_key: "api_key",
         webhook_secret: "api_key",

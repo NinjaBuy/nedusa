@@ -23,22 +23,22 @@ import { SalesChannelLocationService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.salesChannels.removeLocation(salesChannelId, {
+ *       ninja.admin.salesChannels.removeLocation(salesChannelId, {
  *         location_id: "loc_id"
  *       })
  *       .then(({ sales_channel }) => {
  *         console.log(sales_channel.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
  *       import {
  *         useAdminRemoveLocationFromSalesChannel
- *       } from "medusa-react"
+ *       } from "ninja-react"
  *
  *       type Props = {
  *         salesChannelId: string
@@ -67,7 +67,7 @@ import { SalesChannelLocationService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/sales-channels/{id}/stock-locations' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "locaton_id": "loc_id"

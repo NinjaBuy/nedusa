@@ -1,10 +1,10 @@
 import { sync as existsSync } from "fs-exists-cached"
-import { setTelemetryEnabled } from "medusa-telemetry"
+import { setTelemetryEnabled } from "ninja-telemetry"
 import path from "path"
 import resolveCwd from "resolve-cwd"
 
 import { didYouMean } from "./did-you-mean"
-import { getLocalMedusaVersion } from "./util/version"
+import { getLocalNinjaVersion } from "./util/version"
 
 import { newStarter } from "./commands/new"
 import reporter from "./reporter"
@@ -42,7 +42,7 @@ function buildLocalCommands(cli, isLocalProject) {
 
     try {
       const cmdPath = resolveCwd.silent(
-        `@medusajs/medusa/dist/commands/${command}`
+        `@ninjajs/ninja/dist/commands/${command}`
       )!
       return require(cmdPath).default
     } catch (err) {
@@ -114,7 +114,7 @@ function buildLocalCommands(cli, isLocalProject) {
             type: `string`,
             describe: `The database host to use for database setup and migrations.`,
           }),
-      desc: `Create a new Medusa project.`,
+      desc: `Create a new Ninja project.`,
       handler: handlerP(newStarter),
     })
     .command({
@@ -305,48 +305,48 @@ function buildLocalCommands(cli, isLocalProject) {
     })
 }
 
-function isLocalMedusaProject() {
-  let inMedusaProject = false
+function isLocalNinjaProject() {
+  let inNinjaProject = false
 
   try {
     const { dependencies, devDependencies } = require(path.resolve(
       `./package.json`
     ))
-    inMedusaProject = !!(
-      (dependencies && dependencies["@medusajs/medusa"]) ||
-      (devDependencies && devDependencies["@medusajs/medusa"])
+    inNinjaProject = !!(
+      (dependencies && dependencies["@ninjajs/ninja"]) ||
+      (devDependencies && devDependencies["@ninjajs/ninja"])
     )
   } catch (err) {
     // ignore
   }
 
-  return inMedusaProject
+  return inNinjaProject
 }
 
 function getVersionInfo() {
   const { version } = require(`../package.json`)
-  const isMedusaProject = isLocalMedusaProject()
-  if (isMedusaProject) {
-    let medusaVersion = getLocalMedusaVersion()
+  const isNinjaProject = isLocalNinjaProject()
+  if (isNinjaProject) {
+    let ninjaVersion = getLocalNinjaVersion()
 
-    if (!medusaVersion) {
-      medusaVersion = `unknown`
+    if (!ninjaVersion) {
+      ninjaVersion = `unknown`
     }
 
-    return `Medusa CLI version: ${version}
-Medusa version: ${medusaVersion}
-  Note: this is the Medusa version for the site at: ${process.cwd()}`
+    return `Ninja CLI version: ${version}
+Ninja version: ${ninjaVersion}
+  Note: this is the Ninja version for the site at: ${process.cwd()}`
   } else {
-    return `Medusa CLI version: ${version}`
+    return `Ninja CLI version: ${version}`
   }
 }
 
 export default (argv) => {
   const cli = yargs()
-  const isLocalProject = isLocalMedusaProject()
+  const isLocalProject = isLocalNinjaProject()
 
   cli
-    .scriptName(`medusa`)
+    .scriptName(`ninja`)
     .usage(`Usage: $0 <command> [options]`)
     .alias(`h`, `help`)
     .alias(`v`, `version`)
@@ -375,7 +375,7 @@ export default (argv) => {
   try {
     cli.version(
       `version`,
-      `Show the version of the Medusa CLI and the Medusa package in the current project`,
+      `Show the version of the Ninja CLI and the Ninja package in the current project`,
       getVersionInfo()
     )
   } catch (e) {

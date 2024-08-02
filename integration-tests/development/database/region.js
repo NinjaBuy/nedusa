@@ -1,4 +1,4 @@
-const { Region } = require("@medusajs/medusa")
+const { Region } = require("@ninjajs/ninja")
 
 module.exports = async (connection) => {
   const manager = connection.manager

@@ -1,8 +1,8 @@
-import { Container, Heading } from "@medusajs/ui"
+import { Container, Heading } from "@ninjajs/ui"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { InventoryNext } from "@medusajs/types"
-import { PencilSquare } from "@medusajs/icons"
+import { InventoryNext } from "@ninjajs/types"
+import { PencilSquare } from "@ninjajs/icons"
 import { SectionRow } from "../../../../../components/common/section"
 import { getFormattedCountry } from "../../../../../lib/addresses"
 import { useTranslation } from "react-i18next"

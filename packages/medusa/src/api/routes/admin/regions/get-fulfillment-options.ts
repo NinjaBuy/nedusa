@@ -16,18 +16,18 @@ import RegionService from "../../../../services/region"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.regions.retrieveFulfillmentOptions(regionId)
+ *       ninja.admin.regions.retrieveFulfillmentOptions(regionId)
  *       .then(({ fulfillment_options }) => {
  *         console.log(fulfillment_options.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminRegionFulfillmentOptions } from "medusa-react"
+ *       import { useAdminRegionFulfillmentOptions } from "ninja-react"
  *
  *       type Props = {
  *         regionId: string
@@ -68,7 +68,7 @@ import RegionService from "../../../../services/region"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/regions/{id}/fulfillment-options' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

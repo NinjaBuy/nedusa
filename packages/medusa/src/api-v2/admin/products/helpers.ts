@@ -1,14 +1,14 @@
 import {
   BatchMethodResponse,
-  MedusaContainer,
+  NinjaContainer,
   ProductDTO,
   ProductVariantDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   promiseAll,
   remoteQueryObjectFromString,
   ContainerRegistrationKeys,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 const isPricing = (fieldName: string) =>
   fieldName.startsWith("variants.prices") ||
@@ -73,7 +73,7 @@ export const remapVariantResponse = (variant: ProductVariantDTO) => {
 
 export const refetchProduct = async (
   productId: string,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -91,7 +91,7 @@ export const refetchProduct = async (
 
 export const refetchBatchProducts = async (
   batchResult: BatchMethodResponse<ProductDTO>,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -132,7 +132,7 @@ export const refetchBatchProducts = async (
 
 export const refetchBatchVariants = async (
   batchResult: BatchMethodResponse<ProductVariantDTO>,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

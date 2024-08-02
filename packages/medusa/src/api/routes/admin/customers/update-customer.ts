@@ -10,7 +10,7 @@ import {
 import CustomerService from "../../../../services/customer"
 import { EntityManager } from "typeorm"
 import { FindParams } from "../../../../types/common"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { Type } from "class-transformer"
 import { defaultAdminCustomersRelations } from "."
 import { validator } from "../../../../utils/validator"
@@ -36,20 +36,20 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.customers.update(customerId, {
+ *       ninja.admin.customers.update(customerId, {
  *         first_name: "Dolly"
  *       })
  *       .then(({ customer }) => {
  *         console.log(customer.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateCustomer } from "medusa-react"
+ *       import { useAdminUpdateCustomer } from "ninja-react"
  *
  *       type CustomerData = {
  *         first_name: string
@@ -78,7 +78,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/customers/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "first_name": "Dolly"
@@ -120,8 +120,8 @@ export default async (req, res) => {
   let customer = await customerService.retrieve(id)
 
   if (validatedBody.email && customer.has_account) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       "Email cannot be changed when the user has registered their account"
     )
   }
@@ -192,7 +192,7 @@ class Group {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostCustomersCustomerReq {
   @IsEmail()

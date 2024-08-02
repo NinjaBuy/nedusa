@@ -1,23 +1,23 @@
-import { batchProductVariantsWorkflow } from "@medusajs/core-flows"
+import { batchProductVariantsWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../../types/routing"
 import {
   AdminBatchUpdateProductVariantType,
   AdminCreateProductType,
 } from "../../../validators"
-import { BatchMethodRequest } from "@medusajs/types"
+import { BatchMethodRequest } from "@ninjajs/types"
 import { refetchBatchVariants, remapVariantResponse } from "../../../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<
+  req: AuthenticatedNinjaRequest<
     BatchMethodRequest<
       AdminCreateProductType,
       AdminBatchUpdateProductVariantType
     >
   >,
-  res: MedusaResponse
+  res: NinjaResponse
 ) => {
   const productId = req.params.id
 

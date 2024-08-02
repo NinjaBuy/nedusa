@@ -1,4 +1,4 @@
-import { FulfillmentService } from "medusa-interfaces"
+import { FulfillmentService } from "ninja-interfaces"
 
 class TestFulService extends FulfillmentService {
   static identifier = "test-ful"

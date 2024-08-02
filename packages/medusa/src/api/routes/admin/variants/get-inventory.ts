@@ -2,7 +2,7 @@ import {
   IInventoryService,
   InventoryItemDTO,
   InventoryLevelDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { SalesChannel } from "../../../../models"
 import {
   SalesChannelLocationService,
@@ -11,7 +11,7 @@ import {
 import ProductVariantService from "../../../../services/product-variant"
 import ProductVariantInventoryService from "../../../../services/product-variant-inventory"
 import { joinLevels } from "../inventory-items/utils/join-levels"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 /**
  * @oas [get] /admin/variants/{id}/inventory
@@ -27,18 +27,18 @@ import { promiseAll } from "@medusajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.variants.getInventory(variantId)
+ *       ninja.admin.variants.getInventory(variantId)
  *       .then(({ variant }) => {
  *         console.log(variant.inventory, variant.sales_channel_availability)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminVariantsInventory } from "medusa-react"
+ *       import { useAdminVariantsInventory } from "ninja-react"
  *
  *       type Props = {
  *         variantId: string
@@ -71,7 +71,7 @@ import { promiseAll } from "@medusajs/utils"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/variants/{id}/inventory' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

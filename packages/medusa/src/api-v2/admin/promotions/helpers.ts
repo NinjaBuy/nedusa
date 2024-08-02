@@ -1,14 +1,14 @@
-import { BatchMethodResponse } from "@medusajs/types"
-import { PromotionRuleDTO, MedusaContainer } from "@medusajs/types"
+import { BatchMethodResponse } from "@ninjajs/types"
+import { PromotionRuleDTO, NinjaContainer } from "@ninjajs/types"
 import {
   promiseAll,
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 export const refetchPromotion = async (
   promotionId: string,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -26,7 +26,7 @@ export const refetchPromotion = async (
 
 export const refetchBatchRules = async (
   batchResult: BatchMethodResponse<PromotionRuleDTO>,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

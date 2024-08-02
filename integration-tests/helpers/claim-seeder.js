@@ -4,7 +4,7 @@ const {
   LineItem,
   Fulfillment,
   Return,
-} = require("@medusajs/medusa")
+} = require("@ninjajs/ninja")
 
 module.exports = async (dataSource, data = {}) => {
   const manager = dataSource.manager

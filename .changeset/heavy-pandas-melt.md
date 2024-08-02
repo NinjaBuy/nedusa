@@ -1,6 +1,6 @@
 ---
-"medusa-test-utils": patch
-"@medusajs/currency": patch
+"ninja-test-utils": patch
+"@ninjajs/currency": patch
 ---
 
-Medusa test utils use correct loader to init DB.
+Ninja test utils use correct loader to init DB.

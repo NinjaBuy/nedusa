@@ -1,9 +1,9 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
+import { PencilSquare, Trash } from "@ninjajs/icons"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { ExtendedReservationItem } from "@medusajs/medusa"
+import { ExtendedReservationItem } from "@ninjajs/ninja"
 import { useDeleteReservationItem } from "../../../../../hooks/api/reservations"
-import { usePrompt } from "@medusajs/ui"
+import { usePrompt } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 export const ReservationActions = ({

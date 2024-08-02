@@ -51,7 +51,7 @@ export const Feedback = ({
   const [positiveFeedback, setPositiveFeedback] = useState(false)
   const [message, setMessage] = useState("")
   const [steps, setSteps] = useState("")
-  const [medusaVersion, setMedusaVersion] = useState("")
+  const [ninjaVersion, setNinjaVersion] = useState("")
   const [errorFix, setErrorFix] = useState("")
   const [contactInfo, setContactInfo] = useState("")
   const nodeRef: React.RefObject<HTMLDivElement> = submittedFeedback
@@ -91,7 +91,7 @@ export const Feedback = ({
         message: message?.length ? message : null,
         os: window.navigator.userAgent,
         steps,
-        medusaVersion,
+        ninjaVersion,
         errorFix,
         contactInfo,
         ...extraData,
@@ -195,15 +195,15 @@ export const Feedback = ({
                       </div>
                       <div className="flex flex-col gap-docs_0.5">
                         <Label>
-                          If applicable, what version of Medusa are you using?
+                          If applicable, what version of Ninja are you using?
                           If a plugin is related to the error, please provide a
                           version of that as well.
                         </Label>
                         <TextArea
                           rows={4}
-                          value={medusaVersion}
-                          onChange={(e) => setMedusaVersion(e.target.value)}
-                          placeholder="@medusajs/medusa: vX"
+                          value={ninjaVersion}
+                          onChange={(e) => setNinjaVersion(e.target.value)}
+                          placeholder="@ninjajs/ninja: vX"
                         />
                       </div>
                       <div className="flex flex-col gap-docs_0.5">
@@ -215,7 +215,7 @@ export const Feedback = ({
                           rows={4}
                           value={errorFix}
                           onChange={(e) => setErrorFix(e.target.value)}
-                          placeholder="@medusajs/medusa: vX"
+                          placeholder="@ninjajs/ninja: vX"
                         />
                       </div>
                       <div className="flex flex-col gap-docs_0.5">

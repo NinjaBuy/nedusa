@@ -1,5 +1,5 @@
-import { selectorConstraintsToString } from "@medusajs/utils"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { selectorConstraintsToString } from "@ninjajs/utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { Between, EntityManager, MoreThanOrEqual, Not } from "typeorm"
 import { EventBusService } from "."
 import { TransactionBaseService } from "../interfaces"
@@ -118,8 +118,8 @@ class ProductCategoryService extends TransactionBaseService {
     if (!productCategory) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `ProductCategory with ${selectorConstraints} was not found`
       )
     }
@@ -142,8 +142,8 @@ class ProductCategoryService extends TransactionBaseService {
     treeSelector: QuerySelector<ProductCategory> = {}
   ): Promise<ProductCategory> {
     if (!isDefined(productCategoryId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"productCategoryId" must be defined`
       )
     }
@@ -168,8 +168,8 @@ class ProductCategoryService extends TransactionBaseService {
     treeSelector: QuerySelector<ProductCategory> = {}
   ) {
     if (!isDefined(handle)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"handle" must be defined`
       )
     }
@@ -293,8 +293,8 @@ class ProductCategoryService extends TransactionBaseService {
       )
 
       if (productCategory.category_children.length > 0) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Deleting ProductCategory (${productCategoryId}) with category children is not allowed`
         )
       }

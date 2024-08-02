@@ -1,9 +1,9 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 
 export const customers = {
   testCustomer: {
     _id: IdMap.getId("testCustomer"),
-    email: "oliver@medusa.com",
+    email: "oliver@ninja.com",
     first_name: "Oliver",
     last_name: "Juhl",
     billingAddress: {},
@@ -11,7 +11,7 @@ export const customers = {
   },
   deleteCustomer: {
     _id: IdMap.getId("deleteId"),
-    email: "oliver@medusa.com",
+    email: "oliver@ninja.com",
     first_name: "Oliver",
     last_name: "Juhl",
     billingAddress: {},
@@ -19,7 +19,7 @@ export const customers = {
   },
   customerWithPhone: {
     _id: IdMap.getId("customerWithPhone"),
-    email: "oliver@medusa.com",
+    email: "oliver@ninja.com",
     first_name: "Oliver",
     last_name: "Juhl",
     billingAddress: {},
@@ -35,7 +35,7 @@ export const CustomerModelMock = {
   }),
   deleteOne: jest.fn().mockReturnValue(Promise.resolve()),
   findOne: jest.fn().mockImplementation(query => {
-    if (query.email === "oliver@medusa.com") {
+    if (query.email === "oliver@ninja.com") {
       return Promise.resolve(customers.testCustomer)
     }
     if (query.phone === "12345678") {

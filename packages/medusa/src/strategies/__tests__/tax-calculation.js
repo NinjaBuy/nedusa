@@ -1,6 +1,6 @@
 import TaxCalculationStrategy from "../tax-calculation"
 import TaxInclusivePricingFeatureFlag from "../../loaders/feature-flags/tax-inclusive-pricing"
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 
 const toTest = [
   [

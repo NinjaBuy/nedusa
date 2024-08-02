@@ -1,7 +1,7 @@
-import { remoteQueryObjectFromString } from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
+import { remoteQueryObjectFromString } from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const remoteQuery = req.scope.resolve("remoteQuery")
 
   const queryObject = remoteQueryObjectFromString({

@@ -1,4 +1,4 @@
-import { AdminGetReservationsParams } from "@medusajs/medusa"
+import { AdminGetReservationsParams } from "@ninjajs/ninja"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useReservationTableQuery = ({

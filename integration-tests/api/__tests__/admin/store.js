@@ -3,12 +3,12 @@ const {
   adminHeaders,
 } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { ModuleRegistrationName } = require("@medusajs/modules-sdk")
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ModuleRegistrationName } = require("@ninjajs/modules-sdk")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 
 jest.setTimeout(90000)
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("/admin/store", () => {
       let dbStore
@@ -21,10 +21,10 @@ medusaIntegrationTestRunner({
         await createAdminUser(dbConnection, adminHeaders, container)
         await breaking(
           async () => {
-            const { Store } = require("@medusajs/medusa/dist/models/store")
+            const { Store } = require("@ninjajs/ninja/dist/models/store")
             const manager = dbConnection.manager
             dbStore = await manager.findOne(Store, {
-              where: { name: "Medusa Store" },
+              where: { name: "Ninja Store" },
             })
             await manager.query(
               `INSERT INTO store_currencies (store_id, currency_code)
@@ -60,7 +60,7 @@ medusaIntegrationTestRunner({
           expect(store).toEqual(
             expect.objectContaining({
               id: expect.any(String),
-              name: "Medusa Store",
+              name: "Ninja Store",
               default_currency_code: "usd",
               default_sales_channel_id: expect.any(String),
               ...breaking(
@@ -156,7 +156,7 @@ medusaIntegrationTestRunner({
           expect(response.data.store).toEqual(
             expect.objectContaining({
               id: expect.any(String),
-              name: "Medusa Store",
+              name: "Ninja Store",
               default_currency_code: "dkk",
               created_at: expect.any(String),
               updated_at: expect.any(String),
@@ -184,7 +184,7 @@ medusaIntegrationTestRunner({
           expect(response.data.store).toEqual(
             expect.objectContaining({
               id: expect.any(String),
-              name: "Medusa Store",
+              name: "Ninja Store",
               default_sales_channel_id: expect.any(String),
               ...breaking(
                 () => ({
@@ -228,7 +228,7 @@ medusaIntegrationTestRunner({
             expect.objectContaining({
               id: expect.any(String),
               default_sales_channel_id: expect.any(String),
-              name: "Medusa Store",
+              name: "Ninja Store",
               ...breaking(
                 () => ({
                   currencies: expect.arrayContaining([

@@ -1,12 +1,12 @@
-import { createPromotionsWorkflow } from "@medusajs/core-flows"
+import { createPromotionsWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   AdminCreatePromotionType,
   AdminGetPromotionsParamsType,
@@ -14,8 +14,8 @@ import {
 import { refetchPromotion } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetPromotionsParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetPromotionsParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -39,8 +39,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreatePromotionType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreatePromotionType>,
+  res: NinjaResponse
 ) => {
   const createPromotions = createPromotionsWorkflow(req.scope)
   const promotionsData = [req.validatedBody] as any

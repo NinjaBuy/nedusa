@@ -1,7 +1,7 @@
-import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
-import { FlagRouter } from "@medusajs/utils"
+import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { FlagRouter } from "@ninjajs/utils"
 
-import idMap from "medusa-test-utils/dist/id-map"
+import idMap from "ninja-test-utils/dist/id-map"
 import ReturnService from "../return"
 import { ProductVariantInventoryServiceMock } from "../__mocks__/product-variant-inventory"
 import { ShippingOptionServiceMock } from "../__mocks__/shipping-option"

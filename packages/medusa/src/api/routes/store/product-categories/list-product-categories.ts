@@ -16,7 +16,7 @@ import { defaultStoreCategoryScope } from "."
  * x-featureFlag: "product_categories"
  * externalDocs:
  *   description: "How to retrieve a product category by its handle"
- *   url: "https://docs.medusajs.com/modules/products/storefront/use-categories#get-a-category-by-its-handle"
+ *   url: "https://docs.ninjajs.com/modules/products/storefront/use-categories#get-a-category-by-its-handle"
  * parameters:
  *   - (query) q {string} term used to search product category's names and handles.
  *   - (query) handle {string} Filter by handle.
@@ -33,17 +33,17 @@ import { defaultStoreCategoryScope } from "."
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.productCategories.list()
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.productCategories.list()
  *       .then(({ product_categories, limit, offset, count }) => {
  *         console.log(product_categories.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useProductCategories } from "medusa-react"
+ *       import { useProductCategories } from "ninja-react"
  *
  *       function Categories() {
  *         const {
@@ -75,7 +75,7 @@ import { defaultStoreCategoryScope } from "."
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/store/product-categories' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

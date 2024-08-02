@@ -4,7 +4,7 @@ import { OauthService } from "../../../../services"
  * @oas [get] /admin/apps
  * operationId: "GetApps"
  * summary: "List Applications"
- * description: "Retrieve a list of applications registered in the Medusa backend."
+ * description: "Retrieve a list of applications registered in the Ninja backend."
  * x-authenticated: true
  * x-codegen:
  *   method: list
@@ -13,7 +13,7 @@ import { OauthService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/apps' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

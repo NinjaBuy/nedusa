@@ -1,4 +1,4 @@
-import { objectToStringPath } from "@medusajs/utils"
+import { objectToStringPath } from "@ninjajs/utils"
 import { FindManyOptions, FindOptionsRelations } from "typeorm"
 import { dataSource } from "../loaders/database"
 import { Cart } from "../models"

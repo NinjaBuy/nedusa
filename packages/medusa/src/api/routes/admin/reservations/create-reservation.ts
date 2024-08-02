@@ -1,7 +1,7 @@
 import { IsNumber, IsObject, IsOptional, IsString } from "class-validator"
 
-import { IInventoryService } from "@medusajs/types"
-import { isDefined } from "@medusajs/utils"
+import { IInventoryService } from "@ninjajs/types"
+import { isDefined } from "@ninjajs/utils"
 import { validateUpdateReservationQuantity } from "./utils/validate-reservation-quantity"
 
 /**
@@ -19,10 +19,10 @@ import { validateUpdateReservationQuantity } from "./utils/validate-reservation-
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.reservations.create({
+ *       ninja.admin.reservations.create({
  *         line_item_id: "item_123",
  *         location_id: "loc_123",
  *         inventory_item_id: "iitem_123",
@@ -32,10 +32,10 @@ import { validateUpdateReservationQuantity } from "./utils/validate-reservation-
  *         console.log(reservation.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateReservation } from "medusa-react"
+ *       import { useAdminCreateReservation } from "ninja-react"
  *
  *       const CreateReservation = () => {
  *         const createReservation = useAdminCreateReservation()
@@ -65,7 +65,7 @@ import { validateUpdateReservationQuantity } from "./utils/validate-reservation-
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/reservations' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "line_item_id": "item_123",
@@ -155,7 +155,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostReservationsReq {
   @IsString()

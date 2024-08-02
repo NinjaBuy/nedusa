@@ -1,6 +1,6 @@
-import { FlagRouter, promiseAll } from "@medusajs/utils"
-import { isDefined, MedusaError } from "medusa-core-utils"
-import { BasePaymentService } from "medusa-interfaces"
+import { FlagRouter, promiseAll } from "@ninjajs/utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
+import { BasePaymentService } from "ninja-interfaces"
 import { EOL } from "os"
 import { EntityManager } from "typeorm"
 import {
@@ -116,8 +116,8 @@ export default class PaymentProviderService extends TransactionBaseService {
     relations: string[] = []
   ): Promise<Payment | never> {
     if (!isDefined(paymentId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"paymentId" must be defined`
       )
     }
@@ -137,8 +137,8 @@ export default class PaymentProviderService extends TransactionBaseService {
     const payment = await paymentRepo.findOne(query)
 
     if (!payment) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Payment with ${paymentId} was not found`
       )
     }
@@ -174,8 +174,8 @@ export default class PaymentProviderService extends TransactionBaseService {
     relations: string[] = []
   ): Promise<PaymentSession | never> {
     if (!isDefined(paymentSessionId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"paymentSessionId" must be defined`
       )
     }
@@ -188,8 +188,8 @@ export default class PaymentProviderService extends TransactionBaseService {
     const session = await sessionRepo.findOne(query)
 
     if (!session) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Payment Session with ${paymentSessionId} was not found`
       )
     }
@@ -239,8 +239,8 @@ export default class PaymentProviderService extends TransactionBaseService {
       const context = this.buildPaymentProcessorContext(data)
 
       if (!isDefined(context.currency_code) || !isDefined(context.amount)) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_ARGUMENT,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_ARGUMENT,
           "`currency_code` and `amount` are required to create payment session."
         )
       }
@@ -461,8 +461,8 @@ export default class PaymentProviderService extends TransactionBaseService {
 
       return provider
     } catch (err) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Could not find a payment provider with id: ${providerId}`
       )
     }
@@ -691,8 +691,8 @@ export default class PaymentProviderService extends TransactionBaseService {
       }, 0)
 
       if (refundable < amount) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Refund amount is greater that the refundable amount"
         )
       }
@@ -778,8 +778,8 @@ export default class PaymentProviderService extends TransactionBaseService {
       const refundable = payment.amount - payment.amount_refunded
 
       if (refundable < amount) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Refund amount is greater that the refundable amount"
         )
       }
@@ -829,8 +829,8 @@ export default class PaymentProviderService extends TransactionBaseService {
     const refund = await refRepo.findOne(query)
 
     if (!refund) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `A refund with ${id} was not found`
       )
     }
@@ -953,8 +953,8 @@ export default class PaymentProviderService extends TransactionBaseService {
   }
 
   private throwFromPaymentProcessorError(errObj: PaymentProcessorError) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       `${errObj.error}${errObj.detail ? `:${EOL}${errObj.detail}` : ""}`,
       errObj.code
     )

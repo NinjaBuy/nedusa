@@ -1,17 +1,17 @@
 import {
   BatchMethodResponse,
-  MedusaContainer,
+  NinjaContainer,
   ShippingOptionRuleDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   promiseAll,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 export const refetchShippingOption = async (
   shippingOptionId: string,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -29,7 +29,7 @@ export const refetchShippingOption = async (
 
 export const refetchBatchRules = async (
   batchResult: BatchMethodResponse<ShippingOptionRuleDTO>,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

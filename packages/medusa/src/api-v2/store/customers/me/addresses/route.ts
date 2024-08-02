@@ -1,19 +1,19 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import {
   CreateCustomerAddressDTO,
   ICustomerModuleService,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { createCustomerAddressesWorkflow } from "@medusajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { createCustomerAddressesWorkflow } from "@ninjajs/core-flows"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const customerId = req.auth.actor_id
 
@@ -37,8 +37,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<CreateCustomerAddressDTO>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<CreateCustomerAddressDTO>,
+  res: NinjaResponse
 ) => {
   const customerId = req.auth.actor_id
 

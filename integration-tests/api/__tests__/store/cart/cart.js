@@ -1,4 +1,4 @@
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 const { useApi } = require("../../../../environment-helpers/use-api")
 
 jest.setTimeout(30000)
@@ -28,8 +28,8 @@ let {
   simpleCustomerGroupFactory,
 } = {}
 
-medusaIntegrationTestRunner({
-  env: { MEDUSA_FF_MEDUSA_V2: false },
+ninjaIntegrationTestRunner({
+  env: { NINJA_FF_NINJA_V2: false },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
 
@@ -45,7 +45,7 @@ medusaIntegrationTestRunner({
         PriceList,
         MoneyAmount,
         ProductVariantMoneyAmount,
-      } = require("@medusajs/medusa"))
+      } = require("@ninjajs/ninja"))
       ;({
         simpleCartFactory,
         simpleRegionFactory,
@@ -502,8 +502,8 @@ medusaIntegrationTestRunner({
 
       describe("ensures correct line item adjustment generation", () => {
         const discountData = {
-          code: "MEDUSA185DKK",
-          id: "medusa-185",
+          code: "NINJA185DKK",
+          id: "ninja-185",
           rule: {
             allocation: "total",
             type: "fixed",
@@ -545,7 +545,7 @@ medusaIntegrationTestRunner({
                     {
                       amount: 185,
                       description: "discount",
-                      discount_id: "medusa-185",
+                      discount_id: "ninja-185",
                     },
                   ],
                 },
@@ -597,14 +597,14 @@ medusaIntegrationTestRunner({
                 adjustments: [
                   expect.objectContaining({
                     item_id: "test-li",
-                    discount_id: "medusa-185",
+                    discount_id: "ninja-185",
                   }),
                 ],
               }),
               expect.objectContaining({
                 adjustments: [
                   expect.objectContaining({
-                    discount_id: "medusa-185",
+                    discount_id: "ninja-185",
                   }),
                 ],
               }),
@@ -627,7 +627,7 @@ medusaIntegrationTestRunner({
                   id: "lia-2",
                   amount: 92,
                   description: "discount",
-                  discount_id: "medusa-185",
+                  discount_id: "ninja-185",
                 },
               ],
             },
@@ -663,7 +663,7 @@ medusaIntegrationTestRunner({
                   expect.objectContaining({
                     item_id: "test-li",
                     amount: 9.25,
-                    discount_id: "medusa-185",
+                    discount_id: "ninja-185",
                   }),
                 ],
               }),
@@ -672,7 +672,7 @@ medusaIntegrationTestRunner({
                   expect.objectContaining({
                     item_id: "line-item-2",
                     amount: 175.75,
-                    discount_id: "medusa-185",
+                    discount_id: "ninja-185",
                   }),
                 ],
               }),
@@ -695,7 +695,7 @@ medusaIntegrationTestRunner({
                   id: "lia-2",
                   amount: 93,
                   description: "discount",
-                  discount_id: "medusa-185",
+                  discount_id: "ninja-185",
                 },
               ],
             },
@@ -716,7 +716,7 @@ medusaIntegrationTestRunner({
                   expect.objectContaining({
                     item_id: "line-item-2",
                     amount: 185,
-                    discount_id: "medusa-185",
+                    discount_id: "ninja-185",
                   }),
                 ],
               }),
@@ -1119,7 +1119,7 @@ medusaIntegrationTestRunner({
       it("successfully passes customer conditions with `in` operator and applies discount", async () => {
         await simpleCustomerFactory(dbConnection, {
           id: "cus_1234",
-          email: "oli@medusajs.com",
+          email: "oli@ninjajs.com",
           groups: [
             {
               id: "customer-group-1",
@@ -1245,8 +1245,8 @@ medusaIntegrationTestRunner({
 
       it("successfully removes adjustments upon update without discounts", async () => {
         const discountData = {
-          code: "MEDUSA185DKK",
-          id: "medusa-185",
+          code: "NINJA185DKK",
+          id: "ninja-185",
           rule: {
             allocation: "total",
             type: "fixed",
@@ -1302,7 +1302,7 @@ medusaIntegrationTestRunner({
               adjustments: [
                 expect.objectContaining({
                   amount: 185,
-                  discount_id: "medusa-185",
+                  discount_id: "ninja-185",
                 }),
               ],
             }),
@@ -1320,7 +1320,7 @@ medusaIntegrationTestRunner({
       it("successfully passes customer conditions with `not_in` operator and applies discount", async () => {
         await simpleCustomerFactory(dbConnection, {
           id: "cus_1234",
-          email: "oli@medusajs.com",
+          email: "oli@ninjajs.com",
           groups: [
             {
               id: "customer-group-2",
@@ -1396,7 +1396,7 @@ medusaIntegrationTestRunner({
       it("successfully applies discount in case no conditions is defined for group", async () => {
         await simpleCustomerFactory(dbConnection, {
           id: "cus_1234",
-          email: "oli@medusajs.com",
+          email: "oli@ninjajs.com",
           groups: [
             {
               id: "customer-group-1",
@@ -1455,7 +1455,7 @@ medusaIntegrationTestRunner({
       it("fails to apply discount if customer group is part of `not_in` conditions", async () => {
         await simpleCustomerFactory(dbConnection, {
           id: "cus_1234",
-          email: "oli@medusajs.com",
+          email: "oli@ninjajs.com",
           groups: [
             {
               id: "customer-group-1",
@@ -1519,7 +1519,7 @@ medusaIntegrationTestRunner({
       it("fails to apply discount if customer group is not part of `in` conditions", async () => {
         await simpleCustomerFactory(dbConnection, {
           id: "cus_1234",
-          email: "oli@medusajs.com",
+          email: "oli@ninjajs.com",
           groups: [
             {
               id: "customer-group-2",
@@ -2515,8 +2515,8 @@ medusaIntegrationTestRunner({
 
     describe("DELETE /store/carts/:id/discounts/:code", () => {
       const discountData = {
-        code: "MEDUSA185DKK",
-        id: "medusa-185",
+        code: "NINJA185DKK",
+        id: "ninja-185",
         rule: {
           allocation: "total",
           type: "fixed",
@@ -2600,7 +2600,7 @@ medusaIntegrationTestRunner({
               adjustments: [
                 expect.objectContaining({
                   amount: 185,
-                  discount_id: "medusa-185",
+                  discount_id: "ninja-185",
                 }),
               ],
             }),

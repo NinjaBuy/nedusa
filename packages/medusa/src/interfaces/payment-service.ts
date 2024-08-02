@@ -8,7 +8,7 @@ import {
   PaymentSessionStatus,
   ShippingMethod,
 } from "../models"
-import { PaymentService } from "medusa-interfaces"
+import { PaymentService } from "ninja-interfaces"
 
 export type Data = Record<string, unknown>
 export type PaymentData = Data

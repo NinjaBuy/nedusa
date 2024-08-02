@@ -1,15 +1,15 @@
-import { createShippingOptionsWorkflow } from "@medusajs/core-flows"
+import { createShippingOptionsWorkflow } from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   AdminShippingOptionListResponse,
   AdminShippingOptionRetrieveResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import {
   AdminCreateShippingOptionType,
@@ -18,8 +18,8 @@ import {
 import { refetchShippingOption } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetShippingOptionsParamsType>,
-  res: MedusaResponse<AdminShippingOptionListResponse>
+  req: AuthenticatedNinjaRequest<AdminGetShippingOptionsParamsType>,
+  res: NinjaResponse<AdminShippingOptionListResponse>
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -43,8 +43,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateShippingOptionType>,
-  res: MedusaResponse<AdminShippingOptionRetrieveResponse>
+  req: AuthenticatedNinjaRequest<AdminCreateShippingOptionType>,
+  res: NinjaResponse<AdminShippingOptionRetrieveResponse>
 ) => {
   const shippingOptionPayload = req.validatedBody
 

@@ -1,4 +1,4 @@
-declare module "medusa-admin:widgets/*" {
+declare module "ninja-admin:widgets/*" {
   const widgets: { Component: () => JSX.Element }[]
 
   export default {
@@ -6,7 +6,7 @@ declare module "medusa-admin:widgets/*" {
   }
 }
 
-declare module "medusa-admin:routes/links" {
+declare module "ninja-admin:routes/links" {
   const links: { path: string; label: string; icon?: React.ComponentType }[]
 
   export default {
@@ -14,7 +14,7 @@ declare module "medusa-admin:routes/links" {
   }
 }
 
-declare module "medusa-admin:routes/pages" {
+declare module "ninja-admin:routes/pages" {
   const pages: { path: string; file: string }[]
 
   export default {
@@ -22,7 +22,7 @@ declare module "medusa-admin:routes/pages" {
   }
 }
 
-declare module "medusa-admin:settings/cards" {
+declare module "ninja-admin:settings/cards" {
   const cards: { path: string; label: string; description: string }[]
 
   export default {
@@ -30,7 +30,7 @@ declare module "medusa-admin:settings/cards" {
   }
 }
 
-declare module "medusa-admin:settings/pages" {
+declare module "ninja-admin:settings/pages" {
   const pages: { path: string; file: string }[]
 
   export default {

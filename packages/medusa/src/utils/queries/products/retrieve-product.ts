@@ -1,4 +1,4 @@
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 
 export async function retrieveProduct(container, id, remoteQueryObject = {}) {
   // TODO: Add support for fields/expands
@@ -16,8 +16,8 @@ export async function retrieveProduct(container, id, remoteQueryObject = {}) {
   const [product] = await remoteQuery(query)
 
   if (!product) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Product with id: ${id} not found`
     )
   }

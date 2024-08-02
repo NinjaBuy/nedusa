@@ -8,8 +8,8 @@ import {
 
 import { listProducts } from "../../../../utils"
 
-import { IInventoryService } from "@medusajs/types"
-import { MedusaV2Flag } from "@medusajs/utils"
+import { IInventoryService } from "@ninjajs/types"
+import { NinjaV2Flag } from "@ninjajs/utils"
 import { Type } from "class-transformer"
 import { Product } from "../../../../models"
 import { PricedProduct } from "../../../../types/pricing"
@@ -192,18 +192,18 @@ import { FilterableProductProps } from "../../../../types/product"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.products.list()
+ *       ninja.admin.products.list()
  *       .then(({ products, limit, offset, count }) => {
  *         console.log(products.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminProducts } from "medusa-react"
+ *       import { useAdminProducts } from "ninja-react"
  *
  *       const Products = () => {
  *         const { products, isLoading } = useAdminProducts()
@@ -228,7 +228,7 @@ import { FilterableProductProps } from "../../../../types/product"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/products' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -272,7 +272,7 @@ export default async (req, res) => {
   let rawProducts
   let count
 
-  if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+  if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
     const [products, count_] = await listProducts(
       req.scope,
       req.filterableFields,

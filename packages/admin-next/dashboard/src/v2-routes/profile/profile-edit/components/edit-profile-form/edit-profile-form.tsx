@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Input, Select, Switch, toast } from "@medusajs/ui"
+import { Button, Input, Select, Switch, toast } from "@ninjajs/ui"
 import { useForm } from "react-hook-form"
 import { Trans, useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { UserDTO } from "@medusajs/types"
+import { UserDTO } from "@ninjajs/types"
 import { Form } from "../../../../../components/common/form"
 import {
   RouteDrawer,
@@ -170,7 +170,7 @@ export const EditProfileForm = ({ user, usageInsights }: EditProfileProps) => {
                           <a
                             key="hint-link"
                             className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover transition-fg underline"
-                            href="https://docs.medusajs.com/usage#admin-analytics"
+                            href="https://docs.ninjajs.com/usage#admin-analytics"
                             target="_blank"
                             rel="noopener noreferrer"
                           />,

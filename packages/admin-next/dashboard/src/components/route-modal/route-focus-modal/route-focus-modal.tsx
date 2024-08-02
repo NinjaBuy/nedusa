@@ -1,4 +1,4 @@
-import { FocusModal } from "@medusajs/ui"
+import { FocusModal } from "@ninjajs/ui"
 import { PropsWithChildren, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { RouteForm } from "../route-form"

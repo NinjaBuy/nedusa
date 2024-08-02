@@ -83,7 +83,7 @@ class Client {
 
     // All 5xx errors are retried
     // OBS: We are currently not retrying 500 requests, since our core needs proper error handling.
-    //      At the moment, 500 will be returned on all errors, that are not of type MedusaError.
+    //      At the moment, 500 will be returned on all errors, that are not of type NinjaError.
     if (err.response.status > 500 && err.response.status <= 599) {
       return true
     }
@@ -143,7 +143,7 @@ class Client {
     if (this.config.apiKey && this.requiresAuthentication(path, method)) {
       defaultHeaders = {
         ...defaultHeaders,
-        "x-medusa-access-token": this.config.apiKey,
+        "x-ninja-access-token": this.config.apiKey,
       }
     }
 

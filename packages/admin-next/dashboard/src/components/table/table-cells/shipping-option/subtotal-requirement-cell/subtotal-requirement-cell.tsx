@@ -1,4 +1,4 @@
-import { ShippingOption } from "@medusajs/medusa"
+import { ShippingOption } from "@ninjajs/ninja"
 import { useTranslation } from "react-i18next"
 import { MoneyAmountCell } from "../../common/money-amount-cell"
 import { PlaceholderCell } from "../../common/placeholder-cell"

@@ -1,6 +1,6 @@
-import { PencilSquare, Plus } from "@medusajs/icons"
-import { Product } from "@medusajs/medusa"
-import { Container, Heading } from "@medusajs/ui"
+import { PencilSquare, Plus } from "@ninjajs/icons"
+import { Product } from "@ninjajs/ninja"
+import { Container, Heading } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"

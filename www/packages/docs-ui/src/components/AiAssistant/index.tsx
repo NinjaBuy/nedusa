@@ -14,7 +14,7 @@ import {
   LegacyLink,
 } from "@/components"
 import { useAiAssistant, useSearch } from "@/providers"
-import { ArrowUturnLeft, XMarkMini } from "@medusajs/icons"
+import { ArrowUturnLeft, XMarkMini } from "@ninjajs/icons"
 import clsx from "clsx"
 import { useSearchNavigation } from "@/hooks"
 import { AiAssistantThreadItem } from "./ThreadItem"
@@ -86,14 +86,14 @@ export const AiAssistant = () => {
     {
       title: "FAQ",
       items: [
-        "What is Medusa?",
-        "How can I create an ecommerce store with Medusa?",
-        "How can I build a marketplace with Medusa?",
-        "How can I build subscription-based purchases with Medusa?",
-        "How can I build digital products with Medusa?",
-        "What can I build with Medusa?",
-        "What is Medusa Admin?",
-        "How do I configure the database in Medusa?",
+        "What is Ninja?",
+        "How can I create an ecommerce store with Ninja?",
+        "How can I build a marketplace with Ninja?",
+        "How can I build subscription-based purchases with Ninja?",
+        "How can I build digital products with Ninja?",
+        "What can I build with Ninja?",
+        "What is Ninja Admin?",
+        "How do I configure the database in Ninja?",
       ],
     },
   ]
@@ -296,13 +296,13 @@ export const AiAssistant = () => {
         className={clsx(
           "flex gap-docs_1 px-docs_1 py-docs_0.75",
           "h-[57px] w-full md:rounded-t-docs_xl relative border-0 border-solid",
-          "border-b border-medusa-border-base relative"
+          "border-b border-ninja-border-base relative"
         )}
       >
         <Button
           variant="clear"
           onClick={() => setCommand(null)}
-          className="text-medusa-fg-subtle p-[5px]"
+          className="text-ninja-fg-subtle p-[5px]"
         >
           <ArrowUturnLeft />
         </Button>
@@ -311,10 +311,10 @@ export const AiAssistant = () => {
           onChange={(e) => setQuestion(e.target.value)}
           className={clsx(
             "bg-transparent border-0 focus:outline-none hover:!bg-transparent",
-            "shadow-none flex-1 text-medusa-fg-base",
+            "shadow-none flex-1 text-ninja-fg-base",
             "disabled:!bg-transparent disabled:cursor-not-allowed"
           )}
-          placeholder="Ask me a question about Medusa..."
+          placeholder="Ask me a question about Ninja..."
           autoFocus={true}
           passedRef={inputRef}
           disabled={loading}
@@ -326,9 +326,9 @@ export const AiAssistant = () => {
             inputRef.current?.focus()
           }}
           className={clsx(
-            "text-medusa-fg-subtle p-[5px]",
+            "text-ninja-fg-subtle p-[5px]",
             "absolute top-docs_0.75 right-docs_1",
-            "hover:bg-medusa-bg-base-hover rounded-docs_sm",
+            "hover:bg-ninja-bg-base-hover rounded-docs_sm",
             question.length === 0 && "hidden"
           )}
         >
@@ -374,8 +374,8 @@ export const AiAssistant = () => {
         className={clsx(
           "py-docs_0.75 flex items-center justify-between px-docs_1",
           "border-0 border-solid",
-          "border-medusa-border-base border-t",
-          "bg-medusa-bg-base h-[57px]"
+          "border-ninja-border-base border-t",
+          "bg-ninja-bg-base h-[57px]"
         )}
       >
         <Tooltip
@@ -400,7 +400,7 @@ export const AiAssistant = () => {
             )}
           >
             <AiAssistantCommandIcon />
-            <span className="text-medusa-fg-subtle">Medusa AI Assistant</span>
+            <span className="text-ninja-fg-subtle">Ninja AI Assistant</span>
             <Badge variant="purple">Beta</Badge>
           </div>
         </Tooltip>
@@ -410,7 +410,7 @@ export const AiAssistant = () => {
               <>
                 <span
                   className={clsx(
-                    "text-medusa-fg-subtle",
+                    "text-ninja-fg-subtle",
                     "text-compact-x-small"
                   )}
                 >
@@ -424,7 +424,7 @@ export const AiAssistant = () => {
             )}
             {thread.length > 0 && (
               <span
-                className={clsx("text-medusa-fg-muted", "text-compact-x-small")}
+                className={clsx("text-ninja-fg-muted", "text-compact-x-small")}
               >
                 Chat is cleared on exit
               </span>
@@ -432,7 +432,7 @@ export const AiAssistant = () => {
           </div>
           <div className="flex items-center gap-docs_0.5">
             <span
-              className={clsx("text-medusa-fg-subtle", "text-compact-x-small")}
+              className={clsx("text-ninja-fg-subtle", "text-compact-x-small")}
             >
               Ask Question
             </span>

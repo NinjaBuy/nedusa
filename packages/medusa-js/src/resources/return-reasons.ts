@@ -2,12 +2,12 @@ import BaseResource from "./base"
 import {
   StoreReturnReasonsListRes,
   StoreReturnReasonsRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../typings"
 
 /**
- * This class is used to send requests to [Store Return Reason API Routes](https://docs.medusajs.com/api/store#return-reasons). All its method
- * are available in the JS Client under the `medusa.returnReasons` property.
+ * This class is used to send requests to [Store Return Reason API Routes](https://docs.ninjajs.com/api/store#return-reasons). All its method
+ * are available in the JS Client under the `ninja.returnReasons` property.
  * 
  * Return reasons are key-value pairs that are used to specify why an order return is being created.
  */
@@ -19,9 +19,9 @@ class ReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<StoreReturnReasonsRes>} Resolves to the return reason's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.returnReasons.retrieve(reasonId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.returnReasons.retrieve(reasonId)
    * .then(({ return_reason }) => {
    *   console.log(return_reason.id);
    * })
@@ -37,9 +37,9 @@ class ReturnReasonsResource extends BaseResource {
    * @returns {ResponsePromise<StoreReturnReasonsListRes>} Resolves to the list of return reasons.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.returnReasons.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.returnReasons.list()
    * .then(({ return_reasons }) => {
    *   console.log(return_reasons.length);
    * })

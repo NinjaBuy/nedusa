@@ -1,5 +1,5 @@
 async function generateCountries() {
-  const { countries } = await import("@medusajs/medusa/dist/utils/countries.js")
+  const { countries } = await import("@ninjajs/ninja/dist/utils/countries.js")
   const fs = await import("fs")
   const path = await import("path")
 
@@ -24,7 +24,7 @@ async function generateCountries() {
   const dest = path.join(__dirname, "../src/lib/countries.ts")
   const destDir = path.dirname(dest)
 
-  const fileContent = `/** This file is auto-generated. Do not modify it manually. */\nimport type { RegionCountryDTO } from "@medusajs/types"\n\nexport const countries: Omit<RegionCountryDTO, "id">[] = ${json}`
+  const fileContent = `/** This file is auto-generated. Do not modify it manually. */\nimport type { RegionCountryDTO } from "@ninjajs/types"\n\nexport const countries: Omit<RegionCountryDTO, "id">[] = ${json}`
 
   if (!fs.existsSync(destDir)) {
     fs.mkdirSync(destDir, { recursive: true })

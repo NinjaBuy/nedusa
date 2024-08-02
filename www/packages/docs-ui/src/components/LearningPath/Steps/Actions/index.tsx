@@ -1,7 +1,7 @@
 import React from "react"
 import { useLearningPath } from "../../../../providers/LearningPath"
 import { Button } from "docs-ui"
-import { ArrowDownLeftMini, ArrowDownMini } from "@medusajs/icons"
+import { ArrowDownLeftMini, ArrowDownMini } from "@ninjajs/icons"
 
 type LearningPathStepActionsType = {
   onFinish?: () => void
@@ -30,7 +30,7 @@ export const LearningPathStepActions = ({
         <Button
           onClick={() => setCollapsed(true)}
           variant="secondary"
-          className="!text-medusa-fg-subtle !p-[6px]"
+          className="!text-ninja-fg-subtle !p-[6px]"
         >
           <ArrowDownLeftMini className="flip-y hidden md:inline" />
           <ArrowDownMini className="inline md:hidden" />

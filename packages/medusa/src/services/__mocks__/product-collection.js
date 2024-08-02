@@ -1,5 +1,5 @@
-import { MedusaError } from "medusa-core-utils"
-import { IdMap } from "medusa-test-utils"
+import { NinjaError } from "ninja-core-utils"
+import { IdMap } from "ninja-test-utils"
 
 export const ProductCollectionServiceMock = {
   withTransaction: function () {
@@ -24,8 +24,8 @@ export const ProductCollectionServiceMock = {
         products: product_ids.map((i) => ({ id: i })),
       })
     }
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Product collection with id: ${id} was not found`
     )
   }),

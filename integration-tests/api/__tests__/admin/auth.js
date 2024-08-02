@@ -1,18 +1,18 @@
 const { useApi } = require("../../../environment-helpers/use-api")
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 const { createAdminUser } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 
-medusaIntegrationTestRunner({
-  env: { MEDUSA_FF_MEDUSA_V2: true },
+ninjaIntegrationTestRunner({
+  env: { NINJA_FF_NINJA_V2: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
 
@@ -25,13 +25,13 @@ medusaIntegrationTestRunner({
       const response = await breaking(
         async () => {
           return await api.post("/admin/auth", {
-            email: "admin@medusa.js",
+            email: "admin@ninja.js",
             password: "secret_password",
           })
         },
         async () => {
           return await api.post("/auth/admin/emailpass", {
-            email: "admin@medusa.js",
+            email: "admin@ninja.js",
             password: "secret_password",
           })
         }
@@ -41,7 +41,7 @@ medusaIntegrationTestRunner({
 
       const v1Result = {
         user: expect.objectContaining({
-          email: "admin@medusa.js",
+          email: "admin@ninja.js",
           created_at: expect.any(String),
           updated_at: expect.any(String),
         }),
@@ -63,7 +63,7 @@ medusaIntegrationTestRunner({
       breaking(async () => {
         const response = await api
           .post("/admin/auth/token", {
-            email: "admin@medusa.js",
+            email: "admin@ninja.js",
             password: "secret_password",
           })
           .catch((err) => {

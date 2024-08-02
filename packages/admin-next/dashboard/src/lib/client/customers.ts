@@ -2,7 +2,7 @@ import {
   AdminCustomerListResponse,
   AdminCustomerResponse,
   DeleteResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { CreateCustomerReq, UpdateCustomerReq } from "../../types/api-payloads"
 import { deleteRequest, getRequest, postRequest } from "./common"
 

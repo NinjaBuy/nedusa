@@ -1,22 +1,22 @@
 import {
   deleteApiKeysWorkflow,
   updateApiKeysWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { refetchApiKey } from "../helpers"
 import { AdminUpdateApiKeyType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const apiKey = await refetchApiKey(
     req.params.id,
@@ -28,8 +28,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateApiKeyType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdateApiKeyType>,
+  res: NinjaResponse
 ) => {
   const { result, errors } = await updateApiKeysWorkflow(req.scope).run({
     input: {
@@ -53,8 +53,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
 

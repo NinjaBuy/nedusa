@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { Logger } from "../../types/global"
 import { formatException } from "../../utils"
 
@@ -14,7 +14,7 @@ const INVALID_STATE_ERROR = "invalid_state_error"
 
 export default () => {
   return (
-    err: MedusaError,
+    err: NinjaError,
     req: Request,
     res: Response,
     next: NextFunction
@@ -38,35 +38,35 @@ export default () => {
       case QUERY_RUNNER_RELEASED:
       case TRANSACTION_STARTED:
       case TRANSACTION_NOT_STARTED:
-      case MedusaError.Types.CONFLICT:
+      case NinjaError.Types.CONFLICT:
         statusCode = 409
         errObj.code = INVALID_STATE_ERROR
         errObj.message =
           "The request conflicted with another request. You may retry the request with the provided Idempotency-Key."
         break
-      case MedusaError.Types.UNAUTHORIZED:
+      case NinjaError.Types.UNAUTHORIZED:
         statusCode = 401
         break
-      case MedusaError.Types.PAYMENT_AUTHORIZATION_ERROR:
+      case NinjaError.Types.PAYMENT_AUTHORIZATION_ERROR:
         statusCode = 422
         break
-      case MedusaError.Types.DUPLICATE_ERROR:
+      case NinjaError.Types.DUPLICATE_ERROR:
         statusCode = 422
         errObj.code = INVALID_REQUEST_ERROR
         break
-      case MedusaError.Types.NOT_ALLOWED:
-      case MedusaError.Types.INVALID_DATA:
+      case NinjaError.Types.NOT_ALLOWED:
+      case NinjaError.Types.INVALID_DATA:
         statusCode = 400
         break
-      case MedusaError.Types.NOT_FOUND:
+      case NinjaError.Types.NOT_FOUND:
         statusCode = 404
         break
-      case MedusaError.Types.DB_ERROR:
+      case NinjaError.Types.DB_ERROR:
         statusCode = 500
         errObj.code = API_ERROR
         break
-      case MedusaError.Types.UNEXPECTED_STATE:
-      case MedusaError.Types.INVALID_ARGUMENT:
+      case NinjaError.Types.UNEXPECTED_STATE:
+      case NinjaError.Types.INVALID_ARGUMENT:
         break
       default:
         errObj.code = "unknown_error"

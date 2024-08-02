@@ -1,10 +1,10 @@
-import { SalesChannel } from "@medusajs/medusa"
+import { SalesChannel } from "@ninjajs/ninja"
 import {
   ProductCollectionDTO,
   ProductDTO,
   ProductVariantDTO,
-} from "@medusajs/types"
-import { StatusBadge, Text } from "@medusajs/ui"
+} from "@ninjajs/types"
+import { StatusBadge, Text } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { Thumbnail } from "../thumbnail"
 

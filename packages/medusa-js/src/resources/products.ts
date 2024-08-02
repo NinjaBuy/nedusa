@@ -4,24 +4,24 @@ import {
   StorePostSearchRes,
   StoreProductsListRes,
   StoreProductsRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 import ProductVariantsResource from "./product-variants"
 
 /**
- * This class is used to send requests to [Store Product API Routes](https://docs.medusajs.com/api/store#products). All its method
- * are available in the JS Client under the `medusa.products` property.
+ * This class is used to send requests to [Store Product API Routes](https://docs.ninjajs.com/api/store#products). All its method
+ * are available in the JS Client under the `ninja.products` property.
  * 
- * Products are saleable items in a store. This also includes [saleable gift cards](https://docs.medusajs.com/modules/gift-cards/storefront/use-gift-cards) in a store.
+ * Products are saleable items in a store. This also includes [saleable gift cards](https://docs.ninjajs.com/modules/gift-cards/storefront/use-gift-cards) in a store.
  * Using the methods in this class, you can filter products by categories, collections, sales channels, and more.
  * 
- * Related Guide: [How to show products in a storefront](https://docs.medusajs.com/modules/products/storefront/show-products).
+ * Related Guide: [How to show products in a storefront](https://docs.ninjajs.com/modules/products/storefront/show-products).
  */
 class ProductsResource extends BaseResource {
   /**
-   * An instance of {@link ProductVariantsResource} used to send requests to [Store Product Variant API Routes](https://docs.medusajs.com/api/store#product-variants_getvariants).
+   * An instance of {@link ProductVariantsResource} used to send requests to [Store Product Variant API Routes](https://docs.ninjajs.com/api/store#product-variants_getvariants).
    */
   public variants = new ProductVariantsResource(this.client)
 
@@ -36,9 +36,9 @@ class ProductsResource extends BaseResource {
    * @returns {ResponsePromise<StoreProductsRes>} Resolves to the product's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.products.retrieve(productId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.products.retrieve(productId)
    * .then(({ product }) => {
    *   console.log(product.id);
    * })
@@ -52,16 +52,16 @@ class ProductsResource extends BaseResource {
   }
 
   /**
-   * Run a search query on products using the search service installed on the Medusa backend. The searching is handled through the search service, so the returned data's
+   * Run a search query on products using the search service installed on the Ninja backend. The searching is handled through the search service, so the returned data's
    * format depends on the search service you're using.
    * @param {StorePostSearchReq} searchOptions - Fields to search products.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
-   * @returns {ResponsePromise<StorePostSearchRes>} Resolves to the list of search results. The format of the items depends on the search engine installed on the Medusa backend.
+   * @returns {ResponsePromise<StorePostSearchRes>} Resolves to the list of search results. The format of the items depends on the search engine installed on the Ninja backend.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.products.search({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.products.search({
    *   q: "Shirt"
    * })
    * .then(({ hits }) => {
@@ -93,9 +93,9 @@ class ProductsResource extends BaseResource {
    * To list products:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.products.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.products.list()
    * .then(({ products, limit, offset, count }) => {
    *   console.log(products.length);
    * })
@@ -104,9 +104,9 @@ class ProductsResource extends BaseResource {
    * To specify relations that should be retrieved within the products:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.products.list({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.products.list({
    *   expand: "variants"
    * })
    * .then(({ products, limit, offset, count }) => {
@@ -117,9 +117,9 @@ class ProductsResource extends BaseResource {
    * By default, only the first `100` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.products.list({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.products.list({
    *   expand: "variants",
    *   limit,
    *   offset

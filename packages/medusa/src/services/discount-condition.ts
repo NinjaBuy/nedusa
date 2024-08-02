@@ -1,4 +1,4 @@
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import {
@@ -47,8 +47,8 @@ class DiscountConditionService extends TransactionBaseService {
     config?: FindConfig<DiscountCondition>
   ): Promise<DiscountCondition | never> {
     if (!isDefined(conditionId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"conditionId" must be defined`
       )
     }
@@ -62,8 +62,8 @@ class DiscountConditionService extends TransactionBaseService {
     const condition = await conditionRepo.findOne(query)
 
     if (!condition) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `DiscountCondition with id ${conditionId} was not found`
       )
     }
@@ -128,8 +128,8 @@ class DiscountConditionService extends TransactionBaseService {
           DiscountConditionService.resolveConditionType_(data)
 
         if (!resolvedConditionType) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Missing one of products, collections, tags, types or customer groups in data`
           )
         }
@@ -172,8 +172,8 @@ class DiscountConditionService extends TransactionBaseService {
         if (err.code === PostgresError.DUPLICATE_ERROR) {
           // A unique key constraint failed meaning the combination of
           // discount rule id, type, and operator already exists in the db.
-          throw new MedusaError(
-            MedusaError.Types.DUPLICATE_ERROR,
+          throw new NinjaError(
+            NinjaError.Types.DUPLICATE_ERROR,
             `Discount Condition with operator '${data.operator}' and type '${resolvedConditionType?.type}' already exist on a Discount Rule`
           )
         }
@@ -189,8 +189,8 @@ class DiscountConditionService extends TransactionBaseService {
         DiscountConditionService.resolveConditionType_(data)
 
       if (!resolvedConditionType) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Missing one of products, collections, tags, types or customer groups in data`
         )
       }

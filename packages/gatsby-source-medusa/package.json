@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-source-medusa",
+  "name": "gatsby-source-ninja",
   "version": "0.1.4",
-  "description": "Gatsby source plugin for building websites using Medusa Commerce as a data source",
+  "description": "Gatsby source plugin for building websites using Ninja Commerce as a data source",
   "scripts": {
     "test": "jest --passWithNoTests",
     "watch": "tsc-watch",
@@ -17,19 +17,19 @@
     "gatsby",
     "gatsby-plugin",
     "gatsby-source",
-    "gatsby-source-medusa",
-    "medusa",
-    "medusa-commerce"
+    "gatsby-source-ninja",
+    "ninja",
+    "ninja-commerce"
   ],
-  "author": "Kasper Kristensen <kasper@medusa-commerce.com> (https://www.medusa-commerce.com/)",
+  "author": "Kasper Kristensen <kasper@ninja-commerce.com> (https://www.ninja-commerce.com/)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/medusa.git",
-    "directory": "packages/gatsby-source-medusa"
+    "url": "https://github.com/ninjajs/ninja.git",
+    "directory": "packages/gatsby-source-ninja"
   },
   "bugs": {
-    "url": "https://github.com/medusajs/medusa/issues"
+    "url": "https://github.com/ninjajs/ninja/issues"
   },
   "dependencies": {
     "axios": "^0.24.0",

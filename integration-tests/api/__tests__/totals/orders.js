@@ -16,24 +16,24 @@ jest.setTimeout(30000)
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 describe("Order Totals", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   afterEach(async () => {
@@ -64,7 +64,7 @@ describe("Order Totals", () => {
 
       const cart = await simpleCartFactory(dbConnection, {
         id: "test-cart",
-        email: "testnation@medusajs.com",
+        email: "testnation@ninjajs.com",
         region: region.id,
         line_items: [],
       })
@@ -130,7 +130,7 @@ describe("Order Totals", () => {
 
       const cart = await simpleCartFactory(dbConnection, {
         id: "test-cart",
-        email: "testnation@medusajs.com",
+        email: "testnation@ninjajs.com",
         region: region.id,
         line_items: [],
       })

@@ -89,14 +89,14 @@ export const SalesChannelRepository = dataSource
     async addProducts(
       salesChannelId: string,
       productIds: string[],
-      isMedusaV2Enabled?: boolean
+      isNinjaV2Enabled?: boolean
     ): Promise<void> {
       let valuesToInsert = productIds.map((id) => ({
         sales_channel_id: salesChannelId,
         product_id: id,
       }))
 
-      if (isMedusaV2Enabled) {
+      if (isNinjaV2Enabled) {
         valuesToInsert = valuesToInsert.map((v) => ({
           ...v,
           id: generateEntityId(undefined, "prodsc"),
@@ -106,7 +106,7 @@ export const SalesChannelRepository = dataSource
       await this.createQueryBuilder()
         .insert()
         .into(
-          isMedusaV2Enabled ? ProductSalesChannel : productSalesChannelTable
+          isNinjaV2Enabled ? ProductSalesChannel : productSalesChannelTable
         )
         .values(valuesToInsert)
         .orIgnore()

@@ -2,7 +2,7 @@ import {
   Searchable,
   createPsqlIndexStatementHelper,
   generateEntityId,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 import {
   BeforeCreate,

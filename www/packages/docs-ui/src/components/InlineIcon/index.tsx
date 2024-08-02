@@ -1,5 +1,5 @@
 import React from "react"
-import { IconProps } from "@medusajs/icons/dist/types"
+import { IconProps } from "@ninjajs/icons/dist/types"
 import clsx from "clsx"
 
 type InlineIconProps = IconProps & {
@@ -11,7 +11,7 @@ export const InlineIcon = ({ Icon, alt, ...props }: InlineIconProps) => {
   return (
     <Icon
       {...props}
-      className={clsx("text-medusa-fg-subtle inline", props.className)}
+      className={clsx("text-ninja-fg-subtle inline", props.className)}
       aria-label={alt}
     />
   )

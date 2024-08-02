@@ -1,6 +1,6 @@
-import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
+import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
 import TaxInclusivePricingFeatureFlag from "../../loaders/feature-flags/tax-inclusive-pricing"
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import ShippingOptionService from "../shipping-option"
 
 describe("ShippingOptionService", () => {
@@ -636,7 +636,7 @@ describe("ShippingOptionService", () => {
     })
   })
 
-  describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] createShippingMethod", () => {
+  describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] createShippingMethod", () => {
     const option = (id) => ({
       id,
       region_id: IdMap.getId("region"),

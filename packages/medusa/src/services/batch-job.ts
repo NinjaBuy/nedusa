@@ -1,5 +1,5 @@
 import { Request } from "express"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { BatchJob } from "../models"
@@ -106,8 +106,8 @@ class BatchJobService extends TransactionBaseService {
     config: FindConfig<BatchJob> = {}
   ): Promise<BatchJob | never> {
     if (!isDefined(batchJobId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"batchJobId" must be defined`
       )
     }
@@ -120,8 +120,8 @@ class BatchJobService extends TransactionBaseService {
     const batchJob = await batchJobRepo.findOne(query)
 
     if (!batchJob) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Batch job with id ${batchJobId} was not found`
       )
     }
@@ -205,8 +205,8 @@ class BatchJobService extends TransactionBaseService {
       }
 
       if (batchJob.status !== BatchJobStatus.PRE_PROCESSED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot confirm processing for a batch job that is not pre processed"
         )
       }
@@ -223,8 +223,8 @@ class BatchJobService extends TransactionBaseService {
       }
 
       if (batchJob.status !== BatchJobStatus.PROCESSING) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Cannot complete a batch job with status "${batchJob.status}". The batch job must be processing`
         )
       }
@@ -241,8 +241,8 @@ class BatchJobService extends TransactionBaseService {
       }
 
       if (batchJob.status === BatchJobStatus.COMPLETED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot cancel completed batch job"
         )
       }
@@ -265,8 +265,8 @@ class BatchJobService extends TransactionBaseService {
       }
 
       if (batchJob.status !== BatchJobStatus.CREATED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot mark a batch job as pre processed if it is not in created status"
         )
       }
@@ -294,8 +294,8 @@ class BatchJobService extends TransactionBaseService {
       }
 
       if (batchJob.status !== BatchJobStatus.CONFIRMED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot mark a batch job as processing if the status is different that confirmed"
         )
       }
@@ -357,8 +357,8 @@ class BatchJobService extends TransactionBaseService {
       this.batchJobStatusMapToProps.get(status) || {}
 
     if (!entityColumnName || !eventType) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `Unable to update the batch job status from ${batchJob.status} to ${status}. The status doesn't exist`
       )
     }

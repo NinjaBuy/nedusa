@@ -13,7 +13,7 @@ import {
   ZoomImg,
 } from "@/components"
 import clsx from "clsx"
-import { Text } from "@medusajs/ui"
+import { Text } from "@ninjajs/ui"
 
 export const MDXComponents: MDXComponentsType = {
   code: CodeMdx,
@@ -31,7 +31,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <h1
         className={clsx(
-          "h1-docs [&_code]:!h1-docs [&_code]:!font-mono mb-docs_1 text-medusa-fg-base",
+          "h1-docs [&_code]:!h1-docs [&_code]:!font-mono mb-docs_1 text-ninja-fg-base",
           className
         )}
         {...props}
@@ -46,7 +46,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <h2
         className={clsx(
-          "h2-docs [&_code]:!h2-docs [&_code]:!font-mono mb-docs_1 mt-docs_4 text-medusa-fg-base",
+          "h2-docs [&_code]:!h2-docs [&_code]:!font-mono mb-docs_1 mt-docs_4 text-ninja-fg-base",
           props.id && "group/h2",
           className
         )}
@@ -73,7 +73,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <h3
         className={clsx(
-          "h3-docs [&_code]:!h3-docs [&_code]:!font-mono mb-docs_0.5 mt-docs_3 text-medusa-fg-base",
+          "h3-docs [&_code]:!h3-docs [&_code]:!font-mono mb-docs_0.5 mt-docs_3 text-ninja-fg-base",
           props.id && "group/h3",
           className
         )}
@@ -95,7 +95,7 @@ export const MDXComponents: MDXComponentsType = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
     return (
       <h4
-        className={clsx("mb-docs_0.5 text-medusa-fg-base text-h4", className)}
+        className={clsx("mb-docs_0.5 text-ninja-fg-base text-h4", className)}
         {...props}
       />
     )
@@ -104,7 +104,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <p
         className={clsx(
-          "text-medusa-fg-subtle [&:not(:last-child)]:mb-docs_1.5 last:!mb-0",
+          "text-ninja-fg-subtle [&:not(:last-child)]:mb-docs_1.5 last:!mb-0",
           className
         )}
         {...props}
@@ -151,7 +151,7 @@ export const MDXComponents: MDXComponentsType = {
     ...props
   }: React.HTMLAttributes<HTMLElement>) => {
     return (
-      <li className={clsx("text-medusa-fg-subtle", className)} {...props}>
+      <li className={clsx("text-ninja-fg-subtle", className)} {...props}>
         <Text as="span">{children}</Text>
       </li>
     )
@@ -160,7 +160,7 @@ export const MDXComponents: MDXComponentsType = {
     return (
       <hr
         className={clsx(
-          "my-docs_2 h-[1px] w-full border-0 bg-medusa-border-base",
+          "my-docs_2 h-[1px] w-full border-0 bg-ninja-border-base",
           className
         )}
         {...props}

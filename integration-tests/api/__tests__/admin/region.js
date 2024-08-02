@@ -1,5 +1,5 @@
 const path = require("path")
-const { Region } = require("@medusajs/medusa")
+const { Region } = require("@ninjajs/ninja")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const startServerWithEnvironment =
@@ -11,27 +11,27 @@ const { simpleRegionFactory } = require("../../../factories")
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 
 describe("/admin/regions", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
   const cwd = path.resolve(path.join(__dirname, "..", ".."))
 
   beforeAll(async () => {
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("Remove region from country on delete", () => {
@@ -384,25 +384,25 @@ describe("/admin/regions", () => {
   })
 })
 
-describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/regions", () => {
-  let medusaProcess
+describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/regions", () => {
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("POST /admin/regions/:id", () => {

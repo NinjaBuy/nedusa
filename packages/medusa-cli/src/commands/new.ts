@@ -13,7 +13,7 @@ import prompts from "prompts"
 import { Pool } from "pg"
 import url from "url"
 import { createDatabase } from "pg-god"
-import { track } from "medusa-telemetry"
+import { track } from "ninja-telemetry"
 import inquirer from "inquirer"
 
 import reporter from "../reporter"
@@ -90,7 +90,7 @@ const createInitialGitCommit = async (rootPath, starterUrl) => {
   // use execSync instead of spawn to handle git clients using
   // pgp signatures (with password)
   try {
-    execSync(`git commit -m "Initial commit from medusa: (${starterUrl})"`, {
+    execSync(`git commit -m "Initial commit from ninja: (${starterUrl})"`, {
       cwd: rootPath,
     })
   } catch {
@@ -148,7 +148,7 @@ const copy = async (starterPath, rootPath) => {
       `You can't create a starter from the existing directory. If you want to
       create a new project in the current directory, the trailing dot isn't
       necessary. If you want to create a project from a local starter, run
-      something like "medusa new my-medusa-store ../local-medusa-starter"`
+      something like "ninja new my-ninja-store ../local-ninja-starter"`
     )
   }
 
@@ -210,9 +210,9 @@ const clone = async (hostInfo, rootPath) => {
   if (!isGit) await createInitialGitCommit(rootPath, url)
 }
 
-const getMedusaConfig = (rootPath) => {
+const getNinjaConfig = (rootPath) => {
   try {
-    const configPath = sysPath.join(rootPath, "medusa-config.js")
+    const configPath = sysPath.join(rootPath, "ninja-config.js")
     if (existsSync(configPath)) {
       const resolved = sysPath.resolve(configPath)
       const configModule = require(resolved)
@@ -222,7 +222,7 @@ const getMedusaConfig = (rootPath) => {
   } catch (err) {
     console.log(err)
     reporter.warn(
-      `Couldn't find a medusa-config.js file; please double check that you have the correct starter installed`
+      `Couldn't find a ninja-config.js file; please double check that you have the correct starter installed`
     )
   }
   return {}
@@ -238,14 +238,14 @@ const getPaths = async (starterPath, rootPath) => {
         type: `text`,
         name: `path`,
         message: `What is your project called?`,
-        initial: `my-medusa-store`,
+        initial: `my-ninja-store`,
       },
       {
         type: `select`,
         name: `starter`,
         message: `What starter would you like to use?`,
         choices: [
-          { title: `medusa-starter-default`, value: `medusa-starter-default` },
+          { title: `ninja-starter-default`, value: `ninja-starter-default` },
           { title: `(Use a different starter)`, value: `different` },
         ],
         initial: 0,
@@ -260,22 +260,22 @@ const getPaths = async (starterPath, rootPath) => {
     }
 
     selectedOtherStarter = response.starter === `different`
-    starterPath = `medusajs/${response.starter}`
+    starterPath = `ninjajs/${response.starter}`
     rootPath = response.path
   }
 
   // set defaults if no root or starter has been set yet
   rootPath = rootPath || process.cwd()
-  starterPath = starterPath || `medusajs/medusa-starter-default`
+  starterPath = starterPath || `ninjajs/ninja-starter-default`
 
   return { starterPath, rootPath, selectedOtherStarter }
 }
 
 const successMessage = (path) => {
-  reporter.info(`Your new Medusa project is ready for you! To start developing run:
+  reporter.info(`Your new Ninja project is ready for you! To start developing run:
 
   cd ${path}
-  medusa develop
+  ninja develop
 `)
 }
 
@@ -451,8 +451,8 @@ const runMigrations = async (rootPath) => {
 
   const cliPath = sysPath.join(
     `node_modules`,
-    `@medusajs`,
-    `medusa-cli`,
+    `@ninjajs`,
+    `ninja-cli`,
     `cli.js`
   )
 
@@ -542,9 +542,9 @@ export const newStarter = async (args) => {
 
   if (selectedOtherStarter) {
     reporter.info(
-      `Find the url of the Medusa starter you wish to create and run:
+      `Find the url of the Ninja starter you wish to create and run:
 
-medusa new ${rootPath} [url-to-starter]
+ninja new ${rootPath} [url-to-starter]
 
 `
     )
@@ -555,7 +555,7 @@ medusa new ${rootPath} [url-to-starter]
     const isStarterAUrl =
       starter && !url.parse(starter).hostname && !url.parse(starter).protocol
 
-    if (/medusa-starter/gi.test(rootPath) && isStarterAUrl) {
+    if (/ninja-starter/gi.test(rootPath) && isStarterAUrl) {
       reporter.panic({
         id: PanicId.InvalidProjectName,
         context: {
@@ -606,7 +606,7 @@ medusa new ${rootPath} [url-to-starter]
 
   let creds = dbCredentials
 
-  const dbName = `medusa-db-${Math.random().toString(36).substring(2, 7)}` // generate random 5 character string
+  const dbName = `ninja-db-${Math.random().toString(36).substring(2, 7)}` // generate random 5 character string
 
   if (!useDefaults && !skipDb && !skipEnv) {
     creds = await interactiveDbCreds(dbName, dbCredentials)
@@ -614,7 +614,7 @@ medusa new ${rootPath} [url-to-starter]
 
   if (creds === null) {
     reporter.info(
-      "Skipping automatic database setup. Please note that you need to create a database and run migrations before you can run your Medusa backend"
+      "Skipping automatic database setup. Please note that you need to create a database and run migrations before you can run your Ninja backend"
     )
   } else {
     if (!skipDb) {

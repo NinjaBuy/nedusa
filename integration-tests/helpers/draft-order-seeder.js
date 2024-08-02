@@ -15,10 +15,10 @@ const {
   DiscountRule,
   Payment,
   ShippingProfileType,
-} = require("@medusajs/medusa")
+} = require("@ninjajs/ninja")
 const { simpleSalesChannelFactory } = require("../factories")
-const { ProductOption } = require("@medusajs/medusa")
-const { ProductVariantMoneyAmount } = require("@medusajs/medusa")
+const { ProductOption } = require("@ninjajs/ninja")
+const { ProductVariantMoneyAmount } = require("@ninjajs/ninja")
 
 module.exports = async (dataSource, data = {}) => {
   const manager = dataSource.manager

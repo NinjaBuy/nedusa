@@ -1,4 +1,4 @@
-import { PromotionDTO } from "@medusajs/types"
+import { PromotionDTO } from "@ninjajs/types"
 import { RuleType } from "../../edit-rules"
 
 // We are disguising couple of database columns as rules here, namely

@@ -5,7 +5,7 @@ import {
   SalesChannelService,
 } from "../../../../services"
 
-import { MedusaV2Flag, promiseAll } from "@medusajs/utils"
+import { NinjaV2Flag, promiseAll } from "@ninjajs/utils"
 import { FindParams } from "../../../../types/common"
 import { retrieveProduct } from "../../../../utils"
 import { defaultAdminProductRemoteQueryObject } from "./index"
@@ -24,18 +24,18 @@ import { defaultAdminProductRemoteQueryObject } from "./index"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.products.retrieve(productId)
+ *       ninja.admin.products.retrieve(productId)
  *       .then(({ product }) => {
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminProduct } from "medusa-react"
+ *       import { useAdminProduct } from "ninja-react"
  *
  *       type Props = {
  *         productId: string
@@ -61,7 +61,7 @@ import { defaultAdminProductRemoteQueryObject } from "./index"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/products/{id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -94,13 +94,13 @@ export default async (req, res) => {
   const productService: ProductService = req.scope.resolve("productService")
   const pricingService: PricingService = req.scope.resolve("pricingService")
   const featureFlagRouter = req.scope.resolve("featureFlagRouter")
-  const isMedusaV2FlagOn = featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
+  const isNinjaV2FlagOn = featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
 
   const productVariantInventoryService: ProductVariantInventoryService =
     req.scope.resolve("productVariantInventoryService")
 
   let rawProduct
-  if (isMedusaV2FlagOn) {
+  if (isNinjaV2FlagOn) {
     rawProduct = await retrieveProduct(
       req.scope,
       id,
@@ -128,7 +128,7 @@ export default async (req, res) => {
   if (shouldSetAvailability) {
     let salesChannels
 
-    if (isMedusaV2FlagOn) {
+    if (isNinjaV2FlagOn) {
       const remoteQuery = req.scope.resolve("remoteQuery")
       const query = {
         sales_channel: {

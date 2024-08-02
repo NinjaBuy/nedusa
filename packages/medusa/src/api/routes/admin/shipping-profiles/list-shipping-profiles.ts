@@ -12,18 +12,18 @@ import { ShippingProfileService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.shippingProfiles.list()
+ *       ninja.admin.shippingProfiles.list()
  *       .then(({ shipping_profiles }) => {
  *         console.log(shipping_profiles.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminShippingProfiles } from "medusa-react"
+ *       import { useAdminShippingProfiles } from "ninja-react"
  *
  *       const ShippingProfiles = () => {
  *         const {
@@ -53,7 +53,7 @@ import { ShippingProfileService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/shipping-profiles' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

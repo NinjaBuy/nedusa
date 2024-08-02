@@ -19,7 +19,7 @@ const buildFeatureFlag = (
     export default {
       description: "${key} descr",
       key: "${snakeCaseKey}",
-      env_key: "MEDUSA_FF_${snakeCaseKey.toUpperCase()}",
+      env_key: "NINJA_FF_${snakeCaseKey.toUpperCase()}",
       default_val: ${defaultVal},
     }
   `
@@ -104,7 +104,7 @@ describe("feature flags", () => {
   })
 
   it("should load the flag from env", async () => {
-    process.env.MEDUSA_FF_FLAG_1 = "false"
+    process.env.NINJA_FF_FLAG_1 = "false"
 
     writeFileSync(
       resolve(getFolderTestTargetDirectoryPath("flags"), "flag-1.js"),
@@ -121,7 +121,7 @@ describe("feature flags", () => {
   })
 
   it("should load mix of flags", async () => {
-    process.env.MEDUSA_FF_FLAG_3 = "false"
+    process.env.NINJA_FF_FLAG_3 = "false"
 
     writeFileSync(
       resolve(getFolderTestTargetDirectoryPath("flags"), "flag-1.js"),

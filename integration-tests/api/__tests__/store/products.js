@@ -13,18 +13,18 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 const {
   allowedStoreProductsFields,
   defaultStoreProductsRelations,
-} = require("@medusajs/medusa/dist")
+} = require("@ninjajs/ninja/dist")
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 
 describe("/store/products", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   const giftCardId = "giftcard"
@@ -42,13 +42,13 @@ describe("/store/products", () => {
         CACHE_TTL: 0,
       },
     })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /store/products", () => {

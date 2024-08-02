@@ -1,5 +1,5 @@
-import { PencilSquare, ThumbnailBadge } from "@medusajs/icons"
-import { Product } from "@medusajs/medusa"
+import { PencilSquare, ThumbnailBadge } from "@ninjajs/icons"
+import { Product } from "@ninjajs/ninja"
 import {
   Checkbox,
   CommandBar,
@@ -8,7 +8,7 @@ import {
   Tooltip,
   clx,
   usePrompt,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"

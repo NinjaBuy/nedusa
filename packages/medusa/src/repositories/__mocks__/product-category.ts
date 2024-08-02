@@ -1,4 +1,4 @@
-import { IdMap, MockRepository } from "medusa-test-utils"
+import { IdMap, MockRepository } from "ninja-test-utils"
 import { tempReorderRank } from "../../types/product-category"
 
 export const validProdCategoryId = "skinny-jeans"

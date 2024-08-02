@@ -6,11 +6,11 @@ import {
   FileTypes,
   FilterableFileProps,
   FindConfig,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 import { joinerConfig } from "../joiner-config"
 import FileProviderService from "./file-provider-service"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 type InjectedDependencies = {
   fileProviderService: FileProviderService
@@ -75,8 +75,8 @@ export default class FileModuleService implements FileTypes.IFileModuleService {
   ): Promise<FileDTO[]> {
     const id = Array.isArray(filters?.id) ? filters?.id?.[0] : filters?.id
     if (!id) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Listing of files is only supported when filtering by ID."
       )
     }
@@ -104,8 +104,8 @@ export default class FileModuleService implements FileTypes.IFileModuleService {
   ): Promise<[FileDTO[], number]> {
     const id = Array.isArray(filters?.id) ? filters?.id?.[0] : filters?.id
     if (!id) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Listing and counting of files is only supported when filtering by ID."
       )
     }

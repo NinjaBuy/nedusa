@@ -1,4 +1,4 @@
-import { IdMap, MockRepository, MockManager } from "medusa-test-utils"
+import { IdMap, MockRepository, MockManager } from "ninja-test-utils"
 import ProductCollectionService from "../product-collection"
 import { EventBusServiceMock } from "../__mocks__/event-bus"
 

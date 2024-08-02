@@ -14,17 +14,17 @@ import { OrderEditService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.orderEdits.retrieve(orderEditId)
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.orderEdits.retrieve(orderEditId)
  *       .then(({ order_edit }) => {
  *         console.log(order_edit.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useOrderEdit } from "medusa-react"
+ *       import { useOrderEdit } from "ninja-react"
  *
  *       type Props = {
  *         orderEditId: string

@@ -1,5 +1,5 @@
 const Scrypt = require("scrypt-kdf")
-const { User } = require("@medusajs/medusa")
+const { User } = require("@ninjajs/ninja")
 
 module.exports = async (connection) => {
   const manager = connection.manager
@@ -9,7 +9,7 @@ module.exports = async (connection) => {
 
   await manager.insert(User, {
     id: "admin_user",
-    email: "admin@medusa.js",
+    email: "admin@ninja.js",
     api_token: "test_token",
     role: "admin",
     password_hash,

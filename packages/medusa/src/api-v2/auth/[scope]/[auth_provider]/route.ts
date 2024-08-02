@@ -1,10 +1,10 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { AuthenticationInput, IAuthModuleService } from "@medusajs/types"
-import { MedusaError } from "@medusajs/utils"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { AuthenticationInput, IAuthModuleService } from "@ninjajs/types"
+import { NinjaError } from "@ninjajs/utils"
 import jwt from "jsonwebtoken"
-import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
+import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const { scope, auth_provider } = req.params
 
   const service: IAuthModuleService = req.scope.resolve(
@@ -36,12 +36,12 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
     return res.status(200).json({ token })
   }
 
-  throw new MedusaError(
-    MedusaError.Types.UNAUTHORIZED,
+  throw new NinjaError(
+    NinjaError.Types.UNAUTHORIZED,
     error || "Authentication failed"
   )
 }
 
-export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
+export const POST = async (req: NinjaRequest, res: NinjaResponse) => {
   await GET(req, res)
 }

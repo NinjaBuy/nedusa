@@ -30,12 +30,12 @@ export const CodeBlockHeader = ({
     () =>
       clsx(
         blockStyle === "loud" && [
-          colorMode === "light" && "border-medusa-code-border",
-          colorMode === "dark" && "border-medusa-border-base",
+          colorMode === "light" && "border-ninja-code-border",
+          colorMode === "dark" && "border-ninja-border-base",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "border-medusa-border-base",
-          colorMode === "dark" && "border-medusa-code-border",
+          colorMode === "light" && "border-ninja-border-base",
+          colorMode === "dark" && "border-ninja-code-border",
         ]
       ),
     [blockStyle, colorMode]
@@ -46,12 +46,12 @@ export const CodeBlockHeader = ({
         "py-docs_0.75 rounded-t-docs_DEFAULT px-docs_1 mb-0",
         "flex gap-docs_2 items-start justify-between",
         blockStyle === "loud" && [
-          colorMode === "light" && "bg-medusa-code-bg-header",
-          colorMode === "dark" && "bg-medusa-bg-base",
+          colorMode === "light" && "bg-ninja-code-bg-header",
+          colorMode === "dark" && "bg-ninja-bg-base",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "bg-medusa-bg-component",
-          colorMode === "dark" && "bg-medusa-code-bg-header",
+          colorMode === "light" && "bg-ninja-bg-component",
+          colorMode === "dark" && "bg-ninja-code-bg-header",
         ],
         borderColor && `border border-b-0 ${borderColor}`
       )}
@@ -62,12 +62,12 @@ export const CodeBlockHeader = ({
           className={clsx(
             "txt-compact-small-plus",
             blockStyle === "loud" && [
-              colorMode === "light" && "text-medusa-code-text-subtle",
-              colorMode === "dark" && "text-medusa-fg-muted",
+              colorMode === "light" && "text-ninja-code-text-subtle",
+              colorMode === "dark" && "text-ninja-fg-muted",
             ],
             blockStyle === "subtle" && [
-              colorMode === "light" && "text-medusa-fg-subtle",
-              colorMode === "dark" && "text-medusa-code-text-subtle",
+              colorMode === "light" && "text-ninja-fg-subtle",
+              colorMode === "dark" && "text-ninja-code-text-subtle",
             ]
           )}
         >

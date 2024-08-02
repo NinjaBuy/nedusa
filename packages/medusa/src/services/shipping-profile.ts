@@ -1,10 +1,10 @@
 import {
   FlagRouter,
-  MedusaV2Flag,
+  NinjaV2Flag,
   isDefined,
   promiseAll,
-} from "@medusajs/utils"
-import { MedusaError } from "medusa-core-utils"
+} from "@ninjajs/utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager, In } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import {
@@ -136,8 +136,8 @@ class ShippingProfileService extends TransactionBaseService {
     options: FindConfig<ShippingProfile> = {}
   ): Promise<ShippingProfile> {
     if (!isDefined(profileId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"profileId" must be defined`
       )
     }
@@ -151,8 +151,8 @@ class ShippingProfileService extends TransactionBaseService {
     const profile = await profileRepository.findOne(query)
 
     if (!profile) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Profile with id: ${profileId} was not found`
       )
     }
@@ -164,8 +164,8 @@ class ShippingProfileService extends TransactionBaseService {
     productIds: string | string[]
   ): Promise<{ [product_id: string]: ShippingProfile[] }> {
     if (!isDefined(productIds)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"productIds" must be defined`
       )
     }
@@ -181,8 +181,8 @@ class ShippingProfileService extends TransactionBaseService {
     )
 
     if (!Object.keys(productProfilesMap)?.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `No Profile found for products with id: ${productIds.join(", ")}`
       )
     }
@@ -283,8 +283,8 @@ class ShippingProfileService extends TransactionBaseService {
       )
 
       if (profile["products"] || profile["shipping_options"]) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Please add products and shipping_options after creating Shipping Profiles"
         )
       }
@@ -522,7 +522,7 @@ class ShippingProfileService extends TransactionBaseService {
   protected async getProfilesInCart(cart: Cart): Promise<string[]> {
     let profileIds = new Set<string>()
 
-    if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
       const productShippinProfileMap = await this.getMapProfileIdsByProductIds(
         cart.items.map((item) => item.variant?.product_id)
       )

@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs } from "react-router-dom"
 import { ReservationItemRes } from "../../../types/api-responses"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 import { reservationItemsQueryKeys } from "../../../hooks/api/reservations"
 
 const reservationDetailQuery = (id: string) => ({

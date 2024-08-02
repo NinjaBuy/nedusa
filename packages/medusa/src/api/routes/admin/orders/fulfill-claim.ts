@@ -19,7 +19,7 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  * x-authenticated: true
  * externalDocs:
  *   description: Fulfill a claim
- *   url: https://docs.medusajs.com/modules/orders/claims#fulfill-a-claim
+ *   url: https://docs.ninjajs.com/modules/orders/claims#fulfill-a-claim
  * parameters:
  *   - (path) id=* {string} The ID of the Order the claim is associated with.
  *   - (path) claim_id=* {string} The ID of the Claim.
@@ -37,19 +37,19 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.fulfillClaim(orderId, claimId, {
+ *       ninja.admin.orders.fulfillClaim(orderId, claimId, {
  *       })
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminFulfillClaim } from "medusa-react"
+ *       import { useAdminFulfillClaim } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -78,7 +78,7 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/claims/{claim_id}/fulfillments' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -176,7 +176,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  *   no_notification:
  *     description: >-
  *       If set to `true`, no notification will be sent to the customer related to this Claim.

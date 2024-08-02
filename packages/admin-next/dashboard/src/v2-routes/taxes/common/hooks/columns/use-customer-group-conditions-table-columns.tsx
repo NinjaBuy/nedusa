@@ -1,5 +1,5 @@
-import { CustomerGroup } from "@medusajs/medusa"
-import { Checkbox } from "@medusajs/ui"
+import { CustomerGroup } from "@ninjajs/ninja"
+import { Checkbox } from "@ninjajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useCustomerGroupTableColumns } from "../../../../../hooks/table/columns/use-customer-group-table-columns"

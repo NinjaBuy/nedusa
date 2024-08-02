@@ -1,4 +1,4 @@
-const { Modules } = require("@medusajs/modules-sdk")
+const { Modules } = require("@ninjajs/modules-sdk")
 const DB_HOST = process.env.DB_HOST
 const DB_USERNAME = process.env.DB_USERNAME
 const DB_PASSWORD = process.env.DB_PASSWORD
@@ -8,12 +8,12 @@ const DB_URL = `postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 process.env.POSTGRES_URL = DB_URL
 process.env.LOG_LEVEL = "error"
 
-const enableMedusaV2 = process.env.MEDUSA_FF_MEDUSA_V2 == "true"
+const enableNinjaV2 = process.env.NINJA_FF_NINJA_V2 == "true"
 
 module.exports = {
   plugins: [
     {
-      resolve: `medusa-fulfillment-webshipper`,
+      resolve: `ninja-fulfillment-webshipper`,
       options: {
         account: "test-account",
         api_token: "something",
@@ -22,7 +22,7 @@ module.exports = {
       },
     },
     {
-      resolve: `medusa-plugin-sendgrid`,
+      resolve: `ninja-plugin-sendgrid`,
       options: {
         api_key: "SG.TEST",
       },
@@ -37,7 +37,7 @@ module.exports = {
     database_extra: { idle_in_transaction_session_timeout: 0 },
   },
   featureFlags: {
-    medusa_v2: enableMedusaV2,
+    ninja_v2: enableNinjaV2,
   },
   modules: {
     workflows: true,
@@ -45,7 +45,7 @@ module.exports = {
     [Modules.AUTH]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/auth",
+      resolve: "@ninjajs/auth",
       options: {
         providers: [
           {
@@ -61,26 +61,26 @@ module.exports = {
     [Modules.STOCK_LOCATION]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/stock-location",
+      resolve: "@ninjajs/stock-location",
     },
     [Modules.INVENTORY]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/inventory",
+      resolve: "@ninjajs/inventory",
     },
     [Modules.PRICING]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/pricing",
+      resolve: "@ninjajs/pricing",
     },
     [Modules.CACHE]: {
-      resolve: "@medusajs/cache-inmemory",
+      resolve: "@ninjajs/cache-inmemory",
       options: { ttl: 0 }, // Cache disabled
     },
     [Modules.PRODUCT]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/product",
+      resolve: "@ninjajs/product",
     },
     [Modules.WORKFLOW_ENGINE]: true,
   },

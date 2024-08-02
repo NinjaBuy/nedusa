@@ -29,14 +29,14 @@ import {
 } from "./index"
 import { EntityManager, In } from "typeorm"
 import { FindConfig, Selector, WithRequiredProperty } from "../types/common"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { buildQuery, setMetadata, validateId } from "../utils"
 
 import { CreateShipmentConfig } from "../types/fulfillment"
 import { OrdersReturnItem } from "../types/orders"
 import { SwapRepository } from "../repositories/swap"
 import { TransactionBaseService } from "../interfaces"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type InjectedProps = {
   manager: EntityManager
@@ -206,8 +206,8 @@ class SwapService extends TransactionBaseService {
     config: Omit<FindConfig<Swap>, "select"> & { select?: string[] } = {}
   ): Promise<Swap | never> {
     if (!isDefined(swapId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"swapId" must be defined`
       )
     }
@@ -222,7 +222,7 @@ class SwapService extends TransactionBaseService {
     const swap = await swapRepo.findOne(query)
 
     if (!swap) {
-      throw new MedusaError(MedusaError.Types.NOT_FOUND, "Swap was not found")
+      throw new NinjaError(NinjaError.Types.NOT_FOUND, "Swap was not found")
     }
 
     if (cartRelations || cartSelects) {
@@ -258,7 +258,7 @@ class SwapService extends TransactionBaseService {
     })
 
     if (!swap) {
-      throw new MedusaError(MedusaError.Types.NOT_FOUND, "Swap was not found")
+      throw new NinjaError(NinjaError.Types.NOT_FOUND, "Swap was not found")
     }
 
     return swap
@@ -334,15 +334,15 @@ class SwapService extends TransactionBaseService {
     const { no_notification, ...rest } = custom
     return await this.atomicPhase_(async (manager) => {
       if (order.payment_status !== PaymentStatus.CAPTURED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot swap an order that has not been captured"
         )
       }
 
       if (order.fulfillment_status === FulfillmentStatus.NOT_FULFILLED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot swap an order that has not been fulfilled"
         )
       }
@@ -350,8 +350,8 @@ class SwapService extends TransactionBaseService {
       const areReturnItemsValid = await this.areReturnItemsValid(returnItems)
 
       if (!areReturnItemsValid) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Cannot create a swap on a canceled item.`
         )
       }
@@ -362,8 +362,8 @@ class SwapService extends TransactionBaseService {
         newItems = await promiseAll(
           additionalItems.map(async ({ variant_id, quantity }) => {
             if (variant_id === null) {
-              throw new MedusaError(
-                MedusaError.Types.INVALID_DATA,
+              throw new NinjaError(
+                NinjaError.Types.INVALID_DATA,
                 "You must include a variant when creating additional items on a swap"
               )
             }
@@ -426,15 +426,15 @@ class SwapService extends TransactionBaseService {
       })
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Canceled swap cannot be processed"
         )
       }
 
       if (!swap.confirmed_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot process a swap that hasn't been confirmed by the customer"
         )
       }
@@ -603,15 +603,15 @@ class SwapService extends TransactionBaseService {
       })
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Canceled swap cannot be used to create a cart"
         )
       }
 
       if (swap.cart_id) {
-        throw new MedusaError(
-          MedusaError.Types.DUPLICATE_ERROR,
+        throw new NinjaError(
+          NinjaError.Types.DUPLICATE_ERROR,
           "A cart has already been created for the swap"
         )
       }
@@ -742,8 +742,8 @@ class SwapService extends TransactionBaseService {
       }
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cart related to canceled swap cannot be completed"
         )
       }
@@ -762,8 +762,8 @@ class SwapService extends TransactionBaseService {
 
       if (total > 0) {
         if (!payment) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_ARGUMENT,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_ARGUMENT,
             "Cart does not contain a payment"
           )
         }
@@ -778,8 +778,8 @@ class SwapService extends TransactionBaseService {
           // @ts-ignore TODO: check why this is not in the enum
           paymentStatus !== "succeeded"
         ) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_ARGUMENT,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_ARGUMENT,
             "Payment method is not authorized"
           )
         }
@@ -868,8 +868,8 @@ class SwapService extends TransactionBaseService {
         swap.payment_status === SwapPaymentStatus.PARTIALLY_REFUNDED ||
         swap.payment_status === SwapPaymentStatus.REFUNDED
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Swap with a refund cannot be canceled"
         )
       }
@@ -877,8 +877,8 @@ class SwapService extends TransactionBaseService {
       if (swap.fulfillments) {
         for (const f of swap.fulfillments) {
           if (!f.canceled_at) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               "All fulfillments must be canceled before the swap can be canceled"
             )
           }
@@ -889,8 +889,8 @@ class SwapService extends TransactionBaseService {
         swap.return_order &&
         swap.return_order.status !== ReturnStatus.CANCELED
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Return must be canceled before the swap can be canceled"
         )
       }
@@ -948,8 +948,8 @@ class SwapService extends TransactionBaseService {
       const order = swap.order
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Canceled swap cannot be fulfilled"
         )
       }
@@ -958,15 +958,15 @@ class SwapService extends TransactionBaseService {
         swap.fulfillment_status !== "not_fulfilled" &&
         swap.fulfillment_status !== "canceled"
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "The swap was already fulfilled"
         )
       }
 
       if (!swap.shipping_methods?.length) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot fulfill an swap that doesn't have shipping methods"
         )
       }
@@ -1065,8 +1065,8 @@ class SwapService extends TransactionBaseService {
         .cancelFulfillment(fulfillmentId)
 
       if (!canceled.swap_id) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Fufillment not related to a swap`
         )
       }
@@ -1106,8 +1106,8 @@ class SwapService extends TransactionBaseService {
       })
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Canceled swap cannot be fulfilled as shipped"
         )
       }
@@ -1176,8 +1176,8 @@ class SwapService extends TransactionBaseService {
         const swap = await swapRepo.findOne({ where: { id: validatedId } })
 
         if (!swap) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_FOUND,
+          throw new NinjaError(
+            NinjaError.Types.NOT_FOUND,
             `Swap with id: ${validatedId} was not found`
           )
         }
@@ -1211,15 +1211,15 @@ class SwapService extends TransactionBaseService {
       })
 
       if (swap.canceled_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Canceled swap cannot be registered as received"
         )
       }
 
       if (swap.return_order.status !== "received") {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Swap is not received"
         )
       }

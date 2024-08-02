@@ -4,15 +4,15 @@ import {
   FileServiceGetUploadStreamResult,
   FileServiceUploadResult,
   GetUploadedFileType,
-  MedusaContainer,
+  NinjaContainer,
   UploadStreamDescriptorType,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 /**
  * ## Overview
  *
  * A file service class is defined in a TypeScript or JavaScript file that’s created in the `src/services` directory.
- * The class must extend the `AbstractFileService` class imported from the `@medusajs/medusa` package.
+ * The class must extend the `AbstractFileService` class imported from the `@ninjajs/ninja` package.
  *
  * Based on services’ naming conventions, the file’s name should be the slug version of the file service’s name
  * without `service`, and the class’s name should be the pascal case of the file service’s name following by `Service`.
@@ -20,14 +20,14 @@ import {
  * For example, create the file `src/services/local-file.ts` with the following content:
  *
  * ```ts title="src/services/local-file.ts"
- * import { AbstractFileService } from "@medusajs/medusa"
+ * import { AbstractFileService } from "@ninjajs/ninja"
  * import {
  *   DeleteFileType,
  *   FileServiceGetUploadStreamResult,
  *   FileServiceUploadResult,
  *   GetUploadedFileType,
  *   UploadStreamDescriptorType,
- * } from "@medusajs/types"
+ * } from "@ninjajs/types"
  *
  * class LocalFileService extends AbstractFileService {
  *   async upload(
@@ -68,7 +68,7 @@ import {
  * The examples implement a file service supporting local uploads.
  *
  * If you’re using TypeScript and you're following along with the implementation,
- * you should install the Multer types package in the root of your Medusa backend to resolve errors within your file service types:
+ * you should install the Multer types package in the root of your Ninja backend to resolve errors within your file service types:
  *
  * ```bash npm2yarn
  * npm install @types/multer
@@ -80,7 +80,7 @@ import {
  */
 export interface IFileService extends TransactionBaseService {
   /**
-   * This method is used to upload a file to the Medusa backend.
+   * This method is used to upload a file to the Ninja backend.
    *
    * @param {Express.Multer.File} file - A [multer file object](http://expressjs.com/en/resources/middleware/multer.html#file-information).
    * The file is uploaded to a temporary directory by default. Among the file’s details, you can access the file’s path in the `path` property of the file object.
@@ -114,7 +114,7 @@ export interface IFileService extends TransactionBaseService {
   upload(file: Express.Multer.File): Promise<FileServiceUploadResult>
 
   /**
-   * This method is used to upload a file to the Medusa backend, but to a protected storage. Typically, this would be used to store files that
+   * This method is used to upload a file to the Ninja backend, but to a protected storage. Typically, this would be used to store files that
    * shouldn’t be accessible by using the file’s URL or should only be accessible by authenticated users. For example, exported or imported
    * CSV files.
    *
@@ -291,20 +291,20 @@ export abstract class AbstractFileService
   }
 
   /**
-   * You can use the `constructor` of your file service to access the different services in Medusa through dependency injection.
+   * You can use the `constructor` of your file service to access the different services in Ninja through dependency injection.
    *
    * You can also use the constructor to initialize your integration with the third-party provider. For example, if you use a client to connect to the third-party provider’s APIs,
    * you can initialize it in the constructor and use it in other methods in the service.
    *
-   * Additionally, if you’re creating your file service as an external plugin to be installed on any Medusa backend and you want to access the options added for the plugin,
+   * Additionally, if you’re creating your file service as an external plugin to be installed on any Ninja backend and you want to access the options added for the plugin,
    * you can access them in the constructor.
    *
-   * @param {Record<string, unknown>} container - An instance of `MedusaContainer` that allows you to access other resources, such as services, in your Medusa backend.
+   * @param {Record<string, unknown>} container - An instance of `NinjaContainer` that allows you to access other resources, such as services, in your Ninja backend.
    * @param {Record<string, unknown>} config - If this file service is created in a plugin, the plugin's options are passed in this parameter.
    *
    * @example
    * // ...
-   * import { Logger } from "@medusajs/medusa"
+   * import { Logger } from "@ninjajs/ninja"
    * import * as fs from "fs"
    *
    * class LocalFileService extends AbstractFileService {

@@ -1,17 +1,17 @@
 import {
   deleteRegionsWorkflow,
   updateRegionsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { refetchRegion } from "../helpers"
 import { AdminGetRegionParamsType, AdminUpdateRegionType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetRegionParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetRegionParamsType>,
+  res: NinjaResponse
 ) => {
   const region = await refetchRegion(
     req.params.id,
@@ -22,8 +22,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateRegionType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdateRegionType>,
+  res: NinjaResponse
 ) => {
   const { result, errors } = await updateRegionsWorkflow(req.scope).run({
     input: {
@@ -47,8 +47,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
 

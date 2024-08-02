@@ -1,5 +1,5 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
-import { PromotionDTO } from "@medusajs/types"
+import { PencilSquare, Trash } from "@ninjajs/icons"
+import { PromotionDTO } from "@ninjajs/types"
 import {
   Container,
   Copy,
@@ -7,7 +7,7 @@ import {
   StatusBadge,
   Text,
   usePrompt,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 

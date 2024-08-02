@@ -22,18 +22,18 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.products.deleteVariant(productId, variantId)
+ *       ninja.admin.products.deleteVariant(productId, variantId)
  *       .then(({ variant_id, object, deleted, product }) => {
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeleteVariant } from "medusa-react"
+ *       import { useAdminDeleteVariant } from "ninja-react"
  *
  *       type Props = {
  *         productId: string
@@ -65,7 +65,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/products/{id}/variants/{variant_id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

@@ -1,4 +1,4 @@
-import { PromotionDTO } from "@medusajs/types"
+import { PromotionDTO } from "@ninjajs/types"
 import { useTranslation } from "react-i18next"
 import {
   getPromotionStatus,

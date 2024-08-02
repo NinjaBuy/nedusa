@@ -21,7 +21,7 @@ import { generateEntityId } from "../utils/generate-entity-id"
 
 @Entity()
 export class Store extends BaseEntity {
-  @Column({ default: "Medusa Store" })
+  @Column({ default: "Ninja Store" })
   name: string
 
   @Column({ default: "usd" })
@@ -81,7 +81,7 @@ export class Store extends BaseEntity {
 /**
  * @schema Store
  * title: "Store"
- * description: "A store holds the main settings of the commerce shop. By default, only one store is created and used within the Medusa backend. It holds settings related to the name of the store, available currencies, and more."
+ * description: "A store holds the main settings of the commerce shop. By default, only one store is created and used within the Ninja backend. It holds settings related to the name of the store, available currencies, and more."
  * type: object
  * required:
  *   - created_at
@@ -102,8 +102,8 @@ export class Store extends BaseEntity {
  *   name:
  *     description: The name of the Store - this may be displayed to the Customer.
  *     type: string
- *     example: Medusa Store
- *     default: Medusa Store
+ *     example: Ninja Store
+ *     default: Ninja Store
  *   default_currency_code:
  *     description: The three character currency code that is the default of the store.
  *     type: string
@@ -168,5 +168,5 @@ export class Store extends BaseEntity {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */

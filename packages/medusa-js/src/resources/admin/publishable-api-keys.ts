@@ -10,15 +10,15 @@ import {
   AdminPublishableApiKeysRes,
   GetPublishableApiKeySalesChannelsParams,
   GetPublishableApiKeysParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 
-import { AdminPublishableApiKeysListSalesChannelsRes } from "@medusajs/medusa"
+import { AdminPublishableApiKeysListSalesChannelsRes } from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Publishable API Key API Routes](https://docs.medusajs.com/api/admin#publishable-api-keys). All its method
- * are available in the JS Client under the `medusa.admin.publishableApiKeys` property.
+ * This class is used to send requests to [Admin Publishable API Key API Routes](https://docs.ninjajs.com/api/admin#publishable-api-keys). All its method
+ * are available in the JS Client under the `ninja.admin.publishableApiKeys` property.
  *
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  *
@@ -27,7 +27,7 @@ import BaseResource from "../base"
  * the sales channels are inferred from the key and only products associated with those sales channels are retrieved.
  * Admins can manage publishable API keys and their associated resources. Currently, only Sales Channels are supported as a resource.
  *
- * Related Guide: [How to manage publishable API keys](https://docs.medusajs.com/development/publishable-api-keys/admin/manage-publishable-api-keys).
+ * Related Guide: [How to manage publishable API keys](https://docs.ninjajs.com/development/publishable-api-keys/admin/manage-publishable-api-keys).
  */
 class AdminPublishableApiKeyResource extends BaseResource {
   /**
@@ -37,10 +37,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishable API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.retrieve(publishableApiKeyId)
+   * ninja.admin.publishableApiKeys.retrieve(publishableApiKeyId)
    * .then(({ publishable_api_key }) => {
    *   console.log(publishable_api_key.id)
    * })
@@ -64,10 +64,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * To list publishable API keys:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.list()
+   * ninja.admin.publishableApiKeys.list()
    * .then(({ publishable_api_keys, count, limit, offset }) => {
    *   console.log(publishable_api_keys)
    * })
@@ -76,10 +76,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.list({
+   * ninja.admin.publishableApiKeys.list({
    *   limit,
    *   offset
    * })
@@ -109,10 +109,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishbale API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.create({
+   * ninja.admin.publishableApiKeys.create({
    *  title
    * })
    * .then(({ publishable_api_key }) => {
@@ -135,10 +135,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishbale API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.update(publishableApiKeyId, {
+   * ninja.admin.publishableApiKeys.update(publishableApiKeyId, {
    *   title: "new title"
    * })
    * .then(({ publishable_api_key }) => {
@@ -161,10 +161,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeyDeleteRes>} Resolves to the delete operation's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.delete(publishableApiKeyId)
+   * ninja.admin.publishableApiKeys.delete(publishableApiKeyId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -184,10 +184,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishbale API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.revoke(publishableApiKeyId)
+   * ninja.admin.publishableApiKeys.revoke(publishableApiKeyId)
    * .then(({ publishable_api_key }) => {
    *   console.log(publishable_api_key.id)
    * })
@@ -208,10 +208,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishbale API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.addSalesChannelsBatch(publishableApiKeyId, {
+   * ninja.admin.publishableApiKeys.addSalesChannelsBatch(publishableApiKeyId, {
    *   sales_channel_ids: [
    *     {
    *       id: channelId
@@ -239,10 +239,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysRes>} Resolves to the publishbale API key's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.deleteSalesChannelsBatch(publishableApiKeyId, {
+   * ninja.admin.publishableApiKeys.deleteSalesChannelsBatch(publishableApiKeyId, {
    *   sales_channel_ids: [
    *     {
    *       id: channelId
@@ -270,10 +270,10 @@ class AdminPublishableApiKeyResource extends BaseResource {
    * @returns {ResponsePromise<AdminPublishableApiKeysListSalesChannelsRes>} Resolves to the list of sales channels.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.publishableApiKeys.listSalesChannels()
+   * ninja.admin.publishableApiKeys.listSalesChannels()
    * .then(({ sales_channels }) => {
    *   console.log(sales_channels.length)
    * })

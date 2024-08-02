@@ -36,7 +36,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryItems (ids: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -54,7 +54,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryItems (ids: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -74,7 +74,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryItems (ids: string[], skip: number, take: number) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -112,7 +112,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveReservationItems (ids: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -130,7 +130,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveReservationItems (ids: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -150,7 +150,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveReservationItems (ids: string[], skip: number, take: number) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -188,7 +188,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryLevels (inventoryItemIds: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -206,7 +206,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryLevels (inventoryItemIds: string[]) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -226,7 +226,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryLevels (inventoryItemIds: string[], skip: number, take: number) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -265,7 +265,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryItem (id: string) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -281,7 +281,7 @@ export interface IInventoryService extends IModuleService {
    * ```ts
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryItem (id: string) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -311,7 +311,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveInventoryLevel (
    *   inventoryItemId: string,
@@ -343,7 +343,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveReservationItem (id: string) {
    *   const inventoryModule = await initializeInventoryModule({})
@@ -368,7 +368,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createReservationItem (item: {
    *   inventory_item_id: string,
@@ -399,7 +399,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createReservationItems (items: {
    *   inventory_item_id: string,
@@ -430,7 +430,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createInventoryItem (item: {
    *   sku: string,
@@ -460,7 +460,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createInventoryItems (items: {
    *   sku: string,
@@ -490,7 +490,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createInventoryLevel (item: {
    *   inventory_item_id: string
@@ -521,7 +521,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function createInventoryLevels (items: {
    *   inventory_item_id: string
@@ -552,7 +552,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function updateInventoryLevels (items: {
    *   inventory_item_id: string,
@@ -585,7 +585,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function updateInventoryLevel (
    *   inventoryItemId: string,
@@ -623,7 +623,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function updateInventoryItem (
    *   inventoryItemId: string,
@@ -658,7 +658,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function updateReservationItem (
    *   reservationItemId: string,
@@ -692,7 +692,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteReservationItemsByLineItem (
    *   lineItemIds: string[]
@@ -719,7 +719,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteReservationItems (
    *   reservationItemIds: string[]
@@ -747,7 +747,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteInventoryItem (
    *   inventoryItems: string[]
@@ -774,7 +774,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function restoreInventoryItem (
    *   inventoryItems: string[]
@@ -801,7 +801,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteInventoryItemLevelByLocationId (
    *   locationIds: string[]
@@ -828,7 +828,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteReservationItemByLocationId (
    *   locationIds: string[]
@@ -856,7 +856,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function deleteInventoryLevel (
    *   inventoryItemId: string,
@@ -888,7 +888,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function adjustInventory (
    *   inventoryItemId: string,
@@ -925,7 +925,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function confirmInventory (
    *   inventoryItemId: string,
@@ -959,7 +959,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveAvailableQuantity (
    *   inventoryItemId: string,
@@ -992,7 +992,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveStockedQuantity (
    *   inventoryItemId: string,
@@ -1025,7 +1025,7 @@ export interface IInventoryService extends IModuleService {
    * @example
    * import {
    *   initialize as initializeInventoryModule,
-   * } from "@medusajs/inventory"
+   * } from "@ninjajs/inventory"
    *
    * async function retrieveReservedQuantity (
    *   inventoryItemId: string,

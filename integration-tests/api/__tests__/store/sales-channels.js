@@ -16,31 +16,31 @@ const startServerWithEnvironment =
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(50000)
 
 describe("sales channels", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_SALES_CHANNELS: true },
+      env: { NINJA_FF_SALES_CHANNELS: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("POST /store/cart/", () => {
@@ -55,7 +55,7 @@ describe("sales channels", () => {
       })
       await simpleSalesChannelFactory(dbConnection, {
         name: "Default Sales Channel",
-        description: "Created by Medusa",
+        description: "Created by Ninja",
         is_default: true,
       })
       disabledSalesChannel = await simpleSalesChannelFactory(dbConnection, {
@@ -83,7 +83,7 @@ describe("sales channels", () => {
       expect(response.data.cart.sales_channel).toEqual(
         expect.objectContaining({
           name: "Default Sales Channel",
-          description: "Created by Medusa",
+          description: "Created by Ninja",
         })
       )
     })

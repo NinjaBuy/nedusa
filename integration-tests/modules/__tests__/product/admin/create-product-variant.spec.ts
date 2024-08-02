@@ -1,26 +1,26 @@
-import { PricingModuleService } from "@medusajs/pricing"
-import { ProductModuleService } from "@medusajs/product"
+import { PricingModuleService } from "@ninjajs/pricing"
+import { ProductModuleService } from "@ninjajs/product"
 import {
   simpleProductFactory,
   simpleRegionFactory,
 } from "../../../../factories"
 import adminSeeder from "../../../../helpers/admin-seeder"
 import { createDefaultRuleTypes } from "../../../helpers/create-default-rule-types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe.skip("POST /admin/products/:id/variants", () => {

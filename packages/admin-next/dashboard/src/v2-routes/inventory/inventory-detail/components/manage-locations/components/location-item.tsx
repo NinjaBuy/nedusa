@@ -1,6 +1,6 @@
-import { Checkbox, Text, clx } from "@medusajs/ui"
+import { Checkbox, Text, clx } from "@ninjajs/ui"
 
-import { StockLocationDTO } from "@medusajs/types"
+import { StockLocationDTO } from "@ninjajs/types"
 
 type LocationItemProps = {
   selected: boolean

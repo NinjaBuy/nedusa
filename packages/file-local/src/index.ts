@@ -1,4 +1,4 @@
-import { ModuleProviderExports } from "@medusajs/types"
+import { ModuleProviderExports } from "@ninjajs/types"
 import { LocalFileService } from "./services/local-file"
 
 const services = [LocalFileService]

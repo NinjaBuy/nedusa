@@ -6,7 +6,7 @@ import {
   ExclamationCircleSolid,
   InformationCircleSolid,
   XCircleSolid,
-} from "@medusajs/icons"
+} from "@ninjajs/icons"
 import { Button } from "@/components"
 
 export type NotificationItemLayoutDefaultProps = NotificationItemProps & {
@@ -27,7 +27,7 @@ export const NotificationItemLayoutDefault: React.FC<
   closeButtonText = "Close",
 }) => {
   return (
-    <div className="bg-medusa-bg-base w-full h-full shadow-flyout dark:shadow-flyout-dark rounded-docs_DEFAULT">
+    <div className="bg-ninja-bg-base w-full h-full shadow-flyout dark:shadow-flyout-dark rounded-docs_DEFAULT">
       <div className={clsx("flex gap-docs_1 p-docs_1")}>
         {type !== "none" && (
           <div
@@ -36,22 +36,22 @@ export const NotificationItemLayoutDefault: React.FC<
             )}
           >
             {type === "info" && (
-              <InformationCircleSolid className="text-medusa-tag-blue-icon" />
+              <InformationCircleSolid className="text-ninja-tag-blue-icon" />
             )}
             {type === "error" && (
-              <XCircleSolid className="text-medusa-tag-red-icon" />
+              <XCircleSolid className="text-ninja-tag-red-icon" />
             )}
             {type === "warning" && (
-              <ExclamationCircleSolid className="text-medusa-tag-orange-icon" />
+              <ExclamationCircleSolid className="text-ninja-tag-orange-icon" />
             )}
             {type === "success" && (
-              <CheckCircleSolid className="text-medusa-tag-green-icon" />
+              <CheckCircleSolid className="text-ninja-tag-green-icon" />
             )}
             {type === "custom" && CustomIcon}
           </div>
         )}
         <span
-          className={clsx("text-compact-medium-plus", "text-medusa-fg-base")}
+          className={clsx("text-compact-medium-plus", "text-ninja-fg-base")}
         >
           {title}
         </span>
@@ -60,13 +60,13 @@ export const NotificationItemLayoutDefault: React.FC<
         <div
           className={clsx(
             "flex pt-0 pr-docs_1 pb-docs_1.5 pl-docs_1 gap-docs_1",
-            "border-0 border-b border-solid border-medusa-border-base"
+            "border-0 border-b border-solid border-ninja-border-base"
           )}
         >
           <div className="w-docs_2 flex-none"></div>
           <div className={clsx("flex flex-col", children && "gap-docs_1")}>
             {text && (
-              <span className={clsx("text-medium text-medusa-fg-subtle")}>
+              <span className={clsx("text-medium text-ninja-fg-subtle")}>
                 {text}
               </span>
             )}

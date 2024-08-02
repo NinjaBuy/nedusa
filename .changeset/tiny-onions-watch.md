@@ -1,7 +1,7 @@
 ---
-"@medusajs/core-flows": patch
-"@medusajs/medusa": patch
-"@medusajs/types": patch
+"@ninjajs/core-flows": patch
+"@ninjajs/ninja": patch
+"@ninjajs/types": patch
 ---
 
-feat(core-flows, medusa, types): add reservation item endpoints
+feat(core-flows, ninja, types): add reservation item endpoints

@@ -1,13 +1,13 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { AdminGetPaymentParamsType } from "../validators"
 import { refetchPayment } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetPaymentParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetPaymentParamsType>,
+  res: NinjaResponse
 ) => {
   const payment = await refetchPayment(
     req.params.id,

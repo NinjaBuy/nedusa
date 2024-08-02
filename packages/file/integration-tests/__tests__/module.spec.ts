@@ -1,6 +1,6 @@
 import { resolve } from "path"
-import { Modules } from "@medusajs/utils"
-import { SuiteOptions, moduleIntegrationTestRunner } from "medusa-test-utils"
+import { Modules } from "@ninjajs/utils"
+import { SuiteOptions, moduleIntegrationTestRunner } from "ninja-test-utils"
 import { Entity, PrimaryKey } from "@mikro-orm/core"
 
 jest.setTimeout(100000)

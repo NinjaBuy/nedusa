@@ -1,6 +1,6 @@
-import { DropdownMenu, IconButton } from "@medusajs/ui"
+import { DropdownMenu, IconButton } from "@ninjajs/ui"
 
-import { EllipsisHorizontal } from "@medusajs/icons"
+import { EllipsisHorizontal } from "@ninjajs/icons"
 import { Link } from "react-router-dom"
 import { ReactNode } from "react"
 

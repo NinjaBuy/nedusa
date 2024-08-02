@@ -2,7 +2,7 @@
 
 Automatically detect the region and location of your customer using ipstack.
 
-[Medusa Website](https://medusajs.com/) | [Medusa Repository](https://github.com/medusajs/medusa)
+[Ninja Website](https://ninjajs.com/) | [Ninja Repository](https://github.com/ninjajs/ninja)
 
 ## Features
 
@@ -14,17 +14,17 @@ Automatically detect the region and location of your customer using ipstack.
 
 ## Prerequisites
 
-- [Medusa backend](https://docs.medusajs.com/development/backend/install)
+- [Ninja backend](https://docs.ninjajs.com/development/backend/install)
 - [ipstack account](https://ipstack.com)
 
 ---
 
 ## How to Install
 
-1\. Run the following command in the directory of the Medusa backend:
+1\. Run the following command in the directory of the Ninja backend:
 
   ```bash
-  npm install medusa-plugin-ip-lookup
+  npm install ninja-plugin-ip-lookup
   ```
 
 2\. Set the following environment variable in `.env`:
@@ -33,13 +33,13 @@ Automatically detect the region and location of your customer using ipstack.
   IPSTACK_ACCESS_KEY=<YOUR_ACCESS_KEY>
   ```
 
-3\. In `medusa-config.js` add the following at the end of the `plugins` array:
+3\. In `ninja-config.js` add the following at the end of the `plugins` array:
 
   ```js
   const plugins = [
     // other plugins...
     {
-      resolve: `medusa-plugin-ip-lookup`,
+      resolve: `ninja-plugin-ip-lookup`,
       options: {
         access_token: process.env.IPSTACK_ACCESS_KEY,
       },

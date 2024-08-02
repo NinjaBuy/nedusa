@@ -1,8 +1,8 @@
 import { pick } from "lodash"
-import { isDefined } from "medusa-core-utils"
+import { isDefined } from "ninja-core-utils"
 import { filter, isNull } from "lodash"
 
-// TODO: When we implement custom queries for tree paths in medusa, remove the transformer
+// TODO: When we implement custom queries for tree paths in ninja, remove the transformer
 // Adding this here since typeorm tree repo doesn't allow configs to be passed
 // onto its children nodes. As an alternative, we are transforming the data post query.
 export function transformTreeNodesWithConfig(

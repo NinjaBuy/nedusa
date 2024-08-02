@@ -5,21 +5,21 @@ import {
   AdminShippingOptionsDeleteRes,
   AdminShippingOptionsListRes,
   AdminGetShippingOptionsParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Shipping Option API Routes](https://docs.medusajs.com/api/admin#shipping-options). All its method
- * are available in the JS Client under the `medusa.admin.shippingOptions` property.
+ * This class is used to send requests to [Admin Shipping Option API Routes](https://docs.ninjajs.com/api/admin#shipping-options). All its method
+ * are available in the JS Client under the `ninja.admin.shippingOptions` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A shipping option is used to define the available shipping methods during checkout or when creating a return.
  * Admins can create an unlimited number of shipping options, each associated with a shipping profile and fulfillment provider, among other resources.
  * 
- * Related Guide: [Shipping Option architecture](https://docs.medusajs.com/modules/carts-and-checkout/shipping#shipping-option).
+ * Related Guide: [Shipping Option architecture](https://docs.ninjajs.com/modules/carts-and-checkout/shipping#shipping-option).
  */
 class AdminShippingOptionsResource extends BaseResource {
   /**
@@ -29,10 +29,10 @@ class AdminShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingOptionsRes>} Resolves to the shipping option's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.shippingOptions.create({
+   * ninja.admin.shippingOptions.create({
    *   name: "PostFake",
    *   region_id,
    *   provider_id,
@@ -60,10 +60,10 @@ class AdminShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingOptionsRes>} Resolves to the shipping option's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.shippingOptions.update(optionId, {
+   * ninja.admin.shippingOptions.update(optionId, {
    *   name: "PostFake",
    *   requirements: [
    *     {
@@ -93,10 +93,10 @@ class AdminShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingOptionsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.shippingOptions.delete(optionId)
+   * ninja.admin.shippingOptions.delete(optionId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -116,10 +116,10 @@ class AdminShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingOptionsRes>} Resolves to the shipping option's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.shippingOptions.retrieve(optionId)
+   * ninja.admin.shippingOptions.retrieve(optionId)
    * .then(({ shipping_option }) => {
    *   console.log(shipping_option.id);
    * })
@@ -139,10 +139,10 @@ class AdminShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingOptionsListRes>} Resolves to the list of shipping options.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.shippingOptions.list()
+   * ninja.admin.shippingOptions.list()
    * .then(({ shipping_options, count }) => {
    *   console.log(shipping_options.length);
    * })

@@ -1,7 +1,7 @@
 import { ClaimService, OrderService } from "../../../../services"
 
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { FindParams } from "../../../../types/common"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 
@@ -13,7 +13,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: Canceling a claim
- *   url: https://docs.medusajs.com/modules/orders/claims#cancel-a-claim
+ *   url: https://docs.ninjajs.com/modules/orders/claims#cancel-a-claim
  * parameters:
  *   - (path) id=* {string} The ID of the order the claim is associated with.
  *   - (path) claim_id=* {string} The ID of the Claim.
@@ -26,18 +26,18 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.cancelClaim(orderId, claimId)
+ *       ninja.admin.orders.cancelClaim(orderId, claimId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCancelClaim } from "medusa-react"
+ *       import { useAdminCancelClaim } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -60,7 +60,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/claims/{claim_id}/cancel' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -96,8 +96,8 @@ export default async (req, res) => {
   const claim = await claimService.retrieve(claim_id)
 
   if (claim.order_id !== id) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `no claim was found with the id: ${claim_id} related to order: ${id}`
     )
   }

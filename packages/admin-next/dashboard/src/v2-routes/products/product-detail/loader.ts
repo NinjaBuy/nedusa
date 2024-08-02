@@ -1,8 +1,8 @@
-import { AdminProductsRes } from "@medusajs/medusa"
-import { Response } from "@medusajs/medusa-js"
+import { AdminProductsRes } from "@ninjajs/ninja"
+import { Response } from "@ninjajs/ninja-js"
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 import { productsQueryKeys } from "../../../hooks/api/products"
 import { client } from "../../../lib/client"
 

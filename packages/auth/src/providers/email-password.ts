@@ -1,9 +1,9 @@
-import { AuthenticationInput, AuthenticationResponse } from "@medusajs/types"
+import { AuthenticationInput, AuthenticationResponse } from "@ninjajs/types"
 import {
   AbstractAuthModuleProvider,
-  MedusaError,
+  NinjaError,
   isString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 import { AuthUserService } from "@services"
 import Scrypt from "scrypt-kdf"
@@ -60,7 +60,7 @@ class EmailPasswordProvider extends AbstractAuthModuleProvider {
         EmailPasswordProvider.PROVIDER
       )
     } catch (error) {
-      if (error.type === MedusaError.Types.NOT_FOUND) {
+      if (error.type === NinjaError.Types.NOT_FOUND) {
         const password_hash = await Scrypt.kdf(password, this.getHashConfig())
 
         const [createdAuthUser] = await this.authUserSerivce_.create([

@@ -1,5 +1,5 @@
-import { Product, SalesChannel } from "@medusajs/medusa"
-import { Button, Checkbox } from "@medusajs/ui"
+import { Product, SalesChannel } from "@ninjajs/ninja"
+import { Button, Checkbox } from "@ninjajs/ui"
 import { RowSelectionState, createColumnHelper } from "@tanstack/react-table"
 import { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"

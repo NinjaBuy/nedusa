@@ -1,17 +1,17 @@
-import { createApiKeysWorkflow } from "@medusajs/core-flows"
+import { createApiKeysWorkflow } from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import { AdminCreateApiKeyType } from "./validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -35,8 +35,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateApiKeyType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateApiKeyType>,
+  res: NinjaResponse
 ) => {
   const input = [
     {

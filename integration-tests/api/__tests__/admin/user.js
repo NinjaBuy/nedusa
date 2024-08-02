@@ -1,20 +1,20 @@
 const jwt = require("jsonwebtoken")
 
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 const {
   createAdminUser,
   adminHeaders,
 } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { ModuleRegistrationName } = require("@medusajs/modules-sdk")
+const { ModuleRegistrationName } = require("@ninjajs/modules-sdk")
 
 jest.setTimeout(30000)
 
 let userSeeder = {}
 let simpleAnalyticsConfigFactory = {}
 
-medusaIntegrationTestRunner({
-  // env: { MEDUSA_FF_MEDUSA_V2: true },
+ninjaIntegrationTestRunner({
+  // env: { NINJA_FF_NINJA_V2: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
     let userModuleService
@@ -44,7 +44,7 @@ medusaIntegrationTestRunner({
 
         const v1Response = {
           id: "admin_user",
-          email: "admin@medusa.js",
+          email: "admin@ninja.js",
           api_token: "test_token",
           role: "admin",
           created_at: expect.any(String),
@@ -53,7 +53,7 @@ medusaIntegrationTestRunner({
 
         const v2Response = {
           id: "admin_user",
-          email: "admin@medusa.js",
+          email: "admin@ninja.js",
           created_at: expect.any(String),
           updated_at: expect.any(String),
         }
@@ -99,7 +99,7 @@ medusaIntegrationTestRunner({
         const v1Response = [
           expect.objectContaining({
             id: "admin_user",
-            email: "admin@medusa.js",
+            email: "admin@ninja.js",
             created_at: expect.any(String),
             updated_at: expect.any(String),
             api_token: "test_token",
@@ -119,7 +119,7 @@ medusaIntegrationTestRunner({
         const v2Response = [
           expect.objectContaining({
             id: "admin_user",
-            email: "admin@medusa.js",
+            email: "admin@ninja.js",
             created_at: expect.any(String),
             updated_at: expect.any(String),
           }),

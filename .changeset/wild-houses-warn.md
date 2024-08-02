@@ -1,6 +1,6 @@
 ---
-"@medusajs/stock-location-next": patch
-"@medusajs/medusa": patch
+"@ninjajs/stock-location-next": patch
+"@ninjajs/ninja": patch
 ---
 
-feat(medusa, stock-location-next): add list-stock-locations endpoint to api-v2
+feat(ninja, stock-location-next): add list-stock-locations endpoint to api-v2

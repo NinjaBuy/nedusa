@@ -3,11 +3,11 @@ import {
   AbstractFulfillmentService,
   AbstractPaymentProcessor,
 } from "../../interfaces"
-import { ClassConstructor, MedusaContainer } from "../../types/global"
-import { PaymentService } from "medusa-interfaces"
+import { ClassConstructor, NinjaContainer } from "../../types/global"
+import { PaymentService } from "ninja-interfaces"
 
 type Context = {
-  container: MedusaContainer
+  container: NinjaContainer
   pluginDetails: Record<string, unknown>
   registrationName: string
 }

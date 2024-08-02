@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 const path = require("path")
-const { Address, Customer, Order, Region } = require("@medusajs/medusa")
+const { Address, Customer, Order, Region } = require("@ninjajs/ninja")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -10,7 +10,7 @@ const { simpleOrderFactory } = require("../../../factories")
 jest.setTimeout(30000)
 
 describe("/store/customers", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -21,13 +21,13 @@ describe("/store/customers", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("POST /store/customers/confirm-claim", () => {

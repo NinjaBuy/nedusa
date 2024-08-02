@@ -1,21 +1,21 @@
 import {
   AdminShippingOptionDeleteResponse,
   AdminShippingOptionRetrieveResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { AdminUpdateShippingOptionType } from "../validators"
 import {
   deleteShippingOptionsWorkflow,
   updateShippingOptionsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { refetchShippingOption } from "../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateShippingOptionType>,
-  res: MedusaResponse<AdminShippingOptionRetrieveResponse>
+  req: AuthenticatedNinjaRequest<AdminUpdateShippingOptionType>,
+  res: NinjaResponse<AdminShippingOptionRetrieveResponse>
 ) => {
   const shippingOptionPayload = req.validatedBody
 
@@ -40,8 +40,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse<AdminShippingOptionDeleteResponse>
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse<AdminShippingOptionDeleteResponse>
 ) => {
   const shippingOptionId = req.params.id
 

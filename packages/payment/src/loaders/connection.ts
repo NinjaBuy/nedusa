@@ -2,9 +2,9 @@ import {
   InternalModuleDeclaration,
   LoaderOptions,
   Modules,
-} from "@medusajs/modules-sdk"
-import { ModulesSdkTypes } from "@medusajs/types"
-import { ModulesSdkUtils } from "@medusajs/utils"
+} from "@ninjajs/modules-sdk"
+import { ModulesSdkTypes } from "@ninjajs/types"
+import { ModulesSdkUtils } from "@ninjajs/utils"
 import { EntitySchema } from "@mikro-orm/core"
 import * as PaymentModels from "../models"
 

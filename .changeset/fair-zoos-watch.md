@@ -1,6 +1,6 @@
 ---
-"@medusajs/admin-ui": patch
-"@medusajs/medusa": patch
+"@ninjajs/admin-ui": patch
+"@ninjajs/ninja": patch
 ---
 
-fix(medusa,admin-ui): Remove forced `backendUrl` from develop command. Allow specifying an alternative host value
+fix(ninja,admin-ui): Remove forced `backendUrl` from develop command. Allow specifying an alternative host value

@@ -16,20 +16,20 @@ import {
   AdminProductsListTypesRes,
   AdminProductsListVariantsRes,
   AdminProductsRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Product API Routes](https://docs.medusajs.com/api/admin#products). All its method
- * are available in the JS Client under the `medusa.admin.products` property.
+ * This class is used to send requests to [Admin Product API Routes](https://docs.ninjajs.com/api/admin#products). All its method
+ * are available in the JS Client under the `ninja.admin.products` property.
  *
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  *
- * Products are saleable items in a store. This also includes [saleable gift cards](https://docs.medusajs.com/modules/gift-cards/admin/manage-gift-cards#manage-gift-card-product) in a store.
+ * Products are saleable items in a store. This also includes [saleable gift cards](https://docs.ninjajs.com/modules/gift-cards/admin/manage-gift-cards#manage-gift-card-product) in a store.
  *
- * Related Guide: [How to manage products](https://docs.medusajs.com/modules/products/admin/manage-products).
+ * Related Guide: [How to manage products](https://docs.ninjajs.com/modules/products/admin/manage-products).
  */
 class AdminProductsResource extends BaseResource {
   /**
@@ -39,10 +39,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.create({
+   * ninja.admin.products.create({
    *   title: "Shirt",
    *   is_giftcard: false,
    *   discountable: true
@@ -66,10 +66,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.retrieve(productId)
+   * ninja.admin.products.retrieve(productId)
    * .then(({ product }) => {
    *   console.log(product.id);
    * })
@@ -90,10 +90,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.update(productId, {
+   * ninja.admin.products.update(productId, {
    *   title: "Shirt",
    * })
    * .then(({ product }) => {
@@ -116,10 +116,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsDeleteRes>} Resolves to the deletion operation's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.delete(productId)
+   * ninja.admin.products.delete(productId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -142,10 +142,10 @@ class AdminProductsResource extends BaseResource {
    * To list products:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.list()
+   * ninja.admin.products.list()
    * .then(({ products, limit, offset, count }) => {
    *   console.log(products.length);
    * })
@@ -154,10 +154,10 @@ class AdminProductsResource extends BaseResource {
    * To specify relations that should be retrieved within the products:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.list({
+   * ninja.admin.products.list({
    *   expand: "images"
    * })
    * .then(({ products, limit, offset, count }) => {
@@ -168,10 +168,10 @@ class AdminProductsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.list({
+   * ninja.admin.products.list({
    *   expand: "images",
    *   limit,
    *   offset
@@ -213,10 +213,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsListTagsRes>} Resolves to the list of tags.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.listTags()
+   * ninja.admin.products.listTags()
    * .then(({ tags }) => {
    *   console.log(tags.length);
    * })
@@ -230,17 +230,17 @@ class AdminProductsResource extends BaseResource {
 
   /**
    * Set the metadata of a product. It can be any key-value pair, which allows adding custom data to a product. Learn about how you can update and delete the metadata attribute
-   * [here](https://docs.medusajs.com/development/entities/overview#metadata-attribute).
+   * [here](https://docs.ninjajs.com/development/entities/overview#metadata-attribute).
    * @param {string} id - The product's ID.
    * @param {AdminPostProductsProductMetadataReq} payload - The metadata details to add, update, or delete.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.setMetadata(productId, {
+   * ninja.admin.products.setMetadata(productId, {
    *   key: "test",
    *   value: "true"
    * })
@@ -265,10 +265,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details. You can access the variant under the `variants` property.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.createVariant(productId, {
+   * ninja.admin.products.createVariant(productId, {
    *   title: "Color",
    *   prices: [
    *     {
@@ -306,10 +306,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details. You can access the variant under the `variants` property.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.updateVariant(productId, variantId, {
+   * ninja.admin.products.updateVariant(productId, variantId, {
    *   title: "Color",
    *   prices: [
    *     {
@@ -347,10 +347,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsDeleteVariantRes>} Resolves to the deletion operation's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.deleteVariant(productId, variantId)
+   * ninja.admin.products.deleteVariant(productId, variantId)
    * .then(({ variant_id, object, deleted, product }) => {
    *   console.log(product.id);
    * })
@@ -372,10 +372,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsListVariantsRes>} Resolves to the list of product variants with pagination fields.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.listVariants(productId, {
+   * ninja.admin.products.listVariants(productId, {
    *   limit: 10,
    * })
    * .then(({ variants, limit, offset, count }) => {
@@ -405,10 +405,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details. You can access the variant under the `options` property.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.addOption(productId, {
+   * ninja.admin.products.addOption(productId, {
    *   title: "Size"
    * })
    * .then(({ product }) => {
@@ -433,10 +433,10 @@ class AdminProductsResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductsRes>} Resolves to the product's details. You can access the variant under the `options` property.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.products.updateOption(productId, optionId, {
+   * ninja.admin.products.updateOption(productId, optionId, {
    *   title: "Size"
    * })
    * .then(({ product }) => {

@@ -15,7 +15,7 @@ import {
  *  show the customer all available regions to choose from."
  * externalDocs:
  *   description: "How to use regions in a storefront"
- *   url: "https://docs.medusajs.com/modules/regions-and-currencies/storefront/use-regions"
+ *   url: "https://docs.ninjajs.com/modules/regions-and-currencies/storefront/use-regions"
  * parameters:
  *   - (query) offset=0 {integer} The number of regions to skip when retrieving the regions.
  *   - (query) limit=100 {integer} Limit the number of regions returned.
@@ -70,17 +70,17 @@ import {
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.regions.list()
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.regions.list()
  *       .then(({ regions, count, limit, offset }) => {
  *         console.log(regions.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useRegions } from "medusa-react"
+ *       import { useRegions } from "ninja-react"
  *
  *       const Regions = () => {
  *         const { regions, isLoading } = useRegions()

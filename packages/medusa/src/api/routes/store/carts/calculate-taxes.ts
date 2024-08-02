@@ -3,17 +3,17 @@ import { CartService, IdempotencyKeyService } from "../../../../services"
 import { EntityManager } from "typeorm"
 import { IdempotencyKey } from "../../../../models/idempotency-key"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
-import { Logger } from "@medusajs/types"
+import { Logger } from "@ninjajs/types"
 
 /**
  * @oas [post] /store/carts/{id}/taxes
  * operationId: "PostCartsCartTaxes"
  * summary: "Calculate Cart Taxes"
  * description: "Calculate the taxes for a cart. This is useful if the `automatic_taxes` field of the cart's region is set to `false`. If the cart's region uses a tax provider other than
- *  Medusa's system provider, this may lead to sending requests to third-party services."
+ *  Ninja's system provider, this may lead to sending requests to third-party services."
  * externalDocs:
  *   description: "How to calculate taxes manually during checkout"
- *   url: "https://docs.medusajs.com/modules/taxes/storefront/manual-calculation"
+ *   url: "https://docs.ninjajs.com/modules/taxes/storefront/manual-calculation"
  * parameters:
  *   - (path) id=* {String} The Cart ID.
  * x-codegen:

@@ -17,7 +17,7 @@ import { ExtendedFindConfig, FindConfig } from "../types/common"
 
 import { FindOptionsOrder } from "typeorm/find-options/FindOptionsOrder"
 import { isObject } from "./is-object"
-import { buildOrder, buildRelations, buildSelects } from "@medusajs/utils"
+import { buildOrder, buildRelations, buildSelects } from "@ninjajs/utils"
 
 const operatorsMap = {
   lt: (value) => LessThan(value),
@@ -169,7 +169,7 @@ function buildWhere<TWhereKeys extends object, TEntity>(
 
 /**
  * Revert new object structure of find options to the legacy structure of previous version
- * @deprecated in favor of import { objectToStringPath } from "@medusajs/utils"
+ * @deprecated in favor of import { objectToStringPath } from "@ninjajs/utils"
  * @example
  * input: {
  *   test: {

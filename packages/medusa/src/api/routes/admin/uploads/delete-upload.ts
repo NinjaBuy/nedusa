@@ -5,7 +5,7 @@ import { IFileService } from "../../../../interfaces"
  * @oas [delete] /admin/uploads
  * operationId: "DeleteUploads"
  * summary: "Delete an Uploaded File"
- * description: "Delete an uploaded file from storage. The file is deleted using the installed file service on the Medusa backend."
+ * description: "Delete an uploaded file from storage. The file is deleted using the installed file service on the Ninja backend."
  * x-authenticated: true
  * requestBody:
  *   content:
@@ -16,20 +16,20 @@ import { IFileService } from "../../../../interfaces"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.uploads.delete({
+ *       ninja.admin.uploads.delete({
  *         file_key
  *       })
  *       .then(({ id, object, deleted }) => {
  *         console.log(id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeleteFile } from "medusa-react"
+ *       import { useAdminDeleteFile } from "ninja-react"
  *
  *       const Image = () => {
  *         const deleteFile = useAdminDeleteFile()
@@ -53,7 +53,7 @@ import { IFileService } from "../../../../interfaces"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/uploads' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "file_key": "{file_key}"

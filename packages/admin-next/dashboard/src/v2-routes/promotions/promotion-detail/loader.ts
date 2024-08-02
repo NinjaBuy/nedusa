@@ -1,9 +1,9 @@
-import { AdminPromotionRes } from "@medusajs/medusa"
-import { Response } from "@medusajs/medusa-js"
+import { AdminPromotionRes } from "@ninjajs/ninja"
+import { Response } from "@ninjajs/ninja-js"
 import { LoaderFunctionArgs } from "react-router-dom"
 import { promotionsQueryKeys } from "../../../hooks/api/promotions"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 
 const promotionDetailQuery = (id: string) => ({
   queryKey: promotionsQueryKeys.detail(id),

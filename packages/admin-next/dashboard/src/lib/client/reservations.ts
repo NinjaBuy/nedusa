@@ -5,7 +5,7 @@ import {
 } from "../../types/api-responses"
 import { deleteRequest, getRequest, postRequest } from "./common"
 
-import { InventoryNext } from "@medusajs/types"
+import { InventoryNext } from "@ninjajs/types"
 
 async function retrieveReservation(id: string, query?: Record<string, any>) {
   return getRequest<ReservationRes>(`/admin/reservations/${id}`, query)

@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import Scrypt from "scrypt-kdf"
 
 export const CustomerServiceMock = {

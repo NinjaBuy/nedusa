@@ -1,12 +1,12 @@
-import { Response } from "@medusajs/medusa-js"
-import { AdminCustomerResponse } from "@medusajs/types"
-import { adminProductKeys } from "medusa-react"
+import { Response } from "@ninjajs/ninja-js"
+import { AdminCustomerResponse } from "@ninjajs/types"
+import { adminProductKeys } from "ninja-react"
 import { LoaderFunctionArgs } from "react-router-dom"
-import { medusa, queryClient } from "../../../lib/medusa"
+import { ninja, queryClient } from "../../../lib/ninja"
 
 const customerDetailQuery = (id: string) => ({
   queryKey: adminProductKeys.detail(id),
-  queryFn: async () => medusa.admin.customers.retrieve(id),
+  queryFn: async () => ninja.admin.customers.retrieve(id),
 })
 
 export const customerLoader = async ({ params }: LoaderFunctionArgs) => {

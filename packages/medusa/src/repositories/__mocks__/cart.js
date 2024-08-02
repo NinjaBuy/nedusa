@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import { discounts } from "./discount"
 
 export const carts = {

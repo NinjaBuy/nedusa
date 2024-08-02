@@ -1,4 +1,4 @@
-import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
 import { simpleSalesChannelFactory } from "../../../../factories"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 import productSeeder from "../../../../helpers/product-seeder"
@@ -8,30 +8,30 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     // TODO: unskip this when there is a module compatible productSeeder
     describe.skip("/admin/products", () => {
-      let medusaContainer
+      let ninjaContainer
 
       beforeAll(async () => {
-        medusaContainer = getContainer()
+        ninjaContainer = getContainer()
       })
 
       beforeEach(async () => {
-        await createAdminUser(dbConnection, adminHeaders, medusaContainer)
+        await createAdminUser(dbConnection, adminHeaders, ninjaContainer)
 
         await productSeeder(dbConnection)
-        await createDefaultRuleTypes(medusaContainer)
+        await createDefaultRuleTypes(ninjaContainer)
         await simpleSalesChannelFactory(dbConnection, {
           name: "Default channel",
           id: "default-channel",
@@ -375,7 +375,7 @@ medusaIntegrationTestRunner({
           //   (v: { id: string }) => v.id
           // )
 
-          // const variantInventoryService = medusaContainer.resolve(
+          // const variantInventoryService = ninjaContainer.resolve(
           //   "productVariantInventoryService"
           // )
           // const inventory = await variantInventoryService.listByVariant(variantIds)

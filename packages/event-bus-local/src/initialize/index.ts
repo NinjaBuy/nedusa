@@ -1,11 +1,11 @@
-import { MedusaModule, Modules } from "@medusajs/modules-sdk"
-import { IEventBusService } from "@medusajs/types"
+import { NinjaModule, Modules } from "@ninjajs/modules-sdk"
+import { IEventBusService } from "@ninjajs/types"
 
 export const initialize = async (): Promise<IEventBusService> => {
   const serviceKey = Modules.EVENT_BUS
-  const loaded = await MedusaModule.bootstrap<IEventBusService>({
+  const loaded = await NinjaModule.bootstrap<IEventBusService>({
     moduleKey: serviceKey,
-    defaultPath: "@medusajs/event-bus-local",
+    defaultPath: "@ninjajs/event-bus-local",
   })
 
   return loaded[serviceKey]

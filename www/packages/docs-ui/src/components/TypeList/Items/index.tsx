@@ -18,7 +18,7 @@ import {
   FlagMini,
   Link,
   TriangleRightMini,
-} from "@medusajs/icons"
+} from "@ninjajs/icons"
 import { decodeStr, isInView } from "@/utils"
 import { useIsBrowser } from "../../.."
 
@@ -169,14 +169,14 @@ const TypeListItem = ({
           {nested && (
             <TriangleRightMini
               className={clsx(
-                "text-medusa-fg-subtle transition-transform",
+                "text-ninja-fg-subtle transition-transform",
                 rotateForGroupName
               )}
             />
           )}
           {!nested && level > 1 && (
             <ArrowDownLeftMini
-              className={clsx("text-medusa-fg-subtle flip-y")}
+              className={clsx("text-ninja-fg-subtle flip-y")}
             />
           )}
           {level === 1 && typeId.length > 0 && (
@@ -189,14 +189,14 @@ const TypeListItem = ({
             >
               <Link
                 className={clsx(
-                  "text-medusa-fg-interactive hover:text-medusa-fg-interactive-hover"
+                  "text-ninja-fg-interactive hover:text-ninja-fg-interactive-hover"
                 )}
               />
             </CopyButton>
           )}
           <div className="flex gap-0.75 flex-wrap">
             <InlineCode>{decodeStr(item.name)}</InlineCode>
-            <span className="font-monospace text-compact-small-plus text-medusa-fg-subtle">
+            <span className="font-monospace text-compact-small-plus text-ninja-fg-subtle">
               <MarkdownContent allowedElements={["a"]} unwrapDisallowed={true}>
                 {item.type}
               </MarkdownContent>
@@ -205,7 +205,7 @@ const TypeListItem = ({
               <span
                 className={clsx(
                   "text-compact-x-small-plus uppercase",
-                  "text-medusa-fg-error"
+                  "text-ninja-fg-error"
                 )}
               >
                 Required
@@ -217,7 +217,7 @@ const TypeListItem = ({
                 type="type"
                 badgeClassName="!p-0 leading-none"
                 badgeContent={
-                  <FlagMini className="!text-medusa-tag-green-text" />
+                  <FlagMini className="!text-ninja-tag-green-text" />
                 }
               />
             )}

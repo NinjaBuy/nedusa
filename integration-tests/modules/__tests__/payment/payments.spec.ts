@@ -1,20 +1,20 @@
 import {
   capturePaymentWorkflow,
   refundPaymentWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
   LinkModuleUtils,
   ModuleRegistrationName,
   Modules,
-} from "@medusajs/modules-sdk"
-import { IPaymentModuleService, IRegionModuleService } from "@medusajs/types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
+} from "@ninjajs/modules-sdk"
+import { IPaymentModuleService, IRegionModuleService } from "@ninjajs/types"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Payments", () => {

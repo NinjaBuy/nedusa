@@ -121,18 +121,18 @@ import { FilterablePriceListProps } from "../../../../types/price-list"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.priceLists.list()
+ *       ninja.admin.priceLists.list()
  *       .then(({ price_lists, limit, offset, count }) => {
  *         console.log(price_lists.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminPriceLists } from "medusa-react"
+ *       import { useAdminPriceLists } from "ninja-react"
  *
  *       const PriceLists = () => {
  *         const { price_lists, isLoading } = useAdminPriceLists()
@@ -159,7 +159,7 @@ import { FilterablePriceListProps } from "../../../../types/price-list"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/price-lists' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

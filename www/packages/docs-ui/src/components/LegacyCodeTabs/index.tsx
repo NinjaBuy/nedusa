@@ -82,15 +82,15 @@ export const LegacyCodeTabs = ({
           "xs:transition-all xs:duration-200 xs:ease-ease xs:top-[13px] xs:rounded-full",
           blockStyle === "loud" && [
             colorMode === "light" &&
-              "xs:border-medusa-code-border xs:bg-medusa-code-bg-base",
+              "xs:border-ninja-code-border xs:bg-ninja-code-bg-base",
             colorMode === "dark" &&
-              "xs:border-medusa-border-base xs:bg-medusa-bg-component",
+              "xs:border-ninja-border-base xs:bg-ninja-bg-component",
           ],
           blockStyle === "subtle" && [
             colorMode === "light" &&
-              "xs:border-medusa-border-base xs:bg-medusa-bg-base",
+              "xs:border-ninja-border-base xs:bg-ninja-bg-base",
             colorMode === "dark" &&
-              "xs:border-medusa-code-border xs:bg-medusa-code-bg-base",
+              "xs:border-ninja-code-border xs:bg-ninja-code-bg-base",
           ]
         )}
         ref={codeTabSelectorRef}
@@ -108,33 +108,33 @@ export const LegacyCodeTabs = ({
                 className={clsx(
                   "text-compact-small-plus xs:border-0 py-docs_0.25 px-docs_0.75 relative rounded-full border",
                   (!selectedTab || selectedTab.value !== tab.value) && [
-                    "text-medusa-code-text-subtle border-transparent",
+                    "text-ninja-code-text-subtle border-transparent",
                     blockStyle === "loud" && [
                       colorMode === "light" &&
-                        "text-medusa-code-text-subtle hover:bg-medusa-code-bg-base",
+                        "text-ninja-code-text-subtle hover:bg-ninja-code-bg-base",
                       colorMode === "dark" &&
-                        "text-medusa-fg-muted hover:bg-medusa-bg-component",
+                        "text-ninja-fg-muted hover:bg-ninja-bg-component",
                     ],
                     blockStyle === "subtle" && [
                       colorMode === "light" &&
-                        "text-medusa-fg-subtle hover:bg-medusa-bg-base",
+                        "text-ninja-fg-subtle hover:bg-ninja-bg-base",
                       colorMode === "dark" &&
-                        "text-medusa-code-text-subtle hover:bg-medusa-code-bg-base",
+                        "text-ninja-code-text-subtle hover:bg-ninja-code-bg-base",
                     ],
                   ],
                   selectedTab?.value === tab.value && [
                     "xs:!bg-transparent",
                     blockStyle === "loud" && [
                       colorMode === "light" &&
-                        "border-medusa-code-border text-medusa-code-text-base",
+                        "border-ninja-code-border text-ninja-code-text-base",
                       colorMode === "dark" &&
-                        "border-medusa-border-base text-medusa-fg-base",
+                        "border-ninja-border-base text-ninja-fg-base",
                     ],
                     blockStyle === "subtle" && [
                       colorMode === "light" &&
-                        "xs:border-medusa-border-base text-medusa-code-text-base",
+                        "xs:border-ninja-border-base text-ninja-code-text-base",
                       colorMode === "dark" &&
-                        "xs:border-medusa-code-border text-medusa-code-text-base",
+                        "xs:border-ninja-code-border text-ninja-code-text-base",
                     ],
                   ]
                 )}

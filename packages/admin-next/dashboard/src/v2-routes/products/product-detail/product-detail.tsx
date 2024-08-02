@@ -9,10 +9,10 @@ import { ProductSalesChannelSection } from "./components/product-sales-channel-s
 import { ProductVariantSection } from "./components/product-variant-section"
 import { productLoader } from "./loader"
 
-import after from "medusa-admin:widgets/product/details/after"
-import before from "medusa-admin:widgets/product/details/before"
-import sideAfter from "medusa-admin:widgets/product/details/side/after"
-import sideBefore from "medusa-admin:widgets/product/details/side/before"
+import after from "ninja-admin:widgets/product/details/after"
+import before from "ninja-admin:widgets/product/details/before"
+import sideAfter from "ninja-admin:widgets/product/details/side/after"
+import sideBefore from "ninja-admin:widgets/product/details/side/before"
 import { ProductOrganizationSection } from "./components/product-organization-section"
 import { useProduct } from "../../../hooks/api/products"
 

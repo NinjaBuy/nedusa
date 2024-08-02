@@ -1,4 +1,4 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 import { readdir } from "fs/promises"
 import { join } from "path"
 import JobSchedulerService from "../../../services/job-scheduler"
@@ -16,7 +16,7 @@ type ScheduledJobModule = {
 }
 
 export default class ScheduledJobsLoader {
-  protected container_: MedusaContainer
+  protected container_: NinjaContainer
   protected pluginOptions_: Record<string, unknown>
   protected rootDir_: string
   protected excludes: RegExp[] = [
@@ -29,7 +29,7 @@ export default class ScheduledJobsLoader {
 
   constructor(
     rootDir: string,
-    container: MedusaContainer,
+    container: NinjaContainer,
     options: Record<string, unknown> = {}
   ) {
     this.rootDir_ = rootDir

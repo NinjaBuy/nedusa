@@ -1,6 +1,6 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { IProductModuleService } from "@medusajs/types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { IProductModuleService } from "@ninjajs/types"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 import { In } from "typeorm"
 import { breaking } from "../../../helpers/breaking"
 import {
@@ -13,10 +13,10 @@ jest.setTimeout(30000)
 let { simpleProductCategoryFactory, simpleProductFactory } = {}
 let { Product } = {}
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_PRODUCT_CATEGORIES: true,
-    // MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_PRODUCT_CATEGORIES: true,
+    // NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer
@@ -37,7 +37,7 @@ medusaIntegrationTestRunner({
         simpleProductCategoryFactory,
         simpleProductFactory,
       } = require("../../../factories"))
-      ;({ Product } = require("@medusajs/medusa"))
+      ;({ Product } = require("@ninjajs/ninja"))
     })
 
     beforeEach(async () => {

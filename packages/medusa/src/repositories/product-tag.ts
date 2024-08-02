@@ -3,7 +3,7 @@ import { ProductTag } from "../models/product-tag"
 import { ExtendedFindConfig } from "../types/common"
 import { dataSource } from "../loaders/database"
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type UpsertTagsInput = (Partial<ProductTag> & {
   value: string

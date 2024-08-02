@@ -1,5 +1,5 @@
-import { IEventBusService, IStockLocationService } from "@medusajs/types"
-import { MedusaError } from "medusa-core-utils"
+import { IEventBusService, IStockLocationService } from "@ninjajs/types"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager, In } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { SalesChannelLocation } from "../models/sales-channel-location"
@@ -108,8 +108,8 @@ class SalesChannelLocationService extends TransactionBaseService {
       .listAndCount({ id: ids }, { select: ["id"], skip: 0 })
 
     if (!count) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Sales channel with id: ${ids.join(", ")} was not found`
       )
     }

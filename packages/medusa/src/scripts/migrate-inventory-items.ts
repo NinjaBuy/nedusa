@@ -1,4 +1,4 @@
-import { IInventoryService, IStockLocationService } from "@medusajs/types"
+import { IInventoryService, IStockLocationService } from "@ninjajs/types"
 import {
   ProductVariantInventoryService,
   ProductVariantService,
@@ -10,7 +10,7 @@ import { ProductVariant } from "../models"
 import dotenv from "dotenv"
 import express from "express"
 import loaders from "../loaders"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 import Logger from "../loaders/logger"
 
 dotenv.config()

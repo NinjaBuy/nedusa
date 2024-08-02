@@ -3,7 +3,7 @@ import {
   IdempotencyCallbackResult,
 } from "../types/idempotency-key"
 import { DeepPartial, EntityManager } from "typeorm"
-import { MedusaError, isDefined } from "medusa-core-utils"
+import { NinjaError, isDefined } from "ninja-core-utils"
 import { buildQuery, isString } from "../utils"
 
 import { IdempotencyKey } from "../models"
@@ -87,8 +87,8 @@ class IdempotencyKeyService extends TransactionBaseService {
     idempotencyKeyOrSelector: string | Selector<IdempotencyKey>
   ): Promise<IdempotencyKey | never> {
     if (!isDefined(idempotencyKeyOrSelector)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"idempotencyKeyOrSelector" must be defined`
       )
     }
@@ -124,7 +124,7 @@ class IdempotencyKeyService extends TransactionBaseService {
         )} was not found`
       }
 
-      throw new MedusaError(MedusaError.Types.NOT_FOUND, message)
+      throw new NinjaError(NinjaError.Types.NOT_FOUND, message)
     }
 
     return iKey
@@ -148,7 +148,7 @@ class IdempotencyKeyService extends TransactionBaseService {
         new Date(key.locked_at).getTime() > Date.now() - KEY_LOCKED_TIMEOUT
 
       if (isLocked) {
-        throw new MedusaError(MedusaError.Types.CONFLICT, "Key already locked")
+        throw new NinjaError(NinjaError.Types.CONFLICT, "Key already locked")
       }
 
       return await idempotencyKeyRepo.save({

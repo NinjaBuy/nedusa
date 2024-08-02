@@ -1,17 +1,17 @@
 import {
   deletePriceListsWorkflow,
   updatePriceListsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { fetchPriceList } from "../helpers"
 import { AdminUpdatePriceListType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const price_list = await fetchPriceList(
     req.params.id,
@@ -23,8 +23,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdatePriceListType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdatePriceListType>,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const workflow = updatePriceListsWorkflow(req.scope)
@@ -48,8 +48,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const workflow = deletePriceListsWorkflow(req.scope)

@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty, IsString } from "class-validator"
 
 import jwt from "jsonwebtoken"
 import _ from "lodash"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import AuthService from "../../../../services/auth"
 import { validator } from "../../../../utils/validator"
@@ -13,7 +13,7 @@ import { validator } from "../../../../utils/validator"
  * summary: "User Login"
  * x-authenticated: false
  * description: "Log a User in and includes the Cookie session in the response header. The cookie session can be used in subsequent requests to authorize the user to perform admin functionalities.
- * When using Medusa's JS or Medusa React clients, the cookie is automatically attached to subsequent requests."
+ * When using Ninja's JS or Ninja React clients, the cookie is automatically attached to subsequent requests."
  * requestBody:
  *   content:
  *     application/json:
@@ -25,9 +25,9 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.admin.auth.createSession({
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.admin.auth.createSession({
  *         email: "user@example.com",
  *         password: "supersecret"
  *       })
@@ -35,10 +35,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(user.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminLogin } from "medusa-react"
+ *       import { useAdminLogin } from "ninja-react"
  *
  *       const Login = () => {
  *         const adminLogin = useAdminLogin()

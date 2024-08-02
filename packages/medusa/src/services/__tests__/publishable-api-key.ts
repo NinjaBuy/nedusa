@@ -1,4 +1,4 @@
-import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
+import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
 import EventBusService from "../event-bus"
 
 import PublishableApiKeyService from "../publishable-api-key"

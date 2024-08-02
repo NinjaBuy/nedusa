@@ -1,7 +1,7 @@
-import { ExtendedFindConfig } from "@medusajs/types"
-import { objectToStringPath } from "@medusajs/utils"
+import { ExtendedFindConfig } from "@ninjajs/types"
+import { objectToStringPath } from "@ninjajs/utils"
 import { cloneDeep } from "lodash"
-import { isDefined } from "medusa-core-utils"
+import { isDefined } from "ninja-core-utils"
 import {
   Brackets,
   FindOperator,

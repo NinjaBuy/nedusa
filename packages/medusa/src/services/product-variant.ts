@@ -30,7 +30,7 @@ import {
   PriceSelectionContext,
   TransactionBaseService,
 } from "../interfaces"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import {
   MoneyAmount,
   Product,
@@ -52,7 +52,7 @@ import { ProductOptionValueRepository } from "../repositories/product-option-val
 import { ProductRepository } from "../repositories/product"
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity"
 import RegionService from "./region"
-import { buildRelations, promiseAll } from "@medusajs/utils"
+import { buildRelations, promiseAll } from "@ninjajs/utils"
 
 class ProductVariantService extends TransactionBaseService {
   static Events = {
@@ -113,8 +113,8 @@ class ProductVariantService extends TransactionBaseService {
     const variant = await variantRepo.findOne(query)
 
     if (!variant) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Variant with id: ${variantId} was not found`
       )
     }
@@ -148,8 +148,8 @@ class ProductVariantService extends TransactionBaseService {
     const variant = await variantRepo.findOne(query)
 
     if (!variant) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Variant with sku: ${sku} was not found`
       )
     }
@@ -194,8 +194,8 @@ class ProductVariantService extends TransactionBaseService {
       }
 
       if (!product?.id) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Product id missing`
         )
       }
@@ -319,8 +319,8 @@ class ProductVariantService extends TransactionBaseService {
         }
 
         if (!variant?.id) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Variant id missing`
           )
         }
@@ -817,8 +817,8 @@ class ProductVariantService extends TransactionBaseService {
       })
 
       if (!productOptionValue) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_FOUND,
+        throw new NinjaError(
+          NinjaError.Types.NOT_FOUND,
           `Product option value not found`
         )
       }
@@ -1114,16 +1114,16 @@ class ProductVariantService extends TransactionBaseService {
   ): void {
     for (const variant of variants) {
       if (product.options.length !== variant.options.length) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Product options length does not match variant options length. Product has ${product.options.length} and variant has ${variant.options.length}.`
         )
       }
 
       product.options.forEach((option) => {
         if (!variant.options.find((vo) => option.id === vo.option_id)) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Variant options do not contain value for ${option.title}`
           )
         }
@@ -1140,8 +1140,8 @@ class ProductVariantService extends TransactionBaseService {
       })
 
       if (variantExists) {
-        throw new MedusaError(
-          MedusaError.Types.DUPLICATE_ERROR,
+        throw new NinjaError(
+          NinjaError.Types.DUPLICATE_ERROR,
           `Variant with title ${variantExists.title} with provided options already exists`
         )
       }

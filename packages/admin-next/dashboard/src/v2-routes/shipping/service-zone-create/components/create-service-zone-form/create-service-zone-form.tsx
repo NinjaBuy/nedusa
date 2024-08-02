@@ -7,10 +7,10 @@ import {
 } from "@tanstack/react-table"
 import * as zod from "zod"
 
-import { Alert, Button, Checkbox, Heading, Input, Text } from "@medusajs/ui"
-import { FulfillmentSetDTO, RegionCountryDTO, RegionDTO } from "@medusajs/types"
+import { Alert, Button, Checkbox, Heading, Input, Text } from "@ninjajs/ui"
+import { FulfillmentSetDTO, RegionCountryDTO, RegionDTO } from "@ninjajs/types"
 import { useTranslation } from "react-i18next"
-import { Map } from "@medusajs/icons"
+import { Map } from "@ninjajs/icons"
 
 import {
   RouteFocusModal,

@@ -1,7 +1,7 @@
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 import { NextFunction } from "express"
 import { z, ZodError } from "zod"
-import { MedusaRequest, MedusaResponse } from "../../types/routing"
+import { NinjaRequest, NinjaResponse } from "../../types/routing"
 
 export async function zodValidator<T>(
   zodSchema: z.ZodObject<any, any> | z.ZodEffects<any, any>,
@@ -11,8 +11,8 @@ export async function zodValidator<T>(
     return await zodSchema.parseAsync(body)
   } catch (err) {
     if (err instanceof ZodError) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `Invalid request body: ${JSON.stringify(err.errors)}`
       )
     }
@@ -24,11 +24,11 @@ export async function zodValidator<T>(
 export function validateAndTransformBody(
   zodSchema: z.ZodObject<any, any> | z.ZodEffects<any, any>
 ): (
-  req: MedusaRequest,
-  res: MedusaResponse,
+  req: NinjaRequest,
+  res: NinjaResponse,
   next: NextFunction
 ) => Promise<void> {
-  return async (req: MedusaRequest, _: MedusaResponse, next: NextFunction) => {
+  return async (req: NinjaRequest, _: NinjaResponse, next: NextFunction) => {
     try {
       req.validatedBody = await zodValidator(zodSchema, req.body)
       next()

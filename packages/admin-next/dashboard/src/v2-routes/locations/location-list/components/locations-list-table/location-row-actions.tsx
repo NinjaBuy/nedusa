@@ -1,5 +1,5 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
-import { usePrompt } from "@medusajs/ui"
+import { PencilSquare, Trash } from "@ninjajs/icons"
+import { usePrompt } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"

@@ -36,7 +36,7 @@ export const Sidebar = ({
     <aside
       className={clsx(
         "clip bg-docs-bg dark:bg-docs-bg-dark block",
-        "border-medusa-border-base border-0 border-r border-solid",
+        "border-ninja-border-base border-0 border-r border-solid",
         "fixed -left-full top-0 h-screen transition-[left] lg:relative lg:left-0 lg:top-auto lg:h-auto",
         "lg:w-sidebar w-full",
         mobileSidebarOpen && "!left-0 z-50 top-[57px]",

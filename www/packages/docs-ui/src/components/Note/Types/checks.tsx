@@ -1,7 +1,7 @@
 import React from "react"
 import { NoteProps } from ".."
 import { NoteLayout } from "../Layout"
-import { CheckCircleSolid } from "@medusajs/icons"
+import { CheckCircleSolid } from "@ninjajs/icons"
 import clsx from "clsx"
 
 export const CheckNote = ({
@@ -16,7 +16,7 @@ export const CheckNote = ({
         icon || (
           <CheckCircleSolid
             className={clsx(
-              "inline-block mr-docs_0.125 text-medusa-tag-neutral-icon"
+              "inline-block mr-docs_0.125 text-ninja-tag-neutral-icon"
             )}
           />
         )

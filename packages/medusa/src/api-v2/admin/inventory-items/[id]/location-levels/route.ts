@@ -1,10 +1,10 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
+} from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
 
-import { createInventoryLevelsWorkflow } from "@medusajs/core-flows"
+import { createInventoryLevelsWorkflow } from "@ninjajs/core-flows"
 import {
   AdminCreateInventoryLocationLevelType,
   AdminGetInventoryLocationLevelsParamsType,
@@ -12,8 +12,8 @@ import {
 import { refetchInventoryItem } from "../../helpers"
 
 export const POST = async (
-  req: MedusaRequest<AdminCreateInventoryLocationLevelType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminCreateInventoryLocationLevelType>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
 
@@ -43,8 +43,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: MedusaRequest<AdminGetInventoryLocationLevelsParamsType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminGetInventoryLocationLevelsParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 

@@ -1,10 +1,10 @@
-import { updateCartWorkflow } from "@medusajs/core-flows"
-import { UpdateCartDataDTO } from "@medusajs/types"
+import { updateCartWorkflow } from "@ninjajs/core-flows"
+import { UpdateCartDataDTO } from "@ninjajs/types"
 
-import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
+import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
 import { refetchCart } from "../helpers"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const cart = await refetchCart(
     req.params.id,
     req.scope,
@@ -15,8 +15,8 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
 }
 
 export const POST = async (
-  req: MedusaRequest<UpdateCartDataDTO>,
-  res: MedusaResponse
+  req: NinjaRequest<UpdateCartDataDTO>,
+  res: NinjaResponse
 ) => {
   const workflow = updateCartWorkflow(req.scope)
 

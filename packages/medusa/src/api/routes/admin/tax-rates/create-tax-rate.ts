@@ -2,7 +2,7 @@ import { IsArray, IsNumber, IsOptional, IsString } from "class-validator"
 import { getRetrieveConfig, pickByConfig } from "./utils/get-query-config"
 
 import { omit } from "lodash"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { TaxRate } from "../../../.."
 import { TaxRateService } from "../../../../services"
@@ -45,10 +45,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.taxRates.create({
+ *       ninja.admin.taxRates.create({
  *         code: "TEST",
  *         name: "New Tax Rate",
  *         region_id
@@ -57,10 +57,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(tax_rate.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateTaxRate } from "medusa-react"
+ *       import { useAdminCreateTaxRate } from "ninja-react"
  *
  *       type Props = {
  *         regionId: string
@@ -95,7 +95,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/tax-rates' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "code": "TEST",
@@ -158,8 +158,8 @@ export default async (req, res) => {
   })
 
   if (typeof id === "undefined") {
-    throw new MedusaError(
-      MedusaError.Types.UNEXPECTED_STATE,
+    throw new NinjaError(
+      NinjaError.Types.UNEXPECTED_STATE,
       "Tax Rate was not created"
     )
   }

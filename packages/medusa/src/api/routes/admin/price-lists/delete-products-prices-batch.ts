@@ -18,10 +18,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.priceLists.deleteProductsPrices(priceListId, {
+ *       ninja.admin.priceLists.deleteProductsPrices(priceListId, {
  *         product_ids: [
  *           productId1,
  *           productId2,
@@ -31,10 +31,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(ids.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeletePriceListProductsPrices } from "medusa-react"
+ *       import { useAdminDeletePriceListProductsPrices } from "ninja-react"
  *
  *       type Props = {
  *         priceListId: string
@@ -66,7 +66,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/price-lists/{id}/products/prices/batch' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "product_ids": [

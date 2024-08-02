@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from "jsonwebtoken"
 import CustomerService from "../../../../services/customer"
 import { validator } from "../../../../utils/validator"
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 /**
  * @oas [post] /store/customers/password-reset
@@ -14,7 +14,7 @@ import { MedusaError } from "medusa-core-utils"
  *  you must create a new one."
  * externalDocs:
  *   description: "How to reset password"
- *   url: "https://docs.medusajs.com/modules/customers/storefront/implement-customer-profiles#reset-password"
+ *   url: "https://docs.ninjajs.com/modules/customers/storefront/implement-customer-profiles#reset-password"
  * requestBody:
  *   content:
  *     application/json:
@@ -26,9 +26,9 @@ import { MedusaError } from "medusa-core-utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.customers.resetPassword({
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.customers.resetPassword({
  *         email: "user@example.com",
  *         password: "supersecret",
  *         token: "supersecrettoken"
@@ -90,8 +90,8 @@ export default async (req, res) => {
     !decodedToken ||
     customer.id !== (decodedToken as JwtPayload)?.customer_id
   ) {
-    throw new MedusaError(
-      MedusaError.Types.UNAUTHORIZED,
+    throw new NinjaError(
+      NinjaError.Types.UNAUTHORIZED,
       "Invalid or expired password reset token"
     )
   }

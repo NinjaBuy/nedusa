@@ -1,4 +1,4 @@
-import { AnalyticsConfig } from "@medusajs/medusa"
+import { AnalyticsConfig } from "@ninjajs/ninja"
 import { DataSource } from "typeorm"
 
 export type AnalyticsConfigData = {

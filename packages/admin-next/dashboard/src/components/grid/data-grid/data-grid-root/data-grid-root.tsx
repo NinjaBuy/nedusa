@@ -1,4 +1,4 @@
-import { clx } from "@medusajs/ui"
+import { clx } from "@ninjajs/ui"
 import {
   ColumnDef,
   Row,

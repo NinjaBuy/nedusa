@@ -6,7 +6,7 @@ import { Customer } from "../models/customer"
 import { ProviderTaxLine, TaxServiceRate } from "../types/tax-service"
 import { LineAllocationsMap } from "../types/totals"
 import { TransactionBaseService } from "./transaction-base-service"
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 
 /**
  * A shipping method and the tax rates configured to apply to the
@@ -73,11 +73,11 @@ export type TaxCalculationContext = {
 /**
  * ## Overview
  *
- * A tax provider is used to retrieve the tax lines in a cart. The Medusa backend provides a default `system` provider. You can create your own tax provider,
- * either in a plugin or directly in your Medusa backend, then use it in any region.
+ * A tax provider is used to retrieve the tax lines in a cart. The Ninja backend provides a default `system` provider. You can create your own tax provider,
+ * either in a plugin or directly in your Ninja backend, then use it in any region.
  *
  * A tax provider class is defined in a TypeScript or JavaScript file under the `src/services` directory and the class must extend the
- * `AbstractTaxService` class imported from `@medusajs/medusa`. The file's name is the tax provider's class name as a slug and without the word `Service`.
+ * `AbstractTaxService` class imported from `@ninjajs/ninja`. The file's name is the tax provider's class name as a slug and without the word `Service`.
  *
  * For example, you can create the file `src/services/my-tax.ts` with the following content:
  *
@@ -87,10 +87,10 @@ export type TaxCalculationContext = {
  *   ItemTaxCalculationLine,
  *   ShippingTaxCalculationLine,
  *   TaxCalculationContext,
- * } from "@medusajs/medusa"
+ * } from "@ninjajs/ninja"
  * import {
  *   ProviderTaxLine,
- * } from "@medusajs/medusa/dist/types/tax-service"
+ * } from "@ninjajs/ninja/dist/types/tax-service"
  *
  * class MyTaxService extends AbstractTaxService {
  *   async getTaxLines(
@@ -111,7 +111,7 @@ export type TaxCalculationContext = {
  *
  * The `TaxProvider` entity has 2 properties: `identifier` and `is_installed`. The `identifier` property in the tax provider service is used when the tax provider is added to the database.
  *
- * The value of this property is also used to reference the tax provider throughout Medusa. For example, it is used to [change the tax provider](https://docs.medusajs.com/modules/taxes/admin/manage-tax-settings#change-tax-provider-of-a-region) to a region.
+ * The value of this property is also used to reference the tax provider throughout Ninja. For example, it is used to [change the tax provider](https://docs.ninjajs.com/modules/taxes/admin/manage-tax-settings#change-tax-provider-of-a-region) to a region.
  *
  * ```ts title="src/services/my-tax.ts"
  * class MyTaxService extends AbstractTaxService {
@@ -135,7 +135,7 @@ export interface ITaxService {
    * the `item_id` property, then it's a line item tax line.
    *
    * @example
-   * An example of how this method is implemented in the `system` provider implemented in the Medusa backend:
+   * An example of how this method is implemented in the `system` provider implemented in the Ninja backend:
    *
    * ```ts
    * // ...
@@ -201,17 +201,17 @@ export abstract class AbstractTaxService
   }
 
   /**
-   * You can use the `constructor` of your tax provider to access the different services in Medusa through dependency injection.
+   * You can use the `constructor` of your tax provider to access the different services in Ninja through dependency injection.
    *
    * You can also use the constructor to initialize your integration with the third-party provider. For example, if you use a client to connect to the third-party provider’s APIs, you can initialize it in the constructor and use it in other methods in the service.
-   * Additionally, if you’re creating your tax provider as an external plugin to be installed on any Medusa backend and you want to access the options added for the plugin, you can access it in the constructor.
+   * Additionally, if you’re creating your tax provider as an external plugin to be installed on any Ninja backend and you want to access the options added for the plugin, you can access it in the constructor.
    *
-   * @param {Record<string, unknown>} container - An instance of `MedusaContainer` that allows you to access other resources, such as services, in your Medusa backend.
+   * @param {Record<string, unknown>} container - An instance of `NinjaContainer` that allows you to access other resources, such as services, in your Ninja backend.
    * @param {Record<string, unknown>} config - If this tax provider is created in a plugin, the plugin's options are passed in this parameter.
    *
    * @example
    * // ...
-   * import { LineItemService } from "@medusajs/medusa"
+   * import { LineItemService } from "@ninjajs/ninja"
    *
    * type InjectedDependencies = {
    *   lineItemService: LineItemService

@@ -1,4 +1,4 @@
-import type { PaymentStatus } from "@medusajs/medusa"
+import type { PaymentStatus } from "@ninjajs/ninja"
 import { useTranslation } from "react-i18next"
 import { getOrderPaymentStatus } from "../../../../../lib/order-helpers"
 import { StatusCell } from "../../common/status-cell"

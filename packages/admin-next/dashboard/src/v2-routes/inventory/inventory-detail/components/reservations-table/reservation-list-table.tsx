@@ -1,5 +1,5 @@
 import { DataTable } from "../../../../../components/table/data-table"
-import { InventoryNext } from "@medusajs/types"
+import { InventoryNext } from "@ninjajs/types"
 import { useDataTable } from "../../../../../hooks/use-data-table"
 import { useReservationItems } from "../../../../../hooks/api/reservations"
 import { useReservationTableColumn } from "./use-reservation-list-table-columns"

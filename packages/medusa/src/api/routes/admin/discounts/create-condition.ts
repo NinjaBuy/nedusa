@@ -31,11 +31,11 @@ import { FindParams } from "../../../../types/common"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       import { DiscountConditionOperator } from "@medusajs/medusa"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       import { DiscountConditionOperator } from "@ninjajs/ninja"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.discounts.createCondition(discountId, {
+ *       ninja.admin.discounts.createCondition(discountId, {
  *         operator: DiscountConditionOperator.IN,
  *         products: [productId]
  *       })
@@ -43,11 +43,11 @@ import { FindParams } from "../../../../types/common"
  *         console.log(discount.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { DiscountConditionOperator } from "@medusajs/medusa"
- *       import { useAdminDiscountCreateCondition } from "medusa-react"
+ *       import { DiscountConditionOperator } from "@ninjajs/ninja"
+ *       import { useAdminDiscountCreateCondition } from "ninja-react"
  *
  *       type Props = {
  *         discountId: string
@@ -79,7 +79,7 @@ import { FindParams } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/discounts/{id}/conditions' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "operator": "in"

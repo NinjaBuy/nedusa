@@ -1,18 +1,18 @@
 import {
   StoreGetShippingOptionsParams,
   StoreShippingOptionsListRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Shipping Option API Routes](https://docs.medusajs.com/api/store#shipping-options). All its method
- * are available in the JS Client under the `medusa.shippingOptions` property.
+ * This class is used to send requests to [Store Shipping Option API Routes](https://docs.ninjajs.com/api/store#shipping-options). All its method
+ * are available in the JS Client under the `ninja.shippingOptions` property.
  * 
  * A shipping option is used to define the available shipping methods during checkout or when creating a return.
  * 
- * Related Guide: [Shipping Option architecture](https://docs.medusajs.com/modules/carts-and-checkout/shipping#shipping-option).
+ * Related Guide: [Shipping Option architecture](https://docs.ninjajs.com/modules/carts-and-checkout/shipping#shipping-option).
  */
 class ShippingOptionsResource extends BaseResource {
   /**
@@ -22,9 +22,9 @@ class ShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<StoreShippingOptionsListRes>} Resolves to the list of shipping options.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.shippingOptions.listCartOptions(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.shippingOptions.listCartOptions(cartId)
    * .then(({ shipping_options }) => {
    *   console.log(shipping_options.length);
    * })
@@ -41,9 +41,9 @@ class ShippingOptionsResource extends BaseResource {
    * @returns {ResponsePromise<StoreShippingOptionsListRes>} Resolves to the list of shipping options.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.shippingOptions.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.shippingOptions.list()
    * .then(({ shipping_options }) => {
    *   console.log(shipping_options.length);
    * })

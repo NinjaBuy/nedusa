@@ -1,4 +1,4 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import { useApi } from "../../../environment-helpers/use-api"
 import { AxiosInstance } from "axios"
 import adminSeeder from "../../../helpers/admin-seeder"
@@ -12,7 +12,7 @@ const { initDb, useDb } = require("../../../environment-helpers/use-db")
 const { getContainer } = require("../../../environment-helpers/use-container")
 const { useExpressServer } = require("../../../environment-helpers/use-api")
 
-const adminHeaders = { headers: { "x-medusa-access-token": "test_token" } }
+const adminHeaders = { headers: { "x-ninja-access-token": "test_token" } }
 
 jest.setTimeout(50000)
 

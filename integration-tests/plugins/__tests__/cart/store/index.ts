@@ -3,7 +3,7 @@ import {
   PriceList,
   ProductVariantMoneyAmount,
   Region,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import path from "path"
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
 import { useApi } from "../../../../environment-helpers/use-api"

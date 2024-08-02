@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs } from "react-router-dom"
 import { priceListsQueryKeys } from "../../../hooks/api/price-lists"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 import { PriceListRes } from "../../../types/api-responses"
 
 const pricingDetailQuery = (id: string) => ({

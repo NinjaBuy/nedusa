@@ -1,4 +1,4 @@
-import { TransactionHandlerType } from "@medusajs/utils"
+import { TransactionHandlerType } from "@ninjajs/utils"
 import { Transform } from "class-transformer"
 import { IsEnum, IsOptional, IsString } from "class-validator"
 import { FindParams, extendedFindParamsMixin } from "../../../../types/common"

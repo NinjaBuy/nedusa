@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { OrderEditStatus, PaymentCollectionStatus } from "../../../../models"
 import { OrderEditService, PaymentProviderService } from "../../../../services"
@@ -15,7 +15,7 @@ import {
  * description: "Complete an Order Edit and reflect its changes on the original order. Any additional payment required must be authorized first using the Payment Collection API Routes."
  * externalDocs:
  *   description: "How to handle order edits in a storefront"
- *   url: "https://docs.medusajs.com/modules/orders/storefront/handle-order-edits"
+ *   url: "https://docs.ninjajs.com/modules/orders/storefront/handle-order-edits"
  * parameters:
  *   - (path) id=* {string} The ID of the Order Edit.
  * x-codegen:
@@ -24,17 +24,17 @@ import {
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.orderEdits.complete(orderEditId)
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.orderEdits.complete(orderEditId)
  *       .then(({ order_edit }) => {
  *         console.log(order_edit.id)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useCompleteOrderEdit } from "medusa-react"
+ *       import { useCompleteOrderEdit } from "ninja-react"
  *
  *       type Props = {
  *         orderEditId: string
@@ -112,8 +112,8 @@ export default async (req: Request, res: Response) => {
         orderEdit.payment_collection.status !==
         PaymentCollectionStatus.AUTHORIZED
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Unable to complete an order edit if the payment is not authorized"
         )
       }
@@ -134,8 +134,8 @@ export default async (req: Request, res: Response) => {
     }
 
     if (orderEdit.status !== OrderEditStatus.REQUESTED) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         `Cannot complete an order edit with status ${orderEdit.status}`
       )
     }

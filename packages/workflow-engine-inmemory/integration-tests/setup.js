@@ -1,3 +1,3 @@
-import { JestUtils } from "medusa-test-utils"
+import { JestUtils } from "ninja-test-utils"
 
 JestUtils.afterAllHookDropDatabase()

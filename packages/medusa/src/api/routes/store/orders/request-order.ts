@@ -1,6 +1,6 @@
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 import { IsNotEmpty, IsString } from "class-validator"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { CustomerService, OrderService } from "../../../../services"
 import EventBusService from "../../../../services/event-bus"
 import TokenService from "../../../../services/token"
@@ -15,7 +15,7 @@ import { TokenEvents } from "../../../../types/token"
  *  the customer should receive instructions on how to finalize their claim ownership."
  * externalDocs:
  *   description: "How to implement claim-order flow in a storefront"
- *   url: "https://docs.medusajs.com/modules/orders/storefront/implement-claim-order"
+ *   url: "https://docs.ninjajs.com/modules/orders/storefront/implement-claim-order"
  * x-authenticated: true
  * requestBody:
  *   content:
@@ -28,10 +28,10 @@ import { TokenEvents } from "../../../../types/token"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.orders.requestCustomerOrders({
+ *       ninja.orders.requestCustomerOrders({
  *         order_ids,
  *       })
  *       .then(() => {
@@ -41,10 +41,10 @@ import { TokenEvents } from "../../../../types/token"
  *         // an error occurred
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useRequestOrderAccess } from "medusa-react"
+ *       import { useRequestOrderAccess } from "ninja-react"
  *
  *       const ClaimOrder = () => {
  *         const claimOrder = useRequestOrderAccess()
@@ -112,8 +112,8 @@ export default async (req, res) => {
   const customer = await customerService.retrieve(customerId)
 
   if (!customer.has_account) {
-    throw new MedusaError(
-      MedusaError.Types.UNAUTHORIZED,
+    throw new NinjaError(
+      NinjaError.Types.UNAUTHORIZED,
       "Customer does not have an account"
     )
   }

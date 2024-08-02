@@ -1,5 +1,5 @@
-import { BuildingTax } from "@medusajs/icons"
-import { Tooltip } from "@medusajs/ui"
+import { BuildingTax } from "@ninjajs/icons"
+import { Tooltip } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 type IncludesTaxTooltipProps = {

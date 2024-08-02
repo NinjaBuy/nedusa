@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { UserRoles } from "@medusajs/medusa"
-import { Alert, Button, Heading, Input, Text, toast } from "@medusajs/ui"
+import { UserRoles } from "@ninjajs/ninja"
+import { Alert, Button, Heading, Input, Text, toast } from "@ninjajs/ui"
 import { AnimatePresence, motion } from "framer-motion"
 import { Trans, useTranslation } from "react-i18next"
 import { Link, useSearchParams } from "react-router-dom"

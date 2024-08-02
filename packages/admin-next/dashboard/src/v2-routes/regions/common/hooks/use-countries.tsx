@@ -1,5 +1,5 @@
 import { json } from "react-router-dom"
-import { RegionCountryDTO } from "@medusajs/types"
+import { RegionCountryDTO } from "@ninjajs/types"
 
 const acceptedOrderKeys = ["name", "code"]
 

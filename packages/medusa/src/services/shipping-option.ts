@@ -1,5 +1,5 @@
-import { FlagRouter, promiseAll } from "@medusajs/utils"
-import { MedusaError, isDefined } from "medusa-core-utils"
+import { FlagRouter, promiseAll } from "@ninjajs/utils"
+import { NinjaError, isDefined } from "ninja-core-utils"
 import {
   Cart,
   Order,
@@ -82,8 +82,8 @@ class ShippingOptionService extends TransactionBaseService {
   ): Promise<ShippingOptionRequirement> {
     return await this.atomicPhase_(async (manager) => {
       if (!requirement.type) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "A Shipping Requirement must have a type field"
         )
       }
@@ -92,8 +92,8 @@ class ShippingOptionService extends TransactionBaseService {
         requirement.type !== "min_subtotal" &&
         requirement.type !== "max_subtotal"
       ) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Requirement type must be one of min_subtotal, max_subtotal"
         )
       }
@@ -107,8 +107,8 @@ class ShippingOptionService extends TransactionBaseService {
         : undefined
 
       if (!existingReq && requirement.id) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Shipping option requirement with id ${requirement.id} does not exist`
         )
       }
@@ -219,8 +219,8 @@ class ShippingOptionService extends TransactionBaseService {
     options: FindConfig<ShippingOption> = {}
   ): Promise<ShippingOption> {
     if (!isDefined(optionId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"optionId" must be defined`
       )
     }
@@ -232,8 +232,8 @@ class ShippingOptionService extends TransactionBaseService {
     const option = await soRepo.findOne(query)
 
     if (!option) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Shipping Option with ${optionId} was not found`
       )
     }
@@ -392,8 +392,8 @@ class ShippingOptionService extends TransactionBaseService {
     }
 
     if (cart.region_id !== option.region_id) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "The shipping option is not available in the cart's region"
       )
     }
@@ -414,8 +414,8 @@ class ShippingOptionService extends TransactionBaseService {
     )
 
     if (requirementResults.some((requirement) => !requirement)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "The Cart does not satisfy the shipping option's requirements"
       )
     }
@@ -452,8 +452,8 @@ class ShippingOptionService extends TransactionBaseService {
       option_.price_type === ShippingOptionPriceType.FLAT_RATE &&
       (option_.amount == null || option_.amount < 0)
     ) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Shipping options of type `flat_rate` must have an `amount`"
       )
     }
@@ -488,8 +488,8 @@ class ShippingOptionService extends TransactionBaseService {
           ({ id }) => id === option.provider_id
         )
       ) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "The fulfillment provider is not available in the provided region"
         )
       }
@@ -509,8 +509,8 @@ class ShippingOptionService extends TransactionBaseService {
       )
 
       if (!isValid) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "The fulfillment provider cannot validate the shipping option"
         )
       }
@@ -521,8 +521,8 @@ class ShippingOptionService extends TransactionBaseService {
           const validated = await this.validateRequirement_(r)
 
           if (acc.find((raw) => raw.type === validated.type)) {
-            throw new MedusaError(
-              MedusaError.Types.INVALID_DATA,
+            throw new NinjaError(
+              NinjaError.Types.INVALID_DATA,
               "Only one requirement of each type is allowed"
             )
           }
@@ -535,8 +535,8 @@ class ShippingOptionService extends TransactionBaseService {
                 (raw.type === "min_subtotal" && validated.amount < raw.amount)
             )
           ) {
-            throw new MedusaError(
-              MedusaError.Types.INVALID_DATA,
+            throw new NinjaError(
+              NinjaError.Types.INVALID_DATA,
               "Max. subtotal must be greater than Min. subtotal"
             )
           }
@@ -565,8 +565,8 @@ class ShippingOptionService extends TransactionBaseService {
       (priceType !== ShippingOptionPriceType.FLAT_RATE &&
         priceType !== ShippingOptionPriceType.CALCULATED)
     ) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "The price must be of type flat_rate or calculated"
       )
     }
@@ -577,8 +577,8 @@ class ShippingOptionService extends TransactionBaseService {
         data: option.data,
       })
       if (!canCalculate) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "The fulfillment provider cannot calculate prices for this option"
         )
       }
@@ -610,15 +610,15 @@ class ShippingOptionService extends TransactionBaseService {
       }
 
       if (update.region_id || update.provider_id || update.data) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Region and Provider cannot be updated after creation"
         )
       }
 
       if (isDefined(update.is_return)) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "is_return cannot be changed after creation"
         )
       }
@@ -629,8 +629,8 @@ class ShippingOptionService extends TransactionBaseService {
           const validated = await this.validateRequirement_(r, optionId)
 
           if (acc.find((raw) => raw.type === validated.type)) {
-            throw new MedusaError(
-              MedusaError.Types.INVALID_DATA,
+            throw new NinjaError(
+              NinjaError.Types.INVALID_DATA,
               "Only one requirement of each type is allowed"
             )
           }
@@ -643,8 +643,8 @@ class ShippingOptionService extends TransactionBaseService {
                 (raw.type === "min_subtotal" && validated.amount < raw.amount)
             )
           ) {
-            throw new MedusaError(
-              MedusaError.Types.INVALID_DATA,
+            throw new NinjaError(
+              NinjaError.Types.INVALID_DATA,
               "Max. subtotal must be greater than Min. subtotal"
             )
           }
@@ -741,8 +741,8 @@ class ShippingOptionService extends TransactionBaseService {
       const validatedReq = await this.validateRequirement_(requirement)
 
       if (option.requirements.find((r) => r.type === validatedReq.type)) {
-        throw new MedusaError(
-          MedusaError.Types.DUPLICATE_ERROR,
+        throw new NinjaError(
+          NinjaError.Types.DUPLICATE_ERROR,
           `A requirement with type: ${validatedReq.type} already exists`
         )
       }

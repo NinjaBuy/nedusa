@@ -1,7 +1,7 @@
-import { Spinner } from "@medusajs/icons"
+import { Spinner } from "@ninjajs/icons"
 import { Navigate, Outlet, useLocation } from "react-router-dom"
 
-import { useAdminGetSession } from "medusa-react"
+import { useAdminGetSession } from "ninja-react"
 import { SearchProvider } from "../../../providers/search-provider"
 import { SidebarProvider } from "../../../providers/sidebar-provider"
 

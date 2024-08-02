@@ -3,8 +3,8 @@ import {
   simpleRegionFactory,
 } from "../../../../factories"
 
-import { IPricingModuleService } from "@medusajs/types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { IPricingModuleService } from "@ninjajs/types"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 import adminSeeder from "../../../../helpers/admin-seeder"
 import { createDefaultRuleTypes } from "../../../helpers/create-default-rule-types"
 import { createVariantPriceSet } from "../../../helpers/create-variant-price-set"
@@ -13,15 +13,15 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe.skip("DELETE /admin/price-lists/:id/products/:productId/batch", () => {

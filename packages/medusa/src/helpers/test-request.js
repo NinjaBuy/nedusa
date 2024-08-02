@@ -2,12 +2,12 @@ import {
   moduleHelper,
   moduleLoader,
   ModulesDefinition,
-  registerMedusaModule,
-} from "@medusajs/modules-sdk"
+  registerNinjaModule,
+} from "@ninjajs/modules-sdk"
 import { asValue, createContainer } from "awilix"
 import express from "express"
 import jwt from "jsonwebtoken"
-import { MockManager } from "medusa-test-utils"
+import { MockManager } from "ninja-test-utils"
 import querystring from "querystring"
 import "reflect-metadata"
 import supertest from "supertest"
@@ -32,7 +32,7 @@ const clientSessionOpts = {
 
 const moduleResolutions = {}
 Object.entries(ModulesDefinition).forEach(([moduleKey, module]) => {
-  moduleResolutions[moduleKey] = registerMedusaModule(
+  moduleResolutions[moduleKey] = registerNinjaModule(
     moduleKey,
     module.defaultModuleDeclaration,
     undefined,

@@ -1,6 +1,6 @@
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import { asClass, asFunction, asValue, createContainer } from "awilix"
-import { MockManager, MockRepository } from "medusa-test-utils"
+import { MockManager, MockRepository } from "ninja-test-utils"
 import {
     AbstractPaymentProcessor,
     PaymentProcessorContext,
@@ -127,7 +127,7 @@ export const defaultPaymentSessionInputData = {
   cart: {
     context: {},
     id: "cart-test",
-    email: "test@medusajs.com",
+    email: "test@ninjajs.com",
     shipping_address: {},
     shipping_methods: [],
     billing_address: {

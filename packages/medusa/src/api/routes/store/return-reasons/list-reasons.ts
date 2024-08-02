@@ -15,17 +15,17 @@ import ReturnReasonService from "../../../../services/return-reason"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.returnReasons.list()
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.returnReasons.list()
  *       .then(({ return_reasons }) => {
  *         console.log(return_reasons.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useReturnReasons } from "medusa-react"
+ *       import { useReturnReasons } from "ninja-react"
  *
  *       const ReturnReasons = () => {
  *         const {

@@ -1,9 +1,9 @@
-import { MedusaError } from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
+import { NinjaError } from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
 import { refetchOrder } from "../helpers"
 import { defaultAdminOrderFields } from "../query-config"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const draftOrder = await refetchOrder(
     req.params.id,
     req.scope,
@@ -11,8 +11,8 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
   )
 
   if (!draftOrder) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Draft order with id: ${req.params.id} was not found`
     )
   }

@@ -1,12 +1,12 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 export const refetchCategory = async (
   categoryId: string,
-  scope: MedusaContainer,
+  scope: NinjaContainer,
   fields: string[],
   filterableFields: Record<string, any> = {}
 ) => {

@@ -1,6 +1,6 @@
-import { PlusMini, Trash } from "@medusajs/icons"
-import { Checkbox, Container, Heading, toast, usePrompt } from "@medusajs/ui"
-import { RegionCountryDTO, RegionDTO } from "@medusajs/types"
+import { PlusMini, Trash } from "@ninjajs/icons"
+import { Checkbox, Container, Heading, toast, usePrompt } from "@ninjajs/ui"
+import { RegionCountryDTO, RegionDTO } from "@ninjajs/types"
 import {
   ColumnDef,
   RowSelectionState,

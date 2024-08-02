@@ -1,4 +1,4 @@
-import { SearchTypes } from "@medusajs/types"
+import { SearchTypes } from "@ninjajs/types"
 import { Config } from "meilisearch"
 
 export const meilisearchErrorCodes = {

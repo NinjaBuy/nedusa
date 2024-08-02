@@ -69,25 +69,25 @@ const createReturnableOrder = async (dbConnection, options) => {
 
 jest.setTimeout(30000)
 
-describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
-  let medusaProcess
+describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   afterEach(async () => {
@@ -117,7 +117,7 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
       },
       {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       }
     )
@@ -163,7 +163,7 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
       },
       {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       }
     )
@@ -208,7 +208,7 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
       },
       {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       }
     )
@@ -253,7 +253,7 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
       },
       {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       }
     )

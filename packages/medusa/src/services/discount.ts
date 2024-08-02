@@ -1,7 +1,7 @@
-import { FlagRouter, promiseAll } from "@medusajs/utils"
+import { FlagRouter, promiseAll } from "@ninjajs/utils"
 import { parse, toSeconds } from "iso8601-duration"
 import { isEmpty, omit } from "lodash"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import {
   DeepPartial,
   EntityManager,
@@ -111,8 +111,8 @@ class DiscountService extends TransactionBaseService {
     discountRule: T
   ): T {
     if (discountRule.type === "percentage" && discountRule.value > 100) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Discount value above 100 is not allowed when type is percentage"
       )
     }
@@ -194,8 +194,8 @@ class DiscountService extends TransactionBaseService {
         discount?.regions.length > 1 &&
         discount?.rule?.type === "fixed"
       ) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Fixed discounts can have one region"
         )
       }
@@ -208,8 +208,8 @@ class DiscountService extends TransactionBaseService {
       }
 
       if (!discount.regions?.length) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Discount must have at least 1 region"
         )
       }
@@ -253,8 +253,8 @@ class DiscountService extends TransactionBaseService {
     config: FindConfig<Discount> = {}
   ): Promise<Discount> {
     if (!isDefined(discountId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"discountId" must be defined`
       )
     }
@@ -267,8 +267,8 @@ class DiscountService extends TransactionBaseService {
     const discount = await discountRepo.findOne(query)
 
     if (!discount) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Discount with id ${discountId} was not found`
       )
     }
@@ -296,8 +296,8 @@ class DiscountService extends TransactionBaseService {
     const discount = await discountRepo.findOne(query)
 
     if (!discount) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Discounts with code ${discountCode} was not found`
       )
     }
@@ -327,8 +327,8 @@ class DiscountService extends TransactionBaseService {
     const discounts = await discountRepo.find(query)
 
     if (discounts?.length !== discountCodes.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Discounts with code [${normalizedCodes.join(", ")}] was not found`
       )
     }
@@ -365,16 +365,16 @@ class DiscountService extends TransactionBaseService {
 
       if (rest.ends_at) {
         if (discount.starts_at >= new Date(rest.ends_at)) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `"ends_at" must be greater than "starts_at"`
           )
         }
       }
 
       if (regions && regions?.length > 1 && discount.rule.type === "fixed") {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Fixed discounts can have one region"
         )
       }
@@ -445,15 +445,15 @@ class DiscountService extends TransactionBaseService {
       const discount = await this.retrieve(discountId)
 
       if (!discount.is_dynamic) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Discount must be set to dynamic"
         )
       }
 
       if (!data.code) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Discount must have a code"
         )
       }
@@ -522,8 +522,8 @@ class DiscountService extends TransactionBaseService {
       }
 
       if (discount.regions?.length === 1 && discount.rule.type === "fixed") {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Fixed discounts can have one region"
         )
       }
@@ -685,36 +685,36 @@ class DiscountService extends TransactionBaseService {
       await promiseAll(
         discounts.map(async (disc) => {
           if (this.hasReachedLimit(disc)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Discount ${disc.code} has been used maximum allowed times`
             )
           }
 
           if (this.hasNotStarted(disc)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Discount ${disc.code} is not valid yet`
             )
           }
 
           if (this.hasExpired(disc)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Discount ${disc.code} is expired`
             )
           }
 
           if (this.isDisabled(disc)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `The discount code ${disc.code} is disabled`
             )
           }
 
           if (!cart.customer_id && this.hasCustomersGroupCondition(disc)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Discount ${disc.code} is only valid for specific customer`
             )
           }
@@ -724,8 +724,8 @@ class DiscountService extends TransactionBaseService {
             cart.region_id
           )
           if (!isValidForRegion) {
-            throw new MedusaError(
-              MedusaError.Types.INVALID_DATA,
+            throw new NinjaError(
+              NinjaError.Types.INVALID_DATA,
               "The discount is not available in current region"
             )
           }
@@ -737,8 +737,8 @@ class DiscountService extends TransactionBaseService {
             )
 
             if (!canApplyForCustomer) {
-              throw new MedusaError(
-                MedusaError.Types.NOT_ALLOWED,
+              throw new NinjaError(
+                NinjaError.Types.NOT_ALLOWED,
                 `Discount ${disc.code} is not valid for customer`
               )
             }

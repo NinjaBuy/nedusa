@@ -8,11 +8,11 @@ import {
   PrimaryKey,
   Property,
 } from "@mikro-orm/core"
-import { DALUtils, isDefined } from "@medusajs/utils"
+import { DALUtils, isDefined } from "@ninjajs/utils"
 
 import { InventoryItem } from "./inventory-item"
-import { createPsqlIndexStatementHelper } from "@medusajs/utils"
-import { generateEntityId } from "@medusajs/utils"
+import { createPsqlIndexStatementHelper } from "@ninjajs/utils"
+import { generateEntityId } from "@ninjajs/utils"
 
 const InventoryLevelDeletedAtIndex = createPsqlIndexStatementHelper({
   tableName: "inventory_level",

@@ -1,16 +1,16 @@
-import { ModuleRegistrationName, Modules } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName, Modules } from "@ninjajs/modules-sdk"
 import {
   ISalesChannelModuleService,
   IStockLocationService,
-} from "@medusajs/types"
-import { remoteQueryObjectFromString } from "@medusajs/utils"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+} from "@ninjajs/types"
+import { remoteQueryObjectFromString } from "@ninjajs/utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ getContainer }) => {
     describe("Cart links", () => {

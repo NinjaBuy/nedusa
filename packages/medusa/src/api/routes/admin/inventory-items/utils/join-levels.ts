@@ -3,8 +3,8 @@ import {
   IInventoryService,
   InventoryItemDTO,
   InventoryLevelDTO,
-} from "@medusajs/types"
-import { promiseAll } from "@medusajs/utils"
+} from "@ninjajs/types"
+import { promiseAll } from "@ninjajs/utils"
 import { LevelWithAvailability, ResponseInventoryItem } from "../../variants"
 
 export const buildLevelsByInventoryItemId = (

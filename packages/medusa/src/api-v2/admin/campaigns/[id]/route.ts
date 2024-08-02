@@ -1,19 +1,19 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import {
   deleteCampaignsWorkflow,
   updateCampaignsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 
 import { refetchCampaign } from "../helpers"
 import { AdminUpdateCampaignType } from "../validators"
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const campaign = await refetchCampaign(
     req.params.id,
@@ -22,8 +22,8 @@ export const GET = async (
   )
 
   if (!campaign) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Campaign with id: ${req.params.id} was not found`
     )
   }
@@ -32,8 +32,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateCampaignType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdateCampaignType>,
+  res: NinjaResponse
 ) => {
   const updateCampaigns = updateCampaignsWorkflow(req.scope)
   const campaignsData = [
@@ -61,8 +61,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const deleteCampaigns = deleteCampaignsWorkflow(req.scope)

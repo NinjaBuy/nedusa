@@ -6,7 +6,7 @@ import {
   StatusBadge,
   Text,
   clx,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import {
   TransactionStepState,

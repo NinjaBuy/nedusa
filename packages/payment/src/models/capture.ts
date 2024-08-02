@@ -1,9 +1,9 @@
-import { BigNumberRawValue } from "@medusajs/types"
+import { BigNumberRawValue } from "@ninjajs/types"
 import {
   BigNumber,
   MikroOrmBigNumberProperty,
   generateEntityId,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   BeforeCreate,
   Entity,

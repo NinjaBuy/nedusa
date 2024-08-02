@@ -1,4 +1,4 @@
-import { AbstractSearchService } from "@medusajs/utils"
+import { AbstractSearchService } from "@ninjajs/utils"
 import { EntityManager } from "typeorm"
 import { Logger } from "../types/global"
 

@@ -1,4 +1,4 @@
-import { FlagRouter, wrapHandler } from "@medusajs/utils"
+import { FlagRouter, wrapHandler } from "@ninjajs/utils"
 import { Router } from "express"
 import "reflect-metadata"
 import { Region } from "../../../.."

@@ -1,4 +1,4 @@
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 import FormData from "form-data"
 import fs from "fs/promises"
 import path from "path"
@@ -26,9 +26,9 @@ const getUploadReq = (files: { name: string; content: string }[]) => {
   }
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer

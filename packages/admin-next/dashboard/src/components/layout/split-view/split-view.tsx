@@ -1,4 +1,4 @@
-import { Button, clx } from "@medusajs/ui"
+import { Button, clx } from "@ninjajs/ui"
 import * as Dialog from "@radix-ui/react-dialog"
 import {
   ComponentPropsWithoutRef,

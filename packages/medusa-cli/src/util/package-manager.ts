@@ -1,7 +1,7 @@
 import ConfigStore from "configstore"
 import reporter from "../reporter"
 
-const config = new ConfigStore(`medusa`, {}, { globalConfigPath: true })
+const config = new ConfigStore(`ninja`, {}, { globalConfigPath: true })
 
 const packageMangerConfigKey = `cli.packageManager`
 

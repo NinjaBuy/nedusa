@@ -1,21 +1,21 @@
 import {
   deletePricingRuleTypesWorkflow,
   updatePricingRuleTypesWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import {
   AdminGetPricingRuleTypeParamsType,
   AdminUpdatePricingRuleTypeType,
 } from "../../validators"
 import { refetchRuleType } from "../../helpers"
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetPricingRuleTypeParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetPricingRuleTypeParamsType>,
+  res: NinjaResponse
 ) => {
   const ruleType = await refetchRuleType(
     req.params.id,
@@ -24,8 +24,8 @@ export const GET = async (
   )
 
   if (!ruleType) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `RuleType with id: ${req.params.id} was not found`
     )
   }
@@ -34,8 +34,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdatePricingRuleTypeType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdatePricingRuleTypeType>,
+  res: NinjaResponse
 ) => {
   const workflow = updatePricingRuleTypesWorkflow(req.scope)
   const { result, errors } = await workflow.run({
@@ -61,8 +61,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const workflow = deletePricingRuleTypesWorkflow(req.scope)

@@ -3,14 +3,14 @@ import {
   AdminPaymentCollectionDeleteRes,
   AdminPaymentCollectionsRes,
   AdminUpdatePaymentCollectionsReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 import qs from "qs"
 
 /**
- * This class is used to send requests to [Admin Payment Collection API Routes](https://docs.medusajs.com/api/admin#payment-collections). All its method
- * are available in the JS Client under the `medusa.admin.paymentCollections` property.
+ * This class is used to send requests to [Admin Payment Collection API Routes](https://docs.ninjajs.com/api/admin#payment-collections). All its method
+ * are available in the JS Client under the `ninja.admin.paymentCollections` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
@@ -28,10 +28,10 @@ class AdminPaymentCollectionsResource extends BaseResource {
    * A simple example that retrieves a payment collection by its ID:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.paymentCollections.retrieve(paymentCollectionId)
+   * ninja.admin.paymentCollections.retrieve(paymentCollectionId)
    * .then(({ payment_collection }) => {
    *     console.log(payment_collection.id)
    *   })
@@ -40,10 +40,10 @@ class AdminPaymentCollectionsResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.paymentCollections.retrieve(paymentCollectionId, {
+   * ninja.admin.paymentCollections.retrieve(paymentCollectionId, {
    *   expand: "currency"
    * })
    * .then(({ payment_collection }) => {
@@ -74,10 +74,10 @@ class AdminPaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentCollectionsRes>} Resolves to the payment collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.paymentCollections.update(paymentCollectionId, {
+   * ninja.admin.paymentCollections.update(paymentCollectionId, {
    *   description
    * })
    * .then(({ payment_collection }) => {
@@ -100,10 +100,10 @@ class AdminPaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentCollectionDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.paymentCollections.delete(paymentCollectionId)
+   * ninja.admin.paymentCollections.delete(paymentCollectionId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -123,10 +123,10 @@ class AdminPaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentCollectionsRes>} Resolves to the payment collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.paymentCollections.markAsAuthorized(paymentCollectionId)
+   * ninja.admin.paymentCollections.markAsAuthorized(paymentCollectionId)
    * .then(({ payment_collection }) => {
    *   console.log(payment_collection.id)
    * })

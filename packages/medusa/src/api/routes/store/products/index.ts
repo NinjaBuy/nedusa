@@ -2,7 +2,7 @@ import "reflect-metadata"
 
 import middlewares, { transformStoreQuery } from "../../../middlewares"
 
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import { Router } from "express"
 import { Product } from "../../../.."
 import { PaginatedResponse } from "../../../../types/common"
@@ -252,7 +252,7 @@ export type StoreProductsRes = {
  *       - hits
  *     properties:
  *       hits:
- *         description: "Array of search results. The format of the items depends on the search engine installed on the Medusa backend."
+ *         description: "Array of search results. The format of the items depends on the search engine installed on the Ninja backend."
  *         type: array
  *   - type: object
  */

@@ -1,4 +1,4 @@
-import { Button, Text } from "@medusajs/ui"
+import { Button, Text } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { ListSummary } from "../../../../../components/common/list-summary"
 import { ConditionEntitiesValues } from "../../../common/types"

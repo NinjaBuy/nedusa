@@ -2,14 +2,14 @@ import {
   StoreCollectionsRes,
   StoreCollectionsListRes,
   StoreGetCollectionsParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Product Collection API Routes](https://docs.medusajs.com/api/store#product-collections). All its method
- * are available in the JS Client under the `medusa.collections` property.
+ * This class is used to send requests to [Store Product Collection API Routes](https://docs.ninjajs.com/api/store#product-collections). All its method
+ * are available in the JS Client under the `ninja.collections` property.
  * 
  * A product collection is used to organize products for different purposes such as marketing or discount purposes. For example, you can create a Summer Collection.
  * Using the methods in this class, you can list or retrieve a collection's details and products.
@@ -22,9 +22,9 @@ class CollectionsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCollectionsRes>} Resolves to the collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.collections.retrieve(collectionId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.collections.retrieve(collectionId)
    * .then(({ collection }) => {
    *   console.log(collection.id);
    * })
@@ -45,9 +45,9 @@ class CollectionsResource extends BaseResource {
    * To list product collections:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.collections.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.collections.list()
    * .then(({ collections, limit, offset, count }) => {
    *   console.log(collections.length);
    * })
@@ -56,9 +56,9 @@ class CollectionsResource extends BaseResource {
    * By default, only the first `10` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.collections.list({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.collections.list({
    *   limit,
    *   offset
    * })

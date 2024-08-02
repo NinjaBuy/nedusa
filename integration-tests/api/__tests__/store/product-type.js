@@ -1,6 +1,6 @@
 const path = require("path")
 
-const { IdMap } = require("medusa-test-utils")
+const { IdMap } = require("ninja-test-utils")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -12,26 +12,26 @@ const {
   AllocationType,
   DiscountConditionType,
   DiscountConditionOperator,
-} = require("@medusajs/medusa")
+} = require("@ninjajs/ninja")
 const { simpleDiscountFactory } = require("../../../factories")
 
 jest.setTimeout(50000)
 
 describe("/store/product-types", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /store/product-types", () => {

@@ -1,4 +1,4 @@
-import { CreateProductDTO, CreateProductVariantDTO } from "@medusajs/types"
+import { CreateProductDTO, CreateProductVariantDTO } from "@ninjajs/types"
 import * as zod from "zod"
 
 export const CreateProductSchema = zod.object({

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { EOL } from "os"
-import { ModulesSdkUtils } from "@medusajs/utils"
-import { Modules } from "@medusajs/modules-sdk"
+import { ModulesSdkUtils } from "@ninjajs/utils"
+import { Modules } from "@ninjajs/modules-sdk"
 
 import * as PaymentModels from "@models"
 
@@ -16,7 +16,7 @@ export default (async () => {
   config()
   if (!path) {
     throw new Error(
-      `filePath is required.${EOL}Example: medusa-payment-seed <filePath>`
+      `filePath is required.${EOL}Example: ninja-payment-seed <filePath>`
     )
   }
 

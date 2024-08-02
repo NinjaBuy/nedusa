@@ -1,10 +1,10 @@
 import {
   deleteSalesChannelsWorkflow,
   updateSalesChannelsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import {
   AdminGetSalesChannelParamsType,
@@ -13,8 +13,8 @@ import {
 import { refetchSalesChannel } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetSalesChannelParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetSalesChannelParamsType>,
+  res: NinjaResponse
 ) => {
   const salesChannel = await refetchSalesChannel(
     req.params.id,
@@ -26,8 +26,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateSalesChannelType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdateSalesChannelType>,
+  res: NinjaResponse
 ) => {
   const { errors } = await updateSalesChannelsWorkflow(req.scope).run({
     input: {
@@ -50,8 +50,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
 

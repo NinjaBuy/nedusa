@@ -1,13 +1,13 @@
-import { AdminGetPromotionRulesRes } from "@medusajs/types"
+import { AdminGetPromotionRulesRes } from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
   RuleOperator,
   RuleType,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import {
   operatorsMap,
@@ -17,8 +17,8 @@ import {
 } from "../../utils"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const { id, rule_type: ruleType } = req.params
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

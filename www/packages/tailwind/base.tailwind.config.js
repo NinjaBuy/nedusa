@@ -3,7 +3,7 @@ import presets from "./theme-presets"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [require("@medusajs/ui-preset")],
+  presets: [require("@ninjajs/ui-preset")],
   darkMode: ["class", `[data-theme="dark"]`], // hooks into docusaurus' dark mode settings
   // TODO: remove anything that can be replaced by the
   // UI preset
@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: {
         /* docs colors */
-        medusa: {
+        ninja: {
           bg: {
             subtle: {
               DEFAULT: "var(--docs-bg-subtle)",
@@ -255,8 +255,8 @@ module.exports = {
         "button-danger-pressed-dark":
           "linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.14) 100%)",
         "code-fade": `linear-gradient(90deg, ${theme(
-          "colors.medusa.code.bg.base.transparent"
-        )}, ${theme("colors.medusa.code.bg.base.DEFAULT")} 24px)`,
+          "colors.ninja.code.bg.base.transparent"
+        )}, ${theme("colors.ninja.code.bg.base.DEFAULT")} 24px)`,
         fade: "linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))",
         "fade-dark":
           "linear-gradient(to top, rgba(27, 27, 31, 1), rgba(27, 27, 31, 0))",

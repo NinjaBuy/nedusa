@@ -1,5 +1,5 @@
-import { MedusaModule, RemoteQuery } from "@medusajs/modules-sdk"
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaModule, RemoteQuery } from "@ninjajs/modules-sdk"
+import { NinjaContainer } from "@ninjajs/types"
 
 function hasPagination(options: { [attr: string]: unknown }): boolean {
   if (!options) {
@@ -18,14 +18,14 @@ function buildPagination(options, count) {
   }
 }
 
-export function remoteQueryFetchData(container: MedusaContainer) {
+export function remoteQueryFetchData(container: NinjaContainer) {
   return async (expand, keyField, ids, relationship) => {
     const serviceConfig = expand.serviceConfig
     const service = container.resolve(serviceConfig.serviceName, {
       allowUnregistered: true,
     })
 
-    if (MedusaModule.isInstalled(serviceConfig.serviceName)) {
+    if (NinjaModule.isInstalled(serviceConfig.serviceName)) {
       return
     }
 

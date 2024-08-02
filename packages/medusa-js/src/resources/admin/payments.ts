@@ -3,14 +3,14 @@ import {
   AdminPostPaymentRefundsReq,
   AdminRefundRes,
   GetPaymentsParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Payment API Routes](https://docs.medusajs.com/api/admin#payments). All its method
- * are available in the JS Client under the `medusa.admin.payments` property.
+ * This class is used to send requests to [Admin Payment API Routes](https://docs.ninjajs.com/api/admin#payments). All its method
+ * are available in the JS Client under the `ninja.admin.payments` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
@@ -25,10 +25,10 @@ class AdminPaymentsResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentRes>} Resolves to the payment's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.payments.retrieve(paymentId)
+   * ninja.admin.payments.retrieve(paymentId)
    * .then(({ payment }) => {
    *   console.log(payment.id);
    * })
@@ -55,10 +55,10 @@ class AdminPaymentsResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentRes>} Resolves to the payment's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.payments.capturePayment(paymentId)
+   * ninja.admin.payments.capturePayment(paymentId)
    * .then(({ payment }) => {
    *   console.log(payment.id);
    * })
@@ -79,11 +79,11 @@ class AdminPaymentsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRefundRes>} Resolves to the refund's details.
    * 
    * @example
-   * import { RefundReason } from "@medusajs/medusa";
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import { RefundReason } from "@ninjajs/ninja";
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.payments.refundPayment(paymentId, {
+   * ninja.admin.payments.refundPayment(paymentId, {
    *   amount: 1000,
    *   reason: RefundReason.RETURN,
    *   note: "Do not like it",

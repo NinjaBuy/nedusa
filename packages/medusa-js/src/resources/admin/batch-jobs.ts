@@ -3,37 +3,37 @@ import {
   AdminBatchJobRes,
   AdminGetBatchParams,
   AdminPostBatchesReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 import { stringifyNullProperties } from "../../utils"
 
 /**
- * This class is used to send requests to [Admin Batch Job API Routes](https://docs.medusajs.com/api/admin#batch-jobs). All its method
- * are available in the JS Client under the `medusa.admin.batchJobs` property.
+ * This class is used to send requests to [Admin Batch Job API Routes](https://docs.ninjajs.com/api/admin#batch-jobs). All its method
+ * are available in the JS Client under the `ninja.admin.batchJobs` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
- * A batch job is a task that is performed by the Medusa backend asynchronusly. For example, the Import Product feature is implemented using batch jobs.
+ * A batch job is a task that is performed by the Ninja backend asynchronusly. For example, the Import Product feature is implemented using batch jobs.
  * The methods in this class allow admins to manage the batch jobs and their state.
  * 
- * Related Guide: [How to import products](https://docs.medusajs.com/modules/products/admin/import-products).
+ * Related Guide: [How to import products](https://docs.ninjajs.com/modules/products/admin/import-products).
  */
 class AdminBatchJobsResource extends BaseResource {
 
   /**
-   * Create a Batch Job to be executed asynchronously in the Medusa backend. If `dry_run` is set to `true`, the batch job will not be executed until the it is confirmed,
+   * Create a Batch Job to be executed asynchronously in the Ninja backend. If `dry_run` is set to `true`, the batch job will not be executed until the it is confirmed,
    * which can be done using the {@link confirm} method.
    * @param payload - The data of the batch job to create.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise<AdminBatchJobRes>} Resolves to the batch job's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.create({
+   * ninja.admin.batchJobs.create({
    *   type: 'product-export',
    *   context: {},
    *   dry_run: false
@@ -59,10 +59,10 @@ class AdminBatchJobsResource extends BaseResource {
    * To list batch jobs:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.list()
+   * ninja.admin.batchJobs.list()
    * .then(({ batch_jobs, limit, offset, count }) => {
    *   console.log(batch_jobs.length)
    * })
@@ -71,10 +71,10 @@ class AdminBatchJobsResource extends BaseResource {
    * To specify relations that should be retrieved within the batch jobs:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.list({
+   * ninja.admin.batchJobs.list({
    *   expand: "created_by_user"
    * })
    * .then(({ batch_jobs, limit, offset, count }) => {
@@ -85,10 +85,10 @@ class AdminBatchJobsResource extends BaseResource {
    * By default, only the first `10` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.list({
+   * ninja.admin.batchJobs.list({
    *   expand: "created_by_user",
    *   limit,
    *   offset
@@ -119,10 +119,10 @@ class AdminBatchJobsResource extends BaseResource {
    * @returns {ResponsePromise<AdminBatchJobRes>} Resolves to the batch job's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.cancel(batchJobId)
+   * ninja.admin.batchJobs.cancel(batchJobId)
    * .then(({ batch_job }) => {
    *   console.log(batch_job.id);
    * })
@@ -142,10 +142,10 @@ class AdminBatchJobsResource extends BaseResource {
    * @returns {ResponsePromise<AdminBatchJobRes>} Resolves to the batch job's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.confirm(batchJobId)
+   * ninja.admin.batchJobs.confirm(batchJobId)
    * .then(({ batch_job }) => {
    *   console.log(batch_job.id);
    * })
@@ -165,10 +165,10 @@ class AdminBatchJobsResource extends BaseResource {
    * @returns {ResponsePromise<AdminBatchJobRes>} Resolves to the batch job's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.batchJobs.retrieve(batchJobId)
+   * ninja.admin.batchJobs.retrieve(batchJobId)
    * .then(({ batch_job }) => {
    *   console.log(batch_job.id);
    * })

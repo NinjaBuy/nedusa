@@ -1,7 +1,7 @@
-import { Context } from "@medusajs/types"
+import { Context } from "@ninjajs/types"
 import { InventoryLevel } from "@models"
 import { SqlEntityManager } from "@mikro-orm/postgresql"
-import { mikroOrmBaseRepositoryFactory } from "@medusajs/utils"
+import { mikroOrmBaseRepositoryFactory } from "@ninjajs/utils"
 
 export class InventoryLevelRepository extends mikroOrmBaseRepositoryFactory(
   InventoryLevel

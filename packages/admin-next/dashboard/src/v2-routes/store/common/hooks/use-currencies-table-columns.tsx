@@ -1,4 +1,4 @@
-import { CurrencyDTO } from "@medusajs/types"
+import { CurrencyDTO } from "@ninjajs/types"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"

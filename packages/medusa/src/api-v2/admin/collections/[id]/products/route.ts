@@ -1,14 +1,14 @@
-import { batchLinkProductsToCollectionWorkflow } from "@medusajs/core-flows"
+import { batchLinkProductsToCollectionWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
-import { LinkMethodRequest } from "@medusajs/types/src"
+import { LinkMethodRequest } from "@ninjajs/types/src"
 import { refetchCollection } from "../../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<LinkMethodRequest>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<LinkMethodRequest>,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const { add = [], remove = [] } = req.validatedBody

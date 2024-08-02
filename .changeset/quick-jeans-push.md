@@ -1,6 +1,6 @@
 ---
-"medusa-react": patch
-"@medusajs/medusa": patch
+"ninja-react": patch
+"@ninjajs/ninja": patch
 ---
 
 feat(dashboard): added details page for promotions

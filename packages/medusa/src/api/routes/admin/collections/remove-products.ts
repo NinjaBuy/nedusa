@@ -23,10 +23,10 @@ import ProductCollectionService from "../../../../services/product-collection"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.collections.removeProducts(collectionId, {
+ *       ninja.admin.collections.removeProducts(collectionId, {
  *         product_ids: [
  *           productId1,
  *           productId2
@@ -36,10 +36,10 @@ import ProductCollectionService from "../../../../services/product-collection"
  *         console.log(removed_products)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminRemoveProductsFromCollection } from "medusa-react"
+ *       import { useAdminRemoveProductsFromCollection } from "ninja-react"
  *
  *       type Props = {
  *         collectionId: string
@@ -67,7 +67,7 @@ import ProductCollectionService from "../../../../services/product-collection"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/collections/{id}/products/batch' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "product_ids": [

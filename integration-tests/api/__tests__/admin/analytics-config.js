@@ -10,30 +10,30 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
-describe("[MEDUSA_FF_ANALYTICS] /admin/analytics-config", () => {
-  let medusaProcess
+describe("[NINJA_FF_ANALYTICS] /admin/analytics-config", () => {
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_ANALYTICS: true },
+      env: { NINJA_FF_ANALYTICS: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /admin/analytics-config", () => {

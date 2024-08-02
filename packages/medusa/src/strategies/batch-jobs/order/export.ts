@@ -1,4 +1,4 @@
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import { EntityManager } from "typeorm"
 import {
   OrderDescriptor,

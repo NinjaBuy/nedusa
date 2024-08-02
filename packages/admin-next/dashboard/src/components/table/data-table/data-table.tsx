@@ -1,4 +1,4 @@
-import { clx } from "@medusajs/ui"
+import { clx } from "@ninjajs/ui"
 import { memo } from "react"
 import { NoRecords } from "../../common/empty-table-content"
 import { TableSkeleton } from "../../common/skeleton"

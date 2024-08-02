@@ -46,11 +46,11 @@ import { IsISO8601Duration } from "../../../../utils/validators/iso8601-duration
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       import { AllocationType, DiscountRuleType } from "@medusajs/medusa"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       import { AllocationType, DiscountRuleType } from "@ninjajs/ninja"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.discounts.create({
+ *       ninja.admin.discounts.create({
  *         code: "TEST",
  *         rule: {
  *           type: DiscountRuleType.FIXED,
@@ -65,16 +65,16 @@ import { IsISO8601Duration } from "../../../../utils/validators/iso8601-duration
  *         console.log(discount.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
  *       import {
  *         useAdminCreateDiscount,
- *       } from "medusa-react"
+ *       } from "ninja-react"
  *       import {
  *         AllocationType,
  *         DiscountRuleType,
- *       } from "@medusajs/medusa"
+ *       } from "@ninjajs/ninja"
  *
  *       const CreateDiscount = () => {
  *         const createDiscount = useAdminCreateDiscount()
@@ -108,7 +108,7 @@ import { IsISO8601Duration } from "../../../../utils/validators/iso8601-duration
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/discounts' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "code": "TEST",
@@ -316,7 +316,7 @@ export class AdminPostDiscountsDiscountRule {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostDiscountsReq {
   @IsString()

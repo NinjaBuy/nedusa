@@ -1,8 +1,8 @@
 import { AwilixContainer } from "awilix"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { In } from "typeorm"
 
-import { ICacheService, IEventBusService } from "@medusajs/types"
+import { ICacheService, IEventBusService } from "@ninjajs/types"
 import {
   ITaxService,
   ItemTaxCalculationLine,
@@ -24,7 +24,7 @@ import { TaxProviderRepository } from "../repositories/tax-provider"
 import { isCart } from "../types/cart"
 import { TaxLinesMaps, TaxServiceRate } from "../types/tax-service"
 import TaxRateService from "./tax-rate"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type RegionDetails = {
   id: string
@@ -78,8 +78,8 @@ class TaxProviderService extends TransactionBaseService {
     }
 
     if (!provider!) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Could not find a tax provider with id: ${region.tax_provider_id}`
       )
     }
@@ -218,8 +218,8 @@ class TaxProviderService extends TransactionBaseService {
     // .create only creates entities nothing is persisted in DB
     return providerLines.map((pl) => {
       if (!("shipping_method_id" in pl)) {
-        throw new MedusaError(
-          MedusaError.Types.UNEXPECTED_STATE,
+        throw new NinjaError(
+          NinjaError.Types.UNEXPECTED_STATE,
           "Expected only shipping method tax lines"
         )
       }
@@ -319,8 +319,8 @@ class TaxProviderService extends TransactionBaseService {
       }
 
       if (!("item_id" in pl)) {
-        throw new MedusaError(
-          MedusaError.Types.UNEXPECTED_STATE,
+        throw new NinjaError(
+          NinjaError.Types.UNEXPECTED_STATE,
           "Tax Provider returned invalid tax lines"
         )
       }

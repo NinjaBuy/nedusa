@@ -1,4 +1,4 @@
-import { ModuleExports } from "@medusajs/modules-sdk"
+import { ModuleExports } from "@ninjajs/modules-sdk"
 import Loader from "./loaders"
 import LocalEventBus from "./services/event-bus-local"
 

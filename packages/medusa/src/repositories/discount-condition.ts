@@ -1,5 +1,5 @@
-import { MedusaModule, Modules } from "@medusajs/modules-sdk"
-import { MedusaV2Flag } from "@medusajs/utils"
+import { NinjaModule, Modules } from "@ninjajs/modules-sdk"
+import { NinjaV2Flag } from "@ninjajs/utils"
 import { DeleteResult, EntityTarget, In, Not } from "typeorm"
 import { dataSource } from "../loaders/database"
 import { featureFlagRouter } from "../loaders/feature-flags"
@@ -229,9 +229,9 @@ export const DiscountConditionRepository = dataSource
 
       if (
         type !== DiscountConditionType.CUSTOMER_GROUPS &&
-        featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
+        featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
       ) {
-        const module = MedusaModule.getModuleInstance(Modules.PRODUCT)[
+        const module = NinjaModule.getModuleInstance(Modules.PRODUCT)[
           Modules.PRODUCT
         ]
         const prop = relatedTable

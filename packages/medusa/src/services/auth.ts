@@ -5,7 +5,7 @@ import { TransactionBaseService } from "../interfaces"
 import UserService from "./user"
 import CustomerService from "./customer"
 import { EntityManager } from "typeorm"
-import { Logger } from "@medusajs/types"
+import { Logger } from "@ninjajs/types"
 
 type InjectedDependencies = {
   manager: EntityManager

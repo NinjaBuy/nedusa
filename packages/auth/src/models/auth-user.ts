@@ -8,7 +8,7 @@ import {
   Unique,
 } from "@mikro-orm/core"
 
-import { generateEntityId } from "@medusajs/utils"
+import { generateEntityId } from "@ninjajs/utils"
 
 type OptionalFields = "provider_metadata" | "app_metadata" | "user_metadata"
 

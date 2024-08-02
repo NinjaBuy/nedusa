@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "medusajs/medusa" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "ninjajs/ninja" }],
   "commit": false,
   "fixed": [],
   "linked": [],
@@ -12,10 +12,10 @@
     "integration-tests-plugins",
     "integration-tests-modules",
     "integration-tests-repositories",
-    "@medusajs/dashboard",
-    "@medusajs/admin-shared",
-    "@medusajs/admin-bundler",
-    "@medusajs/vite-plugin-extension"
+    "@ninjajs/dashboard",
+    "@ninjajs/admin-shared",
+    "@ninjajs/admin-bundler",
+    "@ninjajs/vite-plugin-extension"
   ],
   "snapshot": {
     "useCalculatedVersion": true

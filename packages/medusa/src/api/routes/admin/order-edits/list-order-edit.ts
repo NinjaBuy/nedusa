@@ -23,18 +23,18 @@ import { IsOptional, IsString } from "class-validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orderEdits.list()
+ *       ninja.admin.orderEdits.list()
  *       .then(({ order_edits, count, limit, offset }) => {
  *         console.log(order_edits.length)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminOrderEdits } from "medusa-react"
+ *       import { useAdminOrderEdits } from "ninja-react"
  *
  *       const OrderEdits = () => {
  *         const { order_edits, isLoading } = useAdminOrderEdits()
@@ -63,7 +63,7 @@ import { IsOptional, IsString } from "class-validator"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/order-edits' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

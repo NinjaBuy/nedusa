@@ -1,8 +1,8 @@
 ---
-"@medusajs/medusa": patch
-"@medusajs/api-key": patch
-"@medusajs/core-flows": patch
-"@medusajs/link-modules": patch
+"@ninjajs/ninja": patch
+"@ninjajs/api-key": patch
+"@ninjajs/core-flows": patch
+"@ninjajs/link-modules": patch
 ---
 
 feat:  API key sales channel link

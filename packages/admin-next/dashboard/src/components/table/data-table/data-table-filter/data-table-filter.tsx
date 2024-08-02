@@ -1,4 +1,4 @@
-import { Button, clx } from "@medusajs/ui"
+import { Button, clx } from "@ninjajs/ui"
 import * as Popover from "@radix-ui/react-popover"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useSearchParams } from "react-router-dom"

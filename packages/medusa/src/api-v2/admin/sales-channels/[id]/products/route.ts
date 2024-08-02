@@ -1,15 +1,15 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 
-import { LinkMethodRequest } from "@medusajs/types/src"
+import { LinkMethodRequest } from "@ninjajs/types/src"
 import { refetchSalesChannel } from "../../helpers"
-import { linkProductsToSalesChannelWorkflow } from "@medusajs/core-flows"
+import { linkProductsToSalesChannelWorkflow } from "@ninjajs/core-flows"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<LinkMethodRequest>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<LinkMethodRequest>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const { add, remove } = req.validatedBody

@@ -1,5 +1,5 @@
-import { TaxRegionResponse } from "@medusajs/types"
-import { Container, Heading, Text } from "@medusajs/ui"
+import { TaxRegionResponse } from "@ninjajs/types"
+import { Container, Heading, Text } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { formatDate } from "../../../../../components/common/date"
 import { getCountryByIso2 } from "../../../../../lib/countries"

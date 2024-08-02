@@ -1,5 +1,5 @@
 import express from "express"
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import { resolve } from "path"
 import {
   config,

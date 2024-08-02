@@ -1,9 +1,9 @@
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { AdminApiKeyResponse } from "@medusajs/types"
+import { AdminApiKeyResponse } from "@ninjajs/types"
 import { apiKeysQueryKeys } from "../../../hooks/api/api-keys"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 
 const apiKeyDetailQuery = (id: string) => ({
   queryKey: apiKeysQueryKeys.detail(id),

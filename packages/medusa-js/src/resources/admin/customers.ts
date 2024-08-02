@@ -4,20 +4,20 @@ import {
   AdminGetCustomersParams,
   AdminPostCustomersReq,
   AdminPostCustomersCustomerReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Customer API Routes](https://docs.medusajs.com/api/admin#customers). All its method
- * are available in the JS Client under the `medusa.admin.customers` property.
+ * This class is used to send requests to [Admin Customer API Routes](https://docs.ninjajs.com/api/admin#customers). All its method
+ * are available in the JS Client under the `ninja.admin.customers` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Customers can either be created when they register through the {@link CustomersResource.create} method, or created by the admin using the {@link create} method.
  * 
- * Related Guide: [How to manage customers](https://docs.medusajs.com/modules/customers/admin/manage-customers).
+ * Related Guide: [How to manage customers](https://docs.ninjajs.com/modules/customers/admin/manage-customers).
  */
 class AdminCustomersResource extends BaseResource {
   /**
@@ -27,10 +27,10 @@ class AdminCustomersResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomersRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.create({
+   * ninja.admin.customers.create({
    *   email: "user@example.com",
    *   first_name: "Caterina",
    *   last_name: "Yost",
@@ -56,10 +56,10 @@ class AdminCustomersResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomersRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.update(customerId, {
+   * ninja.admin.customers.update(customerId, {
    *   first_name: "Dolly"
    * })
    * .then(({ customer }) => {
@@ -82,10 +82,10 @@ class AdminCustomersResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomersRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.retrieve(customerId)
+   * ninja.admin.customers.retrieve(customerId)
    * .then(({ customer }) => {
    *   console.log(customer.id);
    * })
@@ -108,10 +108,10 @@ class AdminCustomersResource extends BaseResource {
    * To list customers:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.list()
+   * ninja.admin.customers.list()
    * .then(({ customers, limit, offset, count }) => {
    *   console.log(customers.length);
    * })
@@ -120,10 +120,10 @@ class AdminCustomersResource extends BaseResource {
    * To specify relations that should be retrieved within the customers:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.list({
+   * ninja.admin.customers.list({
    *   expand: "billing_address"
    * })
    * .then(({ customers, limit, offset, count }) => {
@@ -134,10 +134,10 @@ class AdminCustomersResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.customers.list({
+   * ninja.admin.customers.list({
    *   expand: "billing_address",
    *   limit,
    *   offset

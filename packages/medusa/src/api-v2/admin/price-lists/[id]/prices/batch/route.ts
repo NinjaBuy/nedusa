@@ -1,25 +1,25 @@
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../../types/routing"
 import { listPrices } from "../../../queries"
 import { adminPriceListPriceRemoteQueryFields } from "../../../query-config"
-import { BatchMethodRequest } from "@medusajs/types"
+import { BatchMethodRequest } from "@ninjajs/types"
 import {
   AdminCreatePriceListPriceType,
   AdminUpdatePriceListPriceType,
 } from "../../../validators"
-import { batchPriceListPricesWorkflow } from "@medusajs/core-flows"
+import { batchPriceListPricesWorkflow } from "@ninjajs/core-flows"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<
+  req: AuthenticatedNinjaRequest<
     BatchMethodRequest<
       AdminCreatePriceListPriceType,
       AdminUpdatePriceListPriceType
     >
   >,
-  res: MedusaResponse
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const {

@@ -1,4 +1,4 @@
-import { OperatorMap } from "@medusajs/types"
+import { OperatorMap } from "@ninjajs/types"
 import { Type } from "class-transformer"
 import {
   IsBoolean,

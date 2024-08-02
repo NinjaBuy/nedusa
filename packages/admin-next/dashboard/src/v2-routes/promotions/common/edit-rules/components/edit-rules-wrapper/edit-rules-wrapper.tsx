@@ -1,4 +1,4 @@
-import { PromotionDTO, PromotionRuleDTO } from "@medusajs/types"
+import { PromotionDTO, PromotionRuleDTO } from "@ninjajs/types"
 import { useRouteModal } from "../../../../../../components/route-modal"
 import {
   usePromotionAddRules,

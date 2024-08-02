@@ -122,15 +122,15 @@ export const CodeTabs = ({
           "xs:transition-all xs:duration-200 xs:ease-ease xs:top-[13px] xs:rounded-full",
           blockStyle === "loud" && [
             colorMode === "light" &&
-              "xs:border-medusa-code-border xs:bg-medusa-code-bg-base",
+              "xs:border-ninja-code-border xs:bg-ninja-code-bg-base",
             colorMode === "dark" &&
-              "xs:border-medusa-border-base xs:bg-medusa-bg-component",
+              "xs:border-ninja-border-base xs:bg-ninja-bg-component",
           ],
           blockStyle === "subtle" && [
             colorMode === "light" &&
-              "xs:border-medusa-border-base xs:bg-medusa-bg-base",
+              "xs:border-ninja-border-base xs:bg-ninja-bg-base",
             colorMode === "dark" &&
-              "xs:border-medusa-code-border xs:bg-medusa-code-bg-base",
+              "xs:border-ninja-code-border xs:bg-ninja-code-bg-base",
           ]
         )}
         ref={codeTabSelectorRef}

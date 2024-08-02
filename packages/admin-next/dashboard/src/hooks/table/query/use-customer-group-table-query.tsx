@@ -1,4 +1,4 @@
-import { AdminGetCustomerGroupsParams } from "@medusajs/medusa"
+import { AdminGetCustomerGroupsParams } from "@ninjajs/ninja"
 
 import { useQueryParams } from "../../use-query-params"
 

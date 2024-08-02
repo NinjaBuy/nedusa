@@ -1,10 +1,10 @@
-import { BigNumberRawValue } from "@medusajs/types"
+import { BigNumberRawValue } from "@ninjajs/types"
 import {
   BigNumber,
   generateEntityId,
   MikroOrmBigNumberProperty,
   PaymentSessionStatus,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   BeforeCreate,
   Entity,

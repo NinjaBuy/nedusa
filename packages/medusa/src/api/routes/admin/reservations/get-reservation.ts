@@ -1,5 +1,5 @@
-import { IInventoryService } from "@medusajs/types"
-import { MedusaError } from "@medusajs/utils"
+import { IInventoryService } from "@ninjajs/types"
+import { NinjaError } from "@ninjajs/utils"
 
 /**
  * @oas [get] /admin/reservations/{id}
@@ -13,18 +13,18 @@ import { MedusaError } from "@medusajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.reservations.retrieve(reservationId)
+ *       ninja.admin.reservations.retrieve(reservationId)
  *       .then(({ reservation }) => {
  *         console.log(reservation.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminReservation } from "medusa-react"
+ *       import { useAdminReservation } from "ninja-react"
  *
  *       type Props = {
  *         reservationId: string
@@ -48,7 +48,7 @@ import { MedusaError } from "@medusajs/utils"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/reservations/{id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -85,8 +85,8 @@ export default async (req, res) => {
   })
 
   if (!count) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Reservation with id ${id} not found`
     )
   }

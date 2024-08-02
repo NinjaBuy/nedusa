@@ -1,5 +1,5 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
-import { AdminCustomerResponse } from "@medusajs/types"
+import { PencilSquare, Trash } from "@ninjajs/icons"
+import { AdminCustomerResponse } from "@ninjajs/types"
 import {
   Container,
   Heading,
@@ -7,7 +7,7 @@ import {
   Text,
   toast,
   usePrompt,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 import { ActionMenu } from "../../../../../components/common/action-menu"

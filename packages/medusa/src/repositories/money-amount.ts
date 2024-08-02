@@ -22,7 +22,7 @@ import { groupBy } from "lodash"
 import { isString } from "../utils"
 import partition from "lodash/partition"
 import { ulid } from "ulid"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type Price = Partial<
   Omit<MoneyAmount, "created_at" | "updated_at" | "deleted_at">

@@ -14,22 +14,22 @@ const userSeeder = require("../../../../helpers/user-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env: Record<any, any> = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
 jest.setTimeout(180000)
 
-// TODO SEE to use new test runner medusaIntegrationTestRunner({
+// TODO SEE to use new test runner ninjaIntegrationTestRunner({
 //   env,
 //   testSuite: ({ dbConnection, getContainer, api }) => {})
 
 describe.skip("Batch job of product-export type", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
   let exportFilePath = ""
   let topDir = ""
@@ -40,7 +40,7 @@ describe.skip("Batch job of product-export type", () => {
 
     dbConnection = await initDb({ cwd, env } as any)
     shutdownServer = await startBootstrapApp({ cwd, env })
-    medusaProcess = await setupServer({
+    ninjaProcess = await setupServer({
       cwd,
       uploadDir: __dirname,
       env,
@@ -56,7 +56,7 @@ describe.skip("Batch job of product-export type", () => {
     const db = useDb()
     await db.shutdown()
 
-    await medusaProcess.kill()
+    await ninjaProcess.kill()
     await shutdownServer()
   })
 

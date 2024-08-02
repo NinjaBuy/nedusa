@@ -8,21 +8,21 @@ import {
   AdminProductCategoriesCategoryRes,
   AdminGetProductCategoryParams,
   AdminPostProductCategoriesCategoryReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Product Category API Routes](https://docs.medusajs.com/api/admin#product-categories). All its method
- * are available in the JS Client under the `medusa.admin.productCategories` property.
+ * This class is used to send requests to [Admin Product Category API Routes](https://docs.ninjajs.com/api/admin#product-categories). All its method
+ * are available in the JS Client under the `ninja.admin.productCategories` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Products can be categoriezed into categories. A product can be added into more than one category.
  * 
- * Related Guide: [How to manage product categories](https://docs.medusajs.com/modules/products/admin/manage-categories).
+ * Related Guide: [How to manage product categories](https://docs.ninjajs.com/modules/products/admin/manage-categories).
  * 
  * @featureFlag product_categories
  */
@@ -38,10 +38,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * A simple example that retrieves an order by its ID:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.retrieve(productCategoryId)
+   * ninja.admin.productCategories.retrieve(productCategoryId)
    * .then(({ product_category }) => {
    *   console.log(product_category.id);
    * })
@@ -50,10 +50,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.retrieve(productCategoryId, {
+   * ninja.admin.productCategories.retrieve(productCategoryId, {
    *   expand: "category_children"
    * })
    * .then(({ product_category }) => {
@@ -83,10 +83,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductCategoriesCategoryRes>} Resolves to the product category's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.create({
+   * ninja.admin.productCategories.create({
    *   name: "Skinny Jeans",
    * })
    * .then(({ product_category }) => {
@@ -109,10 +109,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductCategoriesCategoryRes>} Resolves to the product category's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.update(productCategoryId, {
+   * ninja.admin.productCategories.update(productCategoryId, {
    *   name: "Skinny Jeans"
    * })
    * .then(({ product_category }) => {
@@ -139,10 +139,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * To list product categories:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.list()
+   * ninja.admin.productCategories.list()
    * .then(({ product_categories, limit, offset, count }) => {
    *   console.log(product_categories.length);
    * })
@@ -151,10 +151,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * To specify relations that should be retrieved within the product category:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.list({
+   * ninja.admin.productCategories.list({
    *   expand: "category_children"
    * })
    * .then(({ product_categories, limit, offset, count }) => {
@@ -165,10 +165,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * By default, only the first `100` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.list({
+   * ninja.admin.productCategories.list({
    *   expand: "category_children",
    *   limit,
    *   offset
@@ -199,10 +199,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductCategoriesCategoryDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.delete(productCategoryId)
+   * ninja.admin.productCategories.delete(productCategoryId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -223,10 +223,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductCategoriesCategoryRes>} Resolves to the product category's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.removeProducts(productCategoryId, {
+   * ninja.admin.productCategories.removeProducts(productCategoryId, {
    *   product_ids: [
    *     {
    *       id: productId
@@ -254,10 +254,10 @@ class AdminProductCategoriesResource extends BaseResource {
    * @returns {ResponsePromise<AdminProductCategoriesCategoryRes>} Resolves to the product category's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.productCategories.addProducts(productCategoryId, {
+   * ninja.admin.productCategories.addProducts(productCategoryId, {
    *   product_ids: [
    *     {
    *       id: productId

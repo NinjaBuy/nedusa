@@ -1,15 +1,15 @@
 import { ResponsePromise } from "../typings"
-import { StoreRegionsListRes, StoreRegionsRes } from "@medusajs/medusa"
+import { StoreRegionsListRes, StoreRegionsRes } from "@ninjajs/ninja"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Region API Routes](https://docs.medusajs.com/api/store#regions_getregions). All its method
- * are available in the JS Client under the `medusa.regions` property.
+ * This class is used to send requests to [Store Region API Routes](https://docs.ninjajs.com/api/store#regions_getregions). All its method
+ * are available in the JS Client under the `ninja.regions` property.
  * 
  * Regions are different countries or geographical regions that the commerce store serves customers in.
  * Customers can choose what region they're in, which can be used to change the prices shown based on the region and its currency.
  * 
- * Related Guide: [How to use regions in a storefront](https://docs.medusajs.com/modules/regions-and-currencies/storefront/use-regions).
+ * Related Guide: [How to use regions in a storefront](https://docs.ninjajs.com/modules/regions-and-currencies/storefront/use-regions).
  */
 class RegionsResource extends BaseResource {
   /**
@@ -18,9 +18,9 @@ class RegionsResource extends BaseResource {
    * @returns {ResponsePromise<StoreRegionsListRes>} Resolves to the list of regions with pagination fields.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.regions.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.regions.list()
    * .then(({ regions, count, limit, offset }) => {
    *   console.log(regions.length);
    * })
@@ -37,9 +37,9 @@ class RegionsResource extends BaseResource {
    * @returns {ResponsePromise<StoreRegionsRes>} Resolves to the region's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.regions.retrieve(regionId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.regions.retrieve(regionId)
    * .then(({ region }) => {
    *   console.log(region.id);
    * })

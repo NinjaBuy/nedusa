@@ -27,10 +27,10 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.invites.accept({
+ *       ninja.admin.invites.accept({
  *         token,
  *         user: {
  *           first_name: "Brigitte",
@@ -45,10 +45,10 @@ import { EntityManager } from "typeorm"
  *         // an error occurred
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminAcceptInvite } from "medusa-react"
+ *       import { useAdminAcceptInvite } from "ninja-react"
  *
  *       const AcceptInvite = () => {
  *         const acceptInvite = useAdminAcceptInvite()
@@ -82,7 +82,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/invites/accept' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "token": "{token}",

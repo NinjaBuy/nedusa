@@ -1,11 +1,11 @@
 import { asValue } from "awilix"
-import { createMedusaContainer } from "medusa-core-utils"
+import { createNinjaContainer } from "ninja-core-utils"
 import path from "path"
 
 import modelsLoader from "../models"
 
 describe.skip("models loader", () => {
-  const container = createMedusaContainer()
+  const container = createNinjaContainer()
   container.register("db_entities", asValue([]))
   let models
   let error

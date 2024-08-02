@@ -1,6 +1,6 @@
-import { PencilSquare } from "@medusajs/icons"
-import { AdminGetPromotionRulesRes, PromotionRuleTypes } from "@medusajs/types"
-import { Badge, Container, Heading } from "@medusajs/ui"
+import { PencilSquare } from "@ninjajs/icons"
+import { AdminGetPromotionRulesRes, PromotionRuleTypes } from "@ninjajs/types"
+import { Badge, Container, Heading } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"

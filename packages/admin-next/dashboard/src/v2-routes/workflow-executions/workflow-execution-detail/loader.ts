@@ -1,8 +1,8 @@
-import { adminProductKeys } from "medusa-react"
+import { adminProductKeys } from "ninja-react"
 import { LoaderFunctionArgs } from "react-router-dom"
 
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 import { WorkflowExecutionRes } from "../../../types/api-responses"
 
 const executionDetailQuery = (id: string) => ({

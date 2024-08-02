@@ -6,7 +6,7 @@ import {
   IsBoolean,
   ValidateIf,
 } from "class-validator"
-import { isDefined } from "medusa-core-utils"
+import { isDefined } from "ninja-core-utils"
 import { ProductCategory } from "../models"
 
 export const tempReorderRank = 99999

@@ -12,18 +12,18 @@ import { ProductService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.products.listTags()
+ *       ninja.admin.products.listTags()
  *       .then(({ tags }) => {
  *         console.log(tags.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminProductTagUsage } from "medusa-react"
+ *       import { useAdminProductTagUsage } from "ninja-react"
  *
  *       const ProductTags = (productId: string) => {
  *         const { tags, isLoading } = useAdminProductTagUsage()
@@ -48,7 +48,7 @@ import { ProductService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/products/tag-usage' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

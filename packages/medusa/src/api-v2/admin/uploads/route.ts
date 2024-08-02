@@ -1,20 +1,20 @@
-import { uploadFilesWorkflow } from "@medusajs/core-flows"
-import { CreateProductDTO } from "@medusajs/types"
+import { uploadFilesWorkflow } from "@ninjajs/core-flows"
+import { CreateProductDTO } from "@ninjajs/types"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<CreateProductDTO>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<CreateProductDTO>,
+  res: NinjaResponse
 ) => {
   const input = req.files as Express.Multer.File[]
 
   if (!input?.length) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       "No files were uploaded"
     )
   }

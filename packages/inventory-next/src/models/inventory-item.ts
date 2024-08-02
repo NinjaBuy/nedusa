@@ -15,9 +15,9 @@ import {
   DALUtils,
   generateEntityId,
   Searchable,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
-import { DAL } from "@medusajs/types"
+import { DAL } from "@ninjajs/types"
 import { InventoryLevel } from "./inventory-level"
 import { ReservationItem } from "./reservation-item"
 

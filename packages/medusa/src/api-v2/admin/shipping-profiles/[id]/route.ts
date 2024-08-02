@@ -1,20 +1,20 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import {
   AdminShippingProfileDeleteResponse,
   AdminShippingProfileResponse,
   IFulfillmentModuleService,
-} from "@medusajs/types"
-import { deleteShippingProfileWorkflow } from "@medusajs/core-flows"
+} from "@ninjajs/types"
+import { deleteShippingProfileWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { AdminGetShippingProfileParamsType } from "../validators"
 import { refetchShippingProfile } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetShippingProfileParamsType>,
-  res: MedusaResponse<AdminShippingProfileResponse>
+  req: AuthenticatedNinjaRequest<AdminGetShippingProfileParamsType>,
+  res: NinjaResponse<AdminShippingProfileResponse>
 ) => {
   const shippingProfile = await refetchShippingProfile(
     req.params.id,
@@ -26,8 +26,8 @@ export const GET = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse<AdminShippingProfileDeleteResponse>
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse<AdminShippingProfileDeleteResponse>
 ) => {
   const { id } = req.params
 

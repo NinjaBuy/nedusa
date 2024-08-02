@@ -1,15 +1,15 @@
-import { createPaymentSessionsWorkflow } from "@medusajs/core-flows"
-import { remoteQueryObjectFromString } from "@medusajs/utils"
+import { createPaymentSessionsWorkflow } from "@ninjajs/core-flows"
+import { remoteQueryObjectFromString } from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import { defaultStorePaymentCollectionFields } from "./query-config"
 import { StorePostPaymentCollectionsPaymentSessionReq } from "./validators"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<StorePostPaymentCollectionsPaymentSessionReq>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<StorePostPaymentCollectionsPaymentSessionReq>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const { context = {}, provider_id, data } = req.body

@@ -1,11 +1,11 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { IAuthModuleService } from "@medusajs/types"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { IAuthModuleService } from "@ninjajs/types"
 import jwt from "jsonwebtoken"
 import { getContainer } from "../environment-helpers/use-container"
 import adminSeeder from "./admin-seeder"
 
 export const adminHeaders = {
-  headers: { "x-medusa-access-token": "test_token" },
+  headers: { "x-ninja-access-token": "test_token" },
 }
 
 export const createAdminUser = async (
@@ -22,7 +22,7 @@ export const createAdminUser = async (
   if (authModule) {
     const authUser = await authModule.create({
       provider: "emailpass",
-      entity_id: "admin@medusa.js",
+      entity_id: "admin@ninja.js",
       scope: "admin",
       app_metadata: {
         user_id: "admin_user",

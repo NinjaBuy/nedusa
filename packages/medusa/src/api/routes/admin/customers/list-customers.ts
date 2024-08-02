@@ -79,18 +79,18 @@ import { AdminListCustomerSelector } from "../../../../types/customers"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.customers.list()
+ *       ninja.admin.customers.list()
  *       .then(({ customers, limit, offset, count }) => {
  *         console.log(customers.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCustomers } from "medusa-react"
+ *       import { useAdminCustomers } from "ninja-react"
  *
  *       const Customers = () => {
  *         const { customers, isLoading } = useAdminCustomers()
@@ -117,7 +117,7 @@ import { AdminListCustomerSelector } from "../../../../types/customers"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/customers' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

@@ -1,14 +1,14 @@
 import {
   FlagRouter,
   ManyToManyInventoryFeatureFlag,
-  MedusaError,
-} from "@medusajs/utils"
+  NinjaError,
+} from "@ninjajs/utils"
 import { IsNumber, IsObject, IsOptional, IsString } from "class-validator"
 import {
   CreateInventoryItemActions,
   createInventoryItems,
-} from "@medusajs/core-flows"
-import { pipe } from "@medusajs/workflows-sdk"
+} from "@ninjajs/core-flows"
+import { pipe } from "@ninjajs/workflows-sdk"
 import { ProductVariantInventoryService } from "../../../../services"
 
 import { FindParams } from "../../../../types/common"
@@ -34,20 +34,20 @@ import { FindParams } from "../../../../types/common"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.inventoryItems.create({
+ *       ninja.admin.inventoryItems.create({
  *         variant_id: "variant_123",
  *       })
  *       .then(({ inventory_item }) => {
  *         console.log(inventory_item.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateInventoryItem } from "medusa-react"
+ *       import { useAdminCreateInventoryItem } from "ninja-react"
  *
  *       const CreateInventoryItem = () => {
  *         const createInventoryItem = useAdminCreateInventoryItem()
@@ -71,7 +71,7 @@ import { FindParams } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/inventory-items' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "variant_id": "variant_123",
@@ -114,8 +114,8 @@ export default async (req, res) => {
 
   if (!featureFlagRouter.isFeatureEnabled(ManyToManyInventoryFeatureFlag.key)) {
     if (!variant_id) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "variant_id is required"
       )
     }
@@ -192,8 +192,8 @@ function generateAttachInventoryToVariantHandler(
     // TODO: this is a temporary fix to prevent duplicate inventory
     // items since we don't support this functionality yet
     if (inventoryItems.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Inventory Item already exists for this variant"
       )
     }
@@ -239,7 +239,7 @@ function generateAttachInventoryToVariantHandler(
  *     description: Whether the associated Product Variant can be purchased when out of stock.
  *     type: boolean
  *   manage_inventory:
- *     description: Whether Medusa should keep track of the inventory for the associated Product Variant.
+ *     description: Whether Ninja should keep track of the inventory for the associated Product Variant.
  *     type: boolean
  *     default: true
  *   weight:
@@ -277,7 +277,7 @@ function generateAttachInventoryToVariantHandler(
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostInventoryItemsReq {
   @IsOptional()

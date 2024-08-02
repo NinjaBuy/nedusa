@@ -20,18 +20,18 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.retrieve(orderId)
+ *       ninja.admin.orders.retrieve(orderId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminOrder } from "medusa-react"
+ *       import { useAdminOrder } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -57,7 +57,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/orders/{id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

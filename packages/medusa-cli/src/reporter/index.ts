@@ -2,7 +2,7 @@ import stackTrace from "stack-trace"
 import { ulid } from "ulid"
 import winston from "winston"
 import ora from "ora"
-import { track } from "medusa-telemetry"
+import { track } from "ninja-telemetry"
 
 import { panicHandler } from "./panic-handler"
 import * as Transport from "winston-transport"

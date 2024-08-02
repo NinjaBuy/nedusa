@@ -1,5 +1,5 @@
-import { Country } from "@medusajs/medusa"
-import { Heading, Input, Select, clx } from "@medusajs/ui"
+import { Country } from "@ninjajs/ninja"
+import { Heading, Input, Select, clx } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"
 

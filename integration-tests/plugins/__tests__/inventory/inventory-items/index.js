@@ -20,7 +20,7 @@ const {
 const {
   getContainer,
 } = require("../../../../environment-helpers/use-container")
-const adminHeaders = { headers: { "x-medusa-access-token": "test_token" } }
+const adminHeaders = { headers: { "x-ninja-access-token": "test_token" } }
 
 describe("Inventory Items endpoints", () => {
   let appContainer
@@ -689,7 +689,7 @@ describe("Inventory Items endpoints", () => {
           ],
           prices: [{ currency_code: "usd", amount: 100 }],
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       const secondVariantId = response.data.product.variants.find(
@@ -727,7 +727,7 @@ describe("Inventory Items endpoints", () => {
       ).toHaveLength(2)
 
       await api.delete(`/admin/inventory-items/${invItem2.id}`, {
-        headers: { "x-medusa-access-token": "test_token" },
+        headers: { "x-ninja-access-token": "test_token" },
       })
 
       expect(

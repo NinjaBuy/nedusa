@@ -5,8 +5,8 @@ import {
   TransactionPayload,
   TransactionState,
   TransactionStepsDefinition,
-} from "@medusajs/orchestration"
-import { IInventoryService, InventoryItemDTO } from "@medusajs/types"
+} from "@ninjajs/orchestration"
+import { IInventoryService, InventoryItemDTO } from "@ninjajs/types"
 import {
   ProductVariantInventoryService,
   ProductVariantService,
@@ -14,7 +14,7 @@ import {
 
 import { CreateProductVariantInput } from "../../../../../types/product-variant"
 import { EntityManager } from "typeorm"
-import { MedusaError, promiseAll } from "@medusajs/utils"
+import { NinjaError, promiseAll } from "@ninjajs/utils"
 import { ProductVariant } from "../../../../../models"
 import { ulid } from "ulid"
 
@@ -221,8 +221,8 @@ export const createVariantsTransaction = async (
   await strategy.resume(transaction)
 
   if (transaction.getState() !== TransactionState.DONE) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       transaction
         .getErrors()
         .map((err) => err.error?.message)

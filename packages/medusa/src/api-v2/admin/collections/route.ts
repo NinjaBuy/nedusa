@@ -1,19 +1,19 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 
-import { createCollectionsWorkflow } from "@medusajs/core-flows"
+import { createCollectionsWorkflow } from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { AdminCreateCollectionType } from "./validators"
 import { refetchCollection } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -37,8 +37,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateCollectionType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateCollectionType>,
+  res: NinjaResponse
 ) => {
   const input = [
     {

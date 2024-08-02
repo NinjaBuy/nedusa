@@ -5,14 +5,14 @@ const path = require("path")
 
 const Module = require("module")
 const originalRequire = Module.prototype.require
-const medusaCore = path.resolve(path.join(__dirname, "../../packages"))
+const ninjaCore = path.resolve(path.join(__dirname, "../../packages"))
 
 function replacePath(requirePath, pack, concatPackage = true) {
   const idx = requirePath.indexOf(pack)
   const packPath = requirePath.substring(idx + pack.length).replace(/\\/g, "/")
 
   let newPath =
-    medusaCore +
+    ninjaCore +
     "/" +
     (concatPackage ? pack + "/" : "") +
     packPath.replace("/dist", "/src").replace(".js", "")
@@ -25,9 +25,9 @@ function replacePath(requirePath, pack, concatPackage = true) {
 }
 
 function checkAndReplacePaths(path) {
-  const interfaces = "medusa-interfaces"
-  const utils = "medusa-core-utils"
-  const base = "@medusajs"
+  const interfaces = "ninja-interfaces"
+  const utils = "ninja-core-utils"
+  const base = "@ninjajs"
 
   if (path.includes(base)) {
     path = replacePath(path, base, false)

@@ -1,5 +1,5 @@
-import { UserDTO } from "@medusajs/types"
-import { Button, Container, Heading, StatusBadge, Text } from "@medusajs/ui"
+import { UserDTO } from "@ninjajs/types"
+import { Button, Container, Heading, StatusBadge, Text } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { languages } from "../../../../../i18n/config"

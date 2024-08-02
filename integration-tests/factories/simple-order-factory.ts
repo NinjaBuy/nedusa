@@ -4,7 +4,7 @@ import {
   Order,
   PaymentStatus,
   Refund,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import faker from "faker"
 import { DataSource } from "typeorm"
 import {

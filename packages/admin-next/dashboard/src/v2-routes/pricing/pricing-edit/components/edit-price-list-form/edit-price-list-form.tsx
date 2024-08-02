@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { PriceListDTO } from "@medusajs/types"
-import { Button, Input, RadioGroup, Textarea } from "@medusajs/ui"
+import { PriceListDTO } from "@ninjajs/types"
+import { Button, Input, RadioGroup, Textarea } from "@ninjajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"

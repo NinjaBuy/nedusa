@@ -2,7 +2,7 @@ import { IsInt, IsOptional, IsString } from "class-validator"
 
 import { Type } from "class-transformer"
 import { pickBy } from "lodash"
-import { isDefined } from "medusa-core-utils"
+import { isDefined } from "ninja-core-utils"
 import { GiftCardService } from "../../../../services"
 import { validator } from "../../../../utils/validator"
 
@@ -24,19 +24,19 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.giftCards.list()
+ *       ninja.admin.giftCards.list()
  *       .then(({ gift_cards, limit, offset, count }) => {
  *         console.log(gift_cards.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { GiftCard } from "@medusajs/medusa"
- *       import { useAdminGiftCards } from "medusa-react"
+ *       import { GiftCard } from "@ninjajs/ninja"
+ *       import { useAdminGiftCards } from "ninja-react"
  *
  *       const CustomGiftCards = () => {
  *         const { gift_cards, isLoading } = useAdminGiftCards()
@@ -63,7 +63,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/gift-cards' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

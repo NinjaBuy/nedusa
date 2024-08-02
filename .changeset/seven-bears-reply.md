@@ -1,6 +1,6 @@
 ---
-"medusa-test-utils": patch
-"@medusajs/medusa": patch
+"ninja-test-utils": patch
+"@ninjajs/ninja": patch
 ---
 
-fix(medusa-test-utils): recompute driver options
+fix(ninja-test-utils): recompute driver options

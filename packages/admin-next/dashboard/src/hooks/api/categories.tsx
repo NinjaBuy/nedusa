@@ -1,7 +1,7 @@
 import {
   AdminProductCategoryListResponse,
   AdminProductCategoryResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { QueryKey, UseQueryOptions, useQuery } from "@tanstack/react-query"
 import { client } from "../../lib/client"
 import { queryKeysFactory } from "../../lib/query-key-factory"

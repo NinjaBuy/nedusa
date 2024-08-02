@@ -18,18 +18,18 @@ import { Selector } from "../../../../types/common"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.returnReasons.list()
+ *       ninja.admin.returnReasons.list()
  *       .then(({ return_reasons }) => {
  *         console.log(return_reasons.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminReturnReasons } from "medusa-react"
+ *       import { useAdminReturnReasons } from "ninja-react"
  *
  *       const ReturnReasons = () => {
  *         const { return_reasons, isLoading } = useAdminReturnReasons()
@@ -58,7 +58,7 @@ import { Selector } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/return-reasons' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

@@ -130,7 +130,7 @@ Object {
 }
 `;
 
-exports[`[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies GET /admin/currencies should retrieve the currencies 1`] = `
+exports[`[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies GET /admin/currencies should retrieve the currencies 1`] = `
 Object {
   "count": 120,
   "currencies": Array [
@@ -280,7 +280,7 @@ Object {
 }
 `;
 
-exports[`[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies POST /admin/currencies/:code should update currency includes_tax 1`] = `
+exports[`[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies POST /admin/currencies/:code should update currency includes_tax 1`] = `
 Object {
   "currency": Object {
     "code": "aed",

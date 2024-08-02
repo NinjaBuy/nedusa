@@ -11,7 +11,7 @@ import { defaultStoreSwapFields, defaultStoreSwapRelations } from "."
 
 import { EntityManager } from "typeorm"
 import IdempotencyKeyService from "../../../../services/idempotency-key"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import OrderService from "../../../../services/order"
 import ReturnService from "../../../../services/return"
 import SwapService from "../../../../services/swap"
@@ -31,7 +31,7 @@ import { validator } from "../../../../utils/validator"
  *   key in the `Idempotency-Key` header.
  * externalDocs:
  *   description: "How to create a swap"
- *   url: "https://docs.medusajs.com/modules/orders/storefront/create-swap"
+ *   url: "https://docs.ninjajs.com/modules/orders/storefront/create-swap"
  * requestBody:
  *   content:
  *     application/json:
@@ -43,9 +43,9 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.swaps.create({
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.swaps.create({
  *         order_id,
  *         return_items: [
  *           {
@@ -64,10 +64,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(swap.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useCreateSwap } from "medusa-react"
+ *       import { useCreateSwap } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -254,8 +254,8 @@ export default async (req, res) => {
                   })
 
                 if (!swaps.length) {
-                  throw new MedusaError(
-                    MedusaError.Types.INVALID_DATA,
+                  throw new NinjaError(
+                    NinjaError.Types.INVALID_DATA,
                     "Swap not found"
                   )
                 }

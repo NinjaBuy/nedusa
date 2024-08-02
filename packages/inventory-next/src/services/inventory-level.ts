@@ -3,12 +3,12 @@ import {
   CreateInventoryLevelInput,
   DAL,
   SharedContext,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   InjectTransactionManager,
-  MedusaContext,
+  NinjaContext,
   ModulesSdkUtils,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 import { InventoryLevel } from "../models/inventory-level"
 import { InventoryLevelRepository } from "@repositories"

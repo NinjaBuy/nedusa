@@ -1,5 +1,5 @@
 ---
-"@medusajs/product": patch
+"@ninjajs/product": patch
 ---
 
 Correctly define all product module models and SQL migration script

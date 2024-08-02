@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 
 const adminUser = {
   _id: IdMap.getId("admin_user", true),

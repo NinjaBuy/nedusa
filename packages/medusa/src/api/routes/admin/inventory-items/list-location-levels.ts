@@ -2,7 +2,7 @@ import { IsOptional, IsString } from "class-validator"
 import { Request, Response } from "express"
 
 import { FindParams } from "../../../../types/common"
-import { IInventoryService } from "@medusajs/types"
+import { IInventoryService } from "@ninjajs/types"
 import { IsType } from "../../../../utils/validators/is-type"
 
 /**
@@ -31,20 +31,20 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.inventoryItems.listLocationLevels(inventoryItemId)
+ *       ninja.admin.inventoryItems.listLocationLevels(inventoryItemId)
  *       .then(({ inventory_item }) => {
  *         console.log(inventory_item.location_levels);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
  *       import {
  *         useAdminInventoryItemLocationLevels,
- *       } from "medusa-react"
+ *       } from "ninja-react"
  *
  *       type Props = {
  *         inventoryItemId: string
@@ -75,7 +75,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/inventory-items/{id}/location-levels' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

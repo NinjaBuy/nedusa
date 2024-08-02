@@ -1,9 +1,9 @@
-import { adminProductKeys } from "medusa-react"
+import { adminProductKeys } from "ninja-react"
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { AdminSalesChannelResponse } from "@medusajs/types"
+import { AdminSalesChannelResponse } from "@ninjajs/types"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 
 const salesChannelDetailQuery = (id: string) => ({
   queryKey: adminProductKeys.detail(id),

@@ -6,7 +6,7 @@ import { DateComparisonOperator } from "../../../../types/common"
 import { IsType } from "../../../../utils/validators/is-type"
 import { Request } from "express"
 import { pickBy } from "lodash"
-import { isDefined } from "medusa-core-utils"
+import { isDefined } from "ninja-core-utils"
 
 /**
  * @oas [get] /admin/batch-jobs
@@ -217,18 +217,18 @@ import { isDefined } from "medusa-core-utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.batchJobs.list()
+ *       ninja.admin.batchJobs.list()
  *       .then(({ batch_jobs, limit, offset, count }) => {
  *         console.log(batch_jobs.length)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminBatchJobs } from "medusa-react"
+ *       import { useAdminBatchJobs } from "ninja-react"
  *
  *       const BatchJobs = () => {
  *         const {
@@ -260,7 +260,7 @@ import { isDefined } from "medusa-core-utils"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/batch-jobs' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

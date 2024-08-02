@@ -3,7 +3,7 @@ const startServerWithEnvironment =
 const path = require("path")
 const { useApi } = require("../../../../../environment-helpers/use-api")
 const { useDb } = require("../../../../../environment-helpers/use-db")
-const { GiftCard, TaxRate } = require("@medusajs/medusa")
+const { GiftCard, TaxRate } = require("@ninjajs/ninja")
 
 const {
   simpleRegionFactory,
@@ -15,8 +15,8 @@ const {
 
 jest.setTimeout(30000)
 
-describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] Gift Card - Tax calculations", () => {
-  let medusaProcess
+describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] Gift Card - Tax calculations", () => {
+  let ninjaProcess
   let dbConnection
   let customerData
 
@@ -24,17 +24,17 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] Gift Card - Tax calculations", () =>
     const cwd = path.resolve(path.join(__dirname, "..", "..", "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterEach(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("POST /store/carts/:id", () => {
@@ -53,11 +53,11 @@ describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] Gift Card - Tax calculations", () =>
       })
 
       customer = await simpleCustomerFactory(dbConnection, {
-        password: "medusatest",
+        password: "ninjatest",
       })
       customerData = {
         email: customer.email,
-        password: "medusatest",
+        password: "ninjatest",
         first_name: customer.first_name,
         last_name: customer.last_name,
       }

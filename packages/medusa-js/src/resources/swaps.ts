@@ -1,15 +1,15 @@
 import { ResponsePromise } from "../typings"
-import { StoreSwapsRes, StorePostSwapsReq } from "@medusajs/medusa"
+import { StoreSwapsRes, StorePostSwapsReq } from "@ninjajs/ninja"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Swap API Routes](https://docs.medusajs.com/api/store#swaps). All its method
- * are available in the JS Client under the `medusa.swaps` property.
+ * This class is used to send requests to [Store Swap API Routes](https://docs.ninjajs.com/api/store#swaps). All its method
+ * are available in the JS Client under the `ninja.swaps` property.
  * 
  * A swap is created by a customer or an admin to exchange an item with a new one.
  * Creating a swap implicitely includes creating a return for the item being exchanged.
  * 
- * Related Guide: [How to create a swap in a storefront](https://docs.medusajs.com/modules/orders/storefront/create-swap)
+ * Related Guide: [How to create a swap in a storefront](https://docs.ninjajs.com/modules/orders/storefront/create-swap)
  */
 class SwapsResource extends BaseResource {
   /**
@@ -24,9 +24,9 @@ class SwapsResource extends BaseResource {
    * @returns {ResponsePromise<StoreSwapsRes>} Resolves to the swap's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.swaps.create({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.swaps.create({
    *   order_id,
    *   return_items: [
    *     {
@@ -57,9 +57,9 @@ class SwapsResource extends BaseResource {
    * @returns {ResponsePromise<StoreSwapsRes>} Resolves to the swap's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.swaps.retrieveByCartId(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.swaps.retrieveByCartId(cartId)
    * .then(({ swap }) => {
    *   console.log(swap.id);
    * })

@@ -1,7 +1,7 @@
-import { MedusaV2Flag } from "@medusajs/utils"
+import { NinjaV2Flag } from "@ninjajs/utils"
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export const featureFlag = MedusaV2Flag.key
+export const featureFlag = NinjaV2Flag.key
 
 export class dropFksIsolatedProducts1694602553610
   implements MigrationInterface

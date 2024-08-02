@@ -7,8 +7,8 @@ import { PromotionConditionsSection } from "./components/promotion-conditions-se
 import { PromotionGeneralSection } from "./components/promotion-general-section"
 import { promotionLoader } from "./loader"
 
-import after from "medusa-admin:widgets/promotion/details/after"
-import before from "medusa-admin:widgets/promotion/details/before"
+import after from "ninja-admin:widgets/promotion/details/after"
+import before from "ninja-admin:widgets/promotion/details/before"
 
 export const PromotionDetail = () => {
   const initialData = useLoaderData() as Awaited<

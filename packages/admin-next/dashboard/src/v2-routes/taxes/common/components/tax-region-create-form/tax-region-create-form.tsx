@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Heading, Input, Select, Switch, Text } from "@medusajs/ui"
+import { Button, Heading, Input, Select, Switch, Text } from "@ninjajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { TaxRegionResponse } from "@medusajs/types"
+import { TaxRegionResponse } from "@ninjajs/types"
 import { Form } from "../../../../../components/common/form"
 import { PercentageInput } from "../../../../../components/common/percentage-input"
 import {

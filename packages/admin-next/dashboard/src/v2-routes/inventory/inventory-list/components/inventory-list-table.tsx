@@ -1,5 +1,5 @@
-import { Container, Heading } from "@medusajs/ui"
-import { InventoryNext } from "@medusajs/types"
+import { Container, Heading } from "@ninjajs/ui"
+import { InventoryNext } from "@ninjajs/types"
 
 import { DataTable } from "../../../../components/table/data-table"
 import { useDataTable } from "../../../../hooks/use-data-table"

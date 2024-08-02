@@ -9,25 +9,25 @@ import {
   IPricingModuleService,
   PriceListStatus,
   PriceListType,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import adminSeeder from "../../../../helpers/admin-seeder"
 import { createDefaultRuleTypes } from "../../../helpers/create-default-rule-types"
 import { createVariantPriceSet } from "../../../helpers/create-variant-price-set"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe.skip("GET /store/products/:id", () => {

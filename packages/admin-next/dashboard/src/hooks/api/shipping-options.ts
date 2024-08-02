@@ -6,7 +6,7 @@ import {
 } from "../../types/api-responses"
 import { CreateShippingOptionReq } from "../../types/api-payloads"
 import { stockLocationsQueryKeys } from "./stock-locations"
-import { queryClient } from "../../lib/medusa"
+import { queryClient } from "../../lib/ninja"
 import { client } from "../../lib/client"
 
 export const useCreateShippingOptions = (

@@ -1,8 +1,8 @@
-import { promiseAll, wrapHandler } from "@medusajs/utils"
+import { promiseAll, wrapHandler } from "@ninjajs/utils"
 import cors from "cors"
 import { Router, json, text, urlencoded, type Express } from "express"
 import { readdir } from "fs/promises"
-import { parseCorsOrigins } from "medusa-core-utils"
+import { parseCorsOrigins } from "ninja-core-utils"
 import { extname, join, sep } from "path"
 import {
   authenticate,
@@ -11,7 +11,7 @@ import {
   requireCustomerAuthentication,
 } from "../../../api/middlewares"
 import { ConfigModule } from "../../../types/global"
-import { MedusaRequest, MedusaResponse } from "../../../types/routing"
+import { NinjaRequest, NinjaResponse } from "../../../types/routing"
 import logger from "../../logger"
 import {
   AsyncRouteHandler,
@@ -159,7 +159,7 @@ function getBodyParserMiddleware(args?: ParserConfigArgs) {
     json({
       limit: sizeLimit,
       verify: preserveRawBody
-        ? (req: MedusaRequest, res: MedusaResponse, buf: Buffer) => {
+        ? (req: NinjaRequest, res: NinjaResponse, buf: Buffer) => {
             req.rawBody = buf
           }
         : undefined,

@@ -1,11 +1,11 @@
-import { RemoteQueryFunction } from "@medusajs/types"
+import { RemoteQueryFunction } from "@ninjajs/types"
 import {
   FlagRouter,
   isDefined,
-  MedusaError,
-  MedusaV2Flag,
+  NinjaError,
+  NinjaV2Flag,
   promiseAll,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { isEmpty, isEqual } from "lodash"
 import { DeepPartial, EntityManager, In, IsNull, Not } from "typeorm"
 import {
@@ -237,13 +237,13 @@ class CartService extends TransactionBaseService {
     totalsConfig: TotalsConfig = {}
   ): Promise<Cart> {
     if (!isDefined(cartId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"cartId" must be defined`
       )
     }
 
-    if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
       if (Array.isArray(options.relations)) {
         for (let i = 0; i < options.relations.length; i++) {
           if (options.relations[i].startsWith("items.variant")) {
@@ -274,8 +274,8 @@ class CartService extends TransactionBaseService {
     const raw = await cartRepo.findOneWithRelations(queryRelations, query)
 
     if (!raw) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Cart with ${cartId} was not found`
       )
     }
@@ -309,8 +309,8 @@ class CartService extends TransactionBaseService {
     const raw = await cartRepo.findOne(query)
 
     if (!raw) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Cart with ${cartId} was not found`
       )
     }
@@ -327,7 +327,7 @@ class CartService extends TransactionBaseService {
 
     const opt = { ...options, relations }
 
-    if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
       if (Array.isArray(opt.relations)) {
         for (let i = 0; i < opt.relations.length; i++) {
           if (opt.relations[i].startsWith("items.variant")) {
@@ -365,7 +365,7 @@ class CartService extends TransactionBaseService {
           this.featureFlagRouter_.isFeatureEnabled(
             SalesChannelFeatureFlag.key
           ) &&
-          !this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)
+          !this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)
         ) {
           rawCart.sales_channel_id = (
             await this.getValidatedSalesChannel(data.sales_channel_id)
@@ -395,8 +395,8 @@ class CartService extends TransactionBaseService {
         }
 
         if (!data.region_id && !data.region) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `A region_id must be provided when creating a cart`
           )
         }
@@ -420,8 +420,8 @@ class CartService extends TransactionBaseService {
         } else {
           if (data.shipping_address) {
             if (!regCountries.includes(data.shipping_address.country_code!)) {
-              throw new MedusaError(
-                MedusaError.Types.NOT_ALLOWED,
+              throw new NinjaError(
+                NinjaError.Types.NOT_ALLOWED,
                 "Shipping country not in region"
               )
             }
@@ -435,8 +435,8 @@ class CartService extends TransactionBaseService {
               addr?.country_code &&
               !regCountries.includes(addr.country_code)
             ) {
-              throw new MedusaError(
-                MedusaError.Types.NOT_ALLOWED,
+              throw new NinjaError(
+                NinjaError.Types.NOT_ALLOWED,
                 "Shipping country not in region"
               )
             }
@@ -446,8 +446,8 @@ class CartService extends TransactionBaseService {
 
         if (data.billing_address) {
           if (!regCountries.includes(data.billing_address.country_code!)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               "Billing country not in region"
             )
           }
@@ -458,8 +458,8 @@ class CartService extends TransactionBaseService {
             where: { id: data.billing_address_id },
           })
           if (addr?.country_code && !regCountries.includes(addr.country_code)) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               "Billing country not in region"
             )
           }
@@ -487,7 +487,7 @@ class CartService extends TransactionBaseService {
         if (
           this.featureFlagRouter_.isFeatureEnabled([
             SalesChannelFeatureFlag.key,
-            MedusaV2Flag.key,
+            NinjaV2Flag.key,
           ])
         ) {
           const salesChannel = await this.getValidatedSalesChannel(
@@ -512,7 +512,7 @@ class CartService extends TransactionBaseService {
   ): Promise<SalesChannel | never> {
     let salesChannel: SalesChannel
     if (isDefined(salesChannelId)) {
-      if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+      if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
         const query = {
           sales_channel: {
             __args: {
@@ -535,8 +535,8 @@ class CartService extends TransactionBaseService {
     }
 
     if (salesChannel.is_disabled) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `Unable to assign the cart to a disabled Sales Channel "${salesChannel.name}"`
       )
     }
@@ -694,7 +694,7 @@ class CartService extends TransactionBaseService {
     const relations: (keyof Cart)[] = ["shipping_methods"]
 
     if (this.featureFlagRouter_.isFeatureEnabled("sales_channels")) {
-      if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+      if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
         relations.push("sales_channels")
       } else {
         fields.push("sales_channel_id")
@@ -717,8 +717,8 @@ class CartService extends TransactionBaseService {
               )
 
               if (!lineItemIsValid) {
-                throw new MedusaError(
-                  MedusaError.Types.INVALID_DATA,
+                throw new NinjaError(
+                  NinjaError.Types.INVALID_DATA,
                   `The product "${lineItem.title}" must belongs to the sales channel on which the cart has been created.`
                 )
               }
@@ -763,10 +763,10 @@ class CartService extends TransactionBaseService {
             )
 
           if (!isCovered) {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Variant with id: ${lineItem.variant_id} does not have the required inventory`,
-              MedusaError.Codes.INSUFFICIENT_INVENTORY
+              NinjaError.Codes.INSUFFICIENT_INVENTORY
             )
           }
         }
@@ -788,9 +788,9 @@ class CartService extends TransactionBaseService {
             { cart_id: cartId, has_shipping: true },
             { has_shipping: false }
           )
-          .catch((err: Error | MedusaError) => {
+          .catch((err: Error | NinjaError) => {
             // We only want to catch the errors related to not found items since we don't care if there is not item to update
-            if ("type" in err && err.type === MedusaError.Types.NOT_FOUND) {
+            if ("type" in err && err.type === NinjaError.Types.NOT_FOUND) {
               return
             }
             throw err
@@ -841,7 +841,7 @@ class CartService extends TransactionBaseService {
     const relations: (keyof Cart)[] = ["shipping_methods"]
 
     if (this.featureFlagRouter_.isFeatureEnabled("sales_channels")) {
-      if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+      if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
         relations.push("sales_channels")
       } else {
         fields.push("sales_channel_id")
@@ -876,8 +876,8 @@ class CartService extends TransactionBaseService {
               .filter((v): v is { title: string } => !!v)
 
             if (invalidProducts.length) {
-              throw new MedusaError(
-                MedusaError.Types.INVALID_DATA,
+              throw new NinjaError(
+                NinjaError.Types.INVALID_DATA,
                 `The products [${invalidProducts
                   .map((item) => item.title)
                   .join(
@@ -936,10 +936,10 @@ class CartService extends TransactionBaseService {
               )
 
             if (!isSufficient) {
-              throw new MedusaError(
-                MedusaError.Types.NOT_ALLOWED,
+              throw new NinjaError(
+                NinjaError.Types.NOT_ALLOWED,
                 `Variant with id: ${item.variant_id} does not have the required inventory`,
-                MedusaError.Codes.INSUFFICIENT_INVENTORY
+                NinjaError.Codes.INSUFFICIENT_INVENTORY
               )
             }
           }
@@ -1003,9 +1003,9 @@ class CartService extends TransactionBaseService {
             },
             { has_shipping: false }
           )
-          .catch((err: Error | MedusaError) => {
+          .catch((err: Error | NinjaError) => {
             // We only want to catch the errors related to not found items since we don't care if there is not item to update
-            if ("type" in err && err.type === MedusaError.Types.NOT_FOUND) {
+            if ("type" in err && err.type === NinjaError.Types.NOT_FOUND) {
               return
             }
             throw err
@@ -1068,8 +1068,8 @@ class CartService extends TransactionBaseService {
 
         if (lineItem.cart_id !== cartId) {
           // Ensure that the line item exists in the cart
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             "A line item with the provided id doesn't exist in the cart"
           )
         }
@@ -1084,10 +1084,10 @@ class CartService extends TransactionBaseService {
               )
 
             if (!hasInventory) {
-              throw new MedusaError(
-                MedusaError.Types.NOT_ALLOWED,
+              throw new NinjaError(
+                NinjaError.Types.NOT_ALLOWED,
                 "Inventory doesn't cover the desired quantity",
-                MedusaError.Codes.INSUFFICIENT_INVENTORY
+                NinjaError.Codes.INSUFFICIENT_INVENTORY
               )
             }
 
@@ -1511,8 +1511,8 @@ class CartService extends TransactionBaseService {
         ({ iso_2 }) => address.country_code?.toLowerCase() === iso_2
       )
     ) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Shipping country must be in the cart region"
       )
     }
@@ -1540,15 +1540,15 @@ class CartService extends TransactionBaseService {
       .retrieveByCode(code)
 
     if (giftCard.is_disabled) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "The gift card is disabled"
       )
     }
 
     if (giftCard.region_id !== cart.region_id) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "The gift card cannot be used in the current region"
       )
     }
@@ -1785,8 +1785,8 @@ class CartService extends TransactionBaseService {
         }
 
         if (!cart.payment_session) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             "You cannot complete a cart without a payment session."
           )
         }
@@ -1849,8 +1849,8 @@ class CartService extends TransactionBaseService {
         )
 
         if (providerId !== "system" && !isProviderPresent) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             `The payment method is not available in this region`
           )
         }
@@ -1894,8 +1894,8 @@ class CartService extends TransactionBaseService {
         )
 
         if (!paymentSession) {
-          throw new MedusaError(
-            MedusaError.Types.UNEXPECTED_STATE,
+          throw new NinjaError(
+            NinjaError.Types.UNEXPECTED_STATE,
             "Could not find payment session"
           )
         }
@@ -2298,7 +2298,7 @@ class CartService extends TransactionBaseService {
 
           let productShippingProfileMap = new Map<string, string>()
 
-          if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+          if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
             productShippingProfileMap =
               await this.shippingProfileService_.getMapProfileIdsByProductIds(
                 cart.items.map((item) => item.variant.product_id)
@@ -2368,8 +2368,8 @@ class CartService extends TransactionBaseService {
     const hasCustomOptions = cartCustomShippingOptions?.length
 
     if (hasCustomOptions && !customOption) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Wrong shipping option"
       )
     }
@@ -2462,8 +2462,8 @@ class CartService extends TransactionBaseService {
     countryCode: string | null
   ): Promise<void> {
     if (cart.completed_at || cart.payment_authorized_at) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Cannot change the region of a completed cart"
       )
     }
@@ -2502,8 +2502,8 @@ class CartService extends TransactionBaseService {
           ({ iso_2 }) => iso_2 === countryCode.toLowerCase()
         )
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Country not available in region`
         )
       }
@@ -2608,15 +2608,15 @@ class CartService extends TransactionBaseService {
         })
 
         if (cart.completed_at) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             "Completed carts cannot be deleted"
           )
         }
 
         if (cart.payment_authorized_at) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             "Can't delete a cart with an authorized payment"
           )
         }
@@ -2646,16 +2646,16 @@ class CartService extends TransactionBaseService {
         const cartRepo = transactionManager.withRepository(this.cartRepository_)
 
         if (typeof key !== "string") {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_ARGUMENT,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_ARGUMENT,
             "Key type is invalid. Metadata keys must be strings"
           )
         }
 
         const cart = await cartRepo.findOne({ where: { id: cartId } })
         if (!cart) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_FOUND,
+          throw new NinjaError(
+            NinjaError.Types.NOT_FOUND,
             "Unable to find the cart with the given id"
           )
         }

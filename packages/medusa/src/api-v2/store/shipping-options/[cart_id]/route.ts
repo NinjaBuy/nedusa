@@ -1,9 +1,9 @@
-import { listShippingOptionsForCartWorkflow } from "@medusajs/core-flows"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { ICartModuleService } from "@medusajs/types"
-import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
+import { listShippingOptionsForCartWorkflow } from "@ninjajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ICartModuleService } from "@ninjajs/types"
+import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const { cart_id } = req.params
 
   const cartService = req.scope.resolve<ICartModuleService>(

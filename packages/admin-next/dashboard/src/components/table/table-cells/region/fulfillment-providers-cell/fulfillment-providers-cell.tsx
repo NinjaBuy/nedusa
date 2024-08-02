@@ -1,4 +1,4 @@
-import { FulfillmentProvider } from "@medusajs/medusa"
+import { FulfillmentProvider } from "@ninjajs/ninja"
 import { useTranslation } from "react-i18next"
 import { formatProvider } from "../../../../../lib/format-provider"
 import { PlaceholderCell } from "../../common/placeholder-cell"

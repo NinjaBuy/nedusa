@@ -25,19 +25,19 @@ import {
   UpdatePaymentDTO,
   UpdatePaymentSessionDTO,
   UpsertPaymentCollectionDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   BigNumber,
   InjectManager,
   InjectTransactionManager,
   isString,
   MathBN,
-  MedusaContext,
-  MedusaError,
+  NinjaContext,
+  NinjaError,
   ModulesSdkUtils,
   PaymentActions,
   promiseAll,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   Capture,
   Payment,
@@ -136,7 +136,7 @@ export default class PaymentModuleService<
   @InjectManager("baseRepository_")
   async createPaymentCollections(
     data: CreatePaymentCollectionDTO | CreatePaymentCollectionDTO[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollectionDTO | PaymentCollectionDTO[]> {
     const input = Array.isArray(data) ? data : [data]
 
@@ -156,7 +156,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async createPaymentCollections_(
     data: CreatePaymentCollectionDTO[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollection[]> {
     return this.paymentCollectionService_.create(data, sharedContext)
   }
@@ -175,7 +175,7 @@ export default class PaymentModuleService<
   async updatePaymentCollections(
     idOrSelector: string | FilterablePaymentCollectionProps,
     data: PaymentCollectionUpdatableFields,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollectionDTO | PaymentCollectionDTO[]> {
     let updateData: UpdatePaymentCollectionDTO[] = []
 
@@ -215,7 +215,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async updatePaymentCollections_(
     data: UpdatePaymentCollectionDTO[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollection[]> {
     return await this.paymentCollectionService_.update(data, sharedContext)
   }
@@ -232,7 +232,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async upsertPaymentCollections(
     data: UpsertPaymentCollectionDTO | UpsertPaymentCollectionDTO[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollectionDTO | PaymentCollectionDTO[]> {
     const input = Array.isArray(data) ? data : [data]
     const forUpdate = input.filter(
@@ -270,7 +270,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async completePaymentCollections(
     paymentCollectionId: string | string[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentCollectionDTO | PaymentCollectionDTO[]> {
     const input = Array.isArray(paymentCollectionId)
       ? paymentCollectionId.map((id) => ({
@@ -296,7 +296,7 @@ export default class PaymentModuleService<
   async createPaymentSession(
     paymentCollectionId: string,
     input: CreatePaymentSessionDTO,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentSessionDTO> {
     let paymentSession: PaymentSession
 
@@ -319,7 +319,7 @@ export default class PaymentModuleService<
         sharedContext
       )
     } catch (error) {
-      // In case the session is created at the provider, but fails to be created in Medusa,
+      // In case the session is created at the provider, but fails to be created in Ninja,
       // we catch the error and delete the session at the provider and rethrow.
       await this.paymentProviderService_.deleteSession({
         provider_id: input.provider_id,
@@ -338,7 +338,7 @@ export default class PaymentModuleService<
   async createPaymentSession_(
     paymentCollectionId: string,
     data: CreatePaymentSessionDTO,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentSession> {
     const paymentSession = await this.paymentSessionService_.create(
       {
@@ -358,7 +358,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async updatePaymentSession(
     data: UpdatePaymentSessionDTO,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentSessionDTO> {
     const session = await this.paymentSessionService_.retrieve(
       data.id,
@@ -382,7 +382,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async deletePaymentSession(
     id: string,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<void> {
     const session = await this.paymentSessionService_.retrieve(
       id,
@@ -402,7 +402,7 @@ export default class PaymentModuleService<
   async authorizePaymentSession(
     id: string,
     context: Record<string, unknown>,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentDTO> {
     const session = await this.paymentSessionService_.retrieve(
       id,
@@ -450,8 +450,8 @@ export default class PaymentModuleService<
     )
 
     if (status !== PaymentSessionStatus.AUTHORIZED) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         `Session: ${session.id} is not authorized with the provider.`
       )
     }
@@ -481,7 +481,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async updatePayment(
     data: UpdatePaymentDTO,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentDTO> {
     // NOTE: currently there is no update with the provider but maybe data could be updated
     const result = await this.paymentService_.update(data, sharedContext)
@@ -494,7 +494,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async capturePayment(
     data: CreateCaptureDTO,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<PaymentDTO> {
     const payment = await this.paymentService_.retrieve(
       data.payment_id,
@@ -518,8 +518,8 @@ export default class PaymentModuleService<
     }
 
     if (payment.canceled_at) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `The payment: ${payment.id} has been canceled.`
       )
     }
@@ -541,8 +541,8 @@ export default class PaymentModuleService<
     const remainingToCapture = MathBN.sub(authorizedAmount, capturedAmount)
 
     if (MathBN.gt(newCaptureAmount, remainingToCapture)) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You cannot capture more than the authorized amount substracted by what is already captured.`
       )
     }
@@ -587,7 +587,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async refundPayment(
     data: CreateRefundDTO,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentDTO> {
     const payment = await this.paymentService_.retrieve(
       data.payment_id,
@@ -609,8 +609,8 @@ export default class PaymentModuleService<
     const refundAmount = new BigNumber(data.amount)
 
     if (MathBN.lt(capturedAmount, refundAmount)) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You cannot refund more than what is captured on the payment.`
       )
     }
@@ -647,7 +647,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async cancelPayment(
     paymentId: string,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentDTO> {
     const payment = await this.paymentService_.retrieve(
       paymentId,
@@ -657,8 +657,8 @@ export default class PaymentModuleService<
 
     // TODO: revisit when totals are implemented
     //   if (payment.captured_amount !== 0) {
-    //     throw new MedusaError(
-    //       MedusaError.Types.INVALID_DATA,
+    //     throw new NinjaError(
+    //       NinjaError.Types.INVALID_DATA,
     //       `Cannot cancel a payment: ${payment.id} that has been captured.`
     //     )
     //   }
@@ -679,7 +679,7 @@ export default class PaymentModuleService<
   @InjectTransactionManager("baseRepository_")
   async processEvent(
     eventData: ProviderWebhookPayload,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<void> {
     const providerId = `pp_${eventData.provider}`
 
@@ -721,7 +721,7 @@ export default class PaymentModuleService<
   async listPaymentProviders(
     filters: FilterablePaymentProviderProps = {},
     config: FindConfig<PaymentProviderDTO> = {},
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentProviderDTO[]> {
     const providers = await this.paymentProviderService_.list(
       filters,
@@ -741,7 +741,7 @@ export default class PaymentModuleService<
   async listAndCountPaymentProviders(
     filters: FilterablePaymentProviderProps = {},
     config: FindConfig<PaymentProviderDTO> = {},
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<[PaymentProviderDTO[], number]> {
     const [providers, count] = await this.paymentProviderService_.listAndCount(
       filters,

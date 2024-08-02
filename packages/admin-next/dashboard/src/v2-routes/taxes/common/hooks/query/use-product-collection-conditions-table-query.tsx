@@ -1,4 +1,4 @@
-import { AdminGetCollectionsParams } from "@medusajs/medusa"
+import { AdminGetCollectionsParams } from "@ninjajs/ninja"
 
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 

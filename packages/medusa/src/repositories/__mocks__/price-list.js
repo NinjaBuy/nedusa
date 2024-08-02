@@ -5,7 +5,7 @@ export const PriceListModelMock = {
   }),
   deleteOne: jest.fn().mockReturnValue(Promise.resolve()),
   findOne: jest.fn().mockImplementation(query => {
-    if (query.email === "oliver@medusa.com") {
+    if (query.email === "oliver@ninja.com") {
       return Promise.resolve(customers.testCustomer)
     }
     if (query.phone === "12345678") {

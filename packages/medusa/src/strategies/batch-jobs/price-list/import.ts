@@ -16,7 +16,7 @@ import {
   TBuiltPriceListImportLine,
   TParsedPriceListImportRowData,
 } from "./types"
-import { computerizeAmount, MedusaError } from "medusa-core-utils"
+import { computerizeAmount, NinjaError } from "ninja-core-utils"
 
 import { BatchJob } from "../../../models"
 import { CreateBatchJobInput } from "../../../types/batch-job"
@@ -24,7 +24,7 @@ import CsvParser from "../../../services/csv-parser"
 import { EntityManager } from "typeorm"
 import { PriceListPriceCreateInput } from "../../../types/price-list"
 import { TParsedProductImportRowData } from "../product/types"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 /*
  * Default strategy class used for a batch import of products/variants.
@@ -78,7 +78,7 @@ class PriceListImportStrategy extends AbstractBatchJobStrategy {
   }
 
   /**
-   * Create a description of a row on which the error occurred and throw a Medusa error.
+   * Create a description of a row on which the error occurred and throw a Ninja error.
    *
    * @param row - Parsed CSV row data
    * @param errorDescription - Concrete error
@@ -92,7 +92,7 @@ class PriceListImportStrategy extends AbstractBatchJobStrategy {
       variant SKU: ${row[PriceListRowKeys.VARIANT_SKU]},
       ${errorDescription}`
 
-    throw new MedusaError(MedusaError.Types.INVALID_DATA, message)
+    throw new NinjaError(NinjaError.Types.INVALID_DATA, message)
   }
 
   async prepareBatchJobForProcessing(
@@ -102,8 +102,8 @@ class PriceListImportStrategy extends AbstractBatchJobStrategy {
     const manager = this.transactionManager_ ?? this.manager_
 
     if (!batchJob.context?.price_list_id) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Price list id is required"
       )
     }
@@ -198,8 +198,8 @@ class PriceListImportStrategy extends AbstractBatchJobStrategy {
           record.region_id = region.id
           record.currency_code = region.currency_code
         } catch (e) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Trying to set a price for a region ${price.region_name} that doesn't exist`
           )
         }
@@ -244,8 +244,8 @@ class PriceListImportStrategy extends AbstractBatchJobStrategy {
       const parsedData = await this.csvParser_.parse(csvStream)
       builtData = await this.csvParser_.buildData(parsedData)
     } catch (e) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "The csv file parsing failed due to: " + e.message
       )
     }

@@ -1,13 +1,13 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { NextFunction } from "express"
-import { MedusaRequest } from "../../../../types/routing"
+import { NinjaRequest } from "../../../../types/routing"
 import { AdminGetProductsParamsType } from "../validators"
 
 export function maybeApplyPriceListsFilter() {
-  return async (req: MedusaRequest, _, next: NextFunction) => {
+  return async (req: NinjaRequest, _, next: NextFunction) => {
     const filterableFields: AdminGetProductsParamsType = req.filterableFields
 
     if (!filterableFields.price_list_id) {

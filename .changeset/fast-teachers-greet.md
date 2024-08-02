@@ -1,5 +1,5 @@
 ---
-"@medusajs/utils": patch
+"@ninjajs/utils": patch
 ---
 
 feat(utils): custom serialization that allows for non self ref

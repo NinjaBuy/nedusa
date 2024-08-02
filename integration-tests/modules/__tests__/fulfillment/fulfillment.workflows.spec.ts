@@ -5,10 +5,10 @@ import {
   createShipmentWorkflowId,
   updateFulfillmentWorkflow,
   updateFulfillmentWorkflowId,
-} from "@medusajs/core-flows"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { IFulfillmentModuleService } from "@medusajs/types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
+} from "@ninjajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { IFulfillmentModuleService } from "@ninjajs/types"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
 import {
   generateCreateFulfillmentData,
   generateCreateShippingOptionsData,
@@ -18,8 +18,8 @@ jest.setTimeout(50000)
 
 const providerId = "manual_test-provider"
 
-medusaIntegrationTestRunner({
-  env: { MEDUSA_FF_MEDUSA_V2: true },
+ninjaIntegrationTestRunner({
+  env: { NINJA_FF_NINJA_V2: true },
   testSuite: ({ getContainer }) => {
     describe("Workflows: Fulfillment", () => {
       let appContainer

@@ -1,4 +1,4 @@
-import type { Discount } from "@medusajs/medusa"
+import type { Discount } from "@ninjajs/ninja"
 
 import { useTranslation } from "react-i18next"
 

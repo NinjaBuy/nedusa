@@ -1,4 +1,4 @@
-import { CurrencyDTO } from "@medusajs/types"
+import { CurrencyDTO } from "@ninjajs/types"
 import { useRef } from "react"
 import Primitive from "react-currency-input-field"
 import { Controller, FieldValues } from "react-hook-form"

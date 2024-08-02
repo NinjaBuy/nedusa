@@ -9,21 +9,21 @@ import {
   AdminSalesChannelsDeleteRes,
   AdminSalesChannelsListRes,
   AdminSalesChannelsRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Sales Channel API Routes](https://docs.medusajs.com/api/admin#sales-channels). All its method
- * are available in the JS Client under the `medusa.admin.salesChannels` property.
+ * This class is used to send requests to [Admin Sales Channel API Routes](https://docs.ninjajs.com/api/admin#sales-channels). All its method
+ * are available in the JS Client under the `ninja.admin.salesChannels` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A sales channel indicates a channel where products can be sold in. For example, a webshop or a mobile app.
  * Admins can manage sales channels and the products available in them.
  * 
- * Related Guide: [How to manage sales channels](https://docs.medusajs.com/modules/sales-channels/admin/manage).
+ * Related Guide: [How to manage sales channels](https://docs.ninjajs.com/modules/sales-channels/admin/manage).
  */
 class AdminSalesChannelsResource extends BaseResource {
   /**
@@ -33,10 +33,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.retrieve(salesChannelId)
+   * ninja.admin.salesChannels.retrieve(salesChannelId)
    * .then(({ sales_channel }) => {
    *   console.log(sales_channel.id)
    * })
@@ -56,10 +56,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.create({
+   * ninja.admin.salesChannels.create({
    *   name: "App",
    *   description: "Mobile app"
    * })
@@ -83,10 +83,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.update(salesChannelId, {
+   * ninja.admin.salesChannels.update(salesChannelId, {
    *   name: "App"
    * })
    * .then(({ sales_channel }) => {
@@ -112,10 +112,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * To list sales channels:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.list()
+   * ninja.admin.salesChannels.list()
    * .then(({ sales_channels, limit, offset, count }) => {
    *   console.log(sales_channels.length)
    * })
@@ -124,10 +124,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * To specify relations that should be retrieved within the sales channels:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.list({
+   * ninja.admin.salesChannels.list({
    *   expand: "locations"
    * })
    * .then(({ sales_channels, limit, offset, count }) => {
@@ -138,10 +138,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.list({
+   * ninja.admin.salesChannels.list({
    *   expand: "locations",
    *   limit,
    *   offset
@@ -172,10 +172,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.delete(salesChannelId)
+   * ninja.admin.salesChannels.delete(salesChannelId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -196,10 +196,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.removeProducts(salesChannelId, {
+   * ninja.admin.salesChannels.removeProducts(salesChannelId, {
    *   product_ids: [
    *     {
    *       id: productId
@@ -227,10 +227,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.addProducts(salesChannelId, {
+   * ninja.admin.salesChannels.addProducts(salesChannelId, {
    *   product_ids: [
    *     {
    *       id: productId
@@ -252,18 +252,18 @@ class AdminSalesChannelsResource extends BaseResource {
 
   /**
    * Associate a stock location with a sales channel. It requires the 
-   * [@medusajs/stock-location](https://docs.medusajs.com/modules/multiwarehouse/install-modules#stock-location-module) module to be installed in
-   * your Medusa backend.
+   * [@ninjajs/stock-location](https://docs.ninjajs.com/modules/multiwarehouse/install-modules#stock-location-module) module to be installed in
+   * your Ninja backend.
    * @param {string} salesChannelId - The sales channel's ID. 
    * @param {AdminPostSalesChannelsChannelStockLocationsReq} payload - The stock location to associate with the sales channel.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.addLocation(salesChannelId, {
+   * ninja.admin.salesChannels.addLocation(salesChannelId, {
    *   location_id: "loc_123"
    * })
    * .then(({ sales_channel }) => {
@@ -287,10 +287,10 @@ class AdminSalesChannelsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSalesChannelsRes>} Resolves to the sales channel's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.salesChannels.removeLocation(salesChannelId, {
+   * ninja.admin.salesChannels.removeLocation(salesChannelId, {
    *   location_id: "loc_id"
    * })
    * .then(({ sales_channel }) => {

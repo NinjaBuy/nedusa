@@ -1,4 +1,4 @@
-import { MockManager, MockRepository } from "medusa-test-utils"
+import { MockManager, MockRepository } from "ninja-test-utils"
 import CustomShippingOptionService from "../custom-shipping-option"
 
 describe("CustomShippingOptionService", () => {

@@ -1,5 +1,5 @@
 const path = require("path")
-const { IdMap } = require("medusa-test-utils")
+const { IdMap } = require("ninja-test-utils")
 
 const { useApi } = require("../../../environment-helpers/use-api")
 const { useDb, initDb } = require("../../../environment-helpers/use-db")
@@ -18,33 +18,33 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const customerData = {
-  email: "medusa@test.hr",
-  password: "medusatest",
-  first_name: "medusa",
-  last_name: "medusa",
+  email: "ninja@test.hr",
+  password: "ninjatest",
+  first_name: "ninja",
+  last_name: "ninja",
 }
 
 describe("Publishable API keys", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
   const adminUserId = "admin_user"
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /admin/publishable-api-keys/:id", () => {
@@ -595,7 +595,7 @@ describe("Publishable API keys", () => {
 
       const response = await api.get(`/store/products`, {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
           "x-publishable-api-key": pubKeyId,
         },
       })
@@ -626,7 +626,7 @@ describe("Publishable API keys", () => {
 
       const response = await api.get(`/store/products`, {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
           "x-publishable-api-key": pubKeyId,
         },
       })
@@ -662,7 +662,7 @@ describe("Publishable API keys", () => {
         `/store/products?sales_channel_id[0]=${salesChannel2.id}`,
         {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         }
@@ -694,7 +694,7 @@ describe("Publishable API keys", () => {
 
       const response = await api.get(`/store/products`, {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
           // "x-publishable-api-key": pubKeyId,
         },
       })
@@ -714,7 +714,7 @@ describe("Publishable API keys", () => {
 
       const response = await api.get(`/store/products`, {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
           "x-publishable-api-key": pubKeyId,
         },
       })
@@ -751,7 +751,7 @@ describe("Publishable API keys", () => {
           `/store/products?sales_channel_id[]=${salesChannel2.id}`,
           {
             headers: {
-              "x-medusa-access-token": "test_token",
+              "x-ninja-access-token": "test_token",
               "x-publishable-api-key": pubKeyId,
             },
           }
@@ -815,7 +815,7 @@ describe("Publishable API keys", () => {
 
       const response = await api.get(`/store/products/${product1.id}`, {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
           "x-publishable-api-key": pubKeyId,
         },
       })
@@ -841,7 +841,7 @@ describe("Publishable API keys", () => {
       const response = await api
         .get(`/store/products/${product2.id}`, {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         })
@@ -866,7 +866,7 @@ describe("Publishable API keys", () => {
       const response = await api
         .get(`/store/variants/does-not-exist`, {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         })
@@ -894,7 +894,7 @@ describe("Publishable API keys", () => {
       const response = await api
         .get(`/store/products/does-not-exist`, {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         })
@@ -914,7 +914,7 @@ describe("Publishable API keys", () => {
       let response = await api
         .get(`/store/products/${product1.id}`, {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         })
@@ -927,7 +927,7 @@ describe("Publishable API keys", () => {
       response = await api
         .get(`/store/products/${product2.id}`, {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         })
@@ -1004,7 +1004,7 @@ describe("Publishable API keys", () => {
         },
         {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         }
@@ -1063,7 +1063,7 @@ describe("Publishable API keys", () => {
         },
         {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
             "x-publishable-api-key": pubKeyId,
           },
         }
@@ -1116,7 +1116,7 @@ describe("Publishable API keys", () => {
           },
           {
             headers: {
-              "x-medusa-access-token": "test_token",
+              "x-ninja-access-token": "test_token",
               "x-publishable-api-key": pubKeyId,
             },
           }

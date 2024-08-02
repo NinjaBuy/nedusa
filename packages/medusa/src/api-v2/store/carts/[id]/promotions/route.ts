@@ -1,6 +1,6 @@
-import { updateCartPromotionsWorkflow } from "@medusajs/core-flows"
-import { PromotionActions } from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
+import { updateCartPromotionsWorkflow } from "@ninjajs/core-flows"
+import { PromotionActions } from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
 import { refetchCart } from "../../helpers"
 import {
   StoreAddCartPromotionsType,
@@ -8,8 +8,8 @@ import {
 } from "../../validators"
 
 export const POST = async (
-  req: MedusaRequest<StoreAddCartPromotionsType>,
-  res: MedusaResponse
+  req: NinjaRequest<StoreAddCartPromotionsType>,
+  res: NinjaResponse
 ) => {
   const workflow = updateCartPromotionsWorkflow(req.scope)
   const payload = req.validatedBody
@@ -37,8 +37,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: MedusaRequest<StoreRemoveCartPromotionsType>,
-  res: MedusaResponse
+  req: NinjaRequest<StoreRemoveCartPromotionsType>,
+  res: NinjaResponse
 ) => {
   const workflow = updateCartPromotionsWorkflow(req.scope)
   const payload = req.validatedBody

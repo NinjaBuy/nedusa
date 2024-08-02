@@ -1,8 +1,8 @@
 import {
   createShippingOptionsWorkflow,
   updateShippingOptionsWorkflow,
-} from "@medusajs/core-flows"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+} from "@ninjajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import {
   FulfillmentSetDTO,
   FulfillmentWorkflow,
@@ -11,20 +11,20 @@ import {
   ServiceZoneDTO,
   ShippingProfileDTO,
   UpdateShippingOptionsWorkflowInput,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   RuleOperator,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
-import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
+} from "@ninjajs/utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
 
 jest.setTimeout(100000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 const provider_id = "manual_test-provider"
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ getContainer }) => {
     let service: IFulfillmentModuleService

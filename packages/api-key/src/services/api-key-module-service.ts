@@ -10,7 +10,7 @@ import {
   ModuleJoinerConfig,
   FindConfig,
   FilterableApiKeyProps,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { entityNameToLinkableKeysMap, joinerConfig } from "../joiner-config"
 import { ApiKey } from "@models"
 import {
@@ -23,13 +23,13 @@ import {
   ApiKeyType,
   InjectManager,
   InjectTransactionManager,
-  MedusaContext,
-  MedusaError,
+  NinjaContext,
+  NinjaError,
   ModulesSdkUtils,
   isObject,
   isString,
   promiseAll,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 const scrypt = util.promisify(crypto.scrypt)
 
@@ -79,7 +79,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectManager("baseRepository_")
   async create(
     data: ApiKeyTypes.CreateApiKeyDTO | ApiKeyTypes.CreateApiKeyDTO[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKeyTypes.ApiKeyDTO | ApiKeyTypes.ApiKeyDTO[]> {
     const [createdApiKeys, generatedTokens] = await this.create_(
       Array.isArray(data) ? data : [data],
@@ -107,7 +107,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectTransactionManager("baseRepository_")
   protected async create_(
     data: ApiKeyTypes.CreateApiKeyDTO[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<[TEntity[], TokenDTO[]]> {
     await this.validateCreateApiKeys_(data, sharedContext)
 
@@ -150,7 +150,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectManager("baseRepository_")
   async upsert(
     data: ApiKeyTypes.UpsertApiKeyDTO | ApiKeyTypes.UpsertApiKeyDTO[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKeyTypes.ApiKeyDTO | ApiKeyTypes.ApiKeyDTO[]> {
     const input = Array.isArray(data) ? data : [data]
     const forUpdate = input.filter(
@@ -219,7 +219,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   async update(
     idOrSelector: string | FilterableApiKeyProps,
     data: ApiKeyTypes.UpdateApiKeyDTO,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKeyTypes.ApiKeyDTO[] | ApiKeyTypes.ApiKeyDTO> {
     let normalizedInput = await this.normalizeUpdateInput_<UpdateApiKeyInput>(
       idOrSelector,
@@ -241,7 +241,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectTransactionManager("baseRepository_")
   protected async update_(
     normalizedInput: UpdateApiKeyInput[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<TEntity[]> {
     const updateRequest = normalizedInput.map((k) => ({
       id: k.id,
@@ -328,7 +328,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   async revoke(
     idOrSelector: string | FilterableApiKeyProps,
     data: ApiKeyTypes.RevokeApiKeyDTO,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKeyTypes.ApiKeyDTO[] | ApiKeyTypes.ApiKeyDTO> {
     const normalizedInput = await this.normalizeUpdateInput_<RevokeApiKeyInput>(
       idOrSelector,
@@ -349,7 +349,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectTransactionManager("baseRepository_")
   async revoke_(
     normalizedInput: RevokeApiKeyInput[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<TEntity[]> {
     await this.validateRevokeApiKeys_(normalizedInput)
 
@@ -377,7 +377,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectManager("baseRepository_")
   async authenticate(
     token: string,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKeyTypes.ApiKeyDTO | false> {
     const result = await this.authenticate_(token, sharedContext)
     if (!result) {
@@ -395,7 +395,7 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
   @InjectTransactionManager("baseRepository_")
   protected async authenticate_(
     token: string,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<ApiKey | false> {
     // Since we only allow up to 2 active tokens, getitng the list and checking each token isn't an issue.
     // We can always filter on the redacted key if we add support for an arbitrary number of tokens.
@@ -448,8 +448,8 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
     }
 
     if (secretKeysToCreate.length > 1) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You can only create one secret key at a time. You tried to create ${secretKeysToCreate.length} secret keys.`
       )
     }
@@ -468,8 +468,8 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
     )
 
     if (dbSecretKeys.length) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You can only have one active secret key a time. Revoke or delete your existing key before creating a new one.`
       )
     }
@@ -513,15 +513,15 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
     }
 
     if (data.some((k) => !k.id)) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You must provide an api key id field when revoking a key.`
       )
     }
 
     if (data.some((k) => !k.revoked_by)) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `You must provide a revoked_by field when revoking a key.`
       )
     }
@@ -537,8 +537,8 @@ export default class ApiKeyModuleService<TEntity extends ApiKey = ApiKey>
     )
 
     if (revokedApiKeys.length) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `There are ${revokedApiKeys.length} secret keys that are already revoked.`
       )
     }

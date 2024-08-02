@@ -11,7 +11,7 @@ const {
 jest.setTimeout(30000)
 
 describe("/store/product-tags", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -22,13 +22,13 @@ describe("/store/product-tags", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /store/product-tags", () => {

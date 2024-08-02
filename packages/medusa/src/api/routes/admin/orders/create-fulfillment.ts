@@ -19,7 +19,7 @@ import { optionalBooleanMapper } from "../../../../utils/validators/is-boolean"
 import { Fulfillment, LineItem } from "../../../../models"
 import { FindParams } from "../../../../types/common"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 /**
  * @oas [post] /admin/orders/{id}/fulfillment
@@ -30,7 +30,7 @@ import { promiseAll } from "@medusajs/utils"
  * x-authenticated: true
  * externalDocs:
  *   description: Fulfillments of orders
- *   url: https://docs.medusajs.com/modules/orders/#fulfillments-in-orders
+ *   url: https://docs.ninjajs.com/modules/orders/#fulfillments-in-orders
  * parameters:
  *   - (path) id=* {string} The ID of the Order.
  *   - (query) expand {string} Comma-separated relations that should be expanded in the returned order.
@@ -47,10 +47,10 @@ import { promiseAll } from "@medusajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.createFulfillment(orderId, {
+ *       ninja.admin.orders.createFulfillment(orderId, {
  *         items: [
  *           {
  *             item_id,
@@ -62,10 +62,10 @@ import { promiseAll } from "@medusajs/utils"
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateFulfillment } from "medusa-react"
+ *       import { useAdminCreateFulfillment } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -103,7 +103,7 @@ import { promiseAll } from "@medusajs/utils"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/fulfillment' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "items": [
@@ -276,7 +276,7 @@ export const updateInventoryAndReservations = async (
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostOrdersOrderFulfillmentsReq {
   @IsArray()

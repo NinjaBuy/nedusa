@@ -1,5 +1,5 @@
-import { getMedusaVersion } from "medusa-core-utils"
+import { getNinjaVersion } from "ninja-core-utils"
 
-export const getLocalMedusaVersion = (): string => {
-  return getMedusaVersion()
+export const getLocalNinjaVersion = (): string => {
+  return getNinjaVersion()
 }

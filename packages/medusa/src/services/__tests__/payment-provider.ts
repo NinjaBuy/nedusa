@@ -1,5 +1,5 @@
 import { asValue, createContainer } from "awilix"
-import { MockRepository } from "medusa-test-utils"
+import { MockRepository } from "ninja-test-utils"
 import {
   defaultContainer,
   defaultPaymentSessionInputData,

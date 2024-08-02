@@ -1,11 +1,11 @@
 ---
-"@medusajs/medusa": patch
-"@medusajs/cache-redis": patch
-"@medusajs/event-bus-redis": patch
-"medusa-test-utils": patch
-"@medusajs/modules-sdk": patch
-"@medusajs/types": patch
-"@medusajs/workflow-engine-redis": patch
+"@ninjajs/ninja": patch
+"@ninjajs/cache-redis": patch
+"@ninjajs/event-bus-redis": patch
+"ninja-test-utils": patch
+"@ninjajs/modules-sdk": patch
+"@ninjajs/types": patch
+"@ninjajs/workflow-engine-redis": patch
 ---
 
-chore: medusa shutdown
+chore: ninja shutdown

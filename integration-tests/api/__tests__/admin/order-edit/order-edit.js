@@ -1,6 +1,6 @@
 const path = require("path")
-const { OrderEditItemChangeType, OrderEdit } = require("@medusajs/medusa")
-const { IdMap } = require("medusa-test-utils")
+const { OrderEditItemChangeType, OrderEdit } = require("@ninjajs/ninja")
+const { IdMap } = require("ninja-test-utils")
 
 const { useApi } = require("../../../../environment-helpers/use-api")
 const { useDb, initDb } = require("../../../../environment-helpers/use-db")
@@ -25,26 +25,26 @@ jest.setTimeout(100000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 describe("/admin/order-edits", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
   const adminUserId = "admin_user"
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /admin/order-edits/:id", () => {

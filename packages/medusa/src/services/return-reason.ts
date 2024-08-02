@@ -1,4 +1,4 @@
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { ReturnReason } from "../models"
@@ -30,8 +30,8 @@ class ReturnReasonService extends TransactionBaseService {
         const parentReason = await this.retrieve(data.parent_return_reason_id)
 
         if (parentReason.parent_return_reason_id) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             "Doubly nested return reasons is not supported"
           )
         }
@@ -89,8 +89,8 @@ class ReturnReasonService extends TransactionBaseService {
     config: FindConfig<ReturnReason> = {}
   ): Promise<ReturnReason | never> {
     if (!isDefined(returnReasonId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"returnReasonId" must be defined`
       )
     }
@@ -101,8 +101,8 @@ class ReturnReasonService extends TransactionBaseService {
     const item = await rrRepo.findOne(query)
 
     if (!item) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Return Reason with id: ${returnReasonId} was not found.`
       )
     }

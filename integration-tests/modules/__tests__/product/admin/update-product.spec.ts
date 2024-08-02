@@ -3,7 +3,7 @@ import { getContainer } from "../../../../environment-helpers/use-container"
 import { initDb, useDb } from "../../../../environment-helpers/use-db"
 import { simpleProductFactory } from "../../../../factories"
 
-import { Region } from "@medusajs/medusa"
+import { Region } from "@ninjajs/ninja"
 import { AxiosInstance } from "axios"
 import path from "path"
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
@@ -15,15 +15,15 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-// TODO SEE to use new test runner medusaIntegrationTestRunner({
+// TODO SEE to use new test runner ninjaIntegrationTestRunner({
 //   env,
 //   testSuite: ({ dbConnection, getContainer, api }) => {})
 

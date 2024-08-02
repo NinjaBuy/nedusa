@@ -21,10 +21,10 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.notes.create({
+ *       ninja.admin.notes.create({
  *         resource_id,
  *         resource_type: "order",
  *         value: "We delivered this order"
@@ -33,10 +33,10 @@ import { EntityManager } from "typeorm"
  *         console.log(note.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateNote } from "medusa-react"
+ *       import { useAdminCreateNote } from "ninja-react"
  *
  *       const CreateNote = () => {
  *         const createNote = useAdminCreateNote()
@@ -62,7 +62,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/notes' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "resource_id": "{resource_id}",

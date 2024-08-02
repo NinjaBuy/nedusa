@@ -1,5 +1,5 @@
 import { Notification } from "./../../../../"
-import { PaginatedResponse } from "@medusajs/types"
+import { PaginatedResponse } from "@ninjajs/types"
 import { Router } from "express"
 import middlewares from "../../../middlewares"
 

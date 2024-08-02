@@ -1,7 +1,7 @@
 const path = require("path")
 const express = require("express")
 const getPort = require("get-port")
-const { isObject } = require("@medusajs/utils")
+const { isObject } = require("@ninjajs/utils")
 const { setContainer } = require("./use-container")
 const { setPort, setExpressServer } = require("./use-api")
 
@@ -12,7 +12,7 @@ async function bootstrapApp({ cwd, env = {} } = {}) {
     Object.entries(env).forEach(([k, v]) => (process.env[k] = v))
   }
 
-  const loaders = require("@medusajs/medusa/dist/loaders").default
+  const loaders = require("@ninjajs/ninja/dist/loaders").default
 
   const { container, shutdown } = await loaders({
     directory: path.resolve(cwd || process.cwd()),
@@ -41,7 +41,7 @@ module.exports = {
       app,
       port,
       container,
-      shutdown: medusaShutdown,
+      shutdown: ninjaShutdown,
     } = await bootstrapApp({
       cwd,
       env,
@@ -55,7 +55,7 @@ module.exports = {
     }
 
     const shutdown = async () => {
-      await Promise.all([expressServer.close(), medusaShutdown()])
+      await Promise.all([expressServer.close(), ninjaShutdown()])
 
       if (typeof global !== "undefined" && global?.gc) {
         global.gc()

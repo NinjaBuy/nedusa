@@ -5,7 +5,7 @@ import {
 } from "../../../../services"
 
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { FindParams } from "../../../../types/common"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 
@@ -28,18 +28,18 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.cancelSwapFulfillment(orderId, swapId, fulfillmentId)
+ *       ninja.admin.orders.cancelSwapFulfillment(orderId, swapId, fulfillmentId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCancelSwapFulfillment } from "medusa-react"
+ *       import { useAdminCancelSwapFulfillment } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string,
@@ -72,7 +72,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/swaps/{swap_id}/fulfillments/{fulfillment_id}/cancel' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -110,8 +110,8 @@ export default async (req, res) => {
   const fulfillment = await fulfillmentService.retrieve(fulfillment_id)
 
   if (fulfillment.swap_id !== swap_id) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `no fulfillment was found with the id: ${fulfillment_id} related to swap: ${id}`
     )
   }
@@ -119,8 +119,8 @@ export default async (req, res) => {
   const swap = await swapService.retrieve(swap_id)
 
   if (swap.order_id !== id) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `no swap was found with the id: ${swap_id} related to order: ${id}`
     )
   }

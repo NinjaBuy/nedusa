@@ -12,7 +12,7 @@ import { NumericalComparisonOperator } from "../../../../types/common"
 import { PriceSelectionParams } from "../../../../types/price-selection"
 import { Type } from "class-transformer"
 import { validator } from "../../../../utils/validator"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 /**
  * @oas [get] /store/variants
@@ -28,7 +28,7 @@ import { promiseAll } from "@medusajs/utils"
  *   You can alternatively use a publishable API key in the request header instead of passing a `sales_channel_id`.
  * externalDocs:
  *   description: "How to pass product pricing parameters"
- *   url: "https://docs.medusajs.com/modules/products/storefront/show-products#product-pricing-parameters"
+ *   url: "https://docs.ninjajs.com/modules/products/storefront/show-products#product-pricing-parameters"
  * parameters:
  *   - (query) ids {string} Filter by a comma-separated list of IDs. If supplied, it overrides the `id` parameter.
  *   - in: query
@@ -104,10 +104,10 @@ import { promiseAll } from "@medusajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.product.variants.list()
+ *       ninja.product.variants.list()
  *       .then(({ variants }) => {
  *         console.log(variants.length);
  *       })

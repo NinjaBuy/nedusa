@@ -1,23 +1,23 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../../types/routing"
-import { BatchMethodRequest } from "@medusajs/types"
+import { BatchMethodRequest } from "@ninjajs/types"
 import {
   AdminCreateShippingOptionRuleType,
   AdminUpdateShippingOptionRuleType,
 } from "../../../validators"
 import { refetchBatchRules } from "../../../helpers"
-import { batchShippingOptionRulesWorkflow } from "@medusajs/core-flows"
+import { batchShippingOptionRulesWorkflow } from "@ninjajs/core-flows"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<
+  req: AuthenticatedNinjaRequest<
     BatchMethodRequest<
       AdminCreateShippingOptionRuleType,
       AdminUpdateShippingOptionRuleType
     >
   >,
-  res: MedusaResponse
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const { result, errors } = await batchShippingOptionRulesWorkflow(

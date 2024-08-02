@@ -5,22 +5,22 @@ import {
   AdminReservationsRes,
   AdminGetReservationsParams,
   AdminReservationsListRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Reservation API Routes](https://docs.medusajs.com/api/admin#reservations). To use these API Routes, make sure to install the
- * [@medusajs/inventory](https://docs.medusajs.com/modules/multiwarehouse/install-modules#inventory-module) module in your Medusa backend.
+ * This class is used to send requests to [Admin Reservation API Routes](https://docs.ninjajs.com/api/admin#reservations). To use these API Routes, make sure to install the
+ * [@ninjajs/inventory](https://docs.ninjajs.com/modules/multiwarehouse/install-modules#inventory-module) module in your Ninja backend.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}. The methods
- * are available in the JS Client under the `medusa.admin.reservations` property.
+ * are available in the JS Client under the `ninja.admin.reservations` property.
  * 
- * Reservations, provided by the [Inventory Module](https://docs.medusajs.com/modules/multiwarehouse/inventory-module), are quantities of an item that are reserved, typically when an order is placed but not yet fulfilled.
+ * Reservations, provided by the [Inventory Module](https://docs.ninjajs.com/modules/multiwarehouse/inventory-module), are quantities of an item that are reserved, typically when an order is placed but not yet fulfilled.
  * Reservations can be associated with any resources, but commonly with line items of an order.
  * 
- * Related Guide: [How to manage item allocations in orders](https://docs.medusajs.com/modules/multiwarehouse/admin/manage-item-allocations-in-orders).
+ * Related Guide: [How to manage item allocations in orders](https://docs.ninjajs.com/modules/multiwarehouse/admin/manage-item-allocations-in-orders).
  */
 class AdminReservationsResource extends BaseResource {
   /**
@@ -30,10 +30,10 @@ class AdminReservationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReservationsRes>} Resolves to the reservation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.retrieve(reservationId)
+   * ninja.admin.reservations.retrieve(reservationId)
    * .then(({ reservation }) => {
    *   console.log(reservation.id);
    * })
@@ -56,10 +56,10 @@ class AdminReservationsResource extends BaseResource {
    * To list reservations:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.list()
+   * ninja.admin.reservations.list()
    * .then(({ reservations, count, limit, offset }) => {
    *   console.log(reservations.length)
    * })
@@ -68,10 +68,10 @@ class AdminReservationsResource extends BaseResource {
    * To specify relations that should be retrieved within the reservations:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.list({
+   * ninja.admin.reservations.list({
    *   expand: "location"
    * })
    * .then(({ reservations, count, limit, offset }) => {
@@ -82,10 +82,10 @@ class AdminReservationsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.list({
+   * ninja.admin.reservations.list({
    *   expand: "location",
    *   limit,
    *   offset
@@ -116,10 +116,10 @@ class AdminReservationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReservationsRes>} Resolves to the reservation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.create({
+   * ninja.admin.reservations.create({
    *   line_item_id: "item_123",
    *   location_id: "loc_123",
    *   inventory_item_id: "iitem_123",
@@ -145,10 +145,10 @@ class AdminReservationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReservationsRes>} Resolves to the reservation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.update(reservationId, {
+   * ninja.admin.reservations.update(reservationId, {
    *   quantity: 3
    * })
    * .then(({ reservation }) => {
@@ -171,10 +171,10 @@ class AdminReservationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReservationsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.reservations.delete(reservationId)
+   * ninja.admin.reservations.delete(reservationId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * });

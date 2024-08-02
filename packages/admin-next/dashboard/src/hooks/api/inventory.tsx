@@ -1,4 +1,4 @@
-import { AdminInventoryItemResponse, InventoryNext } from "@medusajs/types"
+import { AdminInventoryItemResponse, InventoryNext } from "@ninjajs/types"
 import {
   InventoryItemDeleteRes,
   InventoryItemListRes,
@@ -19,7 +19,7 @@ import {
 } from "@tanstack/react-query"
 
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/medusa"
+import { queryClient } from "../../lib/ninja"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 
 const INVENTORY_ITEMS_QUERY_KEY = "inventory_items" as const

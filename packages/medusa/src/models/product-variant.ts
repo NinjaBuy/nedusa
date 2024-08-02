@@ -213,7 +213,7 @@ export class ProductVariant extends SoftDeletableEntity {
  *     type: boolean
  *     default: false
  *   manage_inventory:
- *     description: Whether Medusa should manage inventory for the Product Variant.
+ *     description: Whether Ninja should manage inventory for the Product Variant.
  *     type: boolean
  *     default: true
  *   hs_code:
@@ -288,7 +288,7 @@ export class ProductVariant extends SoftDeletableEntity {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  *   purchasable:
  *     description: |
  *        Only used with the inventory modules.

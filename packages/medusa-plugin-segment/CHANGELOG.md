@@ -4,361 +4,361 @@
 
 ### Patch Changes
 
-- [#4389](https://github.com/medusajs/medusa/pull/4389) [`9dcdc0041`](https://github.com/medusajs/medusa/commit/9dcdc0041a2b08cc0723343dd8d9127d9977b086) Thanks [@adrien2p](https://github.com/adrien2p)! - fix(medusa, utils): fix the way selects are consumed alongside the relations
+- [#4389](https://github.com/ninjajs/ninja/pull/4389) [`9dcdc0041`](https://github.com/ninjajs/ninja/commit/9dcdc0041a2b08cc0723343dd8d9127d9977b086) Thanks [@adrien2p](https://github.com/adrien2p)! - fix(ninja, utils): fix the way selects are consumed alongside the relations
 
 ## 1.3.6
 
 ### Patch Changes
 
-- [#4276](https://github.com/medusajs/medusa/pull/4276) [`afd1b67f1`](https://github.com/medusajs/medusa/commit/afd1b67f1c7de8cf07fd9fcbdde599a37914e9b5) Thanks [@olivermrbl](https://github.com/olivermrbl)! - chore: Use caret range
+- [#4276](https://github.com/ninjajs/ninja/pull/4276) [`afd1b67f1`](https://github.com/ninjajs/ninja/commit/afd1b67f1c7de8cf07fd9fcbdde599a37914e9b5) Thanks [@olivermrbl](https://github.com/olivermrbl)! - chore: Use caret range
 
 ## 1.3.5
 
 ### Patch Changes
 
-- Updated dependencies [[`121b42acf`](https://github.com/medusajs/medusa/commit/121b42acfe98c12dd593f9b1f2072ff0f3b61724), [`aa690beed`](https://github.com/medusajs/medusa/commit/aa690beed775646cbc86b445fb5dc90dcac087d5), [`54dcc1871`](https://github.com/medusajs/medusa/commit/54dcc1871c8f28bea962dbb9df6e79b038d56449), [`77d46220c`](https://github.com/medusajs/medusa/commit/77d46220c23bfe19e575cbc445874eb6c22f3c73)]:
-  - medusa-core-utils@1.2.0
-  - medusa-interfaces@1.3.7
-  - medusa-test-utils@1.1.40
+- Updated dependencies [[`121b42acf`](https://github.com/ninjajs/ninja/commit/121b42acfe98c12dd593f9b1f2072ff0f3b61724), [`aa690beed`](https://github.com/ninjajs/ninja/commit/aa690beed775646cbc86b445fb5dc90dcac087d5), [`54dcc1871`](https://github.com/ninjajs/ninja/commit/54dcc1871c8f28bea962dbb9df6e79b038d56449), [`77d46220c`](https://github.com/ninjajs/ninja/commit/77d46220c23bfe19e575cbc445874eb6c22f3c73)]:
+  - ninja-core-utils@1.2.0
+  - ninja-interfaces@1.3.7
+  - ninja-test-utils@1.1.40
 
 ## 1.3.5-rc.0
 
 ### Patch Changes
 
-- Updated dependencies [[`121b42acf`](https://github.com/medusajs/medusa/commit/121b42acfe98c12dd593f9b1f2072ff0f3b61724), [`aa690beed`](https://github.com/medusajs/medusa/commit/aa690beed775646cbc86b445fb5dc90dcac087d5), [`54dcc1871`](https://github.com/medusajs/medusa/commit/54dcc1871c8f28bea962dbb9df6e79b038d56449), [`77d46220c`](https://github.com/medusajs/medusa/commit/77d46220c23bfe19e575cbc445874eb6c22f3c73)]:
-  - medusa-core-utils@1.2.0-rc.0
-  - medusa-interfaces@1.3.7-rc.0
-  - medusa-test-utils@1.1.40-rc.0
+- Updated dependencies [[`121b42acf`](https://github.com/ninjajs/ninja/commit/121b42acfe98c12dd593f9b1f2072ff0f3b61724), [`aa690beed`](https://github.com/ninjajs/ninja/commit/aa690beed775646cbc86b445fb5dc90dcac087d5), [`54dcc1871`](https://github.com/ninjajs/ninja/commit/54dcc1871c8f28bea962dbb9df6e79b038d56449), [`77d46220c`](https://github.com/ninjajs/ninja/commit/77d46220c23bfe19e575cbc445874eb6c22f3c73)]:
+  - ninja-core-utils@1.2.0-rc.0
+  - ninja-interfaces@1.3.7-rc.0
+  - ninja-test-utils@1.1.40-rc.0
 
 ## 1.3.4
 
 ### Patch Changes
 
-- [#3217](https://github.com/medusajs/medusa/pull/3217) [`8c5219a31`](https://github.com/medusajs/medusa/commit/8c5219a31ef76ee571fbce84d7d57a63abe56eb0) Thanks [@adrien2p](https://github.com/adrien2p)! - chore: Fix npm packages files included
+- [#3217](https://github.com/ninjajs/ninja/pull/3217) [`8c5219a31`](https://github.com/ninjajs/ninja/commit/8c5219a31ef76ee571fbce84d7d57a63abe56eb0) Thanks [@adrien2p](https://github.com/adrien2p)! - chore: Fix npm packages files included
 
-- Updated dependencies [[`8c5219a31`](https://github.com/medusajs/medusa/commit/8c5219a31ef76ee571fbce84d7d57a63abe56eb0)]:
-  - medusa-core-utils@1.1.39
-  - medusa-interfaces@1.3.6
+- Updated dependencies [[`8c5219a31`](https://github.com/ninjajs/ninja/commit/8c5219a31ef76ee571fbce84d7d57a63abe56eb0)]:
+  - ninja-core-utils@1.1.39
+  - ninja-interfaces@1.3.6
 
 ## 1.3.3
 
 ### Patch Changes
 
-- [#3185](https://github.com/medusajs/medusa/pull/3185) [`08324355a`](https://github.com/medusajs/medusa/commit/08324355a4466b017a0bc7ab1d333ee3cd27b8c4) Thanks [@olivermrbl](https://github.com/olivermrbl)! - chore: Patches all dependencies + minor bumps `winston` to include a [fix for a significant memory leak](https://github.com/winstonjs/winston/pull/2057)
+- [#3185](https://github.com/ninjajs/ninja/pull/3185) [`08324355a`](https://github.com/ninjajs/ninja/commit/08324355a4466b017a0bc7ab1d333ee3cd27b8c4) Thanks [@olivermrbl](https://github.com/olivermrbl)! - chore: Patches all dependencies + minor bumps `winston` to include a [fix for a significant memory leak](https://github.com/winstonjs/winston/pull/2057)
 
-- Updated dependencies [[`08324355a`](https://github.com/medusajs/medusa/commit/08324355a4466b017a0bc7ab1d333ee3cd27b8c4)]:
-  - medusa-core-utils@1.1.38
-  - medusa-interfaces@1.3.5
+- Updated dependencies [[`08324355a`](https://github.com/ninjajs/ninja/commit/08324355a4466b017a0bc7ab1d333ee3cd27b8c4)]:
+  - ninja-core-utils@1.1.38
+  - ninja-interfaces@1.3.5
 
 ## 1.3.2
 
 ### Patch Changes
 
-- [#3025](https://github.com/medusajs/medusa/pull/3025) [`93d0dc1bd`](https://github.com/medusajs/medusa/commit/93d0dc1bdcb54cf6e87428a7bb9b0dac196b4de2) Thanks [@adrien2p](https://github.com/adrien2p)! - fix(medusa): test, build and watch scripts
+- [#3025](https://github.com/ninjajs/ninja/pull/3025) [`93d0dc1bd`](https://github.com/ninjajs/ninja/commit/93d0dc1bdcb54cf6e87428a7bb9b0dac196b4de2) Thanks [@adrien2p](https://github.com/adrien2p)! - fix(ninja): test, build and watch scripts
 
-- Updated dependencies [[`93d0dc1bd`](https://github.com/medusajs/medusa/commit/93d0dc1bdcb54cf6e87428a7bb9b0dac196b4de2)]:
-  - medusa-interfaces@1.3.4
+- Updated dependencies [[`93d0dc1bd`](https://github.com/ninjajs/ninja/commit/93d0dc1bdcb54cf6e87428a7bb9b0dac196b4de2)]:
+  - ninja-interfaces@1.3.4
 
 ## 1.3.1
 
 ### Patch Changes
 
-- [#2808](https://github.com/medusajs/medusa/pull/2808) [`0a9c89185`](https://github.com/medusajs/medusa/commit/0a9c891853c4d16b553d38268a3408ca1daa71f0) Thanks [@patrick-medusajs](https://github.com/patrick-medusajs)! - chore: explicitly add devDependencies for monorepo peerDependencies
+- [#2808](https://github.com/ninjajs/ninja/pull/2808) [`0a9c89185`](https://github.com/ninjajs/ninja/commit/0a9c891853c4d16b553d38268a3408ca1daa71f0) Thanks [@patrick-ninjajs](https://github.com/patrick-ninjajs)! - chore: explicitly add devDependencies for monorepo peerDependencies
 
-- Updated dependencies [[`7cced6006`](https://github.com/medusajs/medusa/commit/7cced6006a9a6f9108009e9f3e191e9f3ba1b168)]:
-  - medusa-core-utils@1.1.37
+- Updated dependencies [[`7cced6006`](https://github.com/ninjajs/ninja/commit/7cced6006a9a6f9108009e9f3e191e9f3ba1b168)]:
+  - ninja-core-utils@1.1.37
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.3.0](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.2.1...medusa-plugin-segment@1.3.0) (2022-05-01)
+# [1.3.0](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.2.1...ninja-plugin-segment@1.3.0) (2022-05-01)
 
 ### Bug Fixes
 
-- ensure customer identify calls before order track ([#1227](https://github.com/medusajs/medusa/issues/1227)) ([fbe3b98](https://github.com/medusajs/medusa/commit/fbe3b987618d28325938e8fe6264b01d4d581c71))
+- ensure customer identify calls before order track ([#1227](https://github.com/ninjajs/ninja/issues/1227)) ([fbe3b98](https://github.com/ninjajs/ninja/commit/fbe3b987618d28325938e8fe6264b01d4d581c71))
 
 ### Features
 
-- Add DiscountConditions ([#1230](https://github.com/medusajs/medusa/issues/1230)) ([a610805](https://github.com/medusajs/medusa/commit/a610805917ee930d4cebde74905e541a468aa83b)), closes [#1146](https://github.com/medusajs/medusa/issues/1146) [#1149](https://github.com/medusajs/medusa/issues/1149) [#1156](https://github.com/medusajs/medusa/issues/1156) [#1170](https://github.com/medusajs/medusa/issues/1170) [#1172](https://github.com/medusajs/medusa/issues/1172) [#1212](https://github.com/medusajs/medusa/issues/1212) [#1224](https://github.com/medusajs/medusa/issues/1224) [#1228](https://github.com/medusajs/medusa/issues/1228)
+- Add DiscountConditions ([#1230](https://github.com/ninjajs/ninja/issues/1230)) ([a610805](https://github.com/ninjajs/ninja/commit/a610805917ee930d4cebde74905e541a468aa83b)), closes [#1146](https://github.com/ninjajs/ninja/issues/1146) [#1149](https://github.com/ninjajs/ninja/issues/1149) [#1156](https://github.com/ninjajs/ninja/issues/1156) [#1170](https://github.com/ninjajs/ninja/issues/1170) [#1172](https://github.com/ninjajs/ninja/issues/1172) [#1212](https://github.com/ninjajs/ninja/issues/1212) [#1224](https://github.com/ninjajs/ninja/issues/1224) [#1228](https://github.com/ninjajs/ninja/issues/1228)
 
-## [1.2.1](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.42...medusa-plugin-segment@1.2.1) (2022-02-28)
-
-### Features
-
-- new tax api ([#979](https://github.com/medusajs/medusa/issues/979)) ([47588e7](https://github.com/medusajs/medusa/commit/47588e7a8d3b2ae2fed0c1e87fdf1ee2db6bcdc2)), closes [#885](https://github.com/medusajs/medusa/issues/885) [#896](https://github.com/medusajs/medusa/issues/896) [#911](https://github.com/medusajs/medusa/issues/911) [#945](https://github.com/medusajs/medusa/issues/945) [#950](https://github.com/medusajs/medusa/issues/950) [#951](https://github.com/medusajs/medusa/issues/951) [#954](https://github.com/medusajs/medusa/issues/954) [#969](https://github.com/medusajs/medusa/issues/969) [#998](https://github.com/medusajs/medusa/issues/998) [#1017](https://github.com/medusajs/medusa/issues/1017) [#1110](https://github.com/medusajs/medusa/issues/1110)
-
-# [1.2.0](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.42...medusa-plugin-segment@1.2.0) (2022-02-25)
+## [1.2.1](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.42...ninja-plugin-segment@1.2.1) (2022-02-28)
 
 ### Features
 
-- new tax api ([#979](https://github.com/medusajs/medusa/issues/979)) ([c56660f](https://github.com/medusajs/medusa/commit/c56660fca9921a3f3637bc137d9794781c5b090f)), closes [#885](https://github.com/medusajs/medusa/issues/885) [#896](https://github.com/medusajs/medusa/issues/896) [#911](https://github.com/medusajs/medusa/issues/911) [#945](https://github.com/medusajs/medusa/issues/945) [#950](https://github.com/medusajs/medusa/issues/950) [#951](https://github.com/medusajs/medusa/issues/951) [#954](https://github.com/medusajs/medusa/issues/954) [#969](https://github.com/medusajs/medusa/issues/969) [#998](https://github.com/medusajs/medusa/issues/998) [#1017](https://github.com/medusajs/medusa/issues/1017) [#1110](https://github.com/medusajs/medusa/issues/1110)
+- new tax api ([#979](https://github.com/ninjajs/ninja/issues/979)) ([47588e7](https://github.com/ninjajs/ninja/commit/47588e7a8d3b2ae2fed0c1e87fdf1ee2db6bcdc2)), closes [#885](https://github.com/ninjajs/ninja/issues/885) [#896](https://github.com/ninjajs/ninja/issues/896) [#911](https://github.com/ninjajs/ninja/issues/911) [#945](https://github.com/ninjajs/ninja/issues/945) [#950](https://github.com/ninjajs/ninja/issues/950) [#951](https://github.com/ninjajs/ninja/issues/951) [#954](https://github.com/ninjajs/ninja/issues/954) [#969](https://github.com/ninjajs/ninja/issues/969) [#998](https://github.com/ninjajs/ninja/issues/998) [#1017](https://github.com/ninjajs/ninja/issues/1017) [#1110](https://github.com/ninjajs/ninja/issues/1110)
 
-## [1.1.42](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.41...medusa-plugin-segment@1.1.42) (2022-02-06)
+# [1.2.0](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.42...ninja-plugin-segment@1.2.0) (2022-02-25)
+
+### Features
+
+- new tax api ([#979](https://github.com/ninjajs/ninja/issues/979)) ([c56660f](https://github.com/ninjajs/ninja/commit/c56660fca9921a3f3637bc137d9794781c5b090f)), closes [#885](https://github.com/ninjajs/ninja/issues/885) [#896](https://github.com/ninjajs/ninja/issues/896) [#911](https://github.com/ninjajs/ninja/issues/911) [#945](https://github.com/ninjajs/ninja/issues/945) [#950](https://github.com/ninjajs/ninja/issues/950) [#951](https://github.com/ninjajs/ninja/issues/951) [#954](https://github.com/ninjajs/ninja/issues/954) [#969](https://github.com/ninjajs/ninja/issues/969) [#998](https://github.com/ninjajs/ninja/issues/998) [#1017](https://github.com/ninjajs/ninja/issues/1017) [#1110](https://github.com/ninjajs/ninja/issues/1110)
+
+## [1.1.42](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.41...ninja-plugin-segment@1.1.42) (2022-02-06)
 
 ### Bug Fixes
 
-- release ([fc3fbc8](https://github.com/medusajs/medusa/commit/fc3fbc897fad5c8a5d3eea828ac7277fba9d70af))
+- release ([fc3fbc8](https://github.com/ninjajs/ninja/commit/fc3fbc897fad5c8a5d3eea828ac7277fba9d70af))
 
-## [1.1.41](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.40...medusa-plugin-segment@1.1.41) (2022-02-06)
-
-### Features
-
-- medusa-react admin hooks ([#978](https://github.com/medusajs/medusa/issues/978)) ([2e38484](https://github.com/medusajs/medusa/commit/2e384842d5b2e9742a86b96f28a8f00357795b86)), closes [#1019](https://github.com/medusajs/medusa/issues/1019)
-
-## [1.1.40](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.39...medusa-plugin-segment@1.1.40) (2022-01-11)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.39](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.38...medusa-plugin-segment@1.1.39) (2021-12-29)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.38](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.37...medusa-plugin-segment@1.1.38) (2021-12-17)
+## [1.1.41](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.40...ninja-plugin-segment@1.1.41) (2022-02-06)
 
 ### Features
 
-- add medusa-react ([#913](https://github.com/medusajs/medusa/issues/913)) ([d0d8dd7](https://github.com/medusajs/medusa/commit/d0d8dd7bf62eaac71df8714c2dfb4f204d192f51))
+- ninja-react admin hooks ([#978](https://github.com/ninjajs/ninja/issues/978)) ([2e38484](https://github.com/ninjajs/ninja/commit/2e384842d5b2e9742a86b96f28a8f00357795b86)), closes [#1019](https://github.com/ninjajs/ninja/issues/1019)
 
-## [1.1.37](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.36...medusa-plugin-segment@1.1.37) (2021-12-08)
+## [1.1.40](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.39...ninja-plugin-segment@1.1.40) (2022-01-11)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.36](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.35...medusa-plugin-segment@1.1.36) (2021-11-23)
+## [1.1.39](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.38...ninja-plugin-segment@1.1.39) (2021-12-29)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.35](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.34...medusa-plugin-segment@1.1.35) (2021-11-22)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.34](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.33...medusa-plugin-segment@1.1.34) (2021-11-19)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.33](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.32...medusa-plugin-segment@1.1.33) (2021-11-19)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.32](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.31...medusa-plugin-segment@1.1.32) (2021-10-18)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.31](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.30...medusa-plugin-segment@1.1.31) (2021-10-18)
-
-**Note:** Version bump only for package medusa-plugin-segment
-
-## [1.1.30](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.28...medusa-plugin-segment@1.1.30) (2021-10-18)
+## [1.1.38](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.37...ninja-plugin-segment@1.1.38) (2021-12-17)
 
 ### Features
 
-- allow product selection on discounts allocated to a specific item ([#395](https://github.com/medusajs/medusa/issues/395)) ([84d4d79](https://github.com/medusajs/medusa/commit/84d4d791eaf9508367a20d9f930ca959a7b707dd))
+- add ninja-react ([#913](https://github.com/ninjajs/ninja/issues/913)) ([d0d8dd7](https://github.com/ninjajs/ninja/commit/d0d8dd7bf62eaac71df8714c2dfb4f204d192f51))
 
-## [1.1.29](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.28...medusa-plugin-segment@1.1.29) (2021-10-18)
+## [1.1.37](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.36...ninja-plugin-segment@1.1.37) (2021-12-08)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.36](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.35...ninja-plugin-segment@1.1.36) (2021-11-23)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.35](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.34...ninja-plugin-segment@1.1.35) (2021-11-22)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.34](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.33...ninja-plugin-segment@1.1.34) (2021-11-19)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.33](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.32...ninja-plugin-segment@1.1.33) (2021-11-19)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.32](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.31...ninja-plugin-segment@1.1.32) (2021-10-18)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.31](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.30...ninja-plugin-segment@1.1.31) (2021-10-18)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.30](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.28...ninja-plugin-segment@1.1.30) (2021-10-18)
 
 ### Features
 
-- allow product selection on discounts allocated to a specific item ([#395](https://github.com/medusajs/medusa/issues/395)) ([84d4d79](https://github.com/medusajs/medusa/commit/84d4d791eaf9508367a20d9f930ca959a7b707dd))
+- allow product selection on discounts allocated to a specific item ([#395](https://github.com/ninjajs/ninja/issues/395)) ([84d4d79](https://github.com/ninjajs/ninja/commit/84d4d791eaf9508367a20d9f930ca959a7b707dd))
 
-## [1.1.28](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.27...medusa-plugin-segment@1.1.28) (2021-09-15)
+## [1.1.29](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.28...ninja-plugin-segment@1.1.29) (2021-10-18)
 
-**Note:** Version bump only for package medusa-plugin-segment
+### Features
 
-## [1.1.27](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.26...medusa-plugin-segment@1.1.27) (2021-09-14)
+- allow product selection on discounts allocated to a specific item ([#395](https://github.com/ninjajs/ninja/issues/395)) ([84d4d79](https://github.com/ninjajs/ninja/commit/84d4d791eaf9508367a20d9f930ca959a7b707dd))
 
-**Note:** Version bump only for package medusa-plugin-segment
+## [1.1.28](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.27...ninja-plugin-segment@1.1.28) (2021-09-15)
 
-## [1.1.26](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.25...medusa-plugin-segment@1.1.26) (2021-08-05)
+**Note:** Version bump only for package ninja-plugin-segment
 
-**Note:** Version bump only for package medusa-plugin-segment
+## [1.1.27](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.26...ninja-plugin-segment@1.1.27) (2021-09-14)
 
-## [1.1.25](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.24...medusa-plugin-segment@1.1.25) (2021-07-26)
+**Note:** Version bump only for package ninja-plugin-segment
 
-**Note:** Version bump only for package medusa-plugin-segment
+## [1.1.26](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.25...ninja-plugin-segment@1.1.26) (2021-08-05)
 
-## [1.1.24](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.22...medusa-plugin-segment@1.1.24) (2021-07-15)
+**Note:** Version bump only for package ninja-plugin-segment
 
-**Note:** Version bump only for package medusa-plugin-segment
+## [1.1.25](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.24...ninja-plugin-segment@1.1.25) (2021-07-26)
 
-## [1.1.23](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.22...medusa-plugin-segment@1.1.23) (2021-07-15)
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.24](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.22...ninja-plugin-segment@1.1.24) (2021-07-15)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.23](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.22...ninja-plugin-segment@1.1.23) (2021-07-15)
 
 ### Bug Fixes
 
-- sends return reasons to segment on Order Refunded event ([55ba9ba](https://github.com/medusajs/medusa/commit/55ba9bae05527d602d654f99d678b610c5ba7229))
+- sends return reasons to segment on Order Refunded event ([55ba9ba](https://github.com/ninjajs/ninja/commit/55ba9bae05527d602d654f99d678b610c5ba7229))
 
-## [1.1.22](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.21...medusa-plugin-segment@1.1.22) (2021-07-02)
+## [1.1.22](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.21...ninja-plugin-segment@1.1.22) (2021-07-02)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.21](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.20...medusa-plugin-segment@1.1.21) (2021-06-22)
+## [1.1.21](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.20...ninja-plugin-segment@1.1.21) (2021-06-22)
 
 ### Bug Fixes
 
-- release assist ([668e8a7](https://github.com/medusajs/medusa/commit/668e8a740200847fc2a41c91d2979097f1392532))
+- release assist ([668e8a7](https://github.com/ninjajs/ninja/commit/668e8a740200847fc2a41c91d2979097f1392532))
 
-## [1.1.20](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.19...medusa-plugin-segment@1.1.20) (2021-06-09)
+## [1.1.20](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.19...ninja-plugin-segment@1.1.20) (2021-06-09)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.19](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.18...medusa-plugin-segment@1.1.19) (2021-06-09)
+## [1.1.19](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.18...ninja-plugin-segment@1.1.19) (2021-06-09)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.18](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.17...medusa-plugin-segment@1.1.18) (2021-06-09)
+## [1.1.18](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.17...ninja-plugin-segment@1.1.18) (2021-06-09)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.17](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.16...medusa-plugin-segment@1.1.17) (2021-06-09)
+## [1.1.17](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.16...ninja-plugin-segment@1.1.17) (2021-06-09)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.16](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.15...medusa-plugin-segment@1.1.16) (2021-06-08)
+## [1.1.16](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.15...ninja-plugin-segment@1.1.16) (2021-06-08)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.15](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.12...medusa-plugin-segment@1.1.15) (2021-04-28)
+## [1.1.15](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.12...ninja-plugin-segment@1.1.15) (2021-04-28)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.14](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.13...medusa-plugin-segment@1.1.14) (2021-04-20)
+## [1.1.14](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.13...ninja-plugin-segment@1.1.14) (2021-04-20)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.13](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.12...medusa-plugin-segment@1.1.13) (2021-04-20)
+## [1.1.13](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.12...ninja-plugin-segment@1.1.13) (2021-04-20)
 
 ### Features
 
-- **medusa:** Swaps on swaps ([#229](https://github.com/medusajs/medusa/issues/229)) ([f8f1f57](https://github.com/medusajs/medusa/commit/f8f1f57fa1bcdc6f7ae4183e657a07e2641b1345))
+- **ninja:** Swaps on swaps ([#229](https://github.com/ninjajs/ninja/issues/229)) ([f8f1f57](https://github.com/ninjajs/ninja/commit/f8f1f57fa1bcdc6f7ae4183e657a07e2641b1345))
 
-## [1.1.12](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.11...medusa-plugin-segment@1.1.12) (2021-04-13)
-
-### Bug Fixes
-
-- merge develop ([a468c45](https://github.com/medusajs/medusa/commit/a468c451e82c68f41b5005a2e480057f6124aaa6))
-- **segment:** swap tracking ([295f0f6](https://github.com/medusajs/medusa/commit/295f0f652a0880292a3788b9c65476a3c5c1b8d4))
-- scaffolding ([0539a94](https://github.com/medusajs/medusa/commit/0539a949fa208ddbf140823c47abb7589f3c2401))
-
-## [1.1.11](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.10...medusa-plugin-segment@1.1.11) (2021-04-13)
+## [1.1.12](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.11...ninja-plugin-segment@1.1.12) (2021-04-13)
 
 ### Bug Fixes
 
-- **segment:** swap tracking ([295f0f6](https://github.com/medusajs/medusa/commit/295f0f652a0880292a3788b9c65476a3c5c1b8d4))
-- scaffolding ([0539a94](https://github.com/medusajs/medusa/commit/0539a949fa208ddbf140823c47abb7589f3c2401))
+- merge develop ([a468c45](https://github.com/ninjajs/ninja/commit/a468c451e82c68f41b5005a2e480057f6124aaa6))
+- **segment:** swap tracking ([295f0f6](https://github.com/ninjajs/ninja/commit/295f0f652a0880292a3788b9c65476a3c5c1b8d4))
+- scaffolding ([0539a94](https://github.com/ninjajs/ninja/commit/0539a949fa208ddbf140823c47abb7589f3c2401))
 
-## [1.1.10](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.9...medusa-plugin-segment@1.1.10) (2021-04-02)
-
-### Bug Fixes
-
-- adds exchange rates api key ([8eec38a](https://github.com/medusajs/medusa/commit/8eec38af7164fe60106b8dac33ae9acfeb2b0f2e))
-
-## [1.1.9](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.8...medusa-plugin-segment@1.1.9) (2021-03-30)
+## [1.1.11](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.10...ninja-plugin-segment@1.1.11) (2021-04-13)
 
 ### Bug Fixes
 
-- adds tests for segment ([1b00f96](https://github.com/medusajs/medusa/commit/1b00f967dea3dc3aa65fafbe1334492fba5c33c2))
-- don't divide zero decimal currencies ([3258955](https://github.com/medusajs/medusa/commit/3258955b462f91fc6f4d807c5cc9b5ad11d6bbdf))
-- don't divide zero decimal currencies ([cfab2d4](https://github.com/medusajs/medusa/commit/cfab2d408a296a938266d0989b1de67d060b2ed5))
+- **segment:** swap tracking ([295f0f6](https://github.com/ninjajs/ninja/commit/295f0f652a0880292a3788b9c65476a3c5c1b8d4))
+- scaffolding ([0539a94](https://github.com/ninjajs/ninja/commit/0539a949fa208ddbf140823c47abb7589f3c2401))
 
-## [1.1.8](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.7...medusa-plugin-segment@1.1.8) (2021-03-17)
+## [1.1.10](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.9...ninja-plugin-segment@1.1.10) (2021-04-02)
 
-**Note:** Version bump only for package medusa-plugin-segment
+### Bug Fixes
 
-## [1.1.7](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5...medusa-plugin-segment@1.1.7) (2021-03-17)
+- adds exchange rates api key ([8eec38a](https://github.com/ninjajs/ninja/commit/8eec38af7164fe60106b8dac33ae9acfeb2b0f2e))
+
+## [1.1.9](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.8...ninja-plugin-segment@1.1.9) (2021-03-30)
+
+### Bug Fixes
+
+- adds tests for segment ([1b00f96](https://github.com/ninjajs/ninja/commit/1b00f967dea3dc3aa65fafbe1334492fba5c33c2))
+- don't divide zero decimal currencies ([3258955](https://github.com/ninjajs/ninja/commit/3258955b462f91fc6f4d807c5cc9b5ad11d6bbdf))
+- don't divide zero decimal currencies ([cfab2d4](https://github.com/ninjajs/ninja/commit/cfab2d408a296a938266d0989b1de67d060b2ed5))
+
+## [1.1.8](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.7...ninja-plugin-segment@1.1.8) (2021-03-17)
+
+**Note:** Version bump only for package ninja-plugin-segment
+
+## [1.1.7](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5...ninja-plugin-segment@1.1.7) (2021-03-17)
 
 ### Features
 
-- **medusa:** cart context ([#201](https://github.com/medusajs/medusa/issues/201)) ([dd7b306](https://github.com/medusajs/medusa/commit/dd7b306333fbe1042f5cf2bed614bce84ea9475f))
+- **ninja:** cart context ([#201](https://github.com/ninjajs/ninja/issues/201)) ([dd7b306](https://github.com/ninjajs/ninja/commit/dd7b306333fbe1042f5cf2bed614bce84ea9475f))
 
-## [1.1.6](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5...medusa-plugin-segment@1.1.6) (2021-03-17)
+## [1.1.6](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5...ninja-plugin-segment@1.1.6) (2021-03-17)
 
 ### Features
 
-- **medusa:** cart context ([#201](https://github.com/medusajs/medusa/issues/201)) ([dd7b306](https://github.com/medusajs/medusa/commit/dd7b306333fbe1042f5cf2bed614bce84ea9475f))
+- **ninja:** cart context ([#201](https://github.com/ninjajs/ninja/issues/201)) ([dd7b306](https://github.com/ninjajs/ninja/commit/dd7b306333fbe1042f5cf2bed614bce84ea9475f))
 
-## [1.1.5](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5-next.3...medusa-plugin-segment@1.1.5) (2021-02-25)
+## [1.1.5](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5-next.3...ninja-plugin-segment@1.1.5) (2021-02-25)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.5-next.3](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5-next.2...medusa-plugin-segment@1.1.5-next.3) (2021-02-25)
+## [1.1.5-next.3](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5-next.2...ninja-plugin-segment@1.1.5-next.3) (2021-02-25)
 
 ### Bug Fixes
 
-- normalize currency code ([98aa404](https://github.com/medusajs/medusa/commit/98aa404306d55f0818d48e56c51146351ebfe306))
+- normalize currency code ([98aa404](https://github.com/ninjajs/ninja/commit/98aa404306d55f0818d48e56c51146351ebfe306))
 
-## [1.1.5-next.2](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5-next.1...medusa-plugin-segment@1.1.5-next.2) (2021-02-25)
+## [1.1.5-next.2](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5-next.1...ninja-plugin-segment@1.1.5-next.2) (2021-02-25)
 
 ### Features
 
-- **segment:** track shipments ([d156911](https://github.com/medusajs/medusa/commit/d15691188348c19fc22806d8cf7584fc5f249ce9))
+- **segment:** track shipments ([d156911](https://github.com/ninjajs/ninja/commit/d15691188348c19fc22806d8cf7584fc5f249ce9))
 
-## [1.1.5-next.1](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.5-next.0...medusa-plugin-segment@1.1.5-next.1) (2021-02-25)
+## [1.1.5-next.1](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.5-next.0...ninja-plugin-segment@1.1.5-next.1) (2021-02-25)
 
 ### Bug Fixes
 
-- add subtitle to tracks ([0c294b7](https://github.com/medusajs/medusa/commit/0c294b7b3acbc1b873aab7e90a8e596bdac48899))
-- versioning ([262af34](https://github.com/medusajs/medusa/commit/262af34125543d9a80bf469b5d380019b9bc8d3f))
+- add subtitle to tracks ([0c294b7](https://github.com/ninjajs/ninja/commit/0c294b7b3acbc1b873aab7e90a8e596bdac48899))
+- versioning ([262af34](https://github.com/ninjajs/ninja/commit/262af34125543d9a80bf469b5d380019b9bc8d3f))
 
-## [1.1.5-next.0](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.4...medusa-plugin-segment@1.1.5-next.0) (2021-02-22)
+## [1.1.5-next.0](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.4...ninja-plugin-segment@1.1.5-next.0) (2021-02-22)
 
 ### Features
 
-- **medusa-plugin-segment:** adds category and type to segment events ([#179](https://github.com/medusajs/medusa/issues/179)) ([e27cf72](https://github.com/medusajs/medusa/commit/e27cf72a8ca49a6586a82dde964d559c40a4415f))
+- **ninja-plugin-segment:** adds category and type to segment events ([#179](https://github.com/ninjajs/ninja/issues/179)) ([e27cf72](https://github.com/ninjajs/ninja/commit/e27cf72a8ca49a6586a82dde964d559c40a4415f))
 
-## [1.1.4](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.3...medusa-plugin-segment@1.1.4) (2021-02-17)
+## [1.1.4](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.3...ninja-plugin-segment@1.1.4) (2021-02-17)
 
 ### Bug Fixes
 
-- item reporting revenue discounted ([6e6669d](https://github.com/medusajs/medusa/commit/6e6669dee8cb3f7e044a4001fa1e183bb61766dd))
-- price after discounts ([0ed6b4a](https://github.com/medusajs/medusa/commit/0ed6b4a6a09d1d2ef5c9d6a199db1e01234bc3c2))
+- item reporting revenue discounted ([6e6669d](https://github.com/ninjajs/ninja/commit/6e6669dee8cb3f7e044a4001fa1e183bb61766dd))
+- price after discounts ([0ed6b4a](https://github.com/ninjajs/ninja/commit/0ed6b4a6a09d1d2ef5c9d6a199db1e01234bc3c2))
 
-## [1.1.3](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.2...medusa-plugin-segment@1.1.3) (2021-02-03)
+## [1.1.3](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.2...ninja-plugin-segment@1.1.3) (2021-02-03)
 
 ### Features
 
-- **medusa,brightpearl,segment,webshipper:** claims ([#163](https://github.com/medusajs/medusa/issues/163)) ([690d339](https://github.com/medusajs/medusa/commit/690d33966754a7dbe159c3ac09712a3c3bfaff0b))
+- **ninja,brightpearl,segment,webshipper:** claims ([#163](https://github.com/ninjajs/ninja/issues/163)) ([690d339](https://github.com/ninjajs/ninja/commit/690d33966754a7dbe159c3ac09712a3c3bfaff0b))
 
-## [1.1.2](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.1...medusa-plugin-segment@1.1.2) (2021-02-01)
+## [1.1.2](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.1...ninja-plugin-segment@1.1.2) (2021-02-01)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.1.1](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.1.0...medusa-plugin-segment@1.1.1) (2021-01-27)
+## [1.1.1](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.1.0...ninja-plugin-segment@1.1.1) (2021-01-27)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-# [1.1.0](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.16...medusa-plugin-segment@1.1.0) (2021-01-26)
+# [1.1.0](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.16...ninja-plugin-segment@1.1.0) (2021-01-26)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.0.16](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.15...medusa-plugin-segment@1.0.16) (2021-01-08)
+## [1.0.16](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.15...ninja-plugin-segment@1.0.16) (2021-01-08)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.0.15](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.14...medusa-plugin-segment@1.0.15) (2020-12-17)
+## [1.0.15](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.14...ninja-plugin-segment@1.0.15) (2020-12-17)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.0.14](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.13...medusa-plugin-segment@1.0.14) (2020-11-24)
+## [1.0.14](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.13...ninja-plugin-segment@1.0.14) (2020-11-24)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.0.13](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.12...medusa-plugin-segment@1.0.13) (2020-10-19)
+## [1.0.13](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.12...ninja-plugin-segment@1.0.13) (2020-10-19)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
-## [1.0.12](https://github.com/medusajs/medusa/compare/medusa-plugin-segment@1.0.11...medusa-plugin-segment@1.0.12) (2020-10-17)
+## [1.0.12](https://github.com/ninjajs/ninja/compare/ninja-plugin-segment@1.0.11...ninja-plugin-segment@1.0.12) (2020-10-17)
 
-**Note:** Version bump only for package medusa-plugin-segment
+**Note:** Version bump only for package ninja-plugin-segment
 
 ## 1.0.11 (2020-09-13)
 
 ### Bug Fixes
 
-- **medusa-plugin-segment:** Track additional order details ([6a90e94](https://github.com/medusajs/medusa/commit/6a90e94c62f5e300fe970ac5d6b64c8c0e52eb40))
+- **ninja-plugin-segment:** Track additional order details ([6a90e94](https://github.com/ninjajs/ninja/commit/6a90e94c62f5e300fe970ac5d6b64c8c0e52eb40))
 
 ## 1.0.10 (2020-09-09)
 
 ### Bug Fixes
 
-- updates license ([db519fb](https://github.com/medusajs/medusa/commit/db519fbaa6f8ad02c19cbecba5d4f28ba1ee81aa))
+- updates license ([db519fb](https://github.com/ninjajs/ninja/commit/db519fbaa6f8ad02c19cbecba5d4f28ba1ee81aa))
 
 ## 1.0.7 (2020-09-07)
 
@@ -384,8 +384,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 1.0.0-alpha.0 (2020-08-20)
 
-## [1.0.10](https://github.com/medusajs/medusa/compare/v1.0.9...v1.0.10) (2020-09-09)
+## [1.0.10](https://github.com/ninjajs/ninja/compare/v1.0.9...v1.0.10) (2020-09-09)
 
 ### Bug Fixes
 
-- updates license ([db519fb](https://github.com/medusajs/medusa/commit/db519fbaa6f8ad02c19cbecba5d4f28ba1ee81aa))
+- updates license ([db519fb](https://github.com/ninjajs/ninja/commit/db519fbaa6f8ad02c19cbecba5d4f28ba1ee81aa))

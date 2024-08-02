@@ -8,10 +8,10 @@ import {
   Property,
 } from "@mikro-orm/core"
 
-import { DALUtils } from "@medusajs/utils"
+import { DALUtils } from "@ninjajs/utils"
 import { InventoryItem } from "./inventory-item"
-import { createPsqlIndexStatementHelper } from "@medusajs/utils"
-import { generateEntityId } from "@medusajs/utils"
+import { createPsqlIndexStatementHelper } from "@ninjajs/utils"
+import { generateEntityId } from "@ninjajs/utils"
 
 const ReservationItemDeletedAtIndex = createPsqlIndexStatementHelper({
   tableName: "reservation_item",

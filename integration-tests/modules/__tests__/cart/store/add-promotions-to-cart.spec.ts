@@ -3,17 +3,17 @@ import {
   ModuleRegistrationName,
   Modules,
   RemoteLink,
-} from "@medusajs/modules-sdk"
-import { ICartModuleService, IPromotionModuleService } from "@medusajs/types"
-import { PromotionType } from "@medusajs/utils"
+} from "@ninjajs/modules-sdk"
+import { ICartModuleService, IPromotionModuleService } from "@ninjajs/types"
+import { PromotionType } from "@ninjajs/utils"
 import adminSeeder from "../../../../helpers/admin-seeder"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Store Carts API: Add promotions to cart", () => {

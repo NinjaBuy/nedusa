@@ -1,4 +1,4 @@
-import { FeatureFlagUtils, FlagRouter } from "@medusajs/utils"
+import { FeatureFlagUtils, FlagRouter } from "@ninjajs/utils"
 import { AwilixContainer } from "awilix"
 import bodyParser from "body-parser"
 import { Express } from "express"
@@ -33,13 +33,13 @@ export default async ({
     next()
   })
 
-  if (featureFlagRouter?.isFeatureEnabled(FeatureFlagUtils.MedusaV2Flag.key)) {
+  if (featureFlagRouter?.isFeatureEnabled(FeatureFlagUtils.NinjaV2Flag.key)) {
     // TODO: Figure out why this is causing issues with test when placed inside ./api.ts
     // Adding this here temporarily
-    // Test: (packages/medusa/src/api/routes/admin/currencies/update-currency.ts)
+    // Test: (packages/ninja/src/api/routes/admin/currencies/update-currency.ts)
     try {
       /**
-       * Register the Medusa CORE API routes using the file based routing.
+       * Register the Ninja CORE API routes using the file based routing.
        */
       await new RoutesLoader({
         app: app,
@@ -48,7 +48,7 @@ export default async ({
       }).load()
     } catch (err) {
       throw Error(
-        "An error occurred while registering Medusa Core API Routes. See error in logs for more details."
+        "An error occurred while registering Ninja Core API Routes. See error in logs for more details."
       )
     }
   } else {

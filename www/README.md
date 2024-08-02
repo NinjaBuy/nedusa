@@ -1,6 +1,6 @@
 # Documentation Resources
 
-This directory holds the code and content of both the [documentation](https://docs.medusajs.com/) and [API reference](https://docs.medusajs.com/api/admin).
+This directory holds the code and content of both the [documentation](https://docs.ninjajs.com/) and [API reference](https://docs.ninjajs.com/api/admin).
 
 ## docs Directory
 

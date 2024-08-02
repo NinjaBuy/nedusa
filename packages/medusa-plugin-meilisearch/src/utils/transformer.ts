@@ -1,4 +1,4 @@
-import { variantKeys } from "@medusajs/utils"
+import { variantKeys } from "@ninjajs/utils"
 
 const prefix = `variant`
 

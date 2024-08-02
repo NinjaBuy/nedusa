@@ -3,10 +3,10 @@ import {
   Product,
   ProductTag,
   ProductType,
-} from "@medusajs/medusa"
-import { Button } from "@medusajs/ui"
+} from "@ninjajs/ninja"
+import { Button } from "@ninjajs/ui"
 import { OnChangeFn, RowSelectionState } from "@tanstack/react-table"
-import { useAdminProductTags } from "medusa-react"
+import { useAdminProductTags } from "ninja-react"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
@@ -35,7 +35,7 @@ import { useProductTagConditionsTableColumns } from "../../hooks/columns/use-pro
 import { useProductTagConditionsTableFilters } from "../../hooks/filters/use-product-tag-conditions-table-filters"
 import { useProductTagConditionsTableQuery } from "../../hooks/query/use-product-tag-conditions-table-query"
 
-import { ProductCollectionDTO } from "@medusajs/types"
+import { ProductCollectionDTO } from "@ninjajs/types"
 import { useCollections } from "../../../../../hooks/api/collections"
 import { useCustomerGroups } from "../../../../../hooks/api/customer-groups"
 import { useProductTypes } from "../../../../../hooks/api/product-types"

@@ -1,5 +1,5 @@
-const { Modules } = require("@medusajs/modules-sdk")
-const { FulfillmentModuleOptions } = require("@medusajs/fulfillment")
+const { Modules } = require("@ninjajs/modules-sdk")
+const { FulfillmentModuleOptions } = require("@ninjajs/fulfillment")
 const DB_HOST = process.env.DB_HOST
 const DB_USERNAME = process.env.DB_USERNAME
 const DB_PASSWORD = process.env.DB_PASSWORD
@@ -8,11 +8,11 @@ const DB_URL = `postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 process.env.POSTGRES_URL = DB_URL
 process.env.LOG_LEVEL = "error"
 
-const enableMedusaV2 = process.env.MEDUSA_FF_MEDUSA_V2 == "true"
+const enableNinjaV2 = process.env.NINJA_FF_NINJA_V2 == "true"
 
 const customPaymentProvider = {
   resolve: {
-    services: [require("@medusajs/payment/dist/providers/system").default],
+    services: [require("@ninjajs/payment/dist/providers/system").default],
   },
   options: {
     config: {
@@ -22,7 +22,7 @@ const customPaymentProvider = {
 }
 
 const customFulfillmentProvider = {
-  resolve: "@medusajs/fulfillment-manual",
+  resolve: "@ninjajs/fulfillment-manual",
   options: {
     config: {
       "test-provider": {},
@@ -39,13 +39,13 @@ module.exports = {
     cookie_secret: "test",
   },
   featureFlags: {
-    medusa_v2: enableMedusaV2,
+    ninja_v2: enableNinjaV2,
   },
   modules: {
     [Modules.AUTH]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/auth",
+      resolve: "@ninjajs/auth",
       options: {
         providers: [
           {
@@ -61,21 +61,21 @@ module.exports = {
     [Modules.USER]: {
       scope: "internal",
       resources: "shared",
-      resolve: "@medusajs/user",
+      resolve: "@ninjajs/user",
       options: {
         jwt_secret: "test",
       },
     },
     [Modules.CACHE]: {
-      resolve: "@medusajs/cache-inmemory",
+      resolve: "@ninjajs/cache-inmemory",
       options: { ttl: 0 }, // Cache disabled
     },
     [Modules.STOCK_LOCATION]: {
-      resolve: "@medusajs/stock-location-next",
+      resolve: "@ninjajs/stock-location-next",
       options: {},
     },
     [Modules.INVENTORY]: {
-      resolve: "@medusajs/inventory-next",
+      resolve: "@ninjajs/inventory-next",
       options: {},
     },
     [Modules.PRODUCT]: true,
@@ -92,14 +92,14 @@ module.exports = {
     [Modules.CURRENCY]: true,
     [Modules.ORDER]: true,
     [Modules.PAYMENT]: {
-      resolve: "@medusajs/payment",
-      /** @type {import('@medusajs/payment').PaymentModuleOptions}*/
+      resolve: "@ninjajs/payment",
+      /** @type {import('@ninjajs/payment').PaymentModuleOptions}*/
       options: {
         providers: [customPaymentProvider],
       },
     },
     [Modules.FULFILLMENT]: {
-      /** @type {import('@medusajs/fulfillment').FulfillmentModuleOptions} */
+      /** @type {import('@ninjajs/fulfillment').FulfillmentModuleOptions} */
       options: {
         providers: [customFulfillmentProvider],
       },

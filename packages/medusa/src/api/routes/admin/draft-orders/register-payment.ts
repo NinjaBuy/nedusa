@@ -11,16 +11,16 @@ import {
 } from "../../../../types/orders"
 
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { Order } from "../../../../models"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 /**
  * @oas [post] /admin/draft-orders/{id}/pay
  * summary: "Mark Paid"
  * operationId: "PostDraftOrdersDraftOrderRegisterPayment"
- * description: "Capture the draft order's payment. This will also set the draft order's status to `completed` and create an Order from the draft order. The payment is captured through Medusa's system payment,
+ * description: "Capture the draft order's payment. This will also set the draft order's status to `completed` and create an Order from the draft order. The payment is captured through Ninja's system payment,
  *  which is manual payment that isn't integrated with any third-party payment provider. It is assumed that the payment capturing is handled manually by the admin."
  * x-authenticated: true
  * parameters:
@@ -31,18 +31,18 @@ import { promiseAll } from "@medusajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.draftOrders.markPaid(draftOrderId)
+ *       ninja.admin.draftOrders.markPaid(draftOrderId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDraftOrderRegisterPayment } from "medusa-react"
+ *       import { useAdminDraftOrderRegisterPayment } from "ninja-react"
  *
  *       type Props = {
  *         draftOrderId: string
@@ -70,7 +70,7 @@ import { promiseAll } from "@medusajs/utils"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/draft-orders/{id}/pay' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -170,10 +170,10 @@ export const reserveQuantityForDraftOrder = async (
           )
 
         if (!inventoryConfirmed) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             `Variant with id: ${item.variant_id} does not have the required inventory`,
-            MedusaError.Codes.INSUFFICIENT_INVENTORY
+            NinjaError.Codes.INSUFFICIENT_INVENTORY
           )
         }
 

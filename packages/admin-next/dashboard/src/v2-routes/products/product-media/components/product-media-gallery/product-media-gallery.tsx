@@ -5,9 +5,9 @@ import {
   Trash,
   TriangleLeftMini,
   TriangleRightMini,
-} from "@medusajs/icons"
-import { Image, Product } from "@medusajs/medusa"
-import { Button, IconButton, Text, Tooltip, clx, usePrompt } from "@medusajs/ui"
+} from "@ninjajs/icons"
+import { Image, Product } from "@ninjajs/ninja"
+import { Button, IconButton, Text, Tooltip, clx, usePrompt } from "@ninjajs/ui"
 import { useCallback, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"

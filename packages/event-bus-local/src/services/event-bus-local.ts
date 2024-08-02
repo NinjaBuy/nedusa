@@ -1,12 +1,12 @@
-import { MedusaContainer } from "@medusajs/modules-sdk"
+import { NinjaContainer } from "@ninjajs/modules-sdk"
 import {
   EmitData,
   EventBusTypes,
   Logger,
   Message,
   Subscriber,
-} from "@medusajs/types"
-import { AbstractEventBusModuleService } from "@medusajs/utils"
+} from "@ninjajs/types"
+import { AbstractEventBusModuleService } from "@ninjajs/utils"
 import { EventEmitter } from "events"
 import { ulid } from "ulid"
 
@@ -22,7 +22,7 @@ export default class LocalEventBusService extends AbstractEventBusModuleService 
   protected readonly logger_?: Logger
   protected readonly eventEmitter_: EventEmitter
 
-  constructor({ logger }: MedusaContainer & InjectedDependencies) {
+  constructor({ logger }: NinjaContainer & InjectedDependencies) {
     // @ts-ignore
     // eslint-disable-next-line prefer-rest-params
     super(...arguments)

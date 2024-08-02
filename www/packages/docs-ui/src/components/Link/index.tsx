@@ -20,7 +20,7 @@ export const Link = ({ href, children, className, ...rest }: LinkProps) => {
       href={href || ""}
       {...rest}
       className={clsx(
-        "text-medusa-fg-interactive hover:text-medusa-fg-interactive-hover",
+        "text-ninja-fg-interactive hover:text-ninja-fg-interactive-hover",
         className
       )}
     >

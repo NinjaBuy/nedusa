@@ -1,4 +1,4 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 
 interface SubscriberContext extends Record<string, unknown> {
   subscriberId?: string
@@ -12,6 +12,6 @@ export type SubscriberConfig = {
 export type SubscriberArgs<T = unknown> = {
   data: T
   eventName: string
-  container: MedusaContainer
+  container: NinjaContainer
   pluginOptions: Record<string, unknown>
 }

@@ -1,6 +1,6 @@
-import { MedusaContainer } from "@medusajs/types"
-import { createContainerLike, FlagRouter, MedusaV2Flag } from "@medusajs/utils"
-import { humanizeAmount } from "medusa-core-utils"
+import { NinjaContainer } from "@ninjajs/types"
+import { createContainerLike, FlagRouter, NinjaV2Flag } from "@ninjajs/utils"
+import { humanizeAmount } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { defaultAdminProductRelations } from "../../../api"
 import { AbstractBatchJobStrategy, IFileService } from "../../../interfaces"
@@ -138,8 +138,8 @@ export default class ProductExportStrategy extends AbstractBatchJobStrategy {
   }
 
   async preProcessBatchJob(batchJobId: string): Promise<void> {
-    const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-      MedusaV2Flag.key
+    const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+      NinjaV2Flag.key
     )
 
     return await this.atomicPhase_(async (transactionManager) => {
@@ -155,9 +155,9 @@ export default class ProductExportStrategy extends AbstractBatchJobStrategy {
       let count = 0
       const container = createContainerLike(
         this.__container__
-      ) as MedusaContainer
+      ) as NinjaContainer
 
-      if (isMedusaV2Enabled) {
+      if (isNinjaV2Enabled) {
         ;[productList, count] = await listProducts(
           container,
           filterable_fields,
@@ -186,7 +186,7 @@ export default class ProductExportStrategy extends AbstractBatchJobStrategy {
 
       while (offset < productCount) {
         if (!products?.length) {
-          if (isMedusaV2Enabled) {
+          if (isNinjaV2Enabled) {
             ;[productList, count] = await listProducts(
               container,
               filterable_fields,

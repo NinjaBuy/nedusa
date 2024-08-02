@@ -1,10 +1,10 @@
-import { ModuleExports } from "@medusajs/types"
+import { ModuleExports } from "@ninjajs/types"
 import * as ModuleServices from "@services"
 import { ApiKeyModuleService } from "@services"
-import { Modules } from "@medusajs/modules-sdk"
+import { Modules } from "@ninjajs/modules-sdk"
 import * as Models from "@models"
 import * as ModuleModels from "@models"
-import { ModulesSdkUtils } from "@medusajs/utils"
+import { ModulesSdkUtils } from "@ninjajs/utils"
 import * as ModuleRepositories from "@repositories"
 
 const migrationScriptOptions = {

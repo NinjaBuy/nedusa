@@ -1,4 +1,4 @@
-import { MedusaModule, registerMedusaModule } from "@medusajs/modules-sdk"
+import { NinjaModule, registerNinjaModule } from "@ninjajs/modules-sdk"
 import fs from "fs"
 import { sync as existsSync } from "fs-exists-cached"
 import glob from "glob"
@@ -7,10 +7,10 @@ import {
   createRequireFromPath,
   getConfigFile,
   isDefined,
-} from "medusa-core-utils"
+} from "ninja-core-utils"
 import path from "path"
 import { handleConfigError } from "../../loaders/config"
-import { MEDUSA_PROJECT_NAME } from "../../loaders/plugins"
+import { NINJA_PROJECT_NAME } from "../../loaders/plugins"
 
 function createFileContentHash(path, files) {
   return path + files
@@ -99,7 +99,7 @@ export function getInternalModules(configModule) {
   const moduleResolutions = {}
 
   Object.entries(configModule.modules ?? {}).forEach(([moduleKey, module]) => {
-    moduleResolutions[moduleKey] = registerMedusaModule(moduleKey, module)[
+    moduleResolutions[moduleKey] = registerNinjaModule(moduleKey, module)[
       moduleKey
     ]
   })
@@ -130,7 +130,7 @@ export function getInternalModules(configModule) {
 }
 
 export default (directory, featureFlagRouter) => {
-  const { configModule, error } = getConfigFile(directory, `medusa-config`)
+  const { configModule, error } = getConfigFile(directory, `ninja-config`)
 
   if (error) {
     handleConfigError(error)
@@ -152,8 +152,8 @@ export default (directory, featureFlagRouter) => {
   // Resolve user's project as a plugin for loading purposes
   resolved.push({
     resolve: `${directory}/dist`,
-    name: MEDUSA_PROJECT_NAME,
-    id: createPluginId(MEDUSA_PROJECT_NAME),
+    name: NINJA_PROJECT_NAME,
+    id: createPluginId(NINJA_PROJECT_NAME),
     options: {},
     version: createFileContentHash(process.cwd(), `**`),
   })
@@ -263,7 +263,7 @@ export const getModuleSharedResources = (configModule, featureFlagsRouter) => {
 export const runIsolatedModulesMigration = async (configModule) => {
   const moduleResolutions = {}
   Object.entries(configModule.modules ?? {}).forEach(([moduleKey, module]) => {
-    moduleResolutions[moduleKey] = registerMedusaModule(moduleKey, module)[
+    moduleResolutions[moduleKey] = registerNinjaModule(moduleKey, module)[
       moduleKey
     ]
   })
@@ -277,7 +277,7 @@ export const runIsolatedModulesMigration = async (configModule) => {
       continue
     }
 
-    await MedusaModule.migrateUp(
+    await NinjaModule.migrateUp(
       moduleResolution.definition.key,
       moduleResolution.resolutionPath,
       moduleResolution.options
@@ -288,7 +288,7 @@ export const runIsolatedModulesMigration = async (configModule) => {
 export const revertIsolatedModulesMigration = async (configModule) => {
   const moduleResolutions = {}
   Object.entries(configModule.modules ?? {}).forEach(([moduleKey, module]) => {
-    moduleResolutions[moduleKey] = registerMedusaModule(moduleKey, module)[
+    moduleResolutions[moduleKey] = registerNinjaModule(moduleKey, module)[
       moduleKey
     ]
   })
@@ -302,7 +302,7 @@ export const revertIsolatedModulesMigration = async (configModule) => {
       continue
     }
 
-    await MedusaModule.migrateDown(
+    await NinjaModule.migrateDown(
       moduleResolution.definition.key,
       moduleResolution.resolutionPath,
       moduleResolution.options

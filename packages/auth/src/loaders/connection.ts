@@ -4,11 +4,11 @@ import {
   InternalModuleDeclaration,
   LoaderOptions,
   Modules,
-} from "@medusajs/modules-sdk"
+} from "@ninjajs/modules-sdk"
 
 import { EntitySchema } from "@mikro-orm/core"
-import { ModulesSdkTypes } from "@medusajs/types"
-import { ModulesSdkUtils } from "@medusajs/utils"
+import { ModulesSdkTypes } from "@ninjajs/types"
+import { ModulesSdkUtils } from "@ninjajs/utils"
 
 export default async (
   {

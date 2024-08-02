@@ -13,24 +13,24 @@ const {
 
 jest.setTimeout(30000)
 
-describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING]: Order Taxes", () => {
-  let medusaProcess
+describe("[NINJA_FF_TAX_INCLUSIVE_PRICING]: Order Taxes", () => {
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   afterEach(async () => {

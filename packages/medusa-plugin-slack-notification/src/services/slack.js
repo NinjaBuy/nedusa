@@ -1,10 +1,10 @@
 import axios from "axios"
-import { humanizeAmount, zeroDecimalCurrencies } from "medusa-core-utils"
-import { BaseService } from "medusa-interfaces"
+import { humanizeAmount, zeroDecimalCurrencies } from "ninja-core-utils"
+import { BaseService } from "ninja-interfaces"
 
 class SlackService extends BaseService {
   /**
-   * @param {Object} options - options defined in `medusa-config.js`
+   * @param {Object} options - options defined in `ninja-config.js`
    *    {
    *      show_discount_code: If set to true the discount code used will be
    *        displayed in the order channel.

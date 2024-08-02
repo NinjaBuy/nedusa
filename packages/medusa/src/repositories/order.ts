@@ -1,4 +1,4 @@
-import { objectToStringPath, promiseAll } from "@medusajs/utils"
+import { objectToStringPath, promiseAll } from "@ninjajs/utils"
 import { flatten } from "lodash"
 import { FindManyOptions, FindOptionsRelations, In } from "typeorm"
 import { dataSource } from "../loaders/database"

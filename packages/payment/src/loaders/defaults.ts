@@ -1,7 +1,7 @@
 import {
   CreatePaymentProviderDTO,
   LoaderOptions
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 export default async ({ container }: LoaderOptions): Promise<void> => {
   const providersToLoad = container.resolve("payment_providers")

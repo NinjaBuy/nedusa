@@ -1,4 +1,4 @@
-import { IStockLocationService } from "@medusajs/types"
+import { IStockLocationService } from "@ninjajs/types"
 import { Request, Response } from "express"
 import {
   SalesChannelLocationService,
@@ -24,18 +24,18 @@ import { joinSalesChannels } from "./utils/join-sales-channels"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.stockLocations.retrieve(stockLocationId)
+ *       ninja.admin.stockLocations.retrieve(stockLocationId)
  *       .then(({ stock_location }) => {
  *         console.log(stock_location.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminStockLocation } from "medusa-react"
+ *       import { useAdminStockLocation } from "ninja-react"
  *
  *       type Props = {
  *         stockLocationId: string
@@ -62,7 +62,7 @@ import { joinSalesChannels } from "./utils/join-sales-channels"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/stock-locations/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  * security:
  *   - api_token: []
  *   - cookie_auth: []

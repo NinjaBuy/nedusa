@@ -6,7 +6,7 @@ import {
   ShippingProfile,
   ShippingProfileType,
   Store,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import {
   ProductVariantFactoryData,
   simpleProductVariantFactory,
@@ -16,7 +16,7 @@ import {
   simpleSalesChannelFactory,
 } from "./simple-sales-channel-factory"
 
-import { generateEntityId } from "@medusajs/utils"
+import { generateEntityId } from "@ninjajs/utils"
 import faker from "faker"
 import { DataSource } from "typeorm"
 
@@ -31,7 +31,7 @@ export type ProductFactoryData = {
   variants?: Omit<ProductVariantFactoryData, "product_id">[]
   sales_channels?: SalesChannelFactoryData[]
   metadata?: Record<string, unknown>
-  isMedusaV2Enabled?: boolean
+  isNinjaV2Enabled?: boolean
 }
 
 export const simpleProductFactory = async (
@@ -43,8 +43,8 @@ export const simpleProductFactory = async (
     faker.seed(seed)
   }
 
-  data.isMedusaV2Enabled =
-    data.isMedusaV2Enabled ?? process.env.MEDUSA_FF_MEDUSA_V2 == "true"
+  data.isNinjaV2Enabled =
+    data.isNinjaV2Enabled ?? process.env.NINJA_FF_NINJA_V2 == "true"
 
   const manager = dataSource.manager
 
@@ -126,13 +126,13 @@ export const simpleProductFactory = async (
 
   const toSave = manager.create(Product, productToCreate)
 
-  if (!data.isMedusaV2Enabled) {
+  if (!data.isNinjaV2Enabled) {
     toSave.sales_channels = sales_channels
   }
 
   const product = await manager.save(toSave)
 
-  if (data.isMedusaV2Enabled) {
+  if (data.isNinjaV2Enabled) {
     await manager.query(
       `INSERT INTO "product_sales_channel" (id, product_id, sales_channel_id) 
         VALUES ${sales_channels

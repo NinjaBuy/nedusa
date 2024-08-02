@@ -2,12 +2,12 @@ import {
   AbstractSearchService,
   promiseAll,
   upperCaseFirst,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { Lifetime, aliasTo, asFunction, asValue } from "awilix"
 import { Express } from "express"
 import glob from "glob"
-import { OauthService } from "medusa-interfaces"
-import { trackInstallation } from "medusa-telemetry"
+import { OauthService } from "ninja-interfaces"
+import { trackInstallation } from "ninja-telemetry"
 import { EOL } from "os"
 import path from "path"
 import { EntitySchema } from "typeorm"
@@ -25,7 +25,7 @@ import {
   ClassConstructor,
   ConfigModule,
   Logger,
-  MedusaContainer,
+  NinjaContainer,
 } from "../types/global"
 import {
   formatRegistrationName,
@@ -44,7 +44,7 @@ import logger from "./logger"
 
 type Options = {
   rootDirectory: string
-  container: MedusaContainer
+  container: NinjaContainer
   configModule: ConfigModule
   app: Express
   activityId: string
@@ -60,7 +60,7 @@ type PluginDetails = {
 
 export const isSearchEngineInstalledResolutionKey = "isSearchEngineInstalled"
 
-export const MEDUSA_PROJECT_NAME = "project-plugin"
+export const NINJA_PROJECT_NAME = "project-plugin"
 
 /**
  * Registers all services in the services directory
@@ -84,7 +84,7 @@ export default async ({
     resolved.map(async (pluginDetails) => {
       registerRepositories(pluginDetails, container)
       await registerServices(pluginDetails, container)
-      await registerMedusaApi(pluginDetails, container)
+      await registerNinjaApi(pluginDetails, container)
       await registerApi(
         pluginDetails,
         app,
@@ -126,7 +126,7 @@ export async function registerPluginModels({
   pathGlob = "/models/*.js",
 }: {
   rootDirectory: string
-  container: MedusaContainer
+  container: NinjaContainer
   configModule: ConfigModule
   extensionDirectoryPath?: string
   pathGlob?: string
@@ -144,7 +144,7 @@ export async function registerPluginModels({
 
 async function runLoaders(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): Promise<void> {
   const loaderFiles = glob.sync(
     `${pluginDetails.resolve}/loaders/[!__]*.js`,
@@ -168,7 +168,7 @@ async function runLoaders(
 
 async function registerScheduledJobs(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): Promise<void> {
   await new ScheduledJobsLoader(
     path.join(pluginDetails.resolve, "jobs"),
@@ -177,17 +177,17 @@ async function registerScheduledJobs(
   ).load()
 }
 
-async function registerMedusaApi(
+async function registerNinjaApi(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): Promise<void> {
-  registerMedusaMiddleware(pluginDetails, container)
+  registerNinjaMiddleware(pluginDetails, container)
   registerStrategies(pluginDetails, container)
 }
 
 export function registerStrategies(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): void {
   const files = glob.sync(`${pluginDetails.resolve}/strategies/[!__]*.js`, {
     ignore: ["**/__fixtures__/**", "**/index.js", "**/index.ts"],
@@ -272,19 +272,19 @@ export function registerStrategies(
 
       default:
         logger.warn(
-          `${file} did not export a class that implements a strategy interface. Your Medusa server will still work, but if you have written custom strategy logic it will not be used. Make sure to implement the proper interface.`
+          `${file} did not export a class that implements a strategy interface. Your Ninja server will still work, but if you have written custom strategy logic it will not be used. Make sure to implement the proper interface.`
         )
     }
   })
 }
 
-function registerMedusaMiddleware(
+function registerNinjaMiddleware(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): void {
   let module
   try {
-    module = require(`${pluginDetails.resolve}/api/medusa-middleware`).default
+    module = require(`${pluginDetails.resolve}/api/ninja-middleware`).default
   } catch (err) {
     return
   }
@@ -312,7 +312,7 @@ function registerMedusaMiddleware(
 
 function registerCoreRouters(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): void {
   const middlewareService =
     container.resolve<MiddlewareService>("middlewareService")
@@ -350,14 +350,14 @@ async function registerApi(
   pluginDetails: PluginDetails,
   app: Express,
   rootDirectory = "",
-  container: MedusaContainer,
+  container: NinjaContainer,
   configmodule: ConfigModule,
   activityId: string
 ): Promise<Express> {
   const logger = container.resolve<Logger>("logger")
   const projectName =
-    pluginDetails.name === MEDUSA_PROJECT_NAME
-      ? "your Medusa project"
+    pluginDetails.name === NINJA_PROJECT_NAME
+      ? "your Ninja project"
       : `${pluginDetails.name}`
 
   logger.progress(activityId, `Registering custom endpoints for ${projectName}`)
@@ -427,7 +427,7 @@ async function registerApi(
  */
 export async function registerServices(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): Promise<void> {
   const files = glob.sync(`${pluginDetails.resolve}/services/[!__]*.js`, {})
   await promiseAll(
@@ -551,7 +551,7 @@ export async function registerServices(
  */
 async function registerSubscribers(
   pluginDetails: PluginDetails,
-  container: MedusaContainer,
+  container: NinjaContainer,
   activityId: string
 ): Promise<void> {
   const loadedFiles = await new SubscriberLoader(
@@ -592,7 +592,7 @@ async function registerSubscribers(
  */
 function registerRepositories(
   pluginDetails: PluginDetails,
-  container: MedusaContainer
+  container: NinjaContainer
 ): void {
   const files = glob.sync(`${pluginDetails.resolve}/repositories/*.js`, {})
   files.forEach((fn) => {
@@ -633,7 +633,7 @@ async function registerWorkflows(pluginDetails: PluginDetails): Promise<void> {
  */
 function registerModels(
   pluginDetails: PluginDetails,
-  container: MedusaContainer,
+  container: NinjaContainer,
   rootDirectory: string,
   pathGlob = "/models/*.js"
 ): void {

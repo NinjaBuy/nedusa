@@ -1,9 +1,9 @@
 import { simpleCartFactory, simpleRegionFactory } from "../../../factories"
 
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import adminSeeder from "../../../helpers/admin-seeder"
 import { createDefaultRuleTypes } from "../../helpers/create-default-rule-types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(5000000)
 
@@ -15,25 +15,25 @@ const DB_URL = `postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe.skip("Link Modules", () => {
-      let medusaContainer
+      let ninjaContainer
 
       beforeAll(async () => {
-        medusaContainer = getContainer()
+        ninjaContainer = getContainer()
       })
       beforeEach(async () => {
-        await createDefaultRuleTypes(medusaContainer)
+        await createDefaultRuleTypes(ninjaContainer)
         await adminSeeder(dbConnection)
         await simpleRegionFactory(dbConnection, {
           id: "region-1",
@@ -47,7 +47,7 @@ medusaIntegrationTestRunner({
         let productId
         const cartId = "test-cart"
         beforeEach(async () => {
-          const pricingModuleService = medusaContainer.resolve(
+          const pricingModuleService = ninjaContainer.resolve(
             ModuleRegistrationName.PRICING
           )
 
@@ -98,7 +98,7 @@ medusaIntegrationTestRunner({
             ],
           })
 
-          const remoteLink = medusaContainer.resolve("remoteLink") as any
+          const remoteLink = ninjaContainer.resolve("remoteLink") as any
 
           await remoteLink.create({
             productService: {

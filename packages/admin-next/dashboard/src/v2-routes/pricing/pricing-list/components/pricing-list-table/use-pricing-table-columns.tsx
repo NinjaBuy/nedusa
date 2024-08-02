@@ -1,4 +1,4 @@
-import { PriceListDTO } from "@medusajs/types"
+import { PriceListDTO } from "@ninjajs/types"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"

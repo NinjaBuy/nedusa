@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import { BatchJob, BatchJobStatus } from "@medusajs/medusa"
+import { BatchJob, BatchJobStatus } from "@ninjajs/ninja"
 
 export type BatchJobFactoryData = {
   id?: string

@@ -1,5 +1,5 @@
-const { ProductVariantMoneyAmount } = require("@medusajs/medusa")
-const { Region, PriceList, MoneyAmount } = require("@medusajs/medusa")
+const { ProductVariantMoneyAmount } = require("@ninjajs/ninja")
+const { Region, PriceList, MoneyAmount } = require("@ninjajs/ninja")
 
 module.exports = async (dataSource, data = {}) => {
   const manager = dataSource.manager

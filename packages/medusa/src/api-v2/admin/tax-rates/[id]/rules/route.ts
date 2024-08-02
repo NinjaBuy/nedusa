@@ -1,14 +1,14 @@
-import { createTaxRateRulesWorkflow } from "@medusajs/core-flows"
+import { createTaxRateRulesWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import { AdminCreateTaxRateRuleType } from "../../validators"
 import { refetchTaxRate } from "../../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateTaxRateRuleType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateTaxRateRuleType>,
+  res: NinjaResponse
 ) => {
   const { errors } = await createTaxRateRulesWorkflow(req.scope).run({
     input: {

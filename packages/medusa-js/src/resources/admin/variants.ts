@@ -4,21 +4,21 @@ import {
   AdminGetVariantsVariantInventoryRes,
   AdminVariantsListRes,
   AdminVariantsRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Product Variant API Routes](https://docs.medusajs.com/api/admin#product-variants). All its method
- * are available in the JS Client under the `medusa.admin.variants` property.
+ * This class is used to send requests to [Admin Product Variant API Routes](https://docs.ninjajs.com/api/admin#product-variants). All its method
+ * are available in the JS Client under the `ninja.admin.variants` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Product variants are the actual salable item in your store. Each variant is a combination of the different option values available on the product.
  * Product variants can be managed through {@link AdminProductsResource}.
  * 
- * Related Guide: [How to manage product variants](https://docs.medusajs.com/modules/products/admin/manage-products#manage-product-variants).
+ * Related Guide: [How to manage product variants](https://docs.ninjajs.com/modules/products/admin/manage-products#manage-product-variants).
  */
 class AdminVariantsResource extends BaseResource {
   /**
@@ -31,10 +31,10 @@ class AdminVariantsResource extends BaseResource {
    * To list product variants:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.list()
+   * ninja.admin.variants.list()
    * .then(({ variants, limit, offset, count }) => {
    *   console.log(variants.length);
    * })
@@ -43,10 +43,10 @@ class AdminVariantsResource extends BaseResource {
    * To specify relations that should be retrieved within the product variants:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.list({
+   * ninja.admin.variants.list({
    *   expand: "options"
    * })
    * .then(({ variants, limit, offset, count }) => {
@@ -57,10 +57,10 @@ class AdminVariantsResource extends BaseResource {
    * By default, only the first `100` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.list({
+   * ninja.admin.variants.list({
    *   expand: "options",
    *   limit,
    *   offset
@@ -95,10 +95,10 @@ class AdminVariantsResource extends BaseResource {
    * A simple example that retrieves a product variant by its ID:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.retrieve(variantId)
+   * ninja.admin.variants.retrieve(variantId)
    * .then(({ variant }) => {
    *   console.log(variant.id);
    * })
@@ -107,10 +107,10 @@ class AdminVariantsResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.retrieve(variantId, {
+   * ninja.admin.variants.retrieve(variantId, {
    *   expand: "options"
    * })
    * .then(({ variant }) => {
@@ -140,10 +140,10 @@ class AdminVariantsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGetVariantsVariantInventoryRes>} Resolves to the inventory details of the product variant.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.variants.getInventory(variantId)
+   * ninja.admin.variants.getInventory(variantId)
    * .then(({ variant }) => {
    *   console.log(variant.inventory, variant.sales_channel_availability)
    * })

@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express"
 import compression from "compression"
-import { Logger } from "@medusajs/types"
+import { Logger } from "@ninjajs/types"
 import {
   ProjectConfigOptions,
   HttpCompressionOptions,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 export function shouldCompressResponse(req: Request, res: Response) {
   const logger: Logger = req.scope.resolve("logger")

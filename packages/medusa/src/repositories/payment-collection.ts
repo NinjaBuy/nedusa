@@ -1,4 +1,4 @@
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { PaymentCollection } from "../models"
 import { dataSource } from "../loaders/database"
 import { FindManyOptions } from "typeorm"
@@ -24,8 +24,8 @@ export const PaymentCollectionRepository = dataSource
       })
 
       if (!paymentCollection.length) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_FOUND,
+        throw new NinjaError(
+          NinjaError.Types.NOT_FOUND,
           `Payment collection related to Payment Session id ${sessionId} was not found`
         )
       }
@@ -51,8 +51,8 @@ export const PaymentCollectionRepository = dataSource
       })
 
       if (!paymentCollection.length) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_FOUND,
+        throw new NinjaError(
+          NinjaError.Types.NOT_FOUND,
           `Payment collection related to Payment id ${paymentId} was not found`
         )
       }

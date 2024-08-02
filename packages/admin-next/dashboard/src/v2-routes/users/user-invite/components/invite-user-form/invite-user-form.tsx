@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowPath, Trash } from "@medusajs/icons"
-import { InviteDTO } from "@medusajs/types"
+import { ArrowPath, Trash } from "@ninjajs/icons"
+import { InviteDTO } from "@ninjajs/types"
 import {
   Button,
   Container,
@@ -10,7 +10,7 @@ import {
   Text,
   Tooltip,
   usePrompt,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { format } from "date-fns"
 import { useMemo } from "react"

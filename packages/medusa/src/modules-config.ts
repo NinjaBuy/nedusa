@@ -1,6 +1,6 @@
-import { MedusaModuleConfig, Modules } from "@medusajs/modules-sdk"
+import { NinjaModuleConfig, Modules } from "@ninjajs/modules-sdk"
 
-const modules: MedusaModuleConfig = {
+const modules: NinjaModuleConfig = {
   [Modules.PRODUCT]: true,
   [Modules.PRICING]: true,
 }

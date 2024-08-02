@@ -3,14 +3,14 @@ import {
   createAdminUser,
 } from "../../../../helpers/create-admin-user"
 
-import { IInventoryServiceNext } from "@medusajs/types"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IInventoryServiceNext } from "@ninjajs/types"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import { breaking } from "../../../../helpers/breaking"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer

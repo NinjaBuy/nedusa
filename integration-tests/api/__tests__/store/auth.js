@@ -4,24 +4,24 @@ const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
 const { initDb, useDb } = require("../../../environment-helpers/use-db")
 
-const { Customer } = require("@medusajs/medusa")
+const { Customer } = require("@ninjajs/ninja")
 
 jest.setTimeout(30000)
 
 describe("/store/auth", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   it("creates store session correctly", async () => {

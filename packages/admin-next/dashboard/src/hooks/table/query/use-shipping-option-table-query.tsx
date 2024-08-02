@@ -1,4 +1,4 @@
-import { AdminGetShippingOptionsParams } from "@medusajs/medusa"
+import { AdminGetShippingOptionsParams } from "@ninjajs/ninja"
 import { useQueryParams } from "../../use-query-params"
 
 type UseShippingOptionTableQueryProps = {

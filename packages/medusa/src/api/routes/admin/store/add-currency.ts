@@ -5,7 +5,7 @@ import { EntityManager } from "typeorm"
  * @oas [post] /admin/store/currencies/{code}
  * operationId: "PostStoreCurrenciesCode"
  * summary: "Add a Currency Code"
- * description: "Add a Currency Code to the available currencies in a store. This does not create new currencies, as currencies are defined within the Medusa backend.
+ * description: "Add a Currency Code to the available currencies in a store. This does not create new currencies, as currencies are defined within the Ninja backend.
  * To create a currency, you can create a migration that inserts the currency into the database."
  * x-authenticated: true
  * parameters:
@@ -24,18 +24,18 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.store.addCurrency("eur")
+ *       ninja.admin.store.addCurrency("eur")
  *       .then(({ store }) => {
  *         console.log(store.currencies);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminAddStoreCurrency } from "medusa-react"
+ *       import { useAdminAddStoreCurrency } from "ninja-react"
  *
  *       const Store = () => {
  *         const addCurrency = useAdminAddStoreCurrency()
@@ -57,7 +57,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/store/currencies/{currency_code}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

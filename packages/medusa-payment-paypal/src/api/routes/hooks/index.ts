@@ -1,6 +1,6 @@
 import { Router } from "express"
 import bodyParser from "body-parser"
-import { wrapHandler } from "@medusajs/medusa"
+import { wrapHandler } from "@ninjajs/ninja"
 import paypalWebhookHandler from "./paypal"
 
 const route = Router()

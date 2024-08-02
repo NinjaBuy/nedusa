@@ -12,7 +12,7 @@ export class FulfillmentProvider {
 /**
  * @schema FulfillmentProvider
  * title: "Fulfillment Provider"
- * description: "A fulfillment provider represents a fulfillment service installed in the Medusa backend, either through a plugin or backend customizations.
+ * description: "A fulfillment provider represents a fulfillment service installed in the Ninja backend, either through a plugin or backend customizations.
  *  It holds the fulfillment service's installation status."
  * type: object
  * required:

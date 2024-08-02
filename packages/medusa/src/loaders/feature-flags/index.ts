@@ -3,10 +3,10 @@ import {
   isObject,
   isString,
   objectFromStringPath,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import glob from "glob"
-import { isDefined } from "medusa-core-utils"
-import { trackFeatureFlag } from "medusa-telemetry"
+import { isDefined } from "ninja-core-utils"
+import { trackFeatureFlag } from "ninja-telemetry"
 import path from "path"
 import { FlagSettings } from "../../types/feature-flags"
 import { Logger } from "../../types/global"
@@ -48,12 +48,12 @@ export default (
       from = "environment"
       const envVal = process.env[flagSettings.env_key]
 
-      // MEDUSA_FF_ANALYTICS="true"
+      // NINJA_FF_ANALYTICS="true"
       flagConfig[flagSettings.key] = isTruthy(process.env[flagSettings.env_key])
 
       const parsedFromEnv = isString(envVal) ? envVal.split(",") : []
 
-      // MEDUSA_FF_WORKFLOWS=createProducts,deleteProducts
+      // NINJA_FF_WORKFLOWS=createProducts,deleteProducts
       if (parsedFromEnv.length > 1) {
         flagConfig[flagSettings.key] = objectFromStringPath(parsedFromEnv)
       }

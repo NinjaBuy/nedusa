@@ -51,7 +51,7 @@ type WorflowExecutionExecution = {
 }
 
 /**
- * Re-implements WorkflowExecutionDTO as it is currently only exported from `@medusajs/workflows-sdk`.
+ * Re-implements WorkflowExecutionDTO as it is currently only exported from `@ninjajs/workflows-sdk`.
  * Also adds type definitions for fields that have vague types, such as `execution` and `context`.
  */
 export interface WorkflowExecutionDTO {

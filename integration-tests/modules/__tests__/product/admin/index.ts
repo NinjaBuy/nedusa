@@ -6,8 +6,8 @@ import { initDb, useDb } from "../../../../environment-helpers/use-db"
 import adminSeeder from "../../../../helpers/admin-seeder"
 import productSeeder from "../../../../helpers/product-seeder"
 
-import { Modules, ModulesDefinition } from "@medusajs/modules-sdk"
-import { MedusaV2Flag } from "@medusajs/utils"
+import { Modules, ModulesDefinition } from "@ninjajs/modules-sdk"
+import { NinjaV2Flag } from "@ninjajs/utils"
 import { AxiosInstance } from "axios"
 import { getContainer } from "../../../../environment-helpers/use-container"
 import {
@@ -20,28 +20,28 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
-// TODO SEE to use new test runner medusaIntegrationTestRunner({
+// TODO SEE to use new test runner ninjaIntegrationTestRunner({
 //   env,
 //   testSuite: ({ dbConnection, getContainer, api }) => {})
 
 describe.skip("/admin/products", () => {
   let dbConnection
   let shutdownServer
-  let medusaContainer
+  let ninjaContainer
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd, env })
     shutdownServer = await startBootstrapApp({ cwd, env })
-    medusaContainer = getContainer()
+    ninjaContainer = getContainer()
   })
 
   afterAll(async () => {
@@ -54,14 +54,14 @@ describe.skip("/admin/products", () => {
     const productRegistrationName =
       ModulesDefinition[Modules.PRODUCT].registrationName
     expect(
-      medusaContainer.hasRegistration(productRegistrationName)
+      ninjaContainer.hasRegistration(productRegistrationName)
     ).toBeTruthy()
   })
 
   it("Should have enabled workflows feature flag", function () {
-    const flagRouter = medusaContainer.resolve("featureFlagRouter")
+    const flagRouter = ninjaContainer.resolve("featureFlagRouter")
 
-    const workflowsFlag = flagRouter.isFeatureEnabled(MedusaV2Flag.key)
+    const workflowsFlag = flagRouter.isFeatureEnabled(NinjaV2Flag.key)
 
     expect(workflowsFlag).toBe(true)
   })
@@ -70,7 +70,7 @@ describe.skip("/admin/products", () => {
     beforeEach(async () => {
       await productSeeder(dbConnection)
       await adminSeeder(dbConnection)
-      await createDefaultRuleTypes(medusaContainer)
+      await createDefaultRuleTypes(ninjaContainer)
 
       await simpleSalesChannelFactory(dbConnection, {
         name: "Default channel",
@@ -407,7 +407,7 @@ describe.skip("/admin/products", () => {
             },
           ],
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       expect(response.status).toEqual(200)
@@ -416,7 +416,7 @@ describe.skip("/admin/products", () => {
         (v: { id: string }) => v.id
       )
 
-      const variantInventoryService = medusaContainer.resolve(
+      const variantInventoryService = ninjaContainer.resolve(
         "productVariantInventoryService"
       )
       const inventory = await variantInventoryService.listByVariant(variantIds)
@@ -445,7 +445,7 @@ describe.skip("/admin/products", () => {
     beforeEach(async () => {
       await productSeeder(dbConnection)
       await adminSeeder(dbConnection)
-      await createDefaultRuleTypes(medusaContainer)
+      await createDefaultRuleTypes(ninjaContainer)
 
       await simpleSalesChannelFactory(dbConnection, {
         name: "Default channel",
@@ -599,7 +599,7 @@ describe.skip("/admin/products", () => {
     it("should update inventory when variants are updated", async () => {
       const api = useApi()! as AxiosInstance
 
-      const variantInventoryService = medusaContainer.resolve(
+      const variantInventoryService = ninjaContainer.resolve(
         "productVariantInventoryService"
       )
 

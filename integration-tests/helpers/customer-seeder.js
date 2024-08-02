@@ -1,4 +1,4 @@
-const { Customer, Address, CustomerGroup } = require("@medusajs/medusa")
+const { Customer, Address, CustomerGroup } = require("@ninjajs/ninja")
 
 module.exports = async (dataSource, data = {}) => {
   const manager = dataSource.manager

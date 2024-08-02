@@ -1,4 +1,4 @@
-import { PromotionDTO } from "@medusajs/types"
+import { PromotionDTO } from "@ninjajs/types"
 
 export enum PromotionStatus {
   SCHEDULED = "SCHEDULED",

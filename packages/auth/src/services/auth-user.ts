@@ -4,13 +4,13 @@ import {
   DAL,
   FindConfig,
   RepositoryService,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   InjectManager,
-  MedusaContext,
-  MedusaError,
+  NinjaContext,
+  NinjaError,
   ModulesSdkUtils,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { AuthUser } from "@models"
 
 type InjectedDependencies = {
@@ -38,7 +38,7 @@ export default class AuthUserService<
     entityId: string,
     provider: string,
     config: FindConfig<TEntityMethod> = {},
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<AuthTypes.AuthUserDTO> {
     const queryConfig = ModulesSdkUtils.buildQuery<TEntity>(
       { entity_id: entityId, provider },
@@ -50,8 +50,8 @@ export default class AuthUserService<
     )
 
     if (!result) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `AuthUser with entity_id: "${entityId}" and provider: "${provider}" not found`
       )
     }

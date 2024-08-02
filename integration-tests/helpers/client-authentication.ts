@@ -5,7 +5,7 @@ export async function getClientAuthenticationCookie(
   password = null
 ) {
   const user = {
-    email: email ?? "test@medusajs.com",
+    email: email ?? "test@ninjajs.com",
     password: password ?? "test",
   }
 

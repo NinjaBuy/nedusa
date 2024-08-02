@@ -1,5 +1,5 @@
-import { XMarkMini } from "@medusajs/icons"
-import { Input, Label, Text, clx } from "@medusajs/ui"
+import { XMarkMini } from "@ninjajs/icons"
+import { Input, Label, Text, clx } from "@ninjajs/ui"
 import * as Popover from "@radix-ui/react-popover"
 import { debounce } from "lodash"
 import { ChangeEvent, useCallback, useEffect, useState } from "react"

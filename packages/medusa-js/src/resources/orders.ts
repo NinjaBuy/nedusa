@@ -3,19 +3,19 @@ import {
   StoreOrdersRes,
   StorePostCustomersCustomerAcceptClaimReq,
   StorePostCustomersCustomerOrderClaimReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Order API Routes](https://docs.medusajs.com/api/store#orders). All its method
- * are available in the JS Client under the `medusa.orders` property.
+ * This class is used to send requests to [Store Order API Routes](https://docs.ninjajs.com/api/store#orders). All its method
+ * are available in the JS Client under the `ninja.orders` property.
  * 
  * Orders are purchases made by customers, typically through a storefront.
  * Orders are placed and created using {@link CartsResource}. The methods in this class allow retrieving and claiming orders.
  * 
- * Related Guide: [How to retrieve order details in a storefront](https://docs.medusajs.com/modules/orders/storefront/retrieve-order-details).
+ * Related Guide: [How to retrieve order details in a storefront](https://docs.ninjajs.com/modules/orders/storefront/retrieve-order-details).
  */
 class OrdersResource extends BaseResource {
   /**
@@ -25,9 +25,9 @@ class OrdersResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrdersRes>} Resolves to the details of the order.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.orders.retrieve(orderId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.orders.retrieve(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -47,9 +47,9 @@ class OrdersResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrdersRes>} Resolves to the details of the order.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.orders.retrieveByCartId(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.orders.retrieveByCartId(cartId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -69,9 +69,9 @@ class OrdersResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrdersRes>} Resolves to the details of the order.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.orders.lookupOrder({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.orders.lookupOrder({
    *   display_id: 1,
    *   email: "user@example.com"
    * })
@@ -100,10 +100,10 @@ class OrdersResource extends BaseResource {
    * @returns {ResponsePromise} Resolves when the request is created successfully.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.orders.requestCustomerOrders({
+   * ninja.orders.requestCustomerOrders({
    *   order_ids,
    * })
    * .then(() => {
@@ -128,10 +128,10 @@ class OrdersResource extends BaseResource {
    * @returns {ResponsePromise} Resolves when the claim order is verified successfully.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.orders.confirmRequest(
+   * ninja.orders.confirmRequest(
    *   token,
    * )
    * .then(() => {

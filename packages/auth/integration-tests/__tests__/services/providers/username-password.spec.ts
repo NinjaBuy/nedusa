@@ -1,9 +1,9 @@
-import { MedusaModule, Modules } from "@medusajs/modules-sdk"
+import { NinjaModule, Modules } from "@ninjajs/modules-sdk"
 
-import { IAuthModuleService } from "@medusajs/types"
+import { IAuthModuleService } from "@ninjajs/types"
 import Scrypt from "scrypt-kdf"
 import { createAuthUsers } from "../../../__fixtures__/auth-user"
-import { moduleIntegrationTestRunner, SuiteOptions } from "medusa-test-utils"
+import { moduleIntegrationTestRunner, SuiteOptions } from "ninja-test-utils"
 
 jest.setTimeout(30000)
 const seedDefaultData = async (manager) => {

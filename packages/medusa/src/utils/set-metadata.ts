@@ -1,4 +1,4 @@
-import { MedusaError } from "medusa-core-utils/dist"
+import { NinjaError } from "ninja-core-utils/dist"
 
 /**
  * Dedicated method to set metadata.
@@ -15,8 +15,8 @@ export function setMetadata(
 
   for (const [key, value] of Object.entries(metadata)) {
     if (typeof key !== "string") {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_ARGUMENT,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_ARGUMENT,
         "Key type is invalid. Metadata keys must be strings"
       )
     }

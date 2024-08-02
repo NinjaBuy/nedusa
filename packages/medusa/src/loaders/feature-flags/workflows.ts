@@ -1,3 +1,3 @@
-import { WorkflowsFeatureFlag } from "@medusajs/utils"
+import { WorkflowsFeatureFlag } from "@ninjajs/utils"
 
 export default WorkflowsFeatureFlag

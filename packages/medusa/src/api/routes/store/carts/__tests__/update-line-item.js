@@ -1,5 +1,5 @@
 import { CartServiceMock } from "../../../../../services/__mocks__/cart"
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import { request } from "../../../../../helpers/test-request"
 
 describe("POST /store/carts/:id/line-items/:line_id", () => {

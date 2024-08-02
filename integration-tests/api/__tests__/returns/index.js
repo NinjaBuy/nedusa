@@ -20,12 +20,12 @@ jest.setTimeout(30000)
 
 const adminHeaders = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 describe("/admin/orders", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -36,13 +36,13 @@ describe("/admin/orders", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   afterEach(async () => {

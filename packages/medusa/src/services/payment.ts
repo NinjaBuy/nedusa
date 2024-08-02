@@ -1,4 +1,4 @@
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { PaymentRepository } from "./../repositories/payment"
 
@@ -60,8 +60,8 @@ export default class PaymentService extends TransactionBaseService {
     config: FindConfig<Payment> = {}
   ): Promise<Payment> {
     if (!isDefined(paymentId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"paymentId" must be defined`
       )
     }
@@ -75,8 +75,8 @@ export default class PaymentService extends TransactionBaseService {
     const payment = await paymentRepository.find(query)
 
     if (!payment.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Payment with id ${paymentId} was not found`
       )
     }
@@ -177,8 +177,8 @@ export default class PaymentService extends TransactionBaseService {
             error: captureError,
           })
 
-        throw new MedusaError(
-          MedusaError.Types.UNEXPECTED_STATE,
+        throw new NinjaError(
+          NinjaError.Types.UNEXPECTED_STATE,
           `Failed to capture Payment ${payment.id}`
         )
       }
@@ -212,16 +212,16 @@ export default class PaymentService extends TransactionBaseService {
 
     return await this.atomicPhase_(async (manager: EntityManager) => {
       if (!payment.captured_at) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Payment ${payment.id} is not captured`
         )
       }
 
       const refundable = payment.amount - payment.amount_refunded
       if (amount > refundable) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Only ${refundable} can be refunded from Payment ${payment.id}`
         )
       }
@@ -242,8 +242,8 @@ export default class PaymentService extends TransactionBaseService {
             error: refundError,
           })
 
-        throw new MedusaError(
-          MedusaError.Types.UNEXPECTED_STATE,
+        throw new NinjaError(
+          NinjaError.Types.UNEXPECTED_STATE,
           `Failed to refund Payment ${payment.id}`
         )
       }

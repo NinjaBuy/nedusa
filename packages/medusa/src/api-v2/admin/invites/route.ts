@@ -1,19 +1,19 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
-import { createInvitesWorkflow } from "@medusajs/core-flows"
+import { createInvitesWorkflow } from "@ninjajs/core-flows"
 import { AdminCreateInviteType, AdminGetInvitesParamsType } from "./validators"
 import { refetchInvite } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetInvitesParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetInvitesParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const queryObject = remoteQueryObjectFromString({
@@ -36,8 +36,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateInviteType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateInviteType>,
+  res: NinjaResponse
 ) => {
   const workflow = createInvitesWorkflow(req.scope)
 

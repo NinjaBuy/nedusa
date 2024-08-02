@@ -5,12 +5,12 @@ import {
   Resolver,
 } from "awilix"
 import { mkdirSync, rmSync, writeFileSync } from "fs"
-import { createMedusaContainer } from "medusa-core-utils"
+import { createNinjaContainer } from "ninja-core-utils"
 import { resolve } from "path"
 import { DataSource, EntityManager } from "typeorm"
 import Logger from "../logger"
 import {
-  MEDUSA_PROJECT_NAME,
+  NINJA_PROJECT_NAME,
   registerServices,
   registerStrategies,
 } from "../plugins"
@@ -18,7 +18,7 @@ import {
 // ***** TEMPLATES *****
 const buildServiceTemplate = (name: string): string => {
   return `
-    import { BaseService } from "medusa-interfaces"
+    import { BaseService } from "ninja-interfaces"
     export default class ${name}Service extends BaseService {}
   `
 }
@@ -114,14 +114,14 @@ function asArray(
 // ***** TESTS *****
 
 describe("plugins loader", () => {
-  const container = createMedusaContainer()
+  const container = createNinjaContainer()
 
   container.register("logger", asValue(Logger))
   container.register("manager", asValue(new EntityManager({} as DataSource)))
 
   const pluginsDetails = {
     resolve: resolve(__dirname, "__pluginsLoaderTest__"),
-    name: MEDUSA_PROJECT_NAME,
+    name: NINJA_PROJECT_NAME,
     id: "fakeId",
     options: {},
     version: '"fakeVersion',

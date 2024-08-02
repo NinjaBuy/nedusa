@@ -22,10 +22,10 @@ import SalesChannelService from "../../../../services/sales-channel"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.salesChannels.create({
+ *       ninja.admin.salesChannels.create({
  *         name: "App",
  *         description: "Mobile app"
  *       })
@@ -33,10 +33,10 @@ import SalesChannelService from "../../../../services/sales-channel"
  *         console.log(sales_channel.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateSalesChannel } from "medusa-react"
+ *       import { useAdminCreateSalesChannel } from "ninja-react"
  *
  *       const CreateSalesChannel = () => {
  *         const createSalesChannel = useAdminCreateSalesChannel()
@@ -61,7 +61,7 @@ import SalesChannelService from "../../../../services/sales-channel"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/sales-channels' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "App"

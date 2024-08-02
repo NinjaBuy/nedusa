@@ -1,4 +1,4 @@
-import { PriceListStatus, PriceListType } from "@medusajs/types"
+import { PriceListStatus, PriceListType } from "@ninjajs/types"
 import { z } from "zod"
 import {
   createFindParams,

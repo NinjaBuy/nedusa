@@ -1,5 +1,5 @@
-import { moduleProviderLoader } from "@medusajs/modules-sdk"
-import { LoaderOptions, ModuleProvider, ModulesSdkTypes } from "@medusajs/types"
+import { moduleProviderLoader } from "@ninjajs/modules-sdk"
+import { LoaderOptions, ModuleProvider, ModulesSdkTypes } from "@ninjajs/types"
 import { FileProviderService } from "@services"
 import {
   FileProviderIdentifierRegistrationName,

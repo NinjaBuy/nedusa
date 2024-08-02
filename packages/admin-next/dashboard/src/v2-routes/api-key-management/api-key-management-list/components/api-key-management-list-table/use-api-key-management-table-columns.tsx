@@ -1,5 +1,5 @@
-import { AdminApiKeyResponse } from "@medusajs/types"
-import { Badge, Copy, Text } from "@medusajs/ui"
+import { AdminApiKeyResponse } from "@ninjajs/types"
+import { Badge, Copy, Text } from "@ninjajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { MouseEvent, useMemo } from "react"
 import { useTranslation } from "react-i18next"

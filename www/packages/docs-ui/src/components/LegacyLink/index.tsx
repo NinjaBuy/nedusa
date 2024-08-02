@@ -18,7 +18,7 @@ export const LegacyLink = ({
       href={href || ""}
       {...rest}
       className={clsx(
-        "text-medusa-fg-interactive hover:text-medusa-fg-interactive-hover",
+        "text-ninja-fg-interactive hover:text-ninja-fg-interactive-hover",
         className
       )}
     >

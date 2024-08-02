@@ -16,16 +16,16 @@ import {
   ProviderWebhookPayload,
   UpdatePaymentProviderSession,
   WebhookActionResult,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   InjectManager,
   InjectTransactionManager,
   isPaymentProviderError,
-  MedusaContext,
+  NinjaContext,
   ModulesSdkUtils,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { PaymentProvider } from "@models"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EOL } from "os"
 
 type InjectedDependencies = {
@@ -49,7 +49,7 @@ export default class PaymentProviderService {
   @InjectTransactionManager("paymentProviderRepository_")
   async create(
     data: CreatePaymentProviderDTO[],
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentProvider[]> {
     return await this.paymentProviderRepository_.create(data, sharedContext)
   }
@@ -58,7 +58,7 @@ export default class PaymentProviderService {
   async list(
     filters: FilterablePaymentProviderProps,
     config: FindConfig<PaymentProviderDTO>,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<PaymentProvider[]> {
     const queryOptions = ModulesSdkUtils.buildQuery<PaymentProvider>(
       filters,
@@ -75,7 +75,7 @@ export default class PaymentProviderService {
   async listAndCount(
     filters: FilterablePaymentProviderProps,
     config: FindConfig<PaymentProviderDTO>,
-    @MedusaContext() sharedContext?: Context
+    @NinjaContext() sharedContext?: Context
   ): Promise<[PaymentProvider[], number]> {
     const queryOptions = ModulesSdkUtils.buildQuery<PaymentProvider>(
       filters,
@@ -92,8 +92,8 @@ export default class PaymentProviderService {
     try {
       return this.container_[providerId] as IPaymentProvider
     } catch (e) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Could not find a payment provider with id: ${providerId}`
       )
     }
@@ -206,8 +206,8 @@ export default class PaymentProviderService {
   }
 
   private throwPaymentProviderError(errObj: PaymentProviderError) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       `${errObj.error}${errObj.detail ? `:${EOL}${errObj.detail}` : ""}`,
       errObj.code
     )

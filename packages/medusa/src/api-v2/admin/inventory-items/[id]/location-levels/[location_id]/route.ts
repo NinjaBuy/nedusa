@@ -1,18 +1,18 @@
 import {
   ContainerRegistrationKeys,
-  MedusaError,
+  NinjaError,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../../../types/routing"
+} from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../../../types/routing"
 
 import {
   deleteInventoryLevelsWorkflow,
   updateInventoryLevelsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import { refetchInventoryItem } from "../../../helpers"
 import { AdminUpdateInventoryLocationLevelType } from "../../../validators"
 
-export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
+export const DELETE = async (req: NinjaRequest, res: NinjaResponse) => {
   const { id, location_id } = req.params
 
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -31,8 +31,8 @@ export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
     )
 
   if (reservedQuantity > 0) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_ALLOWED,
+    throw new NinjaError(
+      NinjaError.Types.NOT_ALLOWED,
       `Cannot remove Inventory Level ${id} at Location ${location_id} because there are reservations at location`
     )
   }
@@ -60,8 +60,8 @@ export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
 }
 
 export const POST = async (
-  req: MedusaRequest<AdminUpdateInventoryLocationLevelType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminUpdateInventoryLocationLevelType>,
+  res: NinjaResponse
 ) => {
   const { id, location_id } = req.params
   const { errors } = await updateInventoryLevelsWorkflow(req.scope).run({

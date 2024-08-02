@@ -1,5 +1,5 @@
-import { Plus, Trash } from "@medusajs/icons"
-import { Button, Input, Table } from "@medusajs/ui"
+import { Plus, Trash } from "@ninjajs/icons"
+import { Button, Input, Table } from "@ninjajs/ui"
 import { useState } from "react"
 
 interface KeyPair {

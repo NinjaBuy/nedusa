@@ -6,7 +6,7 @@ import {
   IsString,
   ValidateNested,
 } from "class-validator"
-import { MedusaError, isDefined } from "medusa-core-utils"
+import { NinjaError, isDefined } from "ninja-core-utils"
 import { defaultStoreCartFields, defaultStoreCartRelations } from "."
 import {
   CartService,
@@ -15,7 +15,7 @@ import {
   RegionService,
 } from "../../../../services"
 
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import { Type } from "class-transformer"
 import reqIp from "request-ip"
 import { EntityManager } from "typeorm"
@@ -45,17 +45,17 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.carts.create()
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.carts.create()
  *       .then(({ cart }) => {
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useCreateCart } from "medusa-react"
+ *       import { useCreateCart } from "ninja-react"
  *
  *       type Props = {
  *         regionId: string
@@ -127,8 +127,8 @@ export default async (req, res) => {
     const regions = await regionService.list({})
 
     if (!regions?.length) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `A region is required to create a cart`
       )
     }
@@ -163,8 +163,8 @@ export default async (req, res) => {
     req.publishableApiKeyScopes?.sales_channel_ids.length
   ) {
     if (req.publishableApiKeyScopes.sales_channel_ids.length > 1) {
-      throw new MedusaError(
-        MedusaError.Types.UNEXPECTED_STATE,
+      throw new NinjaError(
+        NinjaError.Types.UNEXPECTED_STATE,
         "The PublishableApiKey provided in the request header has multiple associated sales channels."
       )
     }

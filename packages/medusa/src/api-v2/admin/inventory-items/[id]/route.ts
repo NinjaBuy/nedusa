@@ -1,9 +1,9 @@
-import { MedusaError } from "@medusajs/utils"
-import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
+import { NinjaError } from "@ninjajs/utils"
+import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
 import {
   deleteInventoryItemWorkflow,
   updateInventoryItemsWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
   AdminGetInventoryItemParamsType,
   AdminUpdateInventoryItemType,
@@ -11,8 +11,8 @@ import {
 import { refetchInventoryItem } from "../helpers"
 
 export const GET = async (
-  req: MedusaRequest<AdminGetInventoryItemParamsType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminGetInventoryItemParamsType>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const inventoryItem = await refetchInventoryItem(
@@ -21,8 +21,8 @@ export const GET = async (
     req.remoteQueryConfig.fields
   )
   if (!inventoryItem) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Inventory item with id: ${id} was not found`
     )
   }
@@ -34,8 +34,8 @@ export const GET = async (
 
 // Update inventory item
 export const POST = async (
-  req: MedusaRequest<AdminUpdateInventoryItemType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminUpdateInventoryItemType>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
 
@@ -56,7 +56,7 @@ export const POST = async (
   })
 }
 
-export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
+export const DELETE = async (req: NinjaRequest, res: NinjaResponse) => {
   const id = req.params.id
   const deleteInventoryItems = deleteInventoryItemWorkflow(req.scope)
 

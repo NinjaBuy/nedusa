@@ -1,5 +1,5 @@
-import { AdminProductCategoryResponse } from "@medusajs/types"
-import { Container, Heading } from "@medusajs/ui"
+import { AdminProductCategoryResponse } from "@ninjajs/types"
+import { Container, Heading } from "@ninjajs/ui"
 import { keepPreviousData } from "@tanstack/react-query"
 import { useTranslation } from "react-i18next"
 import { ActionMenu } from "../../../../../components/common/action-menu"

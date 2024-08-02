@@ -1,20 +1,20 @@
-import { ConfigModule } from "@medusajs/types"
+import { ConfigModule } from "@ninjajs/types"
 
-import { ModulesDefinition } from "@medusajs/modules-sdk"
+import { ModulesDefinition } from "@ninjajs/modules-sdk"
 
 /**
- * Merge the modules config from the medusa-config file with the modules config from medusa package
+ * Merge the modules config from the ninja-config file with the modules config from ninja package
  * @param modules
- * @param medusaInternalModulesConfig
+ * @param ninjaInternalModulesConfig
  */
 export function mergeModulesConfig(
   modules: ConfigModule["modules"] = {},
-  medusaInternalModulesConfig = {}
+  ninjaInternalModulesConfig = {}
 ) {
   const modules_ = ({ ...modules } as ConfigModule["modules"])!
 
   const userModulesConfigKeys = Object.keys(modules)
-  const internalModulesConfigKeys = Object.keys(medusaInternalModulesConfig)
+  const internalModulesConfigKeys = Object.keys(ninjaInternalModulesConfig)
 
   const allModulesKeys = new Set([
     ...userModulesConfigKeys,
@@ -22,7 +22,7 @@ export function mergeModulesConfig(
   ])
 
   for (const moduleName of allModulesKeys) {
-    const internalModuleConfig = medusaInternalModulesConfig[moduleName]
+    const internalModuleConfig = ninjaInternalModulesConfig[moduleName]
 
     const moduleDefinition = ModulesDefinition[moduleName]
 

@@ -1,6 +1,6 @@
-import { PencilSquare, Trash } from "@medusajs/icons"
-import { RegionDTO } from "@medusajs/types"
-import { Badge, Container, Heading, Text, toast, usePrompt } from "@medusajs/ui"
+import { PencilSquare, Trash } from "@ninjajs/icons"
+import { RegionDTO } from "@ninjajs/types"
+import { Badge, Container, Heading, Text, toast, usePrompt } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 
 import { useNavigate } from "react-router-dom"

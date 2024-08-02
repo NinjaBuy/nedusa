@@ -12,14 +12,14 @@ const orderSeeder = require("../../../../helpers/order-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 jest.setTimeout(1000000)
 
 describe("Batchjob with type order-export", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
   let exportFilePath = ""
   let topDir = ""
@@ -27,7 +27,7 @@ describe("Batchjob with type order-export", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({
+    ninjaProcess = await setupServer({
       cwd,
       uploadDir: __dirname,
     })
@@ -41,7 +41,7 @@ describe("Batchjob with type order-export", () => {
     const db = useDb()
     await db.shutdown()
 
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   beforeEach(async () => {

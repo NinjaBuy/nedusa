@@ -5,22 +5,22 @@ import {
   AdminPostStockLocationsReq,
   AdminStockLocationsListRes,
   AdminStockLocationsDeleteRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 import qs from "qs"
 
 /**
- * This class is used to send requests to [Admin Stock Location API Routes](https://docs.medusajs.com/api/admin#stock-locations). To use these API Routes, make sure to install the
- * [@medusajs/stock-location](https://docs.medusajs.com/modules/multiwarehouse/install-modules#stock-location-module) module in your Medusa backend.
+ * This class is used to send requests to [Admin Stock Location API Routes](https://docs.ninjajs.com/api/admin#stock-locations). To use these API Routes, make sure to install the
+ * [@ninjajs/stock-location](https://docs.ninjajs.com/modules/multiwarehouse/install-modules#stock-location-module) module in your Ninja backend.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}. The methods
- * are available in the JS Client under the `medusa.admin.stockLocations` property.
+ * are available in the JS Client under the `ninja.admin.stockLocations` property.
  * 
- * A stock location, provided by the [Stock Location module](https://docs.medusajs.com/modules/multiwarehouse/stock-location-module), indicates a physical address that stock-kept items, such as physical products, can be stored in.
+ * A stock location, provided by the [Stock Location module](https://docs.ninjajs.com/modules/multiwarehouse/stock-location-module), indicates a physical address that stock-kept items, such as physical products, can be stored in.
  * An admin can create and manage available stock locations.
  * 
- * Related Guide: [How to manage stock locations](https://docs.medusajs.com/modules/multiwarehouse/admin/manage-stock-locations).
+ * Related Guide: [How to manage stock locations](https://docs.ninjajs.com/modules/multiwarehouse/admin/manage-stock-locations).
  */
 class AdminStockLocationsResource extends BaseResource {
   /**
@@ -30,10 +30,10 @@ class AdminStockLocationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminStockLocationsRes>} Resolves to the stock location's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.create({
+   * ninja.admin.stockLocations.create({
    *   name: "Main Warehouse",
    * })
    * .then(({ stock_location }) => {
@@ -55,10 +55,10 @@ class AdminStockLocationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminStockLocationsRes>} Resolves to the stock location's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.retrieve(stockLocationId)
+   * ninja.admin.stockLocations.retrieve(stockLocationId)
    * .then(({ stock_location }) => {
    *   console.log(stock_location.id);
    * })
@@ -79,10 +79,10 @@ class AdminStockLocationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminStockLocationsRes>} Resolves to the stock location's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.update(stockLocationId, {
+   * ninja.admin.stockLocations.update(stockLocationId, {
    *   name: 'Main Warehouse'
    * })
    * .then(({ stock_location }) => {
@@ -105,10 +105,10 @@ class AdminStockLocationsResource extends BaseResource {
    * @returns {ResponsePromise<AdminStockLocationsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.delete(stockLocationId)
+   * ninja.admin.stockLocations.delete(stockLocationId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -132,10 +132,10 @@ class AdminStockLocationsResource extends BaseResource {
    * To list stock locations:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.list()
+   * ninja.admin.stockLocations.list()
    * .then(({ stock_locations, limit, offset, count }) => {
    *   console.log(stock_locations.length);
    * })
@@ -144,10 +144,10 @@ class AdminStockLocationsResource extends BaseResource {
    * To specify relations that should be retrieved within the stock locations:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.list({
+   * ninja.admin.stockLocations.list({
    *   expand: "address"
    * })
    * .then(({ stock_locations, limit, offset, count }) => {
@@ -158,10 +158,10 @@ class AdminStockLocationsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.stockLocations.list({
+   * ninja.admin.stockLocations.list({
    *   expand: "address",
    *   limit,
    *   offset

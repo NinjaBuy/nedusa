@@ -1,4 +1,4 @@
-import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
+import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
 import { IsNull, Not } from "typeorm"
 import { NewTotalsService, PricingService, TaxProviderService } from "../index"
 import { asClass, asValue, createContainer } from "awilix"
@@ -6,10 +6,10 @@ import { asClass, asValue, createContainer } from "awilix"
 import CartService from "../cart"
 import { CustomerServiceMock } from "../__mocks__/customer"
 import { EventBusServiceMock } from "../__mocks__/event-bus"
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import { LineItemAdjustmentServiceMock } from "../__mocks__/line-item-adjustment"
 import { LineItemServiceMock } from "../__mocks__/line-item"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { PaymentProviderServiceMock } from "../__mocks__/payment-provider"
 import { PaymentSessionStatus } from "../../models"
 import { ProductServiceMock } from "../__mocks__/product"
@@ -341,8 +341,8 @@ describe("CartService", () => {
           if (variantId !== IdMap.getId("cannot-cover")) {
             return true
           } else {
-            throw new MedusaError(
-              MedusaError.Types.NOT_ALLOWED,
+            throw new NinjaError(
+              NinjaError.Types.NOT_ALLOWED,
               `Variant with id: ${variantId} does not have the required inventory`
             )
           }
@@ -582,8 +582,8 @@ describe("CartService", () => {
         if (variantId !== IdMap.getId("cannot-cover")) {
           return true
         } else {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             `Variant with id: ${variantId} does not have the required inventory`
           )
         }
@@ -1344,8 +1344,8 @@ describe("CartService", () => {
       },
       calculateVariantPrice: async ([{ variantId }], context) => {
         if (variantId === IdMap.getId("fail")) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_FOUND,
+          throw new NinjaError(
+            NinjaError.Types.NOT_FOUND,
             `Money amount for variant with id ${variantId} in region ${context.region_id} does not exist`
           )
         } else {

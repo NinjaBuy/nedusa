@@ -1,9 +1,9 @@
-import { AdminReservationResponse, StockLocationDTO } from "@medusajs/types"
-import { Container, Heading } from "@medusajs/ui"
+import { AdminReservationResponse, StockLocationDTO } from "@ninjajs/types"
+import { Container, Heading } from "@ninjajs/ui"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { InventoryNext } from "@medusajs/types"
-import { PencilSquare } from "@medusajs/icons"
+import { InventoryNext } from "@ninjajs/types"
+import { PencilSquare } from "@ninjajs/icons"
 import { SectionRow } from "../../../../../components/common/section"
 import { useInventoryItem } from "../../../../../hooks/api/inventory"
 import { useStockLocation } from "../../../../../hooks/api/stock-locations"

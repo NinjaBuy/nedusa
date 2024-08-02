@@ -27,14 +27,14 @@ import {
   TaxProviderService,
   TotalsService,
 } from "./index"
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { buildQuery, isString } from "../utils"
 
 import EventBusService from "./event-bus"
-import { IInventoryService } from "@medusajs/types"
+import { IInventoryService } from "@ninjajs/types"
 import { OrderEditRepository } from "../repositories/order-edit"
 import { TransactionBaseService } from "../interfaces"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -107,8 +107,8 @@ export default class OrderEditService extends TransactionBaseService {
     config: FindConfig<OrderEdit> = {}
   ): Promise<OrderEdit> {
     if (!isDefined(orderEditId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"orderEditId" must be defined`
       )
     }
@@ -121,8 +121,8 @@ export default class OrderEditService extends TransactionBaseService {
     const orderEdit = await orderEditRepository.findOne(query)
 
     if (!orderEdit) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Order edit with id ${orderEditId} was not found`
       )
     }
@@ -169,8 +169,8 @@ export default class OrderEditService extends TransactionBaseService {
     return await this.atomicPhase_(async (transactionManager) => {
       const activeOrderEdit = await this.retrieveActive(data.order_id)
       if (activeOrderEdit) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `An active order edit already exists for the order ${data.order_id}`
         )
       }
@@ -249,8 +249,8 @@ export default class OrderEditService extends TransactionBaseService {
       }
 
       if (edit.status !== OrderEditStatus.CREATED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Cannot delete order edit with status ${edit.status}`
         )
       }
@@ -279,8 +279,8 @@ export default class OrderEditService extends TransactionBaseService {
       }
 
       if (orderEdit.status !== OrderEditStatus.REQUESTED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Cannot decline an order edit with status ${orderEdit.status}.`
         )
       }
@@ -329,8 +329,8 @@ export default class OrderEditService extends TransactionBaseService {
 
       const isOrderEditActive = OrderEditService.isOrderEditActive(orderEdit)
       if (!isOrderEditActive) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Can not update an item on the order edit ${orderEditId} with the status ${orderEdit.status}`
         )
       }
@@ -342,8 +342,8 @@ export default class OrderEditService extends TransactionBaseService {
       })
 
       if (lineItem.order_edit_id !== orderEditId) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Invalid line item id ${itemId} it does not belong to the same order edit ${orderEdit.order_id}.`
         )
       }
@@ -398,8 +398,8 @@ export default class OrderEditService extends TransactionBaseService {
       const isOrderEditActive = OrderEditService.isOrderEditActive(orderEdit)
 
       if (!isOrderEditActive) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Can not update an item on the order edit ${orderEditId} with the status ${orderEdit.status}`
         )
       }
@@ -419,8 +419,8 @@ export default class OrderEditService extends TransactionBaseService {
         lineItem.order_edit_id !== orderEditId ||
         !lineItem.original_item_id
       ) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `Invalid line item id ${lineItemId} it does not belong to the same order edit ${orderEdit.order_id}.`
         )
       }
@@ -553,8 +553,8 @@ export default class OrderEditService extends TransactionBaseService {
       })
 
       if (!OrderEditService.isOrderEditActive(orderEdit)) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Can not add an item to the edit with status ${orderEdit.status}`
         )
       }
@@ -628,15 +628,15 @@ export default class OrderEditService extends TransactionBaseService {
       })
 
       if (orderEdit.id !== itemChange.order_edit_id) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           `The item change you are trying to delete doesn't belong to the OrderEdit with id: ${orderEditId}.`
         )
       }
 
       if (orderEdit.confirmed_at !== null || orderEdit.canceled_at !== null) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Cannot delete and item change from a ${orderEdit.status} order edit`
         )
       }
@@ -664,8 +664,8 @@ export default class OrderEditService extends TransactionBaseService {
       })
 
       if (!orderEdit.changes?.length) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Cannot request a confirmation on an edit with no changes"
         )
       }
@@ -707,8 +707,8 @@ export default class OrderEditService extends TransactionBaseService {
           orderEdit.status
         )
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Cannot cancel order edit with status ${orderEdit.status}`
         )
       }
@@ -742,8 +742,8 @@ export default class OrderEditService extends TransactionBaseService {
           orderEdit.status
         )
       ) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Cannot confirm an order edit with status ${orderEdit.status}`
         )
       }

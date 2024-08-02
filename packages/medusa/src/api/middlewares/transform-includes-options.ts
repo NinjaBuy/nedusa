@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 /**
  * Retrieve the includes options from the fields query param.
@@ -27,8 +27,8 @@ export function transformIncludesOptions(
         expand.splice(fieldIndex, 1)
 
         if (!expectedIncludes.includes(includes)) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `The field "${includes}" is not supported by this end point. ${
               expectedIncludes.length
                 ? `The includes fields can be one of entity properties or in [${expectedIncludes.join(

@@ -1,4 +1,4 @@
-import { AdminGetProductTagsParams } from "@medusajs/medusa"
+import { AdminGetProductTagsParams } from "@ninjajs/ninja"
 
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 

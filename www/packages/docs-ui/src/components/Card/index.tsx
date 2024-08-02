@@ -1,5 +1,5 @@
 import React from "react"
-import { ArrowUpRightOnBox } from "@medusajs/icons"
+import { ArrowUpRightOnBox } from "@ninjajs/icons"
 import clsx from "clsx"
 import { LegacyLink } from "@/components"
 
@@ -29,7 +29,7 @@ export const Card = ({
   return (
     <div
       className={clsx(
-        "bg-medusa-bg-subtle w-full rounded",
+        "bg-ninja-bg-subtle w-full rounded",
         "shadow-card-rest dark:shadow-card-rest-dark py-docs_0.75 relative px-docs_1",
         "flex items-start gap-docs_1 transition-shadow",
         href && "hover:shadow-card-hover dark:hover:shadow-card-hover-dark",
@@ -40,12 +40,12 @@ export const Card = ({
       <div className="flex items-start gap-docs_1 justify-between flex-1">
         <div className={clsx("flex flex-col", contentClassName)}>
           {title && (
-            <span className="text-compact-medium-plus text-medusa-fg-base">
+            <span className="text-compact-medium-plus text-ninja-fg-base">
               {title}
             </span>
           )}
           {text && (
-            <span className="text-compact-medium text-medusa-fg-subtle">
+            <span className="text-compact-medium text-ninja-fg-subtle">
               {text}
             </span>
           )}
@@ -55,7 +55,7 @@ export const Card = ({
         {href && (
           <>
             {showLinkIcon && (
-              <ArrowUpRightOnBox className="text-medusa-fg-subtle min-w-[20px]" />
+              <ArrowUpRightOnBox className="text-ninja-fg-subtle min-w-[20px]" />
             )}
             {/* TODO replace with Link once we move away from Docusaurus */}
             <LegacyLink

@@ -1,4 +1,4 @@
-import { MedusaError, isDefined } from "medusa-core-utils"
+import { NinjaError, isDefined } from "ninja-core-utils"
 import { DeepPartial, EntityManager } from "typeorm"
 import { CustomerGroup, PriceList, Product, ProductVariant } from "../models"
 import { FindConfig, Selector } from "../types/common"
@@ -10,7 +10,7 @@ import {
   UpdatePriceListInput,
 } from "../types/price-list"
 
-import { FlagRouter, promiseAll } from "@medusajs/utils"
+import { FlagRouter, promiseAll } from "@ninjajs/utils"
 import { CustomerGroupService } from "."
 import { TransactionBaseService } from "../interfaces"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
@@ -83,8 +83,8 @@ class PriceListService extends TransactionBaseService {
     config: FindConfig<PriceList> = {}
   ): Promise<PriceList> {
     if (!isDefined(priceListId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"priceListId" must be defined`
       )
     }
@@ -97,8 +97,8 @@ class PriceListService extends TransactionBaseService {
     const priceList = await priceListRepo.findOne(query)
 
     if (!priceList) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Price list with id: ${priceListId} was not found`
       )
     }
@@ -112,8 +112,8 @@ class PriceListService extends TransactionBaseService {
     priceListIds = Array.isArray(priceListIds) ? priceListIds : [priceListIds]
 
     if (!priceListIds.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"priceListIds" must be defined`
       )
     }
@@ -126,8 +126,8 @@ class PriceListService extends TransactionBaseService {
       await priceListRepo.listPriceListsVariantIdsMap(priceListIds)
 
     if (!Object.keys(priceListsVariantIdsMap)?.length) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `No PriceLists found with ids: ${priceListIds.join(", ")}`
       )
     }

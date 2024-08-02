@@ -1,15 +1,15 @@
-import { isDefined, MedusaError } from "medusa-core-utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { Oauth as OAuthModel } from "../models"
 import { OauthRepository } from "../repositories/oauth"
 import { Selector } from "../types/common"
-import { MedusaContainer } from "../types/global"
+import { NinjaContainer } from "../types/global"
 import { CreateOauthInput, UpdateOauthInput } from "../types/oauth"
 import { buildQuery } from "../utils"
 import EventBusService from "./event-bus"
 
-type InjectedDependencies = MedusaContainer & {
+type InjectedDependencies = NinjaContainer & {
   manager: EntityManager
   eventBusService: EventBusService
   oauthRepository: typeof OauthRepository
@@ -42,8 +42,8 @@ class Oauth extends TransactionBaseService {
     })
 
     if (!oauth) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Oauth application ${appName} not found`
       )
     }
@@ -53,8 +53,8 @@ class Oauth extends TransactionBaseService {
 
   async retrieve(oauthId: string): Promise<OAuthModel> {
     if (!isDefined(oauthId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"oauthId" must be defined`
       )
     }
@@ -67,8 +67,8 @@ class Oauth extends TransactionBaseService {
     })
 
     if (!oauth) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Oauth application with id ${oauthId} not found`
       )
     }
@@ -126,15 +126,15 @@ class Oauth extends TransactionBaseService {
     const app = await this.retrieveByName(appName)
     const service = this.container_[`${app.application_name}Oauth`]
     if (!service) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `An OAuth handler for ${app.display_name} could not be found make sure the plugin is installed`
       )
     }
 
     if (!(app.data.state === state)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         `${app.display_name} could not match state`
       )
     }
@@ -157,8 +157,8 @@ class Oauth extends TransactionBaseService {
     const refreshToken = app.data.refresh_token
     const service = this.container_[`${app.application_name}Oauth`]
     if (!service) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `An OAuth handler for ${app.display_name} could not be found make sure the plugin is installed`
       )
     }

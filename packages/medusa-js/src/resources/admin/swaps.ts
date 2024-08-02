@@ -2,21 +2,21 @@ import {
   AdminSwapsRes,
   AdminSwapsListRes,
   AdminGetSwapsParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Swap API Routes](https://docs.medusajs.com/api/admin#swaps). All its method
- * are available in the JS Client under the `medusa.admin.swaps` property.
+ * This class is used to send requests to [Admin Swap API Routes](https://docs.ninjajs.com/api/admin#swaps). All its method
+ * are available in the JS Client under the `ninja.admin.swaps` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A swap is created by a customer or an admin to exchange an item with a new one.
  * Creating a swap implicitely includes creating a return for the item being exchanged.
  * 
- * Related Guide: [How to manage swaps](https://docs.medusajs.com/modules/orders/admin/manage-swaps)
+ * Related Guide: [How to manage swaps](https://docs.ninjajs.com/modules/orders/admin/manage-swaps)
  */
 class AdminSwapsResource extends BaseResource {
   /**
@@ -26,10 +26,10 @@ class AdminSwapsResource extends BaseResource {
    * @returns {ResponsePromise<AdminSwapsRes>} Resolves to the swap's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.swaps.retrieve(swapId)
+   * ninja.admin.swaps.retrieve(swapId)
    * .then(({ swap }) => {
    *   console.log(swap.id);
    * })
@@ -52,10 +52,10 @@ class AdminSwapsResource extends BaseResource {
    * To list swaps:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.swaps.list()
+   * ninja.admin.swaps.list()
    * .then(({ swaps }) => {
    *   console.log(swaps.length);
    * })
@@ -64,10 +64,10 @@ class AdminSwapsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.swaps.list({
+   * ninja.admin.swaps.list({
    *   limit,
    *   offset
    * })

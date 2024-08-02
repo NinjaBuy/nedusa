@@ -1,4 +1,4 @@
-import { PriceListStatus, PriceListType } from "@medusajs/utils"
+import { PriceListStatus, PriceListType } from "@ninjajs/utils"
 import { Transform, Type } from "class-transformer"
 import {
   IsArray,
@@ -39,11 +39,11 @@ import { transformOptionalDate } from "../../../../utils/validators/date-transfo
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       import { PriceListType } from "@medusajs/medusa"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       import { PriceListType } from "@ninjajs/ninja"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.priceLists.create({
+ *       ninja.admin.priceLists.create({
  *         name: "New Price List",
  *         description: "A new price list",
  *         type: PriceListType.SALE,
@@ -59,14 +59,14 @@ import { transformOptionalDate } from "../../../../utils/validators/date-transfo
  *         console.log(price_list.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
  *       import {
  *         PriceListStatus,
  *         PriceListType,
- *       } from "@medusajs/medusa"
- *       import { useAdminCreatePriceList } from "medusa-react"
+ *       } from "@ninjajs/ninja"
+ *       import { useAdminCreatePriceList } from "ninja-react"
  *
  *       type CreateData = {
  *         name: string
@@ -103,7 +103,7 @@ import { transformOptionalDate } from "../../../../utils/validators/date-transfo
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/price-lists' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "New Price List",

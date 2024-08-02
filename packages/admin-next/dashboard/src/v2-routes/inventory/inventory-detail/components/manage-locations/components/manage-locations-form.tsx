@@ -1,6 +1,6 @@
 import * as zod from "zod"
 
-import { Button, Text, toast } from "@medusajs/ui"
+import { Button, Text, toast } from "@ninjajs/ui"
 import {
   RouteDrawer,
   useRouteModal,
@@ -10,7 +10,7 @@ import { useFieldArray, useForm } from "react-hook-form"
 
 import { InventoryItemRes } from "../../../../../../types/api-responses"
 import { LocationItem } from "./location-item"
-import { StockLocationDTO } from "@medusajs/types"
+import { StockLocationDTO } from "@ninjajs/types"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"

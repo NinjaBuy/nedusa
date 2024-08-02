@@ -1,5 +1,5 @@
 /**
- * Temporary types for API responses until we export them from `@medusajs/types`
+ * Temporary types for API responses until we export them from `@ninjajs/types`
  */
 
 import {
@@ -24,9 +24,9 @@ import {
   StockLocationDTO,
   StoreDTO,
   UserDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
-import { ProductTagDTO } from "@medusajs/types/dist/product"
+import { ProductTagDTO } from "@ninjajs/types/dist/product"
 import { WorkflowExecutionDTO } from "../v2-routes/workflow-executions/types"
 
 type ListRes = {

@@ -1,5 +1,5 @@
-import { Cart } from "@medusajs/medusa"
-import { generateEntityId } from "@medusajs/utils"
+import { Cart } from "@ninjajs/ninja"
+import { generateEntityId } from "@ninjajs/utils"
 import faker from "faker"
 import { DataSource } from "typeorm"
 import {
@@ -33,7 +33,7 @@ export type CartFactoryData = {
   sales_channel_id?: string
 }
 
-const isMedusaV2Enabled = process.env.MEDUSA_FF_MEDUSA_V2 == "true"
+const isNinjaV2Enabled = process.env.NINJA_FF_NINJA_V2 == "true"
 
 export const simpleCartFactory = async (
   dataSource: DataSource,
@@ -90,7 +90,7 @@ export const simpleCartFactory = async (
     sales_channel_id: sales_channel?.id ?? data.sales_channel_id ?? null,
   }
 
-  if (isMedusaV2Enabled) {
+  if (isNinjaV2Enabled) {
     await manager.query(
       `INSERT INTO "cart_sales_channel" (id, cart_id, sales_channel_id) 
         VALUES ('${generateEntityId(undefined, "cartsc")}', '${toSave.id}', '${

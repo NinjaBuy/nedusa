@@ -1,4 +1,4 @@
-import { EventBusTypes, IInventoryService } from "@medusajs/types"
+import { EventBusTypes, IInventoryService } from "@ninjajs/types"
 import { TransactionBaseService } from "../interfaces"
 import { EntityManager } from "typeorm"
 import SalesChannelLocationService from "./sales-channel-location"

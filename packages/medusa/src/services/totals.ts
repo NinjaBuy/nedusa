@@ -1,4 +1,4 @@
-import { isDefined, MedusaError } from "@medusajs/utils"
+import { isDefined, NinjaError } from "@ninjajs/utils"
 import { EntityManager } from "typeorm"
 import {
   ITaxCalculationStrategy,
@@ -28,7 +28,7 @@ import {
 } from "../types/totals"
 import { NewTotalsService, TaxProviderService } from "./index"
 
-import { FlagRouter } from "@medusajs/utils"
+import { FlagRouter } from "@ninjajs/utils"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
 import { calculatePriceTaxAmount } from "../utils"
 
@@ -231,8 +231,8 @@ class TotalsService extends TransactionBaseService {
         }) as ShippingMethodTaxLine[]
 
         if (totals.tax_lines.length === 0 && isOrder(cartOrOrder)) {
-          throw new MedusaError(
-            MedusaError.Types.UNEXPECTED_STATE,
+          throw new NinjaError(
+            NinjaError.Types.UNEXPECTED_STATE,
             "Tax Lines must be joined on shipping method to calculate taxes"
           )
         }
@@ -364,8 +364,8 @@ class TotalsService extends TransactionBaseService {
         isDefined(i.tax_lines)
       )
       if (!taxLinesJoined) {
-        throw new MedusaError(
-          MedusaError.Types.UNEXPECTED_STATE,
+        throw new NinjaError(
+          NinjaError.Types.UNEXPECTED_STATE,
           "Order tax calculations must have tax lines joined on line items"
         )
       }
@@ -396,8 +396,8 @@ class TotalsService extends TransactionBaseService {
         const returnTaxLines = cartOrOrder.items.flatMap((i) => {
           if (i.is_return) {
             if (typeof i.tax_lines === "undefined") {
-              throw new MedusaError(
-                MedusaError.Types.UNEXPECTED_STATE,
+              throw new NinjaError(
+                NinjaError.Types.UNEXPECTED_STATE,
                 "Return Line Items must join tax lines"
               )
             }
@@ -541,8 +541,8 @@ class TotalsService extends TransactionBaseService {
      * New tax system uses the tax lines registerd on the line items
      */
     if (typeof lineItem.tax_lines === "undefined") {
-      throw new MedusaError(
-        MedusaError.Types.UNEXPECTED_STATE,
+      throw new NinjaError(
+        NinjaError.Types.UNEXPECTED_STATE,
         "Tax calculation did not receive tax_lines"
       )
     }
@@ -601,8 +601,8 @@ class TotalsService extends TransactionBaseService {
     const refunds: number[] = []
     for (const item of lineItems) {
       if (!itemIds.includes(item.id)) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Line item does not exist on order"
         )
       }
@@ -855,8 +855,8 @@ class TotalsService extends TransactionBaseService {
          */
         if (options.use_tax_lines || isOrder(cartOrOrder)) {
           if (!isDefined(lineItem.tax_lines) && lineItem.variant_id) {
-            throw new MedusaError(
-              MedusaError.Types.UNEXPECTED_STATE,
+            throw new NinjaError(
+              NinjaError.Types.UNEXPECTED_STATE,
               "Tax Lines must be joined on items to calculate taxes"
             )
           }
@@ -865,8 +865,8 @@ class TotalsService extends TransactionBaseService {
         } else {
           if (lineItem.is_return) {
             if (!isDefined(lineItem.tax_lines) && lineItem.variant_id) {
-              throw new MedusaError(
-                MedusaError.Types.UNEXPECTED_STATE,
+              throw new NinjaError(
+                NinjaError.Types.UNEXPECTED_STATE,
                 "Return Line Items must join tax lines"
               )
             }

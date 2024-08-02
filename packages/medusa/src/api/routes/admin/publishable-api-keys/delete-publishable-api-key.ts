@@ -16,18 +16,18 @@ import PublishableApiKeyService from "../../../../services/publishable-api-key"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.publishableApiKeys.delete(publishableApiKeyId)
+ *       ninja.admin.publishableApiKeys.delete(publishableApiKeyId)
  *       .then(({ id, object, deleted }) => {
  *         console.log(id)
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeletePublishableApiKey } from "medusa-react"
+ *       import { useAdminDeletePublishableApiKey } from "ninja-react"
  *
  *       type Props = {
  *         publishableApiKeyId: string
@@ -57,7 +57,7 @@ import PublishableApiKeyService from "../../../../services/publishable-api-key"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/publishable-api-key/{id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

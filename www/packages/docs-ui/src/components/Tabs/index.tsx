@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Tabs as UiTabs } from "@medusajs/ui"
+import { Tabs as UiTabs } from "@ninjajs/ui"
 import { ComponentProps } from "react"
 import clsx from "clsx"
 import { Key } from "types"

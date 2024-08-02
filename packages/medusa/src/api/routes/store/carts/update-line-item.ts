@@ -6,7 +6,7 @@ import { IsInt, IsOptional } from "class-validator"
 import { defaultStoreCartFields, defaultStoreCartRelations } from "."
 
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 
 /**
@@ -28,19 +28,19 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.carts.lineItems.update(cartId, lineId, {
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.carts.lineItems.update(cartId, lineId, {
  *         quantity: 1
  *       })
  *       .then(({ cart }) => {
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useUpdateLineItem } from "medusa-react"
+ *       import { useUpdateLineItem } from "ninja-react"
  *
  *       type Props = {
  *         cartId: string
@@ -117,8 +117,8 @@ export default async (req, res) => {
 
       const existing = cart.items.find((i) => i.id === line_id)
       if (!existing) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Could not find the line item"
         )
       }
@@ -174,7 +174,7 @@ export default async (req, res) => {
  *     description: An optional key-value map with additional details about the Line Item. If omitted, the metadata will remain unchanged."
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */
 export class StorePostCartsCartLineItemsItemReq {
   @IsInt()

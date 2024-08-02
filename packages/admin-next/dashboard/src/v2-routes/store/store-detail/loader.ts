@@ -1,7 +1,7 @@
-import { adminStoreKeys } from "medusa-react"
+import { adminStoreKeys } from "ninja-react"
 
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/medusa"
+import { queryClient } from "../../../lib/ninja"
 import { StoreRes } from "../../../types/api-responses"
 
 const storeDetailQuery = () => ({

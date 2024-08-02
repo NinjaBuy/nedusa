@@ -6,18 +6,18 @@ import {
   PaymentProcessorError,
   PaymentProcessorSessionResponse,
   PaymentSessionStatus,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import {
   PaypalOptions,
   PaypalOrder,
   PaypalOrderStatus,
   PurchaseUnits,
 } from "../types"
-import { humanizeAmount } from "medusa-core-utils"
+import { humanizeAmount } from "ninja-core-utils"
 import { roundToTwo } from "./utils/utils"
 import { CreateOrder, PaypalSdk } from "../core"
-import { Logger } from "@medusajs/types"
-import { MedusaError } from "@medusajs/utils"
+import { Logger } from "@ninjajs/types"
+import { NinjaError } from "@ninjajs/utils"
 
 class PayPalProviderService extends AbstractPaymentProcessor {
   static identifier = "paypal"
@@ -286,8 +286,8 @@ class PayPalProviderService extends AbstractPaymentProcessor {
       // Prevent from updating the amount from here as it should go through
       // the updatePayment method to perform the correct logic
       if (data.amount) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Cannot update amount, use updatePayment instead"
         )
       }

@@ -1,14 +1,14 @@
 import {
   StoreGetProductTagsParams,
   StoreProductTagsListRes,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Product Tag API Routes](https://docs.medusajs.com/api/store#product-tags). All its method
- * are available in the JS Client under the `medusa.productTags` property.
+ * This class is used to send requests to [Store Product Tag API Routes](https://docs.ninjajs.com/api/store#product-tags). All its method
+ * are available in the JS Client under the `ninja.productTags` property.
  * 
  * Product tags are string values that can be used to filter products by.
  * Products can have more than one tag, and products can share tags.
@@ -24,9 +24,9 @@ class ProductTagsResource extends BaseResource {
    * To list product tags:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.productTags.list()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.productTags.list()
    * .then(({ product_tags }) => {
    *   console.log(product_tags.length);
    * })
@@ -35,9 +35,9 @@ class ProductTagsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.productTags.list({
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.productTags.list({
    *   limit,
    *   offset
    * })

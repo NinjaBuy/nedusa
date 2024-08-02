@@ -1,14 +1,14 @@
 import {
   deleteTaxRatesWorkflow,
   updateTaxRatesWorkflow,
-} from "@medusajs/core-flows"
+} from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
 import { refetchTaxRate } from "../helpers"
 import {
@@ -17,8 +17,8 @@ import {
 } from "../validators"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminUpdateTaxRateType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminUpdateTaxRateType>,
+  res: NinjaResponse
 ) => {
   const { errors } = await updateTaxRatesWorkflow(req.scope).run({
     input: {
@@ -41,8 +41,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetTaxRateParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetTaxRateParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const variables = { id: req.params.id }
@@ -58,8 +58,8 @@ export const GET = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const { errors } = await deleteTaxRatesWorkflow(req.scope).run({

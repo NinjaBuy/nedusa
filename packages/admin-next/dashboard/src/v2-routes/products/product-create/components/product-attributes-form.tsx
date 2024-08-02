@@ -7,11 +7,11 @@ import {
   Switch,
   Text,
   Textarea,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { Trans, useTranslation } from "react-i18next"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels"
 
-import { SalesChannel } from "@medusajs/medusa"
+import { SalesChannel } from "@ninjajs/ninja"
 import { RowSelectionState, createColumnHelper } from "@tanstack/react-table"
 import { Fragment, useMemo, useState } from "react"
 import { CountrySelect } from "../../../../components/common/country-select"

@@ -1,6 +1,6 @@
 ---
-"@medusajs/medusa": patch
-"@medusajs/types": patch
+"@ninjajs/ninja": patch
+"@ninjajs/types": patch
 ---
 
-feat(medusa,types): add fulfillment provider list api
+feat(ninja,types): add fulfillment provider list api

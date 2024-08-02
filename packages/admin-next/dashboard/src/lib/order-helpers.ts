@@ -1,4 +1,4 @@
-import { FulfillmentStatus, PaymentStatus } from "@medusajs/medusa"
+import { FulfillmentStatus, PaymentStatus } from "@ninjajs/ninja"
 import { TFunction } from "i18next"
 
 export const getOrderPaymentStatus = (

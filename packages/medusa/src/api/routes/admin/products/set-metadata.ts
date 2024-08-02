@@ -12,7 +12,7 @@ import { validator } from "../../../../utils/validator"
  * description: "Set the metadata of a Product. It can be any key-value pair, which allows adding custom data to a product."
  * externalDocs:
  *   description: "Learn about the metadata attribute, and how to delete and update it."
- *   url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *   url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  * x-authenticated: true
  * parameters:
  *   - (path) id=* {string} The ID of the Product.
@@ -27,10 +27,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.products.setMetadata(productId, {
+ *       ninja.admin.products.setMetadata(productId, {
  *         key: "test",
  *         value: "true"
  *       })
@@ -41,7 +41,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/products/{id}/metadata' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "key": "test",

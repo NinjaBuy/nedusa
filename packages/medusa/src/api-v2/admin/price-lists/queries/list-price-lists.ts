@@ -1,8 +1,8 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { AdminPriceListRemoteQueryDTO } from "../types"
 
 export async function listPriceLists({
@@ -10,7 +10,7 @@ export async function listPriceLists({
   remoteQueryFields,
   variables,
 }: {
-  container: MedusaContainer
+  container: NinjaContainer
   remoteQueryFields: string[]
   variables: Record<string, any>
 }): Promise<[AdminPriceListRemoteQueryDTO[], number]> {

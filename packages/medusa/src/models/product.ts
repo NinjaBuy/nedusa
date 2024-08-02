@@ -286,7 +286,7 @@ export class Product extends SoftDeletableEntity {
  *   title:
  *     description: A title that can be displayed for easy identification of the Product.
  *     type: string
- *     example: Medusa Coffee Mug
+ *     example: Ninja Coffee Mug
  *   subtitle:
  *     description: An optional subtitle that can be used to further specify the Product.
  *     nullable: true
@@ -460,5 +460,5 @@ export class Product extends SoftDeletableEntity {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  */

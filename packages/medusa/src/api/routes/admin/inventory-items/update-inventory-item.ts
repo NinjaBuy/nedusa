@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 
 import { EntityManager } from "typeorm"
 import { FindParams } from "../../../../types/common"
-import { IInventoryService } from "@medusajs/types"
+import { IInventoryService } from "@ninjajs/types"
 
 /**
  * @oas [post] /admin/inventory-items/{id}
@@ -27,20 +27,20 @@ import { IInventoryService } from "@medusajs/types"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.inventoryItems.update(inventoryItemId, {
+ *       ninja.admin.inventoryItems.update(inventoryItemId, {
  *         origin_country: "US",
  *       })
  *       .then(({ inventory_item }) => {
  *         console.log(inventory_item.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateInventoryItem } from "medusa-react"
+ *       import { useAdminUpdateInventoryItem } from "ninja-react"
  *
  *       type Props = {
  *         inventoryItemId: string
@@ -70,7 +70,7 @@ import { IInventoryService } from "@medusajs/types"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/inventory-items/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "origin_country": "US"

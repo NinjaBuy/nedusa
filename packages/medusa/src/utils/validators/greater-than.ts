@@ -4,7 +4,7 @@ import {
   ValidationOptions,
   isDefined,
 } from "class-validator"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 export function IsGreaterThan(
   property: string,

@@ -4,18 +4,18 @@ const fs = require(`fs`)
 
 const pkgs = glob.sync(`./packages/*`).map((p) => p.replace(/^\./, `<rootDir>`))
 
-const reMedusa = /medusa$/
-const medusaDir = pkgs.find((p) => reMedusa.exec(p))
-const medusaBuildDirs = [`dist`].map((dir) => path.join(medusaDir, dir))
+const reNinja = /ninja$/
+const ninjaDir = pkgs.find((p) => reNinja.exec(p))
+const ninjaBuildDirs = [`dist`].map((dir) => path.join(ninjaDir, dir))
 const builtTestsDirs = pkgs
   .filter((p) => fs.existsSync(path.join(p, `src`)))
   .map((p) => path.join(p, `__tests__`))
 const distDirs = pkgs.map((p) => path.join(p, `dist`))
 const ignoreDirs = [].concat(
-  medusaBuildDirs,
+  ninjaBuildDirs,
   builtTestsDirs,
   distDirs,
-  "<rootDir>/packages/medusa-react/*"
+  "<rootDir>/packages/ninja-react/*"
 )
 
 const coverageDirs = pkgs.map((p) => path.join(p, `src/**/*.js`))

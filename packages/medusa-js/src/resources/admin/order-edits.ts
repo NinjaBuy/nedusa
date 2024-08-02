@@ -9,20 +9,20 @@ import {
   AdminPostOrderEditsReq,
   GetOrderEditsOrderEditParams,
   GetOrderEditsParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 import qs from "qs"
 
 /**
- * This class is used to send requests to [Admin Order Edit API Routes](https://docs.medusajs.com/api/admin#order-edits). All its method
- * are available in the JS Client under the `medusa.admin.orderEdits` property.
+ * This class is used to send requests to [Admin Order Edit API Routes](https://docs.ninjajs.com/api/admin#order-edits). All its method
+ * are available in the JS Client under the `ninja.admin.orderEdits` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * An admin can edit an order to remove, add, or update an item's quantity. When an admin edits an order, they're stored as an `OrderEdit`.
  * 
- * Related Guide: [How to edit an order](https://docs.medusajs.com/modules/orders/admin/edit-order).
+ * Related Guide: [How to edit an order](https://docs.ninjajs.com/modules/orders/admin/edit-order).
  */
 class AdminOrderEditsResource extends BaseResource {
   /**
@@ -36,10 +36,10 @@ class AdminOrderEditsResource extends BaseResource {
    * A simple example that retrieves an order edit by its ID:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.retrieve(orderEditId)
+   * ninja.admin.orderEdits.retrieve(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })
@@ -48,10 +48,10 @@ class AdminOrderEditsResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.retrieve(orderEditId, {
+   * ninja.admin.orderEdits.retrieve(orderEditId, {
    *   expand: "order"
    * })
    * .then(({ order_edit }) => {
@@ -84,10 +84,10 @@ class AdminOrderEditsResource extends BaseResource {
    * To list order edits:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.list()
+   * ninja.admin.orderEdits.list()
    * .then(({ order_edits, count, limit, offset }) => {
    *   console.log(order_edits.length)
    * })
@@ -96,10 +96,10 @@ class AdminOrderEditsResource extends BaseResource {
    * To specify relations that should be retrieved within the order edits:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.list({
+   * ninja.admin.orderEdits.list({
    *   expand: "order"
    * })
    * .then(({ order_edits, count, limit, offset }) => {
@@ -110,10 +110,10 @@ class AdminOrderEditsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.list({
+   * ninja.admin.orderEdits.list({
    *   expand: "order",
    *   limit,
    *   offset
@@ -144,10 +144,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.create({ orderId })
+   * ninja.admin.orderEdits.create({ orderId })
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })
@@ -168,10 +168,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.update(orderEditId, {
+   * ninja.admin.orderEdits.update(orderEditId, {
    *   internal_note: "internal reason XY"
    * })
    * .then(({ order_edit }) => {
@@ -194,10 +194,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.delete(orderEditId)
+   * ninja.admin.orderEdits.delete(orderEditId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -219,10 +219,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.addLineItem(orderEditId, {
+   * ninja.admin.orderEdits.addLineItem(orderEditId, {
    *   variant_id,
    *   quantity
    * })
@@ -247,10 +247,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditItemChangeDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.deleteItemChange(orderEdit_id, itemChangeId)
+   * ninja.admin.orderEdits.deleteItemChange(orderEdit_id, itemChangeId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -272,10 +272,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.requestConfirmation(orderEditId)
+   * ninja.admin.orderEdits.requestConfirmation(orderEditId)
    * .then({ order_edit }) => {
    *   console.log(order_edit.id)
    * })
@@ -295,10 +295,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.cancel(orderEditId)
+   * ninja.admin.orderEdits.cancel(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })
@@ -318,10 +318,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.confirm(orderEditId)
+   * ninja.admin.orderEdits.confirm(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })
@@ -344,10 +344,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.updateLineItem(orderEditId, lineItemId, {
+   * ninja.admin.orderEdits.updateLineItem(orderEditId, lineItemId, {
    *   quantity: 5
    * })
    * .then(({ order_edit }) => {
@@ -373,10 +373,10 @@ class AdminOrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orderEdits.removeLineItem(orderEditId, lineItemId)
+   * ninja.admin.orderEdits.removeLineItem(orderEditId, lineItemId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })

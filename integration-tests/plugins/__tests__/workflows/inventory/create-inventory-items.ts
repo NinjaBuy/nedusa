@@ -1,11 +1,11 @@
 import {
   CreateInventoryItemActions,
   createInventoryItems,
-} from "@medusajs/core-flows"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { IInventoryService, WorkflowTypes } from "@medusajs/types"
+} from "@ninjajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { IInventoryService, WorkflowTypes } from "@ninjajs/types"
 
-import { pipe } from "@medusajs/workflows-sdk"
+import { pipe } from "@ninjajs/workflows-sdk"
 import path from "path"
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
 import { getContainer } from "../../../../environment-helpers/use-container"
@@ -14,14 +14,14 @@ import { initDb, useDb } from "../../../../environment-helpers/use-db"
 jest.setTimeout(30000)
 
 describe("CreateInventoryItem workflow", function () {
-  let medusaContainer
+  let ninjaContainer
   let shutdownServer
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     await initDb({ cwd })
     shutdownServer = await startBootstrapApp({ cwd, skipExpressListen: true })
-    medusaContainer = getContainer()
+    ninjaContainer = getContainer()
   })
 
   afterAll(async () => {
@@ -31,7 +31,7 @@ describe("CreateInventoryItem workflow", function () {
   })
 
   it("should compensate all the invoke if something fails", async () => {
-    const workflow = createInventoryItems(medusaContainer)
+    const workflow = createInventoryItems(ninjaContainer)
 
     workflow.appendAction(
       "fail_step",
@@ -77,7 +77,7 @@ describe("CreateInventoryItem workflow", function () {
       expect.objectContaining({ id: expect.any(String) })
     )
 
-    const inventoryService: IInventoryService = medusaContainer.resolve(
+    const inventoryService: IInventoryService = ninjaContainer.resolve(
       ModuleRegistrationName.INVENTORY
     )
 

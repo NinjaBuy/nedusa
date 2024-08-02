@@ -18,7 +18,7 @@ import {
 } from "../../../../services"
 
 import { Type } from "class-transformer"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import { FindParams } from "../../../../types/common"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
@@ -31,7 +31,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: How are swaps created
- *   url: https://docs.medusajs.com/modules/orders/swaps#how-are-swaps-created
+ *   url: https://docs.ninjajs.com/modules/orders/swaps#how-are-swaps-created
  * parameters:
  *   - (path) id=* {string} The ID of the Order.
  *   - (query) expand {string} Comma-separated relations that should be expanded in the returned order.
@@ -48,10 +48,10 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.createSwap(orderId, {
+ *       ninja.admin.orders.createSwap(orderId, {
  *         return_items: [
  *           {
  *             item_id,
@@ -63,10 +63,10 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateSwap } from "medusa-react"
+ *       import { useAdminCreateSwap } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -99,7 +99,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/swaps' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "return_items": [
@@ -245,8 +245,8 @@ export default async (req, res) => {
                   })
 
                 if (!swaps.length) {
-                  throw new MedusaError(
-                    MedusaError.Types.INVALID_DATA,
+                  throw new NinjaError(
+                    NinjaError.Types.INVALID_DATA,
                     "Swap not found"
                   )
                 }

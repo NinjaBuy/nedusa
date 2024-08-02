@@ -1,6 +1,6 @@
-import { IInventoryService } from "@medusajs/types"
+import { IInventoryService } from "@ninjajs/types"
 import { Request, Response } from "express"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 
 /**
@@ -18,18 +18,18 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.inventoryItems.deleteLocationLevel(inventoryItemId, locationId)
+ *       ninja.admin.inventoryItems.deleteLocationLevel(inventoryItemId, locationId)
  *       .then(({ inventory_item }) => {
  *         console.log(inventory_item.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeleteLocationLevel } from "medusa-react"
+ *       import { useAdminDeleteLocationLevel } from "ninja-react"
  *
  *       type Props = {
  *         inventoryItemId: string
@@ -55,7 +55,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/inventory-items/{id}/location-levels/{location_id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -94,8 +94,8 @@ export default async (req: Request, res: Response) => {
   ])
 
   if (reservedQuantity > 0) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_ALLOWED,
+    throw new NinjaError(
+      NinjaError.Types.NOT_ALLOWED,
       `Cannot remove Inventory Level ${id} at Location ${location_id} because there are reserved items.`
     )
   }

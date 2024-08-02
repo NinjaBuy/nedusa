@@ -1,4 +1,4 @@
-import MedusaError from "./error"
+import NinjaError from "./error"
 import KeyManager from "./key-manager"
 import Client, { type Config, type RequestOptions } from "./request"
 import {
@@ -23,14 +23,14 @@ import {
   SwapsResource,
 } from "./resources"
 
-class Medusa {
+class Ninja {
   public client: Client
   public admin: Admin
 
   public auth: AuthResource
   public carts: CartsResource
   public customers: CustomersResource
-  public errors: MedusaError
+  public errors: NinjaError
   public orders: OrdersResource
   public orderEdits: OrderEditsResource
   public products: ProductsResource
@@ -55,7 +55,7 @@ class Medusa {
     this.auth = new AuthResource(this.client)
     this.carts = new CartsResource(this.client)
     this.customers = new CustomersResource(this.client)
-    this.errors = new MedusaError()
+    this.errors = new NinjaError()
     this.orders = new OrdersResource(this.client)
     this.orderEdits = new OrderEditsResource(this.client)
     this.products = new ProductsResource(this.client)
@@ -84,8 +84,8 @@ class Medusa {
   }
 }
 
-export default Medusa
+export default Ninja
 export * from "./resources"
 export * from "./typings"
 export type { Config, RequestOptions }
-export { MedusaError, KeyManager, Client }
+export { NinjaError, KeyManager, Client }

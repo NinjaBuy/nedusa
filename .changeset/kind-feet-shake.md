@@ -1,5 +1,5 @@
 ---
-"@medusajs/medusa": patch
+"@ninjajs/ninja": patch
 ---
 
 Fix logging error when trying to migrate products for enabling inventory module.

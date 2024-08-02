@@ -33,20 +33,20 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.regions.update(regionId, {
+ *       ninja.admin.regions.update(regionId, {
  *         name: "Europe"
  *       })
  *       .then(({ region }) => {
  *         console.log(region.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateRegion } from "medusa-react"
+ *       import { useAdminUpdateRegion } from "ninja-react"
  *
  *       type Props = {
  *         regionId: string
@@ -78,7 +78,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/regions/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "Europe"
@@ -145,9 +145,9 @@ export default async (req, res) => {
  *       description: See a list of codes.
  *   automatic_taxes:
  *     description: >-
- *       If set to `true`, the Medusa backend will automatically calculate taxes for carts in this region. If set to `false`, the taxes must be calculated manually.
+ *       If set to `true`, the Ninja backend will automatically calculate taxes for carts in this region. If set to `false`, the taxes must be calculated manually.
  *     externalDocs:
- *       url: https://docs.medusajs.com/modules/taxes/storefront/manual-calculation
+ *       url: https://docs.ninjajs.com/modules/taxes/storefront/manual-calculation
  *       description: How to calculate taxes in a storefront.
  *     type: boolean
  *   gift_cards_taxable:

@@ -41,10 +41,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.shippingOptions.update(optionId, {
+ *       ninja.admin.shippingOptions.update(optionId, {
  *         name: "PostFake",
  *         requirements: [
  *           {
@@ -58,10 +58,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(shipping_option.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateShippingOption } from "medusa-react"
+ *       import { useAdminUpdateShippingOption } from "ninja-react"
  *
  *       type Props = {
  *         shippingOptionId: string
@@ -99,7 +99,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/shipping-options/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "requirements": [
@@ -197,7 +197,7 @@ class OptionRequirement {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  *   requirements:
  *     description: "The requirements that must be satisfied for the Shipping Option to be available."
  *     type: array

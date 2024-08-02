@@ -1,5 +1,5 @@
 import { CreateApiKeyDTO } from "@types"
-import { ApiKeyType } from "@medusajs/utils"
+import { ApiKeyType } from "@ninjajs/utils"
 
 export const createSecretKeyFixture: CreateApiKeyDTO = {
   title: "Secret key",

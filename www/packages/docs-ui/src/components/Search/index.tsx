@@ -9,7 +9,7 @@ import { AlgoliaProps, useSearch } from "@/providers"
 import { checkArraySameElms } from "@/utils"
 import { SearchHitsWrapper } from "./Hits"
 import { Button, Kbd, SelectBadge } from "@/components"
-import { MagnifyingGlass, XMark } from "@medusajs/icons"
+import { MagnifyingGlass, XMark } from "@ninjajs/icons"
 import { useSearchNavigation, type OptionType } from "@/hooks"
 
 export type SearchProps = {
@@ -86,33 +86,33 @@ export const Search = ({
         indexName={algolia.mainIndexName}
         searchClient={searchClient}
       >
-        <div className={clsx("bg-medusa-bg-base flex")}>
+        <div className={clsx("bg-ninja-bg-base flex")}>
           <SearchBox
             classNames={{
               root: clsx(
                 "h-[57px] w-full md:rounded-t-docs_xl relative border-0 border-solid",
-                "border-b border-medusa-border-base",
+                "border-b border-ninja-border-base",
                 "bg-transparent"
               ),
               form: clsx("h-full md:rounded-t-docs_xl bg-transparent"),
               input: clsx(
-                "w-full h-full pl-docs_3 text-medusa-fg-base",
-                "placeholder:text-medusa-fg-muted",
+                "w-full h-full pl-docs_3 text-ninja-fg-base",
+                "placeholder:text-ninja-fg-muted",
                 "md:rounded-t-docs_xl text-compact-medium bg-transparent",
                 "appearance-none search-cancel:hidden border-0 active:outline-none focus:outline-none"
               ),
               submit: clsx("absolute top-[18px] left-docs_1 btn-clear p-0"),
               reset: clsx(
-                "absolute top-docs_0.75 right-docs_1 hover:bg-medusa-bg-base-hover",
+                "absolute top-docs_0.75 right-docs_1 hover:bg-ninja-bg-base-hover",
                 "p-[5px] md:rounded-docs_DEFAULT btn-clear"
               ),
               loadingIndicator: clsx("absolute top-[18px] right-docs_1"),
             }}
             submitIconComponent={() => (
-              <MagnifyingGlass className="text-medusa-fg-muted" />
+              <MagnifyingGlass className="text-ninja-fg-muted" />
             )}
             resetIconComponent={() => (
-              <XMark className="hidden md:block text-medusa-fg-subtle" />
+              <XMark className="hidden md:block text-ninja-fg-subtle" />
             )}
             placeholder="Find something..."
             autoFocus
@@ -121,14 +121,14 @@ export const Search = ({
           <Button
             variant="clear"
             className={clsx(
-              "bg-medusa-bg-base block md:hidden",
+              "bg-ninja-bg-base block md:hidden",
               "border-0 border-solid",
-              "border-medusa-border-base border-b",
+              "border-ninja-border-base border-b",
               "pr-docs_1"
             )}
             onClick={() => setIsOpen(false)}
           >
-            <XMark className="text-medusa-fg-muted" />
+            <XMark className="text-ninja-fg-muted" />
           </Button>
         </div>
         <div className="mx-docs_0.5 md:flex-initial h-[calc(100%-120px)] md:h-[calc(100%-114px)] lg:max-h-[calc(100%-114px)] lg:min-h-[calc(100%-114px)]">
@@ -161,8 +161,8 @@ export const Search = ({
         className={clsx(
           "py-docs_0.75 flex items-center justify-between px-docs_1",
           "border-0 border-solid h-[57px]",
-          "border-medusa-border-base border-t",
-          "bg-medusa-bg-base"
+          "border-ninja-border-base border-t",
+          "bg-ninja-bg-base"
         )}
       >
         {filterOptions.length && (
@@ -191,7 +191,7 @@ export const Search = ({
         <div className="hidden items-center gap-docs_1 md:flex">
           <div className="flex items-center gap-docs_0.5">
             <span
-              className={clsx("text-medusa-fg-subtle", "text-compact-x-small")}
+              className={clsx("text-ninja-fg-subtle", "text-compact-x-small")}
             >
               Navigation
             </span>
@@ -202,7 +202,7 @@ export const Search = ({
           </div>
           <div className="flex items-center gap-docs_0.5">
             <span
-              className={clsx("text-medusa-fg-subtle", "text-compact-x-small")}
+              className={clsx("text-ninja-fg-subtle", "text-compact-x-small")}
             >
               Open Result
             </span>

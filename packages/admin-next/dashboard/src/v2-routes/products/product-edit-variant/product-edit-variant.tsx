@@ -1,5 +1,5 @@
-import { ProductVariant } from "@medusajs/medusa"
-import { Heading } from "@medusajs/ui"
+import { ProductVariant } from "@ninjajs/ninja"
+import { Heading } from "@ninjajs/ui"
 import { useTranslation } from "react-i18next"
 import { json, useLoaderData, useParams } from "react-router-dom"
 import { RouteDrawer } from "../../../components/route-modal"

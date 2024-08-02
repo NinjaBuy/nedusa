@@ -12,24 +12,24 @@ import {
   AdminPostInventoryItemsItemLocationLevelsReq,
   AdminPostInventoryItemsParams,
   AdminPostInventoryItemsReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 
 import BaseResource from "../base"
 import { ResponsePromise } from "../../typings"
 import qs from "qs"
-import { AdminPostInventoryItemsInventoryItemParams } from "@medusajs/medusa"
-import { AdminPostInventoryItemsItemLocationLevelsLevelParams } from "@medusajs/medusa"
+import { AdminPostInventoryItemsInventoryItemParams } from "@ninjajs/ninja"
+import { AdminPostInventoryItemsItemLocationLevelsLevelParams } from "@ninjajs/ninja"
 
 /**
- * This class is used to send requests to [Admin Inventory Item API Routes](https://docs.medusajs.com/api/admin#inventory-items). To use these API Routes, make sure to install the
- * [@medusajs/inventory](https://docs.medusajs.com/modules/multiwarehouse/install-modules#inventory-module) module in your Medusa backend. All its method
- * are available in the JS Client under the `medusa.admin.inventoryItems` property.
+ * This class is used to send requests to [Admin Inventory Item API Routes](https://docs.ninjajs.com/api/admin#inventory-items). To use these API Routes, make sure to install the
+ * [@ninjajs/inventory](https://docs.ninjajs.com/modules/multiwarehouse/install-modules#inventory-module) module in your Ninja backend. All its method
+ * are available in the JS Client under the `ninja.admin.inventoryItems` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
- * Inventory items, provided by the [Inventory Module](https://docs.medusajs.com/modules/multiwarehouse/inventory-module), can be used to manage the inventory of saleable items in your store.
+ * Inventory items, provided by the [Inventory Module](https://docs.ninjajs.com/modules/multiwarehouse/inventory-module), can be used to manage the inventory of saleable items in your store.
  * 
- * Related Guide: [How to manage inventory items](https://docs.medusajs.com/modules/multiwarehouse/admin/manage-inventory-items).
+ * Related Guide: [How to manage inventory items](https://docs.ninjajs.com/modules/multiwarehouse/admin/manage-inventory-items).
  */
 class AdminInventoryItemsResource extends BaseResource {
   /**
@@ -40,10 +40,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} The inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.retrieve(inventoryItemId)
+   * ninja.admin.inventoryItems.retrieve(inventoryItemId)
    * .then(({ inventory_item }) => {
    *   console.log(inventory_item.id);
    * })
@@ -72,10 +72,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} The inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.update(inventoryItemId, {
+   * ninja.admin.inventoryItems.update(inventoryItemId, {
    *   origin_country: "US",
    * })
    * .then(({ inventory_item }) => {
@@ -105,10 +105,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsDeleteRes>} The deletion operation's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.delete(inventoryItemId)
+   * ninja.admin.inventoryItems.delete(inventoryItemId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id)
    * })
@@ -129,10 +129,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} The inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.create({
+   * ninja.admin.inventoryItems.create({
    *   variant_id: "variant_123",
    * })
    * .then(({ inventory_item }) => {
@@ -165,10 +165,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * To list inventory items:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.list()
+   * ninja.admin.inventoryItems.list()
    * .then(({ inventory_items, count, offset, limit }) => {
    *   console.log(inventory_items.length);
    * })
@@ -177,10 +177,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.list({
+   * ninja.admin.inventoryItems.list({
    *   limit,
    *   offset
    * })
@@ -213,10 +213,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} the inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.updateLocationLevel(inventoryItemId, locationId, {
+   * ninja.admin.inventoryItems.updateLocationLevel(inventoryItemId, locationId, {
    *   stocked_quantity: 15,
    * })
    * .then(({ inventory_item }) => {
@@ -249,10 +249,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} the inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.createLocationLevel(inventoryItemId, {
+   * ninja.admin.inventoryItems.createLocationLevel(inventoryItemId, {
    *   location_id: "sloc_123",
    *   stocked_quantity: 10,
    * })
@@ -284,10 +284,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsRes>} the inventory item's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.deleteLocationLevel(inventoryItemId, locationId)
+   * ninja.admin.inventoryItems.deleteLocationLevel(inventoryItemId, locationId)
    * .then(({ inventory_item }) => {
    *   console.log(inventory_item.id);
    * })
@@ -310,10 +310,10 @@ class AdminInventoryItemsResource extends BaseResource {
    * @returns {ResponsePromise<AdminInventoryItemsLocationLevelsRes>} The inventory item's details and list of location levels.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.inventoryItems.listLocationLevels(inventoryItemId)
+   * ninja.admin.inventoryItems.listLocationLevels(inventoryItemId)
    * .then(({ inventory_item }) => {
    *   console.log(inventory_item.location_levels);
    * })

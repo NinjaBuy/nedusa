@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import { SwapServiceMock } from "../../../../../services/__mocks__/swap"
 import { request } from "../../../../../helpers/test-request"
 

@@ -1,7 +1,7 @@
 import { Job, Queue, Worker } from "bullmq"
 import Redis from "ioredis"
 import { ConfigModule, Logger } from "../types/global"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type InjectedDependencies = {
   logger: Logger

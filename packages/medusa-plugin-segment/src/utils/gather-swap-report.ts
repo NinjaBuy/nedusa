@@ -1,4 +1,4 @@
-import { humanizeAmount } from "medusa-core-utils"
+import { humanizeAmount } from "ninja-core-utils"
 
 export async function gatherSwapReport(
   id,

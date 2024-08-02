@@ -11,7 +11,7 @@ export default (async () => {
   config()
   if (!path) {
     throw new Error(
-      `filePath is required.${EOL}Example: medusa-auth-seed <filePath>`
+      `filePath is required.${EOL}Example: ninja-auth-seed <filePath>`
     )
   }
 

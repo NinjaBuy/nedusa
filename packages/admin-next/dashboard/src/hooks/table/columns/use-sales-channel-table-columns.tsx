@@ -1,6 +1,6 @@
 import { createColumnHelper } from "@tanstack/react-table"
 
-import { SalesChannelDTO } from "@medusajs/types"
+import { SalesChannelDTO } from "@ninjajs/types"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { StatusCell } from "../../../components/table/table-cells/common/status-cell"

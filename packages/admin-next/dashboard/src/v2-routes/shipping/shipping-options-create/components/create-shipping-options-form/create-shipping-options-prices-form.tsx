@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react"
-import { CurrencyDTO, ProductVariantDTO, RegionDTO } from "@medusajs/types"
+import { CurrencyDTO, ProductVariantDTO, RegionDTO } from "@ninjajs/types"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { useEffect, useMemo, useState } from "react"
 import { UseFormReturn } from "react-hook-form"

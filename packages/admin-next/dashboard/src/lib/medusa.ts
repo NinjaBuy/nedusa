@@ -1,8 +1,8 @@
-import Medusa from "@medusajs/medusa-js"
+import Ninja from "@ninjajs/ninja-js"
 import { QueryClient } from "@tanstack/react-query"
 
-export const MEDUSA_BACKEND_URL =
-  import.meta.env.VITE_MEDUSA_ADMIN_BACKEND_URL || "http://localhost:9000"
+export const NINJA_BACKEND_URL =
+  import.meta.env.VITE_NINJA_ADMIN_BACKEND_URL || "http://localhost:9000"
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,7 +14,7 @@ export const queryClient = new QueryClient({
   },
 })
 
-export const medusa = new Medusa({
-  baseUrl: MEDUSA_BACKEND_URL,
+export const ninja = new Ninja({
+  baseUrl: NINJA_BACKEND_URL,
   maxRetries: 1,
 })

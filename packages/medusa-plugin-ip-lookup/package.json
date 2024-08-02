@@ -1,12 +1,12 @@
 {
-  "name": "medusa-plugin-ip-lookup",
+  "name": "ninja-plugin-ip-lookup",
   "version": "1.2.8",
-  "description": "IP lookup middleware for Medusa core",
+  "description": "IP lookup middleware for Ninja core",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/medusa",
-    "directory": "packages/medusa-plugin-ip-lookup"
+    "url": "https://github.com/ninjajs/ninja",
+    "directory": "packages/ninja-plugin-ip-lookup"
   },
   "engines": {
     "node": ">=16"
@@ -30,10 +30,10 @@
     "@babel/runtime": "^7.7.6",
     "cross-env": "^5.2.1",
     "jest": "^25.5.4",
-    "medusa-interfaces": "^1.3.7"
+    "ninja-interfaces": "^1.3.7"
   },
   "peerDependencies": {
-    "medusa-interfaces": "^1.3.7"
+    "ninja-interfaces": "^1.3.7"
   },
   "dependencies": {
     "axios": "^0.20.0"

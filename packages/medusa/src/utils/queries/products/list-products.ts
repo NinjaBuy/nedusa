@@ -1,11 +1,11 @@
-import { MedusaContainer } from "@medusajs/types"
-import { MedusaV2Flag, promiseAll } from "@medusajs/utils"
+import { NinjaContainer } from "@ninjajs/types"
+import { NinjaV2Flag, promiseAll } from "@ninjajs/utils"
 
 import { PriceListService } from "../../../services"
 import { getVariantsFromPriceList } from "./get-variants-from-price-list"
 
 export async function listProducts(
-  container: MedusaContainer,
+  container: NinjaContainer,
   filterableFields,
   listConfig
 ) {
@@ -27,7 +27,7 @@ export async function listProducts(
   delete filterableFields.price_list_id
 
   if (priceListId) {
-    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
       const variants = await getVariantsFromPriceList(container, priceListId)
 
       variants.forEach((pv) => variantIdsFilter.add(pv.id))

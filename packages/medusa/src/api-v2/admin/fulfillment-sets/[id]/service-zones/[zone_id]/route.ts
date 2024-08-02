@@ -1,29 +1,29 @@
 import {
   deleteServiceZonesWorkflow,
   updateServiceZonesWorkflow,
-} from "@medusajs/core-flows"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+} from "@ninjajs/core-flows"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import {
   AdminFulfillmentSetResponse,
   AdminServiceZoneDeleteResponse,
   AdminServiceZoneResponse,
   IFulfillmentModuleService,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
-  MedusaError,
+  NinjaError,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaRequest,
+  NinjaResponse,
 } from "../../../../../../types/routing"
 import { AdminUpdateFulfillmentSetServiceZonesType } from "../../../validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse<AdminServiceZoneResponse>
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse<AdminServiceZoneResponse>
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -38,8 +38,8 @@ export const GET = async (
   )
 
   if (!service_zone) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Service zone with id: ${req.params.zone_id} not found`
     )
   }
@@ -48,8 +48,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: MedusaRequest<AdminUpdateFulfillmentSetServiceZonesType>,
-  res: MedusaResponse<AdminFulfillmentSetResponse>
+  req: NinjaRequest<AdminUpdateFulfillmentSetServiceZonesType>,
+  res: NinjaResponse<AdminFulfillmentSetResponse>
 ) => {
   const fulfillmentModuleService = req.scope.resolve<IFulfillmentModuleService>(
     ModuleRegistrationName.FULFILLMENT
@@ -62,8 +62,8 @@ export const POST = async (
   )
 
   if (!fulfillmentSet.service_zones.find((s) => s.id === req.params.zone_id)) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Service zone with id: ${req.params.zone_id} not found on fulfillment set`
     )
   }
@@ -98,8 +98,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse<AdminServiceZoneDeleteResponse>
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse<AdminServiceZoneDeleteResponse>
 ) => {
   const { id, zone_id } = req.params
 
@@ -113,8 +113,8 @@ export const DELETE = async (
   })
 
   if (!fulfillmentSet.service_zones.find((s) => s.id === zone_id)) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Service zone with id: ${zone_id} not found on fulfillment set`
     )
   }

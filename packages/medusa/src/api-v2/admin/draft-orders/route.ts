@@ -1,19 +1,19 @@
-import { createOrdersWorkflow } from "@medusajs/core-flows"
+import { createOrdersWorkflow } from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   OrderStatus,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import { AdminCreateDraftOrderType } from "./validators"
 import { refetchOrder } from "./helpers"
-import { CreateOrderDTO } from "@medusajs/types"
+import { CreateOrderDTO } from "@ninjajs/types"
 
-export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
   const queryObject = remoteQueryObjectFromString({
@@ -39,8 +39,8 @@ export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateDraftOrderType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateDraftOrderType>,
+  res: NinjaResponse
 ) => {
   const input = req.validatedBody
   const workflowInput = {

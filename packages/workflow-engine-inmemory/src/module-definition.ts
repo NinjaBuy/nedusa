@@ -1,4 +1,4 @@
-import { ModuleExports } from "@medusajs/types"
+import { ModuleExports } from "@ninjajs/types"
 import { WorkflowsModuleService } from "@services"
 import loadConnection from "./loaders/connection"
 import loadContainer from "./loaders/container"

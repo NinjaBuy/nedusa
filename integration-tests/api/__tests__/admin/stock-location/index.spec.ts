@@ -1,19 +1,19 @@
-import { ModuleRegistrationName, Modules } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName, Modules } from "@ninjajs/modules-sdk"
 import {
   adminHeaders,
   createAdminUser,
 } from "../../../../helpers/create-admin-user"
 
-import { IStockLocationServiceNext } from "@medusajs/types"
-import { ContainerRegistrationKeys } from "@medusajs/utils"
+import { IStockLocationServiceNext } from "@ninjajs/types"
+import { ContainerRegistrationKeys } from "@ninjajs/utils"
 
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 
 jest.setTimeout(30000)
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer

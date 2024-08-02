@@ -2,7 +2,7 @@ import {
   DeleteResponse,
   PaginatedResponse,
   StockLocationTypes,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { Router } from "express"
 import middlewares, {
   transformBody,

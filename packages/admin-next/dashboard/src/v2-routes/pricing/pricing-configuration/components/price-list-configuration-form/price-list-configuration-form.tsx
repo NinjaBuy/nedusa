@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { PriceListDTO } from "@medusajs/types"
-import { Button, DatePicker, Switch, Text } from "@medusajs/ui"
+import { PriceListDTO } from "@ninjajs/types"
+import { Button, DatePicker, Switch, Text } from "@ninjajs/ui"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"

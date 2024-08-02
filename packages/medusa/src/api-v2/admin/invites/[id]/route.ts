@@ -1,15 +1,15 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../types/routing"
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 
-import { deleteInvitesWorkflow } from "@medusajs/core-flows"
+import { deleteInvitesWorkflow } from "@ninjajs/core-flows"
 import { refetchInvite } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const invite = await refetchInvite(
@@ -19,8 +19,8 @@ export const GET = async (
   )
 
   if (!invite) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_FOUND,
+    throw new NinjaError(
+      NinjaError.Types.NOT_FOUND,
       `Invite with id: ${id} was not found`
     )
   }
@@ -29,8 +29,8 @@ export const GET = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const workflow = deleteInvitesWorkflow(req.scope)

@@ -3,16 +3,16 @@ import {
   createAdminUser,
 } from "../../../../helpers/create-admin-user"
 
-import { ICustomerModuleService } from "@medusajs/types"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ICustomerModuleService } from "@ninjajs/types"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 
 jest.setTimeout(50000)
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("GET /admin/customers", () => {

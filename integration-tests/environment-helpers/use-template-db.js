@@ -2,7 +2,7 @@ const path = require("path")
 
 require("dotenv").config({ path: path.join(__dirname, "../.env.test") })
 
-const { getConfigFile } = require("medusa-core-utils")
+const { getConfigFile } = require("ninja-core-utils")
 const { createDatabase, dropDatabase } = require("pg-god")
 const { DataSource } = require("typeorm")
 
@@ -22,19 +22,19 @@ const pgGodCredentials = {
 class DatabaseFactory {
   constructor() {
     this.masterDataSourceName = "master"
-    this.templateDbName = "medusa-integration-template"
+    this.templateDbName = "ninja-integration-template"
   }
 
   async createTemplateDb_({ cwd }) {
-    const { configModule } = getConfigFile(cwd, `medusa-config`)
+    const { configModule } = getConfigFile(cwd, `ninja-config`)
 
     const migrationDir = path.resolve(
       path.join(
         __dirname,
         `../../`,
         `node_modules`,
-        `@medusajs`,
-        `medusa`,
+        `@ninjajs`,
+        `ninja`,
         `dist`,
         `migrations`,
         `*.js`
@@ -44,7 +44,7 @@ class DatabaseFactory {
     const {
       getEnabledMigrations,
       getModuleSharedResources,
-    } = require("@medusajs/medusa/dist/commands/utils/get-migrations")
+    } = require("@ninjajs/ninja/dist/commands/utils/get-migrations")
 
     // filter migrations to only include those that don't have feature flags
     const enabledMigrations = getEnabledMigrations(

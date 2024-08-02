@@ -16,7 +16,7 @@ import { StorePostCartsCartShippingMethodReq } from "./add-shipping-method"
 import { StorePostCartsCartPaymentSessionReq } from "./set-payment-session"
 import { StorePostCartsCartLineItemsItemReq } from "./update-line-item"
 import { StorePostCartsCartPaymentSessionUpdateReq } from "./update-payment-session"
-import { MedusaV2Flag } from "@medusajs/utils"
+import { NinjaV2Flag } from "@ninjajs/utils"
 
 const route = Router()
 
@@ -27,7 +27,7 @@ export default (app, container) => {
   app.use("/carts", route)
 
   if (featureFlagRouter.isFeatureEnabled(SalesChannelFeatureFlag.key)) {
-    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
       defaultStoreCartRelations.push("sales_channels")
     } else {
       defaultStoreCartRelations.push("sales_channel")

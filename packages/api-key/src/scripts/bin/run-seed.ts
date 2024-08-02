@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { ModulesSdkUtils } from "@medusajs/utils"
-import { Modules } from "@medusajs/modules-sdk"
+import { ModulesSdkUtils } from "@ninjajs/utils"
+import { Modules } from "@ninjajs/modules-sdk"
 import * as Models from "@models"
 import { EOL } from "os"
 
@@ -13,7 +13,7 @@ export default (async () => {
   config()
   if (!path) {
     throw new Error(
-      `filePath is required.${EOL}Example: medusa-api-key-seed <filePath>`
+      `filePath is required.${EOL}Example: ninja-api-key-seed <filePath>`
     )
   }
 

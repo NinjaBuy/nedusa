@@ -1,11 +1,11 @@
-import { PaymentWebhookEvents } from "@medusajs/utils"
+import { PaymentWebhookEvents } from "@ninjajs/utils"
 
 import {
   IEventBusService,
   IPaymentModuleService,
   ProviderWebhookPayload,
   Subscriber,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { EventBusService } from "../services"
 
 type SerializedBuffer = {

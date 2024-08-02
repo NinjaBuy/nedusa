@@ -1,11 +1,11 @@
-import { createPaymentCollectionForCartWorkflow } from "@medusajs/core-flows"
-import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
+import { createPaymentCollectionForCartWorkflow } from "@ninjajs/core-flows"
+import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
 import { refetchCart } from "../../helpers"
 import { StoreUpdateCartType } from "../../validators"
 
 export const POST = async (
-  req: MedusaRequest<StoreUpdateCartType>,
-  res: MedusaResponse
+  req: NinjaRequest<StoreUpdateCartType>,
+  res: NinjaResponse
 ) => {
   const workflow = createPaymentCollectionForCartWorkflow(req.scope)
   let cart = await refetchCart(req.params.id, req.scope, [

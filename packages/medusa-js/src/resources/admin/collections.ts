@@ -8,14 +8,14 @@ import {
   AdminPostCollectionsCollectionReq,
   AdminPostCollectionsReq,
   AdminPostProductsToCollectionReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Product Collection API Routes](https://docs.medusajs.com/api/admin#product-collections). All its method
- * are available in the JS Client under the `medusa.admin.collections` property.
+ * This class is used to send requests to [Admin Product Collection API Routes](https://docs.ninjajs.com/api/admin#product-collections). All its method
+ * are available in the JS Client under the `ninja.admin.collections` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
@@ -29,10 +29,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCollectionsRes>} Resolves to the created product collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.create({
+   * ninja.admin.collections.create({
    *   title: "New Collection"
    * })
    * .then(({ collection }) => {
@@ -55,10 +55,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCollectionsRes>} Resolves to the product collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.update(collectionId, {
+   * ninja.admin.collections.update(collectionId, {
    *   title: "New Collection"
    * })
    * .then(({ collection }) => {
@@ -81,10 +81,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCollectionsDeleteRes>} Resolves to the deletion operation details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.delete(collectionId)
+   * ninja.admin.collections.delete(collectionId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -104,10 +104,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCollectionsRes>} Resolves to the product collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.retrieve(collectionId)
+   * ninja.admin.collections.retrieve(collectionId)
    * .then(({ collection }) => {
    *   console.log(collection.id);
    * })
@@ -130,10 +130,10 @@ class AdminCollectionsResource extends BaseResource {
    * To list product collections:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.list()
+   * ninja.admin.collections.list()
    * .then(({ collections, limit, offset, count }) => {
    *   console.log(collections.length);
    * })
@@ -142,10 +142,10 @@ class AdminCollectionsResource extends BaseResource {
    * By default, only the first `10` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.list({
+   * ninja.admin.collections.list({
    *   limit,
    *   offset
    * })
@@ -176,10 +176,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCollectionsRes>} Resolves to the product collection's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.addProducts(collectionId, {
+   * ninja.admin.collections.addProducts(collectionId, {
    *   product_ids: [
    *     productId1,
    *     productId2
@@ -206,10 +206,10 @@ class AdminCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDeleteProductsFromCollectionRes>} Resolves to the deletion operation details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.collections.removeProducts(collectionId, {
+   * ninja.admin.collections.removeProducts(collectionId, {
    *   product_ids: [
    *     productId1,
    *     productId2

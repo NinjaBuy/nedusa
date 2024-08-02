@@ -9,7 +9,7 @@ const {
   LineItem,
   Payment,
   PaymentSession,
-} = require("@medusajs/medusa")
+} = require("@ninjajs/ninja")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -21,24 +21,24 @@ const {
   simpleShippingOptionFactory,
   simpleOrderFactory,
 } = require("../../../factories")
-const { MedusaError } = require("medusa-core-utils")
+const { NinjaError } = require("ninja-core-utils")
 
 jest.setTimeout(30000)
 
 describe("/store/carts", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /store/orders", () => {
@@ -127,7 +127,7 @@ describe("/store/carts", () => {
       })
 
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
 
       await api.post(`/store/carts/${cartId}/payment-sessions`).catch((err) => {
@@ -176,7 +176,7 @@ describe("/store/carts", () => {
       })
 
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
 
       await api.post(`/store/carts/${cartId}/payment-sessions`).catch((err) => {
@@ -396,7 +396,7 @@ describe("/store/carts", () => {
         quantity: 1,
       })
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
       await api.post(`/store/carts/${cartId}/payment-sessions`)
 
@@ -418,7 +418,7 @@ describe("/store/carts", () => {
       expect(responseFail.status).toEqual(409)
       expect(responseFail.data.errors[0].type).toEqual("not_allowed")
       expect(responseFail.data.errors[0].code).toEqual(
-        MedusaError.Codes.INSUFFICIENT_INVENTORY
+        NinjaError.Codes.INSUFFICIENT_INVENTORY
       )
 
       let payments = await manager.find(Payment, { where: { cart_id: cartId } })
@@ -486,7 +486,7 @@ describe("/store/carts", () => {
         quantity: 1,
       })
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
       await api.post(`/store/carts/${cartId}/payment-sessions`)
 
@@ -544,7 +544,7 @@ describe("/store/carts", () => {
         quantity: 1,
       })
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
       await api.post(`/store/carts/${cartId}/payment-sessions`)
 
@@ -601,7 +601,7 @@ describe("/store/carts", () => {
         quantity: 1,
       })
       await api.post(`/store/carts/${cartId}`, {
-        email: "testmailer@medusajs.com",
+        email: "testmailer@ninjajs.com",
       })
       await api.post(`/store/carts/${cartId}/payment-sessions`)
 

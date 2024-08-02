@@ -10,21 +10,21 @@ import {
   AdminPostRegionsRegionPaymentProvidersReq,
   AdminGetRegionsRegionFulfillmentOptionsRes,
   AdminGetRegionsRegionParams,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Region API Routes](https://docs.medusajs.com/api/admin#regions). All its method
- * are available in the JS Client under the `medusa.admin.regions` property.
+ * This class is used to send requests to [Admin Region API Routes](https://docs.ninjajs.com/api/admin#regions). All its method
+ * are available in the JS Client under the `ninja.admin.regions` property.
  *
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  *
  * Regions are different countries or geographical regions that the commerce store serves customers in.
  * Admins can manage these regions, their providers, and more.
  *
- * Related Guide: [How to manage regions](https://docs.medusajs.com/modules/regions-and-currencies/admin/manage-regions).
+ * Related Guide: [How to manage regions](https://docs.ninjajs.com/modules/regions-and-currencies/admin/manage-regions).
  */
 class AdminRegionsResource extends BaseResource {
   /**
@@ -34,10 +34,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.create({
+   * ninja.admin.regions.create({
    *   name: "Europe",
    *   currency_code: "eur",
    *   tax_rate: 0,
@@ -71,10 +71,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.update(regionId, {
+   * ninja.admin.regions.update(regionId, {
    *   name: "Europe"
    * })
    * .then(({ region }) => {
@@ -97,10 +97,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsDeleteRes>} Resolves to the deletion operation's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.delete(regionId)
+   * ninja.admin.regions.delete(regionId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -121,10 +121,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>}  Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.retrieve(regionId)
+   * ninja.admin.regions.retrieve(regionId)
    * .then(({ region }) => {
    *   console.log(region.id);
    * })
@@ -154,10 +154,10 @@ class AdminRegionsResource extends BaseResource {
    * To list regions:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.list()
+   * ninja.admin.regions.list()
    * .then(({ regions, limit, offset, count }) => {
    *   console.log(regions.length);
    * })
@@ -166,10 +166,10 @@ class AdminRegionsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    *
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.list({
+   * ninja.admin.regions.list({
    *   limit,
    *   offset
    * })
@@ -200,10 +200,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.addCountry(regionId, {
+   * ninja.admin.regions.addCountry(regionId, {
    *   country_code: "dk"
    * })
    * .then(({ region }) => {
@@ -227,10 +227,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.deleteCountry(regionId, "dk")
+   * ninja.admin.regions.deleteCountry(regionId, "dk")
    * .then(({ region }) => {
    *   console.log(region.id);
    * })
@@ -252,10 +252,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.addFulfillmentProvider(regionId, {
+   * ninja.admin.regions.addFulfillmentProvider(regionId, {
    *   provider_id: "manual"
    * })
    * .then(({ region }) => {
@@ -279,10 +279,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.deleteFulfillmentProvider(regionId, "manual")
+   * ninja.admin.regions.deleteFulfillmentProvider(regionId, "manual")
    * .then(({ region }) => {
    *   console.log(region.id);
    * })
@@ -303,10 +303,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGetRegionsRegionFulfillmentOptionsRes>} Resolves to the list of fulfillment options.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.retrieveFulfillmentOptions(regionId)
+   * ninja.admin.regions.retrieveFulfillmentOptions(regionId)
    * .then(({ fulfillment_options }) => {
    *   console.log(fulfillment_options.length);
    * })
@@ -327,10 +327,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.addPaymentProvider(regionId, {
+   * ninja.admin.regions.addPaymentProvider(regionId, {
    *   provider_id: "manual"
    * })
    * .then(({ region }) => {
@@ -354,10 +354,10 @@ class AdminRegionsResource extends BaseResource {
    * @returns {ResponsePromise<AdminRegionsRes>} Resolves to the region's details.
    *
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.regions.deletePaymentProvider(regionId, "manual")
+   * ninja.admin.regions.deletePaymentProvider(regionId, "manual")
    * .then(({ region }) => {
    *   console.log(region.id);
    * })

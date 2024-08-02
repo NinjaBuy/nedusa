@@ -20,8 +20,8 @@ import {
   ReturnItem,
   ReturnStatus,
 } from "../models"
-import { isDefined, MedusaError } from "medusa-core-utils"
-import { FlagRouter, promiseAll } from "@medusajs/utils"
+import { isDefined, NinjaError } from "ninja-core-utils"
+import { FlagRouter, promiseAll } from "@ninjajs/utils"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
 import { buildQuery, calculatePriceTaxAmount, setMetadata } from "../utils"
 
@@ -186,8 +186,8 @@ class ReturnService extends TransactionBaseService {
       const ret = await this.retrieve(returnId)
 
       if (ret.status === ReturnStatus.RECEIVED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Can't cancel a return which has been returned"
         )
       }
@@ -212,15 +212,15 @@ class ReturnService extends TransactionBaseService {
       order.fulfillment_status === FulfillmentStatus.NOT_FULFILLED ||
       order.fulfillment_status === FulfillmentStatus.RETURNED
     ) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Can't return an unfulfilled or already returned order"
       )
     }
 
     if (order.payment_status !== PaymentStatus.CAPTURED) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Can't return an order with payment unprocessed"
       )
     }
@@ -243,16 +243,16 @@ class ReturnService extends TransactionBaseService {
     additional: { reason_id?: string; note?: string } = {}
   ): DeepPartial<LineItem> {
     if (!item) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "Return contains invalid line item"
       )
     }
 
     const returnable = item.quantity - item.returned_quantity!
     if (quantity > returnable) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Cannot return more items than have been purchased"
       )
     }
@@ -284,8 +284,8 @@ class ReturnService extends TransactionBaseService {
     config: FindConfig<Return> = {}
   ): Promise<Return | never> {
     if (!isDefined(returnId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"returnId" must be defined`
       )
     }
@@ -299,8 +299,8 @@ class ReturnService extends TransactionBaseService {
     const returnObj = await returnRepository.findOne(query)
 
     if (!returnObj) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Return with id: ${returnId} was not found`
       )
     }
@@ -323,8 +323,8 @@ class ReturnService extends TransactionBaseService {
     })
 
     if (!returnObj) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Return with swa_id: ${swapId} was not found`
       )
     }
@@ -337,8 +337,8 @@ class ReturnService extends TransactionBaseService {
       const ret = await this.retrieve(returnId)
 
       if (ret.status === "canceled") {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot update a canceled return"
         )
       }
@@ -387,8 +387,8 @@ class ReturnService extends TransactionBaseService {
           line.swap?.canceled_at ||
           line.claim_order?.canceled_at
         ) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Cannot create a return for a canceled item.`
           )
         }
@@ -425,8 +425,8 @@ class ReturnService extends TransactionBaseService {
         const refundable = order.refundable_amount
 
         if (toRefund! > refundable) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             "Cannot refund more than the original payment"
           )
         }
@@ -452,8 +452,8 @@ class ReturnService extends TransactionBaseService {
         )
 
       if (returnReasons.some((rr) => rr.return_reason_children?.length > 0)) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Cannot apply return reason category"
         )
       }
@@ -546,8 +546,8 @@ class ReturnService extends TransactionBaseService {
       })
 
       if (returnOrder.status === "canceled") {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot fulfill a canceled return"
         )
       }
@@ -572,8 +572,8 @@ class ReturnService extends TransactionBaseService {
       })
 
       if (returnOrder.shipping_data) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Return has already been fulfilled"
         )
       }
@@ -620,8 +620,8 @@ class ReturnService extends TransactionBaseService {
       })
 
       if (returnObj.status === ReturnStatus.CANCELED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           "Cannot receive a canceled return"
         )
       }
@@ -653,8 +653,8 @@ class ReturnService extends TransactionBaseService {
         })
 
       if (returnObj.status === ReturnStatus.RECEIVED) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Return with id ${returnId} has already been received`
         )
       }

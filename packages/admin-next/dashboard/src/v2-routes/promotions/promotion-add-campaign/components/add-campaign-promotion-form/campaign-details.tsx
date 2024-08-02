@@ -1,5 +1,5 @@
-import { CampaignDTO } from "@medusajs/types"
-import { Heading, Text } from "@medusajs/ui"
+import { CampaignDTO } from "@ninjajs/types"
+import { Heading, Text } from "@ninjajs/ui"
 import { Fragment } from "react"
 import { useTranslation } from "react-i18next"
 

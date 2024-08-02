@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 import { request } from "../../../../../helpers/test-request"
 import { OrderServiceMock } from "../../../../../services/__mocks__/order"
 import {
@@ -42,7 +42,7 @@ describe("GET /admin/orders", () => {
       expect(OrderServiceMock.retrieveWithTotals).toHaveBeenCalledWith(
         IdMap.getId("test-order"),
         {
-          // TODO [MEDUSA_FF_SALES_CHANNELS]: Remove when sales channel flag is removed entirely
+          // TODO [NINJA_FF_SALES_CHANNELS]: Remove when sales channel flag is removed entirely
           select: [...defaultAdminOrdersFields, "sales_channel_id"].filter(
             (field) => {
               return ![
@@ -58,7 +58,7 @@ describe("GET /admin/orders", () => {
               ].includes(field)
             }
           ),
-          // TODO [MEDUSA_FF_SALES_CHANNELS]: Remove when sales channel flag is removed entirely
+          // TODO [NINJA_FF_SALES_CHANNELS]: Remove when sales channel flag is removed entirely
           relations: expect.arrayContaining(expectedRelations),
         },
         {

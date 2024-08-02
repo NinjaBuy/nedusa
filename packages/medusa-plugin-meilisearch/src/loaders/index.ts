@@ -1,10 +1,10 @@
-import { MedusaContainer } from "@medusajs/modules-sdk"
-import { Logger } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/modules-sdk"
+import { Logger } from "@ninjajs/types"
 import MeiliSearchService from "../services/meilisearch"
 import { MeilisearchPluginOptions } from "../types"
 
 export default async (
-  container: MedusaContainer,
+  container: NinjaContainer,
   options: MeilisearchPluginOptions
 ) => {
   const logger: Logger = container.resolve("logger")

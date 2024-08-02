@@ -1,4 +1,4 @@
-import { AdminGetTaxRatesParams } from "@medusajs/medusa"
+import { AdminGetTaxRatesParams } from "@ninjajs/ninja"
 import { useQueryParams } from "../../use-query-params"
 
 type UseTaxRateTableQueryProps = {

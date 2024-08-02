@@ -1,4 +1,4 @@
-import { AdminGetWorkflowExecutionsParams } from "@medusajs/medusa"
+import { AdminGetWorkflowExecutionsParams } from "@ninjajs/ninja"
 import { TFunction } from "i18next"
 import {
   STEP_ERROR_STATES,

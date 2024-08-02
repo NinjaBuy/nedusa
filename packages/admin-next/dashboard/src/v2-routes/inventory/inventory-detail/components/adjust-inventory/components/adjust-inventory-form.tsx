@@ -1,7 +1,7 @@
 import * as zod from "zod"
 
-import { Button, Input, Text, toast } from "@medusajs/ui"
-import { InventoryLevelDTO, StockLocationDTO } from "@medusajs/types"
+import { Button, Input, Text, toast } from "@ninjajs/ui"
+import { InventoryLevelDTO, StockLocationDTO } from "@ninjajs/types"
 import {
   RouteDrawer,
   useRouteModal,

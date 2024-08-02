@@ -1,4 +1,4 @@
-import { ProductStatus } from "@medusajs/types"
+import { ProductStatus } from "@ninjajs/types"
 import { useTranslation } from "react-i18next"
 
 import { StatusCell } from "../../common/status-cell"

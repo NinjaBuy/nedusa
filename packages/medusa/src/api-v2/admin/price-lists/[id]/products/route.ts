@@ -1,28 +1,28 @@
-import { MedusaError } from "@medusajs/utils"
+import { NinjaError } from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
-import { batchPriceListPricesWorkflow } from "@medusajs/core-flows"
-import { LinkMethodRequest } from "@medusajs/types/src"
+import { batchPriceListPricesWorkflow } from "@ninjajs/core-flows"
+import { LinkMethodRequest } from "@ninjajs/types/src"
 import { fetchPriceList, fetchPriceListPriceIdsForProduct } from "../../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<LinkMethodRequest>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<LinkMethodRequest>,
+  res: NinjaResponse
 ) => {
   const id = req.params.id
   const { add, remove = [] } = req.validatedBody
   if (add?.length) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       "Adding products directly to a price list is not supported, please use the /admin/price-lists/:id/prices/batch endpoint instead"
     )
   }
 
   if (!remove.length) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       "No product ids passed to remove from price list"
     )
   }

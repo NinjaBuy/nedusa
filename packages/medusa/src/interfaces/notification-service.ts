@@ -1,4 +1,4 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 import { TransactionBaseService } from "./transaction-base-service"
 
 /**
@@ -28,19 +28,19 @@ export type ReturnedData = {
  *
  * :::note[Prerequisites]
  *
- * Before creating a Notification Provider, [install an event bus module](https://docs.medusajs.com/development/events/modules/redis).
+ * Before creating a Notification Provider, [install an event bus module](https://docs.ninjajs.com/development/events/modules/redis).
  *
  * :::
  *
  * A Notification Provider is a provider that handles sending and resending of notifications.
  *
  * To create a Notification Provider, create a TypeScript or JavaScript file in `src/services`. The name of the file is the name of the provider
- * (for example, `sendgrid.ts`). The file must export a class that extends the `AbstractNotificationService` class imported from `@medusajs/medusa`.
+ * (for example, `sendgrid.ts`). The file must export a class that extends the `AbstractNotificationService` class imported from `@ninjajs/ninja`.
  *
  * For example, create the file `src/services/email-sender.ts` with the following content:
  *
  * ```ts title="src/services/email-sender.ts"
- * import { AbstractNotificationService } from "@medusajs/medusa"
+ * import { AbstractNotificationService } from "@ninjajs/ninja"
  * import { EntityManager } from "typeorm"
  *
  * class EmailSenderService extends AbstractNotificationService {
@@ -82,7 +82,7 @@ export type ReturnedData = {
  * The `NotificationProvider` entity has 2 properties: `identifier` and `is_installed`. The value of the `identifier` property in the notification provider
  * class is used when the Notification Provider is created in the database.
  *
- * The value of this property is also used later when you want to subscribe the Notification Provider to events in a [Loader](https://docs.medusajs.com/development/loaders/overview).
+ * The value of this property is also used later when you want to subscribe the Notification Provider to events in a [Loader](https://docs.ninjajs.com/development/loaders/overview).
  *
  * For example:
  *
@@ -97,17 +97,17 @@ export type ReturnedData = {
  */
 export interface INotificationService extends TransactionBaseService {
   /**
-   * When an event is triggered that your Notification Provider is registered as a handler for, the [`NotificationService`](https://docs.medusajs.com/references/services/classes/services.NotificationService)
-   * in the Medusa backend executes this method of your Notification Provider.
+   * When an event is triggered that your Notification Provider is registered as a handler for, the [`NotificationService`](https://docs.ninjajs.com/references/services/classes/services.NotificationService)
+   * in the Ninja backend executes this method of your Notification Provider.
    *
    * In this method, you can perform the necessary operation to send the Notification. For example, you can send an email to the customer when they place an order.
    *
    * @param {string} event - The name of the event that was triggered. For example, `order.placed`.
    * @param {unknown} data - The data payload of the event that was triggered. For example, if the `order.placed` event is triggered,
    * the `eventData` object contains the property `id` which is the ID of the order that was placed. You can refer to the
-   * [Events reference](https://docs.medusajs.com/development/events/events-list) for information on all events and their payloads.
+   * [Events reference](https://docs.ninjajs.com/development/events/events-list) for information on all events and their payloads.
    * @param {unknown} attachmentGenerator - If you’ve previously register an attachment generator to the `NotificationService` using the
-   * [`registerAttachmentGenerator`](https://docs.medusajs.com/references/services/classes/services.NotificationService#registerattachmentgenerator) method,
+   * [`registerAttachmentGenerator`](https://docs.ninjajs.com/references/services/classes/services.NotificationService#registerattachmentgenerator) method,
    * you have access to it here. You can use the `attachmentGenerator` to generate on-demand invoices or other documents. The default value of this parameter is `null`.
    * @returns {Promise<ReturnedData>} The sending details.
    *
@@ -152,15 +152,15 @@ export interface INotificationService extends TransactionBaseService {
 
   /**
    * This method is used to resend notifications, which is typically triggered by the
-   * [Resend Notification API Route](https://docs.medusajs.com/api/admin#notifications_postnotificationsnotificationresend).
+   * [Resend Notification API Route](https://docs.ninjajs.com/api/admin#notifications_postnotificationsnotificationresend).
    *
-   * @param {unknown} notification - The original [Notification record](https://docs.medusajs.com/references/entities/classes/Notification) that was created after you sent the
+   * @param {unknown} notification - The original [Notification record](https://docs.ninjajs.com/references/entities/classes/Notification) that was created after you sent the
    * notification with `sendNotification`. It includes the `to` and `data` attributes which are populated originally using the `to` and `data` properties of
    * the object you return in {@link sendNotification}.
-   * @param {unknown} config - The new configuration used to resend the notification. The [Resend Notification API Route](https://docs.medusajs.com/api/admin#notifications_postnotificationsnotificationresend),
+   * @param {unknown} config - The new configuration used to resend the notification. The [Resend Notification API Route](https://docs.ninjajs.com/api/admin#notifications_postnotificationsnotificationresend),
    * allows you to pass a new `to` field. If specified, it will be available in this config object.
    * @param {unknown} attachmentGenerator - f you’ve previously register an attachment generator to the `NotificationService` using the
-   * [`registerAttachmentGenerator`](https://docs.medusajs.com/references/services/classes/services.NotificationService#registerattachmentgenerator) method,
+   * [`registerAttachmentGenerator`](https://docs.ninjajs.com/references/services/classes/services.NotificationService#registerattachmentgenerator) method,
    * you have access to it here. You can use the `attachmentGenerator` to generate on-demand invoices or other documents. The default value of this parameter is `null`.
    * @returns {Promise<ReturnedData>} The resend details.
    *
@@ -226,20 +226,20 @@ export abstract class AbstractNotificationService
   }
 
   /**
-   * You can use the `constructor` of your notification provider to access the different services in Medusa through dependency injection.
+   * You can use the `constructor` of your notification provider to access the different services in Ninja through dependency injection.
    *
    * You can also use the constructor to initialize your integration with the third-party provider. For example, if you use a client to connect to the third-party provider’s APIs,
    * you can initialize it in the constructor and use it in other methods in the service.
    *
-   * Additionally, if you’re creating your notification provider as an external plugin to be installed on any Medusa backend and you want to access the options
+   * Additionally, if you’re creating your notification provider as an external plugin to be installed on any Ninja backend and you want to access the options
    * added for the plugin, you can access it in the constructor.
    *
-   * @param {Record<string, unknown>} container - An instance of `MedusaContainer` that allows you to access other resources, such as services, in your Medusa backend.
+   * @param {Record<string, unknown>} container - An instance of `NinjaContainer` that allows you to access other resources, such as services, in your Ninja backend.
    * @param {Record<string, unknown>} config - If this notification provider is created in a plugin, the plugin's options are passed in this parameter.
    *
    * @example
    * // ...
-   * import { AbstractNotificationService, OrderService } from "@medusajs/medusa"
+   * import { AbstractNotificationService, OrderService } from "@ninjajs/ninja"
    * import { EntityManager } from "typeorm"
    *
    * class EmailSenderService extends AbstractNotificationService {

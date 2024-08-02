@@ -1,11 +1,11 @@
-import { createTaxRegionsWorkflow } from "@medusajs/core-flows"
+import { createTaxRegionsWorkflow } from "@ninjajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import {
   AdminCreateTaxRegionType,
@@ -14,8 +14,8 @@ import {
 import { refetchTaxRegion } from "./helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateTaxRegionType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateTaxRegionType>,
+  res: NinjaResponse
 ) => {
   const { result, errors } = await createTaxRegionsWorkflow(req.scope).run({
     input: [
@@ -40,8 +40,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetTaxRegionsParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetTaxRegionsParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 

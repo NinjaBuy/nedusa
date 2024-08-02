@@ -1,11 +1,11 @@
-import { createLocationFulfillmentSetWorkflow } from "@medusajs/core-flows"
-import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
+import { createLocationFulfillmentSetWorkflow } from "@ninjajs/core-flows"
+import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
 import { AdminCreateStockLocationFulfillmentSetType } from "../../validators"
 import { refetchStockLocation } from "../../helpers"
 
 export const POST = async (
-  req: MedusaRequest<AdminCreateStockLocationFulfillmentSetType>,
-  res: MedusaResponse
+  req: NinjaRequest<AdminCreateStockLocationFulfillmentSetType>,
+  res: NinjaResponse
 ) => {
   const { errors } = await createLocationFulfillmentSetWorkflow(req.scope).run({
     input: {

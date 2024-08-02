@@ -1,3 +1,3 @@
-import { MedusaV2Flag } from "@medusajs/utils"
+import { NinjaV2Flag } from "@ninjajs/utils"
 
-export default MedusaV2Flag
+export default NinjaV2Flag

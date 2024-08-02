@@ -1,4 +1,4 @@
-import { FlagRouter, MedusaV2Flag } from "@medusajs/utils"
+import { FlagRouter, NinjaV2Flag } from "@ninjajs/utils"
 import { IsBooleanString, IsOptional, IsString } from "class-validator"
 import { defaultRelations } from "."
 import {
@@ -25,17 +25,17 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.shippingOptions.list()
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.shippingOptions.list()
  *       .then(({ shipping_options }) => {
  *         console.log(shipping_options.length);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useShippingOptions } from "medusa-react"
+ *       import { useShippingOptions } from "ninja-react"
  *
  *       const ShippingOptions = () => {
  *         const {
@@ -115,7 +115,7 @@ export default async (req, res) => {
   query.admin_only = false
 
   if (productIds.length) {
-    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
       const productShippinProfileMap =
         await shippingProfileService.getMapProfileIdsByProductIds(productIds)
 

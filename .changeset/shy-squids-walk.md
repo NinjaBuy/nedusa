@@ -1,5 +1,5 @@
 ---
-"medusa-test-utils": patch
+"ninja-test-utils": patch
 ---
 
-fix(): medusa test runner
+fix(): ninja test runner

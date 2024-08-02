@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`medusa-plugin-sendgrid claim shipment created data 1`] = `
+exports[`ninja-plugin-sendgrid claim shipment created data 1`] = `
 Object {
   "claim": Object {
     "canceled_at": null,
@@ -300,7 +300,7 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid items returned data 1`] = `
+exports[`ninja-plugin-sendgrid items returned data 1`] = `
 Object {
   "date": Any<String>,
   "email": "test@testson.com",
@@ -753,7 +753,7 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid order canceled data 1`] = `
+exports[`ninja-plugin-sendgrid order canceled data 1`] = `
 Object {
   "afterLoad": [Function],
   "beforeInsert": [Function],
@@ -984,7 +984,7 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid order placed data 1`] = `
+exports[`ninja-plugin-sendgrid order placed data 1`] = `
 Object {
   "afterLoad": [Function],
   "beforeInsert": [Function],
@@ -1211,7 +1211,7 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid order shipment created data 1`] = `
+exports[`ninja-plugin-sendgrid order shipment created data 1`] = `
 Object {
   "date": Any<String>,
   "email": "test@testson.com",
@@ -1495,7 +1495,7 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid return requested data 1`] = `
+exports[`ninja-plugin-sendgrid return requested data 1`] = `
 Object {
   "date": Any<String>,
   "email": "test@testson.com",
@@ -1948,19 +1948,19 @@ Object {
 }
 `;
 
-exports[`medusa-plugin-sendgrid swap created data 1`] = `"12.00 USD"`;
+exports[`ninja-plugin-sendgrid swap created data 1`] = `"12.00 USD"`;
 
-exports[`medusa-plugin-sendgrid swap created data 2`] = `"12.00 USD"`;
+exports[`ninja-plugin-sendgrid swap created data 2`] = `"12.00 USD"`;
 
-exports[`medusa-plugin-sendgrid swap created data 3`] = `"11.25 USD"`;
+exports[`ninja-plugin-sendgrid swap created data 3`] = `"11.25 USD"`;
 
-exports[`medusa-plugin-sendgrid swap received data 1`] = `"12.00 USD"`;
+exports[`ninja-plugin-sendgrid swap received data 1`] = `"12.00 USD"`;
 
-exports[`medusa-plugin-sendgrid swap received data 2`] = `"12.00 USD"`;
+exports[`ninja-plugin-sendgrid swap received data 2`] = `"12.00 USD"`;
 
-exports[`medusa-plugin-sendgrid swap received data 3`] = `"11.25 USD"`;
+exports[`ninja-plugin-sendgrid swap received data 3`] = `"11.25 USD"`;
 
-exports[`medusa-plugin-sendgrid swap shipment created data 1`] = `
+exports[`ninja-plugin-sendgrid swap shipment created data 1`] = `
 Object {
   "additional_total": "16.88 USD",
   "date": Any<String>,

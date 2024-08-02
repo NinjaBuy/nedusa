@@ -4,17 +4,17 @@ import {
   AdminPostStoreReq,
   AdminStoresRes,
   AdminTaxProvidersList,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Store API Routes](https://docs.medusajs.com/api/admin#store). All its method
- * are available in the JS Client under the `medusa.admin.store` property.
+ * This class is used to send requests to [Admin Store API Routes](https://docs.ninjajs.com/api/admin#store). All its method
+ * are available in the JS Client under the `ninja.admin.store` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
- * A store indicates the general configurations and details about the commerce store. By default, there's only one store in the Medusa backend.
+ * A store indicates the general configurations and details about the commerce store. By default, there's only one store in the Ninja backend.
  * Admins can manage the store and its details or configurations.
  */
 class AdminStoresResource extends BaseResource {
@@ -25,11 +25,11 @@ class AdminStoresResource extends BaseResource {
    * @returns {ResponsePromise<AdminStoresRes>} Resolves to the store's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.update({
-   *   name: "Medusa Store"
+   * ninja.admin.store.update({
+   *   name: "Ninja Store"
    * })
    * .then(({ store }) => {
    *   console.log(store.id);
@@ -44,17 +44,17 @@ class AdminStoresResource extends BaseResource {
   }
 
   /**
-   * Add a currency code to the available currencies in a store. This doesn't create new currencies, as currencies are defined within the Medusa backend. 
-   * To create a currency, you can [create a migration](https://docs.medusajs.com/development/entities/migrations/create) that inserts the currency into the database.
+   * Add a currency code to the available currencies in a store. This doesn't create new currencies, as currencies are defined within the Ninja backend. 
+   * To create a currency, you can [create a migration](https://docs.ninjajs.com/development/entities/migrations/create) that inserts the currency into the database.
    * @param {string} currency_code - The code of the currency to add to the store.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise<AdminStoresRes>} Resolves to the store's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.addCurrency("eur")
+   * ninja.admin.store.addCurrency("eur")
    * .then(({ store }) => {
    *   console.log(store.currencies);
    * })
@@ -74,10 +74,10 @@ class AdminStoresResource extends BaseResource {
    * @returns {ResponsePromise<AdminStoresRes>} Resolves to the store's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.deleteCurrency("eur")
+   * ninja.admin.store.deleteCurrency("eur")
    * .then(({ store }) => {
    *   console.log(store.currencies);
    * })
@@ -96,10 +96,10 @@ class AdminStoresResource extends BaseResource {
    * @returns {ResponsePromise<AdminExtendedStoresRes>} Resolves to the store's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.retrieve()
+   * ninja.admin.store.retrieve()
    * .then(({ store }) => {
    *   console.log(store.id);
    * })
@@ -117,10 +117,10 @@ class AdminStoresResource extends BaseResource {
    * @returns {ResponsePromise<AdminPaymentProvidersList>} Resolves to the list of payment providers.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.listPaymentProviders()
+   * ninja.admin.store.listPaymentProviders()
    * .then(({ payment_providers }) => {
    *   console.log(payment_providers.length);
    * })
@@ -138,10 +138,10 @@ class AdminStoresResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxProvidersList>} Resolves to the list of tax providers.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.store.listTaxProviders()
+   * ninja.admin.store.listTaxProviders()
    * .then(({ tax_providers }) => {
    *   console.log(tax_providers.length);
    * })

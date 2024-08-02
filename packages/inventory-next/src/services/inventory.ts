@@ -1,4 +1,4 @@
-import { InternalModuleDeclaration } from "@medusajs/modules-sdk"
+import { InternalModuleDeclaration } from "@ninjajs/modules-sdk"
 import {
   Context,
   DAL,
@@ -8,7 +8,7 @@ import {
   ModuleJoinerConfig,
   ModulesSdkTypes,
   ReservationItemDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   CommonEvents,
   EmitEvents,
@@ -16,11 +16,11 @@ import {
   InjectTransactionManager,
   InventoryEvents,
   isDefined,
-  MedusaContext,
-  MedusaError,
+  NinjaContext,
+  NinjaError,
   ModulesSdkUtils,
   partitionArray,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { InventoryItem, InventoryLevel, ReservationItem } from "@models"
 import { entityNameToLinkableKeysMap, joinerConfig } from "../joiner-config"
 import InventoryLevelService from "./inventory-level"
@@ -143,7 +143,7 @@ export default class InventoryModuleService<
         })
         .join(", ")
 
-      throw new MedusaError(MedusaError.Types.NOT_FOUND, error)
+      throw new NinjaError(NinjaError.Types.NOT_FOUND, error)
     }
 
     return inventoryLevels
@@ -164,7 +164,7 @@ export default class InventoryModuleService<
     input:
       | InventoryNext.CreateReservationItemInput[]
       | InventoryNext.CreateReservationItemInput,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.ReservationItemDTO[] | InventoryNext.ReservationItemDTO
   > {
@@ -198,7 +198,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async createReservationItems_(
     input: InventoryNext.CreateReservationItemInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<TReservationItem[]> {
     const inventoryLevels = await this.ensureInventoryLevels(
       input.map(({ location_id, inventory_item_id }) => ({
@@ -263,7 +263,7 @@ export default class InventoryModuleService<
     input:
       | InventoryNext.CreateInventoryItemInput
       | InventoryNext.CreateInventoryItemInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.InventoryItemDTO | InventoryNext.InventoryItemDTO[]
   > {
@@ -295,7 +295,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async createInventoryItems_(
     input: InventoryNext.CreateInventoryItemInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<InventoryNext.InventoryItemDTO[]> {
     return await this.inventoryItemService_.create(input)
   }
@@ -315,7 +315,7 @@ export default class InventoryModuleService<
     input:
       | InventoryNext.CreateInventoryLevelInput[]
       | InventoryNext.CreateInventoryLevelInput,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.InventoryLevelDTO[] | InventoryNext.InventoryLevelDTO
   > {
@@ -347,7 +347,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async createInventoryLevels_(
     input: InventoryNext.CreateInventoryLevelInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<TInventoryLevel[]> {
     return await this.inventoryLevelService_.create(input, context)
   }
@@ -374,7 +374,7 @@ export default class InventoryModuleService<
     input:
       | InventoryNext.UpdateInventoryItemInput
       | InventoryNext.UpdateInventoryItemInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.InventoryItemDTO | InventoryNext.InventoryItemDTO[]
   > {
@@ -406,7 +406,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async updateInventoryItems_(
     input: (Partial<InventoryNext.CreateInventoryItemInput> & { id: string })[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<TInventoryItem[]> {
     return await this.inventoryItemService_.update(input, context)
   }
@@ -415,7 +415,7 @@ export default class InventoryModuleService<
   @EmitEvents()
   async deleteInventoryItemLevelByLocationId(
     locationId: string | string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<[object[], Record<string, unknown[]>]> {
     const result = await this.inventoryLevelService_.softDelete(
       { location_id: locationId },
@@ -447,7 +447,7 @@ export default class InventoryModuleService<
   async deleteInventoryLevel(
     inventoryItemId: string,
     locationId: string,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<void> {
     const [inventoryLevel] = await this.inventoryLevelService_.list(
       { inventory_item_id: inventoryItemId, location_id: locationId },
@@ -487,7 +487,7 @@ export default class InventoryModuleService<
     updates:
       | InventoryTypes.BulkUpdateInventoryLevelInput[]
       | InventoryTypes.BulkUpdateInventoryLevelInput,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.InventoryLevelDTO | InventoryNext.InventoryLevelDTO[]
   > {
@@ -520,7 +520,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async updateInventoryLevels_(
     updates: InventoryTypes.BulkUpdateInventoryLevelInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ) {
     const inventoryLevels = await this.ensureInventoryLevels(
       updates.map(({ location_id, inventory_item_id }) => ({
@@ -572,7 +572,7 @@ export default class InventoryModuleService<
     input:
       | InventoryNext.UpdateReservationItemInput
       | InventoryNext.UpdateReservationItemInput[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<
     InventoryNext.ReservationItemDTO | InventoryNext.ReservationItemDTO[]
   > {
@@ -604,7 +604,7 @@ export default class InventoryModuleService<
   @InjectTransactionManager("baseRepository_")
   async updateReservationItems_(
     input: (InventoryNext.UpdateReservationItemInput & { id: string })[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<TReservationItem[]> {
     const reservationItems = await this.listReservationItems(
       { id: input.map((u) => u.id) },
@@ -620,8 +620,8 @@ export default class InventoryModuleService<
       (acc, update) => {
         const reservation = reservationMap.get(update.id)
         if (!reservation) {
-          throw new MedusaError(
-            MedusaError.Types.INVALID_DATA,
+          throw new NinjaError(
+            NinjaError.Types.INVALID_DATA,
             `Reservation item with id ${update.id} not found`
           )
         }
@@ -702,7 +702,7 @@ export default class InventoryModuleService<
   @EmitEvents()
   async deleteReservationItemByLocationId(
     locationId: string | string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<void> {
     const reservations: InventoryNext.ReservationItemDTO[] =
       await this.listReservationItems({ location_id: locationId }, {}, context)
@@ -740,7 +740,7 @@ export default class InventoryModuleService<
   @EmitEvents()
   async deleteReservationItemsByLineItem(
     lineItemId: string | string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<void> {
     const reservations: InventoryNext.ReservationItemDTO[] =
       await this.listReservationItems({ line_item_id: lineItemId }, {}, context)
@@ -783,7 +783,7 @@ export default class InventoryModuleService<
     inventoryItemId: string,
     locationId: string,
     adjustment: number,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<InventoryNext.InventoryLevelDTO> {
     const result = await this.adjustInventory_(
       inventoryItemId,
@@ -815,7 +815,7 @@ export default class InventoryModuleService<
     inventoryItemId: string,
     locationId: string,
     adjustment: number,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<TInventoryLevel> {
     const inventoryLevel = await this.retrieveInventoryLevelByItemAndLocation(
       inventoryItemId,
@@ -838,7 +838,7 @@ export default class InventoryModuleService<
   async retrieveInventoryLevelByItemAndLocation(
     inventoryItemId: string,
     locationId: string,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<InventoryNext.InventoryLevelDTO> {
     const [inventoryLevel] = await this.listInventoryLevels(
       { inventory_item_id: inventoryItemId, location_id: locationId },
@@ -847,8 +847,8 @@ export default class InventoryModuleService<
     )
 
     if (!inventoryLevel) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Inventory level for item ${inventoryItemId} and location ${locationId} not found`
       )
     }
@@ -868,7 +868,7 @@ export default class InventoryModuleService<
   async retrieveAvailableQuantity(
     inventoryItemId: string,
     locationIds: string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<number> {
     if (locationIds.length === 0) {
       return 0
@@ -904,7 +904,7 @@ export default class InventoryModuleService<
   async retrieveStockedQuantity(
     inventoryItemId: string,
     locationIds: string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<number> {
     if (locationIds.length === 0) {
       return 0
@@ -941,7 +941,7 @@ export default class InventoryModuleService<
   async retrieveReservedQuantity(
     inventoryItemId: string,
     locationIds: string[],
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<number> {
     // Throws if item does not exist
     await this.inventoryItemService_.retrieve(
@@ -979,7 +979,7 @@ export default class InventoryModuleService<
     inventoryItemId: string,
     locationIds: string[],
     quantity: number,
-    @MedusaContext() context: Context = {}
+    @NinjaContext() context: Context = {}
   ): Promise<boolean> {
     const availableQuantity = await this.retrieveAvailableQuantity(
       inventoryItemId,

@@ -1,8 +1,8 @@
-import { Button, Input, Select, Text, toast } from "@medusajs/ui"
+import { Button, Input, Select, Text, toast } from "@ninjajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
-import { PaymentProviderDTO, RegionDTO } from "@medusajs/types"
+import { PaymentProviderDTO, RegionDTO } from "@ninjajs/types"
 
 import { Combobox } from "../../../../../components/common/combobox"
 import { Form } from "../../../../../components/common/form"

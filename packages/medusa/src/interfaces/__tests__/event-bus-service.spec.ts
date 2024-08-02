@@ -1,5 +1,5 @@
-import { EventBusTypes } from "@medusajs/types"
-import { EventBusUtils } from "@medusajs/utils"
+import { EventBusTypes } from "@ninjajs/types"
+import { EventBusUtils } from "@ninjajs/utils"
 import { EntityManager } from "typeorm"
 
 class EventBus extends EventBusUtils.AbstractEventBusModuleService {

@@ -7,7 +7,7 @@ import {
 
 import { DraftOrder } from "../../../.."
 import { EntityManager } from "typeorm"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 
 /**
@@ -25,18 +25,18 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.draftOrders.removeLineItem(draftOrderId, itemId)
+ *       ninja.admin.draftOrders.removeLineItem(draftOrderId, itemId)
  *       .then(({ draft_order }) => {
  *         console.log(draft_order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminDraftOrderRemoveLineItem } from "medusa-react"
+ *       import { useAdminDraftOrderRemoveLineItem } from "ninja-react"
  *
  *       type Props = {
  *         draftOrderId: string
@@ -64,7 +64,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/draft-orders/{id}/line-items/{line_id}' \
- *       -H 'x-medusa-access-token: {api_token}'
+ *       -H 'x-ninja-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -106,8 +106,8 @@ export default async (req, res) => {
       .retrieve(id, { select: defaultAdminDraftOrdersFields })
 
     if (draftOrder.status === "completed") {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "You are only allowed to update open draft orders"
       )
     }

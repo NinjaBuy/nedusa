@@ -1,13 +1,13 @@
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 
-import { createProductVariantsWorkflow } from "@medusajs/core-flows"
+import { createProductVariantsWorkflow } from "@ninjajs/core-flows"
 import {
   remoteQueryObjectFromString,
   ContainerRegistrationKeys,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   refetchProduct,
   remapKeysForVariant,
@@ -17,8 +17,8 @@ import {
 import { AdminCreateProductVariantType } from "../../validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const productId = req.params.id
@@ -45,8 +45,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCreateProductVariantType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCreateProductVariantType>,
+  res: NinjaResponse
 ) => {
   const productId = req.params.id
   const input = [

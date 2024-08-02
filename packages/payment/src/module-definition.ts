@@ -1,4 +1,4 @@
-import { ModuleExports } from "@medusajs/types"
+import { ModuleExports } from "@ninjajs/types"
 
 import { PaymentModuleService } from "@services"
 
@@ -7,8 +7,8 @@ import loadContainer from "./loaders/container"
 import loadProviders from "./loaders/providers"
 import loadDefaults from "./loaders/defaults"
 
-import { Modules } from "@medusajs/modules-sdk"
-import { ModulesSdkUtils } from "@medusajs/utils"
+import { Modules } from "@ninjajs/modules-sdk"
+import { ModulesSdkUtils } from "@ninjajs/utils"
 
 import * as PaymentModels from "@models"
 

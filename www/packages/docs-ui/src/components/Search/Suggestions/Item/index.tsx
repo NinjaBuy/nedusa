@@ -16,10 +16,10 @@ export const SearchSuggestionItem = ({
       className={clsx(
         "flex items-center",
         "cursor-pointer rounded-docs_sm p-docs_0.5",
-        "hover:bg-medusa-bg-base-hover",
-        "focus:bg-medusa-bg-base-hover",
+        "hover:bg-ninja-bg-base-hover",
+        "focus:bg-ninja-bg-base-hover",
         "focus:outline-none last:mb-docs_1",
-        "text-medusa-fg-base text-compact-small",
+        "text-ninja-fg-base text-compact-small",
         className
       )}
       onClick={onClick}

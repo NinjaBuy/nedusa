@@ -1,22 +1,22 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
-import { IInventoryServiceNext, IStockLocationService } from "@medusajs/types"
+} from "@ninjajs/utils"
+import { IInventoryServiceNext, IStockLocationService } from "@ninjajs/types"
 
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import { createAdminUser } from "../../../helpers/create-admin-user"
 
-const { medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
 
 jest.setTimeout(30000)
 
 const { simpleProductFactory } = require("../../../factories")
-const adminHeaders = { headers: { "x-medusa-access-token": "test_token" } }
+const adminHeaders = { headers: { "x-ninja-access-token": "test_token" } }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    MEDUSA_FF_MEDUSA_V2: true,
+    NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer

@@ -1,7 +1,7 @@
 import { ClassConstructor, plainToInstance } from "class-transformer"
 import { validate, ValidationError, ValidatorOptions } from "class-validator"
-import { MedusaError } from "medusa-core-utils"
-import { Constructor } from "@medusajs/types"
+import { NinjaError } from "ninja-core-utils"
+import { Constructor } from "@ninjajs/types"
 
 const extendedValidators: Map<string, Constructor<any>> = new Map()
 
@@ -11,11 +11,11 @@ const extendedValidators: Map<string, Constructor<any>> = new Map()
  * @example
  * ```ts
  * // /src/api/routes/admin/products/create-product.ts
- * import { registerOverriddenValidators } from "@medusajs/medusa"
- * import { AdminPostProductsReq as MedusaAdminPostProductsReq } from "@medusajs/medusa/dist/api/routes/admin/products/create-product"
+ * import { registerOverriddenValidators } from "@ninjajs/ninja"
+ * import { AdminPostProductsReq as NinjaAdminPostProductsReq } from "@ninjajs/ninja/dist/api/routes/admin/products/create-product"
  * import { IsString } from "class-validator"
  *
- * class AdminPostProductsReq extends MedusaAdminPostProductsReq {
+ * class AdminPostProductsReq extends NinjaAdminPostProductsReq {
  *    @IsString()
  *    test: string
  * }
@@ -63,8 +63,8 @@ export async function validator<T, V>(
   const errorMessages = reduceErrorMessages(errors)
 
   if (errors?.length) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       errorMessages.join(", ")
     )
   }

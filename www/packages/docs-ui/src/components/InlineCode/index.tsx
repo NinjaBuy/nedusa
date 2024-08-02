@@ -11,18 +11,18 @@ export const InlineCode = (props: InlineCodeProps) => {
     <CopyButton
       text={props.children as string}
       buttonClassName={clsx(
-        "bg-transparent border-0 p-0 inline text-medusa-fg-subtle group",
+        "bg-transparent border-0 p-0 inline text-ninja-fg-subtle group",
         "font-monospace"
       )}
     >
       <code
         {...props}
         className={clsx(
-          "border-medusa-tag-neutral-border border",
-          "text-medusa-tag-neutral-text",
-          "bg-medusa-tag-neutral-bg font-monospace text-code-label rounded-docs_sm py-0 px-[6px]",
-          "group-active:bg-medusa-bg-subtle-pressed group-focus:bg-medusa-bg-subtle-pressed",
-          "group-hover:bg-medusa-tag-neutral-bg-hover",
+          "border-ninja-tag-neutral-border border",
+          "text-ninja-tag-neutral-text",
+          "bg-ninja-tag-neutral-bg font-monospace text-code-label rounded-docs_sm py-0 px-[6px]",
+          "group-active:bg-ninja-bg-subtle-pressed group-focus:bg-ninja-bg-subtle-pressed",
+          "group-hover:bg-ninja-tag-neutral-bg-hover",
           props.className
         )}
       />

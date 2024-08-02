@@ -6,12 +6,12 @@ import { FindConfig, Selector } from "../types/common"
 
 import { EntityManager } from "typeorm"
 import { Logger } from "../types/global"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { Notification } from "../models"
 import { NotificationProviderRepository } from "../repositories/notification-provider"
 import { NotificationRepository } from "../repositories/notification"
 import { buildQuery } from "../utils"
-import { promiseAll } from "@medusajs/utils"
+import { promiseAll } from "@ninjajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -129,8 +129,8 @@ class NotificationService extends TransactionBaseService {
     const notification = await notiRepository.findOne(query)
 
     if (!notification) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Notification with id: ${id} was not found.`
       )
     }
@@ -145,8 +145,8 @@ class NotificationService extends TransactionBaseService {
    */
   subscribe(eventName: string, providerId: string): void {
     if (typeof providerId !== "string") {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "providerId must be a string"
       )
     }
@@ -168,8 +168,8 @@ class NotificationService extends TransactionBaseService {
     try {
       return this.container_[`noti_${id}`]
     } catch (err) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Could not find a notification provider with id: ${id}.`
       )
     }

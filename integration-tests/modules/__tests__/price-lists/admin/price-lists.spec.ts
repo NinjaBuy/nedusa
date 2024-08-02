@@ -1,4 +1,4 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import {
   ICustomerModuleService,
   IPricingModuleService,
@@ -6,19 +6,19 @@ import {
   IRegionModuleService,
   PriceListStatus,
   PriceListType,
-} from "@medusajs/types"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+} from "@ninjajs/types"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 import { createVariantPriceSet } from "../../../helpers/create-variant-price-set"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 const adminHeaders = {
-  headers: { "x-medusa-access-token": "test_token" },
+  headers: { "x-ninja-access-token": "test_token" },
 }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Admin: Price Lists API", () => {

@@ -1,11 +1,11 @@
 {
-  "name": "@medusajs/file-local-next",
+  "name": "@ninjajs/file-local-next",
   "version": "0.0.2",
-  "description": "Local filesystem file storage for Medusa",
+  "description": "Local filesystem file storage for Ninja",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/medusa",
+    "url": "https://github.com/ninjajs/ninja",
     "directory": "packages/file-local"
   },
   "files": [
@@ -14,7 +14,7 @@
   "engines": {
     "node": ">=16"
   },
-  "author": "Medusa",
+  "author": "Ninja",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "cross-env NODE_ENV=production tsc --build",
@@ -29,10 +29,10 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@medusajs/utils": "^1.11.7"
+    "@ninjajs/utils": "^1.11.7"
   },
   "keywords": [
-    "medusa-plugin",
-    "medusa-plugin-file"
+    "ninja-plugin",
+    "ninja-plugin-file"
   ]
 }

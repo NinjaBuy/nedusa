@@ -1,4 +1,4 @@
-import { zeroDecimalCurrencies } from "medusa-core-utils";
+import { zeroDecimalCurrencies } from "ninja-core-utils";
 
 export function roundToTwo(num: number, currency: string): string {
   if (zeroDecimalCurrencies.includes(currency.toLowerCase())) {

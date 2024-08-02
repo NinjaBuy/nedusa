@@ -1,9 +1,9 @@
-interface MedusaPluginOptions {
+interface NinjaPluginOptions {
   storeUrl: string
   apiKey: string
 }
 
-interface MedusaProductImage {
+interface NinjaProductImage {
   url: string
   metadata: Record<string, unknown> | null
   id: string
@@ -12,18 +12,18 @@ interface MedusaProductImage {
   deleted_at: string | null
 }
 
-interface IMedusaOperation {
+interface INinjaOperation {
   execute: () => Promise<any[]>
   name: string
 }
 
 interface IOperations {
-  createProductsOperation: IMedusaOperation
-  createCollectionsOperation: IMedusaOperation
-  createRegionsOperation: IMedusaOperation
-  createOrdersOperation: IMedusaOperation
-  incrementalProductsOperation: (date: string) => IMedusaOperation
-  incrementalCollectionsOperation: (date: string) => IMedusaOperation
-  incrementalRegionsOperation: (date: string) => IMedusaOperation
-  incrementalOrdersOperation: (date: string) => IMedusaOperation
+  createProductsOperation: INinjaOperation
+  createCollectionsOperation: INinjaOperation
+  createRegionsOperation: INinjaOperation
+  createOrdersOperation: INinjaOperation
+  incrementalProductsOperation: (date: string) => INinjaOperation
+  incrementalCollectionsOperation: (date: string) => INinjaOperation
+  incrementalRegionsOperation: (date: string) => INinjaOperation
+  incrementalOrdersOperation: (date: string) => INinjaOperation
 }

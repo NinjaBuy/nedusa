@@ -1,4 +1,4 @@
-import { isDate } from "@medusajs/utils"
+import { isDate } from "@ninjajs/utils"
 
 export const transformDate = ({ value }): Date => {
   return isDate(value) ? new Date(value) : new Date(Number(value) * 1000)

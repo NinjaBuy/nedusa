@@ -1,25 +1,25 @@
 import {
   MODULE_PACKAGE_NAMES,
-  MedusaApp,
-  MedusaAppMigrateUp,
-  MedusaAppOutput,
-  MedusaModule,
+  NinjaApp,
+  NinjaAppMigrateUp,
+  NinjaAppOutput,
+  NinjaModule,
   Modules,
   ModulesDefinition,
-} from "@medusajs/modules-sdk"
+} from "@ninjajs/modules-sdk"
 import {
   CommonTypes,
   InternalModuleDeclaration,
   LoadedModule,
-  MedusaContainer,
+  NinjaContainer,
   ModuleDefinition,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   ContainerRegistrationKeys,
   FlagRouter,
-  MedusaV2Flag,
+  NinjaV2Flag,
   isObject,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 import { asValue } from "awilix"
 import { remoteQueryFetchData } from "../utils/remote-query-fetch-data"
@@ -42,7 +42,7 @@ export function mergeDefaultModules(
   return configModules
 }
 
-export async function migrateMedusaApp(
+export async function migrateNinjaApp(
   {
     configModule,
     container,
@@ -51,7 +51,7 @@ export async function migrateMedusaApp(
       modules?: CommonTypes.ConfigModule["modules"]
       projectConfig: CommonTypes.ConfigModule["projectConfig"]
     }
-    container: MedusaContainer
+    container: NinjaContainer
   },
   config = { registerInContainer: true }
 ): Promise<void> {
@@ -98,7 +98,7 @@ export async function migrateMedusaApp(
     }
   }
 
-  await MedusaAppMigrateUp({
+  await NinjaAppMigrateUp({
     modulesConfig: configModules,
     remoteFetchData: remoteQueryFetchData(container),
     sharedContainer: container,
@@ -107,7 +107,7 @@ export async function migrateMedusaApp(
   })
 }
 
-export const loadMedusaApp = async (
+export const loadNinjaApp = async (
   {
     configModule,
     container,
@@ -116,12 +116,12 @@ export const loadMedusaApp = async (
       modules?: CommonTypes.ConfigModule["modules"]
       projectConfig: CommonTypes.ConfigModule["projectConfig"]
     }
-    container: MedusaContainer
+    container: NinjaContainer
   },
   config = { registerInContainer: true }
-): Promise<MedusaAppOutput> => {
+): Promise<NinjaAppOutput> => {
   const featureFlagRouter = container.resolve<FlagRouter>("featureFlagRouter")
-  const isMedusaV2Enabled = featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
+  const isNinjaV2Enabled = featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
   const injectedDependencies = {
     [ContainerRegistrationKeys.PG_CONNECTION]: container.resolve(
       ContainerRegistrationKeys.PG_CONNECTION
@@ -165,7 +165,7 @@ export const loadMedusaApp = async (
     }
   }
 
-  const medusaApp = await MedusaApp({
+  const ninjaApp = await NinjaApp({
     workerMode: configModule.projectConfig.worker_mode,
     modulesConfig: configModules,
     remoteFetchData: remoteQueryFetchData(container),
@@ -178,9 +178,9 @@ export const loadMedusaApp = async (
 
   const missingPackages: string[] = []
 
-  if (isMedusaV2Enabled) {
+  if (isNinjaV2Enabled) {
     for (const requiredModuleKey of requiredModuleKeys) {
-      const isModuleInstalled = MedusaModule.isInstalled(requiredModuleKey)
+      const isModuleInstalled = NinjaModule.isInstalled(requiredModuleKey)
 
       if (!isModuleInstalled) {
         missingPackages.push(
@@ -191,7 +191,7 @@ export const loadMedusaApp = async (
 
     if (missingPackages.length) {
       throw new Error(
-        `FeatureFlag medusa_v2 (MEDUSA_FF_MEDUSA_V2) requires the following packages/module registration: (${missingPackages.join(
+        `FeatureFlag ninja_v2 (NINJA_FF_NINJA_V2) requires the following packages/module registration: (${missingPackages.join(
           ", "
         )})`
       )
@@ -199,19 +199,19 @@ export const loadMedusaApp = async (
   }
 
   if (!config.registerInContainer) {
-    return medusaApp
+    return ninjaApp
   }
 
   container.register(
     ContainerRegistrationKeys.REMOTE_LINK,
-    asValue(medusaApp.link)
+    asValue(ninjaApp.link)
   )
   container.register(
     ContainerRegistrationKeys.REMOTE_QUERY,
-    asValue(medusaApp.query)
+    asValue(ninjaApp.query)
   )
 
-  for (const moduleService of Object.values(medusaApp.modules)) {
+  for (const moduleService of Object.values(ninjaApp.modules)) {
     const loadedModule = moduleService as LoadedModule
     container.register(
       loadedModule.__definition.registrationName,
@@ -227,7 +227,7 @@ export const loadMedusaApp = async (
     }
   }
 
-  return medusaApp
+  return ninjaApp
 }
 
 /**
@@ -244,7 +244,7 @@ export async function runModulesLoader({
     modules?: CommonTypes.ConfigModule["modules"]
     projectConfig: CommonTypes.ConfigModule["projectConfig"]
   }
-  container: MedusaContainer
+  container: NinjaContainer
 }): Promise<void> {
   const injectedDependencies = {
     [ContainerRegistrationKeys.PG_CONNECTION]: container.resolve(
@@ -286,7 +286,7 @@ export async function runModulesLoader({
     }
   }
 
-  await MedusaApp({
+  await NinjaApp({
     modulesConfig: configModules,
     remoteFetchData: remoteQueryFetchData(container),
     sharedContainer: container,
@@ -296,4 +296,4 @@ export async function runModulesLoader({
   })
 }
 
-export default loadMedusaApp
+export default loadNinjaApp

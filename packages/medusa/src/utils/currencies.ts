@@ -1,2 +1,2 @@
-import { defaultCurrencies, Currency } from "@medusajs/utils"
+import { defaultCurrencies, Currency } from "@ninjajs/utils"
 export const currencies: Record<string, Currency> = defaultCurrencies

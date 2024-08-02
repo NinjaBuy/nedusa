@@ -1,4 +1,4 @@
-import { AdminProductCategoryResponse } from "@medusajs/types"
+import { AdminProductCategoryResponse } from "@ninjajs/types"
 import { TFunction } from "i18next"
 
 export function getIsActiveProps(

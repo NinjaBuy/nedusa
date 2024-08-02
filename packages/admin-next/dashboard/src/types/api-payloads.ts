@@ -1,5 +1,5 @@
 /**
- * Temporary types for API payloads until we export them from `@medusajs/types`
+ * Temporary types for API payloads until we export them from `@ninjajs/types`
  */
 
 import {
@@ -31,7 +31,7 @@ import {
   UpdateStockLocationInput,
   UpdateStoreDTO,
   UpdateUserDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 // Auth
 export type EmailPassReq = { email: string; password: string }

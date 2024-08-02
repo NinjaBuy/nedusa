@@ -10,32 +10,32 @@ const {
   AllocationType,
   DiscountConditionType,
   DiscountConditionOperator,
-} = require("@medusajs/medusa")
-const { IdMap } = require("medusa-test-utils")
+} = require("@ninjajs/ninja")
+const { IdMap } = require("ninja-test-utils")
 const { simpleDiscountFactory } = require("../../../factories")
 
 jest.setTimeout(30000)
 
 const adminReqConfig = {
   headers: {
-    "x-medusa-access-token": "test_token",
+    "x-ninja-access-token": "test_token",
   },
 }
 
 describe("/admin/collections", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("/admin/collections/:id", () => {
@@ -57,7 +57,7 @@ describe("/admin/collections", () => {
         {
           title: "test",
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       const response = await api.post(
@@ -66,7 +66,7 @@ describe("/admin/collections", () => {
           title: "test collection creation",
           handle: "test-handle-creation",
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       expect(response.status).toEqual(200)
@@ -91,12 +91,12 @@ describe("/admin/collections", () => {
         {
           title: "test",
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       const response = await api.delete(
         `/admin/collections/${creationResponse.data.collection.id}`,
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       expect(response.status).toEqual(200)
@@ -111,7 +111,7 @@ describe("/admin/collections", () => {
       const api = useApi()
 
       const response = await api.get("/admin/collections/test-collection", {
-        headers: { "x-medusa-access-token": "test_token" },
+        headers: { "x-ninja-access-token": "test_token" },
       })
 
       expect(response.data).toEqual(
@@ -160,7 +160,7 @@ describe("/admin/collections", () => {
           title: "test collection creation",
           handle: "test-handle-creation",
         },
-        { headers: { "x-medusa-access-token": "test_token" } }
+        { headers: { "x-ninja-access-token": "test_token" } }
       )
 
       expect(response.status).toEqual(200)
@@ -181,7 +181,7 @@ describe("/admin/collections", () => {
       const api = useApi()
 
       const response = await api.get("/admin/collections", {
-        headers: { "x-medusa-access-token": "test_token" },
+        headers: { "x-ninja-access-token": "test_token" },
       })
 
       expect(response.data).toEqual(
@@ -261,7 +261,7 @@ describe("/admin/collections", () => {
             product_ids: ["test-product_filtering_1"],
           },
           {
-            headers: { "x-medusa-access-token": "test_token" },
+            headers: { "x-ninja-access-token": "test_token" },
           }
         )
         .catch((err) => console.warn(err))
@@ -307,7 +307,7 @@ describe("/admin/collections", () => {
 
       const response = await api
         .delete("/admin/collections/test-collection/products/batch", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
           data: { product_ids: ["test-product"] },
         })
         .catch((err) => console.warn(err))
@@ -328,7 +328,7 @@ describe("/admin/collections", () => {
 
       const response = await api
         .get("/admin/collections?title=Test%20collection", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
         .catch((err) => console.log(err))
 

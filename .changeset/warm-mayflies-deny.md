@@ -1,6 +1,6 @@
 ---
-"@medusajs/customer": patch
-"@medusajs/medusa": patch
+"@ninjajs/customer": patch
+"@ninjajs/ninja": patch
 ---
 
-feat(medusa, customer): Add list filtering capabilities for customers
+feat(ninja, customer): Add list filtering capabilities for customers

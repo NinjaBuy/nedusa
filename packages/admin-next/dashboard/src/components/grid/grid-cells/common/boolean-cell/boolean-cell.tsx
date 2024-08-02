@@ -1,4 +1,4 @@
-import { Select } from "@medusajs/ui"
+import { Select } from "@ninjajs/ui"
 import { Controller, FieldValues } from "react-hook-form"
 import { CellProps } from "../../../types"
 

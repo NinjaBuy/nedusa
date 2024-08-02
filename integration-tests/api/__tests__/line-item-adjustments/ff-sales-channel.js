@@ -14,7 +14,7 @@ jest.setTimeout(30000)
 
 describe("Line Item - Sales Channel", () => {
   let dbConnection
-  let medusaProcess
+  let ninjaProcess
 
   const doAfterEach = async () => {
     const db = useDb()
@@ -25,16 +25,16 @@ describe("Line Item - Sales Channel", () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { MEDUSA_FF_SALES_CHANNELS: true },
+      env: { NINJA_FF_SALES_CHANNELS: true },
     })
     dbConnection = connection
-    medusaProcess = process
+    ninjaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   beforeEach(async () => {

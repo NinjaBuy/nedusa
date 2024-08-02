@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 
-import type { Discount } from "@medusajs/medusa"
+import type { Discount } from "@ninjajs/ninja"
 
 import {
   CodeCell,

@@ -1,4 +1,4 @@
-import { AdminGetPromotionsParams } from "@medusajs/medusa"
+import { AdminGetPromotionsParams } from "@ninjajs/ninja"
 import { useQueryParams } from "../../use-query-params"
 
 type UsePromotionTableQueryProps = {

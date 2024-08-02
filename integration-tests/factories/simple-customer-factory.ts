@@ -1,6 +1,6 @@
 import faker from "faker"
 import { DataSource } from "typeorm"
-import { Customer, CustomerGroup } from "@medusajs/medusa"
+import { Customer, CustomerGroup } from "@ninjajs/ninja"
 import { CustomerGroupFactoryData, simpleCustomerGroupFactory, } from "./simple-customer-group-factory"
 
 export type CustomerFactoryData = {

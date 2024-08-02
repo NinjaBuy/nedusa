@@ -7,15 +7,15 @@ import {
   RemoteQueryFunction,
   ReservationItemDTO,
   ReserveQuantityContext,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   FlagRouter,
-  MedusaError,
-  MedusaV2Flag,
+  NinjaError,
+  NinjaV2Flag,
   isDefined,
   promiseAll,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { EntityManager, In } from "typeorm"
 import { LineItem, Product, ProductVariant } from "../models"
 import { PricedProduct, PricedVariant } from "../types/pricing"
@@ -176,8 +176,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
     })
 
     if (!variantInventory) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Inventory item with id ${inventoryItemId} not found`
       )
     }
@@ -312,8 +312,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
     )
 
     if (invalidDataEntries.length) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `"requiredQuantity" must be greater than 0, the following entries are invalid: ${invalidDataEntries
           .map((d) => JSON.stringify(d))
           .join(", ")}`
@@ -322,7 +322,7 @@ class ProductVariantInventoryService extends TransactionBaseService {
 
     // Verify that variant exists
     let variants
-    if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
+    if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
       variants = await this.remoteQuery_(
         remoteQueryObjectFromString({
           entryPoint: "variants",
@@ -350,8 +350,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
     if (foundVariantIds.size !== requestedVariantIds.size) {
       const difference = getSetDifference(requestedVariantIds, foundVariantIds)
 
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Variants not found for the following ids: ${[...difference].join(
           ", "
         )}`
@@ -382,8 +382,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
         foundInventoryItemIds
       )
 
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Inventory items not found for the following ids: ${[
           ...difference,
         ].join(", ")}`
@@ -513,8 +513,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
         .listLocationIds(context.salesChannelId)
 
       if (!locationIds.length) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Must provide location_id or sales_channel_id to a Sales Channel that has associated Stock Locations"
         )
       }
@@ -530,8 +530,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
         )
 
       if (count === 0) {
-        throw new MedusaError(
-          MedusaError.Types.INVALID_DATA,
+        throw new NinjaError(
+          NinjaError.Types.INVALID_DATA,
           "Must provide location_id or sales_channel_id to a Sales Channel that has associated locations with inventory levels"
         )
       }
@@ -589,8 +589,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
     }
 
     if (quantity > 0) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "You can only reduce reservation quantities using adjustReservationsQuantityByLineItem. If you wish to reserve more use update or create."
       )
     }
@@ -706,8 +706,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
         )
 
       if (!inventoryLevelCount) {
-        throw new MedusaError(
-          MedusaError.Types.NOT_ALLOWED,
+        throw new NinjaError(
+          NinjaError.Types.NOT_ALLOWED,
           `Inventory item for ${item.title} not found at location`
         )
       }
@@ -724,8 +724,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
           pvInventoryItem.required_quantity * item.quantity >
             inventoryLevel.stocked_quantity
         ) {
-          throw new MedusaError(
-            MedusaError.Types.NOT_ALLOWED,
+          throw new NinjaError(
+            NinjaError.Types.NOT_ALLOWED,
             `Insufficient stock for item: ${item.title}`
           )
         }
@@ -996,8 +996,8 @@ class ProductVariantInventoryService extends TransactionBaseService {
     )
 
     if (variantInventoryItems.length && variantItemsAreMixed) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         "All variant inventory items must belong to the same variant"
       )
     }

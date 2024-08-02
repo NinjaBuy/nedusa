@@ -7,7 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from "class-validator"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import {
   defaultAdminDraftOrdersCartFields,
@@ -40,20 +40,20 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.draftOrders.update(draftOrderId, {
+ *       ninja.admin.draftOrders.update(draftOrderId, {
  *         email: "user@example.com"
  *       })
  *       .then(({ draft_order }) => {
  *         console.log(draft_order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateDraftOrder } from "medusa-react"
+ *       import { useAdminUpdateDraftOrder } from "ninja-react"
  *
  *       type Props = {
  *         draftOrderId: string
@@ -83,7 +83,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/draft-orders/{id}' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "email": "user@example.com"
@@ -128,8 +128,8 @@ export default async (req, res) => {
   const draftOrder = await draftOrderService.retrieve(id)
 
   if (draftOrder.status === DraftOrderStatus.COMPLETED) {
-    throw new MedusaError(
-      MedusaError.Types.NOT_ALLOWED,
+    throw new NinjaError(
+      NinjaError.Types.NOT_ALLOWED,
       "You are only allowed to update open draft orders"
     )
   }

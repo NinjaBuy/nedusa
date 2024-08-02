@@ -1,4 +1,4 @@
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 import { breaking } from "../../../helpers/breaking"
 import {
   adminHeaders,
@@ -13,9 +13,9 @@ let {
 
 jest.setTimeout(30000)
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env: {
-    // MEDUSA_FF_MEDUSA_V2: true,
+    // NINJA_FF_NINJA_V2: true,
   },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let appContainer

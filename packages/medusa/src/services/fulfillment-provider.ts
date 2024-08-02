@@ -1,6 +1,6 @@
-import { promiseAll } from "@medusajs/utils"
-import { MedusaError } from "medusa-core-utils"
-import BaseFulfillmentService from "medusa-interfaces"
+import { promiseAll } from "@ninjajs/utils"
+import { NinjaError } from "ninja-core-utils"
+import BaseFulfillmentService from "ninja-interfaces"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import {
@@ -18,11 +18,11 @@ import {
   CreateReturnType,
   FulfillmentOptions,
 } from "../types/fulfillment-provider"
-import { MedusaContainer } from "../types/global"
+import { NinjaContainer } from "../types/global"
 
 type FulfillmentProviderKey = `fp_${string}`
 
-type FulfillmentProviderContainer = MedusaContainer & {
+type FulfillmentProviderContainer = NinjaContainer & {
   fulfillmentProviderRepository: typeof FulfillmentProviderRepository
   manager: EntityManager
 } & {
@@ -98,8 +98,8 @@ class FulfillmentProviderService extends TransactionBaseService {
     try {
       return this.container_[`fp_${providerId}`]
     } catch (err) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Could not find a fulfillment provider with id: ${providerId}`
       )
     }

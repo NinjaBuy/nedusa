@@ -21,7 +21,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: Handling swap fulfillments
- *   url: https://docs.medusajs.com/modules/orders/swaps#handling-swap-fulfillment
+ *   url: https://docs.ninjajs.com/modules/orders/swaps#handling-swap-fulfillment
  * parameters:
  *   - (path) id=* {string} The ID of the Order.
  *   - (path) swap_id=* {string} The ID of the Swap.
@@ -39,20 +39,20 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.createSwapShipment(orderId, swapId, {
+ *       ninja.admin.orders.createSwapShipment(orderId, swapId, {
  *         fulfillment_id
  *       })
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateSwapShipment } from "medusa-react"
+ *       import { useAdminCreateSwapShipment } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string,
@@ -89,7 +89,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/swaps/{swap_id}/shipments' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "fulfillment_id": "{fulfillment_id}"

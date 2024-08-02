@@ -1,5 +1,5 @@
 import { FindConfig, Selector } from "../types/common"
-import { MedusaError, isDefined } from "medusa-core-utils"
+import { NinjaError, isDefined } from "ninja-core-utils"
 
 import { CreateNoteInput } from "../types/note"
 import { EntityManager } from "typeorm"
@@ -44,8 +44,8 @@ class NoteService extends TransactionBaseService {
     config: FindConfig<Note> = {}
   ): Promise<Note | never> {
     if (!isDefined(noteId)) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `"noteId" must be defined`
       )
     }
@@ -57,8 +57,8 @@ class NoteService extends TransactionBaseService {
     const note = await noteRepo.findOne(query)
 
     if (!note) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Note with id: ${noteId} was not found.`
       )
     }

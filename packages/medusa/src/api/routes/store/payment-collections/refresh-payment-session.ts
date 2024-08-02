@@ -16,17 +16,17 @@ import { PaymentCollectionService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.paymentCollections.refreshPaymentSession(paymentCollectionId, sessionId)
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.paymentCollections.refreshPaymentSession(paymentCollectionId, sessionId)
  *       .then(({ payment_session }) => {
  *         console.log(payment_session.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { usePaymentCollectionRefreshPaymentSession } from "medusa-react"
+ *       import { usePaymentCollectionRefreshPaymentSession } from "ninja-react"
  *
  *       type Props = {
  *         paymentCollectionId: string

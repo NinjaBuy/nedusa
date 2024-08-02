@@ -1,17 +1,17 @@
-import { batchLinkProductsToCategoryWorkflow } from "@medusajs/core-flows"
+import { batchLinkProductsToCategoryWorkflow } from "@ninjajs/core-flows"
 import {
   AdminProductCategoryResponse,
   LinkMethodRequest,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import { refetchCategory } from "../../helpers"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<LinkMethodRequest>,
-  res: MedusaResponse<AdminProductCategoryResponse>
+  req: AuthenticatedNinjaRequest<LinkMethodRequest>,
+  res: NinjaResponse<AdminProductCategoryResponse>
 ) => {
   const { id } = req.params
 

@@ -25,10 +25,10 @@ import { Type } from "class-transformer"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.salesChannels.addProducts(salesChannelId, {
+ *       ninja.admin.salesChannels.addProducts(salesChannelId, {
  *         product_ids: [
  *           {
  *             id: productId
@@ -39,10 +39,10 @@ import { Type } from "class-transformer"
  *         console.log(sales_channel.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminAddProductsToSalesChannel } from "medusa-react"
+ *       import { useAdminAddProductsToSalesChannel } from "ninja-react"
  *
  *       type Props = {
  *         salesChannelId: string
@@ -76,7 +76,7 @@ import { Type } from "class-transformer"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/sales-channels/{id}/products/batch' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "product_ids": [

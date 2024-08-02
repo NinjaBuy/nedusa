@@ -3,15 +3,15 @@ import {
   DistributedTransactionEvents,
   TransactionHandlerType,
   TransactionStep,
-} from "@medusajs/orchestration"
-import { ContainerLike, Context, MedusaContainer } from "@medusajs/types"
-import { InjectSharedContext, MedusaContext, isString } from "@medusajs/utils"
+} from "@ninjajs/orchestration"
+import { ContainerLike, Context, NinjaContainer } from "@ninjajs/types"
+import { InjectSharedContext, NinjaContext, isString } from "@ninjajs/utils"
 import {
-  MedusaWorkflow,
+  NinjaWorkflow,
   ReturnWorkflow,
   resolveValue,
   type FlowRunOptions,
-} from "@medusajs/workflows-sdk"
+} from "@ninjajs/workflows-sdk"
 import { ulid } from "ulid"
 import { InMemoryDistributedTransactionStorage } from "../utils"
 
@@ -86,7 +86,7 @@ export class WorkflowOrchestratorService {
   async run<T = unknown>(
     workflowIdOrWorkflow: string | ReturnWorkflow<any, any, any>,
     options?: WorkflowOrchestratorRunOptions<T>,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ) {
     let {
       input,
@@ -115,12 +115,12 @@ export class WorkflowOrchestratorService {
       transactionId: context.transactionId,
     })
 
-    const exportedWorkflow: any = MedusaWorkflow.getWorkflow(workflowId)
+    const exportedWorkflow: any = NinjaWorkflow.getWorkflow(workflowId)
     if (!exportedWorkflow) {
       throw new Error(`Workflow with id "${workflowId}" not found.`)
     }
 
-    const flow = exportedWorkflow(container as MedusaContainer)
+    const flow = exportedWorkflow(container as NinjaContainer)
 
     const ret = await flow.run({
       input,
@@ -155,7 +155,7 @@ export class WorkflowOrchestratorService {
     workflowId: string,
     transactionId: string,
     options?: WorkflowOrchestratorRunOptions<undefined>,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<DistributedTransaction> {
     let { context, container } = options ?? {}
 
@@ -170,12 +170,12 @@ export class WorkflowOrchestratorService {
     context ??= {}
     context.transactionId ??= transactionId
 
-    const exportedWorkflow: any = MedusaWorkflow.getWorkflow(workflowId)
+    const exportedWorkflow: any = NinjaWorkflow.getWorkflow(workflowId)
     if (!exportedWorkflow) {
       throw new Error(`Workflow with id "${workflowId}" not found.`)
     }
 
-    const flow = exportedWorkflow(container as MedusaContainer)
+    const flow = exportedWorkflow(container as NinjaContainer)
 
     const transaction = await flow.getRunningTransaction(transactionId, context)
 
@@ -193,7 +193,7 @@ export class WorkflowOrchestratorService {
       stepResponse: unknown
       options?: RegisterStepSuccessOptions<T>
     },
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ) {
     const {
       context,
@@ -206,12 +206,12 @@ export class WorkflowOrchestratorService {
     const [idempotencyKey_, { workflowId, transactionId }] =
       this.buildIdempotencyKeyAndParts(idempotencyKey)
 
-    const exportedWorkflow: any = MedusaWorkflow.getWorkflow(workflowId)
+    const exportedWorkflow: any = NinjaWorkflow.getWorkflow(workflowId)
     if (!exportedWorkflow) {
       throw new Error(`Workflow with id "${workflowId}" not found.`)
     }
 
-    const flow = exportedWorkflow(container as MedusaContainer)
+    const flow = exportedWorkflow(container as NinjaContainer)
 
     const events = this.buildWorkflowEvents({
       customEventHandlers: eventHandlers,
@@ -253,7 +253,7 @@ export class WorkflowOrchestratorService {
       stepResponse: unknown
       options?: RegisterStepSuccessOptions<T>
     },
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ) {
     const {
       context,
@@ -266,12 +266,12 @@ export class WorkflowOrchestratorService {
     const [idempotencyKey_, { workflowId, transactionId }] =
       this.buildIdempotencyKeyAndParts(idempotencyKey)
 
-    const exportedWorkflow: any = MedusaWorkflow.getWorkflow(workflowId)
+    const exportedWorkflow: any = NinjaWorkflow.getWorkflow(workflowId)
     if (!exportedWorkflow) {
       throw new Error(`Workflow with id "${workflowId}" not found.`)
     }
 
-    const flow = exportedWorkflow(container as MedusaContainer)
+    const flow = exportedWorkflow(container as NinjaContainer)
 
     const events = this.buildWorkflowEvents({
       customEventHandlers: eventHandlers,
@@ -305,7 +305,7 @@ export class WorkflowOrchestratorService {
   @InjectSharedContext()
   subscribe(
     { workflowId, transactionId, subscriber, subscriberId }: SubscribeOptions,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ) {
     subscriber._id = subscriberId
     const subscribers = this.subscribers.get(workflowId) ?? new Map()
@@ -341,7 +341,7 @@ export class WorkflowOrchestratorService {
   @InjectSharedContext()
   unsubscribe(
     { workflowId, transactionId, subscriberOrId }: UnsubscribeOptions,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ) {
     const subscribers = this.subscribers.get(workflowId) ?? new Map()
 

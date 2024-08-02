@@ -1,4 +1,4 @@
-import { MockManager } from "medusa-test-utils"
+import { MockManager } from "ninja-test-utils"
 import CartCompletionStrategy from "../cart-completion"
 import { newTotalsServiceMock } from "../../services/__mocks__/new-totals"
 import { ProductVariantInventoryServiceMock } from "../../services/__mocks__/product-variant-inventory"

@@ -1,4 +1,4 @@
-import { useAdminRegions, useAdminSalesChannels } from "medusa-react"
+import { useAdminRegions, useAdminSalesChannels } from "ninja-react"
 import { useTranslation } from "react-i18next"
 
 import type { Filter } from "../../../components/table/data-table"

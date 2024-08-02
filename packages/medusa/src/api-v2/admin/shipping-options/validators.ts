@@ -1,7 +1,7 @@
 import {
   RuleOperator,
   ShippingOptionPriceType as ShippingOptionPriceTypeEnum,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import { z } from "zod"
 import { createFindParams, createSelectParams } from "../../utils/validators"
 

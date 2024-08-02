@@ -1,4 +1,4 @@
-import { Region } from "@medusajs/medusa"
+import { Region } from "@ninjajs/ninja"
 import path from "path"
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
 import { useApi } from "../../../../environment-helpers/use-api"
@@ -11,7 +11,7 @@ import {
 jest.setTimeout(30000)
 
 const env = {
-  MEDUSA_FF_MEDUSA_V2: true,
+  NINJA_FF_NINJA_V2: true,
 }
 
 describe.skip("/store/carts", () => {

@@ -1,4 +1,4 @@
-import { NotificationService } from "medusa-interfaces"
+import { NotificationService } from "ninja-interfaces"
 
 class TestNotiService extends NotificationService {
   static identifier = "test-not"

@@ -23,14 +23,14 @@ import { PaymentCollectionService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
  *
  *       // Total amount = 10000
  *
  *       // Example 1: Adding two new sessions
- *       medusa.paymentCollections.managePaymentSessionsBatch(paymentId, {
+ *       ninja.paymentCollections.managePaymentSessionsBatch(paymentId, {
  *         sessions: [
  *           {
  *             provider_id: "stripe",
@@ -47,7 +47,7 @@ import { PaymentCollectionService } from "../../../../services"
  *       })
  *
  *       // Example 2: Updating one session and removing the other
- *       medusa.paymentCollections.managePaymentSessionsBatch(paymentId, {
+ *       ninja.paymentCollections.managePaymentSessionsBatch(paymentId, {
  *         sessions: [
  *           {
  *             provider_id: "stripe",
@@ -60,10 +60,10 @@ import { PaymentCollectionService } from "../../../../services"
  *         console.log(payment_collection.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useManageMultiplePaymentSessions } from "medusa-react"
+ *       import { useManageMultiplePaymentSessions } from "ninja-react"
  *
  *       type Props = {
  *         paymentCollectionId: string

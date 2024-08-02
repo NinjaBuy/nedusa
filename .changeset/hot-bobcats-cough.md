@@ -1,8 +1,8 @@
 ---
-"@medusajs/medusa": patch
-"@medusajs/core-flows": patch
-"@medusajs/link-modules": patch
-"@medusajs/modules-sdk": patch
+"@ninjajs/ninja": patch
+"@ninjajs/core-flows": patch
+"@ninjajs/link-modules": patch
+"@ninjajs/modules-sdk": patch
 ---
 
 feat: Remove sales channels from pub keys

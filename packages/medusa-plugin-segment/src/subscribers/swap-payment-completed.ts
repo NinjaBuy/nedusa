@@ -1,4 +1,4 @@
-import { humanizeAmount } from "medusa-core-utils"
+import { humanizeAmount } from "ninja-core-utils"
 import { gatherSwapReport } from "../utils/gather-swap-report"
 
 export default async function handler({ data: { id }, container }) {

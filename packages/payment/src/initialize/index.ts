@@ -1,15 +1,15 @@
 import {
   ExternalModuleDeclaration,
   InternalModuleDeclaration,
-  MedusaModule,
+  NinjaModule,
   MODULE_PACKAGE_NAMES,
   Modules,
-} from "@medusajs/modules-sdk"
+} from "@ninjajs/modules-sdk"
 import {
   IPaymentModuleService,
   ModuleProvider,
   ModulesSdkTypes,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 import { moduleDefinition } from "../module-definition"
 import { InitializeModuleInjectableDependencies } from "../types"
@@ -24,7 +24,7 @@ export const initialize = async (
       ) & { providers: ModuleProvider[] },
   injectedDependencies?: InitializeModuleInjectableDependencies
 ): Promise<IPaymentModuleService> => {
-  const loaded = await MedusaModule.bootstrap<IPaymentModuleService>({
+  const loaded = await NinjaModule.bootstrap<IPaymentModuleService>({
     moduleKey: Modules.PAYMENT,
     defaultPath: MODULE_PACKAGE_NAMES[Modules.PAYMENT],
     declaration: options as

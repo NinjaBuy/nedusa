@@ -1,4 +1,4 @@
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 import { FindOptionsWhere, ILike } from "typeorm"
 import { ProductType } from "../models"
 import { ProductTypeRepository } from "../repositories/product-type"
@@ -34,8 +34,8 @@ class ProductTypeService extends TransactionBaseService {
     const type = await typeRepo.findOne(query)
 
     if (!type) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `Product type with id: ${id} was not found`
       )
     }

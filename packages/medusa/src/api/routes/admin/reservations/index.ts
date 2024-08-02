@@ -1,5 +1,5 @@
 import { DeleteResponse, PaginatedResponse } from "../../../../types/common"
-import { InventoryItemDTO, ReservationItemDTO } from "@medusajs/types"
+import { InventoryItemDTO, ReservationItemDTO } from "@ninjajs/types"
 import middlewares, {
   transformBody,
   transformQuery,

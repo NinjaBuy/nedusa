@@ -20,7 +20,7 @@ export { transformQuery, transformStoreQuery } from "./transform-query"
 
 /**
  * @deprecated you can now import the middlewares directly without passing by the default export
- * e.g `import { authenticate } from "@medusajs/medusa"
+ * e.g `import { authenticate } from "@ninjajs/ninja"
  */
 export default {
   authenticate,
@@ -28,7 +28,7 @@ export default {
   requireCustomerAuthentication,
   normalizeQuery,
   /**
-   * @deprecated use `import { wrapHandler } from "@medusajs/medusa"`
+   * @deprecated use `import { wrapHandler } from "@ninjajs/ninja"`
    */
   wrap,
 }

@@ -3,12 +3,12 @@ import path from "path"
 import { aliasTo, asFunction } from "awilix"
 
 import formatRegistrationName from "../utils/format-registration-name"
-import { MedusaContainer } from "../types/global"
-import { isDefined } from "medusa-core-utils"
+import { NinjaContainer } from "../types/global"
+import { isDefined } from "ninja-core-utils"
 import { AbstractBatchJobStrategy } from "../interfaces"
 
 type LoaderOptions = {
-  container: MedusaContainer
+  container: NinjaContainer
   configModule: object
   isTest?: boolean
 }

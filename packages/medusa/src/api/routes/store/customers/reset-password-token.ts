@@ -8,10 +8,10 @@ import { EntityManager } from "typeorm"
  * operationId: PostCustomersCustomerPasswordToken
  * summary: Request Password Reset
  * description: "Create a reset password token to be used in a subsequent Reset Password API Route. This emits the event `customer.password_reset`. If a notification provider is
- *  installed in the Medusa backend and is configured to handle this event, a notification to the customer, such as an email, may be sent with reset instructions."
+ *  installed in the Ninja backend and is configured to handle this event, a notification to the customer, such as an email, may be sent with reset instructions."
  * externalDocs:
  *   description: "How to reset password"
- *   url: "https://docs.medusajs.com/modules/customers/storefront/implement-customer-profiles#reset-password"
+ *   url: "https://docs.ninjajs.com/modules/customers/storefront/implement-customer-profiles#reset-password"
  * requestBody:
  *   content:
  *     application/json:
@@ -23,9 +23,9 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
- *       medusa.customers.generatePasswordToken({
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       ninja.customers.generatePasswordToken({
  *         email: "user@example.com"
  *       })
  *       .then(() => {

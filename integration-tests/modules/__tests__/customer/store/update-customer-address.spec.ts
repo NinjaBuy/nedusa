@@ -1,13 +1,13 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { ICustomerModuleService } from "@medusajs/types"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ICustomerModuleService } from "@ninjajs/types"
 import { createAuthenticatedCustomer } from "../../../helpers/create-authenticated-customer"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
 jest.setTimeout(50000)
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("POST /store/customers/:id/addresses/:address_id", () => {

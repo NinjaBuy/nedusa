@@ -9,11 +9,11 @@ import { validator } from "../../../../utils/validator"
  * @oas [post] /admin/batch-jobs
  * operationId: "PostBatchJobs"
  * summary: "Create a Batch Job"
- * description: "Create a Batch Job to be executed asynchronously in the Medusa backend. If `dry_run` is set to `true`, the batch job will not be executed until the it is confirmed,
+ * description: "Create a Batch Job to be executed asynchronously in the Ninja backend. If `dry_run` is set to `true`, the batch job will not be executed until the it is confirmed,
  *  which can be done using the Confirm Batch Job API Route."
  * externalDocs:
  *   description: "How to create a batch job"
- *   url: "https://docs.medusajs.com/development/batch-jobs/create#create-batch-job"
+ *   url: "https://docs.ninjajs.com/development/batch-jobs/create#create-batch-job"
  * x-authenticated: true
  * requestBody:
  *   content:
@@ -26,10 +26,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.batchJobs.create({
+ *       ninja.admin.batchJobs.create({
  *         type: 'product-export',
  *         context: {},
  *         dry_run: false
@@ -37,10 +37,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(batch_job.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateBatchJob } from "medusa-react"
+ *       import { useAdminCreateBatchJob } from "ninja-react"
  *
  *       const CreateBatchJob = () => {
  *         const createBatchJob = useAdminCreateBatchJob()
@@ -67,7 +67,7 @@ import { validator } from "../../../../utils/validator"
  *     source: |
  *       curl -X POST '{backend_url}/admin/batch-jobs' \
  *       -H 'Content-Type: application/json' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       --data-raw '{
  *           "type": "product-export",
  *           "context": { }

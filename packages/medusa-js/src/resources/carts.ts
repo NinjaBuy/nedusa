@@ -6,23 +6,23 @@ import {
   StorePostCartsCartPaymentSessionUpdateReq,
   StorePostCartsCartReq,
   StorePostCartsCartShippingMethodReq,
-} from "@medusajs/medusa"
+} from "@ninjajs/ninja"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 import LineItemsResource from "./line-items"
 
 /**
- * This class is used to send requests to [Store Cart API Routes](https://docs.medusajs.com/api/store#carts). All its method
- * are available in the JS Client under the `medusa.carts` property.
+ * This class is used to send requests to [Store Cart API Routes](https://docs.ninjajs.com/api/store#carts). All its method
+ * are available in the JS Client under the `ninja.carts` property.
  * 
  * A cart is a virtual shopping bag that customers can use to add items they want to purchase.
  * A cart is then used to checkout and place an order.
  * 
- * Related Guide: [How to implement cart functionality in your storefront](https://docs.medusajs.com/modules/carts-and-checkout/storefront/implement-cart).
+ * Related Guide: [How to implement cart functionality in your storefront](https://docs.ninjajs.com/modules/carts-and-checkout/storefront/implement-cart).
  */
 class CartsResource extends BaseResource {
   /**
-   * An instance of {@link LineItemsResource} used to send requests to line-item-related routes part of the [Store Cart API Routes](https://docs.medusajs.com/api/store#carts).
+   * An instance of {@link LineItemsResource} used to send requests to line-item-related routes part of the [Store Cart API Routes](https://docs.ninjajs.com/api/store#carts).
    */
   public lineItems = new LineItemsResource(this.client)
 
@@ -34,9 +34,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.addShippingMethod(cartId, {
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.addShippingMethod(cartId, {
    *   option_id
    * })
    * .then(({ cart }) => {
@@ -63,9 +63,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCompleteCartRes>} Resolves to the completion details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.complete(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.complete(cartId)
    * .then(({ data, type }) => {
    *   console.log(data.id, type);
    * })
@@ -87,9 +87,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the created cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.create()
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.create()
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -110,9 +110,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.createPaymentSessions(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.createPaymentSessions(cartId)
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -134,9 +134,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.deleteDiscount(cartId, code)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.deleteDiscount(cartId, code)
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -158,9 +158,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.deletePaymentSession(cartId, "manual")
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.deletePaymentSession(cartId, "manual")
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -182,9 +182,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.refreshPaymentSession(cartId, "manual")
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.refreshPaymentSession(cartId, "manual")
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -205,9 +205,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.retrieve(cartId)
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.retrieve(cartId)
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })
@@ -229,9 +229,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.setPaymentSession(cartId, {
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.setPaymentSession(cartId, {
    *   provider_id: "manual"
    * })
    * .then(({ cart }) => {
@@ -255,9 +255,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.update(cartId, {
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.update(cartId, {
    *   email: "user@example.com"
    * })
    * .then(({ cart }) => {
@@ -283,9 +283,9 @@ class CartsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the cart's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
-   * medusa.carts.updatePaymentSession(cartId, "manual", {
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * ninja.carts.updatePaymentSession(cartId, "manual", {
    *   data: {
    * 
    *   }

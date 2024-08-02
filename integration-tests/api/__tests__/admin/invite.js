@@ -10,19 +10,19 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 jest.setTimeout(30000)
 
 describe("/admin/invites", () => {
-  let medusaProcess
+  let ninjaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    medusaProcess = await setupServer({ cwd })
+    ninjaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    medusaProcess.kill()
+    ninjaProcess.kill()
   })
 
   describe("GET /admin/users", () => {
@@ -42,7 +42,7 @@ describe("/admin/invites", () => {
       const response = await api
         .get("/admin/invites", {
           headers: {
-            "x-medusa-access-token": "test_token",
+            "x-ninja-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -92,7 +92,7 @@ describe("/admin/invites", () => {
             password: "test123453",
           },
           {
-            headers: { "x-medusa-access-token": "test_token" },
+            headers: { "x-ninja-access-token": "test_token" },
           }
         )
         .catch((err) => console.log(err))
@@ -110,20 +110,20 @@ describe("/admin/invites", () => {
         const api = useApi()
 
         const payload = {
-          user: "test@medusa-commerce.com",
+          user: "test@ninja-commerce.com",
           role: "admin",
         }
 
         const createReponse = await api
           .post("/admin/invites", payload, {
-            headers: { "x-medusa-access-token": "test_token" },
+            headers: { "x-ninja-access-token": "test_token" },
           })
           .catch((err) => console.log(err))
 
         const response = await api
           .get("/admin/invites", {
             headers: {
-              "x-medusa-access-token": "test_token",
+              "x-ninja-access-token": "test_token",
             },
           })
           .catch((err) => {
@@ -151,14 +151,14 @@ describe("/admin/invites", () => {
 
         const createReponse = await api
           .post("/admin/invites", payload, {
-            headers: { "x-medusa-access-token": "test_token" },
+            headers: { "x-ninja-access-token": "test_token" },
           })
           .catch((err) => console.log(err))
 
         const response = await api
           .get("/admin/invites", {
             headers: {
-              "x-medusa-access-token": "test_token",
+              "x-ninja-access-token": "test_token",
             },
           })
           .catch((err) => {
@@ -189,7 +189,7 @@ describe("/admin/invites", () => {
             `/admin/invites/${id}/resend`,
             {},
             {
-              headers: { "x-medusa-access-token": "test_token" },
+              headers: { "x-ninja-access-token": "test_token" },
             }
           )
           .catch((err) => console.log(err))
@@ -201,7 +201,7 @@ describe("/admin/invites", () => {
         const api = useApi()
 
         const inviteResponse = await api.get("/admin/invites", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
 
         const { token, ...rest } = inviteResponse.data.invites[0]
@@ -219,7 +219,7 @@ describe("/admin/invites", () => {
           .catch((err) => console.log(err))
 
         const userResponse = await api.get("/admin/users", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
 
         const newUser = userResponse.data.users.find(
@@ -234,7 +234,7 @@ describe("/admin/invites", () => {
         const api = useApi()
 
         const inviteResponse = await api.get("/admin/invites", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
 
         const { token, ...rest } = inviteResponse.data.invites.find(
@@ -254,7 +254,7 @@ describe("/admin/invites", () => {
 
         const updateResponse = await api
           .post("/admin/invites", updatePayload, {
-            headers: { "x-medusa-access-token": "test_token" },
+            headers: { "x-ninja-access-token": "test_token" },
           })
           .catch((err) => console.log(err))
 
@@ -263,7 +263,7 @@ describe("/admin/invites", () => {
         const createResponse = await api.post("/admin/invites/accept", payload)
 
         const userResponse = await api.get("/admin/users", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
 
         const newUser = userResponse.data.users.find(
@@ -302,7 +302,7 @@ describe("/admin/invites", () => {
         const api = useApi()
 
         const inviteResponse = await api.get("/admin/invites", {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
 
         const { token } = inviteResponse.data.invites[0]
@@ -353,7 +353,7 @@ describe("/admin/invites", () => {
 
       const invitesBeforeDeleteRequest = await api.get("/admin/invites", {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       })
 
@@ -361,13 +361,13 @@ describe("/admin/invites", () => {
 
       const response = await api
         .delete(`/admin/invites/${inviteId}`, {
-          headers: { "x-medusa-access-token": "test_token" },
+          headers: { "x-ninja-access-token": "test_token" },
         })
         .catch((err) => console.log(err))
 
       const invitesAfterDeleteRequest = await api.get("/admin/invites", {
         headers: {
-          "x-medusa-access-token": "test_token",
+          "x-ninja-access-token": "test_token",
         },
       })
 

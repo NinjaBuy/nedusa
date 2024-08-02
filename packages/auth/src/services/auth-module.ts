@@ -10,7 +10,7 @@ import {
   ModuleJoinerConfig,
   ModulesSdkTypes,
   UpdateAuthUserDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 
 import { AuthUser } from "@models"
 
@@ -19,10 +19,10 @@ import { entityNameToLinkableKeysMap, joinerConfig } from "../joiner-config"
 import {
   AbstractAuthModuleProvider,
   InjectManager,
-  MedusaContext,
-  MedusaError,
+  NinjaContext,
+  NinjaError,
   ModulesSdkUtils,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 
 type InjectedDependencies = {
   baseRepository: DAL.RepositoryService
@@ -69,7 +69,7 @@ export default class AuthModuleService<TAuthUser extends AuthUser = AuthUser>
   @InjectManager("baseRepository_")
   async create(
     data: CreateAuthUserDTO[] | CreateAuthUserDTO,
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<AuthTypes.AuthUserDTO | AuthTypes.AuthUserDTO[]> {
     const authUsers = await this.authUserService_.create(data, sharedContext)
 
@@ -92,7 +92,7 @@ export default class AuthModuleService<TAuthUser extends AuthUser = AuthUser>
   @InjectManager("baseRepository_")
   async update(
     data: UpdateAuthUserDTO | UpdateAuthUserDTO[],
-    @MedusaContext() sharedContext: Context = {}
+    @NinjaContext() sharedContext: Context = {}
   ): Promise<AuthTypes.AuthUserDTO | AuthTypes.AuthUserDTO[]> {
     const updatedUsers = await this.authUserService_.update(data, sharedContext)
 
@@ -113,8 +113,8 @@ export default class AuthModuleService<TAuthUser extends AuthUser = AuthUser>
     try {
       containerProvider = this.__container__[`auth_provider_${provider}`]
     } catch (error) {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `AuthenticationProvider: ${provider} wasn't registered in the module. Have you configured your options correctly?`
       )
     }

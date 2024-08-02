@@ -1,7 +1,7 @@
 import {
   AdminProductCategoryListResponse,
   AdminProductCategoryResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { getRequest } from "./common"
 
 async function listProductCategories(query?: Record<string, any>) {

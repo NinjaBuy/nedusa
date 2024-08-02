@@ -1,11 +1,11 @@
-import { BigNumberRawValue, DAL } from "@medusajs/types"
+import { BigNumberRawValue, DAL } from "@ninjajs/types"
 import {
   BigNumber,
   DALUtils,
   MikroOrmBigNumberProperty,
   Searchable,
   generateEntityId,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
   BeforeCreate,
   Cascade,

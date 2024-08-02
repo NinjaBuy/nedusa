@@ -1,10 +1,10 @@
-import { Button, Container, Text } from "@medusajs/ui"
+import { Button, Container, Text } from "@ninjajs/ui"
 import {
   FulfillmentSetDTO,
   ServiceZoneDTO,
   ShippingOptionDTO,
   StockLocationDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { useTranslation } from "react-i18next"
 import {
   Buildings,
@@ -14,7 +14,7 @@ import {
   PencilSquare,
   Plus,
   Trash,
-} from "@medusajs/icons"
+} from "@ninjajs/icons"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 

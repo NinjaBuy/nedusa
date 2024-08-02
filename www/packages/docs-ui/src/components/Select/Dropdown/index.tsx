@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useRef } from "react"
 import clsx from "clsx"
 import { OptionType } from "@/hooks"
 import { Ref } from "types"
-import { CheckMini, EllipseMiniSolid } from "@medusajs/icons"
+import { CheckMini, EllipseMiniSolid } from "@ninjajs/icons"
 
 export type SelectDropdownProps = {
   options: OptionType[]
@@ -87,7 +87,7 @@ export const SelectDropdown = ({
         key={index}
         className={clsx(
           "pr-docs_0.75 relative rounded-docs_sm py-docs_0.5 pl-docs_2.5",
-          "hover:bg-medusa-bg-base-hover",
+          "hover:bg-ninja-bg-base-hover",
           "[&>svg]:left-docs_0.75 cursor-pointer [&>svg]:absolute [&>svg]:top-docs_0.5",
           !isSelected && "text-compact-small",
           isSelected && "text-compact-small-plus"
@@ -102,8 +102,8 @@ export const SelectDropdown = ({
       >
         {isSelected && (
           <>
-            {multiple && <CheckMini className="text-medusa-fg-base" />}
-            {!multiple && <EllipseMiniSolid className="text-medusa-fg-base" />}
+            {multiple && <CheckMini className="text-ninja-fg-base" />}
+            {!multiple && <EllipseMiniSolid className="text-ninja-fg-base" />}
           </>
         )}
         {option.label}
@@ -124,7 +124,7 @@ export const SelectDropdown = ({
       <ul
         className={clsx(
           "p-docs_0.25 mb-0 w-full overflow-auto rounded-docs_DEFAULT",
-          "bg-medusa-bg-base text-medusa-fg-base",
+          "bg-ninja-bg-base text-ninja-fg-base",
           "shadow-flyout dark:shadow-flyout-dark list-none"
         )}
       >

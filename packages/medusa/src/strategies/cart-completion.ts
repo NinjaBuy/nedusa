@@ -2,7 +2,7 @@ import {
   IEventBusService,
   IInventoryService,
   ReservationItemDTO,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import {
   AbstractCartCompletionStrategy,
   CartCompletionResponse,
@@ -16,8 +16,8 @@ import OrderService, {
   ORDER_CART_ALREADY_EXISTS_ERROR,
 } from "../services/order"
 
-import { promiseAll } from "@medusajs/utils"
-import { MedusaError } from "medusa-core-utils"
+import { promiseAll } from "@ninjajs/utils"
+import { NinjaError } from "ninja-core-utils"
 import { EntityManager } from "typeorm"
 import CartService from "../services/cart"
 import IdempotencyKeyService from "../services/idempotency-key"
@@ -322,7 +322,7 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
 
     let reservations: [
       ReservationItemDTO[] | void | undefined,
-      MedusaError | undefined
+      NinjaError | undefined
     ][] = []
     if (!allowBackorder) {
       const productVariantInventoryServiceTx =
@@ -340,10 +340,10 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
                 )
 
               if (!inventoryConfirmed) {
-                throw new MedusaError(
-                  MedusaError.Types.NOT_ALLOWED,
+                throw new NinjaError(
+                  NinjaError.Types.NOT_ALLOWED,
                   `Variant with id: ${item.variant_id} does not have the required inventory`,
-                  MedusaError.Codes.INSUFFICIENT_INVENTORY
+                  NinjaError.Codes.INSUFFICIENT_INVENTORY
                 )
               }
 
@@ -374,13 +374,13 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
             acc.push(error)
           }
           return acc
-        }, [] as MedusaError[])
+        }, [] as NinjaError[])
 
         const error = errors[0]
 
         if (
           errors.some(
-            (error) => error.code === MedusaError.Codes.INSUFFICIENT_INVENTORY
+            (error) => error.code === NinjaError.Codes.INSUFFICIENT_INVENTORY
           )
         ) {
           if (cart.payment) {
@@ -435,7 +435,7 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
       } catch (error) {
         await this.removeReservations(reservations)
 
-        if (error && error.code === MedusaError.Codes.INSUFFICIENT_INVENTORY) {
+        if (error && error.code === NinjaError.Codes.INSUFFICIENT_INVENTORY) {
           return {
             response_code: 409,
             response_body: {
@@ -451,8 +451,8 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
     }
 
     if (!cart.payment && cart.total! > 0) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `Cart payment not authorized`
       )
     }
@@ -474,7 +474,7 @@ class CartCompletionStrategy extends AbstractCartCompletionStrategy {
         }
       } else if (
         error &&
-        error.code === MedusaError.Codes.INSUFFICIENT_INVENTORY
+        error.code === NinjaError.Codes.INSUFFICIENT_INVENTORY
       ) {
         return {
           response_code: 409,

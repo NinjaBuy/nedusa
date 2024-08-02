@@ -25,22 +25,22 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.regions.addFulfillmentProvider(regionId, {
+ *       ninja.admin.regions.addFulfillmentProvider(regionId, {
  *         provider_id: "manual"
  *       })
  *       .then(({ region }) => {
  *         console.log(region.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
  *       import {
  *         useAdminRegionAddFulfillmentProvider
- *       } from "medusa-react"
+ *       } from "ninja-react"
  *
  *       type Props = {
  *         regionId: string
@@ -73,7 +73,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/regions/{id}/fulfillment-providers' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "provider_id": "manual"

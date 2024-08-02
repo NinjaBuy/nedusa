@@ -1,4 +1,4 @@
-import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
+import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
 import { Order, Swap } from "../../models"
 import { SwapRepository } from "../../repositories/swap"
 import CartService from "../cart"

@@ -15,22 +15,22 @@ import {
   AdminPostOrdersOrderSwapsReq,
   AdminPostOrdersOrderSwapsSwapFulfillmentsReq,
   AdminPostOrdersOrderSwapsSwapShipmentsReq,
-} from "@medusajs/medusa"
-import { FindParams } from "@medusajs/medusa/dist/types/common"
+} from "@ninjajs/ninja"
+import { FindParams } from "@ninjajs/ninja/dist/types/common"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Order API Routes](https://docs.medusajs.com/api/admin#orders). All its method
- * are available in the JS Client under the `medusa.admin.orders` property.
+ * This class is used to send requests to [Admin Order API Routes](https://docs.ninjajs.com/api/admin#orders). All its method
+ * are available in the JS Client under the `ninja.admin.orders` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Orders are purchases made by customers, typically through a storefront using {@link CartsResource}. Draft orders created by the admin are also transformed to an Order once the payment is captured.
  * Managing orders include managing fulfillment, payment, claims, reservations, and more.
  * 
- * Related Guide: [How to manage orders](https://docs.medusajs.com/modules/orders/admin/manage-orders).
+ * Related Guide: [How to manage orders](https://docs.ninjajs.com/modules/orders/admin/manage-orders).
  */
 class AdminOrdersResource extends BaseResource {
   /**
@@ -41,10 +41,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.update(orderId, {
+   * ninja.admin.orders.update(orderId, {
    *   email: "user@example.com"
    * })
    * .then(({ order }) => {
@@ -71,10 +71,10 @@ class AdminOrdersResource extends BaseResource {
    * A simple example that retrieves an order by its ID:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.retrieve(orderId)
+   * ninja.admin.orders.retrieve(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -83,10 +83,10 @@ class AdminOrdersResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.retrieve(orderId, {
+   * ninja.admin.orders.retrieve(orderId, {
    *   expand: "customer"
    * })
    * .then(({ order }) => {
@@ -119,10 +119,10 @@ class AdminOrdersResource extends BaseResource {
    * To list orders:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.list()
+   * ninja.admin.orders.list()
    * .then(({ orders, limit, offset, count }) => {
    *   console.log(orders.length);
    * })
@@ -131,10 +131,10 @@ class AdminOrdersResource extends BaseResource {
    * To specify relations that should be retrieved within the orders:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.list({
+   * ninja.admin.orders.list({
    *   expand: "customers"
    * })
    * .then(({ orders, limit, offset, count }) => {
@@ -145,10 +145,10 @@ class AdminOrdersResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.list({
+   * ninja.admin.orders.list({
    *   expand: "customers",
    *   limit,
    *   offset
@@ -179,10 +179,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.complete(orderId)
+   * ninja.admin.orders.complete(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -202,10 +202,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.capturePayment(orderId)
+   * ninja.admin.orders.capturePayment(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -226,10 +226,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.refundPayment(orderId, {
+   * ninja.admin.orders.refundPayment(orderId, {
    *   amount: 1000,
    *   reason: "Do not like it"
    * })
@@ -255,10 +255,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createFulfillment(orderId, {
+   * ninja.admin.orders.createFulfillment(orderId, {
    *   items: [
    *     {
    *       item_id,
@@ -287,10 +287,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancelFulfillment(orderId, fulfillmentId)
+   * ninja.admin.orders.cancelFulfillment(orderId, fulfillmentId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -313,10 +313,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancelSwapFulfillment(orderId, swapId, fulfillmentId)
+   * ninja.admin.orders.cancelSwapFulfillment(orderId, swapId, fulfillmentId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -340,10 +340,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancelClaimFulfillment(orderId, claimId, fulfillmentId)
+   * ninja.admin.orders.cancelClaimFulfillment(orderId, claimId, fulfillmentId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -367,10 +367,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createShipment(order_id, {
+   * ninja.admin.orders.createShipment(order_id, {
    *   fulfillment_id
    * })
    * .then(({ order }) => {
@@ -394,10 +394,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the return under the `returns` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.requestReturn(orderId, {
+   * ninja.admin.orders.requestReturn(orderId, {
    *   items: [
    *     {
    *       item_id,
@@ -426,10 +426,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancel(orderId)
+   * ninja.admin.orders.cancel(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -450,10 +450,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.addShippingMethod(orderId, {
+   * ninja.admin.orders.addShippingMethod(orderId, {
    *   price: 1000,
    *   option_id
    * })
@@ -477,10 +477,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.archive(orderId)
+   * ninja.admin.orders.archive(orderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -501,10 +501,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `swaps` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createSwap(orderId, {
+   * ninja.admin.orders.createSwap(orderId, {
    *   return_items: [
    *     {
    *       item_id,
@@ -533,10 +533,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `swaps` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancelSwap(orderId, swapId)
+   * ninja.admin.orders.cancelSwap(orderId, swapId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -560,10 +560,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `swaps` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.fulfillSwap(orderId, swapId, {
+   * ninja.admin.orders.fulfillSwap(orderId, swapId, {
    *   no_notification: true,
    * })
    * .then(({ order }) => {
@@ -590,10 +590,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `swaps` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createSwapShipment(orderId, swapId, {
+   * ninja.admin.orders.createSwapShipment(orderId, swapId, {
    *   fulfillment_id
    * })
    * .then(({ order }) => {
@@ -619,10 +619,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `swaps` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.processSwapPayment(orderId, swapId)
+   * ninja.admin.orders.processSwapPayment(orderId, swapId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -645,10 +645,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the claim under the `claims` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createClaim(orderId, {
+   * ninja.admin.orders.createClaim(orderId, {
    *   type: 'refund',
    *   claim_items: [
    *     {
@@ -678,10 +678,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `claims` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.cancelClaim(orderId, claimId)
+   * ninja.admin.orders.cancelClaim(orderId, claimId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -704,10 +704,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the claims under the `claims` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.updateClaim(orderId, claimId, {
+   * ninja.admin.orders.updateClaim(orderId, claimId, {
    *   no_notification: true
    * })
    * .then(({ order }) => {
@@ -734,10 +734,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `claims` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.fulfillClaim(orderId, claimId, {
+   * ninja.admin.orders.fulfillClaim(orderId, claimId, {
    * })
    * .then(({ order }) => {
    *   console.log(order.id);
@@ -763,10 +763,10 @@ class AdminOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminOrdersRes>} Resolves to the order's details. You can access the swap under the `claims` property.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.orders.createClaimShipment(orderId, claimId, {
+   * ninja.admin.orders.createClaimShipment(orderId, claimId, {
    *   fulfillment_id
    * })
    * .then(({ order }) => {

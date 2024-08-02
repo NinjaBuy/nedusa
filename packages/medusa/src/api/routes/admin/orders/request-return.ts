@@ -1,5 +1,5 @@
-import { Logger } from "@medusajs/types"
-import { isDefined, MedusaError } from "@medusajs/utils"
+import { Logger } from "@ninjajs/types"
+import { isDefined, NinjaError } from "@ninjajs/utils"
 import { Type } from "class-transformer"
 import {
   IsArray,
@@ -28,7 +28,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: Return creation process
- *   url: https://docs.medusajs.com/modules/orders/returns#returns-process
+ *   url: https://docs.ninjajs.com/modules/orders/returns#returns-process
  * parameters:
  *   - (path) id=* {string} The ID of the Order.
  *   - (query) expand {string} Comma-separated relations that should be expanded in the returned order.
@@ -45,10 +45,10 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.orders.requestReturn(orderId, {
+ *       ninja.admin.orders.requestReturn(orderId, {
  *         items: [
  *           {
  *             item_id,
@@ -60,10 +60,10 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminRequestReturn } from "medusa-react"
+ *       import { useAdminRequestReturn } from "ninja-react"
  *
  *       type Props = {
  *         orderId: string
@@ -101,7 +101,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/return' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "items": [
@@ -265,8 +265,8 @@ export default async (req, res) => {
                       })
 
                     if (!returns.length) {
-                      throw new MedusaError(
-                        MedusaError.Types.INVALID_DATA,
+                      throw new NinjaError(
+                        NinjaError.Types.INVALID_DATA,
                         `Return not found`
                       )
                     }

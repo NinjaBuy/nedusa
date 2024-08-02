@@ -6,7 +6,7 @@ import BaseResource from "../base"
 
 /**
  * This class is used to send requests custom API Routes. All its method
- * are available in the JS Client under the `medusa.admin.custom` property.
+ * are available in the JS Client under the `ninja.admin.custom` property.
  */
 class AdminCustomResource extends BaseResource {
   /**
@@ -19,13 +19,13 @@ class AdminCustomResource extends BaseResource {
    * @returns {ResponsePromise<TResponse>} The response data.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * type PostsResponse = {
    * posts: Post[]
    * }
    * // must be previously logged in or use api token
-   * medusa.admin.custom.get<Record<string, any>, PostsResponse>(
+   * ninja.admin.custom.get<Record<string, any>, PostsResponse>(
    *   "/blog/posts"
    * )
    * .then(({ posts }) => {
@@ -64,8 +64,8 @@ class AdminCustomResource extends BaseResource {
    * @returns {ResponsePromise<TResponse>} The response data.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * type PostRequest = {
    *   title: string
    * }
@@ -73,7 +73,7 @@ class AdminCustomResource extends BaseResource {
    *   post: Post
    * }
    * // must be previously logged in or use api token
-   * medusa.admin.custom.post<PostRequest, PostResponse>(
+   * ninja.admin.custom.post<PostRequest, PostResponse>(
    *   "/blog/posts",
    *   {
    *     title: "My post",
@@ -108,10 +108,10 @@ class AdminCustomResource extends BaseResource {
    * @returns {ResponsePromise<TResponse>} The response data.
    * 
    * @example
-   * import Medusa from "@medusajs/medusa-js"
-   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * import Ninja from "@ninjajs/ninja-js"
+   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * medusa.admin.custom.delete(
+   * ninja.admin.custom.delete(
    *   `/blog/posts/${postId}`
    * )
    * .then(() => {

@@ -1,4 +1,4 @@
-import { IdMap } from "medusa-test-utils"
+import { IdMap } from "ninja-test-utils"
 
 export const DocumentServiceMock = {
   create: jest.fn().mockImplementation(data => {

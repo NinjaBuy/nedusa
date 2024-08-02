@@ -1,8 +1,8 @@
-import { IPaymentModuleService } from "@medusajs/types"
+import { IPaymentModuleService } from "@ninjajs/types"
 import { SqlEntityManager } from "@mikro-orm/postgresql"
 
-import { Modules } from "@medusajs/modules-sdk"
-import { initModules } from "medusa-test-utils"
+import { Modules } from "@ninjajs/modules-sdk"
+import { initModules } from "ninja-test-utils"
 import { MikroOrmWrapper } from "../../utils"
 import { getInitModuleConfig } from "../../utils/get-init-module-config"
 import { createPaymentCollections } from "../../__fixtures__"
@@ -18,8 +18,8 @@ describe("Payment Module Service", () => {
     await MikroOrmWrapper.setupDatabase()
 
     const initModulesConfig = getInitModuleConfig()
-    const { medusaApp, shutdown } = await initModules(initModulesConfig)
-    service = medusaApp.modules[Modules.PAYMENT]
+    const { ninjaApp, shutdown } = await initModules(initModulesConfig)
+    service = ninjaApp.modules[Modules.PAYMENT]
 
     shutdownFunc = shutdown
   })

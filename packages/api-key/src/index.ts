@@ -1,5 +1,5 @@
 import { moduleDefinition } from "./module-definition"
-import { initializeFactory, Modules } from "@medusajs/modules-sdk"
+import { initializeFactory, Modules } from "@ninjajs/modules-sdk"
 
 export * from "./types"
 export * from "./models"

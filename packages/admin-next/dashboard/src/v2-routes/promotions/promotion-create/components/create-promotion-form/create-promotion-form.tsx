@@ -8,7 +8,7 @@ import {
   ProgressTabs,
   RadioGroup,
   Text,
-} from "@medusajs/ui"
+} from "@ninjajs/ui"
 import { useEffect, useMemo, useState } from "react"
 import { useFieldArray, useForm, useWatch } from "react-hook-form"
 import { Trans, useTranslation } from "react-i18next"
@@ -19,7 +19,7 @@ import {
   PromotionRuleResponse,
   RuleAttributeOptionsResponse,
   RuleOperatorOptionsResponse,
-} from "@medusajs/types"
+} from "@ninjajs/types"
 import { Form } from "../../../../../components/common/form"
 import { PercentageInput } from "../../../../../components/common/percentage-input"
 import {

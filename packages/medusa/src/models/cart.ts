@@ -140,7 +140,7 @@
  *     nullable: true
  *     type: string
  *     externalDocs:
- *       url: https://docs.medusajs.com/development/idempotency-key/overview.md
+ *       url: https://docs.ninjajs.com/development/idempotency-key/overview.md
  *       description: Learn more how to use the idempotency key.
  *   context:
  *     description: "The context of the cart which can include info like IP or user agent."
@@ -179,7 +179,7 @@
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
  *   shipping_total:
  *     description: The total of shipping
  *     type: integer
@@ -237,7 +237,7 @@
  *       $ref: "#/components/schemas/SalesChannel"
  */
 
-import { MedusaV2Flag, SalesChannelFeatureFlag } from "@medusajs/utils"
+import { NinjaV2Flag, SalesChannelFeatureFlag } from "@ninjajs/utils"
 import {
   AfterLoad,
   BeforeInsert,
@@ -410,7 +410,7 @@ export class Cart extends SoftDeletableEntity {
   sales_channel: Relation<SalesChannel>
 
   @FeatureFlagDecorators(
-    [MedusaV2Flag.key, SalesChannelFeatureFlag.key],
+    [NinjaV2Flag.key, SalesChannelFeatureFlag.key],
     [
       ManyToMany(() => SalesChannel, { cascade: ["remove", "soft-remove"] }),
       JoinTable({

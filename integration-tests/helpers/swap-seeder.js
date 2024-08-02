@@ -7,11 +7,11 @@ const {
   Swap,
   Cart,
   Return,
-} = require("@medusajs/medusa")
+} = require("@ninjajs/ninja")
 const {
   CustomShippingOption,
-} = require("@medusajs/medusa/dist/models/custom-shipping-option")
-const { Region } = require("@medusajs/medusa/dist/models/region")
+} = require("@ninjajs/ninja/dist/models/custom-shipping-option")
+const { Region } = require("@ninjajs/ninja/dist/models/region")
 
 let regionId
 let region

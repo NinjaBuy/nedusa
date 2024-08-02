@@ -1,5 +1,5 @@
 import { RequestHandler, Router } from "express"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 type middlewareHandlerType = (
   options: Record<string, unknown>
@@ -11,7 +11,7 @@ type middlewareType = {
 }
 
 /**
- * Orchestrates dynamic middleware registered through the Medusa Middleware API
+ * Orchestrates dynamic middleware registered through the Ninja Middleware API
  */
 class MiddlewareService {
   protected readonly postAuthentication_: middlewareType[]
@@ -42,8 +42,8 @@ class MiddlewareService {
    */
   validateMiddleware_(fn: unknown): void {
     if (typeof fn !== "function") {
-      throw new MedusaError(
-        MedusaError.Types.NOT_ALLOWED,
+      throw new NinjaError(
+        NinjaError.Types.NOT_ALLOWED,
         "Middleware must be a function"
       )
     }

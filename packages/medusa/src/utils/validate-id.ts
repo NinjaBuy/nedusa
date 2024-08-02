@@ -6,7 +6,7 @@
  * @param config - optional config
  * @returns the rawId given that nothing failed
  */
-import { MedusaError } from "medusa-core-utils/dist"
+import { NinjaError } from "ninja-core-utils/dist"
 
 export function validateId(
   rawId: string,
@@ -14,8 +14,8 @@ export function validateId(
 ): string {
   const { prefix, length } = config
   if (!rawId) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       `Failed to validate id: ${rawId}`
     )
   }
@@ -23,15 +23,15 @@ export function validateId(
   if (prefix || length) {
     const [pre, rand] = rawId.split("_")
     if (prefix && pre !== prefix) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `The provided id: ${rawId} does not adhere to prefix constraint: ${prefix}`
       )
     }
 
     if (length && length !== rand.length) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `The provided id: ${rawId} does not adhere to length constraint: ${length}`
       )
     }

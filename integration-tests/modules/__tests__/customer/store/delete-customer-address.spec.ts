@@ -1,13 +1,13 @@
-import { ICustomerModuleService } from "@medusajs/types"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ICustomerModuleService } from "@ninjajs/types"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
 import { createAuthenticatedCustomer } from "../../../helpers/create-authenticated-customer"
-import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { ninjaIntegrationTestRunner } from "ninja-test-utils"
 
-const env = { MEDUSA_FF_MEDUSA_V2: true }
+const env = { NINJA_FF_NINJA_V2: true }
 
 jest.setTimeout(50000)
 
-medusaIntegrationTestRunner({
+ninjaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("DELETE /store/customers/me/addresses/:address_id", () => {

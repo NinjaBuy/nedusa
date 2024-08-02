@@ -1,5 +1,5 @@
 import { isEmail } from "class-validator"
-import { MedusaError } from "medusa-core-utils"
+import { NinjaError } from "ninja-core-utils"
 
 /**
  * Used to validate user email.
@@ -10,8 +10,8 @@ export function validateEmail(email: string): string {
   const validatedEmail = isEmail(email)
 
   if (!validatedEmail) {
-    throw new MedusaError(
-      MedusaError.Types.INVALID_DATA,
+    throw new NinjaError(
+      NinjaError.Types.INVALID_DATA,
       "The email is not valid"
     )
   }

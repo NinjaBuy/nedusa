@@ -1,4 +1,4 @@
-import { ClaimItem, LineItem, Order } from "@medusajs/medusa"
+import { ClaimItem, LineItem, Order } from "@ninjajs/ninja"
 
 /**
  * Return line items that are returnable from an order

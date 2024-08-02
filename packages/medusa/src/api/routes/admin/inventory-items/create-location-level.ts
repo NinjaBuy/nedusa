@@ -1,4 +1,4 @@
-import { IInventoryService, IStockLocationService } from "@medusajs/types"
+import { IInventoryService, IStockLocationService } from "@ninjajs/types"
 import { IsNumber, IsOptional, IsString } from "class-validator"
 import { Request, Response } from "express"
 import { FindParams } from "../../../../types/common"
@@ -25,10 +25,10 @@ import { FindParams } from "../../../../types/common"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Medusa from "@medusajs/medusa-js"
- *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       import Ninja from "@ninjajs/ninja-js"
+ *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       medusa.admin.inventoryItems.createLocationLevel(inventoryItemId, {
+ *       ninja.admin.inventoryItems.createLocationLevel(inventoryItemId, {
  *         location_id: "sloc_123",
  *         stocked_quantity: 10,
  *       })
@@ -36,10 +36,10 @@ import { FindParams } from "../../../../types/common"
  *         console.log(inventory_item.id);
  *       })
  *   - lang: tsx
- *     label: Medusa React
+ *     label: Ninja React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateLocationLevel } from "medusa-react"
+ *       import { useAdminCreateLocationLevel } from "ninja-react"
  *
  *       type Props = {
  *         inventoryItemId: string
@@ -73,7 +73,7 @@ import { FindParams } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/inventory-items/{id}/location-levels' \
- *       -H 'x-medusa-access-token: {api_token}' \
+ *       -H 'x-ninja-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "location_id": "sloc_123",

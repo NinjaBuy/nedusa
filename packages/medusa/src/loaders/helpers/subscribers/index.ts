@@ -1,6 +1,6 @@
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
-import { MedusaContainer, Subscriber } from "@medusajs/types"
-import { kebabCase } from "@medusajs/utils"
+import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { NinjaContainer, Subscriber } from "@ninjajs/types"
+import { kebabCase } from "@ninjajs/utils"
 import { readdir } from "fs/promises"
 import { extname, join, sep } from "path"
 
@@ -17,7 +17,7 @@ type SubscriberModule<T> = {
 
 export class SubscriberLoader {
   protected isV2_: boolean
-  protected container_: MedusaContainer
+  protected container_: NinjaContainer
   protected pluginOptions_: Record<string, unknown>
   protected activityId_: string
   protected rootDir_: string
@@ -32,7 +32,7 @@ export class SubscriberLoader {
 
   constructor(
     rootDir: string,
-    container: MedusaContainer,
+    container: NinjaContainer,
     options: Record<string, unknown> = {},
     activityId: string,
     isV2: boolean = false

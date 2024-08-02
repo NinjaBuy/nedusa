@@ -1,7 +1,7 @@
 import React from "react"
 import { Bordered } from "@/components/Bordered"
 import clsx from "clsx"
-import { IconProps } from "@medusajs/icons/dist/types"
+import { IconProps } from "@ninjajs/icons/dist/types"
 
 export type BorderedIconProps = {
   icon?: string
@@ -24,7 +24,7 @@ export const BorderedIcon = ({
     <Bordered wrapperClassName={wrapperClassName}>
       <span
         className={clsx(
-          "rounded-docs_xs p-docs_0.125 bg-medusa-bg-component inline-flex items-center justify-center",
+          "rounded-docs_xs p-docs_0.125 bg-ninja-bg-component inline-flex items-center justify-center",
           iconWrapperClassName
         )}
       >
@@ -38,7 +38,7 @@ export const BorderedIcon = ({
         {IconComponent && (
           <IconComponent
             className={clsx(
-              "text-medusa-fg-subtle",
+              "text-ninja-fg-subtle",
               iconClassName,
               "bordered-icon",
               iconColorClassName

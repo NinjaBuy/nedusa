@@ -1,5 +1,5 @@
-import { FileTypes, LocalFileServiceOptions } from "@medusajs/types"
-import { AbstractFileProviderService, MedusaError } from "@medusajs/utils"
+import { FileTypes, LocalFileServiceOptions } from "@ninjajs/types"
+import { AbstractFileProviderService, NinjaError } from "@ninjajs/utils"
 import fs from "fs/promises"
 import path from "path"
 
@@ -18,12 +18,12 @@ export class LocalFileService extends AbstractFileProviderService {
     file: FileTypes.ProviderUploadFileDTO
   ): Promise<FileTypes.ProviderFileResultDTO> {
     if (!file) {
-      throw new MedusaError(MedusaError.Types.INVALID_DATA, `No file provided`)
+      throw new NinjaError(NinjaError.Types.INVALID_DATA, `No file provided`)
     }
 
     if (!file.filename) {
-      throw new MedusaError(
-        MedusaError.Types.INVALID_DATA,
+      throw new NinjaError(
+        NinjaError.Types.INVALID_DATA,
         `No filename provided`
       )
     }
@@ -72,8 +72,8 @@ export class LocalFileService extends AbstractFileProviderService {
         fs.constants.F_OK
       )
     } catch {
-      throw new MedusaError(
-        MedusaError.Types.NOT_FOUND,
+      throw new NinjaError(
+        NinjaError.Types.NOT_FOUND,
         `File with key ${fileData.fileKey} not found`
       )
     }

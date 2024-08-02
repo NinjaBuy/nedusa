@@ -1,16 +1,16 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@medusajs/utils"
+} from "@ninjajs/utils"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../types/routing"
 import { AdminGetPaymentsParamsType } from "./validators"
 
 export const GET = async (
-  req: AuthenticatedMedusaRequest<AdminGetPaymentsParamsType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminGetPaymentsParamsType>,
+  res: NinjaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const queryObject = remoteQueryObjectFromString({

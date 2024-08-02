@@ -1,4 +1,4 @@
-import { MedusaContainer } from "@medusajs/types"
+import { NinjaContainer } from "@ninjajs/types"
 import { join } from "path"
 import {
   OrderService,
@@ -24,7 +24,7 @@ describe("SubscriberLoader", () => {
 
     const paths = await new SubscriberLoader(
       rootDir,
-      containerMock as unknown as MedusaContainer,
+      containerMock as unknown as NinjaContainer,
       pluginOptions,
       "id-load-subscribers"
     ).load()

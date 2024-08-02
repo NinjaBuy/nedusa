@@ -1,14 +1,14 @@
-import { cancelFulfillmentWorkflow } from "@medusajs/core-flows"
+import { cancelFulfillmentWorkflow } from "@ninjajs/core-flows"
 import {
-  AuthenticatedMedusaRequest,
-  MedusaResponse,
+  AuthenticatedNinjaRequest,
+  NinjaResponse,
 } from "../../../../../types/routing"
 import { refetchFulfillment } from "../../helpers"
 import { AdminCancelFulfillmentType } from "../../validators"
 
 export const POST = async (
-  req: AuthenticatedMedusaRequest<AdminCancelFulfillmentType>,
-  res: MedusaResponse
+  req: AuthenticatedNinjaRequest<AdminCancelFulfillmentType>,
+  res: NinjaResponse
 ) => {
   const { id } = req.params
   const { errors } = await cancelFulfillmentWorkflow(req.scope).run({
