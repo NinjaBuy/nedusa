@@ -3,7 +3,7 @@
 import React from "react"
 import { NavbarIconButton, NavbarIconButtonProps } from "../IconButton"
 import { useColorMode } from "@/providers"
-import { Moon, Sun } from "@ninjajs/icons"
+import { Moon, Sun } from "@medusajs/icons"
 
 export type NavbarColorModeToggleProps = {
   buttonProps?: NavbarIconButtonProps
@@ -16,8 +16,8 @@ export const NavbarColorModeToggle = ({
 
   return (
     <NavbarIconButton {...buttonProps} onClick={() => toggleColorMode()}>
-      {colorMode === "light" && <Sun className="text-ninja-fg-muted" />}
-      {colorMode === "dark" && <Moon className="text-ninja-fg-muted" />}
+      {colorMode === "light" && <Sun className="text-medusa-fg-muted" />}
+      {colorMode === "dark" && <Moon className="text-medusa-fg-muted" />}
     </NavbarIconButton>
   )
 }

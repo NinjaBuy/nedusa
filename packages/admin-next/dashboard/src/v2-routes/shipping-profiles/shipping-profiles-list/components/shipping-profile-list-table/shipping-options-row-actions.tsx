@@ -1,6 +1,6 @@
-import { Trash } from "@ninjajs/icons"
-import { AdminShippingProfileResponse } from "@ninjajs/types"
-import { toast, usePrompt } from "@ninjajs/ui"
+import { Trash } from "@medusajs/icons"
+import { AdminShippingProfileResponse } from "@medusajs/types"
+import { toast, usePrompt } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"

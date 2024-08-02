@@ -1,5 +1,5 @@
 ---
-"@ninjajs/workflows-sdk": patch
+"@medusajs/workflows-sdk": patch
 ---
 
 fix(workflows-sdk): Handle result from a trasnformer after a step fail

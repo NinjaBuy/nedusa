@@ -1,6 +1,6 @@
 import { EntityManager } from "typeorm"
 import { ExtendedReservationItem } from ".."
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 
 export const joinInventoryItems = async (
   reservations: ExtendedReservationItem[],

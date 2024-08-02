@@ -2,13 +2,13 @@ import {
   DiscountCondition,
   DiscountConditionOperator,
   DiscountConditionType,
-} from "@ninjajs/ninja/dist/models/discount-condition"
-import { DiscountConditionCustomerGroup } from "@ninjajs/ninja/dist/models/discount-condition-customer-group"
-import { DiscountConditionProduct } from "@ninjajs/ninja/dist/models/discount-condition-product"
-import { DiscountConditionProductCollection } from "@ninjajs/ninja/dist/models/discount-condition-product-collection"
-import { DiscountConditionProductTag } from "@ninjajs/ninja/dist/models/discount-condition-product-tag"
-import { DiscountConditionProductType } from "@ninjajs/ninja/dist/models/discount-condition-product-type"
-import { DiscountConditionJoinTableForeignKey } from "@ninjajs/ninja/dist/repositories/discount-condition"
+} from "@medusajs/medusa/dist/models/discount-condition"
+import { DiscountConditionCustomerGroup } from "@medusajs/medusa/dist/models/discount-condition-customer-group"
+import { DiscountConditionProduct } from "@medusajs/medusa/dist/models/discount-condition-product"
+import { DiscountConditionProductCollection } from "@medusajs/medusa/dist/models/discount-condition-product-collection"
+import { DiscountConditionProductTag } from "@medusajs/medusa/dist/models/discount-condition-product-tag"
+import { DiscountConditionProductType } from "@medusajs/medusa/dist/models/discount-condition-product-type"
+import { DiscountConditionJoinTableForeignKey } from "@medusajs/medusa/dist/repositories/discount-condition"
 import faker from "faker"
 import { DataSource } from "typeorm"
 

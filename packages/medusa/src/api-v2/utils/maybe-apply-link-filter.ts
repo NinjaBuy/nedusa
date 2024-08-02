@@ -1,16 +1,16 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { NextFunction } from "express"
-import { NinjaRequest } from "../../types/routing"
+import { MedusaRequest } from "../../types/routing"
 
 export function maybeApplyLinkFilter({
   entryPoint,
   resourceId,
   filterableField,
 }) {
-  return async (req: NinjaRequest, _, next: NextFunction) => {
+  return async (req: MedusaRequest, _, next: NextFunction) => {
     const filterableFields = req.filterableFields
 
     if (!filterableFields?.[filterableField]) {

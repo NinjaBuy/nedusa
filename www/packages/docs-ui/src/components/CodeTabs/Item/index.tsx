@@ -31,33 +31,33 @@ export const CodeTab = ({
         className={clsx(
           "text-compact-small-plus xs:border-0 py-docs_0.25 px-docs_0.75 relative rounded-full border",
           !isSelected && [
-            "text-ninja-code-text-subtle border-transparent",
+            "text-medusa-code-text-subtle border-transparent",
             blockStyle === "loud" && [
               colorMode === "light" &&
-                "text-ninja-code-text-subtle hover:bg-ninja-code-bg-base",
+                "text-medusa-code-text-subtle hover:bg-medusa-code-bg-base",
               colorMode === "dark" &&
-                "text-ninja-fg-muted hover:bg-ninja-bg-component",
+                "text-medusa-fg-muted hover:bg-medusa-bg-component",
             ],
             blockStyle === "subtle" && [
               colorMode === "light" &&
-                "text-ninja-fg-subtle hover:bg-ninja-bg-base",
+                "text-medusa-fg-subtle hover:bg-medusa-bg-base",
               colorMode === "dark" &&
-                "text-ninja-code-text-subtle hover:bg-ninja-code-bg-base",
+                "text-medusa-code-text-subtle hover:bg-medusa-code-bg-base",
             ],
           ],
           isSelected && [
             "xs:!bg-transparent",
             blockStyle === "loud" && [
               colorMode === "light" &&
-                "border-ninja-code-border text-ninja-code-text-base",
+                "border-medusa-code-border text-medusa-code-text-base",
               colorMode === "dark" &&
-                "border-ninja-border-base text-ninja-fg-base",
+                "border-medusa-border-base text-medusa-fg-base",
             ],
             blockStyle === "subtle" && [
               colorMode === "light" &&
-                "xs:border-ninja-border-base text-ninja-code-text-base",
+                "xs:border-medusa-border-base text-medusa-code-text-base",
               colorMode === "dark" &&
-                "xs:border-ninja-code-border text-ninja-code-text-base",
+                "xs:border-medusa-code-border text-medusa-code-text-base",
             ],
           ]
         )}

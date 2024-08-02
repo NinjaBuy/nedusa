@@ -21,21 +21,21 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.shippingProfiles.create({
+ *       medusa.admin.shippingProfiles.create({
  *         name: "Large Products"
  *       })
  *       .then(({ shipping_profile }) => {
  *         console.log(shipping_profile.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { ShippingProfileType } from "@ninjajs/ninja"
- *       import { useAdminCreateShippingProfile } from "ninja-react"
+ *       import { ShippingProfileType } from "@medusajs/medusa"
+ *       import { useAdminCreateShippingProfile } from "medusa-react"
  *
  *       const CreateShippingProfile = () => {
  *         const createShippingProfile = useAdminCreateShippingProfile()
@@ -63,7 +63,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/shipping-profiles' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "Large Products"
@@ -130,7 +130,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostShippingProfilesReq {
   @IsString()

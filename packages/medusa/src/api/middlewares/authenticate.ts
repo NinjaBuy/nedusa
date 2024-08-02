@@ -1,4 +1,4 @@
-import { ContainerRegistrationKeys, NinjaV2Flag } from "@ninjajs/utils"
+import { ContainerRegistrationKeys, MedusaV2Flag } from "@medusajs/utils"
 import { NextFunction, Request, RequestHandler, Response } from "express"
 
 import passport from "passport"
@@ -8,7 +8,7 @@ export default (): RequestHandler => {
     const featureFlagRouter = req.scope.resolve(
       ContainerRegistrationKeys.FEATURE_FLAG_ROUTER
     )
-    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
       return next()
     }
     passport.authenticate(

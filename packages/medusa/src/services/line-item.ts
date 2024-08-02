@@ -1,12 +1,12 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager, In } from "typeorm"
 import { DeepPartial } from "typeorm/common/DeepPartial"
 
 import {
   FlagRouter,
-  NinjaV2Flag,
+  MedusaV2Flag,
   selectorConstraintsToString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { TransactionBaseService } from "../interfaces"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
 import {
@@ -115,8 +115,8 @@ class LineItemService extends TransactionBaseService {
     const lineItem = await lineItemRepository.findOne(query)
 
     if (!lineItem) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Line item with ${id} was not found`
       )
     }
@@ -257,8 +257,8 @@ class LineItemService extends TransactionBaseService {
         )
 
         if (notFoundVariants.size) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Unable to generate the line items, some variant has not been found: ${[
               ...notFoundVariants,
             ].join(", ")}`
@@ -367,8 +367,8 @@ class LineItemService extends TransactionBaseService {
     }
 
     if (unit_price == null) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Cannot generate line item for variant "${
           variant.title ?? variant.product.title ?? variant.id
         }" without a price`
@@ -388,7 +388,7 @@ class LineItemService extends TransactionBaseService {
       should_merge: shouldMerge,
     }
 
-    if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
+    if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
       rawLineItem.product_id = variant.product_id
     }
 
@@ -467,8 +467,8 @@ class LineItemService extends TransactionBaseService {
         if (!lineItems.length) {
           const selectorConstraints = selectorConstraintsToString(selector)
 
-          throw new NinjaError(
-            NinjaError.Types.NOT_FOUND,
+          throw new MedusaError(
+            MedusaError.Types.NOT_FOUND,
             `Line item with ${selectorConstraints} was not found`
           )
         }
@@ -583,8 +583,8 @@ class LineItemService extends TransactionBaseService {
         !cart_id &&
         !order_edit_id
       ) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Unable to clone a line item that is not attached to at least one of: order_edit, order, swap, claim or cart."
         )
       }
@@ -633,15 +633,15 @@ class LineItemService extends TransactionBaseService {
 
     if (isString(variantIdOrData)) {
       if (!quantity || !regionIdOrContext || !isString(regionIdOrContext)) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `${errorMessage}. Ensure quantity, regionId, and variantId are passed`
         )
       }
 
       if (!variantIdOrData) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `${errorMessage}. Ensure variant id is passed`
         )
       }
@@ -651,8 +651,8 @@ class LineItemService extends TransactionBaseService {
     const resolvedContext = regionIdOrContext as GenerateLineItemContext
 
     if (!resolvedContext?.region_id) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `${errorMessage}. Ensure region or region_id are passed`
       )
     }
@@ -664,8 +664,8 @@ class LineItemService extends TransactionBaseService {
     const hasMissingVariantId = variantsData.some((d) => !d?.variantId)
 
     if (hasMissingVariantId) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `${errorMessage}. Ensure a variant id is passed for each variant`
       )
     }

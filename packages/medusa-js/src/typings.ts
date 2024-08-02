@@ -2,7 +2,7 @@ import {
   AdminCreateUserRequest,
   AdminPostInvitesReq,
   AdminUpdateUserRequest,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 
 export interface HTTPResponse {
   status: number

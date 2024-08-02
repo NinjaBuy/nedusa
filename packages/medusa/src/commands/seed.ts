@@ -1,11 +1,11 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IPricingModuleService } from "@ninjajs/types"
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IPricingModuleService } from "@medusajs/types"
+import { MedusaV2Flag } from "@medusajs/utils"
 import express from "express"
 import fs from "fs"
 import { sync as existsSync } from "fs-exists-cached"
-import { getConfigFile } from "ninja-core-utils"
-import { track } from "ninja-telemetry"
+import { getConfigFile } from "medusa-core-utils"
+import { track } from "medusa-telemetry"
 import path from "path"
 import { DataSource, DataSourceOptions } from "typeorm"
 import loaders from "../loaders"
@@ -54,7 +54,7 @@ const seed = async function ({ directory, migrate, seedFile }: SeedOptions) {
   }
 
   const { configModule, error }: { configModule: ConfigModule; error?: any } =
-    getConfigFile(directory, `ninja-config`)
+    getConfigFile(directory, `medusa-config`)
 
   if (error) {
     handleConfigError(error)
@@ -284,7 +284,7 @@ const seed = async function ({ directory, migrate, seedFile }: SeedOptions) {
       }
     }
 
-    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
       for (const ruleType of rule_types) {
         await pricingModuleService.createRuleTypes(ruleType)
       }

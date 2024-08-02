@@ -3,7 +3,7 @@
 import React from "react"
 import { NavbarIconButton, NavbarIconButtonProps } from "../../IconButton"
 import clsx from "clsx"
-import { Sidebar, XMark } from "@ninjajs/icons"
+import { Sidebar, XMark } from "@medusajs/icons"
 
 export type NavbarMobileMenuButtonProps = {
   buttonProps?: NavbarIconButtonProps
@@ -28,8 +28,8 @@ export const NavbarMobileMenuButton = ({
         }
       }}
     >
-      {!mobileSidebarOpen && <Sidebar className="text-ninja-fg-muted" />}
-      {mobileSidebarOpen && <XMark className="text-ninja-fg-muted" />}
+      {!mobileSidebarOpen && <Sidebar className="text-medusa-fg-muted" />}
+      {mobileSidebarOpen && <XMark className="text-medusa-fg-muted" />}
     </NavbarIconButton>
   )
 }

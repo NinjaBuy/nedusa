@@ -1,10 +1,10 @@
-import { ConfigModule, PluginDetails } from "@ninjajs/types"
-import { isString } from "@ninjajs/utils"
+import { ConfigModule, PluginDetails } from "@medusajs/types"
+import { isString } from "@medusajs/utils"
 import fs from "fs"
 import { sync as existsSync } from "fs-exists-cached"
-import { createRequireFromPath } from "ninja-core-utils"
+import { createRequireFromPath } from "medusa-core-utils"
 import path from "path"
-import { NINJA_PROJECT_NAME } from "../plugins"
+import { MEDUSA_PROJECT_NAME } from "../plugins"
 
 function createPluginId(name: string): string {
   return name
@@ -108,18 +108,18 @@ export function getResolvedPlugins(
   rootDirectory: string,
   configModule: ConfigModule,
   extensionDirectoryPath = "dist",
-  isNinjaProject = false
+  isMedusaProject = false
 ): undefined | PluginDetails[] {
   const { plugins } = configModule
 
-  if (isNinjaProject) {
+  if (isMedusaProject) {
     const extensionDirectory = path.join(rootDirectory, extensionDirectoryPath)
 
     return [
       {
         resolve: extensionDirectory,
-        name: NINJA_PROJECT_NAME,
-        id: createPluginId(NINJA_PROJECT_NAME),
+        name: MEDUSA_PROJECT_NAME,
+        id: createPluginId(MEDUSA_PROJECT_NAME),
         options: configModule,
         version: createFileContentHash(process.cwd(), `**`),
       },
@@ -141,8 +141,8 @@ export function getResolvedPlugins(
   // Resolve user's project as a plugin for loading purposes
   resolved.push({
     resolve: extensionDirectory,
-    name: NINJA_PROJECT_NAME,
-    id: createPluginId(NINJA_PROJECT_NAME),
+    name: MEDUSA_PROJECT_NAME,
+    id: createPluginId(MEDUSA_PROJECT_NAME),
     options: configModule,
     version: createFileContentHash(process.cwd(), `**`),
   })

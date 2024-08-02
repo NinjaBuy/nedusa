@@ -9,7 +9,7 @@ import { validator } from "../../../../utils/validator"
  * @oas [post] /store/products/search
  * operationId: PostProductsSearch
  * summary: Search Products
- * description: "Run a search query on products using the search service installed on the Ninja backend. The searching is handled through the search service, so the returned data's
+ * description: "Run a search query on products using the search service installed on the Medusa backend. The searching is handled through the search service, so the returned data's
  *  format depends on the search service you're using."
  * requestBody:
  *   content:
@@ -22,9 +22,9 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.products.search({
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.products.search({
  *         q: "Shirt"
  *       })
  *       .then(({ hits }) => {

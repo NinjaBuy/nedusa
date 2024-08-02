@@ -14,12 +14,12 @@ import MagicString from "magic-string"
 import path from "path"
 import { Logger, PluginOption, ViteDevServer } from "vite"
 
-import { InjectionZone, injectionZones } from "@ninjajs/admin-shared"
+import { InjectionZone, injectionZones } from "@medusajs/admin-shared"
 
 const traverse = (_traverse as any).default as typeof _traverse
 
-const VIRTUAL_PREFIX = "/@virtual/ninjajs-vite-plugin-extension/"
-const IMPORT_PREFIX = "ninja-admin:"
+const VIRTUAL_PREFIX = "/@virtual/medusajs-vite-plugin-extension/"
+const IMPORT_PREFIX = "medusa-admin:"
 
 const WIDGET_MODULE = `${IMPORT_PREFIX}widgets/`
 const WIDGET_MODULES = injectionZones.map((zone) => {
@@ -775,7 +775,7 @@ export default function inject(args?: InjectArgs): PluginOption {
   }
 
   return {
-    name: "@ninjajs/vite-plugin-extension",
+    name: "@medusajs/vite-plugin-extension",
     configureServer(s) {
       server = s
       logger = s.config.logger

@@ -13,31 +13,31 @@ const {
 jest.setTimeout(30000)
 
 const customerData = {
-  email: "ninja@test.dk",
-  password: "ninjatest",
-  first_name: "ninja",
-  last_name: "ninja",
+  email: "medusa@test.dk",
+  password: "medusatest",
+  first_name: "medusa",
+  last_name: "medusa",
 }
 
-describe("[NINJA_FF_SALES_CHANNELS] /store/carts", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_SALES_CHANNELS] /store/carts", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_SALES_CHANNELS: true },
+      env: { MEDUSA_FF_SALES_CHANNELS: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /store/carts/:id", () => {

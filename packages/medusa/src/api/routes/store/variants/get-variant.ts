@@ -9,7 +9,7 @@ import { IsOptional, IsString } from "class-validator"
 
 import { PriceSelectionParams } from "../../../../types/price-selection"
 import { validator } from "../../../../utils/validator"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 /**
  * @oas [get] /store/variants/{id}
@@ -23,7 +23,7 @@ import { promiseAll } from "@ninjajs/utils"
  *   You can alternatively use a publishable API key in the request header instead of passing a `sales_channel_id`.
  * externalDocs:
  *   description: "How to pass product pricing parameters"
- *   url: "https://docs.ninjajs.com/modules/products/storefront/show-products#product-pricing-parameters"
+ *   url: "https://docs.medusajs.com/modules/products/storefront/show-products#product-pricing-parameters"
  * parameters:
  *   - (path) id=* {string} The ID of the Product Variant.
  *   - (query) sales_channel_id {string} The ID of the sales channel the customer is viewing the product variant from.
@@ -46,10 +46,10 @@ import { promiseAll } from "@ninjajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.product.variants.retrieve(productVariantId)
+ *       medusa.product.variants.retrieve(productVariantId)
  *       .then(({ variant }) => {
  *         console.log(variant.id);
  *       })

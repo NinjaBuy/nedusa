@@ -5,7 +5,7 @@ import { IsString } from "class-validator"
  * @oas [post] /admin/uploads/download-url
  * operationId: "PostUploadsDownloadUrl"
  * summary: "Get a File's Download URL"
- * description: "Create and retrieve a presigned or public download URL for a file. The URL creation is handled by the file service installed on the Ninja backend."
+ * description: "Create and retrieve a presigned or public download URL for a file. The URL creation is handled by the file service installed on the Medusa backend."
  * x-authenticated: true
  * requestBody:
  *   content:
@@ -16,20 +16,20 @@ import { IsString } from "class-validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.uploads.getPresignedDownloadUrl({
+ *       medusa.admin.uploads.getPresignedDownloadUrl({
  *         file_key
  *       })
  *       .then(({ download_url }) => {
  *         console.log(download_url);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreatePresignedDownloadUrl } from "ninja-react"
+ *       import { useAdminCreatePresignedDownloadUrl } from "medusa-react"
  *
  *       const Image = () => {
  *         const createPresignedUrl = useAdminCreatePresignedDownloadUrl()
@@ -53,7 +53,7 @@ import { IsString } from "class-validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/uploads/download-url' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "file_key": "{file_key}"

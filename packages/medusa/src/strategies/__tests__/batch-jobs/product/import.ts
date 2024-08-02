@@ -1,10 +1,10 @@
 import { PassThrough, Readable } from "stream"
 import { EntityManager } from "typeorm"
 
-import { FileService } from "ninja-interfaces"
-import { IdMap, MockManager } from "ninja-test-utils"
+import { FileService } from "medusa-interfaces"
+import { IdMap, MockManager } from "medusa-test-utils"
 
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { User } from "../../../../models"
 import {
     BatchJobService,

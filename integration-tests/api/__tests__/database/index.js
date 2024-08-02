@@ -6,7 +6,7 @@ const { initDb, useDb } = require("../../../environment-helpers/use-db")
 jest.setTimeout(30000)
 
 describe("Database options", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
@@ -15,13 +15,13 @@ describe("Database options", () => {
       cwd,
       database_extra: { idle_in_transaction_session_timeout: 1000 },
     })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("idle_in_transaction_session_timeout", () => {

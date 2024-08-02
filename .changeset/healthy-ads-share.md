@@ -1,6 +1,6 @@
 ---
-"@ninjajs/modules-sdk": patch
-"@ninjajs/currency": patch
+"@medusajs/modules-sdk": patch
+"@medusajs/currency": patch
 ---
 
 Remote Query "order" as options

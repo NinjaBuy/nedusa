@@ -1,17 +1,17 @@
 import {
   deleteLineItemsWorkflow,
   updateLineItemInCartWorkflow,
-} from "@ninjajs/core-flows"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { ICartModuleService } from "@ninjajs/types"
-import { NinjaError } from "@ninjajs/utils"
-import { NinjaRequest, NinjaResponse } from "../../../../../../types/routing"
+} from "@medusajs/core-flows"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ICartModuleService } from "@medusajs/types"
+import { MedusaError } from "@medusajs/utils"
+import { MedusaRequest, MedusaResponse } from "../../../../../../types/routing"
 import { refetchCart } from "../../../helpers"
 import { StoreUpdateCartLineItemType } from "../../../validators"
 
 export const POST = async (
-  req: NinjaRequest<StoreUpdateCartLineItemType>,
-  res: NinjaResponse
+  req: MedusaRequest<StoreUpdateCartLineItemType>,
+  res: MedusaResponse
 ) => {
   const cartModuleService = req.scope.resolve<ICartModuleService>(
     ModuleRegistrationName.CART
@@ -25,8 +25,8 @@ export const POST = async (
   const item = cart.items?.find((i) => i.id === req.params.line_id)
 
   if (!item) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Line item with id: ${req.params.line_id} was not found`
     )
   }
@@ -55,7 +55,7 @@ export const POST = async (
   res.status(200).json({ cart: updatedCart })
 }
 
-export const DELETE = async (req: NinjaRequest, res: NinjaResponse) => {
+export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
   const id = req.params.line_id
 
   const { errors } = await deleteLineItemsWorkflow(req.scope).run({

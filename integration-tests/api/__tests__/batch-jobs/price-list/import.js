@@ -14,7 +14,7 @@ const {
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -53,7 +53,7 @@ function copyTemplateFile() {
 }
 
 describe("Price list import batch job", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
@@ -62,7 +62,7 @@ describe("Price list import batch job", () => {
 
     cleanTempData() // cleanup if previous process didn't manage to do it
 
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
       uploadDir: __dirname,
     })
@@ -74,7 +74,7 @@ describe("Price list import batch job", () => {
 
     cleanTempData()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   beforeEach(async () => {

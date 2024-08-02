@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import { Payment } from "@ninjajs/ninja"
+import { Payment } from "@medusajs/medusa"
 
 export type PaymentFactoryData = {
   provider_id?: string

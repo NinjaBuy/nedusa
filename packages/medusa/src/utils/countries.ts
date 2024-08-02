@@ -1,2 +1,2 @@
-import { defaultCountries, Country } from "@ninjajs/utils"
+import { defaultCountries, Country } from "@medusajs/utils"
 export const countries: Country[] = defaultCountries

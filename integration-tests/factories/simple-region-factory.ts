@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 import faker from "faker"
-import { Region } from "@ninjajs/ninja"
+import { Region } from "@medusajs/medusa"
 
 export type RegionFactoryData = {
   id?: string

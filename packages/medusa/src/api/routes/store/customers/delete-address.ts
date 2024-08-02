@@ -17,10 +17,10 @@ import CustomerService from "../../../../services/customer"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged
- *       ninja.customers.addresses.deleteAddress(addressId)
+ *       medusa.customers.addresses.deleteAddress(addressId)
  *       .then(({ customer }) => {
  *         console.log(customer.id);
  *       })

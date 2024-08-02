@@ -1,7 +1,7 @@
 import { createAuthUsers } from "../../../__fixtures__/auth-user"
-import { moduleIntegrationTestRunner, SuiteOptions } from "ninja-test-utils"
-import { Modules } from "@ninjajs/modules-sdk"
-import { IAuthModuleService } from "@ninjajs/types"
+import { moduleIntegrationTestRunner, SuiteOptions } from "medusa-test-utils"
+import { Modules } from "@medusajs/modules-sdk"
+import { IAuthModuleService } from "@medusajs/types"
 
 jest.setTimeout(30000)
 

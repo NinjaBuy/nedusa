@@ -1,4 +1,4 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 import { ShippingOptionServiceMock } from "../../../../../services/__mocks__/shipping-option"
 import { request } from "../../../../../helpers/test-request"
 

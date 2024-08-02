@@ -15,8 +15,8 @@ import {
   TaxRate,
 } from "../models"
 import { TaxRateListByConfig } from "../types/tax-rate"
-import { isDefined } from "ninja-core-utils"
-import { objectToStringPath, promiseAll } from "@ninjajs/utils"
+import { isDefined } from "medusa-core-utils"
+import { objectToStringPath, promiseAll } from "@medusajs/utils"
 import { dataSource } from "../loaders/database"
 
 const resolveableFields = [

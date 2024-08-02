@@ -1,8 +1,8 @@
-import { AdminCreateTaxRegion } from "@ninjajs/ninja"
+import { AdminCreateTaxRegion } from "@medusajs/medusa"
 import {
   AdminTaxRegionListResponse,
   AdminTaxRegionResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   QueryKey,
   UseMutationOptions,
@@ -11,7 +11,7 @@ import {
   useQuery,
 } from "@tanstack/react-query"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import { TaxRegionDeleteRes } from "../../types/api-responses"
 

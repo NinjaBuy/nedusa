@@ -7,7 +7,7 @@ import {
   SalesChannelService,
 } from "../../../../services"
 
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 import { Transform, Type } from "class-transformer"
 import { omit } from "lodash"
 import ProductVariantService from "../../../../services/product-variant"
@@ -60,7 +60,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *       type: string
  *       externalDocs:
  *         description: "Price selection context overview"
- *         url: "https://docs.ninjajs.com/modules/price-lists/price-selection-strategy#context-object"
+ *         url: "https://docs.medusajs.com/modules/price-lists/price-selection-strategy#context-object"
  *   - in: query
  *     name: currency_code
  *     style: form
@@ -70,7 +70,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *       type: string
  *       externalDocs:
  *         description: "Price selection context overview"
- *         url: "https://docs.ninjajs.com/modules/price-lists/price-selection-strategy#context-object"
+ *         url: "https://docs.medusajs.com/modules/price-lists/price-selection-strategy#context-object"
  *   - in: query
  *     name: customer_id
  *     style: form
@@ -80,7 +80,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *       type: string
  *       externalDocs:
  *         description: "Price selection context overview"
- *         url: "https://docs.ninjajs.com/modules/price-lists/price-selection-strategy#context-object"
+ *         url: "https://docs.medusajs.com/modules/price-lists/price-selection-strategy#context-object"
  *   - in: query
  *     name: title
  *     style: form
@@ -123,18 +123,18 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.variants.list()
+ *       medusa.admin.variants.list()
  *       .then(({ variants, limit, offset, count }) => {
  *         console.log(variants.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminVariants } from "ninja-react"
+ *       import { useAdminVariants } from "medusa-react"
  *
  *       const Variants = () => {
  *         const { variants, isLoading } = useAdminVariants()
@@ -161,7 +161,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/variants' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

@@ -1,18 +1,18 @@
 import SendGrid from "@sendgrid/mail"
-import { humanizeAmount, zeroDecimalCurrencies } from "ninja-core-utils"
-import { NotificationService } from "ninja-interfaces"
+import { humanizeAmount, zeroDecimalCurrencies } from "medusa-core-utils"
+import { NotificationService } from "medusa-interfaces"
 import { IsNull, Not } from "typeorm"
-import { NinjaError } from "@ninjajs/utils"
+import { MedusaError } from "@medusajs/utils"
 
 class SendGridService extends NotificationService {
   static identifier = "sendgrid"
 
   /**
-   * @param {Object} options - options defined in `ninja-config.js`
+   * @param {Object} options - options defined in `medusa-config.js`
    *    e.g.
    *    {
    *      api_key: SendGrid api key
-   *      from: Ninja <hello@ninja.example>,
+   *      from: Medusa <hello@medusa.example>,
    *      order_placed_template: 01234,
    *      order_updated_template: 56789,
    *      order_canceled_template: 4242,
@@ -173,7 +173,7 @@ class SendGridService extends NotificationService {
         case "customer.password_reset":
           return map.customer_password_reset_template
         case "restock-notification.restocked":
-          return map.ninja_restock_template
+          return map.medusa_restock_template
         case "order.refund_created":
           return map.order_refund_created_template
         default:
@@ -205,8 +205,8 @@ class SendGridService extends NotificationService {
     }
 
     if (!templateId) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Sendgrid service: No template was set for event: ${event}`
       )
     }

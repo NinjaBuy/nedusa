@@ -1,6 +1,6 @@
 const path = require("path")
 
-const { IdMap } = require("ninja-test-utils")
+const { IdMap } = require("medusa-test-utils")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -13,32 +13,32 @@ const {
   AllocationType,
   DiscountConditionType,
   DiscountConditionOperator,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 const { simpleDiscountFactory } = require("../../../factories")
 
 jest.setTimeout(50000)
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 describe("/admin/product-types", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/product-types", () => {

@@ -1,7 +1,7 @@
 ---
-"@ninjajs/core-flows": patch
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/core-flows": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja, core-flows,types): delete fulfillment set, delete shipping profile
+feat(medusa, core-flows,types): delete fulfillment set, delete shipping profile

@@ -1,4 +1,4 @@
-import { AdminApiKeyListResponse, AdminApiKeyResponse } from "@ninjajs/types"
+import { AdminApiKeyListResponse, AdminApiKeyResponse } from "@medusajs/types"
 import { CreateApiKeyReq, UpdateApiKeyReq } from "../../types/api-payloads"
 import { ApiKeyDeleteRes } from "../../types/api-responses"
 import { deleteRequest, getRequest, postRequest } from "./common"

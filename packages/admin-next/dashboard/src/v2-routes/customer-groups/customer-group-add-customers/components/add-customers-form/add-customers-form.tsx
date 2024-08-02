@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Checkbox, Hint, Tooltip, toast } from "@ninjajs/ui"
+import { Button, Checkbox, Hint, Tooltip, toast } from "@medusajs/ui"
 import {
   OnChangeFn,
   RowSelectionState,
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { AdminCustomerResponse } from "@ninjajs/types"
+import { AdminCustomerResponse } from "@medusajs/types"
 import {
   RouteFocusModal,
   useRouteModal,

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 import { OrderFactoryData, simpleOrderFactory } from "./simple-order-factory"
-import { OrderEdit } from "@ninjajs/ninja"
+import { OrderEdit } from "@medusajs/medusa"
 
 export type OrderEditFactoryData = {
   id?: string

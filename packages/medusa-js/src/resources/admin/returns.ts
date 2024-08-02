@@ -4,21 +4,21 @@ import {
   AdminReturnsCancelRes,
   AdminReturnsListRes,
   AdminReturnsRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Return API Routes](https://docs.ninjajs.com/api/admin#returns). All its method
- * are available in the JS Client under the `ninja.admin.returns` property.
+ * This class is used to send requests to [Admin Return API Routes](https://docs.medusajs.com/api/admin#returns). All its method
+ * are available in the JS Client under the `medusa.admin.returns` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A return can be created by a customer or an admin to return items in an order.
  * Admins can manage these returns and change their state.
  * 
- * Related Guide: [How to manage returns](https://docs.ninjajs.com/modules/orders/admin/manage-returns).
+ * Related Guide: [How to manage returns](https://docs.medusajs.com/modules/orders/admin/manage-returns).
  */
 class AdminReturnsResource extends BaseResource {
   /**
@@ -29,10 +29,10 @@ class AdminReturnsResource extends BaseResource {
    * that the claim or swap belongs to.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.returns.cancel(returnId)
+   * medusa.admin.returns.cancel(returnId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * });
@@ -53,10 +53,10 @@ class AdminReturnsResource extends BaseResource {
    * @returns {ResponsePromise<AdminReturnsRes>} Resolves to the return's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.returns.receive(returnId, {
+   * medusa.admin.returns.receive(returnId, {
    *   items: [
    *     {
    *       item_id,
@@ -87,10 +87,10 @@ class AdminReturnsResource extends BaseResource {
    * To list returns:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.returns.list()
+   * medusa.admin.returns.list()
    * .then(({ returns, limit, offset, count }) => {
    *   console.log(returns.length)
    * })
@@ -99,10 +99,10 @@ class AdminReturnsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.returns.list({
+   * medusa.admin.returns.list({
    *   limit,
    *   offset
    * })

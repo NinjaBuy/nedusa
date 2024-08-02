@@ -2,7 +2,7 @@ import { InventoryItemRes } from "../../../types/api-responses"
 import { LoaderFunctionArgs } from "react-router-dom"
 import { client } from "../../../lib/client"
 import { inventoryItemsQueryKeys } from "../../../hooks/api/inventory"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 
 const inventoryDetailQuery = (id: string) => ({
   queryKey: inventoryItemsQueryKeys.detail(id),

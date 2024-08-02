@@ -1,4 +1,4 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { Router } from "express"
 import "reflect-metadata"
 import { Order } from "../../../.."

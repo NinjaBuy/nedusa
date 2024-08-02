@@ -1,4 +1,4 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { DeepPartial, EntityManager, FindOptionsWhere, ILike } from "typeorm"
 import { CustomerService } from "."
 import { CustomerGroup } from ".."
@@ -34,8 +34,8 @@ class CustomerGroupService extends TransactionBaseService {
 
   async retrieve(customerGroupId: string, config = {}): Promise<CustomerGroup> {
     if (!isDefined(customerGroupId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"customerGroupId" must be defined`
       )
     }
@@ -48,8 +48,8 @@ class CustomerGroupService extends TransactionBaseService {
 
     const customerGroup = await cgRepo.findOne(query)
     if (!customerGroup) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `CustomerGroup with id ${customerGroupId} was not found`
       )
     }
@@ -73,7 +73,7 @@ class CustomerGroupService extends TransactionBaseService {
         return await cgRepo.save(created)
       } catch (err) {
         if (err.code === PostgresError.DUPLICATE_ERROR) {
-          throw new NinjaError(NinjaError.Types.DUPLICATE_ERROR, err.detail)
+          throw new MedusaError(MedusaError.Types.DUPLICATE_ERROR, err.detail)
         }
         throw err
       }
@@ -270,8 +270,8 @@ class CustomerGroupService extends TransactionBaseService {
         (cId) => existingCustomers.findIndex((el) => el.id === cId) === -1
       )
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `The following customer ids do not exist: ${JSON.stringify(
           nonExistingCustomers.join(", ")
         )}`

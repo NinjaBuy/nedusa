@@ -16,21 +16,21 @@ import {
   AdminPostDiscountsDiscountDynamicCodesReq,
   AdminPostDiscountsDiscountReq,
   AdminPostDiscountsReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Discount API Routes](https://docs.ninjajs.com/api/admin#discounts). All its method
- * are available in the JS Client under the `ninja.admin.discounts` property.
+ * This class is used to send requests to [Admin Discount API Routes](https://docs.medusajs.com/api/admin#discounts). All its method
+ * are available in the JS Client under the `medusa.admin.discounts` property.
  *
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  *
  * Admins can create discounts with conditions and rules, providing them with advanced settings for variety of cases.
  * The methods in this class can be used to manage discounts, their conditions, resources, and more.
  *
- * Related Guide: [How to manage discounts](https://docs.ninjajs.com/modules/discounts/admin/manage-discounts).
+ * Related Guide: [How to manage discounts](https://docs.medusajs.com/modules/discounts/admin/manage-discounts).
  */
 class AdminDiscountsResource extends BaseResource {
   /**
@@ -41,10 +41,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the discount's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.addRegion(discountId, regionId)
+   * medusa.admin.discounts.addRegion(discountId, regionId)
    * .then(({ discount }) => {
    *   console.log(discount.id);
    * })
@@ -65,11 +65,11 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the discount's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * import { AllocationType, DiscountRuleType } from "@ninjajs/ninja"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * import { AllocationType, DiscountRuleType } from "@medusajs/medusa"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.create({
+   * medusa.admin.discounts.create({
    *   code: "TEST",
    *   rule: {
    *     type: DiscountRuleType.FIXED,
@@ -100,10 +100,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.update(discountId, {
+   * medusa.admin.discounts.update(discountId, {
    *   code: "TEST"
    * })
    * .then(({ discount }) => {
@@ -127,10 +127,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.createDynamicCode(discountId, {
+   * medusa.admin.discounts.createDynamicCode(discountId, {
    *   code: "TEST",
    *   usage_limit: 1
    * })
@@ -154,10 +154,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsDeleteRes>} Resolves to the delete operation details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.delete(discountId)
+   * medusa.admin.discounts.delete(discountId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -178,10 +178,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.deleteDynamicCode(discountId, code)
+   * medusa.admin.discounts.deleteDynamicCode(discountId, code)
    * .then(({ discount }) => {
    *   console.log(discount.id);
    * })
@@ -203,10 +203,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.retrieve(discountId)
+   * medusa.admin.discounts.retrieve(discountId)
    * .then(({ discount }) => {
    *   console.log(discount.id);
    * })
@@ -233,10 +233,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.retrieveByCode(code)
+   * medusa.admin.discounts.retrieveByCode(code)
    * .then(({ discount }) => {
    *   console.log(discount.id);
    * })
@@ -259,10 +259,10 @@ class AdminDiscountsResource extends BaseResource {
    * To list discounts:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.list()
+   * medusa.admin.discounts.list()
    * .then(({ discounts, limit, offset, count }) => {
    *   console.log(discounts.id);
    * })
@@ -271,10 +271,10 @@ class AdminDiscountsResource extends BaseResource {
    * To specify relations that should be retrieved within the discounts:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.list({
+   * medusa.admin.discounts.list({
    *   expand: "rule"
    * })
    * .then(({ discounts, limit, offset, count }) => {
@@ -285,10 +285,10 @@ class AdminDiscountsResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.list({
+   * medusa.admin.discounts.list({
    *   expand: "rule",
    *   limit,
    *   offset
@@ -320,10 +320,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.removeRegion(discountId, regionId)
+   * medusa.admin.discounts.removeRegion(discountId, regionId)
    * .then(({ discount }) => {
    *   console.log(discount.id);
    * })
@@ -350,11 +350,11 @@ class AdminDiscountsResource extends BaseResource {
    * To create a condition in a discount:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * import { DiscountConditionOperator } from "@ninjajs/ninja"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * import { DiscountConditionOperator } from "@medusajs/medusa"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.createCondition(discountId, {
+   * medusa.admin.discounts.createCondition(discountId, {
    *   operator: DiscountConditionOperator.IN,
    *   products: [productId]
    * })
@@ -366,11 +366,11 @@ class AdminDiscountsResource extends BaseResource {
    * To specify relations that should be retrieved as part of the response:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * import { DiscountConditionOperator } from "@ninjajs/ninja"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * import { DiscountConditionOperator } from "@medusajs/medusa"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.createCondition(discountId, {
+   * medusa.admin.discounts.createCondition(discountId, {
    *   operator: DiscountConditionOperator.IN,
    *   products: [productId]
    * }, {
@@ -411,10 +411,10 @@ class AdminDiscountsResource extends BaseResource {
    * To update a condition in a discount:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.updateCondition(discountId, conditionId, {
+   * medusa.admin.discounts.updateCondition(discountId, conditionId, {
    *   products: [
    *     productId
    *   ]
@@ -427,10 +427,10 @@ class AdminDiscountsResource extends BaseResource {
    * To specify relations that should be retrieved as part of the response:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.updateCondition(discountId, conditionId, {
+   * medusa.admin.discounts.updateCondition(discountId, conditionId, {
    *   products: [
    *     productId
    *   ]
@@ -467,10 +467,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsDeleteRes>} Resolves to the deletion operation details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.deleteCondition(discountId, conditionId)
+   * medusa.admin.discounts.deleteCondition(discountId, conditionId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -496,10 +496,10 @@ class AdminDiscountsResource extends BaseResource {
    * A simple example that retrieves a discount condition by its ID:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.getCondition(discountId, conditionId)
+   * medusa.admin.discounts.getCondition(discountId, conditionId)
    * .then(({ discount_condition }) => {
    *   console.log(discount_condition.id);
    * })
@@ -508,10 +508,10 @@ class AdminDiscountsResource extends BaseResource {
    * To specify relations that should be retrieved:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.getCondition(discountId, conditionId, {
+   * medusa.admin.discounts.getCondition(discountId, conditionId, {
    *   expand: "discount_rule"
    * })
    * .then(({ discount_condition }) => {
@@ -549,10 +549,10 @@ class AdminDiscountsResource extends BaseResource {
    * To add resources to a discount condition:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.addConditionResourceBatch(discountId, conditionId, {
+   * medusa.admin.discounts.addConditionResourceBatch(discountId, conditionId, {
    *   resources: [{ id: itemId }]
    * })
    * .then(({ discount }) => {
@@ -563,10 +563,10 @@ class AdminDiscountsResource extends BaseResource {
    * To specify relations to include in the returned discount:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.addConditionResourceBatch(discountId, conditionId, {
+   * medusa.admin.discounts.addConditionResourceBatch(discountId, conditionId, {
    *   resources: [{ id: itemId }]
    * }, {
    *   expand: "rule"
@@ -602,10 +602,10 @@ class AdminDiscountsResource extends BaseResource {
    * @returns {ResponsePromise<AdminDiscountsRes>} Resolves to the details of the discount.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.discounts.deleteConditionResourceBatch(discountId, conditionId, {
+   * medusa.admin.discounts.deleteConditionResourceBatch(discountId, conditionId, {
    *   resources: [{ id: itemId }]
    * })
    * .then(({ discount }) => {

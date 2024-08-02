@@ -1,9 +1,9 @@
-import { AdminProductCategoryResponse } from "@ninjajs/types"
+import { AdminProductCategoryResponse } from "@medusajs/types"
 import { LoaderFunctionArgs } from "react-router-dom"
 
 import { categoriesQueryKeys } from "../../../hooks/api/categories"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 
 const categoryDetailQuery = (id: string) => ({
   queryKey: categoriesQueryKeys.detail(id),

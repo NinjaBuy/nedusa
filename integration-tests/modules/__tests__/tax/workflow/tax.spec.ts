@@ -1,21 +1,21 @@
-import { ITaxModuleService } from "@ninjajs/types"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ITaxModuleService } from "@medusajs/types"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 import {
   createTaxRateRulesStepId,
   updateTaxRatesWorkflow,
-} from "@ninjajs/core-flows"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
+} from "@medusajs/core-flows"
+import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 const adminHeaders = {
-  headers: { "x-ninja-access-token": "test_token" },
+  headers: { "x-medusa-access-token": "test_token" },
 }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Taxes - Workflow", () => {

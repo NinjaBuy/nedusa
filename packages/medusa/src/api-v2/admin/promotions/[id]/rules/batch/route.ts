@@ -1,24 +1,24 @@
-import { batchPromotionRulesWorkflow } from "@ninjajs/core-flows"
+import { batchPromotionRulesWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
-import { BatchMethodRequest } from "@ninjajs/types"
+import { BatchMethodRequest } from "@medusajs/types"
 import {
   AdminCreatePromotionRuleType,
   AdminUpdatePromotionRuleType,
 } from "../../../validators"
-import { RuleType } from "@ninjajs/utils"
+import { RuleType } from "@medusajs/utils"
 import { refetchBatchRules } from "../../../helpers"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<
+  req: AuthenticatedMedusaRequest<
     BatchMethodRequest<
       AdminCreatePromotionRuleType,
       AdminUpdatePromotionRuleType
     >
   >,
-  res: NinjaResponse
+  res: MedusaResponse
 ) => {
   const id = req.params.id
   const { result, errors } = await batchPromotionRulesWorkflow(req.scope).run({

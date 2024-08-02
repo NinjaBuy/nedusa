@@ -2,14 +2,14 @@ import { Customer } from "../../../.."
 import CustomerService from "../../../../services/customer"
 import PaymentProviderService from "../../../../services/payment-provider"
 import { PaymentProvider } from "../../../../models"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 /**
  * @oas [get] /store/customers/me/payment-methods
  * operationId: GetCustomersCustomerPaymentMethods
  * summary: Get Saved Payment Methods
  * description: "Retrieve the logged-in customer's saved payment methods. This API Route only works with payment providers created with the deprecated Payment Service interface.
- *  The payment methods are saved using the Payment Service's third-party service, and not on the Ninja backend. So, they're retrieved from the third-party service."
+ *  The payment methods are saved using the Payment Service's third-party service, and not on the Medusa backend. So, they're retrieved from the third-party service."
  * x-authenticated: true
  * deprecated: true
  * x-codegen:
@@ -18,10 +18,10 @@ import { promiseAll } from "@ninjajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged
- *       ninja.customers.paymentMethods.list()
+ *       medusa.customers.paymentMethods.list()
  *       .then(({ payment_methods }) => {
  *         console.log(payment_methods.length);
  *       })

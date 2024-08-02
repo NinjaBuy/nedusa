@@ -2,16 +2,16 @@ import { SourceNodesArgs } from "gatsby"
 import { makeSourceFromOperation } from "./make-source-from-operation"
 import { createOperations } from "./operations"
 
-const ninjaNodeTypes = [
-  "NinjaRegions",
-  "NinjaProducts",
-  "NinjaOrders",
-  "NinjaCollections",
+const medusaNodeTypes = [
+  "MedusaRegions",
+  "MedusaProducts",
+  "MedusaOrders",
+  "MedusaCollections",
 ]
 
 export async function sourceAllNodes(
   gatsbyApi: SourceNodesArgs,
-  pluginOptions: NinjaPluginOptions
+  pluginOptions: MedusaPluginOptions
 ): Promise<void> {
   const {
     createProductsOperation,
@@ -40,7 +40,7 @@ export async function sourceAllNodes(
 
 export async function sourceUpdatedNodes(
   gatsbyApi: SourceNodesArgs,
-  pluginOptions: NinjaPluginOptions,
+  pluginOptions: MedusaPluginOptions,
   lastBuildTime: string
 ): Promise<void> {
   const {
@@ -50,7 +50,7 @@ export async function sourceUpdatedNodes(
     incrementalCollectionsOperation,
   } = createOperations(pluginOptions)
 
-  for (const nodeType of ninjaNodeTypes) {
+  for (const nodeType of medusaNodeTypes) {
     gatsbyApi
       .getNodesByType(nodeType)
       .forEach((node) => gatsbyApi.actions.touchNode(node))

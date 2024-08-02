@@ -39,7 +39,7 @@ function copyTemplateFile() {
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -52,7 +52,7 @@ function cleanTempData() {
 
 describe("Product import - Sales Channel", () => {
   let dbConnection
-  let ninjaProcess
+  let medusaProcess
 
   const collectionHandle1 = "test-collection1"
 
@@ -63,11 +63,11 @@ describe("Product import - Sales Channel", () => {
 
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_SALES_CHANNELS: true },
+      env: { MEDUSA_FF_SALES_CHANNELS: true },
       uploadDir: __dirname,
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
@@ -75,7 +75,7 @@ describe("Product import - Sales Channel", () => {
     await db.shutdown()
 
     cleanTempData()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   beforeEach(async () => {

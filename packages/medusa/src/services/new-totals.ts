@@ -1,5 +1,5 @@
-import { FlagRouter } from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { FlagRouter } from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import {
   ITaxCalculationStrategy,
@@ -190,8 +190,8 @@ export default class NewTotalsService extends TransactionBaseService {
         : (taxLines as LineItemTaxLine[])
 
       if (!totals.tax_lines && item.variant_id) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           "Tax Lines must be joined to calculate taxes"
         )
       }
@@ -199,8 +199,8 @@ export default class NewTotalsService extends TransactionBaseService {
 
     if (item.is_return) {
       if (!isDefined(item.tax_lines) && item.variant_id) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           "Return Line Items must join tax lines"
         )
       }
@@ -359,8 +359,8 @@ export default class NewTotalsService extends TransactionBaseService {
         0) * lineItem.quantity
 
     if (!isDefined(lineItem.tax_lines)) {
-      throw new NinjaError(
-        NinjaError.Types.UNEXPECTED_STATE,
+      throw new MedusaError(
+        MedusaError.Types.UNEXPECTED_STATE,
         "Cannot compute line item refund amount, tax lines are missing from the line item"
       )
     }
@@ -453,8 +453,8 @@ export default class NewTotalsService extends TransactionBaseService {
     tax_total: number
   }> {
     if (!giftCards && !giftCardTransactions) {
-      throw new NinjaError(
-        NinjaError.Types.UNEXPECTED_STATE,
+      throw new MedusaError(
+        MedusaError.Types.UNEXPECTED_STATE,
         "Cannot calculate the gift card totals. Neither the gift cards or gift card transactions have been provided"
       )
     }
@@ -679,8 +679,8 @@ export default class NewTotalsService extends TransactionBaseService {
         : (taxLines as ShippingMethodTaxLine[])
 
       if (!totals.tax_lines) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           "Tax Lines must be joined to calculate shipping taxes"
         )
       }

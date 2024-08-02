@@ -1,6 +1,6 @@
 import cors from "cors"
 import { Router } from "express"
-import { parseCorsOrigins } from "ninja-core-utils"
+import { parseCorsOrigins } from "medusa-core-utils"
 import middlewares from "../../middlewares"
 import productTypesRoutes from "../admin/product-types"
 import authRoutes from "./auth"

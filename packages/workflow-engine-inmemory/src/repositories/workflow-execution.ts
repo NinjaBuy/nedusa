@@ -1,4 +1,4 @@
-import { DALUtils } from "@ninjajs/utils"
+import { DALUtils } from "@medusajs/utils"
 import { WorkflowExecution } from "@models"
 
 // eslint-disable-next-line max-len

@@ -1,6 +1,6 @@
 ---
-"@ninjajs/product": patch
-"@ninjajs/types": patch
+"@medusajs/product": patch
+"@medusajs/types": patch
 ---
 
 Add parents to product categories

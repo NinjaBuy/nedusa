@@ -24,20 +24,20 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged
- *       ninja.customers.update({
+ *       medusa.customers.update({
  *         first_name: "Laury"
  *       })
  *       .then(({ customer }) => {
  *         console.log(customer.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useUpdateMe } from "ninja-react"
+ *       import { useUpdateMe } from "medusa-react"
  *
  *       type Props = {
  *         customerId: string
@@ -152,7 +152,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class StorePostCustomersCustomerReq {
   @IsOptional()

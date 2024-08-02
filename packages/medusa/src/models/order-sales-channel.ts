@@ -1,11 +1,11 @@
 import { BeforeInsert, Column, Index, PrimaryColumn } from "typeorm"
-import { NinjaV2Flag, SalesChannelFeatureFlag } from "@ninjajs/utils"
+import { MedusaV2Flag, SalesChannelFeatureFlag } from "@medusajs/utils"
 
 import { generateEntityId } from "../utils"
 import { SoftDeletableEntity } from "../interfaces"
 import { FeatureFlagEntity } from "../utils/feature-flag-decorators"
 
-@FeatureFlagEntity([NinjaV2Flag.key, SalesChannelFeatureFlag.key])
+@FeatureFlagEntity([MedusaV2Flag.key, SalesChannelFeatureFlag.key])
 export class OrderSalesChannel extends SoftDeletableEntity {
   @Column()
   id: string

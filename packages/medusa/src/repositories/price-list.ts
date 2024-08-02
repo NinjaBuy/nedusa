@@ -2,7 +2,7 @@ import { FindOperator, FindOptionsWhere, ILike, In } from "typeorm"
 import { PriceList, ProductVariantMoneyAmount } from "../models"
 import { ExtendedFindConfig } from "../types/common"
 import { dataSource } from "../loaders/database"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 export const PriceListRepository = dataSource.getRepository(PriceList).extend({
   async listAndCount(

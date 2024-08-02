@@ -1,20 +1,20 @@
-import { batchProductsWorkflow } from "@ninjajs/core-flows"
+import { batchProductsWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   AdminBatchUpdateProductType,
   AdminCreateProductType,
 } from "../validators"
-import { BatchMethodRequest } from "@ninjajs/types"
+import { BatchMethodRequest } from "@medusajs/types"
 import { refetchBatchProducts, remapProductResponse } from "../helpers"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<
+  req: AuthenticatedMedusaRequest<
     BatchMethodRequest<AdminCreateProductType, AdminBatchUpdateProductType>
   >,
-  res: NinjaResponse
+  res: MedusaResponse
 ) => {
   // TODO: Fix types
   const input = req.validatedBody as any

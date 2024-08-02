@@ -1,10 +1,10 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { PaymentWebhookEvents } from "@ninjajs/utils"
-import { PaymentModuleOptions } from "@ninjajs/types"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { PaymentWebhookEvents } from "@medusajs/utils"
+import { PaymentModuleOptions } from "@medusajs/types"
 
-import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
+import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
 
-export const POST = async (req: NinjaRequest, res: NinjaResponse) => {
+export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
   try {
     const { provider } = req.params
 

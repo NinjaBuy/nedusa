@@ -14,8 +14,8 @@ import {
   Text,
   clx,
   Select,
-} from "@ninjajs/ui"
-import { ServiceZoneDTO } from "@ninjajs/types"
+} from "@medusajs/ui"
+import { ServiceZoneDTO } from "@medusajs/types"
 import { useTranslation } from "react-i18next"
 
 import {

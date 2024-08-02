@@ -1,5 +1,5 @@
 ---
-"@ninjajs/ninja": patch
+"@medusajs/medusa": patch
 ---
 
-fix(ninja): Fix validation of V2 POST /customers and POST /customers/:id
+fix(medusa): Fix validation of V2 POST /customers and POST /customers/:id

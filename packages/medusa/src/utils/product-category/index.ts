@@ -1,6 +1,6 @@
 import { FindOptionsWhere } from "typeorm"
 import { ProductCategory } from "../../models"
-import { isDefined } from "ninja-core-utils"
+import { isDefined } from "medusa-core-utils"
 
 export const categoryMatchesScope = (
   category: ProductCategory,

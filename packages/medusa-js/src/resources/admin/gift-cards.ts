@@ -5,21 +5,21 @@ import {
   AdminGiftCardsRes,
   AdminPostGiftCardsGiftCardReq,
   AdminPostGiftCardsReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Gift Card API Routes](https://docs.ninjajs.com/api/admin#gift-cards). All its method
- * are available in the JS Client under the `ninja.admin.giftCards` property.
+ * This class is used to send requests to [Admin Gift Card API Routes](https://docs.medusajs.com/api/admin#gift-cards). All its method
+ * are available in the JS Client under the `medusa.admin.giftCards` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Admins can create gift cards and send them directly to customers, specifying options like their balance, region, and more.
  * These gift cards are different than the saleable gift cards in a store, which are created and managed through {@link AdminProductsResource}.
  * 
- * Related Guide: [How to manage gift cards](https://docs.ninjajs.com/modules/gift-cards/admin/manage-gift-cards#manage-custom-gift-cards).
+ * Related Guide: [How to manage gift cards](https://docs.medusajs.com/modules/gift-cards/admin/manage-gift-cards#manage-custom-gift-cards).
  */
 class AdminGiftCardsResource extends BaseResource {
   /**
@@ -29,10 +29,10 @@ class AdminGiftCardsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGiftCardsRes>} Resolves to the gift card's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.create({
+   * medusa.admin.giftCards.create({
    *   region_id
    * })
    * .then(({ gift_card }) => {
@@ -55,10 +55,10 @@ class AdminGiftCardsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGiftCardsRes>} Resolves to the gift card's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.update(giftCardId, {
+   * medusa.admin.giftCards.update(giftCardId, {
    *   region_id
    * })
    * .then(({ gift_card }) => {
@@ -81,10 +81,10 @@ class AdminGiftCardsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGiftCardsDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.delete(giftCardId)
+   * medusa.admin.giftCards.delete(giftCardId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -104,10 +104,10 @@ class AdminGiftCardsResource extends BaseResource {
    * @returns {ResponsePromise<AdminGiftCardsRes>} Resolves to the gift card's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.retrieve(giftCardId)
+   * medusa.admin.giftCards.retrieve(giftCardId)
    * .then(({ gift_card }) => {
    *   console.log(gift_card.id);
    * })
@@ -130,10 +130,10 @@ class AdminGiftCardsResource extends BaseResource {
    * To list gift cards:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.list()
+   * medusa.admin.giftCards.list()
    * .then(({ gift_cards, limit, offset, count }) => {
    *   console.log(gift_cards.length);
    * })
@@ -142,10 +142,10 @@ class AdminGiftCardsResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.giftCards.list({
+   * medusa.admin.giftCards.list({
    *   limit,
    *   offset
    * })

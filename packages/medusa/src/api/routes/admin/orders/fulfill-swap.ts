@@ -20,7 +20,7 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  * x-authenticated: true
  * externalDocs:
  *   description: Handling a swap's fulfillment
- *   url: https://docs.ninjajs.com/modules/orders/swaps#handling-swap-fulfillment
+ *   url: https://docs.medusajs.com/modules/orders/swaps#handling-swap-fulfillment
  * parameters:
  *   - (path) id=* {string} The ID of the Order the swap is associated with.
  *   - (path) swap_id=* {string} The ID of the Swap.
@@ -38,20 +38,20 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.orders.fulfillSwap(orderId, swapId, {
+ *       medusa.admin.orders.fulfillSwap(orderId, swapId, {
  *
  *       })
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminFulfillSwap } from "ninja-react"
+ *       import { useAdminFulfillSwap } from "medusa-react"
  *
  *       type Props = {
  *         orderId: string,
@@ -85,7 +85,7 @@ import { updateInventoryAndReservations } from "./create-fulfillment"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/swaps/{swap_id}/fulfillments' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -188,7 +188,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   no_notification:
  *     description: If set to `true`, no notification will be sent to the customer related to this swap.
  *     type: boolean

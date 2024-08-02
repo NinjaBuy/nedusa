@@ -1,18 +1,18 @@
-import { AdminAuthRes, AdminPostAuthReq, AdminBearerAuthRes } from "@ninjajs/ninja"
+import { AdminAuthRes, AdminPostAuthReq, AdminBearerAuthRes } from "@medusajs/medusa"
 import { ResponsePromise } from "../../typings"
 import JwtTokenManager from "../../jwt-token-manager"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Auth API Routes](https://docs.ninjajs.com/api/admin#auth_getauth). All its method
- * are available in the JS Client under the `ninja.admin.auth` property.
+ * This class is used to send requests to [Admin Auth API Routes](https://docs.medusajs.com/api/admin#auth_getauth). All its method
+ * are available in the JS Client under the `medusa.admin.auth` property.
  * 
  * The methods in this class allow admin users to manage their session, such as login or log out.
  * You can send authenticated requests for an admin user either using the Cookie header, their API token, or the JWT Token.
  * When you log the admin user in using the {@link createSession} method, the JS client will automatically attach the
  * cookie header in all subsequent requests.
  * 
- * Related Guide: [How to implement user profiles](https://docs.ninjajs.com/modules/users/admin/manage-profile).
+ * Related Guide: [How to implement user profiles](https://docs.medusajs.com/modules/users/admin/manage-profile).
  */
 class AdminAuthResource extends BaseResource {
   /**
@@ -21,10 +21,10 @@ class AdminAuthResource extends BaseResource {
    * @returns {ResponsePromise<AdminAuthRes>} Resolves to the logged-in user's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.auth.getSession()
+   * medusa.admin.auth.getSession()
    * .then(({ user }) => {
    *   console.log(user.id);
    * })
@@ -43,10 +43,10 @@ class AdminAuthResource extends BaseResource {
    * @returns {ResponsePromise<void>} Resolves when user is logged out successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in
-   * ninja.admin.auth.deleteSession()
+   * medusa.admin.auth.deleteSession()
    */
   deleteSession(
     customHeaders: Record<string, any> = {}
@@ -62,9 +62,9 @@ class AdminAuthResource extends BaseResource {
    * @returns {ResponsePromise<AdminAuthRes>} Resolves to the user's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.admin.AdminAuthResource.createSession({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.admin.AdminAuthResource.createSession({
    *   email: "user@example.com",
    *   password: "supersecret"
    * })
@@ -87,9 +87,9 @@ class AdminAuthResource extends BaseResource {
    * @returns {ResponsePromise<AdminBearerAuthRes>} Resolves to the access token of the user, if they're authenticated successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.admin.auth.getToken({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.admin.auth.getToken({
    *   email: 'user@example.com',
    *   password: 'supersecret'
    * })

@@ -1,4 +1,4 @@
-import { ExclamationCircleSolid } from "@ninjajs/icons"
+import { ExclamationCircleSolid } from "@medusajs/icons"
 import clsx from "clsx"
 import React from "react"
 
@@ -7,7 +7,7 @@ export const SearchNoResult = () => {
     <div
       className={clsx(
         "flex h-full w-full flex-col items-center justify-center gap-docs_1",
-        "text-ninja-fg-muted"
+        "text-medusa-fg-muted"
       )}
     >
       <ExclamationCircleSolid />

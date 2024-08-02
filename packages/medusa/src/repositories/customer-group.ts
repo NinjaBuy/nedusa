@@ -7,7 +7,7 @@ import {
   queryEntityWithIds,
   queryEntityWithoutRelations,
 } from "../utils/repository"
-import { objectToStringPath } from "@ninjajs/utils"
+import { objectToStringPath } from "@medusajs/utils"
 import { dataSource } from "../loaders/database"
 import { cloneDeep } from "lodash"
 

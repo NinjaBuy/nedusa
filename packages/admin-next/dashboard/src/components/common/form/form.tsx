@@ -1,11 +1,11 @@
-import { InformationCircleSolid } from "@ninjajs/icons"
+import { InformationCircleSolid } from "@medusajs/icons"
 import {
   Hint as HintComponent,
   Label as LabelComponent,
   Text,
   Tooltip,
   clx,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import * as LabelPrimitives from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import { ReactNode, createContext, forwardRef, useContext, useId } from "react"

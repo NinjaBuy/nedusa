@@ -1,4 +1,4 @@
-import { PaymentProviderContext } from "@ninjajs/types"
+import { PaymentProviderContext } from "@medusajs/types"
 
 export class StorePostPaymentCollectionsPaymentSessionReq {
   provider_id: string

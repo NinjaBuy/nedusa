@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require(`./dist/bin/ninja.js`)
+require(`./dist/bin/medusa.js`)

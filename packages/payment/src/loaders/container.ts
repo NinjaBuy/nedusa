@@ -1,4 +1,4 @@
-import { ModulesSdkUtils } from "@ninjajs/utils"
+import { ModulesSdkUtils } from "@medusajs/utils"
 import * as ModuleModels from "@models"
 import * as ModuleRepositories from "@repositories"
 import * as ModuleServices from "@services"

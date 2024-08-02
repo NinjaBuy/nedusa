@@ -1,4 +1,4 @@
-import { ModuleRegistrationName, Modules } from "@ninjajs/modules-sdk"
+import { ModuleRegistrationName, Modules } from "@medusajs/modules-sdk"
 import {
   ICartModuleService,
   ICustomerModuleService,
@@ -11,9 +11,9 @@ import {
   ISalesChannelModuleService,
   IStockLocationServiceNext,
   ITaxModuleService,
-} from "@ninjajs/types"
-import { ContainerRegistrationKeys } from "@ninjajs/utils"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+} from "@medusajs/types"
+import { ContainerRegistrationKeys } from "@medusajs/utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import {
   adminHeaders,
   createAdminUser,
@@ -22,9 +22,9 @@ import { setupTaxStructure } from "../fixtures"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   debug: true,
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {

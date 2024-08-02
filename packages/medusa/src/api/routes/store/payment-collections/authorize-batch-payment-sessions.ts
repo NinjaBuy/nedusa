@@ -20,18 +20,18 @@ import { PaymentCollectionService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.paymentCollections.authorize(paymentId)
+ *       medusa.paymentCollections.authorize(paymentId)
  *       .then(({ payment_collection }) => {
  *         console.log(payment_collection.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAuthorizePaymentSessionsBatch } from "ninja-react"
+ *       import { useAuthorizePaymentSessionsBatch } from "medusa-react"
  *
  *       type Props = {
  *         paymentCollectionId: string

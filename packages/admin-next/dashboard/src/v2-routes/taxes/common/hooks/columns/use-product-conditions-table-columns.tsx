@@ -1,5 +1,5 @@
-import { Product } from "@ninjajs/ninja"
-import { Checkbox } from "@ninjajs/ui"
+import { Product } from "@medusajs/medusa"
+import { Checkbox } from "@medusajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useProductTableColumns } from "../../../../../hooks/table/columns/use-product-table-columns"

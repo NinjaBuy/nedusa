@@ -1,5 +1,5 @@
-import { IdMap } from "ninja-test-utils"
-import { NinjaError } from "ninja-core-utils"
+import { IdMap } from "medusa-test-utils"
+import { MedusaError } from "medusa-core-utils"
 
 export const carts = {
   emptyCart: {
@@ -254,7 +254,7 @@ export const CartServiceMock = {
       return Promise.resolve(carts.regionCart)
     }
     if (data.region_id === IdMap.getId("fail")) {
-      throw new NinjaError(NinjaError.Types.INVALID_DATA, "Region not found")
+      throw new MedusaError(MedusaError.Types.INVALID_DATA, "Region not found")
     }
     return Promise.resolve(carts.regionCart)
   }),
@@ -286,7 +286,7 @@ export const CartServiceMock = {
     if (cartId === IdMap.getId("tax-inclusive-option")) {
       return Promise.resolve(carts.testCartTaxInclusive)
     }
-    throw new NinjaError(NinjaError.Types.NOT_FOUND, "cart not found")
+    throw new MedusaError(MedusaError.Types.NOT_FOUND, "cart not found")
   }),
   retrieve: jest.fn().mockImplementation((cartId) => {
     if (cartId === IdMap.getId("fr-cart")) {
@@ -316,7 +316,7 @@ export const CartServiceMock = {
     if (cartId === IdMap.getId("tax-inclusive-option")) {
       return Promise.resolve(carts.testCartTaxInclusive)
     }
-    throw new NinjaError(NinjaError.Types.NOT_FOUND, "cart not found")
+    throw new MedusaError(MedusaError.Types.NOT_FOUND, "cart not found")
   }),
   addLineItem: jest.fn().mockImplementation((cartId, lineItem) => {
     return Promise.resolve()
@@ -329,7 +329,7 @@ export const CartServiceMock = {
       return Promise.resolve(carts.cartWithPaySessions)
     }
 
-    throw new NinjaError(NinjaError.Types.NOT_ALLOWED, "Not allowed")
+    throw new MedusaError(MedusaError.Types.NOT_ALLOWED, "Not allowed")
   }),
   removeLineItem: jest.fn().mockImplementation((cartId, lineItem) => {
     if (cartId === IdMap.getId("fr-cart")) {
@@ -344,7 +344,7 @@ export const CartServiceMock = {
     if (cartId === IdMap.getId("cartWithPaySessions")) {
       return Promise.resolve(carts.cartWithPaySessions)
     }
-    throw new NinjaError(NinjaError.Types.NOT_FOUND, "cart not found")
+    throw new MedusaError(MedusaError.Types.NOT_FOUND, "cart not found")
   }),
   updateLineItem: jest.fn().mockImplementation((cartId, lineItem) => {
     if (cartId === IdMap.getId("fr-cart")) {
@@ -362,11 +362,11 @@ export const CartServiceMock = {
     if (cartId === IdMap.getId("cartWithPaySessions")) {
       return Promise.resolve(carts.cartWithPaySessions)
     }
-    throw new NinjaError(NinjaError.Types.NOT_FOUND, "cart not found")
+    throw new MedusaError(MedusaError.Types.NOT_FOUND, "cart not found")
   }),
   setRegion: jest.fn().mockImplementation((cartId, regionId) => {
     if (regionId === IdMap.getId("fail")) {
-      throw new NinjaError(NinjaError.Types.NOT_FOUND, "Region not found")
+      throw new MedusaError(MedusaError.Types.NOT_FOUND, "Region not found")
     }
     return Promise.resolve()
   }),

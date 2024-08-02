@@ -1,4 +1,4 @@
-import { RuleOperator } from "@ninjajs/utils"
+import { RuleOperator } from "@medusajs/utils"
 
 export const operatorsMap = {
   [RuleOperator.IN]: {

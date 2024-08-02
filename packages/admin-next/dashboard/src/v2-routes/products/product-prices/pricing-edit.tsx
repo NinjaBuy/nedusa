@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ExtendedProductDTO } from "../../../types/api-responses"
 import { VariantPricingForm } from "../common/variant-pricing-form"
 import { normalizeVariants } from "../product-create/schema"
-import { Button } from "@ninjajs/ui"
+import { Button } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 

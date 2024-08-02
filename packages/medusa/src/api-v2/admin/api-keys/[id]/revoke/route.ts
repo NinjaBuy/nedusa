@@ -1,14 +1,14 @@
-import { revokeApiKeysWorkflow } from "@ninjajs/core-flows"
+import { revokeApiKeysWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../types/routing"
 import { AdminRevokeApiKeyType } from "../../validators"
 import { refetchApiKey } from "../../helpers"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminRevokeApiKeyType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminRevokeApiKeyType>,
+  res: MedusaResponse
 ) => {
   const { errors } = await revokeApiKeysWorkflow(req.scope).run({
     input: {

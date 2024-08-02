@@ -8,10 +8,10 @@
     "test:integration": "jest --silent=false --runInBand --bail --detectOpenHandles --forceExit"
   },
   "dependencies": {
-    "@ninjajs/cache-inmemory": "workspace:*",
-    "@ninjajs/event-bus-local": "workspace:*",
-    "@ninjajs/ninja": "workspace:*",
-    "ninja-interfaces": "workspace:*",
+    "@medusajs/cache-inmemory": "workspace:*",
+    "@medusajs/event-bus-local": "workspace:*",
+    "@medusajs/medusa": "workspace:*",
+    "medusa-interfaces": "workspace:*",
     "pg": "^8.11.0",
     "typeorm": "^0.3.16"
   },
@@ -19,7 +19,7 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
-    "babel-preset-ninja-package": "*",
+    "babel-preset-medusa-package": "*",
     "jest": "^26.6.3",
     "jest-environment-node": "26.6.2"
   }

@@ -90,17 +90,17 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.productTags.list()
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.productTags.list()
  *       .then(({ product_tags }) => {
  *         console.log(product_tags.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useProductTags } from "ninja-react"
+ *       import { useProductTags } from "medusa-react"
  *
  *       function Tags() {
  *         const {

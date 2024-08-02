@@ -1,8 +1,8 @@
-import { BaseEntity, QueryConfig, RequestQueryFields } from "@ninjajs/types"
+import { BaseEntity, QueryConfig, RequestQueryFields } from "@medusajs/types"
 import { NextFunction } from "express"
 import { omit } from "lodash"
 import { z } from "zod"
-import { NinjaRequest, NinjaResponse } from "../../types/routing"
+import { MedusaRequest, MedusaResponse } from "../../types/routing"
 import { removeUndefinedProperties } from "../../utils"
 import {
   prepareListQuery,
@@ -13,7 +13,7 @@ import { zodValidator } from "./validate-body"
  * Normalize an input query, especially from array like query params to an array type
  * e.g: /admin/orders/?fields[]=id,status,cart_id becomes { fields: ["id", "status", "cart_id"] }
  */
-const normalizeQuery = (req: NinjaRequest) => {
+const normalizeQuery = (req: MedusaRequest) => {
   return Object.entries(req.query).reduce((acc, [key, val]) => {
     if (Array.isArray(val) && val.length === 1) {
       acc[key] = (val as string[])[0].split(",")
@@ -37,11 +37,11 @@ export function validateAndTransformQuery<TEntity extends BaseEntity>(
   zodSchema: z.ZodObject<any, any> | z.ZodEffects<any, any>,
   queryConfig: QueryConfig<TEntity>
 ): (
-  req: NinjaRequest,
-  res: NinjaResponse,
+  req: MedusaRequest,
+  res: MedusaResponse,
   next: NextFunction
 ) => Promise<void> {
-  return async (req: NinjaRequest, _: NinjaResponse, next: NextFunction) => {
+  return async (req: MedusaRequest, _: MedusaResponse, next: NextFunction) => {
     try {
       const query = normalizeQuery(req)
 

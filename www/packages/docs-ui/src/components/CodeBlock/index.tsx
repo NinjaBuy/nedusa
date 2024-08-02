@@ -5,7 +5,7 @@ import clsx from "clsx"
 import { HighlightProps, Highlight, themes } from "prism-react-renderer"
 import { CopyButton, Tooltip, LegacyLink } from "@/components"
 import { useColorMode } from "@/providers"
-import { ExclamationCircle, PlaySolid, SquareTwoStack } from "@ninjajs/icons"
+import { ExclamationCircle, PlaySolid, SquareTwoStack } from "@medusajs/icons"
 import { CodeBlockHeader, CodeBlockHeaderMeta } from "./Header"
 import { CodeBlockLine } from "./Line"
 import { ApiAuthType, ApiDataOptions, ApiMethod } from "types"
@@ -77,12 +77,12 @@ export const CodeBlock = ({
     () =>
       clsx(
         blockStyle === "loud" && [
-          colorMode === "light" && "bg-ninja-code-bg-base",
-          colorMode === "dark" && "bg-ninja-bg-component",
+          colorMode === "light" && "bg-medusa-code-bg-base",
+          colorMode === "dark" && "bg-medusa-bg-component",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "bg-ninja-bg-subtle",
-          colorMode === "dark" && "bg-ninja-code-bg-base",
+          colorMode === "light" && "bg-medusa-bg-subtle",
+          colorMode === "dark" && "bg-medusa-code-bg-base",
         ]
       ),
     [blockStyle, colorMode]
@@ -92,12 +92,12 @@ export const CodeBlock = ({
     () =>
       clsx(
         blockStyle === "loud" && [
-          colorMode === "light" && "text-ninja-code-text-subtle",
-          colorMode === "dark" && "text-ninja-fg-muted",
+          colorMode === "light" && "text-medusa-code-text-subtle",
+          colorMode === "dark" && "text-medusa-fg-muted",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "text-ninja-fg-muted",
-          colorMode === "dark" && "text-ninja-code-text-subtle",
+          colorMode === "light" && "text-medusa-fg-muted",
+          colorMode === "dark" && "text-medusa-code-text-subtle",
         ]
       ),
     [blockStyle, colorMode]
@@ -107,12 +107,12 @@ export const CodeBlock = ({
     () =>
       clsx(
         blockStyle === "loud" && [
-          colorMode === "light" && "border-ninja-code-border",
-          colorMode === "dark" && "border-ninja-border-base",
+          colorMode === "light" && "border-medusa-code-border",
+          colorMode === "dark" && "border-medusa-border-base",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "border-ninja-border-base",
-          colorMode === "dark" && "border-ninja-code-border",
+          colorMode === "light" && "border-medusa-border-base",
+          colorMode === "dark" && "border-medusa-code-border",
         ]
       ),
     [blockStyle, colorMode]
@@ -122,12 +122,12 @@ export const CodeBlock = ({
     () =>
       clsx(
         blockStyle === "loud" && [
-          colorMode === "light" && "text-ninja-code-icon",
-          colorMode === "dark" && "text-ninja-fg-muted",
+          colorMode === "light" && "text-medusa-code-icon",
+          colorMode === "dark" && "text-medusa-fg-muted",
         ],
         blockStyle === "subtle" && [
-          colorMode === "light" && "text-ninja-fg-muted",
-          colorMode === "dark" && "text-ninja-code-icon",
+          colorMode === "light" && "text-medusa-fg-muted",
+          colorMode === "dark" && "text-medusa-code-icon",
         ]
       ),
     [blockStyle, colorMode]
@@ -276,7 +276,7 @@ export const CodeBlock = ({
                       )}`}
                       target="_blank"
                       className={clsx(
-                        blockStyle === "loud" && "hover:bg-ninja-code-bg-base",
+                        blockStyle === "loud" && "hover:bg-medusa-code-bg-base",
                         "bg-transparent border-none cursor-pointer rounded",
                         "[&:not(:first-child)]:ml-docs_0.5",
                         "inline-flex justify-center items-center invisible xs:visible"

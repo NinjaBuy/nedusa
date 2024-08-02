@@ -1,4 +1,4 @@
-import { AdminGetInventoryItemsParams } from "@ninjajs/ninja"
+import { AdminGetInventoryItemsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../hooks/use-query-params"
 
 export const useInventoryTableQuery = ({

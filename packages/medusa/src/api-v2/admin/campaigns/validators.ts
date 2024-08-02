@@ -1,4 +1,4 @@
-import { CampaignBudgetType } from "@ninjajs/utils"
+import { CampaignBudgetType } from "@medusajs/utils"
 import { createFindParams, createSelectParams } from "../../utils/validators"
 import { z } from "zod"
 

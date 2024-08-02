@@ -1,14 +1,14 @@
-import { RemoteQueryFunction } from "@ninjajs/types"
+import { RemoteQueryFunction } from "@medusajs/types"
 import {
   buildRelations,
   buildSelects,
   FlagRouter,
-  NinjaV2Flag,
+  MedusaV2Flag,
   objectToStringPath,
   promiseAll,
   selectorConstraintsToString,
-} from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+} from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager, In } from "typeorm"
 
 import { ProductVariantService, SearchService } from "."
@@ -184,7 +184,7 @@ class ProductService extends TransactionBaseService {
       config.relations?.includes("sales_channels")
 
     if (
-      this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key) &&
+      this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key) &&
       hasSalesChannelsRelation
     ) {
       config.relations = config.relations?.filter((r) => r !== "sales_channels")
@@ -209,7 +209,7 @@ class ProductService extends TransactionBaseService {
     }
 
     if (
-      this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key) &&
+      this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key) &&
       hasSalesChannelsRelation
     ) {
       await this.decorateProductsWithSalesChannels(products)
@@ -246,8 +246,8 @@ class ProductService extends TransactionBaseService {
     }
   ): Promise<Product> {
     if (!isDefined(productId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"productId" must be defined`
       )
     }
@@ -267,8 +267,8 @@ class ProductService extends TransactionBaseService {
     config: FindProductConfig = {}
   ): Promise<Product> {
     if (!isDefined(productHandle)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"productHandle" must be defined`
       )
     }
@@ -288,8 +288,8 @@ class ProductService extends TransactionBaseService {
     config: FindProductConfig = {}
   ): Promise<Product> {
     if (!isDefined(externalId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"externalId" must be defined`
       )
     }
@@ -322,8 +322,8 @@ class ProductService extends TransactionBaseService {
         .map(([key, value]) => `${key}: ${value}`)
         .join(", ")
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Product with ${selectorConstraints} was not found`
       )
     }
@@ -340,7 +340,7 @@ class ProductService extends TransactionBaseService {
       config.relations?.includes("sales_channels")
 
     if (
-      this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key) &&
+      this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key) &&
       hasSalesChannelsRelation
     ) {
       config.relations = config.relations?.filter((r) => r !== "sales_channels")
@@ -356,14 +356,14 @@ class ProductService extends TransactionBaseService {
     if (!product) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Product with ${selectorConstraints} was not found`
       )
     }
 
     if (
-      this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key) &&
+      this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key) &&
       hasSalesChannelsRelation
     ) {
       await this.decorateProductsWithSalesChannels([product])
@@ -521,7 +521,7 @@ class ProductService extends TransactionBaseService {
 
       if (
         this.featureFlagRouter_.isFeatureEnabled(SalesChannelFeatureFlag.key) &&
-        !this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)
+        !this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)
       ) {
         if (isDefined(salesChannels)) {
           product.sales_channels = []
@@ -551,7 +551,7 @@ class ProductService extends TransactionBaseService {
 
       if (
         isDefined(salesChannels) &&
-        this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)
+        this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)
       ) {
         if (salesChannels?.length) {
           await Promise.all(
@@ -639,8 +639,8 @@ class ProductService extends TransactionBaseService {
         }
       } else {
         if (isDefined(update.sales_channels)) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             "the property sales_channels should no appears as part of the payload"
           )
         }
@@ -709,7 +709,7 @@ class ProductService extends TransactionBaseService {
 
       if (
         this.featureFlagRouter_.isFeatureEnabled(SalesChannelFeatureFlag.key) &&
-        !this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)
+        !this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)
       ) {
         if (isDefined(salesChannels)) {
           product.sales_channels = []
@@ -732,7 +732,7 @@ class ProductService extends TransactionBaseService {
 
       const result = await productRepo.save(product)
 
-      if (this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)) {
+      if (this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)) {
         if (salesChannels?.length) {
           await promiseAll(
             salesChannels?.map(
@@ -811,8 +811,8 @@ class ProductService extends TransactionBaseService {
       })
 
       if (product.options.find((o) => o.title === optionTitle)) {
-        throw new NinjaError(
-          NinjaError.Types.DUPLICATE_ERROR,
+        throw new MedusaError(
+          MedusaError.Types.DUPLICATE_ERROR,
           `An option with the title: ${optionTitle} already exists`
         )
       }
@@ -855,8 +855,8 @@ class ProductService extends TransactionBaseService {
       })
 
       if (product.variants.length !== variantOrder.length) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `Product variants and new variant order differ in length.`
         )
       }
@@ -864,8 +864,8 @@ class ProductService extends TransactionBaseService {
       product.variants = variantOrder.map((vId) => {
         const variant = product.variants.find((v) => v.id === vId)
         if (!variant) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Product has no variant with id: ${vId}`
           )
         }
@@ -910,8 +910,8 @@ class ProductService extends TransactionBaseService {
           o.title.toUpperCase() === title.toUpperCase() && o.id !== optionId
       )
       if (optionExists) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           `An option with title ${title} already exists`
         )
       }
@@ -921,8 +921,8 @@ class ProductService extends TransactionBaseService {
       })
 
       if (!productOption) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           `Option with id: ${optionId} does not exist`
         )
       }
@@ -1015,8 +1015,8 @@ class ProductService extends TransactionBaseService {
         )
 
         if (!equalsFirst.every((v) => v)) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `To delete an option, first delete all variants, such that when an option is deleted, no duplicate variants will exist.`
           )
         }
@@ -1112,7 +1112,7 @@ class ProductService extends TransactionBaseService {
 
   /**
    * Temporary method to join sales channels of a product using RemoteQuery while
-   * NinjaV2 FF is on.
+   * MedusaV2 FF is on.
    *
    * @param products
    * @private
@@ -1131,7 +1131,7 @@ class ProductService extends TransactionBaseService {
 
   /**
    * Temporary method to fetch sales channels of a product using RemoteQuery while
-   * NinjaV2 FF is on.
+   * MedusaV2 FF is on.
    *
    * @param productIds
    * @private

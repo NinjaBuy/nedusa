@@ -1,4 +1,4 @@
-import { AbstractPaymentService } from "@ninjajs/ninja"
+import { AbstractPaymentService } from "@medusajs/medusa"
 
 class TestPayService extends AbstractPaymentService {
   static identifier = "test-pay"

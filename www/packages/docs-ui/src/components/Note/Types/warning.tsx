@@ -1,7 +1,7 @@
 import React from "react"
 import { NoteProps } from ".."
 import { NoteLayout } from "../Layout"
-import { ExclamationCircleSolid } from "@ninjajs/icons"
+import { ExclamationCircleSolid } from "@medusajs/icons"
 import clsx from "clsx"
 
 export const WarningNote = ({
@@ -16,7 +16,7 @@ export const WarningNote = ({
         icon || (
           <ExclamationCircleSolid
             className={clsx(
-              "inline-block mr-docs_0.125 text-ninja-tag-red-icon"
+              "inline-block mr-docs_0.125 text-medusa-tag-red-icon"
             )}
           />
         )

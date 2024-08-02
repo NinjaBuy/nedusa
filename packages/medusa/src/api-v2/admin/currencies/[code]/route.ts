@@ -1,10 +1,10 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
-import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
+} from "@medusajs/utils"
+import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
 
-export const GET = async (req: NinjaRequest, res: NinjaResponse) => {
+export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
   const variables = { code: req.params.code }

@@ -12,7 +12,7 @@ export class TaxProvider {
 /**
  * @schema TaxProvider
  * title: "Tax Provider"
- * description: "A tax provider represents a tax service installed in the Ninja backend, either through a plugin or backend customizations.
+ * description: "A tax provider represents a tax service installed in the Medusa backend, either through a plugin or backend customizations.
  *  It holds the tax service's installation status."
  * type: object
  * required:

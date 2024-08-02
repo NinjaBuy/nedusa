@@ -1,5 +1,5 @@
-import { FileTypes } from "@ninjajs/types"
-import { AbstractFileProviderService } from "@ninjajs/utils"
+import { FileTypes } from "@medusajs/types"
+import { AbstractFileProviderService } from "@medusajs/utils"
 
 export class FileProviderServiceFixtures extends AbstractFileProviderService {
   static identifier = "fixtures-file-provider"

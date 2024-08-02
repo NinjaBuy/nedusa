@@ -20,17 +20,17 @@ export const Badge = ({ className, variant, children }: BadgeProps) => {
       className={clsx(
         "text-compact-x-small-plus px-docs_0.25 py-0 rounded-docs_sm border border-solid text-center",
         variant === "purple" &&
-          "bg-ninja-tag-purple-bg text-ninja-tag-purple-text border-ninja-tag-purple-border",
+          "bg-medusa-tag-purple-bg text-medusa-tag-purple-text border-medusa-tag-purple-border",
         variant === "orange" &&
-          "bg-ninja-tag-orange-bg text-ninja-tag-orange-text border-ninja-tag-orange-border",
+          "bg-medusa-tag-orange-bg text-medusa-tag-orange-text border-medusa-tag-orange-border",
         variant === "green" &&
-          "bg-ninja-tag-green-bg text-ninja-tag-green-text border-ninja-tag-green-border",
+          "bg-medusa-tag-green-bg text-medusa-tag-green-text border-medusa-tag-green-border",
         variant === "blue" &&
-          "bg-ninja-tag-blue-bg text-ninja-tag-blue-text border-ninja-tag-blue-border",
+          "bg-medusa-tag-blue-bg text-medusa-tag-blue-text border-medusa-tag-blue-border",
         variant === "red" &&
-          "bg-ninja-tag-red-bg text-ninja-tag-red-text border-ninja-tag-red-border",
+          "bg-medusa-tag-red-bg text-medusa-tag-red-text border-medusa-tag-red-border",
         variant === "neutral" &&
-          "bg-ninja-tag-neutral-bg text-ninja-tag-neutral-text border-ninja-tag-neutral-border",
+          "bg-medusa-tag-neutral-bg text-medusa-tag-neutral-text border-medusa-tag-neutral-border",
         "badge",
         className
       )}

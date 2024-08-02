@@ -1,9 +1,9 @@
 ---
-"@ninjajs/ninja": patch
-"@ninjajs/order": patch
-"@ninjajs/types": patch
-"@ninjajs/utils": patch
-"@ninjajs/cart": patch
+"@medusajs/medusa": patch
+"@medusajs/order": patch
+"@medusajs/types": patch
+"@medusajs/utils": patch
+"@medusajs/cart": patch
 ---
 
 Order endpoints and Cart totals

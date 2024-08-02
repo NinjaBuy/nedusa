@@ -1,5 +1,5 @@
-import { IInventoryService } from "@ninjajs/types"
-import { NinjaError } from "@ninjajs/utils"
+import { IInventoryService } from "@medusajs/types"
+import { MedusaError } from "@medusajs/utils"
 import { LineItemService } from "../../../../../services"
 
 export const validateUpdateReservationQuantity = async (
@@ -23,8 +23,8 @@ export const validateUpdateReservationQuantity = async (
   const lineItem = await lineItemService.retrieve(lineItemId)
 
   if (totalQuantity > lineItem.quantity - (lineItem.fulfilled_quantity || 0)) {
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       "The reservation quantity cannot be greater than the unfulfilled line item quantity"
     )
   }

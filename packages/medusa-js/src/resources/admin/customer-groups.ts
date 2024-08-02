@@ -10,22 +10,22 @@ import {
   AdminGetCustomerGroupsGroupParams,
   AdminCustomersListRes,
   AdminGetCustomersParams,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 
 import BaseResource from "../base"
 import { ResponsePromise } from "../.."
 
 /**
- * This class is used to send requests to [Admin Customer Group API Routes](https://docs.ninjajs.com/api/admin#customer-groups). All its method
- * are available in the JS Client under the `ninja.admin.customerGroups` property.
+ * This class is used to send requests to [Admin Customer Group API Routes](https://docs.medusajs.com/api/admin#customer-groups). All its method
+ * are available in the JS Client under the `medusa.admin.customerGroups` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Customer Groups can be used to organize customers that share similar data or attributes into dedicated groups.
  * This can be useful for different purposes such as setting a different price for a specific customer group.
  * 
- * Related Guide: [How to manage customer groups](https://docs.ninjajs.com/modules/customers/admin/manage-customer-groups).
+ * Related Guide: [How to manage customer groups](https://docs.medusajs.com/modules/customers/admin/manage-customer-groups).
  */
 class AdminCustomerGroupsResource extends BaseResource {
   /**
@@ -35,10 +35,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomerGroupsRes>} Resolves to the customer group's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.create({
+   * medusa.admin.customerGroups.create({
    *   name: "VIP"
    * })
    * .then(({ customer_group }) => {
@@ -61,10 +61,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomerGroupsRes>} Resolves to the customer group's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.retrieve(customerGroupId)
+   * medusa.admin.customerGroups.retrieve(customerGroupId)
    * .then(({ customer_group }) => {
    *   console.log(customer_group.id);
    * })
@@ -106,10 +106,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomerGroupsDeleteRes>} Resolves to the deletion operation details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.delete(customerGroupId)
+   * medusa.admin.customerGroups.delete(customerGroupId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -132,10 +132,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * To list customer groups:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.list()
+   * medusa.admin.customerGroups.list()
    * .then(({ customer_groups, limit, offset, count }) => {
    *   console.log(customer_groups.length);
    * })
@@ -144,10 +144,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * To specify relations that should be retrieved within the customer groups:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.list({
+   * medusa.admin.customerGroups.list({
    *   expand: "customers"
    * })
    * .then(({ customer_groups, limit, offset, count }) => {
@@ -158,10 +158,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * By default, only the first `10` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.list({
+   * medusa.admin.customerGroups.list({
    *   "expand": "customers",
    *   limit,
    *   offset
@@ -209,10 +209,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomerGroupsRes>} Resolves to the customer group's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.removeCustomers(customerGroupId, {
+   * medusa.admin.customerGroups.removeCustomers(customerGroupId, {
    *   customer_ids: [
    *     {
    *       id: customerId
@@ -240,10 +240,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    * @returns {ResponsePromise<AdminCustomersListRes>} Resolves to the list of customers with pagination fields.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.customerGroups.listCustomers(customerGroupId)
+   * medusa.admin.customerGroups.listCustomers(customerGroupId)
    * .then(({ customers }) => {
    *   console.log(customers.length);
    * })

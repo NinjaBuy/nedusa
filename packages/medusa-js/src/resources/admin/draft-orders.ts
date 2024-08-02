@@ -8,20 +8,20 @@ import {
   AdminPostDraftOrdersDraftOrderRegisterPaymentRes,
   AdminPostDraftOrdersDraftOrderReq,
   AdminPostDraftOrdersReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Draft Order API Routes](https://docs.ninjajs.com/api/admin#draft-orders). All its method
- * are available in the JS Client under the `ninja.admin.draftOrders` property.
+ * This class is used to send requests to [Admin Draft Order API Routes](https://docs.medusajs.com/api/admin#draft-orders). All its method
+ * are available in the JS Client under the `medusa.admin.draftOrders` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A draft order is an order created manually by the admin. It allows admins to create orders without direct involvement from the customer.
  * 
- * Related Guide: [How to manage draft orders](https://docs.ninjajs.com/modules/orders/admin/manage-draft-orders).
+ * Related Guide: [How to manage draft orders](https://docs.medusajs.com/modules/orders/admin/manage-draft-orders).
  */
 class AdminDraftOrdersResource extends BaseResource {
   /**
@@ -31,10 +31,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.create({
+   * medusa.admin.draftOrders.create({
    *   email: "user@example.com",
    *   region_id,
    *   items: [
@@ -67,10 +67,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.addLineItem(draftOrderId, {
+   * medusa.admin.draftOrders.addLineItem(draftOrderId, {
    *   quantity: 1
    * })
    * .then(({ draft_order }) => {
@@ -93,10 +93,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersDeleteRes>} Resolves to the deletion operation details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.delete(draftOrderId)
+   * medusa.admin.draftOrders.delete(draftOrderId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -117,10 +117,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.removeLineItem(draftOrderId, itemId)
+   * medusa.admin.draftOrders.removeLineItem(draftOrderId, itemId)
    * .then(({ draft_order }) => {
    *   console.log(draft_order.id);
    * })
@@ -141,10 +141,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.retrieve(draftOrderId)
+   * medusa.admin.draftOrders.retrieve(draftOrderId)
    * .then(({ draft_order }) => {
    *   console.log(draft_order.id);
    * })
@@ -167,10 +167,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * To list draft orders:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.list()
+   * medusa.admin.draftOrders.list()
    * .then(({ draft_orders, limit, offset, count }) => {
    *   console.log(draft_orders.length);
    * })
@@ -179,10 +179,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.list({
+   * medusa.admin.draftOrders.list({
    *   limit,
    *   offset
    * })
@@ -206,17 +206,17 @@ class AdminDraftOrdersResource extends BaseResource {
   }
 
   /**
-   * Capture the draft order's payment. This will also set the draft order's status to `completed` and create an order from the draft order. The payment is captured through Ninja's system payment,
+   * Capture the draft order's payment. This will also set the draft order's status to `completed` and create an order from the draft order. The payment is captured through Medusa's system payment,
    * which is manual payment that isn't integrated with any third-party payment provider. It is assumed that the payment capturing is handled manually by the admin.
    * @param {string} id - The ID of the draft order.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise<AdminPostDraftOrdersDraftOrderRegisterPaymentRes>} Resolves to the created order's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.markPaid(draftOrderId)
+   * medusa.admin.draftOrders.markPaid(draftOrderId)
    * .then(({ order }) => {
    *   console.log(order.id);
    * })
@@ -237,10 +237,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.update(draftOrderId, {
+   * medusa.admin.draftOrders.update(draftOrderId, {
    *   email: "user@example.com"
    * })
    * .then(({ draft_order }) => {
@@ -265,10 +265,10 @@ class AdminDraftOrdersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDraftOrdersRes>} Resolves to the draft order's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.draftOrders.updateLineItem(draftOrderId, lineId, {
+   * medusa.admin.draftOrders.updateLineItem(draftOrderId, lineId, {
    *   quantity: 1
    * })
    * .then(({ draft_order }) => {

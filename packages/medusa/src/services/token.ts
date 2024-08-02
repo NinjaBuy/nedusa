@@ -2,7 +2,7 @@ import jwt, { Jwt, JwtPayload, SignOptions, VerifyOptions } from "jsonwebtoken"
 import { ConfigModule } from "../types/global"
 import formatRegistrationName from "../utils/format-registration-name"
 import { resolve } from "path"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 
 type InjectedDependencies = {
   configModule: ConfigModule
@@ -25,8 +25,8 @@ class TokenService {
     if (jwt_secret) {
       return jwt.verify(token, jwt_secret, options)
     }
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       "Please configure jwt_secret"
     )
   }
@@ -36,8 +36,8 @@ class TokenService {
     if (jwt_secret) {
       return jwt.sign(data, jwt_secret, options)
     } else {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_ARGUMENT,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_ARGUMENT,
         "Please configure a jwt token"
       )
     }

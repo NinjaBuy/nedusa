@@ -5,14 +5,14 @@ import {
   AdminNotesRes,
   AdminPostNotesNoteReq,
   AdminPostNotesReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Note API Routes](https://docs.ninjajs.com/api/admin#notes). All its method
- * are available in the JS Client under the `ninja.admin.notes` property.
+ * This class is used to send requests to [Admin Note API Routes](https://docs.medusajs.com/api/admin#notes). All its method
+ * are available in the JS Client under the `medusa.admin.notes` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
@@ -26,10 +26,10 @@ class AdminNotesResource extends BaseResource {
    * @returns {ResponsePromise<AdminNotesRes>} Resolves to the note's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.create({
+   * medusa.admin.notes.create({
    *   resource_id,
    *   resource_type: "order",
    *   value: "We delivered this order"
@@ -54,10 +54,10 @@ class AdminNotesResource extends BaseResource {
    * @returns {ResponsePromise<AdminNotesRes>} Resolves to the note's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.update(noteId, {
+   * medusa.admin.notes.update(noteId, {
    *  value: "We delivered this order"
    * })
    * .then(({ note }) => {
@@ -80,10 +80,10 @@ class AdminNotesResource extends BaseResource {
    * @returns {ResponsePromise<AdminNotesDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.delete(noteId)
+   * medusa.admin.notes.delete(noteId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -103,10 +103,10 @@ class AdminNotesResource extends BaseResource {
    * @returns {ResponsePromise<AdminNotesRes>} Resolves to the note's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.retrieve(noteId)
+   * medusa.admin.notes.retrieve(noteId)
    * .then(({ note }) => {
    *   console.log(note.id);
    * })
@@ -129,10 +129,10 @@ class AdminNotesResource extends BaseResource {
    * To list notes:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.list()
+   * medusa.admin.notes.list()
    * .then(({ notes, limit, offset, count }) => {
    *   console.log(notes.length);
    * })
@@ -141,10 +141,10 @@ class AdminNotesResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.notes.list({
+   * medusa.admin.notes.list({
    *   limit,
    *   offset
    * })

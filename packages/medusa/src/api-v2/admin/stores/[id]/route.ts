@@ -1,19 +1,19 @@
-import { updateStoresWorkflow } from "@ninjajs/core-flows"
-import { UpdateStoreDTO } from "@ninjajs/types"
+import { updateStoresWorkflow } from "@medusajs/core-flows"
+import { UpdateStoreDTO } from "@medusajs/types"
 import {
   remoteQueryObjectFromString,
   ContainerRegistrationKeys,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import { AdminGetStoreParamsType, AdminUpdateStoreType } from "../validators"
 import { refetchStore } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetStoreParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetStoreParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const variables = { id: req.params.id }
@@ -29,8 +29,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateStoreType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateStoreType>,
+  res: MedusaResponse
 ) => {
   const { result, errors } = await updateStoresWorkflow(req.scope).run({
     input: {

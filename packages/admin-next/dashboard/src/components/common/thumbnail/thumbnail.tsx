@@ -1,4 +1,4 @@
-import { Photo } from "@ninjajs/icons"
+import { Photo } from "@medusajs/icons"
 
 type ThumbnailProps = {
   src?: string | null

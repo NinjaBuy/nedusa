@@ -13,14 +13,14 @@ const productSeeder = require("../../../../helpers/product-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 jest.setTimeout(180000)
 
 describe("Batch job of product-export type", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
   let exportFilePath = ""
   let topDir = ""
@@ -28,7 +28,7 @@ describe("Batch job of product-export type", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
       uploadDir: __dirname,
     })
@@ -42,7 +42,7 @@ describe("Batch job of product-export type", () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   beforeEach(async () => {

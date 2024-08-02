@@ -1,13 +1,13 @@
-import { IInventoryServiceNext, InventoryItemDTO } from "@ninjajs/types"
-import { SuiteOptions, moduleIntegrationTestRunner } from "ninja-test-utils"
+import { IInventoryServiceNext, InventoryItemDTO } from "@medusajs/types"
+import { SuiteOptions, moduleIntegrationTestRunner } from "medusa-test-utils"
 
-import { Modules } from "@ninjajs/modules-sdk"
+import { Modules } from "@medusajs/modules-sdk"
 
 jest.setTimeout(100000)
 
 moduleIntegrationTestRunner({
   moduleName: Modules.INVENTORY,
-  resolve: "@ninjajs/inventory-next",
+  resolve: "@medusajs/inventory-next",
   testSuite: ({
     MikroOrmWrapper,
     service,

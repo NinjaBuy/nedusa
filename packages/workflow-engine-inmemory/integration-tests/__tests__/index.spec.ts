@@ -1,7 +1,7 @@
-import { NinjaApp } from "@ninjajs/modules-sdk"
-import { RemoteJoinerQuery } from "@ninjajs/types"
-import { TransactionHandlerType } from "@ninjajs/utils"
-import { IWorkflowEngineService } from "@ninjajs/workflows-sdk"
+import { MedusaApp } from "@medusajs/modules-sdk"
+import { RemoteJoinerQuery } from "@medusajs/types"
+import { TransactionHandlerType } from "@medusajs/utils"
+import { IWorkflowEngineService } from "@medusajs/workflows-sdk"
 import { knex } from "knex"
 import { setTimeout } from "timers/promises"
 import "../__fixtures__"
@@ -10,7 +10,7 @@ import { DB_URL, TestDatabase } from "../utils"
 
 const sharedPgConnection = knex<any, any>({
   client: "pg",
-  searchPath: process.env.NINJA_WORKFLOW_ENGINE_DB_SCHEMA,
+  searchPath: process.env.MEDUSA_WORKFLOW_ENGINE_DB_SCHEMA,
   connection: {
     connectionString: DB_URL,
     debug: false,
@@ -38,7 +38,7 @@ describe("Workflow Orchestrator module", function () {
         runMigrations,
         query: remoteQuery,
         modules,
-      } = await NinjaApp({
+      } = await MedusaApp({
         sharedResourcesConfig: {
           database: {
             connection: sharedPgConnection,

@@ -1,6 +1,6 @@
 ---
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja, types): list payment providers endpoint
+feat(medusa, types): list payment providers endpoint

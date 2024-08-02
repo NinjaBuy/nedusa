@@ -1,15 +1,15 @@
-const { ModuleRegistrationName, Modules } = require("@ninjajs/modules-sdk")
-const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
+const { ModuleRegistrationName, Modules } = require("@medusajs/modules-sdk")
+const { medusaIntegrationTestRunner } = require("medusa-test-utils")
 const {
   createAdminUser,
   adminHeaders,
 } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { ContainerRegistrationKeys } = require("@ninjajs/utils")
+const { ContainerRegistrationKeys } = require("@medusajs/utils")
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -20,8 +20,8 @@ let productSeeder
 
 jest.setTimeout(60000)
 
-ninjaIntegrationTestRunner({
-  // env: { NINJA_FF_NINJA_V2: true },
+medusaIntegrationTestRunner({
+  // env: { MEDUSA_FF_MEDUSA_V2: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
     let salesChannelService
@@ -35,7 +35,7 @@ ninjaIntegrationTestRunner({
         simpleSalesChannelFactory,
         simpleOrderFactory,
       } = require("../../../factories"))
-      ;({ SalesChannel, Product } = require("@ninjajs/ninja"))
+      ;({ SalesChannel, Product } = require("@medusajs/medusa"))
 
       orderSeeder = require("../../../helpers/order-seeder")
       productSeeder = require("../../../helpers/product-seeder")
@@ -1001,7 +1001,7 @@ ninjaIntegrationTestRunner({
             `/admin/orders?sales_channel_id[]=${order.sales_channel_id}`,
             {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             }
           )
@@ -1041,7 +1041,7 @@ ninjaIntegrationTestRunner({
           const response = await api
             .get(`/admin/products?sales_channel_id[]=${salesChannel.id}`, {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             })
             .catch((err) => {
@@ -1093,7 +1093,7 @@ ninjaIntegrationTestRunner({
           const response = await api
             .post("/admin/products", payload, {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             })
             .catch((err) => {
@@ -1132,7 +1132,7 @@ ninjaIntegrationTestRunner({
           const response = await api
             .post("/admin/products", payload, {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             })
             .catch((err) => {
@@ -1173,7 +1173,7 @@ ninjaIntegrationTestRunner({
               },
               {
                 headers: {
-                  "x-ninja-access-token": "test_token",
+                  "x-medusa-access-token": "test_token",
                 },
               }
             )
@@ -1196,7 +1196,7 @@ ninjaIntegrationTestRunner({
               },
               {
                 headers: {
-                  "x-ninja-access-token": "test_token",
+                  "x-medusa-access-token": "test_token",
                 },
               }
             )
@@ -1222,7 +1222,7 @@ ninjaIntegrationTestRunner({
               {},
               {
                 headers: {
-                  "x-ninja-access-token": "test_token",
+                  "x-medusa-access-token": "test_token",
                 },
               }
             )
@@ -1250,7 +1250,7 @@ ninjaIntegrationTestRunner({
               },
               {
                 headers: {
-                  "x-ninja-access-token": "test_token",
+                  "x-medusa-access-token": "test_token",
                 },
               }
             )
@@ -1275,7 +1275,7 @@ ninjaIntegrationTestRunner({
               },
               {
                 headers: {
-                  "x-ninja-access-token": "test_token",
+                  "x-medusa-access-token": "test_token",
                 },
               }
             )

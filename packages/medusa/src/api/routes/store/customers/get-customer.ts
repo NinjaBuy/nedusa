@@ -13,18 +13,18 @@ import CustomerService from "../../../../services/customer"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged
- *       ninja.customers.retrieve()
+ *       medusa.customers.retrieve()
  *       .then(({ customer }) => {
  *         console.log(customer.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useMeCustomer } from "ninja-react"
+ *       import { useMeCustomer } from "medusa-react"
  *
  *       const Customer = () => {
  *         const { customer, isLoading } = useMeCustomer()

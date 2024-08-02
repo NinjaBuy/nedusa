@@ -1,4 +1,4 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 
 export const orders = {
   testOrder: {
@@ -68,7 +68,7 @@ export const orders = {
     email: "oliver@test.dk",
     billing_address: {
       first_name: "Oli",
-      last_name: "Ninja",
+      last_name: "Medusa",
       address_1: "testaddress",
       city: "LA",
       country_code: "US",
@@ -76,7 +76,7 @@ export const orders = {
     },
     shipping_address: {
       first_name: "Oli",
-      last_name: "Ninja",
+      last_name: "Medusa",
       address_1: "testaddress",
       city: "LA",
       country_code: "US",

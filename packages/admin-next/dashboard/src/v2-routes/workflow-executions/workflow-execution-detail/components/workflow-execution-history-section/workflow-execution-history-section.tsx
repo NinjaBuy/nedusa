@@ -1,4 +1,4 @@
-import { Spinner, TriangleDownMini } from "@ninjajs/icons"
+import { Spinner, TriangleDownMini } from "@medusajs/icons"
 import {
   CodeBlock,
   Container,
@@ -6,7 +6,7 @@ import {
   IconButton,
   Text,
   clx,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { format } from "date-fns"
 import { useEffect, useRef, useState } from "react"

@@ -1,18 +1,18 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   deleteCollectionsWorkflow,
   updateCollectionsWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 
 import { AdminUpdateCollectionType } from "../validators"
 import { refetchCollection } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const collection = await refetchCollection(
     req.params.id,
@@ -24,8 +24,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateCollectionType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateCollectionType>,
+  res: MedusaResponse
 ) => {
   const { result, errors } = await updateCollectionsWorkflow(req.scope).run({
     input: {
@@ -49,8 +49,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
 

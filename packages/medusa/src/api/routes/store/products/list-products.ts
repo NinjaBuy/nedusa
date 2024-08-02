@@ -14,7 +14,7 @@ import {
   SalesChannelService,
 } from "../../../../services"
 
-import { NinjaV2Flag, promiseAll } from "@ninjajs/utils"
+import { MedusaV2Flag, promiseAll } from "@medusajs/utils"
 import SalesChannelFeatureFlag from "../../../../loaders/feature-flags/sales-channels"
 import PricingService from "../../../../services/pricing"
 import { DateComparisonOperator } from "../../../../types/common"
@@ -41,7 +41,7 @@ import { defaultStoreProductRemoteQueryObject } from "./index"
  *   You can alternatively use a publishable API key in the request header instead of passing a `sales_channel_id`.
  * externalDocs:
  *   description: "How to retrieve a product by its handle"
- *   url: "https://docs.ninjajs.com/modules/products/storefront/show-products#retrieve-product-by-handle"
+ *   url: "https://docs.medusajs.com/modules/products/storefront/show-products#retrieve-product-by-handle"
  * parameters:
  *   - (query) q {string} term used to search products' title, description, variant's title, variant's sku, and collection's title.
  *   - in: query
@@ -182,17 +182,17 @@ import { defaultStoreProductRemoteQueryObject } from "./index"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.products.list()
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.products.list()
  *       .then(({ products, limit, offset, count }) => {
  *         console.log(products.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useProducts } from "ninja-react"
+ *       import { useProducts } from "medusa-react"
  *
  *       const Products = () => {
  *         const { products, isLoading } = useProducts()
@@ -275,11 +275,11 @@ export default async (req, res) => {
     }
   }
 
-  const isNinjaV2Enabled = featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
+  const isMedusaV2Enabled = featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
 
   const promises: Promise<any>[] = []
 
-  if (isNinjaV2Enabled) {
+  if (isMedusaV2Enabled) {
     promises.push(
       listAndCountProductWithIsolatedProductModule(
         req,

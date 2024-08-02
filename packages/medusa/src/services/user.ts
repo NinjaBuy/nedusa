@@ -1,7 +1,7 @@
-import { Selector } from "@ninjajs/types"
-import { FlagRouter } from "@ninjajs/utils"
+import { Selector } from "@medusajs/types"
+import { FlagRouter } from "@medusajs/utils"
 import jwt from "jsonwebtoken"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import Scrypt from "scrypt-kdf"
 import { EntityManager, FindOptionsWhere, ILike } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
@@ -154,8 +154,8 @@ class UserService extends TransactionBaseService {
    */
   async retrieve(userId: string, config: FindConfig<User> = {}): Promise<User> {
     if (!isDefined(userId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"userId" must be defined`
       )
     }
@@ -166,8 +166,8 @@ class UserService extends TransactionBaseService {
     const users = await userRepo.find(query)
 
     if (!users.length) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `User with id: ${userId} was not found`
       )
     }
@@ -194,8 +194,8 @@ class UserService extends TransactionBaseService {
     })
 
     if (!user) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `User with api token: ${apiToken} was not found`
       )
     }
@@ -220,8 +220,8 @@ class UserService extends TransactionBaseService {
     const user = await userRepo.findOne(query)
 
     if (!user) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `User with email: ${email} was not found`
       )
     }
@@ -261,8 +261,8 @@ class UserService extends TransactionBaseService {
       })
 
       if (userEntity) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "A user with the same email already exists."
         )
       }
@@ -301,15 +301,15 @@ class UserService extends TransactionBaseService {
       const { email, password_hash, metadata, ...rest } = update
 
       if (email) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "You are not allowed to update email"
         )
       }
 
       if (password_hash) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Use dedicated methods, `setPassword`, `generateResetPasswordToken` for password operations"
         )
       }
@@ -381,8 +381,8 @@ class UserService extends TransactionBaseService {
 
       const hashedPassword = await this.hashPassword_(password)
       if (!hashedPassword) {
-        throw new NinjaError(
-          NinjaError.Types.DB_ERROR,
+        throw new MedusaError(
+          MedusaError.Types.DB_ERROR,
           `An error occured while hashing password`
         )
       }

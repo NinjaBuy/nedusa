@@ -1,4 +1,4 @@
-import { DatePicker } from "@ninjajs/ui"
+import { DatePicker } from "@medusajs/ui"
 import { ComponentPropsWithoutRef } from "react"
 import { useTranslation } from "react-i18next"
 import { languages } from "../../../i18n/config"

@@ -1,15 +1,15 @@
-import { acceptInviteWorkflow } from "@ninjajs/core-flows"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IUserModuleService, InviteWorkflow } from "@ninjajs/types"
+import { acceptInviteWorkflow } from "@medusajs/core-flows"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IUserModuleService, InviteWorkflow } from "@medusajs/types"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import { AdminInviteAcceptType } from "../validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminInviteAcceptType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminInviteAcceptType>,
+  res: MedusaResponse
 ) => {
   if (req.auth.actor_id) {
     const moduleService: IUserModuleService = req.scope.resolve(

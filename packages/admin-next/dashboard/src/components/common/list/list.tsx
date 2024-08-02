@@ -1,4 +1,4 @@
-import { Checkbox, Text } from "@ninjajs/ui"
+import { Checkbox, Text } from "@medusajs/ui"
 
 export interface ListProps<T> {
   options: { title: string; value: T }[]

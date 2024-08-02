@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Input, Text } from "@ninjajs/ui"
+import { Button, Input, Text } from "@medusajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { ProductCollectionDTO } from "@ninjajs/types"
+import { ProductCollectionDTO } from "@medusajs/types"
 import { Form } from "../../../../../components/common/form"
 import {
   RouteDrawer,

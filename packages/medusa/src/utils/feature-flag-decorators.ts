@@ -1,7 +1,7 @@
 import { Column, ColumnOptions, Entity, EntityOptions } from "typeorm"
 import { featureFlagRouter } from "../loaders/feature-flags"
 import { Equals, ValidateIf } from "class-validator"
-import { isDefined } from "@ninjajs/utils"
+import { isDefined } from "@medusajs/utils"
 
 /**
  * If that file is required in a non node environment then the setImmediate timer does not exists.

@@ -1,4 +1,4 @@
-import { Product } from "@ninjajs/ninja"
+import { Product } from "@medusajs/medusa"
 
 import { useSearchParams } from "react-router-dom"
 import { EditProductMediaForm } from "../edit-product-media-form"

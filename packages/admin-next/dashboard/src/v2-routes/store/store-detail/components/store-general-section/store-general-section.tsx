@@ -1,5 +1,5 @@
-import { PencilSquare } from "@ninjajs/icons"
-import { Badge, Container, Heading, Text } from "@ninjajs/ui"
+import { PencilSquare } from "@medusajs/icons"
+import { Badge, Container, Heading, Text } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { ActionMenu } from "../../../../../components/common/action-menu"
 import { ExtendedStoreDTO } from "../../../../../types/api-responses"

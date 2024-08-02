@@ -1,5 +1,5 @@
 import { asValue, createContainer } from "awilix"
-import { MockManager, MockRepository } from "ninja-test-utils"
+import { MockManager, MockRepository } from "medusa-test-utils"
 import { StoreServiceMock } from "../../services/__mocks__/store"
 import {
   ShippingProfileServiceMock

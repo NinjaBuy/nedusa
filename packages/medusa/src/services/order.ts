@@ -1,13 +1,13 @@
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 import {
   buildRelations,
   buildSelects,
   FlagRouter,
   isDefined,
-  NinjaError,
-  NinjaV2Flag,
+  MedusaError,
+  MedusaV2Flag,
   promiseAll, selectorConstraintsToString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
   EntityManager,
   FindManyOptions,
@@ -65,7 +65,7 @@ import { TotalsContext, UpdateOrderInput } from "../types/orders"
 import { CreateShippingMethodDto } from "../types/shipping-options"
 import { buildQuery, isString, setMetadata } from "../utils"
 import EventBusService from "./event-bus"
-import { RemoteLink } from "@ninjajs/modules-sdk"
+import { RemoteLink } from "@medusajs/modules-sdk"
 
 export const ORDER_CART_ALREADY_EXISTS_ERROR = "Order from cart already exists"
 
@@ -397,8 +397,8 @@ class OrderService extends TransactionBaseService {
     config: FindConfig<Order> = {}
   ): Promise<Order> {
     if (!isDefined(orderId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"orderId" must be defined`
       )
     }
@@ -423,8 +423,8 @@ class OrderService extends TransactionBaseService {
     const raw = await orderRepo.findOneWithRelations(queryRelations, query)
 
     if (!raw) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Order with id ${orderId} was not found`
       )
     }
@@ -461,8 +461,8 @@ class OrderService extends TransactionBaseService {
     if (!raw) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Order with ${selectorConstraints} was not found`
       )
     }
@@ -492,8 +492,8 @@ class OrderService extends TransactionBaseService {
     config: FindConfig<Order> = {}
   ): Promise<Order> {
     if (!isDefined(cartId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"cartId" must be defined`
       )
     }
@@ -512,8 +512,8 @@ class OrderService extends TransactionBaseService {
     const raw = await orderRepo.findOneWithRelations(queryRelations, query)
 
     if (!raw) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Order with cart id ${cartId} was not found`
       )
     }
@@ -567,8 +567,8 @@ class OrderService extends TransactionBaseService {
 
     const raw = await orderRepo.findOneWithRelations(rels, query)
     if (!raw) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Order with external id ${externalId} was not found`
       )
     }
@@ -585,8 +585,8 @@ class OrderService extends TransactionBaseService {
       const order = await this.retrieve(orderId)
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be completed"
         )
       }
@@ -622,8 +622,8 @@ class OrderService extends TransactionBaseService {
       ).catch(() => void 0))
 
       if (exists) {
-        throw new NinjaError(
-          NinjaError.Types.DUPLICATE_ERROR,
+        throw new MedusaError(
+          MedusaError.Types.DUPLICATE_ERROR,
           ORDER_CART_ALREADY_EXISTS_ERROR
         )
       }
@@ -635,15 +635,15 @@ class OrderService extends TransactionBaseService {
         : cartOrId
 
       if (cart.items.length === 0) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Cannot create order from empty cart"
         )
       }
 
       if (!cart.customer_id) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Cannot create an order from the cart without a customer"
         )
       }
@@ -654,8 +654,8 @@ class OrderService extends TransactionBaseService {
       // total
       if (total !== 0) {
         if (!payment) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_ARGUMENT,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_ARGUMENT,
             "Cart does not contain a payment method"
           )
         }
@@ -665,8 +665,8 @@ class OrderService extends TransactionBaseService {
           .getStatus(payment)
 
         if (paymentStatus !== "authorized") {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_ARGUMENT,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_ARGUMENT,
             "Payment method is not authorized"
           )
         }
@@ -700,7 +700,7 @@ class OrderService extends TransactionBaseService {
       if (
         cart.sales_channel_id &&
         this.featureFlagRouter_.isFeatureEnabled(SalesChannelFeatureFlag.key) &&
-        !this.featureFlagRouter_.isFeatureEnabled(NinjaV2Flag.key)
+        !this.featureFlagRouter_.isFeatureEnabled(MedusaV2Flag.key)
       ) {
         toCreate.sales_channel_id = cart.sales_channel_id
       }
@@ -720,7 +720,7 @@ class OrderService extends TransactionBaseService {
       if (
         this.featureFlagRouter_.isFeatureEnabled([
           SalesChannelFeatureFlag.key,
-          NinjaV2Flag.key,
+          MedusaV2Flag.key,
         ])
       ) {
         await this.remoteLink_.create({
@@ -742,8 +742,8 @@ class OrderService extends TransactionBaseService {
       }
 
       if (!isDefined(cart.subtotal) || !isDefined(cart.discount_total)) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           "Unable to compute gift cardable amount during order creation from cart. The cart is missing the subtotal and/or discount_total"
         )
       }
@@ -905,15 +905,15 @@ class OrderService extends TransactionBaseService {
         .retrieve(fulfillmentId)
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be fulfilled as shipped"
         )
       }
 
       if (!shipment || shipment.order_id !== orderId) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           "Could not find fulfillment"
         )
       }
@@ -986,8 +986,8 @@ class OrderService extends TransactionBaseService {
       })
 
     if (!region.countries.find(({ iso_2 }) => address.country_code === iso_2)) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "Shipping country must be in the order region"
       )
     }
@@ -1033,8 +1033,8 @@ class OrderService extends TransactionBaseService {
       })
 
     if (!region.countries.find(({ iso_2 }) => address.country_code === iso_2)) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "Shipping country must be in the order region"
       )
     }
@@ -1067,8 +1067,8 @@ class OrderService extends TransactionBaseService {
       const { shipping_methods } = order
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A shipping method cannot be added to a canceled order"
         )
       }
@@ -1116,8 +1116,8 @@ class OrderService extends TransactionBaseService {
       const order = await this.retrieve(orderId)
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be updated"
         )
       }
@@ -1128,15 +1128,15 @@ class OrderService extends TransactionBaseService {
           order.payment_status !== "awaiting" ||
           order.status !== "pending")
       ) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Can't update shipping, billing, items and payment method when order is processed"
         )
       }
 
       if (update.status || update.fulfillment_status || update.payment_status) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Can't update order statuses. This will happen automatically. Use metadata in order for additional statuses"
         )
       }
@@ -1215,8 +1215,8 @@ class OrderService extends TransactionBaseService {
       })
 
       if (order.refunds?.length > 0) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Order with refund(s) cannot be canceled"
         )
       }
@@ -1227,8 +1227,8 @@ class OrderService extends TransactionBaseService {
         type: string
       ): void | never => {
         if (arr?.filter(pred).length) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             `All ${type} must be canceled before canceling an order`
           )
         }
@@ -1295,8 +1295,8 @@ class OrderService extends TransactionBaseService {
       const order = await this.retrieve(orderId, { relations: ["payments"] })
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot capture payment"
         )
       }
@@ -1368,13 +1368,13 @@ class OrderService extends TransactionBaseService {
     if (!item) {
       // This will in most cases be called by a webhook so to ensure that
       // things go through smoothly in instances where extra items outside
-      // of Ninja are added we allow unknown items
+      // of Medusa are added we allow unknown items
       return null
     }
 
     if (quantity > item.quantity - item.fulfilled_quantity!) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_ALLOWED,
+      throw new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
         "Cannot fulfill more items than have been purchased"
       )
     }
@@ -1435,15 +1435,15 @@ class OrderService extends TransactionBaseService {
       })
 
       if (order.status === OrderStatus.CANCELED) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be fulfilled"
         )
       }
 
       if (!order.shipping_methods?.length) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Cannot fulfill an order that lacks shipping methods"
         )
       }
@@ -1526,8 +1526,8 @@ class OrderService extends TransactionBaseService {
         .cancelFulfillment(fulfillmentId)
 
       if (!canceled.order_id) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `Fufillment not related to an order`
         )
       }
@@ -1587,8 +1587,8 @@ class OrderService extends TransactionBaseService {
       const order = await this.retrieve(orderId)
 
       if (order.status !== ("completed" || "refunded")) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Can't archive an unprocessed order"
         )
       }
@@ -1628,15 +1628,15 @@ class OrderService extends TransactionBaseService {
       })
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be refunded"
         )
       }
 
       if (refundAmount > order.refundable_amount) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Cannot refund more than the original order amount"
         )
       }
@@ -2018,15 +2018,15 @@ class OrderService extends TransactionBaseService {
       })
 
       if (order.status === "canceled") {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "A canceled order cannot be registered as received"
         )
       }
 
       if (!receivedReturn || receivedReturn.order_id !== orderId) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           `Received return does not exist`
         )
       }

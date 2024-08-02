@@ -3,7 +3,7 @@ import { processNode } from "./process-node"
 
 export function makeSourceFromOperation(gatsbyApi: SourceNodesArgs) {
   return async function sourceFromOperation(
-    op: INinjaOperation
+    op: IMedusaOperation
   ): Promise<void> {
     const { reporter, actions } = gatsbyApi
 

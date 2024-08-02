@@ -1,7 +1,7 @@
-import { NinjaContainer, ProductVariantDTO } from "@ninjajs/types"
+import { MedusaContainer, ProductVariantDTO } from "@medusajs/types"
 
 export async function getVariantsFromPriceList(
-  container: NinjaContainer,
+  container: MedusaContainer,
   priceListId: string
 ) {
   const remoteQuery = container.resolve("remoteQuery")

@@ -1,4 +1,4 @@
-const { ProductVariant } = require("@ninjajs/ninja")
+const { ProductVariant } = require("@medusajs/medusa")
 const path = require("path")
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -9,19 +9,19 @@ const productSeeder = require("../../../helpers/product-seeder")
 const storeProductSeeder = require("../../../helpers/store-product-seeder")
 jest.setTimeout(30000)
 describe("/store/variants", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /store/variants", () => {

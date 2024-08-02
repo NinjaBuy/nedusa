@@ -1,4 +1,4 @@
-import { OrderEditItemChangeType, OrderItemChange } from "@ninjajs/ninja"
+import { OrderEditItemChangeType, OrderItemChange } from "@medusajs/medusa"
 import { DataSource } from "typeorm"
 
 type OrderItemChangeData = {

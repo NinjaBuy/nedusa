@@ -7,12 +7,12 @@ import {
   Input,
   Switch,
   Text,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import { useForm, useWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { TaxRateResponse, TaxRegionResponse } from "@ninjajs/types"
+import { TaxRateResponse, TaxRegionResponse } from "@medusajs/types"
 import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { Form } from "../../../../../components/common/form"

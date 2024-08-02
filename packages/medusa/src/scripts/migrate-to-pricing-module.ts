@@ -1,5 +1,5 @@
-import { IPricingModuleService, PricingTypes } from "@ninjajs/types"
-import { promiseAll } from "@ninjajs/utils"
+import { IPricingModuleService, PricingTypes } from "@medusajs/types"
+import { promiseAll } from "@medusajs/utils"
 import { AwilixContainer } from "awilix"
 import dotenv from "dotenv"
 import express from "express"

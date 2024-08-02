@@ -1,10 +1,10 @@
-import { CreateCustomerDTO, NinjaContainer } from "@ninjajs/types"
+import { CreateCustomerDTO, MedusaContainer } from "@medusajs/types"
 
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 import jwt from "jsonwebtoken"
 
 export const createAuthenticatedCustomer = async (
-  appContainer: NinjaContainer,
+  appContainer: MedusaContainer,
   customerData: Partial<CreateCustomerDTO> = {}
 ) => {
   const { jwt_secret } = appContainer.resolve("configModule").projectConfig

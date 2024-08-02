@@ -1,14 +1,14 @@
-import { createShipmentWorkflow } from "@ninjajs/core-flows"
+import { createShipmentWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../types/routing"
 import { refetchFulfillment } from "../../helpers"
 import { AdminCreateShipmentType } from "../../validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateShipmentType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateShipmentType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
 

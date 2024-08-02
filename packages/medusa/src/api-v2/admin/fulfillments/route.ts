@@ -1,14 +1,14 @@
-import { createFulfillmentWorkflow } from "@ninjajs/core-flows"
+import { createFulfillmentWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchFulfillment } from "./helpers"
 import { AdminCreateFulfillmentType } from "./validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateFulfillmentType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateFulfillmentType>,
+  res: MedusaResponse
 ) => {
   const { result: fullfillment, errors } = await createFulfillmentWorkflow(
     req.scope

@@ -72,7 +72,7 @@ export class Address extends SoftDeletableEntity {
 /**
  * @schema Address
  * title: "Address"
- * description: "An address is used across the Ninja backend within other schemas and object types. For example, a customer's billing and shipping addresses both use the Address entity."
+ * description: "An address is used across the Medusa backend within other schemas and object types. For example, a customer's billing and shipping addresses both use the Address entity."
  * type: object
  * required:
  *   - address_1
@@ -183,5 +183,5 @@ export class Address extends SoftDeletableEntity {
  *    example: {car: "white"}
  *    externalDocs:
  *      description: "Learn about the metadata attribute, and how to delete and update it."
- *      url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *      url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */

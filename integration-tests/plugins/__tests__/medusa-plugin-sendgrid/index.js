@@ -18,7 +18,7 @@ const {
 } = require("../../../factories")
 const { getContainer } = require("../../../environment-helpers/use-container")
 
-describe("ninja-plugin-sendgrid", () => {
+describe("medusa-plugin-sendgrid", () => {
   let appContainer
   let dbConnection
   let shutdownServer
@@ -56,7 +56,7 @@ describe("ninja-plugin-sendgrid", () => {
     const response = await api.post(
       `/admin/orders/${order.id}/cancel`,
       {},
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
     expect(response.status).toEqual(200)
 
@@ -144,7 +144,7 @@ describe("ninja-plugin-sendgrid", () => {
     const { data: fulfillmentData } = await api.post(
       `/admin/orders/${order.id}/fulfillment`,
       { items: [{ item_id: "test-item", quantity: 2 }] },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const fulfillment = fulfillmentData.order.fulfillments[0]
@@ -152,7 +152,7 @@ describe("ninja-plugin-sendgrid", () => {
     const response = await api.post(
       `/admin/orders/${order.id}/shipment`,
       { fulfillment_id: fulfillment.id },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     expect(response.status).toEqual(200)
@@ -342,7 +342,7 @@ describe("ninja-plugin-sendgrid", () => {
         additional_items: [{ variant_id: "variant-2", quantity: 1 }],
         return_items: [{ item_id: "test-item", quantity: 1 }],
       },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     expect(response.status).toEqual(200)
@@ -357,7 +357,7 @@ describe("ninja-plugin-sendgrid", () => {
           quantity: i.quantity,
         })),
       },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const sendgridService = appContainer.resolve("sendgridService")
@@ -384,7 +384,7 @@ describe("ninja-plugin-sendgrid", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -401,7 +401,7 @@ describe("ninja-plugin-sendgrid", () => {
           quantity: i.quantity,
         })),
       },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const sendgridService = appContainer.resolve("sendgridService")
@@ -438,7 +438,7 @@ describe("ninja-plugin-sendgrid", () => {
           { reason: "missing_item", item_id: "test-item", quantity: 1 },
         ],
       },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     expect(response.status).toEqual(200)
@@ -448,14 +448,14 @@ describe("ninja-plugin-sendgrid", () => {
     const { data: fulfillmentData } = await api.post(
       `/admin/orders/${order.id}/claims/${claimId}/fulfillments`,
       {},
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const fulfillmentId = fulfillmentData.order.claims[0].fulfillments[0].id
     await api.post(
       `/admin/orders/${order.id}/claims/${claimId}/shipments`,
       { fulfillment_id: fulfillmentId },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const sendgridService = appContainer.resolve("sendgridService")
@@ -543,7 +543,7 @@ describe("ninja-plugin-sendgrid", () => {
         additional_items: [{ variant_id: "variant-2", quantity: 1 }],
         return_items: [{ item_id: "test-item", quantity: 1 }],
       },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     expect(response.status).toEqual(200)
@@ -571,14 +571,14 @@ describe("ninja-plugin-sendgrid", () => {
     const { data: fulfillmentData } = await api.post(
       `/admin/orders/${order.id}/swaps/${swapId}/fulfillments`,
       {},
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const fulfillmentId = fulfillmentData.order.swaps[0].fulfillments[0].id
     await api.post(
       `/admin/orders/${order.id}/swaps/${swapId}/shipments`,
       { fulfillment_id: fulfillmentId },
-      { headers: { "x-ninja-access-token": "test_token" } }
+      { headers: { "x-medusa-access-token": "test_token" } }
     )
 
     const sendgridService = appContainer.resolve("sendgridService")
@@ -727,7 +727,7 @@ describe("ninja-plugin-sendgrid", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -757,7 +757,7 @@ describe("ninja-plugin-sendgrid", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )

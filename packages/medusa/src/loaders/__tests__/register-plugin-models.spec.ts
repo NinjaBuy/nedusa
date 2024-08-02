@@ -1,12 +1,12 @@
 import { asValue } from "awilix"
-import { createNinjaContainer } from "ninja-core-utils"
+import { createMedusaContainer } from "medusa-core-utils"
 import path from "path"
 
 import { registerPluginModels } from "../plugins"
-import configModule from './__fixtures__/customizations/ninja-config'
+import configModule from './__fixtures__/customizations/medusa-config'
 
 describe.skip("plugin models loader", () => {
-  const container = createNinjaContainer()
+  const container = createMedusaContainer()
   container.register("db_entities", asValue([]))
 
   let models

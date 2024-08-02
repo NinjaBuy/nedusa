@@ -9,8 +9,8 @@ import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
-import { Button, Checkbox, toast } from "@ninjajs/ui"
-import { RegionCountryDTO, RegionDTO } from "@ninjajs/types"
+import { Button, Checkbox, toast } from "@medusajs/ui"
+import { RegionCountryDTO, RegionDTO } from "@medusajs/types"
 import {
   RouteFocusModal,
   useRouteModal,

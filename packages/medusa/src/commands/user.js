@@ -2,14 +2,14 @@ import "core-js/stable"
 import "regenerator-runtime/runtime"
 
 import express from "express"
-import { track } from "ninja-telemetry"
+import { track } from "medusa-telemetry"
 
 import loaders from "../loaders"
 import Logger from "../loaders/logger"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 import featureFlagLoader from "../loaders/feature-flags"
 import configModuleLoader from "../loaders/config"
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 
 const useV2Command = async (
   { email, password, isInvite, provider = "emailpass" },
@@ -24,7 +24,7 @@ const useV2Command = async (
 
     Logger.info(`
     Invite token: ${invite.token}
-    Open the invite in Ninja Admin at: [your-admin-url]/invite?token=${invite.token}`)
+    Open the invite in Medusa Admin at: [your-admin-url]/invite?token=${invite.token}`)
   } else {
     const user = await userService.create({ email })
 
@@ -64,7 +64,7 @@ export default async function ({
     const configModule = configModuleLoader(directory)
     const featureFlagRouter = featureFlagLoader(configModule)
 
-    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
       await useV2Command({ email, password, isInvite: invite }, { container })
     } else {
       if (invite) {
@@ -75,7 +75,7 @@ export default async function ({
         })
         Logger.info(`
         Invite token: ${invite[0].token}
-        Open the invite in Ninja Admin at: [your-admin-url]/invite?token=${invite[0].token}`)
+        Open the invite in Medusa Admin at: [your-admin-url]/invite?token=${invite[0].token}`)
       } else {
         const userService = container.resolve("userService")
         await userService.create({ id, email }, password)

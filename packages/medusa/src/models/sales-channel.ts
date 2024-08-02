@@ -7,7 +7,7 @@ import {
   Relation,
 } from "typeorm"
 
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 import { SoftDeletableEntity } from "../interfaces"
 import { DbAwareColumn, generateEntityId } from "../utils"
 import {
@@ -48,7 +48,7 @@ export class SalesChannel extends SoftDeletableEntity {
   })
   products: Relation<Product>[]
 
-  @FeatureFlagDecorators(NinjaV2Flag.key, [
+  @FeatureFlagDecorators(MedusaV2Flag.key, [
     ManyToMany(() => Cart),
     JoinTable({
       name: "cart_sales_channel",
@@ -64,7 +64,7 @@ export class SalesChannel extends SoftDeletableEntity {
   ])
   carts: Relation<Cart>[]
 
-  @FeatureFlagDecorators(NinjaV2Flag.key, [
+  @FeatureFlagDecorators(MedusaV2Flag.key, [
     ManyToMany(() => Order),
     JoinTable({
       name: "order_sales_channel",
@@ -169,13 +169,13 @@ export class SalesChannel extends SoftDeletableEntity {
  *    example: {car: "white"}
  *    externalDocs:
  *      description: "Learn about the metadata attribute, and how to delete and update it."
- *      url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *      url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *  carts:
  *    description: The associated carts.
  *    type: array
  *    nullable: true
  *    x-expandable: "carts"
- *    x-featureFlag: "ninja_v2"
+ *    x-featureFlag: "medusa_v2"
  *    items:
  *      $ref: "#/components/schemas/Cart"
  *  orders:
@@ -183,7 +183,7 @@ export class SalesChannel extends SoftDeletableEntity {
  *    type: array
  *    nullable: true
  *    x-expandable: "orders"
- *    x-featureFlag: "ninja_v2"
+ *    x-featureFlag: "medusa_v2"
  *    items:
  *      $ref: "#/components/schemas/Order"
  *  publishableKeys:

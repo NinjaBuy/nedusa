@@ -1,4 +1,4 @@
-import { PriceListStatus, PriceListType } from "@ninjajs/types"
+import { PriceListStatus, PriceListType } from "@medusajs/types"
 
 export type AdminPriceListRemoteQueryDTO = {
   id: string

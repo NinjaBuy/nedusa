@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 
-import { AdminCustomerGroupResponse } from "@ninjajs/types"
+import { AdminCustomerGroupResponse } from "@medusajs/types"
 import { useTranslation } from "react-i18next"
 import {
   TextCell,

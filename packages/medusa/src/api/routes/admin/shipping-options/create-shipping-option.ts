@@ -39,10 +39,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.shippingOptions.create({
+ *       medusa.admin.shippingOptions.create({
  *         name: "PostFake",
  *         region_id,
  *         provider_id,
@@ -54,10 +54,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(shipping_option.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateShippingOption } from "ninja-react"
+ *       import { useAdminCreateShippingOption } from "medusa-react"
  *
  *       type CreateShippingOption = {
  *         name: string
@@ -96,7 +96,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/shipping-options' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "PostFake",
@@ -239,7 +239,7 @@ class OptionRequirement {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   includes_tax:
  *     description: "Tax included in prices of shipping option"
  *     x-featureFlag: "tax_inclusive_pricing"

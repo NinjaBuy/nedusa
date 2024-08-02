@@ -1,13 +1,13 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
-import { createReservationsWorkflow } from "@ninjajs/core-flows"
+import { createReservationsWorkflow } from "@medusajs/core-flows"
 import {
   AdminCreateReservationType,
   AdminGetReservationsParamsType,
@@ -15,8 +15,8 @@ import {
 import { refetchReservation } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetReservationsParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetReservationsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -40,8 +40,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateReservationType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateReservationType>,
+  res: MedusaResponse
 ) => {
   const input = [req.validatedBody]
 

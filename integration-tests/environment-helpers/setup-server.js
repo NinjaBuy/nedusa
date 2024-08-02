@@ -15,7 +15,7 @@ module.exports = async ({ cwd, redisUrl, uploadDir, verbose, env }) => {
   verbose = verbose ?? false
 
   return await new Promise((resolve, reject) => {
-    const ninjaProcess = spawn("node", [path.resolve(serverPath)], {
+    const medusaProcess = spawn("node", [path.resolve(serverPath)], {
       cwd,
       env: {
         ...process.env,
@@ -31,24 +31,24 @@ module.exports = async ({ cwd, redisUrl, uploadDir, verbose, env }) => {
         : ["ignore", "ignore", "ignore", "ipc"],
     })
 
-    ninjaProcess.on("error", (err) => {
+    medusaProcess.on("error", (err) => {
       console.log(err)
       reject(err)
       process.exit()
     })
 
-    ninjaProcess.on("uncaughtException", (err) => {
+    medusaProcess.on("uncaughtException", (err) => {
       console.log(err)
       reject(err)
-      ninjaProcess.kill()
+      medusaProcess.kill()
     })
 
-    ninjaProcess.on("message", (port) => {
+    medusaProcess.on("message", (port) => {
       setPort(port)
-      resolve(ninjaProcess)
+      resolve(medusaProcess)
     })
 
-    ninjaProcess.on("exit", () => {
+    medusaProcess.on("exit", () => {
       const expressServer = useExpressServer()
 
       setContainer(null)

@@ -7,15 +7,15 @@ import getMigrations, {
 
 import {
   ContainerRegistrationKeys,
-  createNinjaContainer,
-  NinjaV2Flag,
+  createMedusaContainer,
+  MedusaV2Flag,
   promiseAll,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import configModuleLoader from "../loaders/config"
 import databaseLoader from "../loaders/database"
 import featureFlagLoader from "../loaders/feature-flags"
 import Logger from "../loaders/logger"
-import { migrateNinjaApp, loadNinjaApp } from "../loaders/ninja-app"
+import { migrateMedusaApp, loadMedusaApp } from "../loaders/medusa-app"
 import pgConnectionLoader from "../loaders/pg-connection"
 
 const getDataSource = async (directory) => {
@@ -42,7 +42,7 @@ const getDataSource = async (directory) => {
 
 const runLinkMigrations = async (directory) => {
   const configModule = configModuleLoader(directory)
-  const container = createNinjaContainer()
+  const container = createMedusaContainer()
   const featureFlagRouter = featureFlagLoader(configModule)
 
   container.register({
@@ -52,7 +52,7 @@ const runLinkMigrations = async (directory) => {
 
   await pgConnectionLoader({ configModule, container })
 
-  const { runMigrations } = await loadNinjaApp(
+  const { runMigrations } = await loadMedusaApp(
     { configModule, container },
     { registerInContainer: false }
   )
@@ -76,8 +76,8 @@ const main = async function ({ directory }) {
   const featureFlagRouter = featureFlagLoader(configModule)
 
   if (args[0] === "run") {
-    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
-      const container = createNinjaContainer()
+    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+      const container = createMedusaContainer()
       const pgConnection = await pgConnectionLoader({ configModule, container })
       container.register({
         [ContainerRegistrationKeys.CONFIG_MODULE]: asValue(configModule),
@@ -85,7 +85,7 @@ const main = async function ({ directory }) {
         [ContainerRegistrationKeys.PG_CONNECTION]: asValue(pgConnection),
         featureFlagRouter: asValue(featureFlagRouter),
       })
-      await migrateNinjaApp(
+      await migrateMedusaApp(
         { configModule, container },
         { registerInContainer: false }
       )

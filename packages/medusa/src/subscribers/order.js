@@ -1,4 +1,4 @@
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 class OrderSubscriber {
   constructor({

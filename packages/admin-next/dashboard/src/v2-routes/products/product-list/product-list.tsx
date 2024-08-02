@@ -1,5 +1,5 @@
-import after from "ninja-admin:widgets/product/list/after"
-import before from "ninja-admin:widgets/product/list/before"
+import after from "medusa-admin:widgets/product/list/after"
+import before from "medusa-admin:widgets/product/list/before"
 
 import { ProductListTable } from "./components/product-list-table"
 

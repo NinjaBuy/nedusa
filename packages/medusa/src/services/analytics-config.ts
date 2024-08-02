@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { AnalyticsConfig } from "../models"
@@ -35,8 +35,8 @@ class AnalyticsConfigService extends TransactionBaseService {
     })
 
     if (!analyticsConfig) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `No analytics config found for user with id: ${userId}`
       )
     }

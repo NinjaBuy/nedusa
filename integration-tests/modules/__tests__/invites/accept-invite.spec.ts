@@ -1,16 +1,16 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IUserModuleService } from "@ninjajs/types"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IUserModuleService } from "@medusajs/types"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import { createAdminUser } from "../../../helpers/create-admin-user"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 const adminHeaders = {
-  headers: { "x-ninja-access-token": "test_token" },
+  headers: { "x-medusa-access-token": "test_token" },
 }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("GET /admin/invites/:id", () => {

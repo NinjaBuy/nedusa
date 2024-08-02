@@ -12,8 +12,8 @@ import {
   updateLineItemInCartWorkflow,
   updateLineItemsStepId,
   updatePaymentCollectionStepId,
-} from "@ninjajs/core-flows"
-import { ModuleRegistrationName, Modules } from "@ninjajs/modules-sdk"
+} from "@medusajs/core-flows"
+import { ModuleRegistrationName, Modules } from "@medusajs/modules-sdk"
 import {
   ICartModuleService,
   ICustomerModuleService,
@@ -25,16 +25,16 @@ import {
   IRegionModuleService,
   ISalesChannelModuleService,
   IStockLocationServiceNext,
-} from "@ninjajs/types"
-import { ContainerRegistrationKeys } from "@ninjajs/utils"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+} from "@medusajs/types"
+import { ContainerRegistrationKeys } from "@medusajs/utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import adminSeeder from "../../../../helpers/admin-seeder"
 
 jest.setTimeout(200000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Carts workflows", () => {

@@ -1,4 +1,4 @@
-import { Container, Heading, Text } from "@ninjajs/ui"
+import { Container, Heading, Text } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { Outlet, useLoaderData } from "react-router-dom"
 

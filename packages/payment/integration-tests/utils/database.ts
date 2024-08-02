@@ -1,4 +1,4 @@
-import {TestDatabaseUtils} from "ninja-test-utils"
+import {TestDatabaseUtils} from "medusa-test-utils"
 
 import * as PaymentModules from "@models"
 

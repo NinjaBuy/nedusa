@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 
-import { ProductDTO } from "@ninjajs/types"
+import { ProductDTO } from "@medusajs/types"
 import { Thumbnail } from "../../../../common/thumbnail"
 
 type ProductCellProps = {

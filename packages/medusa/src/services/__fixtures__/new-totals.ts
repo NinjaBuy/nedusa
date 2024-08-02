@@ -1,6 +1,6 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { asClass, asValue, createContainer } from "awilix"
-import { IdMap, MockManager } from "ninja-test-utils"
+import { IdMap, MockManager } from "medusa-test-utils"
 import {
     GiftCard,
     LineItem,

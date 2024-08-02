@@ -1,4 +1,4 @@
-import { MikroOrmBaseRepository, ModulesSdkUtils } from "@ninjajs/utils"
+import { MikroOrmBaseRepository, ModulesSdkUtils } from "@medusajs/utils"
 import * as ModuleModels from "@models"
 import * as ModuleServices from "@services"
 

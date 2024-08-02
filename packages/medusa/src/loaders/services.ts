@@ -1,12 +1,12 @@
 import { asFunction } from "awilix"
 import glob from "glob"
-import { isDefined } from "ninja-core-utils"
+import { isDefined } from "medusa-core-utils"
 import path from "path"
-import { ConfigModule, NinjaContainer } from "../types/global"
+import { ConfigModule, MedusaContainer } from "../types/global"
 import formatRegistrationName from "../utils/format-registration-name"
 
 type Options = {
-  container: NinjaContainer
+  container: MedusaContainer
   configModule: ConfigModule
   isTest?: boolean
 }

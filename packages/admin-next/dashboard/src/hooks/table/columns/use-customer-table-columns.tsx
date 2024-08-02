@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 
-import { AdminCustomerResponse } from "@ninjajs/types"
+import { AdminCustomerResponse } from "@medusajs/types"
 import {
   EmailCell,
   EmailHeader,

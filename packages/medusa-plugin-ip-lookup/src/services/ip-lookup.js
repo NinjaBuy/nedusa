@@ -1,4 +1,4 @@
-import { BaseService } from "ninja-interfaces"
+import { BaseService } from "medusa-interfaces"
 import axios from "axios"
 
 class IpLookupService extends BaseService {

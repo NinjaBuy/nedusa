@@ -13,7 +13,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: Fulfill a claim
- *   url: https://docs.ninjajs.com/modules/orders/claims#fulfill-a-claim
+ *   url: https://docs.medusajs.com/modules/orders/claims#fulfill-a-claim
  * parameters:
  *   - (path) id=* {string} The ID of the Order the claim is associated with.
  *   - (path) claim_id=* {string} The ID of the Claim.
@@ -31,20 +31,20 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.orders.createClaimShipment(orderId, claimId, {
+ *       medusa.admin.orders.createClaimShipment(orderId, claimId, {
  *         fulfillment_id
  *       })
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateClaimShipment } from "ninja-react"
+ *       import { useAdminCreateClaimShipment } from "medusa-react"
  *
  *       type Props = {
  *         orderId: string
@@ -74,7 +74,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/claims/{claim_id}/shipments' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "fulfillment_id": "{fulfillment_id}"

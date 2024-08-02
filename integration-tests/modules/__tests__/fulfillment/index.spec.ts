@@ -1,6 +1,6 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IFulfillmentModuleService } from "@ninjajs/types"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IFulfillmentModuleService } from "@medusajs/types"
+import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
 import { createAdminUser } from "../../../helpers/create-admin-user"
 import {
   generateCreateFulfillmentData,
@@ -10,13 +10,13 @@ import {
 
 jest.setTimeout(100000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 const adminHeaders = {
-  headers: { "x-ninja-access-token": "test_token" },
+  headers: { "x-medusa-access-token": "test_token" },
 }
 const providerId = "manual_test-provider"
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ getContainer, api, dbConnection }) => {
     let service: IFulfillmentModuleService
@@ -32,12 +32,12 @@ ninjaIntegrationTestRunner({
     })
 
     /**
-     * The test runner run both the ninja migrations as well as the modules
+     * The test runner run both the medusa migrations as well as the modules
      * migrations. In order to ensure the backward compatibility
      * of the migration works, we will create a full data structure.
      */
     describe("Fulfillment module migrations backward compatibility", () => {
-      it("should allow to create a full data structure after the backward compatible migration have run on top of the ninja v1 database", async () => {
+      it("should allow to create a full data structure after the backward compatible migration have run on top of the medusa v1 database", async () => {
         await setupFullDataFulfillmentStructure(service, { providerId })
 
         const fulfillmentSets = await service.list(

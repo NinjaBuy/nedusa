@@ -4,10 +4,10 @@ import {
   AdminGetCampaignsCampaignParams,
   AdminGetCampaignsParams,
   AdminPostCampaignsCampaignReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { useMutation } from "@tanstack/react-query"
-import { queryKeysFactory, useAdminCustomQuery } from "ninja-react"
-import { ninja } from "../ninja"
+import { queryKeysFactory, useAdminCustomQuery } from "medusa-react"
+import { medusa } from "../medusa"
 
 const QUERY_KEY = "admin_campaigns"
 export const adminCampaignKeys = queryKeysFactory<
@@ -17,8 +17,8 @@ export const adminCampaignKeys = queryKeysFactory<
 
 export const adminCampaignQueryFns = {
   list: (query: AdminGetCampaignsParams) =>
-    ninja.admin.custom.get(`/admin/campaigns`, query),
-  detail: (id: string) => ninja.admin.custom.get(`/admin/campaigns/${id}`),
+    medusa.admin.custom.get(`/admin/campaigns`, query),
+  detail: (id: string) => medusa.admin.custom.get(`/admin/campaigns/${id}`),
 }
 
 export const useV2Campaigns = (
@@ -47,11 +47,11 @@ export const useV2Campaign = (
 }
 
 export const useV2DeleteCampaign = (id: string) => {
-  return useMutation(() => ninja.admin.custom.delete(`/admin/campaigns/${id}`))
+  return useMutation(() => medusa.admin.custom.delete(`/admin/campaigns/${id}`))
 }
 
 export const useV2PostCampaign = (id: string) => {
   return useMutation((args: AdminPostCampaignsCampaignReq) =>
-    ninja.client.request("POST", `/admin/campaigns/${id}`, args)
+    medusa.client.request("POST", `/admin/campaigns/${id}`, args)
   )
 }

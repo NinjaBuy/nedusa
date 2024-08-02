@@ -1,4 +1,4 @@
-import { clx } from "@ninjajs/ui"
+import { clx } from "@medusajs/ui"
 import { Transition, motion } from "framer-motion"
 
 type LogoBoxProps = {

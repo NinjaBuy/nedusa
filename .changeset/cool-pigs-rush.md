@@ -1,5 +1,5 @@
 ---
-"@ninjajs/pricing": patch
+"@medusajs/pricing": patch
 ---
 
 Fix/pricing data manipulation

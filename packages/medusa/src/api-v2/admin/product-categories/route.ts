@@ -1,15 +1,15 @@
-import { createProductCategoryWorkflow } from "@ninjajs/core-flows"
+import { createProductCategoryWorkflow } from "@medusajs/core-flows"
 import {
   AdminProductCategoryListResponse,
   AdminProductCategoryResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchCategory } from "./helpers"
 import {
@@ -18,8 +18,8 @@ import {
 } from "./validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminProductCategoriesParamsType>,
-  res: NinjaResponse<AdminProductCategoryListResponse>
+  req: AuthenticatedMedusaRequest<AdminProductCategoriesParamsType>,
+  res: MedusaResponse<AdminProductCategoryListResponse>
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -43,8 +43,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateProductCategoryType>,
-  res: NinjaResponse<AdminProductCategoryResponse>
+  req: AuthenticatedMedusaRequest<AdminCreateProductCategoryType>,
+  res: MedusaResponse<AdminProductCategoryResponse>
 ) => {
   const { result, errors } = await createProductCategoryWorkflow(req.scope).run(
     {

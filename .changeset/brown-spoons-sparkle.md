@@ -1,8 +1,8 @@
 ---
-"@ninjajs/workflow-engine-inmemory": patch
-"@ninjajs/workflow-engine-redis": patch
-"@ninjajs/workflows-sdk": patch
-"@ninjajs/orchestration": patch
+"@medusajs/workflow-engine-inmemory": patch
+"@medusajs/workflow-engine-redis": patch
+"@medusajs/workflows-sdk": patch
+"@medusajs/orchestration": patch
 ---
 
 Fix Workflow Engine subscribers response and error

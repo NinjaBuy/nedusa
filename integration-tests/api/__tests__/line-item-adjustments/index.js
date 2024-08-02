@@ -1,5 +1,5 @@
 const path = require("path")
-const { LineItemAdjustment } = require("@ninjajs/ninja")
+const { LineItemAdjustment } = require("@medusajs/medusa")
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
 const { initDb, useDb } = require("../../../environment-helpers/use-db")
@@ -16,7 +16,7 @@ jest.setTimeout(30000)
 
 describe("Line Item Adjustments", () => {
   let dbConnection
-  let ninjaProcess
+  let medusaProcess
 
   const doAfterEach = async () => {
     const db = useDb()
@@ -26,13 +26,13 @@ describe("Line Item Adjustments", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("Tests database constraints", () => {
@@ -42,7 +42,7 @@ describe("Line Item Adjustments", () => {
     beforeEach(async () => {
       await cartSeeder(dbConnection)
       discount = await simpleDiscountFactory(dbConnection, {
-        code: "NINJATEST",
+        code: "MEDUSATEST",
         id: "discount-test",
         rule: {
           value: 100,
@@ -211,7 +211,7 @@ describe("Line Item Adjustments", () => {
     })
   })
 
-  describe("When refreshing adjustments make sure that only adjustments associated with a Ninja Discount are deleted", () => {
+  describe("When refreshing adjustments make sure that only adjustments associated with a Medusa Discount are deleted", () => {
     let cart
     let discount
     const lineItemId = "line-test"
@@ -220,7 +220,7 @@ describe("Line Item Adjustments", () => {
       await cartSeeder(dbConnection)
 
       discount = await simpleDiscountFactory(dbConnection, {
-        code: "NINJATEST",
+        code: "MEDUSATEST",
         id: "discount-test",
         rule: {
           value: 100,
@@ -251,7 +251,7 @@ describe("Line Item Adjustments", () => {
                 },
                 {
                   // this one shouldn't be deleted because it's
-                  // not associated with a Ninja Discount, i.e.
+                  // not associated with a Medusa Discount, i.e.
                   // it's created by a third party system, for example,
                   // a custom promotions engine
                   amount: 20,

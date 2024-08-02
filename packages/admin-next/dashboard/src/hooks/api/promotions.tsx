@@ -1,4 +1,4 @@
-import { AdminGetPromotionsParams } from "@ninjajs/ninja"
+import { AdminGetPromotionsParams } from "@medusajs/medusa"
 import {
   QueryKey,
   useMutation,
@@ -7,7 +7,7 @@ import {
   UseQueryOptions,
 } from "@tanstack/react-query"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import {
   BatchAddPromotionRulesReq,

@@ -1,4 +1,4 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { defaultRelationsExtended } from "."
 import {
   FulfillmentProviderService,
@@ -6,7 +6,7 @@ import {
   StoreService,
 } from "../../../../services"
 import { ExtendedStoreDTO } from "../../../../types/store"
-import { NinjaModule } from "@ninjajs/modules-sdk"
+import { MedusaModule } from "@medusajs/modules-sdk"
 
 /**
  * @oas [get] /admin/store
@@ -20,18 +20,18 @@ import { NinjaModule } from "@ninjajs/modules-sdk"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.store.retrieve()
+ *       medusa.admin.store.retrieve()
  *       .then(({ store }) => {
  *         console.log(store.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminStore } from "ninja-react"
+ *       import { useAdminStore } from "medusa-react"
  *
  *       const Store = () => {
  *         const {
@@ -52,7 +52,7 @@ import { NinjaModule } from "@ninjajs/modules-sdk"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/store' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -100,7 +100,7 @@ export default async (req, res) => {
   })) as ExtendedStoreDTO
 
   data.feature_flags = featureFlagRouter.listFlags()
-  data.modules = NinjaModule.getLoadedModules()
+  data.modules = MedusaModule.getLoadedModules()
     .map((loadedModule) => {
       return Object.entries(loadedModule).map(([key, service]) => {
         return {

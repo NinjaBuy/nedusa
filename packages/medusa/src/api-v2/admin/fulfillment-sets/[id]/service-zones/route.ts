@@ -1,11 +1,11 @@
-import { createServiceZonesWorkflow } from "@ninjajs/core-flows"
-import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
+import { createServiceZonesWorkflow } from "@medusajs/core-flows"
+import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
 import { AdminCreateFulfillmentSetServiceZonesType } from "../../validators"
 import { refetchFulfillmentSet } from "../../helpers"
 
 export const POST = async (
-  req: NinjaRequest<AdminCreateFulfillmentSetServiceZonesType>,
-  res: NinjaResponse
+  req: MedusaRequest<AdminCreateFulfillmentSetServiceZonesType>,
+  res: MedusaResponse
 ) => {
   const workflowInput = {
     data: [

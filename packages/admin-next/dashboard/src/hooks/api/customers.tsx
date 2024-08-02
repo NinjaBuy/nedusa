@@ -2,7 +2,7 @@ import {
   AdminCustomerListResponse,
   AdminCustomerResponse,
   DeleteResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   QueryKey,
   UseMutationOptions,
@@ -11,7 +11,7 @@ import {
   useQuery,
 } from "@tanstack/react-query"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import { CreateCustomerReq, UpdateCustomerReq } from "../../types/api-payloads"
 

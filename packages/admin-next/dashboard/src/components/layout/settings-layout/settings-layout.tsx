@@ -1,5 +1,5 @@
-import { ArrowUturnLeft, MinusMini } from "@ninjajs/icons"
-import { IconButton, Text } from "@ninjajs/ui"
+import { ArrowUturnLeft, MinusMini } from "@medusajs/icons"
+import { IconButton, Text } from "@medusajs/ui"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"

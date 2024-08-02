@@ -1,18 +1,18 @@
 import {
   StoreOrderEditsRes,
   StorePostOrderEditsOrderEditDecline,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Order Edits API Routes](https://docs.ninjajs.com/api/store#order-edits). All its method
- * are available in the JS Client under the `ninja.orderEdits` property.
+ * This class is used to send requests to [Store Order Edits API Routes](https://docs.medusajs.com/api/store#order-edits). All its method
+ * are available in the JS Client under the `medusa.orderEdits` property.
  * 
  * Order edits are changes made to items in an order such as adding, updating their quantity, or deleting them. Order edits are created by the admin.
  * A customer can review order edit requests created by an admin and confirm or decline them.
  * 
- * Related Guide: [How to handle order edits in a storefront](https://docs.ninjajs.com/modules/orders/storefront/handle-order-edits).
+ * Related Guide: [How to handle order edits in a storefront](https://docs.medusajs.com/modules/orders/storefront/handle-order-edits).
  */
 class OrderEditsResource extends BaseResource {
   /**
@@ -22,9 +22,9 @@ class OrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.orderEdits.retrieve(orderEditId)
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.orderEdits.retrieve(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id);
    * })
@@ -45,9 +45,9 @@ class OrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.orderEdits.decline(orderEditId)
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.orderEdits.decline(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id);
    * })
@@ -68,9 +68,9 @@ class OrderEditsResource extends BaseResource {
    * @returns {ResponsePromise<StoreOrderEditsRes>} Resolves to the order edit's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.orderEdits.complete(orderEditId)
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.orderEdits.complete(orderEditId)
    * .then(({ order_edit }) => {
    *   console.log(order_edit.id)
    * })

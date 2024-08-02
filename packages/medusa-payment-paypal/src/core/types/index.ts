@@ -1,4 +1,4 @@
-import { Logger } from "@ninjajs/ninja"
+import { Logger } from "@medusajs/medusa"
 import { PaypalOptions } from "../../types"
 
 export type PaypalSdkOptions = PaypalOptions & {

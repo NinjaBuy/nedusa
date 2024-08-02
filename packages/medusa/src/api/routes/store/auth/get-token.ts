@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import AuthService from "../../../../services/auth"
 import { validator } from "../../../../utils/validator"
@@ -22,9 +22,9 @@ import { StorePostAuthReq } from "./create-session"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.auth.getToken({
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.auth.getToken({
  *         email: 'user@example.com',
  *         password: 'supersecret'
  *       })
@@ -67,8 +67,8 @@ export default async (req, res) => {
     projectConfig: { jwt_secret },
   } = req.scope.resolve("configModule")
   if (!jwt_secret) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       "Please configure jwt_secret in your environment"
     )
   }

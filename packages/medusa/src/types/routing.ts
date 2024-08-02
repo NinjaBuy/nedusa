@@ -1,11 +1,11 @@
 import type { NextFunction, Request, Response } from "express"
 import type { Customer, User } from "../models"
 
-import { NinjaContainer, RequestQueryFields } from "@ninjajs/types"
+import { MedusaContainer, RequestQueryFields } from "@medusajs/types"
 import { FindConfig } from "./common"
 import * as core from "express-serve-static-core"
 
-export interface NinjaRequest<Body = unknown>
+export interface MedusaRequest<Body = unknown>
   extends Request<core.ParamsDictionary, any, Body> {
   validatedBody: Body
   validatedQuery: RequestQueryFields & Record<string, unknown>
@@ -14,11 +14,11 @@ export interface NinjaRequest<Body = unknown>
    */
   allowedProperties: string[]
   /**
-   * An object containing the select, relation, skip, take and order to be used with ninja internal services
+   * An object containing the select, relation, skip, take and order to be used with medusa internal services
    */
   listConfig: FindConfig<unknown>
   /**
-   * An object containing the select, relation to be used with ninja internal services
+   * An object containing the select, relation to be used with medusa internal services
    */
   retrieveConfig: FindConfig<unknown>
   /**
@@ -46,14 +46,14 @@ export interface NinjaRequest<Body = unknown>
    */
   allowed?: string[]
   errors: string[]
-  scope: NinjaContainer
+  scope: MedusaContainer
   session?: any
   rawBody?: any
   requestId?: string
 }
 
-export interface AuthenticatedNinjaRequest<Body = never>
-  extends NinjaRequest<Body> {
+export interface AuthenticatedMedusaRequest<Body = never>
+  extends MedusaRequest<Body> {
   user: (User | Customer) & { customer_id?: string; userId?: string } // TODO: Remove this property when v2 is released
   auth: {
     actor_id: string
@@ -63,12 +63,12 @@ export interface AuthenticatedNinjaRequest<Body = never>
   }
 }
 
-export type NinjaResponse<Body = unknown> = Response<Body>
+export type MedusaResponse<Body = unknown> = Response<Body>
 
-export type NinjaNextFunction = NextFunction
+export type MedusaNextFunction = NextFunction
 
-export type NinjaRequestHandler<Body = unknown, Res = unknown> = (
-  req: NinjaRequest<Body>,
-  res: NinjaResponse<Res>,
-  next: NinjaNextFunction
+export type MedusaRequestHandler<Body = unknown, Res = unknown> = (
+  req: MedusaRequest<Body>,
+  res: MedusaResponse<Res>,
+  next: MedusaNextFunction
 ) => Promise<void> | void

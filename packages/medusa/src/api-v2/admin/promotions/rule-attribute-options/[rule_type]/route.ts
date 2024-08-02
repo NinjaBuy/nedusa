@@ -1,12 +1,12 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../types/routing"
 import { ruleAttributesMap, validateRuleType } from "../../utils"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const { rule_type: ruleType } = req.params
 

@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import {
   LineItemService,
@@ -24,7 +24,7 @@ import {
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/line-items/{line_item_id}/reserve' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "location_id": "loc_1"
@@ -74,8 +74,8 @@ export default async (req, res) => {
       .retrieve(line_item_id)
 
     if (!lineItem.variant_id) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Can't create a reservation for a Line Item wihtout a variant`
       )
     }

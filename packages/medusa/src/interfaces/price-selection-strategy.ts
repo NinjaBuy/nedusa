@@ -1,7 +1,7 @@
 import { MoneyAmount } from "../models"
 import { PriceListType } from "../types/price-list"
 import { TaxServiceRate } from "../types/tax-service"
-import { ITransactionBaseService, NinjaContainer } from "@ninjajs/types"
+import { ITransactionBaseService, MedusaContainer } from "@medusajs/types"
 import { TransactionBaseService } from "./transaction-base-service"
 
 /**
@@ -10,7 +10,7 @@ import { TransactionBaseService } from "./transaction-base-service"
  * The price selection strategy retrieves the best price for a product variant for a specific context such as selected region, taxes applied,
  * the quantity in cart, and more.
  *
- * Ninja provides a default price selection strategy, but you can override it. A price selecion strategy is a TypeScript or JavaScript file in the `src/strategies` directory of your Ninja backend project. It exports a class that extends the `AbstractPriceSelectionStrategy` class.
+ * Medusa provides a default price selection strategy, but you can override it. A price selecion strategy is a TypeScript or JavaScript file in the `src/strategies` directory of your Medusa backend project. It exports a class that extends the `AbstractPriceSelectionStrategy` class.
  *
  * For example:
  *
@@ -19,7 +19,7 @@ import { TransactionBaseService } from "./transaction-base-service"
  *   AbstractPriceSelectionStrategy,
  *   PriceSelectionContext,
  *   PriceSelectionResult,
- * } from "@ninjajs/ninja"
+ * } from "@medusajs/medusa"
  *
  * export default class MyStrategy extends
  *   AbstractPriceSelectionStrategy {
@@ -48,7 +48,7 @@ export interface IPriceSelectionStrategy extends ITransactionBaseService {
    * @returns {Promise<Map<string, PriceSelectionResult>>} A map, each key is an ID of a variant, and its value is an object holding the price selection result.
    *
    * @example
-   * For example, here's a snippet of how the price selection strategy is implemented in the Ninja backend:
+   * For example, here's a snippet of how the price selection strategy is implemented in the Medusa backend:
    *
    * ```ts
    * import {
@@ -56,7 +56,7 @@ export interface IPriceSelectionStrategy extends ITransactionBaseService {
    *   CustomerService,
    *   PriceSelectionContext,
    *   PriceSelectionResult,
-   * } from "@ninjajs/ninja"
+   * } from "@medusajs/medusa"
    *
    * type InjectedDependencies = {
    *   customerService: CustomerService
@@ -165,15 +165,15 @@ export interface IPriceSelectionStrategy extends ITransactionBaseService {
    * @returns {Promise<void>} Resolves after any necessary actions are performed.
    *
    * @example
-   * For example, this is how this method is implemented in the Ninja backend's default
+   * For example, this is how this method is implemented in the Medusa backend's default
    * price selection strategy:
    *
    * ```ts
    * import {
    *   AbstractPriceSelectionStrategy,
    *   CustomerService,
-   * } from "@ninjajs/ninja"
-   * import { promiseAll } from "@ninjajs/utils"
+   * } from "@medusajs/medusa"
+   * import { promiseAll } from "@medusajs/utils"
    *
    * type InjectedDependencies = {
    *   customerService: CustomerService
@@ -196,7 +196,7 @@ export interface IPriceSelectionStrategy extends ITransactionBaseService {
    *
    * :::note
    *
-   * Learn more about the cache service in [this documentation](https://docs.ninjajs.com/development/cache/overview).
+   * Learn more about the cache service in [this documentation](https://docs.medusajs.com/development/cache/overview).
    *
    * :::
    */
@@ -223,9 +223,9 @@ export abstract class AbstractPriceSelectionStrategy
   }
 
   /**
-   * You can use the `constructor` of your price-selection strategy to access the different services in Ninja through dependency injection.
+   * You can use the `constructor` of your price-selection strategy to access the different services in Medusa through dependency injection.
    *
-   * @param {Record<string, unknown>} container - An instance of `NinjaContainer` that allows you to access other resources, such as services, in your Ninja backend.
+   * @param {Record<string, unknown>} container - An instance of `MedusaContainer` that allows you to access other resources, such as services, in your Medusa backend.
    * @param {Record<string, unknown>} config - If this price-selection strategy is created in a plugin, the plugin's options are passed in this parameter.
    *
    * @example
@@ -233,7 +233,7 @@ export abstract class AbstractPriceSelectionStrategy
    * import {
    *   AbstractPriceSelectionStrategy,
    *   CustomerService,
-   * } from "@ninjajs/ninja"
+   * } from "@medusajs/medusa"
    * type InjectedDependencies = {
    *   customerService: CustomerService
    * }
@@ -311,7 +311,7 @@ export type PriceSelectionContext = {
   include_discount_prices?: boolean
   /**
    * The tax rates to be applied. This is only used for
-   * [Tax-Inclusive Pricing](https://docs.ninjajs.com/modules/taxes/inclusive-pricing).
+   * [Tax-Inclusive Pricing](https://docs.medusajs.com/modules/taxes/inclusive-pricing).
    */
   tax_rates?: TaxServiceRate[]
   /**
@@ -350,7 +350,7 @@ export type PriceSelectionResult = {
   originalPrice: number | null
   /**
    * Whether the original price includes taxes or not. This is only available
-   * for [Tax-Inclusive Pricing](https://docs.ninjajs.com/modules/taxes/inclusive-pricing).
+   * for [Tax-Inclusive Pricing](https://docs.medusajs.com/modules/taxes/inclusive-pricing).
    */
   originalPriceIncludesTax?: boolean | null
   /**
@@ -359,7 +359,7 @@ export type PriceSelectionResult = {
   calculatedPrice: number | null
   /**
    * Whether the calculated price includes taxes or not.
-   * This is only available for [Tax-Inclusive Pricing](https://docs.ninjajs.com/modules/taxes/inclusive-pricing).
+   * This is only available for [Tax-Inclusive Pricing](https://docs.medusajs.com/modules/taxes/inclusive-pricing).
    */
   calculatedPriceIncludesTax?: boolean | null
   /**

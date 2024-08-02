@@ -1,8 +1,8 @@
-import { adminStockLocationsKeys } from "ninja-react"
+import { adminStockLocationsKeys } from "medusa-react"
 import { LoaderFunctionArgs } from "react-router-dom"
 
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 import { StockLocationRes } from "../../../types/api-responses"
 
 const fulfillmentSetCreateQuery = (id: string) => ({

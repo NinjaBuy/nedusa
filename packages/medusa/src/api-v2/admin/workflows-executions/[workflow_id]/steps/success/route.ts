@@ -1,16 +1,16 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
-import { IWorkflowEngineService, StepResponse } from "@ninjajs/workflows-sdk"
-import { TransactionHandlerType, isDefined } from "@ninjajs/utils"
+import { IWorkflowEngineService, StepResponse } from "@medusajs/workflows-sdk"
+import { TransactionHandlerType, isDefined } from "@medusajs/utils"
 
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 import { AdminCreateWorkflowsAsyncResponseType } from "../../../validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateWorkflowsAsyncResponseType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateWorkflowsAsyncResponseType>,
+  res: MedusaResponse
 ) => {
   const workflowEngineService: IWorkflowEngineService = req.scope.resolve(
     ModuleRegistrationName.WORKFLOW_ENGINE

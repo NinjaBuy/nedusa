@@ -1,4 +1,4 @@
-import {ProductCategory} from "@ninjajs/ninja"
+import {ProductCategory} from "@medusajs/medusa"
 import path from "path"
 
 import startServerWithEnvironment
@@ -10,7 +10,7 @@ import {simpleProductCategoryFactory} from "../../../factories"
 jest.setTimeout(30000)
 
 describe("/store/product-categories", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
   let productCategory!: ProductCategory
   let productCategory2!: ProductCategory
@@ -24,17 +24,17 @@ describe("/store/product-categories", () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_PRODUCT_CATEGORIES: true },
+      env: { MEDUSA_FF_PRODUCT_CATEGORIES: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   beforeEach(async () => {

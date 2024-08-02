@@ -1,5 +1,5 @@
-import { Modules } from "@ninjajs/modules-sdk"
-import { ModulesSdkUtils } from "@ninjajs/utils"
+import { Modules } from "@medusajs/modules-sdk"
+import { ModulesSdkUtils } from "@medusajs/utils"
 import * as models from "@models"
 import { moduleDefinition } from "./module-definition"
 

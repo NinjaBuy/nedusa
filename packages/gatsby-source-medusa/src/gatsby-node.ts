@@ -26,7 +26,7 @@ export async function onPostBuild({ cache }: { cache: any }): Promise<void> {
 
 export async function sourceNodes(
   gatsbyApi: SourceNodesArgs,
-  pluginOptions: NinjaPluginOptions
+  pluginOptions: MedusaPluginOptions
 ): Promise<void> {
   const { cache } = gatsbyApi
   const lastBuildTime = await cache.get("timestamp")
@@ -43,9 +43,9 @@ export async function sourceNodes(
 
 export function createResolvers({ createResolvers }: CreateResolversArgs): any {
   const resolvers = {
-    NinjaProducts: {
+    MedusaProducts: {
       images: {
-        type: ["NinjaImages"],
+        type: ["MedusaImages"],
         resolve: async (
           source: any,
           _args: any,
@@ -56,7 +56,7 @@ export function createResolvers({ createResolvers }: CreateResolversArgs): any {
             query: {
               filter: { parent: { id: { eq: source.id } } },
             },
-            type: "NinjaImages",
+            type: "MedusaImages",
           })
           return entries
         },
@@ -73,7 +73,7 @@ export async function createSchemaCustomization({
   schema: any
 }): Promise<void> {
   createTypes(`
-   type NinjaProducts implements Node {
+   type MedusaProducts implements Node {
       id: ID!
       title: String!
       subtitle: String
@@ -82,9 +82,9 @@ export async function createSchemaCustomization({
       is_giftcard: Boolean!
       status: String!
       thumbnail: File @link(from: "fields.localThumbnail")
-      options: [NinjaProductOptions]!
-      variants: [NinjaProductVariants]!
-      collection: NinjaCollections @link(from: "collection_id")
+      options: [MedusaProductOptions]!
+      variants: [MedusaProductVariants]!
+      collection: MedusaCollections @link(from: "collection_id")
       collection_id: String
       profile_id: String!
       discountable: Boolean!
@@ -95,29 +95,29 @@ export async function createSchemaCustomization({
       length: Int
       width: Int
     }
-    type NinjaImages implements Node {
+    type MedusaImages implements Node {
       id: ID!
       url: String!
       created_at: Date!
       updated_at: Date!
       image: File @link(from: "fields.localImage")
     }
-    type NinjaCollections implements Node {
+    type MedusaCollections implements Node {
       id: ID!
       handle: String!
       title: String!
       created_at: Date!
       updated_at: Date!
     }
-    type NinjaProductOptions @dontInfer {
+    type MedusaProductOptions @dontInfer {
       id: ID!
       title: String!
       product_id: String!
-      values: [NinjaProductOptionValues]!
+      values: [MedusaProductOptionValues]!
       created_at: Date!
       updated_at: Date!
     }
-    type NinjaProductOptionValues @dontInfer {
+    type MedusaProductOptionValues @dontInfer {
       id: ID!
       value: String!
       created_at: Date!
@@ -125,11 +125,11 @@ export async function createSchemaCustomization({
       option_id: String!
       variant_id: String!
     }
-    type NinjaProductVariants @dontInfer {
+    type MedusaProductVariants @dontInfer {
       id: ID!
       title: String!
       product_id: String!
-      prices: [NinjaMoneyAmounts]!
+      prices: [MedusaMoneyAmounts]!
       sku: String
       barcode: String
       upc: String
@@ -145,11 +145,11 @@ export async function createSchemaCustomization({
       length: Int
       height: Int
       width: Int
-      options: [NinjaProductOptionValues]!
+      options: [MedusaProductOptionValues]!
       created_at: Date!
       updated_at: Date!
     }
-    type NinjaMoneyAmounts @dontInfer {
+    type MedusaMoneyAmounts @dontInfer {
       id: ID!
       amount: Int!
       currency_code: String!
@@ -157,7 +157,7 @@ export async function createSchemaCustomization({
       updated_at: Date!
       variant_id: String!
     }
-    type NinjaRegions implements Node {
+    type MedusaRegions implements Node {
       id: ID!
       name: String!
       currency_code: String!
@@ -166,9 +166,9 @@ export async function createSchemaCustomization({
       automatic_taxes: Boolean!
       created_at: Date!
       updated_at: Date!
-      countries: [NinjaCountries]!
+      countries: [MedusaCountries]!
     }
-    type NinjaCountries implements Node {
+    type MedusaCountries implements Node {
       id: ID!
       name: String!
       iso_2: String!
@@ -195,7 +195,7 @@ export async function onCreateNode({
   store: Store
   reporter: Reporter
 }): Promise<void> {
-  if (node.internal.type === `NinjaProducts`) {
+  if (node.internal.type === `MedusaProducts`) {
     if (node.thumbnail !== null) {
       const thumbnailNode: Node | null = await createRemoteFileNode({
         url: `${node.thumbnail}`,
@@ -217,7 +217,7 @@ export async function onCreateNode({
     }
   }
 
-  if (node.internal.type === `NinjaImages`) {
+  if (node.internal.type === `MedusaImages`) {
     const imageNode: Node | null = await createRemoteFileNode({
       url: `${node.url}`,
       parentNodeId: node.id,

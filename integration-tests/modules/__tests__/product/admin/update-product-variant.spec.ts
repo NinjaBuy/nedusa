@@ -16,15 +16,15 @@ jest.setTimeout(50000)
 
 const adminHeaders = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 const env = {
-  NINJA_FF_NINJA_V2: true,
+  MEDUSA_FF_MEDUSA_V2: true,
 }
 
-// TODO SEE to use new test runner ninjaIntegrationTestRunner({
+// TODO SEE to use new test runner medusaIntegrationTestRunner({
 //   env,
 //   testSuite: ({ dbConnection, getContainer, api }) => {})
 

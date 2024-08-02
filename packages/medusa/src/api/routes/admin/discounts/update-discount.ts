@@ -44,20 +44,20 @@ import { IsISO8601Duration } from "../../../../utils/validators/iso8601-duration
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.discounts.update(discountId, {
+ *       medusa.admin.discounts.update(discountId, {
  *         code: "TEST"
  *       })
  *       .then(({ discount }) => {
  *         console.log(discount.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateDiscount } from "ninja-react"
+ *       import { useAdminUpdateDiscount } from "medusa-react"
  *
  *       type Props = {
  *         discountId: string
@@ -81,7 +81,7 @@ import { IsISO8601Duration } from "../../../../utils/validators/iso8601-duration
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/discounts/{id}' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "code": "TEST"
@@ -275,7 +275,7 @@ export class AdminUpdateDiscountRule {
  *      type: object
  *      externalDocs:
  *        description: "Learn about the metadata attribute, and how to delete and update it."
- *        url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *        url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostDiscountsDiscountReq {
   @IsString()

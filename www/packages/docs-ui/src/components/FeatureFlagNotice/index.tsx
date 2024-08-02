@@ -24,7 +24,7 @@ export const FeatureFlagNotice = ({
           <br />
           {/* TODO replace with Link once we move away from Docusaurus */}
           <LegacyLink
-            href="https://docs.ninjajs.com/development/feature-flags/toggle"
+            href="https://docs.medusajs.com/development/feature-flags/toggle"
             target="__blank"
           >
             enable its feature flag: <code>{featureFlag}</code>

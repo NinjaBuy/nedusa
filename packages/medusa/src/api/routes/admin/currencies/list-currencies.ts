@@ -31,18 +31,18 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.currencies.list()
+ *       medusa.admin.currencies.list()
  *       .then(({ currencies, count, offset, limit }) => {
  *         console.log(currencies.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCurrencies } from "ninja-react"
+ *       import { useAdminCurrencies } from "medusa-react"
  *
  *       const Currencies = () => {
  *         const { currencies, isLoading } = useAdminCurrencies()
@@ -69,7 +69,7 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/currencies' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

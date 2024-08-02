@@ -2,7 +2,7 @@ import { ProductType } from "../models"
 import { ExtendedFindConfig } from "../types/common"
 import { dataSource } from "../loaders/database"
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 type UpsertTypeInput = Partial<ProductType> & {
   value: string

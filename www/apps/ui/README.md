@@ -1,1 +1,1 @@
-# Docs: Ninja UI
+# Docs: Medusa UI

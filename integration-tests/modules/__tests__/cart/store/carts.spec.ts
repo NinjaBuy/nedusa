@@ -3,7 +3,7 @@ import {
   ModuleRegistrationName,
   Modules,
   RemoteLink,
-} from "@ninjajs/modules-sdk"
+} from "@medusajs/modules-sdk"
 import {
   ICartModuleService,
   ICustomerModuleService,
@@ -13,18 +13,18 @@ import {
   IRegionModuleService,
   ISalesChannelModuleService,
   ITaxModuleService,
-} from "@ninjajs/types"
-import { PromotionRuleOperator, PromotionType } from "@ninjajs/utils"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+} from "@medusajs/types"
+import { PromotionRuleOperator, PromotionType } from "@medusajs/utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import adminSeeder from "../../../../helpers/admin-seeder"
 import { createAuthenticatedCustomer } from "../../../helpers/create-authenticated-customer"
 import { setupTaxStructure } from "../../fixtures"
 
 jest.setTimeout(100000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Store Carts API", () => {

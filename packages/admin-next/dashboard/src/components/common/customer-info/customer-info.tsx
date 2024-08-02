@@ -1,5 +1,5 @@
-import { Address, Cart, Order } from "@ninjajs/ninja"
-import { Avatar, Copy, Text } from "@ninjajs/ui"
+import { Address, Cart, Order } from "@medusajs/medusa"
+import { Avatar, Copy, Text } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { getFormattedAddress, isSameAddress } from "../../../lib/addresses"

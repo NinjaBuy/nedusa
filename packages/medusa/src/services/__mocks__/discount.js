@@ -1,4 +1,4 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 
 export const discounts = {
   dynamic: {
@@ -26,7 +26,7 @@ export const discounts = {
   },
   item10Percent: {
     id: IdMap.getId("item10Percent"),
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       id: IdMap.getId("item10Percent_rule"),
       type: "percentage",
@@ -37,7 +37,7 @@ export const discounts = {
   },
   total10Fixed: {
     id: IdMap.getId("total10Fixed"),
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       id: IdMap.getId("total10Fixed_rule"),
       type: "fixed",
@@ -48,7 +48,7 @@ export const discounts = {
   },
   item9Fixed: {
     id: IdMap.getId("item9Fixed"),
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       id: IdMap.getId("item9Fixed_rule"),
       type: "fixed",
@@ -59,7 +59,7 @@ export const discounts = {
   },
   item2Fixed: {
     id: IdMap.getId("item2Fixed"),
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       id: IdMap.getId("item2Fixed_rule"),
       type: "fixed",
@@ -70,7 +70,7 @@ export const discounts = {
   },
   item10FixedNoVariants: {
     id: IdMap.getId("item10FixedNoVariants"),
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       id: IdMap.getId("item10FixedNoVariants_rule"),
       type: "fixed",
@@ -81,7 +81,7 @@ export const discounts = {
   },
   expiredDiscount: {
     id: IdMap.getId("expired"),
-    code: "NINJA",
+    code: "MEDUSA",
     ends_at: new Date("December 17, 1995 03:24:00"),
     rule: {
       id: IdMap.getId("expired_rule"),

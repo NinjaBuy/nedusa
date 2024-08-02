@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager, FindOptionsWhere, ILike } from "typeorm"
 import { ProductTag } from "../models"
 import { ProductTagRepository } from "../repositories/product-tag"
@@ -37,8 +37,8 @@ class ProductTagService extends TransactionBaseService {
     const tag = await tagRepo.findOne(query)
 
     if (!tag) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Product tag with id: ${tagId} was not found`
       )
     }

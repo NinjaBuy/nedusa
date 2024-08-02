@@ -1,13 +1,13 @@
-import { deleteTaxRateRulesWorkflow } from "@ninjajs/core-flows"
+import { deleteTaxRateRulesWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
 import { refetchTaxRate } from "../../../helpers"
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const { errors } = await deleteTaxRateRulesWorkflow(req.scope).run({
     input: { ids: [req.params.rule_id] },

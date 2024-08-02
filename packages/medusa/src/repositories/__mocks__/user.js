@@ -1,14 +1,14 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 
 export const users = {
   testUser: {
     _id: IdMap.getId("test-user"),
-    email: "oliver@ninja.test",
+    email: "oliver@medusa.test",
     password_hash: "123456789",
   },
   permissionUser: {
     _id: IdMap.getId("permissions-user"),
-    email: "oliver@ninja.com",
+    email: "oliver@medusa.com",
     password_hash: "123456789",
   },
 }

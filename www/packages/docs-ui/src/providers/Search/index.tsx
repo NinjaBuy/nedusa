@@ -127,7 +127,7 @@ export const SearchProvider = ({
           "!rounded-none md:!rounded-docs_lg",
           "md:!h-[480px] h-screen",
           "md:!w-[640px] w-screen",
-          "bg-ninja-bg-base"
+          "bg-medusa-bg-base"
         )}
         open={isOpen}
         onClose={() => setIsOpen(false)}

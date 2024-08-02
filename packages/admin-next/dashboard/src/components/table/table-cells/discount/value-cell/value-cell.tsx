@@ -1,4 +1,4 @@
-import { DiscountRule } from "@ninjajs/ninja"
+import { DiscountRule } from "@medusajs/medusa"
 
 import { useTranslation } from "react-i18next"
 import { MoneyAmountCell } from "../../common/money-amount-cell"

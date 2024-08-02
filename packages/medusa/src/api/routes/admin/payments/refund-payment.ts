@@ -28,10 +28,10 @@ import { PaymentService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.payments.refundPayment(paymentId, {
+ *       medusa.admin.payments.refundPayment(paymentId, {
  *         amount: 1000,
  *         reason: "return",
  *         note: "Do not like it",
@@ -40,11 +40,11 @@ import { PaymentService } from "../../../../services"
  *         console.log(payment.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { RefundReason } from "@ninjajs/ninja"
- *       import { useAdminPaymentsRefundPayment } from "ninja-react"
+ *       import { RefundReason } from "@medusajs/medusa"
+ *       import { useAdminPaymentsRefundPayment } from "medusa-react"
  *
  *       type Props = {
  *         paymentId: string
@@ -80,7 +80,7 @@ import { PaymentService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/payments/pay_123/refund' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "amount": 1000,

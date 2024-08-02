@@ -16,7 +16,7 @@ const userSeeder = require("../../../../helpers/user-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -53,17 +53,17 @@ function cleanTempData() {
 }
 
 const env: Record<any, any> = {
-  NINJA_FF_NINJA_V2: true,
+  MEDUSA_FF_MEDUSA_V2: true,
 }
 
-// TODO SEE to use new test runner ninjaIntegrationTestRunner({
+// TODO SEE to use new test runner medusaIntegrationTestRunner({
 //   env,
 //   testSuite: ({ dbConnection, getContainer, api }) => {})
 
 describe.skip("Product import batch job", () => {
   let dbConnection
   let shutdownServer
-  let ninjaProcess
+  let medusaProcess
 
   const collectionHandle1 = "test-collection1"
   const collectionHandle2 = "test-collection2"
@@ -76,7 +76,7 @@ describe.skip("Product import batch job", () => {
 
     dbConnection = await initDb({ cwd, env } as any)
     shutdownServer = await startBootstrapApp({ cwd, env })
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
       uploadDir: __dirname,
       env,
@@ -90,7 +90,7 @@ describe.skip("Product import batch job", () => {
 
     cleanTempData()
 
-    await ninjaProcess.kill()
+    await medusaProcess.kill()
     await shutdownServer()
   })
 

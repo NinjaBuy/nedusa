@@ -1,7 +1,7 @@
 const path = require("path")
 
 const { DataSource } = require("typeorm")
-const { getConfigFile } = require("ninja-core-utils")
+const { getConfigFile } = require("medusa-core-utils")
 
 const DB_HOST = process.env.DB_HOST
 const DB_USERNAME = process.env.DB_USERNAME
@@ -32,25 +32,25 @@ module.exports = {
 
     const { configModule } = getConfigFile(
       path.join(__dirname),
-      `ninja-config`
+      `medusa-config`
     )
 
     const { featureFlags } = configModule
 
-    const basePath = path.join(cwd, "packages/ninja/src")
+    const basePath = path.join(cwd, "packages/medusa/src")
 
     const featureFlagsLoader =
-      require("@ninjajs/ninja/dist/loaders/feature-flags").default
+      require("@medusajs/medusa/dist/loaders/feature-flags").default
 
     const featureFlagsRouter = featureFlagsLoader({ featureFlags })
 
-    const modelsLoader = require("@ninjajs/ninja/dist/loaders/models").default
+    const modelsLoader = require("@medusajs/medusa/dist/loaders/models").default
 
     const {
       getEnabledMigrations,
       getModuleSharedResources,
       runIsolatedModulesMigration,
-    } = require("@ninjajs/ninja/dist/commands/utils/get-migrations")
+    } = require("@medusajs/medusa/dist/commands/utils/get-migrations")
 
     const entities = modelsLoader({}, { register: false })
 

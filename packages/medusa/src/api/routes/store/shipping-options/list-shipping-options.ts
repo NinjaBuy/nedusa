@@ -8,7 +8,7 @@ import ShippingProfileService from "../../../../services/shipping-profile"
  * description: "Retrieve a list of Shipping Options available for a cart."
  * externalDocs:
  *   description: "How to implement shipping step in checkout"
- *   url: "https://docs.ninjajs.com/modules/carts-and-checkout/storefront/implement-checkout-flow#shipping-step"
+ *   url: "https://docs.medusajs.com/modules/carts-and-checkout/storefront/implement-checkout-flow#shipping-step"
  * parameters:
  *   - (path) cart_id {string} The ID of the Cart.
  * x-codegen:
@@ -17,17 +17,17 @@ import ShippingProfileService from "../../../../services/shipping-profile"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.shippingOptions.listCartOptions(cartId)
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.shippingOptions.listCartOptions(cartId)
  *       .then(({ shipping_options }) => {
  *         console.log(shipping_options.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useCartShippingOptions } from "ninja-react"
+ *       import { useCartShippingOptions } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string

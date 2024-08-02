@@ -1,10 +1,10 @@
-import { FlagRouter, promiseAll } from "@ninjajs/utils"
+import { FlagRouter, promiseAll } from "@medusajs/utils"
 import { AwilixContainer } from "awilix"
 import {
   BaseFulfillmentService,
   BaseNotificationService,
   BasePaymentService,
-} from "ninja-interfaces"
+} from "medusa-interfaces"
 import { EntityManager } from "typeorm"
 import {
   AbstractFulfillmentService,

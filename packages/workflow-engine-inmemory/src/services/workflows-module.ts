@@ -5,20 +5,20 @@ import {
   InternalModuleDeclaration,
   ModuleJoinerConfig,
   ModulesSdkTypes,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   InjectManager,
   InjectSharedContext,
-  NinjaContext,
-  NinjaError,
+  MedusaContext,
+  MedusaError,
   isString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import type {
   IWorkflowEngineService,
   ReturnWorkflow,
   UnwrapWorkflowInputDataType,
   WorkflowOrchestratorTypes,
-} from "@ninjajs/workflows-sdk"
+} from "@medusajs/workflows-sdk"
 import { WorkflowOrchestratorService } from "@services"
 import { joinerConfig } from "../joiner-config"
 
@@ -59,7 +59,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
           transaction_id: string
         },
     config: FindConfig<WorkflowOrchestratorTypes.WorkflowExecutionDTO> = {},
-    @NinjaContext() sharedContext: Context = {}
+    @MedusaContext() sharedContext: Context = {}
   ): Promise<WorkflowOrchestratorTypes.WorkflowExecutionDTO> {
     const objValue = isString(idOrObject)
       ? { id: idOrObject }
@@ -75,8 +75,8 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
     )
 
     if (wfExecution.length === 0) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `WorkflowExecution with ${Object.keys(objValue).join(
           ", "
         )}: ${Object.values(objValue).join(", ")} was not found`
@@ -96,7 +96,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
   async listWorkflowExecution(
     filters: WorkflowOrchestratorTypes.FilterableWorkflowExecutionProps = {},
     config: FindConfig<WorkflowOrchestratorTypes.WorkflowExecutionDTO> = {},
-    @NinjaContext() sharedContext: Context = {}
+    @MedusaContext() sharedContext: Context = {}
   ): Promise<WorkflowOrchestratorTypes.WorkflowExecutionDTO[]> {
     if (filters.transaction_id) {
       if (Array.isArray(filters.transaction_id)) {
@@ -131,7 +131,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
   async listAndCountWorkflowExecution(
     filters: WorkflowOrchestratorTypes.FilterableWorkflowExecutionProps = {},
     config: FindConfig<WorkflowOrchestratorTypes.WorkflowExecutionDTO> = {},
-    @NinjaContext() sharedContext: Context = {}
+    @MedusaContext() sharedContext: Context = {}
   ): Promise<[WorkflowOrchestratorTypes.WorkflowExecutionDTO[], number]> {
     if (filters.transaction_id) {
       if (Array.isArray(filters.transaction_id)) {
@@ -174,7 +174,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
         ? UnwrapWorkflowInputDataType<TWorkflow>
         : unknown
     > = {},
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     const ret = await this.workflowOrchestratorService_.run<
       TWorkflow extends ReturnWorkflow<any, any, any>
@@ -189,7 +189,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
   async getRunningTransaction(
     workflowId: string,
     transactionId: string,
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     return this.workflowOrchestratorService_.getRunningTransaction(
       workflowId,
@@ -209,7 +209,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
       stepResponse: unknown
       options?: Record<string, any>
     },
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     return this.workflowOrchestratorService_.setStepSuccess(
       {
@@ -232,7 +232,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
       stepResponse: unknown
       options?: Record<string, any>
     },
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     return this.workflowOrchestratorService_.setStepFailure(
       {
@@ -252,7 +252,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
       subscriber: Function
       subscriberId?: string
     },
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     return this.workflowOrchestratorService_.subscribe(args as any, context)
   }
@@ -264,7 +264,7 @@ export class WorkflowsModuleService implements IWorkflowEngineService {
       transactionId?: string
       subscriberOrId: string | Function
     },
-    @NinjaContext() context: Context = {}
+    @MedusaContext() context: Context = {}
   ) {
     return this.workflowOrchestratorService_.unsubscribe(args as any, context)
   }

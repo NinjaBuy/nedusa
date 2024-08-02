@@ -1,4 +1,4 @@
-import { Badge } from "@ninjajs/ui"
+import { Badge } from "@medusajs/ui"
 
 type CellProps = {
   is_combinable: boolean

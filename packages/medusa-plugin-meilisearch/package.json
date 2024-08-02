@@ -1,11 +1,11 @@
 {
-  "name": "ninja-plugin-meilisearch",
+  "name": "medusa-plugin-meilisearch",
   "version": "2.0.10",
-  "description": "Meilisearch search plugin for Ninja",
+  "description": "Meilisearch search plugin for Medusa",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ninjajs/ninja",
-    "directory": "packages/ninja-plugin-meilisearch"
+    "url": "https://github.com/medusajs/medusa",
+    "directory": "packages/medusa-plugin-meilisearch"
   },
   "engines": {
     "node": ">=16"
@@ -13,7 +13,7 @@
   "files": [
     "dist"
   ],
-  "author": "Ninja",
+  "author": "Medusa",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "cross-env NODE_ENV=production tsc --build",
@@ -22,18 +22,18 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@ninjajs/modules-sdk": "^1.8.8",
-    "@ninjajs/utils": "^1.9.4",
+    "@medusajs/modules-sdk": "^1.8.8",
+    "@medusajs/utils": "^1.9.4",
     "body-parser": "^1.19.0",
     "lodash": "^4.17.21",
     "meilisearch": "^0.32.3"
   },
   "peerDependencies": {
-    "@ninjajs/ninja": "^1.12.0"
+    "@medusajs/medusa": "^1.12.0"
   },
   "devDependencies": {
-    "@ninjajs/ninja": "^1.12.2",
-    "@ninjajs/types": "^1.10.0",
+    "@medusajs/medusa": "^1.12.2",
+    "@medusajs/types": "^1.10.0",
     "cross-env": "^5.2.1",
     "jest": "^25.5.4",
     "rimraf": "^5.0.1",
@@ -41,7 +41,7 @@
   },
   "gitHead": "cd1f5afa5aa8c0b15ea957008ee19f1d695cbd2e",
   "keywords": [
-    "ninja-plugin",
-    "ninja-plugin-search"
+    "medusa-plugin",
+    "medusa-plugin-search"
   ]
 }

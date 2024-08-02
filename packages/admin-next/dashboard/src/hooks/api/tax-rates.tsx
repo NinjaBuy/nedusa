@@ -1,8 +1,8 @@
 import {
   AdminPostTaxRatesReq,
   AdminPostTaxRatesTaxRateReq,
-} from "@ninjajs/ninja"
-import { AdminTaxRateListResponse, AdminTaxRateResponse } from "@ninjajs/types"
+} from "@medusajs/medusa"
+import { AdminTaxRateListResponse, AdminTaxRateResponse } from "@medusajs/types"
 import {
   QueryKey,
   useMutation,
@@ -11,7 +11,7 @@ import {
   UseQueryOptions,
 } from "@tanstack/react-query"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import { TaxRateDeleteRes } from "../../types/api-responses"
 

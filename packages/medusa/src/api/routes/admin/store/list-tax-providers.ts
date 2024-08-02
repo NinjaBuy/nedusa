@@ -12,18 +12,18 @@ import { TaxProviderService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.store.listTaxProviders()
+ *       medusa.admin.store.listTaxProviders()
  *       .then(({ tax_providers }) => {
  *         console.log(tax_providers.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminStoreTaxProviders } from "ninja-react"
+ *       import { useAdminStoreTaxProviders } from "medusa-react"
  *
  *       const TaxProviders = () => {
  *         const {
@@ -54,7 +54,7 @@ import { TaxProviderService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/store/tax-providers' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

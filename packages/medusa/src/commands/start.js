@@ -2,8 +2,8 @@ import "core-js/stable"
 import "regenerator-runtime/runtime"
 
 import express from "express"
-import { GracefulShutdownServer } from "ninja-core-utils"
-import { track } from "ninja-telemetry"
+import { GracefulShutdownServer } from "medusa-core-utils"
+import { track } from "medusa-telemetry"
 import { scheduleJob } from "node-schedule"
 
 import loaders from "../loaders"

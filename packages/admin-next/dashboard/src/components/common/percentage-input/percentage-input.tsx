@@ -1,4 +1,4 @@
-import { Input, Text } from "@ninjajs/ui"
+import { Input, Text } from "@medusajs/ui"
 import { ComponentProps, ElementRef, forwardRef } from "react"
 
 export const PercentageInput = forwardRef<

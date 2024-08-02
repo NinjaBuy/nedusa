@@ -1,7 +1,7 @@
-import { Tooltip } from "@ninjajs/ui"
+import { Tooltip } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 
-import { SalesChannelDTO } from "@ninjajs/types"
+import { SalesChannelDTO } from "@medusajs/types"
 import { PlaceholderCell } from "../../common/placeholder-cell"
 
 type SalesChannelsCellProps = {

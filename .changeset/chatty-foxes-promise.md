@@ -1,7 +1,7 @@
 ---
-"@ninjajs/core-flows": patch
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/core-flows": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja,core-flows,types): add batch updates to price list prices
+feat(medusa,core-flows,types): add batch updates to price list prices

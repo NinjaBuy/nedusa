@@ -1,10 +1,10 @@
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
-import { NinjaRequest, NinjaResponse } from "../../../types/routing"
+} from "@medusajs/utils"
+import { MedusaRequest, MedusaResponse } from "../../../types/routing"
 
-import { createStockLocationsWorkflow } from "@ninjajs/core-flows"
+import { createStockLocationsWorkflow } from "@medusajs/core-flows"
 import {
   AdminCreateStockLocationType,
   AdminGetStockLocationsParamsType,
@@ -13,8 +13,8 @@ import { refetchStockLocation } from "./helpers"
 
 // Create stock location
 export const POST = async (
-  req: NinjaRequest<AdminCreateStockLocationType>,
-  res: NinjaResponse
+  req: MedusaRequest<AdminCreateStockLocationType>,
+  res: MedusaResponse
 ) => {
   const { result } = await createStockLocationsWorkflow(req.scope).run({
     input: { locations: [req.validatedBody] },
@@ -30,8 +30,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: NinjaRequest<AdminGetStockLocationsParamsType>,
-  res: NinjaResponse
+  req: MedusaRequest<AdminGetStockLocationsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 

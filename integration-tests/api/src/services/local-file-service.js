@@ -1,4 +1,4 @@
-import { AbstractFileService } from "@ninjajs/ninja"
+import { AbstractFileService } from "@medusajs/medusa"
 import * as fs from "fs"
 import mkdirp from "mkdirp"
 import { resolve } from "path"

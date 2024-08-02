@@ -1,4 +1,4 @@
-const { Customer } = require("@ninjajs/ninja")
+const { Customer } = require("@medusajs/medusa")
 
 module.exports = async (connection) => {
   const manager = connection.manager

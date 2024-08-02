@@ -1,6 +1,6 @@
 import { EntityManager } from "typeorm"
-import { isDefined, NinjaError } from "ninja-core-utils"
-import { FlagRouter, NinjaV2Flag } from "@ninjajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
+import { FlagRouter, MedusaV2Flag } from "@medusajs/utils"
 
 import { FindConfig, QuerySelector, Selector } from "../types/common"
 import {
@@ -14,7 +14,7 @@ import { SalesChannelRepository } from "../repositories/sales-channel"
 import { buildQuery } from "../utils"
 import EventBusService from "./event-bus"
 import StoreService from "./store"
-import {selectorConstraintsToString} from "@ninjajs/utils";
+import {selectorConstraintsToString} from "@medusajs/utils";
 
 type InjectedDependencies = {
   salesChannelRepository: typeof SalesChannelRepository
@@ -76,8 +76,8 @@ class SalesChannelService extends TransactionBaseService {
     if (!salesChannel) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Sales channel with ${selectorConstraints} was not found`
       )
     }
@@ -91,7 +91,7 @@ class SalesChannelService extends TransactionBaseService {
    * @param salesChannelId - id of the channel to retrieve
    * @param config - SC config
    * @experimental This feature is under development and may change in the future.
-   * To use this feature please enable the corresponding feature flag in your ninja backend project.
+   * To use this feature please enable the corresponding feature flag in your medusa backend project.
    * @returns a sales channel
    */
   async retrieve(
@@ -99,8 +99,8 @@ class SalesChannelService extends TransactionBaseService {
     config: FindConfig<SalesChannel> = {}
   ): Promise<SalesChannel | never> {
     if (!isDefined(salesChannelId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"salesChannelId" must be defined`
       )
     }
@@ -120,8 +120,8 @@ class SalesChannelService extends TransactionBaseService {
     config: FindConfig<SalesChannel> = {}
   ): Promise<SalesChannel | unknown> {
     if (!isDefined(name)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"name" must be defined`
       )
     }
@@ -200,7 +200,7 @@ class SalesChannelService extends TransactionBaseService {
    * Creates a SalesChannel
    *
    * @experimental This feature is under development and may change in the future.
-   * To use this feature please enable the corresponding feature flag in your ninja backend project.
+   * To use this feature please enable the corresponding feature flag in your medusa backend project.
    * @returns the created channel
    */
   async create(data: CreateSalesChannelInput): Promise<SalesChannel | never> {
@@ -251,7 +251,7 @@ class SalesChannelService extends TransactionBaseService {
   /**
    * Deletes a sales channel from
    * @experimental This feature is under development and may change in the future.
-   * To use this feature please enable the corresponding feature flag in your ninja backend project.
+   * To use this feature please enable the corresponding feature flag in your medusa backend project.
    * @param salesChannelId - the id of the sales channel to delete
    */
   async delete(salesChannelId: string): Promise<void> {
@@ -273,8 +273,8 @@ class SalesChannelService extends TransactionBaseService {
       })
 
       if (salesChannel.id === store?.default_sales_channel_id) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "You cannot delete the default sales channel"
         )
       }
@@ -306,7 +306,7 @@ class SalesChannelService extends TransactionBaseService {
       }
 
       const defaultSalesChannel = await this.create({
-        description: "Created by Ninja",
+        description: "Created by Medusa",
         name: "Default Sales Channel",
         is_disabled: false,
       })
@@ -331,8 +331,8 @@ class SalesChannelService extends TransactionBaseService {
       })
 
     if (!store.default_sales_channel) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Default Sales channel was not found`
       )
     }
@@ -392,14 +392,14 @@ class SalesChannelService extends TransactionBaseService {
         this.salesChannelRepository_
       )
 
-      const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-        NinjaV2Flag.key
+      const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+        MedusaV2Flag.key
       )
 
       await salesChannelRepo.addProducts(
         salesChannelId,
         productIds,
-        isNinjaV2Enabled
+        isMedusaV2Enabled
       )
 
       return await this.retrieve(salesChannelId)

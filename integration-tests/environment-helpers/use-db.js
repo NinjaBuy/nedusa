@@ -1,17 +1,17 @@
 const path = require("path")
 
-const { getConfigFile } = require("ninja-core-utils")
+const { getConfigFile } = require("medusa-core-utils")
 const { asValue } = require("awilix")
 const {
   isObject,
-  createNinjaContainer,
-  NinjaV2Flag,
-} = require("@ninjajs/utils")
+  createMedusaContainer,
+  MedusaV2Flag,
+} = require("@medusajs/utils")
 const { dropDatabase } = require("pg-god")
 const { DataSource } = require("typeorm")
 const dbFactory = require("./use-template-db")
-const { ContainerRegistrationKeys } = require("@ninjajs/utils")
-const { migrateNinjaApp } = require("@ninjajs/ninja/dist/loaders/ninja-app")
+const { ContainerRegistrationKeys } = require("@medusajs/utils")
+const { migrateMedusaApp } = require("@medusajs/medusa/dist/loaders/medusa-app")
 
 const DB_HOST = process.env.DB_HOST
 const DB_USERNAME = process.env.DB_USERNAME
@@ -99,13 +99,13 @@ module.exports = {
       Object.entries(env).forEach(([k, v]) => (process.env[k] = v))
     }
 
-    const { configModule } = getConfigFile(cwd, `ninja-config`)
+    const { configModule } = getConfigFile(cwd, `medusa-config`)
 
     const featureFlagsLoader =
-      require("@ninjajs/ninja/dist/loaders/feature-flags").default
+      require("@medusajs/medusa/dist/loaders/feature-flags").default
 
     const featureFlagRouter = featureFlagsLoader(configModule)
-    const modelsLoader = require("@ninjajs/ninja/dist/loaders/models").default
+    const modelsLoader = require("@medusajs/medusa/dist/loaders/models").default
     const entities = modelsLoader({}, { register: false })
 
     await dbFactory.createFromTemplate(DB_NAME)
@@ -116,8 +116,8 @@ module.exports = {
         __dirname,
         `../../`,
         `node_modules`,
-        `@ninjajs`,
-        `ninja`,
+        `@medusajs`,
+        `medusa`,
         `dist`,
         `migrations`,
         `*.js`
@@ -127,7 +127,7 @@ module.exports = {
     const {
       getEnabledMigrations,
       getModuleSharedResources,
-    } = require("@ninjajs/ninja/dist/commands/utils/get-migrations")
+    } = require("@medusajs/medusa/dist/commands/utils/get-migrations")
 
     const { migrations: moduleMigrations, models: moduleModels } =
       getModuleSharedResources(configModule, featureFlagRouter)
@@ -157,15 +157,15 @@ module.exports = {
 
     if (
       force_modules_migration ||
-      featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
+      featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
     ) {
       const pgConnectionLoader =
-        require("@ninjajs/ninja/dist/loaders/pg-connection").default
+        require("@medusajs/medusa/dist/loaders/pg-connection").default
 
       const featureFlagLoader =
-        require("@ninjajs/ninja/dist/loaders/feature-flags").default
+        require("@medusajs/medusa/dist/loaders/feature-flags").default
 
-      const container = createNinjaContainer()
+      const container = createMedusaContainer()
 
       const featureFlagRouter = await featureFlagLoader(configModule)
 
@@ -181,7 +181,7 @@ module.exports = {
 
       instance.setPgConnection(pgConnection)
 
-      await migrateNinjaApp(
+      await migrateMedusaApp(
         { configModule, container },
         { registerInContainer: false }
       )

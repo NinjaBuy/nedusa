@@ -17,7 +17,7 @@ const {
 jest.setTimeout(30000)
 
 describe("Automatic Cart Taxes", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -28,13 +28,13 @@ describe("Automatic Cart Taxes", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   afterEach(async () => {

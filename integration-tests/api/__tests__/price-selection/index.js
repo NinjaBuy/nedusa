@@ -15,25 +15,25 @@ const {
   PriceList,
   ProductVariant,
   Customer,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 
 jest.setTimeout(30000)
 
 describe("Promotions", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("Money amount", () => {

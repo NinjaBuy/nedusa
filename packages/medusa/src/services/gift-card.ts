@@ -1,4 +1,4 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import randomize from "randomatic"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
@@ -14,7 +14,7 @@ import {
 import { buildQuery, setMetadata } from "../utils"
 import EventBusService from "./event-bus"
 import RegionService from "./region"
-import {selectorConstraintsToString} from "@ninjajs/utils";
+import {selectorConstraintsToString} from "@medusajs/utils";
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -196,8 +196,8 @@ class GiftCardService extends TransactionBaseService {
     if (!giftCard) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Gift card with ${selectorConstraints} was not found`
       )
     }
@@ -216,8 +216,8 @@ class GiftCardService extends TransactionBaseService {
     config: FindConfig<GiftCard> = {}
   ): Promise<GiftCard> {
     if (!isDefined(giftCardId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"giftCardId" must be defined`
       )
     }
@@ -230,8 +230,8 @@ class GiftCardService extends TransactionBaseService {
     config: FindConfig<GiftCard> = {}
   ): Promise<GiftCard> {
     if (!isDefined(code)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"code" must be defined`
       )
     }
@@ -269,8 +269,8 @@ class GiftCardService extends TransactionBaseService {
 
       if (isDefined(balance)) {
         if (balance < 0 || giftCard.value < balance) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_ARGUMENT,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_ARGUMENT,
             "new balance is invalid"
           )
         }

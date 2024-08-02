@@ -1,9 +1,9 @@
-import { NinjaContainer, Modules } from "@ninjajs/modules-sdk"
+import { MedusaContainer, Modules } from "@medusajs/modules-sdk"
 import {
   CreatePriceSetDTO,
   IPricingModuleService,
   PriceSetDTO,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 
 const defaultPrices = [
   {
@@ -20,7 +20,7 @@ export const createVariantPriceSet = async ({
   prices = defaultPrices,
   rules = defaultPriceSetRules,
 }: {
-  container: NinjaContainer
+  container: MedusaContainer
   variantId: string
   prices?: CreatePriceSetDTO["prices"]
   rules?: CreatePriceSetDTO["rules"]

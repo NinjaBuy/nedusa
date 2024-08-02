@@ -20,18 +20,18 @@ import {
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.orderEdits.confirm(orderEditId)
+ *       medusa.admin.orderEdits.confirm(orderEditId)
  *       .then(({ order_edit }) => {
  *         console.log(order_edit.id)
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminConfirmOrderEdit } from "ninja-react"
+ *       import { useAdminConfirmOrderEdit } from "medusa-react"
  *
  *       type Props = {
  *         orderEditId: string
@@ -61,7 +61,7 @@ import {
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/order-edits/{id}/confirm' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

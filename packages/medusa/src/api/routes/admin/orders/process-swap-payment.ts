@@ -13,7 +13,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  * x-authenticated: true
  * externalDocs:
  *   description: Handling a swap's payment
- *   url: https://docs.ninjajs.com/modules/orders/swaps#handling-swap-payment
+ *   url: https://docs.medusajs.com/modules/orders/swaps#handling-swap-payment
  * parameters:
  *   - (path) id=* {string} The ID of the order the swap is associated with.
  *   - (path) swap_id=* {string} The ID of the swap.
@@ -26,18 +26,18 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.orders.processSwapPayment(orderId, swapId)
+ *       medusa.admin.orders.processSwapPayment(orderId, swapId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminProcessSwapPayment } from "ninja-react"
+ *       import { useAdminProcessSwapPayment } from "medusa-react"
  *
  *       type Props = {
  *         orderId: string,
@@ -69,7 +69,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/swaps/{swap_id}/process-payment' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

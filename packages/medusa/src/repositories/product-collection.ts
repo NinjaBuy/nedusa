@@ -1,7 +1,7 @@
 import { ProductCollection } from "../models"
 import { dataSource } from "../loaders/database"
 import { ExtendedFindConfig } from "../types/common"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 // eslint-disable-next-line max-len
 export const ProductCollectionRepository = dataSource

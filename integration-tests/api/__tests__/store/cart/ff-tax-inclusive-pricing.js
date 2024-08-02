@@ -15,29 +15,29 @@ const {
   simpleDiscountFactory,
   simpleSalesChannelFactory,
 } = require("../../../../factories")
-const { IdMap } = require("ninja-test-utils")
+const { IdMap } = require("medusa-test-utils")
 
 jest.setTimeout(30000)
 
-describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /store/carts", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /store/carts/:id/shipping-methods", () => {

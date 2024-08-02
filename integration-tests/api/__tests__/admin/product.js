@@ -3,12 +3,12 @@ const {
   adminHeaders,
 } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { IdMap, ninjaIntegrationTestRunner } = require("ninja-test-utils")
-const { ModuleRegistrationName, Modules } = require("@ninjajs/modules-sdk")
+const { IdMap, medusaIntegrationTestRunner } = require("medusa-test-utils")
+const { ModuleRegistrationName, Modules } = require("@medusajs/modules-sdk")
 const {
   createVariantPriceSet,
 } = require("../../../modules/helpers/create-variant-price-set")
-const { PriceListStatus, PriceListType } = require("@ninjajs/types")
+const { PriceListStatus, PriceListType } = require("@medusajs/types")
 
 let {
   ProductOptionValue,
@@ -72,8 +72,8 @@ const getProductFixture = (overrides) => ({
   ...(overrides ?? {}),
 })
 
-ninjaIntegrationTestRunner({
-  env: { NINJA_FF_PRODUCT_CATEGORIES: true },
+medusaIntegrationTestRunner({
+  env: { MEDUSA_FF_PRODUCT_CATEGORIES: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let baseProduct
     let proposedProduct
@@ -90,7 +90,7 @@ ninjaIntegrationTestRunner({
     let container
 
     beforeAll(() => {
-      // Note: We have to lazily load everything because there are weird ordering issues when doing `require` of `@ninjajs/ninja`
+      // Note: We have to lazily load everything because there are weird ordering issues when doing `require` of `@medusajs/medusa`
       ;({
         ProductOptionValue,
         MoneyAmount,
@@ -98,7 +98,7 @@ ninjaIntegrationTestRunner({
         DiscountConditionOperator,
         DiscountRuleType,
         AllocationType,
-      } = require("@ninjajs/ninja"))
+      } = require("@medusajs/medusa"))
       ;({
         simpleDiscountFactory,
         simpleSalesChannelFactory,

@@ -33,21 +33,21 @@ import {
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.shippingProfiles.update(shippingProfileId, {
+ *       medusa.admin.shippingProfiles.update(shippingProfileId, {
  *         name: 'Large Products'
  *       })
  *       .then(({ shipping_profile }) => {
  *         console.log(shipping_profile.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { ShippingProfileType } from "@ninjajs/ninja"
- *       import { useAdminUpdateShippingProfile } from "ninja-react"
+ *       import { ShippingProfileType } from "@medusajs/medusa"
+ *       import { useAdminUpdateShippingProfile } from "medusa-react"
  *
  *       type Props = {
  *         shippingProfileId: string
@@ -81,7 +81,7 @@ import {
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/shipping-profiles/{id} \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "Large Products"
@@ -152,7 +152,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   type:
  *     description: The type of the Shipping Profile
  *     type: string

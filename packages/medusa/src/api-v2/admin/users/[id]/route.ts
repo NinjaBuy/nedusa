@@ -1,22 +1,22 @@
-import { deleteUsersWorkflow, updateUsersWorkflow } from "@ninjajs/core-flows"
-import { UpdateUserDTO } from "@ninjajs/types"
+import { deleteUsersWorkflow, updateUsersWorkflow } from "@medusajs/core-flows"
+import { UpdateUserDTO } from "@medusajs/types"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
 import {
   ContainerRegistrationKeys,
-  NinjaError,
+  MedusaError,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { AdminUpdateUserType } from "../validators"
 import { refetchUser } from "../helpers"
 
 // Get user
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const { id } = req.params
@@ -29,8 +29,8 @@ export const GET = async (
 
   const [user] = await remoteQuery(query)
   if (!user) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `User with id: ${id} was not found`
     )
   }
@@ -40,8 +40,8 @@ export const GET = async (
 
 // update user
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateUserType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateUserType>,
+  res: MedusaResponse
 ) => {
   const workflow = updateUsersWorkflow(req.scope)
 
@@ -67,8 +67,8 @@ export const POST = async (
 
 // delete user
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
   const workflow = deleteUsersWorkflow(req.scope)

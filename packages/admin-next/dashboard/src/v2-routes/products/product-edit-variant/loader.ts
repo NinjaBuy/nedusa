@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 import { productsQueryKeys } from "../../../hooks/api/products"
 import { client } from "../../../lib/client"
 

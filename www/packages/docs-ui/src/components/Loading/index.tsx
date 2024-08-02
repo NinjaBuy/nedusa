@@ -18,7 +18,7 @@ export const Loading = ({
       bars.push(
         <span
           className={clsx(
-            "bg-ninja-bg-subtle-pressed h-docs_1 w-full rounded-full",
+            "bg-medusa-bg-subtle-pressed h-docs_1 w-full rounded-full",
             barClassName
           )}
           key={i}

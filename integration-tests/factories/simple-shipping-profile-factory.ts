@@ -1,4 +1,4 @@
-import { ShippingProfile, ShippingProfileType } from "@ninjajs/ninja"
+import { ShippingProfile, ShippingProfileType } from "@medusajs/medusa"
 import faker from "faker"
 import { Connection } from "typeorm"
 

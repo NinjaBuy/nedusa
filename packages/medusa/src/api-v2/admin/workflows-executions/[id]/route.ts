@@ -1,17 +1,17 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
 import { AdminGetWorkflowExecutionDetailsParamsType } from "../validators"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetWorkflowExecutionDetailsParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetWorkflowExecutionDetailsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const variables = { id: req.params.id }

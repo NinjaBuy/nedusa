@@ -108,7 +108,7 @@ import { optionalBooleanMapper } from "../../../../utils/validators/is-boolean"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/products/{id}/variants' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

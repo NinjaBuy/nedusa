@@ -1,15 +1,15 @@
 import { IsString } from "class-validator"
-import { AdminPostProductsReq as NinjaAdminPostProductsReq } from "../../api/routes/admin/products/create-product"
+import { AdminPostProductsReq as MedusaAdminPostProductsReq } from "../../api/routes/admin/products/create-product"
 import { registerOverriddenValidators, validator } from "../validator"
 
-class AdminPostProductsReq extends NinjaAdminPostProductsReq {
+class AdminPostProductsReq extends MedusaAdminPostProductsReq {
   @IsString()
   custom_attribute: string
 }
 
 describe("Validator", function () {
   it("should override the original validator", async function () {
-    let err = await validator(NinjaAdminPostProductsReq, {
+    let err = await validator(MedusaAdminPostProductsReq, {
       title: "test",
     })
       .then(() => void 0)
@@ -19,7 +19,7 @@ describe("Validator", function () {
 
     registerOverriddenValidators(AdminPostProductsReq)
 
-    err = await validator(NinjaAdminPostProductsReq, {
+    err = await validator(MedusaAdminPostProductsReq, {
       title: "test",
     })
       .then(() => void 0)
@@ -28,7 +28,7 @@ describe("Validator", function () {
     expect(err).toBeDefined()
     expect(err.message).toEqual("custom_attribute must be a string")
 
-    err = await validator(NinjaAdminPostProductsReq, {
+    err = await validator(MedusaAdminPostProductsReq, {
       title: "test",
       custom_attribute: "test",
     })

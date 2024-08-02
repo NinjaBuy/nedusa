@@ -26,25 +26,25 @@ jest.setTimeout(30000)
 
 const adminHeaders = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 describe("/admin/swaps", () => {
   describe("tax exclusive", () => {
-    let ninjaProcess
+    let medusaProcess
     let dbConnection
 
     beforeAll(async () => {
       const cwd = path.resolve(path.join(__dirname, "..", ".."))
       dbConnection = await initDb({ cwd })
-      ninjaProcess = await setupServer({ cwd })
+      medusaProcess = await setupServer({ cwd })
     })
 
     afterAll(async () => {
       const db = useDb()
       await db.shutdown()
-      ninjaProcess.kill()
+      medusaProcess.kill()
     })
 
     describe("GET /admin/swaps/:id", () => {
@@ -336,23 +336,23 @@ describe("/admin/swaps", () => {
     })
   })
   describe("tax inclusive", () => {
-    let ninjaProcess
+    let medusaProcess
     let dbConnection
 
     beforeAll(async () => {
       const cwd = path.resolve(path.join(__dirname, "..", ".."))
       const [process, connection] = await startServerWithEnvironment({
         cwd,
-        env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+        env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
       })
       dbConnection = connection
-      ninjaProcess = process
+      medusaProcess = process
     })
 
     afterAll(async () => {
       const db = useDb()
       await db.shutdown()
-      ninjaProcess.kill()
+      medusaProcess.kill()
     })
 
     describe("Complete swap flow with discount", () => {

@@ -1,4 +1,4 @@
-import { AdminGetPromotionsParams } from "@ninjajs/ninja"
+import { AdminGetPromotionsParams } from "@medusajs/medusa"
 
 import {
   BatchAddPromotionRulesReq,

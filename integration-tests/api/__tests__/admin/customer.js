@@ -10,20 +10,20 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 jest.setTimeout(30000)
 
 describe("/admin/customers", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/customers", () => {
@@ -43,7 +43,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -76,7 +76,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers?has_account=true", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -97,7 +97,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers?groups[]=test-group-5", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -127,7 +127,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers?q=est2@", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -152,7 +152,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers?q=test1@email.com&expand=shipping_addresses", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -202,7 +202,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -246,7 +246,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -278,7 +278,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -301,7 +301,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -329,7 +329,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -350,7 +350,7 @@ describe("/admin/customers", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -389,7 +389,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers/test-customer-1", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -417,7 +417,7 @@ describe("/admin/customers", () => {
       const response = await api
         .get("/admin/customers/test-customer-1?expand=billing_address,groups", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {

@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { AbstractFileService } from "../interfaces"
 import {
@@ -6,53 +6,53 @@ import {
   FileServiceUploadResult,
   GetUploadedFileType,
   UploadStreamDescriptorType,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 
 class DefaultFileService extends AbstractFileService {
   async upload(
     fileData: Express.Multer.File
   ): Promise<FileServiceUploadResult> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   async uploadProtected(
     fileData: Express.Multer.File
   ): Promise<FileServiceUploadResult> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   async delete(fileData: Record<string, any>): Promise<void> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   async getUploadStreamDescriptor(
     fileData: UploadStreamDescriptorType
   ): Promise<FileServiceGetUploadStreamResult> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   async getDownloadStream(
     fileData: GetUploadedFileType
   ): Promise<NodeJS.ReadableStream> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   async getPresignedDownloadUrl(
     fileData: GetUploadedFileType
   ): Promise<string> {
-    throw new NinjaError(
-      NinjaError.Types.UNEXPECTED_STATE,
-      "Please add a file service plugin in order to manipulate files in Ninja"
+    throw new MedusaError(
+      MedusaError.Types.UNEXPECTED_STATE,
+      "Please add a file service plugin in order to manipulate files in Medusa"
     )
   }
   protected manager_: EntityManager

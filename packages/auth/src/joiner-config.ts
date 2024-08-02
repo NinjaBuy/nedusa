@@ -1,7 +1,7 @@
 import { AuthUser } from "@models"
-import { MapToConfig } from "@ninjajs/utils"
-import { ModuleJoinerConfig } from "@ninjajs/types"
-import { Modules } from "@ninjajs/modules-sdk"
+import { MapToConfig } from "@medusajs/utils"
+import { ModuleJoinerConfig } from "@medusajs/types"
+import { Modules } from "@medusajs/modules-sdk"
 
 export const LinkableKeys = {
   auth_user_id: AuthUser.name,

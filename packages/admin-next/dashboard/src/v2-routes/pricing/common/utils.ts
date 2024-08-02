@@ -1,4 +1,4 @@
-import { PriceListDTO, ProductVariantDTO } from "@ninjajs/types"
+import { PriceListDTO, ProductVariantDTO } from "@medusajs/types"
 import { TFunction } from "i18next"
 import { ExtendedProductDTO } from "../../../types/api-responses"
 import { PriceListStatus } from "./constants"

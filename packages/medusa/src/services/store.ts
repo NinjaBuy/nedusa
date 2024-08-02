@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager, IsNull, Not } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { Currency, Store } from "../models"
@@ -9,7 +9,7 @@ import { UpdateStoreInput } from "../types/store"
 import { buildQuery, setMetadata } from "../utils"
 import { currencies } from "../utils/currencies"
 import EventBusService from "./event-bus"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -92,7 +92,7 @@ class StoreService extends TransactionBaseService {
     const stores = await storeRepo.find(query)
 
     if (!stores.length) {
-      throw new NinjaError(NinjaError.Types.NOT_FOUND, "Store does not exist")
+      throw new MedusaError(MedusaError.Types.NOT_FOUND, "Store does not exist")
     }
 
     return stores[0]
@@ -146,8 +146,8 @@ class StoreService extends TransactionBaseService {
 
           // throw if we are trying to remove a currency from store currently used as default
           if (!hasDefCurrency) {
-            throw new NinjaError(
-              NinjaError.Types.INVALID_DATA,
+            throw new MedusaError(
+              MedusaError.Types.INVALID_DATA,
               `You are not allowed to remove default currency from store currencies without replacing it as well`
             )
           }
@@ -159,8 +159,8 @@ class StoreService extends TransactionBaseService {
               })
 
               if (!currency) {
-                throw new NinjaError(
-                  NinjaError.Types.INVALID_DATA,
+                throw new MedusaError(
+                  MedusaError.Types.INVALID_DATA,
                   `Currency with code ${curr} does not exist`
                 )
               }
@@ -176,8 +176,8 @@ class StoreService extends TransactionBaseService {
           )
 
           if (!hasDefCurrency) {
-            throw new NinjaError(
-              NinjaError.Types.INVALID_DATA,
+            throw new MedusaError(
+              MedusaError.Types.INVALID_DATA,
               `Store does not have currency: ${default_currency_code}`
             )
           }
@@ -221,8 +221,8 @@ class StoreService extends TransactionBaseService {
         })
 
         if (!curr) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Currency ${code} not found`
           )
         }
@@ -233,8 +233,8 @@ class StoreService extends TransactionBaseService {
           .map((c) => c.code.toLowerCase())
           .includes(curr.code.toLowerCase())
         if (doesStoreInclCurrency) {
-          throw new NinjaError(
-            NinjaError.Types.DUPLICATE_ERROR,
+          throw new MedusaError(
+            MedusaError.Types.DUPLICATE_ERROR,
             `Currency already added`
           )
         }

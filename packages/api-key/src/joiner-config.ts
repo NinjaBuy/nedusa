@@ -1,6 +1,6 @@
-import { Modules } from "@ninjajs/modules-sdk"
-import { ModuleJoinerConfig } from "@ninjajs/types"
-import { MapToConfig } from "@ninjajs/utils"
+import { Modules } from "@medusajs/modules-sdk"
+import { ModuleJoinerConfig } from "@medusajs/types"
+import { MapToConfig } from "@medusajs/utils"
 import ApiKey from "./models/api-key"
 
 export const LinkableKeys: Record<string, string> = {

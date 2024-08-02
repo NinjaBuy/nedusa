@@ -1,5 +1,5 @@
-import { EventBusTypes } from "@ninjajs/types"
-import { NinjaError } from "ninja-core-utils"
+import { EventBusTypes } from "@medusajs/types"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager, In } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { OrderItemChange } from "../models"
@@ -9,7 +9,7 @@ import { CreateOrderEditItemChangeInput } from "../types/order-edit"
 import { buildQuery } from "../utils"
 import { LineItemService } from "./index"
 import TaxProviderService from "./tax-provider"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -58,8 +58,8 @@ export default class OrderEditItemChangeService extends TransactionBaseService {
     const itemChange = await orderItemChangeRepo.findOne(query)
 
     if (!itemChange) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Order edit item change ${id} was not found`
       )
     }

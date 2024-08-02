@@ -1,6 +1,6 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 import TotalsService from "../totals"
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 
 import TaxInclusivePricingFeatureFlag from "../../loaders/feature-flags/tax-inclusive-pricing"
 import { calculatePriceTaxAmount } from "../../utils"
@@ -18,7 +18,7 @@ const discounts = {
   },
   item2Fixed: {
     id: "item2Fixed",
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       type: "fixed",
       allocation: "item",
@@ -29,7 +29,7 @@ const discounts = {
   },
   item10Percent: {
     id: "item10Percent",
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       type: "percentage",
       allocation: "item",
@@ -40,7 +40,7 @@ const discounts = {
   },
   total10Fixed: {
     id: "total10Fixed",
-    code: "NINJA",
+    code: "MEDUSA",
     rule: {
       type: "fixed",
       allocation: "total",
@@ -51,7 +51,7 @@ const discounts = {
   },
   expiredDiscount: {
     id: "expired",
-    code: "NINJA",
+    code: "MEDUSA",
     ends_at: new Date("December 17, 1995 03:24:00"),
     rule: {
       type: "fixed",
@@ -646,7 +646,7 @@ describe("TotalsService", () => {
     })
   })
 
-  describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] getRefundTotal", () => {
+  describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] getRefundTotal", () => {
     let res
     const totalsService = new TotalsService({
       ...container,
@@ -1089,7 +1089,7 @@ describe("TotalsService", () => {
     })
   })
 
-  describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] getTotal", () => {
+  describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] getTotal", () => {
     let res
     const totalsService = new TotalsService({
       ...container,
@@ -1142,7 +1142,7 @@ describe("TotalsService", () => {
     })
   })
 
-  describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] getShippingTotal ", () => {
+  describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] getShippingTotal ", () => {
     const shippingMethodData = {
       id: IdMap.getId("expensiveShipping"),
       name: "Expensive Shipping",

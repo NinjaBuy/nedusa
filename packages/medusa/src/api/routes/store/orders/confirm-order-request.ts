@@ -5,7 +5,7 @@ import {
   OrderService,
   TokenService,
 } from "../../../../services"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 /**
  * @oas [post] /store/orders/customer/confirm
@@ -14,7 +14,7 @@ import { promiseAll } from "@ninjajs/utils"
  * description: "Verify the claim order token provided to the customer when they request ownership of an order."
  * externalDocs:
  *   description: "How to implement claim-order flow in a storefront"
- *   url: "https://docs.ninjajs.com/modules/orders/storefront/implement-claim-order"
+ *   url: "https://docs.medusajs.com/modules/orders/storefront/implement-claim-order"
  * requestBody:
  *   content:
  *     application/json:
@@ -26,10 +26,10 @@ import { promiseAll } from "@ninjajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.orders.confirmRequest(
+ *       medusa.orders.confirmRequest(
  *         token,
  *       )
  *       .then(() => {
@@ -39,10 +39,10 @@ import { promiseAll } from "@ninjajs/utils"
  *         // an error occurred
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useGrantOrderAccess } from "ninja-react"
+ *       import { useGrantOrderAccess } from "medusa-react"
  *
  *       const ClaimOrder = () => {
  *         const confirmOrderRequest = useGrantOrderAccess()

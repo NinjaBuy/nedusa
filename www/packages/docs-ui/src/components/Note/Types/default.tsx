@@ -1,7 +1,7 @@
 import React from "react"
 import { NoteProps } from ".."
 import { NoteLayout } from "../Layout"
-import { InformationCircleSolid } from "@ninjajs/icons"
+import { InformationCircleSolid } from "@medusajs/icons"
 import clsx from "clsx"
 
 export const DefaultNote = ({ title = "Note", icon, ...props }: NoteProps) => {
@@ -12,7 +12,7 @@ export const DefaultNote = ({ title = "Note", icon, ...props }: NoteProps) => {
         icon || (
           <InformationCircleSolid
             className={clsx(
-              "inline-block mr-docs_0.125 text-ninja-tag-neutral-icon"
+              "inline-block mr-docs_0.125 text-medusa-tag-neutral-icon"
             )}
           />
         )

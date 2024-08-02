@@ -12,7 +12,7 @@ const {
   LineItem,
   Discount,
   DiscountRule,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -21,19 +21,19 @@ const { initDb, useDb } = require("../../../environment-helpers/use-db")
 jest.setTimeout(30000)
 
 describe("/store/carts", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /store/returns", () => {

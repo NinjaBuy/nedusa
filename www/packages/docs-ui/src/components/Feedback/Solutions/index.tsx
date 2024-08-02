@@ -24,7 +24,7 @@ export const Solutions = ({ feedback, message }: SolutionsProps) => {
   >([])
 
   function constructQuery(searchQuery: string) {
-    return `${searchQuery} repo:ninjajs/ninja is:closed is:issue`
+    return `${searchQuery} repo:medusajs/medusa is:closed is:issue`
   }
 
   async function searchGitHub(query: string) {
@@ -83,7 +83,7 @@ export const Solutions = ({ feedback, message }: SolutionsProps) => {
           <span>
             Explore more issues in{" "}
             <a
-              href={`https://github.com/ninjajs/ninja/issues?q=${possibleSolutionsQuery}`}
+              href={`https://github.com/medusajs/medusa/issues?q=${possibleSolutionsQuery}`}
               target="_blank"
               rel="noreferrer"
             >

@@ -2,7 +2,7 @@ import { LoaderFunctionArgs } from "react-router-dom"
 
 import { collectionsQueryKeys } from "../../../hooks/api/collections"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 import { ProductCollectionRes } from "../../../types/api-responses"
 
 const collectionDetailQuery = (id: string) => ({

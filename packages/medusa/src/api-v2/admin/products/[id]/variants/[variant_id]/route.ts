@@ -1,16 +1,16 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
 import {
   deleteProductVariantsWorkflow,
   updateProductVariantsWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
   refetchProduct,
   remapKeysForVariant,
@@ -20,8 +20,8 @@ import {
 import { AdminUpdateProductVariantType } from "../../../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -42,8 +42,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateProductVariantType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateProductVariantType>,
+  res: MedusaResponse
 ) => {
   // TODO: Should we allow fetching a variant without knowing the product ID? In such case we'll need to change the route to /admin/products/variants/:id
   const productId = req.params.id
@@ -70,8 +70,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   // TODO: Should we allow fetching a variant without knowing the product ID? In such case we'll need to change the route to /admin/products/variants/:id
   const productId = req.params.id

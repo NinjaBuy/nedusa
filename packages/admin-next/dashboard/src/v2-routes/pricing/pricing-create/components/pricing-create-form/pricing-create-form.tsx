@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, ProgressStatus, ProgressTabs } from "@ninjajs/ui"
+import { Button, ProgressStatus, ProgressTabs } from "@medusajs/ui"
 import { FieldPath, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 
-import { CreatePriceListDTO, CreatePriceListPriceDTO } from "@ninjajs/types"
+import { CreatePriceListDTO, CreatePriceListPriceDTO } from "@medusajs/types"
 import { useState } from "react"
 import { z } from "zod"
 import {

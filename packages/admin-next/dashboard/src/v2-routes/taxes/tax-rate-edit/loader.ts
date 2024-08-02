@@ -1,9 +1,9 @@
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { AdminTaxRateResponse } from "@ninjajs/types"
+import { AdminTaxRateResponse } from "@medusajs/types"
 import { taxRatesQueryKeys } from "../../../hooks/api/tax-rates"
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 
 const taxRateDetailQuery = (id: string) => ({
   queryKey: taxRatesQueryKeys.detail(id),

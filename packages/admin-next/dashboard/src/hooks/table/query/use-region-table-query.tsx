@@ -1,4 +1,4 @@
-import { AdminGetRegionsParams } from "@ninjajs/ninja"
+import { AdminGetRegionsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../use-query-params"
 
 type UseRegionTableQueryProps = {

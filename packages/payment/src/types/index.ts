@@ -2,7 +2,7 @@ import {
   Logger,
   ModuleProviderExports,
   ModuleServiceInitializeOptions,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 
 export type InitializeModuleInjectableDependencies = {
   logger?: Logger

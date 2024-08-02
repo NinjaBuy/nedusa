@@ -1,14 +1,14 @@
-import { AdminRegionsRes } from "@ninjajs/ninja"
-import { Response } from "@ninjajs/ninja-js"
-import { adminRegionKeys } from "ninja-react"
+import { AdminRegionsRes } from "@medusajs/medusa"
+import { Response } from "@medusajs/medusa-js"
+import { adminRegionKeys } from "medusa-react"
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { ninja, queryClient } from "../../../lib/ninja"
+import { medusa, queryClient } from "../../../lib/medusa"
 
 const regionQuery = (id: string) => ({
   queryKey: adminRegionKeys.detail(id),
   queryFn: async () =>
-    ninja.admin.regions.retrieve(id, { fields: "*payment_providers" }),
+    medusa.admin.regions.retrieve(id, { fields: "*payment_providers" }),
 })
 
 export const regionLoader = async ({ params }: LoaderFunctionArgs) => {

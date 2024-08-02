@@ -10,7 +10,7 @@ import { validator } from "../../../../utils/validator"
  * operationId: "PostAuth"
  * summary: "Customer Login"
  * description: "Log a customer in and includes the Cookie session in the response header. The cookie session can be used in subsequent requests to authenticate the customer.
- * When using Ninja's JS or Ninja React clients, the cookie is automatically attached to subsequent requests."
+ * When using Medusa's JS or Medusa React clients, the cookie is automatically attached to subsequent requests."
  * requestBody:
  *   content:
  *     application/json:
@@ -22,9 +22,9 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.auth.authenticate({
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.auth.authenticate({
  *         email: "user@example.com",
  *         password: "user@example.com"
  *       })

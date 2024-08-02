@@ -1,11 +1,11 @@
-import { createTaxRatesWorkflow } from "@ninjajs/core-flows"
+import { createTaxRatesWorkflow } from "@medusajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchTaxRate } from "./helpers"
 import {
@@ -14,8 +14,8 @@ import {
 } from "./validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateTaxRateType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateTaxRateType>,
+  res: MedusaResponse
 ) => {
   const { result, errors } = await createTaxRatesWorkflow(req.scope).run({
     input: [
@@ -40,8 +40,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetTaxRatesParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetTaxRatesParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const { rows: tax_rates, metadata } = await remoteQuery(

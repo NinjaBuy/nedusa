@@ -1,4 +1,4 @@
-import { PaginatedResponse } from "@ninjajs/types"
+import { PaginatedResponse } from "@medusajs/types"
 import { Router } from "express"
 import { User } from "../../../../models/user"
 import { DeleteResponse } from "../../../../types/common"

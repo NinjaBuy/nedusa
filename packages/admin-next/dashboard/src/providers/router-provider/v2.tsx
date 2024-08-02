@@ -6,17 +6,17 @@ import {
   AdminTaxRegionResponse,
   SalesChannelDTO,
   UserDTO,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   AdminCollectionsRes,
   AdminProductsRes,
   AdminPromotionRes,
   AdminRegionsRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { InventoryItemRes, PriceListRes } from "../../types/api-responses"
 import { Outlet, RouteObject } from "react-router-dom"
 
-import { AdminCustomersRes } from "@ninjajs/client-types"
+import { AdminCustomersRes } from "@medusajs/client-types"
 import { ErrorBoundary } from "../../components/error/error-boundary"
 import { MainLayout } from "../../components/layout/main-layout"
 import { ProtectedRoute } from "../../components/authentication/protected-route"
@@ -25,7 +25,7 @@ import { SettingsLayout } from "../../components/layout/settings-layout"
 /**
  * Experimental V2 routes.
  *
- * These routes are only available if the `NINJA_V2` feature flag is enabled.
+ * These routes are only available if the `MEDUSA_V2` feature flag is enabled.
  */
 export const v2Routes: RouteObject[] = [
   {

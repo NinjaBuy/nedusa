@@ -44,10 +44,10 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.taxRates.addProducts(taxRateId, {
+ *       medusa.admin.taxRates.addProducts(taxRateId, {
  *         products: [
  *           productId
  *         ]
@@ -56,10 +56,10 @@ import { validator } from "../../../../utils/validator"
  *         console.log(tax_rate.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateProductTaxRates } from "ninja-react"
+ *       import { useAdminCreateProductTaxRates } from "medusa-react"
  *
  *       type Props = {
  *         taxRateId: string
@@ -87,7 +87,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/tax-rates/{id}/products/batch' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *          "products": [

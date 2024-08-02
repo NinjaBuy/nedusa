@@ -1,4 +1,4 @@
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 import { join } from "path"
 import { containerMock, jobSchedulerServiceMock } from "../__mocks__"
 import ScheduledJobsLoader from "../index"
@@ -17,7 +17,7 @@ describe("ScheduledJobsLoader", () => {
 
     await new ScheduledJobsLoader(
       rootDir,
-      containerMock as unknown as NinjaContainer,
+      containerMock as unknown as MedusaContainer,
       pluginOptions
     ).load()
   })

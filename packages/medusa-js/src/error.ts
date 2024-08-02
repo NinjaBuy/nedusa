@@ -1,24 +1,24 @@
 "use strict"
 /**
- * NinjaError is the base error for every other NinjaError
+ * MedusaError is the base error for every other MedusaError
  */
-export default class NinjaError extends Error {
+export default class MedusaError extends Error {
   constructor() {
     super()
   }
 
-  public static factory(type: ErrorType): NinjaError {
+  public static factory(type: ErrorType): MedusaError {
     switch (type) {
       case ErrorType.INVALID_REQUEST:
-        return new NinjaInvalidRequestError()
+        return new MedusaInvalidRequestError()
       case ErrorType.AUTHENTICATION:
-        return new NinjaAuthenticationError()
+        return new MedusaAuthenticationError()
       case ErrorType.API:
-        return new NinjaAPIError()
+        return new MedusaAPIError()
       case ErrorType.PERMISSION:
-        return new NinjaPermissionError()
+        return new MedusaPermissionError()
       case ErrorType.CONNECTION:
-        return new NinjaConnectionError()
+        return new MedusaConnectionError()
     }
   }
 }
@@ -32,26 +32,26 @@ enum ErrorType {
 }
 
 /**
- * NinjaInvalidRequestError is raised when a request as invalid parameters.
+ * MedusaInvalidRequestError is raised when a request as invalid parameters.
  */
-export class NinjaInvalidRequestError extends NinjaError {}
+export class MedusaInvalidRequestError extends MedusaError {}
 
 /**
- * NinjaAPIError is raised in case no other type cover the problem
+ * MedusaAPIError is raised in case no other type cover the problem
  */
-export class NinjaAPIError extends NinjaError {}
+export class MedusaAPIError extends MedusaError {}
 
 /**
- * NinjaAuthenticationError is raised when invalid credentials is used to connect to Ninja
+ * MedusaAuthenticationError is raised when invalid credentials is used to connect to Medusa
  */
-export class NinjaAuthenticationError extends NinjaError {}
+export class MedusaAuthenticationError extends MedusaError {}
 
 /**
- * NinjaPermissionError is raised when attempting to access a resource without permissions
+ * MedusaPermissionError is raised when attempting to access a resource without permissions
  */
-export class NinjaPermissionError extends NinjaError {}
+export class MedusaPermissionError extends MedusaError {}
 
 /**
- * NinjaConnectionError is raised when the Ninja servers can't be reached.
+ * MedusaConnectionError is raised when the Medusa servers can't be reached.
  */
-export class NinjaConnectionError extends NinjaError {}
+export class MedusaConnectionError extends MedusaError {}

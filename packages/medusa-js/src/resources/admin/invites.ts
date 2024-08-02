@@ -2,19 +2,19 @@ import {
   AdminInviteDeleteRes,
   AdminListInvitesRes,
   AdminPostInvitesInviteAcceptReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { AdminPostInvitesPayload, ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Invite API Routes](https://docs.ninjajs.com/api/admin#invites). All its method
- * are available in the JS Client under the `ninja.admin.invites` property.
+ * This class is used to send requests to [Admin Invite API Routes](https://docs.medusajs.com/api/admin#invites). All its method
+ * are available in the JS Client under the `medusa.admin.invites` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * An admin can invite new users to manage their team. This would allow new users to authenticate as admins and perform admin functionalities.
  * 
- * Related Guide: [How to manage invites](https://docs.ninjajs.com/modules/users/admin/manage-invites).
+ * Related Guide: [How to manage invites](https://docs.medusajs.com/modules/users/admin/manage-invites).
  */
 class AdminInvitesResource extends BaseResource {
   /**
@@ -25,10 +25,10 @@ class AdminInvitesResource extends BaseResource {
    * @returns {ResponsePromise} Resolves when the invite is accepted successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.invites.accept({
+   * medusa.admin.invites.accept({
    *   token,
    *   user: {
    *     first_name: "Brigitte",
@@ -59,10 +59,10 @@ class AdminInvitesResource extends BaseResource {
    * @returns {ResponsePromise} Resolves when the invite is created successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.invites.create({
+   * medusa.admin.invites.create({
    *   user: "user@example.com",
    *   role: "admin"
    * })
@@ -88,10 +88,10 @@ class AdminInvitesResource extends BaseResource {
    * @returns {ResponsePromise<AdminInviteDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.invites.delete(inviteId)
+   * medusa.admin.invites.delete(inviteId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -110,10 +110,10 @@ class AdminInvitesResource extends BaseResource {
    * @returns {ResponsePromise<AdminListInvitesRes>} Resolves to the list of invites.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.invites.list()
+   * medusa.admin.invites.list()
    * .then(({ invites }) => {
    *   console.log(invites.length);
    * })
@@ -134,10 +134,10 @@ class AdminInvitesResource extends BaseResource {
    * @returns {ResponsePromise} Resolves when the invite is resent successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.invites.resend(inviteId)
+   * medusa.admin.invites.resend(inviteId)
    * .then(() => {
    *   // successful
    * })

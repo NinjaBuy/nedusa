@@ -1,5 +1,5 @@
 /** This file is auto-generated. Do not modify it manually. */
-import type { RegionCountryDTO } from "@ninjajs/types"
+import type { RegionCountryDTO } from "@medusajs/types"
 
 export function getCountryByIso2(
   iso2: string | null

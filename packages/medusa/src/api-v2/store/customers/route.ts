@@ -1,18 +1,18 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
-import { CreateCustomerDTO } from "@ninjajs/types"
-import { createCustomerAccountWorkflow } from "@ninjajs/core-flows"
+import { CreateCustomerDTO } from "@medusajs/types"
+import { createCustomerAccountWorkflow } from "@medusajs/core-flows"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   if (req.auth.actor_id) {
     const remoteQuery = req.scope.resolve(

@@ -1,3 +1,3 @@
-import logger from "@ninjajs/ninja-cli/dist/reporter"
+import logger from "@medusajs/medusa-cli/dist/reporter"
 
 export default logger

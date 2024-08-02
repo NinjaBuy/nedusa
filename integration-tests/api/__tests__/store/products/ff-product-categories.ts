@@ -13,7 +13,7 @@ const adminSeeder = require("../../../../helpers/admin-seeder")
 jest.setTimeout(30000)
 
 describe("/store/products", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   const testProductId = "test-product"
@@ -24,19 +24,19 @@ describe("/store/products", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
-      env: { NINJA_FF_PRODUCT_CATEGORIES: true },
+      env: { MEDUSA_FF_PRODUCT_CATEGORIES: true },
     })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
-  describe("GET /store/products [NINJA_FF_PRODUCT_CATEGORIES=true]", () => {
+  describe("GET /store/products [MEDUSA_FF_PRODUCT_CATEGORIES=true]", () => {
     let categoryWithProduct
     let categoryWithoutProduct
     let inactiveCategoryWithProduct

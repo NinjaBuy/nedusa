@@ -1,5 +1,5 @@
-import { promiseAll } from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { promiseAll } from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager, FindOperator, In } from "typeorm"
 
 import { TransactionBaseService } from "../interfaces"
@@ -56,8 +56,8 @@ class LineItemAdjustmentService extends TransactionBaseService {
     config: FindConfig<LineItemAdjustment> = {}
   ): Promise<LineItemAdjustment> {
     if (!isDefined(lineItemAdjustmentId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"lineItemAdjustmentId" must be defined`
       )
     }
@@ -70,8 +70,8 @@ class LineItemAdjustmentService extends TransactionBaseService {
     const lineItemAdjustment = await lineItemAdjustmentRepo.findOne(query)
 
     if (!lineItemAdjustment) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Line item adjustment with id: ${lineItemAdjustmentId} was not found`
       )
     }

@@ -1,7 +1,7 @@
 import { defaultStoreGiftCardFields, defaultStoreGiftCardRelations } from "."
 
 import GiftCardService from "../../../../services/gift-card"
-import { Logger } from "@ninjajs/types"
+import { Logger } from "@medusajs/types"
 
 /**
  * @oas [get] /store/gift-cards/{code}
@@ -16,17 +16,17 @@ import { Logger } from "@ninjajs/types"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.giftCards.retrieve(code)
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.giftCards.retrieve(code)
  *       .then(({ gift_card }) => {
  *         console.log(gift_card.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useGiftCard } from "ninja-react"
+ *       import { useGiftCard } from "medusa-react"
  *
  *       type Props = {
  *         giftCardCode: string

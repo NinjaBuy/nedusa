@@ -1,8 +1,8 @@
 import crypto from "crypto"
-import { Modules } from "@ninjajs/modules-sdk"
-import { IApiKeyModuleService } from "@ninjajs/types"
-import { ApiKeyType } from "@ninjajs/utils"
-import { moduleIntegrationTestRunner, SuiteOptions } from "ninja-test-utils"
+import { Modules } from "@medusajs/modules-sdk"
+import { IApiKeyModuleService } from "@medusajs/types"
+import { ApiKeyType } from "@medusajs/utils"
+import { moduleIntegrationTestRunner, SuiteOptions } from "medusa-test-utils"
 import {
   createSecretKeyFixture,
   createPublishableKeyFixture,

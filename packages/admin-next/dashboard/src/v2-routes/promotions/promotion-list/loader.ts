@@ -1,11 +1,11 @@
 import {
   AdminGetPromotionsParams,
   AdminPromotionsListRes,
-} from "@ninjajs/ninja"
-import { Response } from "@ninjajs/ninja-js"
+} from "@medusajs/medusa"
+import { Response } from "@medusajs/medusa-js"
 import { QueryClient } from "@tanstack/react-query"
 import { promotionsQueryKeys } from "../../../hooks/api/promotions"
-import { ninja, queryClient } from "../../../lib/ninja"
+import { medusa, queryClient } from "../../../lib/medusa"
 
 const params = {
   limit: 20,
@@ -15,7 +15,7 @@ const params = {
 const promotionsListQuery = () => ({
   queryKey: promotionsQueryKeys.list(params),
   queryFn: async () =>
-    ninja.admin.custom.get<AdminGetPromotionsParams, AdminPromotionsListRes>(
+    medusa.admin.custom.get<AdminGetPromotionsParams, AdminPromotionsListRes>(
       "/promotions",
       params
     ),

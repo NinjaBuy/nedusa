@@ -1,12 +1,12 @@
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
 export const refetchFulfillment = async (
   fulfillmentId: string,
-  scope: NinjaContainer,
+  scope: MedusaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)

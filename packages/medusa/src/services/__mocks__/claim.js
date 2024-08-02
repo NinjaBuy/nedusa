@@ -1,4 +1,4 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 export const ClaimServiceMock = {
   withTransaction: function() {
     return this

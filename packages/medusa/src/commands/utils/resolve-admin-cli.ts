@@ -3,10 +3,10 @@ import path from "path"
 
 export function resolveAdminCLI() {
   const cli = path.resolve(
-    require.resolve("@ninjajs/admin"),
+    require.resolve("@medusajs/admin"),
     "../../",
     "bin",
-    "ninja-admin.js"
+    "medusa-admin.js"
   )
 
   const binExists = fs.existsSync(cli)

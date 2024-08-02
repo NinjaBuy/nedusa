@@ -1,10 +1,10 @@
-import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
+import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
 
 import {
   deleteStockLocationsWorkflow,
   updateStockLocationsWorkflow,
-} from "@ninjajs/core-flows"
-import { NinjaError } from "@ninjajs/utils"
+} from "@medusajs/core-flows"
+import { MedusaError } from "@medusajs/utils"
 import {
   AdminGetStockLocationParamsType,
   AdminUpdateStockLocationType,
@@ -12,8 +12,8 @@ import {
 import { refetchStockLocation } from "../helpers"
 
 export const POST = async (
-  req: NinjaRequest<AdminUpdateStockLocationType>,
-  res: NinjaResponse
+  req: MedusaRequest<AdminUpdateStockLocationType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
   await updateStockLocationsWorkflow(req.scope).run({
@@ -35,8 +35,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: NinjaRequest<AdminGetStockLocationParamsType>,
-  res: NinjaResponse
+  req: MedusaRequest<AdminGetStockLocationParamsType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
 
@@ -47,8 +47,8 @@ export const GET = async (
   )
 
   if (!stockLocation) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Stock location with id: ${id} was not found`
     )
   }
@@ -56,7 +56,7 @@ export const GET = async (
   res.status(200).json({ stock_location: stockLocation })
 }
 
-export const DELETE = async (req: NinjaRequest, res: NinjaResponse) => {
+export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
   const { id } = req.params
 
   const { errors } = await deleteStockLocationsWorkflow(req.scope).run({

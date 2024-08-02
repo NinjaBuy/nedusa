@@ -1,5 +1,5 @@
-import { ShippingOption } from "@ninjajs/ninja"
-import { PricedShippingOption } from "@ninjajs/ninja/dist/types/pricing"
+import { ShippingOption } from "@medusajs/medusa"
+import { PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 

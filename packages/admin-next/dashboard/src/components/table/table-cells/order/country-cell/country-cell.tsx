@@ -1,5 +1,5 @@
-import { Country } from "@ninjajs/ninja"
-import { Tooltip } from "@ninjajs/ui"
+import { Country } from "@medusajs/medusa"
+import { Tooltip } from "@medusajs/ui"
 import ReactCountryFlag from "react-country-flag"
 import { PlaceholderCell } from "../../common/placeholder-cell"
 

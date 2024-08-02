@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 
 export const ProductVariantInventoryServiceMock = {
   withTransaction: function () {

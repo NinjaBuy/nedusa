@@ -1,4 +1,4 @@
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 import { IsNumber, IsOptional, Min } from "class-validator"
 import { Request, Response } from "express"
 import { EntityManager } from "typeorm"
@@ -27,20 +27,20 @@ import { FindParams } from "../../../../types/common"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.inventoryItems.updateLocationLevel(inventoryItemId, locationId, {
+ *       medusa.admin.inventoryItems.updateLocationLevel(inventoryItemId, locationId, {
  *         stocked_quantity: 15,
  *       })
  *       .then(({ inventory_item }) => {
  *         console.log(inventory_item.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminUpdateLocationLevel } from "ninja-react"
+ *       import { useAdminUpdateLocationLevel } from "medusa-react"
  *
  *       type Props = {
  *         inventoryItemId: string
@@ -74,7 +74,7 @@ import { FindParams } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/inventory-items/{id}/location-levels/{location_id}' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "stocked_quantity": 15

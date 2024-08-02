@@ -1,23 +1,23 @@
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
-import { createRegionsWorkflow } from "@ninjajs/core-flows"
-import { NinjaContainer, RegionDTO } from "@ninjajs/types"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
+import { createRegionsWorkflow } from "@medusajs/core-flows"
+import { MedusaContainer, RegionDTO } from "@medusajs/types"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
 jest.setTimeout(200000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 const adminHeaders = {
-  headers: { "x-ninja-access-token": "test_token" },
+  headers: { "x-medusa-access-token": "test_token" },
 }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
-    let container: NinjaContainer
+    let container: MedusaContainer
     let region: RegionDTO
 
     beforeAll(() => {

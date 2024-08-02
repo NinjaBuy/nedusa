@@ -1,4 +1,4 @@
-import { AdminGetSalesChannelsParams } from "@ninjajs/ninja"
+import { AdminGetSalesChannelsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../use-query-params"
 
 type UseSalesChannelTableQueryProps = {

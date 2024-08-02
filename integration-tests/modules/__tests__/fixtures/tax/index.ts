@@ -1,4 +1,4 @@
-import { ITaxModuleService } from "@ninjajs/types"
+import { ITaxModuleService } from "@medusajs/types"
 
 export const setupTaxStructure = async (service: ITaxModuleService) => {
   // Setup for this specific test

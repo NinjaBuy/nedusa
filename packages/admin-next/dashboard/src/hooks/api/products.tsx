@@ -8,7 +8,7 @@ import {
 import { client } from "../../lib/client"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import { ProductDeleteRes, ProductRes } from "../../types/api-responses"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 
 const PRODUCTS_QUERY_KEY = "products" as const
 export const productsQueryKeys = queryKeysFactory(PRODUCTS_QUERY_KEY)

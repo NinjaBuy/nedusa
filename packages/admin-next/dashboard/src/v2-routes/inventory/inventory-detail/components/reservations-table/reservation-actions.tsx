@@ -1,8 +1,8 @@
-import { PencilSquare, Trash } from "@ninjajs/icons"
-import { toast, usePrompt } from "@ninjajs/ui"
+import { PencilSquare, Trash } from "@medusajs/icons"
+import { toast, usePrompt } from "@medusajs/ui"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { InventoryNext } from "@ninjajs/types"
+import { InventoryNext } from "@medusajs/types"
 import { useDeleteReservationItem } from "../../../../../hooks/api/reservations"
 import { useTranslation } from "react-i18next"
 

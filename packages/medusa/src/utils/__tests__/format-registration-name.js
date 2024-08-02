@@ -6,23 +6,23 @@ import {
 
 describe("formatRegistrationName", () => {
   const tests = [
-    [["ninja-test-dir", "dist", "services", "my-test.js"], "myTestService"],
-    [["ninja-test-dir", "dist", "services", "my.js"], "myService"],
+    [["medusa-test-dir", "dist", "services", "my-test.js"], "myTestService"],
+    [["medusa-test-dir", "dist", "services", "my.js"], "myService"],
     [["services", "my-quite-long-file.js"], "myQuiteLongFileService"],
     [
-      ["/", "Users", "seb", "com.ninja.js", "services", "dot.js"],
+      ["/", "Users", "seb", "com.medusa.js", "services", "dot.js"],
       "dotService",
     ],
     [
-      ["/", "Users", "seb.rin", "com.ninja.js", "services", "dot.js"],
+      ["/", "Users", "seb.rin", "com.medusa.js", "services", "dot.js"],
       "dotService",
     ],
     [
-      ["/", "Users", "seb.rin", "com.ninja.js", "repositories", "dot.js"],
+      ["/", "Users", "seb.rin", "com.medusa.js", "repositories", "dot.js"],
       "dotRepository",
     ],
     [
-      ["/", "Users", "seb.rin", "com.ninja.js", "models", "dot.js"],
+      ["/", "Users", "seb.rin", "com.medusa.js", "models", "dot.js"],
       "dotModel",
     ],
     [["C:", "server", "services", "dot.js"], "dotService"],
@@ -38,16 +38,16 @@ describe("formatRegistrationName", () => {
 
 describe("formatRegistrationNameWithoutNamespace", () => {
   const tests = [
-    [["ninja-test-dir", "dist", "services", "my-test.js"], "myTest"],
-    [["ninja-test-dir", "dist", "services", "my.js"], "my"],
+    [["medusa-test-dir", "dist", "services", "my-test.js"], "myTest"],
+    [["medusa-test-dir", "dist", "services", "my.js"], "my"],
     [["services", "my-quite-long-file.js"], "myQuiteLongFile"],
-    [["/", "Users", "seb", "com.ninja.js", "services", "dot.js"], "dot"],
-    [["/", "Users", "seb.rin", "com.ninja.js", "services", "dot.js"], "dot"],
+    [["/", "Users", "seb", "com.medusa.js", "services", "dot.js"], "dot"],
+    [["/", "Users", "seb.rin", "com.medusa.js", "services", "dot.js"], "dot"],
     [
-      ["/", "Users", "seb.rin", "com.ninja.js", "repositories", "dot.js"],
+      ["/", "Users", "seb.rin", "com.medusa.js", "repositories", "dot.js"],
       "dot",
     ],
-    [["/", "Users", "seb.rin", "com.ninja.js", "models", "dot.js"], "dot"],
+    [["/", "Users", "seb.rin", "com.medusa.js", "models", "dot.js"], "dot"],
     [["C:", "server", "services", "dot.js"], "dot"],
   ]
 

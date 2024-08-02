@@ -1,5 +1,5 @@
 const path = require("path")
-const { IdMap } = require("ninja-test-utils")
+const { IdMap } = require("medusa-test-utils")
 
 const startServerWithEnvironment =
   require("../../../../environment-helpers/start-server-with-environment").default
@@ -18,29 +18,29 @@ jest.setTimeout(30000)
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
-describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/order-edits", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/order-edits", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("Items totals", () => {

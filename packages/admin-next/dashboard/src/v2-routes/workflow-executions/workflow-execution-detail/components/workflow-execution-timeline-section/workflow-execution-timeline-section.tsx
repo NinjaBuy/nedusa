@@ -1,5 +1,5 @@
-import { ArrowPathMini, MinusMini, PlusMini } from "@ninjajs/icons"
-import { Container, DropdownMenu, Heading, Text, clx } from "@ninjajs/ui"
+import { ArrowPathMini, MinusMini, PlusMini } from "@medusajs/icons"
+import { Container, DropdownMenu, Heading, Text, clx } from "@medusajs/ui"
 import {
   motion,
   useAnimationControls,

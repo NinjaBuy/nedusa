@@ -1,4 +1,4 @@
-import { PluginDetails } from "@ninjajs/types"
+import { PluginDetails } from "@medusajs/types"
 import { glob } from "glob"
 import { getResolvedPlugins } from "./resolve-plugins"
 

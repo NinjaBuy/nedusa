@@ -13,7 +13,7 @@ import {
   Relation,
 } from "typeorm"
 
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 import { BaseEntity } from "../interfaces"
 import { featureFlagRouter } from "../loaders/feature-flags"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
@@ -132,7 +132,7 @@ export class LineItem extends BaseEntity {
   @JoinColumn({ name: "variant_id" })
   variant: Relation<ProductVariant>
 
-  @FeatureFlagColumn(NinjaV2Flag.key, { nullable: true, type: "text" })
+  @FeatureFlagColumn(MedusaV2Flag.key, { nullable: true, type: "text" })
   product_id: string | null
 
   @Column({ type: "int" })
@@ -171,7 +171,7 @@ export class LineItem extends BaseEntity {
     this.id = generateEntityId(this.id, "item")
 
     // This is to maintain compatibility while isolating the product domain
-    if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+    if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
       if (
         this.variant &&
         Object.keys(this.variant).length === 1 &&
@@ -185,7 +185,7 @@ export class LineItem extends BaseEntity {
   /**
    * @apiIgnore
    */
-  @FeatureFlagDecorators(NinjaV2Flag.key, [BeforeUpdate()])
+  @FeatureFlagDecorators(MedusaV2Flag.key, [BeforeUpdate()])
   beforeUpdate(): void {
     if (
       this.variant &&
@@ -199,7 +199,7 @@ export class LineItem extends BaseEntity {
   /**
    * @apiIgnore
    */
-  @FeatureFlagDecorators(NinjaV2Flag.key, [AfterLoad(), AfterUpdate()])
+  @FeatureFlagDecorators(MedusaV2Flag.key, [AfterLoad(), AfterUpdate()])
   afterUpdateOrLoad(): void {
     if (this.variant) {
       return
@@ -314,7 +314,7 @@ export class LineItem extends BaseEntity {
  *   title:
  *     description: The title of the Line Item.
  *     type: string
- *     example: Ninja Coffee Mug
+ *     example: Medusa Coffee Mug
  *   description:
  *     description: A more detailed description of the contents of the Line Item.
  *     nullable: true
@@ -325,7 +325,7 @@ export class LineItem extends BaseEntity {
  *     nullable: true
  *     type: string
  *     format: uri
- *     example: https://ninja-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png
+ *     example: https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png
  *   is_return:
  *     description: Is the item being returned
  *     type: boolean
@@ -436,5 +436,5 @@ export class LineItem extends BaseEntity {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */

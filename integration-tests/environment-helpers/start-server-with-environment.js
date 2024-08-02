@@ -24,7 +24,7 @@ const startServerWithEnvironment = async ({
     })
   }
 
-  const ninjaProcess = await setupServer({
+  const medusaProcess = await setupServer({
     cwd,
     verbose,
     redisUrl,
@@ -32,7 +32,7 @@ const startServerWithEnvironment = async ({
     env,
   })
 
-  return [ninjaProcess, dbConnection]
+  return [medusaProcess, dbConnection]
 }
 
 export default startServerWithEnvironment

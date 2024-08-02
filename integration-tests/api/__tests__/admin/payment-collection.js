@@ -14,12 +14,12 @@ jest.setTimeout(30000)
 
 const adminHeaders = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 describe("/admin/payment-collections", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   let payCol = null
@@ -29,14 +29,14 @@ describe("/admin/payment-collections", () => {
       cwd,
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/payment-collections/:id", () => {

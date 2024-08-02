@@ -3,7 +3,7 @@ import { AbstractCartCompletionStrategy } from "../../../../interfaces"
 import { IdempotencyKey } from "../../../../models"
 import { IdempotencyKeyService } from "../../../../services"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
-import { Logger } from "@ninjajs/types"
+import { Logger } from "@medusajs/types"
 
 /**
  * @oas [post] /store/carts/{id}/complete
@@ -18,7 +18,7 @@ import { Logger } from "@ninjajs/types"
  *   key in the `Idempotency-Key` header.
  * externalDocs:
  *   description: "Cart completion overview"
- *   url: "https://docs.ninjajs.com/modules/carts-and-checkout/cart#cart-completion"
+ *   url: "https://docs.medusajs.com/modules/carts-and-checkout/cart#cart-completion"
  * parameters:
  *   - (path) id=* {String} The Cart ID.
  * x-codegen:
@@ -27,17 +27,17 @@ import { Logger } from "@ninjajs/types"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.carts.complete(cartId)
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.carts.complete(cartId)
  *       .then(({ cart }) => {
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useCompleteCart } from "ninja-react"
+ *       import { useCompleteCart } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
-import { adminAuthKeys, useAdminCustomQuery } from "ninja-react"
-import { ninja } from "../ninja"
+import { adminAuthKeys, useAdminCustomQuery } from "medusa-react"
+import { medusa } from "../medusa"
 import { AcceptInviteInput, CreateAuthUserInput } from "./types/auth"
 
 export const useV2Session = (options: any = {}) => {
@@ -19,7 +19,7 @@ export const useV2Session = (options: any = {}) => {
 export const useV2LoginAndSetSession = () => {
   return useMutation(
     (payload: { email: string; password: string }) =>
-      ninja.client.request("POST", "/auth/admin/emailpass", {
+      medusa.client.request("POST", "/auth/admin/emailpass", {
         email: payload.email,
         password: payload.password,
       }),
@@ -29,7 +29,7 @@ export const useV2LoginAndSetSession = () => {
 
         // Convert the JWT to a session cookie
         //  TODO: Consider if the JWT is a good choice for session token
-        await ninja.client.request(
+        await medusa.client.request(
           "POST",
           "/auth/session",
           {},
@@ -46,13 +46,13 @@ export const useV2LoginAndSetSession = () => {
 export const useV2CreateAuthUser = (provider = "emailpass") => {
   // TODO: Migrate type to work for other providers, e.g. Google
   return useMutation((args: CreateAuthUserInput) =>
-    ninja.client.request("POST", `/auth/admin/${provider}`, args)
+    medusa.client.request("POST", `/auth/admin/${provider}`, args)
   )
 }
 
 export const useV2AcceptInvite = (inviteToken: string) => {
   return useMutation((input: AcceptInviteInput) =>
-    ninja.client.request(
+    medusa.client.request(
       "POST",
       `/admin/invites/accept?token=${inviteToken}`,
       input.payload,

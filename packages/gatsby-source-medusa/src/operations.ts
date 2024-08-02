@@ -1,12 +1,12 @@
 import { createClient } from "./client"
 
-export function createOperations(options: NinjaPluginOptions): IOperations {
+export function createOperations(options: MedusaPluginOptions): IOperations {
   const client = createClient(options)
 
   function createOperation(
     name: "products" | "collections" | "regions" | "orders",
     queryString?: string
-  ): INinjaOperation {
+  ): IMedusaOperation {
     return {
       execute: (): Promise<any[]> => client[name](queryString),
       name: name,

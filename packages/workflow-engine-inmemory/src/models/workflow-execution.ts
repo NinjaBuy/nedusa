@@ -1,5 +1,5 @@
-import { TransactionState } from "@ninjajs/orchestration"
-import { DALUtils, generateEntityId } from "@ninjajs/utils"
+import { TransactionState } from "@medusajs/orchestration"
+import { DALUtils, generateEntityId } from "@medusajs/utils"
 import {
   BeforeCreate,
   Entity,

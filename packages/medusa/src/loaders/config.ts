@@ -1,4 +1,4 @@
-import { getConfigFile, isDefined } from "ninja-core-utils"
+import { getConfigFile, isDefined } from "medusa-core-utils"
 import { ConfigModule } from "../types/global"
 import logger from "./logger"
 
@@ -21,7 +21,7 @@ export const handleConfigError = (error: Error): void => {
 export default (rootDirectory: string): ConfigModule => {
   const { configModule, error } = getConfigFile<ConfigModule>(
     rootDirectory,
-    `ninja-config`
+    `medusa-config`
   )
 
   if (error) {
@@ -30,7 +30,7 @@ export default (rootDirectory: string): ConfigModule => {
 
   if (!configModule?.projectConfig?.redis_url) {
     console.log(
-      `[ninja-config] ⚠️ redis_url not found. A fake redis instance will be used.`
+      `[medusa-config] ⚠️ redis_url not found. A fake redis instance will be used.`
     )
   }
 
@@ -38,7 +38,7 @@ export default (rootDirectory: string): ConfigModule => {
     configModule?.projectConfig?.jwt_secret ?? process.env.JWT_SECRET
   if (!jwt_secret) {
     errorHandler(
-      `[ninja-config] ⚠️ jwt_secret not found.${
+      `[medusa-config] ⚠️ jwt_secret not found.${
         isProduction
           ? ""
           : " fallback to either cookie_secret or default 'supersecret'."
@@ -50,7 +50,7 @@ export default (rootDirectory: string): ConfigModule => {
     configModule?.projectConfig?.cookie_secret ?? process.env.COOKIE_SECRET
   if (!cookie_secret) {
     errorHandler(
-      `[ninja-config] ⚠️ cookie_secret not found.${
+      `[medusa-config] ⚠️ cookie_secret not found.${
         isProduction
           ? ""
           : " fallback to either cookie_secret or default 'supersecret'."
@@ -60,7 +60,7 @@ export default (rootDirectory: string): ConfigModule => {
 
   let worker_mode = configModule?.projectConfig?.worker_mode
   if (!isDefined(worker_mode)) {
-    const env = process.env.NINJA_WORKER_MODE
+    const env = process.env.MEDUSA_WORKER_MODE
     if (isDefined(env)) {
       if (env === "shared" || env === "worker" || env === "server") {
         worker_mode = env

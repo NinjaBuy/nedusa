@@ -1,10 +1,10 @@
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
-  NinjaError,
+  MedusaError,
   isPresent,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { AdminPriceListRemoteQueryDTO } from "../types"
 import { buildPriceListResponse } from "./"
 
@@ -15,7 +15,7 @@ export async function getPriceList({
   apiFields,
 }: {
   id: string
-  container: NinjaContainer
+  container: MedusaContainer
   remoteQueryFields: string[]
   apiFields: string[]
 }): Promise<AdminPriceListRemoteQueryDTO> {
@@ -30,8 +30,8 @@ export async function getPriceList({
   const [sanitizedPriceList] = buildPriceListResponse(priceLists, apiFields)
 
   if (!isPresent(sanitizedPriceList)) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Price list with id: ${id} was not found`
     )
   }

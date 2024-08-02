@@ -1,14 +1,14 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
-import { deleteFilesWorkflow } from "@ninjajs/core-flows"
-import { ContainerRegistrationKeys, NinjaError } from "@ninjajs/utils"
-import { remoteQueryObjectFromString } from "@ninjajs/utils"
+import { deleteFilesWorkflow } from "@medusajs/core-flows"
+import { ContainerRegistrationKeys, MedusaError } from "@medusajs/utils"
+import { remoteQueryObjectFromString } from "@medusajs/utils"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const variables = { id: req.params.id }
@@ -21,8 +21,8 @@ export const GET = async (
 
   const [file] = await remoteQuery(queryObject)
   if (!file) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `File with id: ${req.params.id} not found`
     )
   }
@@ -31,8 +31,8 @@ export const GET = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
 

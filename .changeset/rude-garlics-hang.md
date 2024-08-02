@@ -1,10 +1,10 @@
 ---
-"@ninjajs/ninja": patch
-"@ninjajs/core-flows": patch
-"@ninjajs/link-modules": patch
-"ninja-test-utils": patch
-"@ninjajs/orchestration": patch
-"@ninjajs/types": patch
+"@medusajs/medusa": patch
+"@medusajs/core-flows": patch
+"@medusajs/link-modules": patch
+"medusa-test-utils": patch
+"@medusajs/orchestration": patch
+"@medusajs/types": patch
 ---
 
 feat: Create shipping options API

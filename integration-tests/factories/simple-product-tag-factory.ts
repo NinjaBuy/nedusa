@@ -1,4 +1,4 @@
-import { ProductTag } from "@ninjajs/ninja"
+import { ProductTag } from "@medusajs/medusa"
 import faker from "faker"
 import { Connection } from "typeorm"
 

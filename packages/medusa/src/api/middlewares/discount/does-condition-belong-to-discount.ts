@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { DiscountConditionService, DiscountService } from "../../../services"
 
 export async function doesConditionBelongToDiscount(req, res, next) {
@@ -19,8 +19,8 @@ export async function doesConditionBelongToDiscount(req, res, next) {
 
     if (condition.discount_rule_id !== discount.rule_id) {
       return next(
-        new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `Condition with id ${condition_id} does not belong to Discount with id ${discount_id}`
         )
       )

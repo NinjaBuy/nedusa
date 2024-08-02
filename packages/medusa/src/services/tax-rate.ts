@@ -1,5 +1,5 @@
-import { promiseAll } from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { promiseAll } from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager, ILike, In } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import {
@@ -95,8 +95,8 @@ class TaxRateService extends TransactionBaseService {
     config: FindConfig<TaxRate> = {}
   ): Promise<TaxRate> {
     if (!isDefined(taxRateId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"taxRateId" must be defined`
       )
     }
@@ -108,8 +108,8 @@ class TaxRateService extends TransactionBaseService {
 
     const taxRate = await taxRateRepo.findOneWithResolution(query)
     if (!taxRate) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `TaxRate with ${taxRateId} was not found`
       )
     }
@@ -122,8 +122,8 @@ class TaxRateService extends TransactionBaseService {
       const taxRateRepo = manager.withRepository(this.taxRateRepository_)
 
       if (typeof data.region_id === "undefined") {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "TaxRates must belong to a Region"
         )
       }
@@ -312,8 +312,8 @@ class TaxRateService extends TransactionBaseService {
         )
         for (const o of options) {
           if (o.region_id !== taxRate.region_id) {
-            throw new NinjaError(
-              NinjaError.Types.NOT_ALLOWED,
+            throw new MedusaError(
+              MedusaError.Types.NOT_ALLOWED,
               `Shipping Option and Tax Rate must belong to the same Region to be associated. Shipping Option with id: ${o.id} belongs to Region with id: ${o.region_id} and Tax Rate with id: ${taxRate.id} belongs to Region with id: ${taxRate.region_id}`
             )
           }

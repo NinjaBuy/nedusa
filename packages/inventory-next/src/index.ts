@@ -1,4 +1,4 @@
-import { Modules, initializeFactory } from "@ninjajs/modules-sdk"
+import { Modules, initializeFactory } from "@medusajs/modules-sdk"
 
 import { moduleDefinition } from "./module-definition"
 

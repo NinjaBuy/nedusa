@@ -1,6 +1,6 @@
-import { CreateProductVariants } from "@ninjajs/core-flows"
-import { IInventoryService, WorkflowTypes } from "@ninjajs/types"
-import { FlagRouter, NinjaV2Flag } from "@ninjajs/utils"
+import { CreateProductVariants } from "@medusajs/core-flows"
+import { IInventoryService, WorkflowTypes } from "@medusajs/types"
+import { FlagRouter, MedusaV2Flag } from "@medusajs/utils"
 import { Type } from "class-transformer"
 import {
   IsArray,
@@ -49,10 +49,10 @@ import { createVariantsTransaction } from "./transaction/create-product-variant"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.products.createVariant(productId, {
+ *       medusa.admin.products.createVariant(productId, {
  *         title: "Color",
  *         prices: [
  *           {
@@ -72,10 +72,10 @@ import { createVariantsTransaction } from "./transaction/create-product-variant"
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateVariant } from "ninja-react"
+ *       import { useAdminCreateVariant } from "medusa-react"
  *
  *       type CreateVariantData = {
  *         title: string
@@ -117,7 +117,7 @@ import { createVariantsTransaction } from "./transaction/create-product-variant"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/products/{id}/variants' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "title": "Color",
@@ -181,7 +181,7 @@ export default async (req, res) => {
   const pricingService: PricingService = req.scope.resolve("pricingService")
   let rawProduct
 
-  if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+  if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
     const createVariantsWorkflow = CreateProductVariants.createProductVariants(
       req.scope
     )
@@ -277,7 +277,7 @@ class ProductVariantOptionReq {
  *     description: Whether the product variant can be purchased when out of stock.
  *     type: boolean
  *   manage_inventory:
- *     description: Whether Ninja should keep track of the inventory of this product variant.
+ *     description: Whether Medusa should keep track of the inventory of this product variant.
  *     type: boolean
  *     default: true
  *   weight:
@@ -306,12 +306,12 @@ class ProductVariantOptionReq {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   prices:
  *     type: array
  *     description: An array of product variant prices. A product variant can have different prices for each region or currency code.
  *     externalDocs:
- *       url: https://docs.ninjajs.com/modules/products/admin/manage-products#product-variant-prices
+ *       url: https://docs.medusajs.com/modules/products/admin/manage-products#product-variant-prices
  *       description: Product variant pricing.
  *     items:
  *       type: object

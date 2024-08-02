@@ -1,7 +1,7 @@
-import { createPricingRuleTypesWorkflow } from "@ninjajs/core-flows"
+import { createPricingRuleTypesWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   AdminCreatePricingRuleTypeType,
@@ -10,12 +10,12 @@ import {
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { refetchRuleType } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetPricingRuleTypesParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetPricingRuleTypesParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const queryObject = remoteQueryObjectFromString({
@@ -38,8 +38,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreatePricingRuleTypeType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreatePricingRuleTypeType>,
+  res: MedusaResponse
 ) => {
   const workflow = createPricingRuleTypesWorkflow(req.scope)
   const ruleTypesData = [req.validatedBody]

@@ -4,7 +4,7 @@ const {
   Discount,
   Customer,
   CustomerGroup,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -20,7 +20,7 @@ jest.setTimeout(30000)
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -28,19 +28,19 @@ const validRegionId = "test-region"
 const invalidRegionId = "not-a-valid-region"
 
 describe("/admin/discounts", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/discounts/:id", () => {
@@ -666,7 +666,7 @@ describe("/admin/discounts", () => {
             },
             {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             }
           )
@@ -770,7 +770,7 @@ describe("/admin/discounts", () => {
             },
             {
               headers: {
-                "x-ninja-access-token": "test_token",
+                "x-medusa-access-token": "test_token",
               },
             }
           )
@@ -1381,7 +1381,7 @@ describe("/admin/discounts", () => {
 
       const resultingDiscount = await api.get(
         "/admin/discounts/test-discount",
-        { headers: { "x-ninja-access-token": "test_token" } }
+        { headers: { "x-medusa-access-token": "test_token" } }
       )
 
       expect(resultingDiscount.status).toEqual(200)

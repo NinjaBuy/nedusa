@@ -1,5 +1,5 @@
-import { IdMap } from "ninja-test-utils"
-import { NinjaError } from "ninja-core-utils"
+import { IdMap } from "medusa-test-utils"
+import { MedusaError } from "medusa-core-utils"
 
 export const LineItemServiceMock = {
   withTransaction: function () {
@@ -51,7 +51,7 @@ export const LineItemServiceMock = {
         variantId === IdMap.getId("fail") ||
         regionId === IdMap.getId("fail")
       ) {
-        throw new NinjaError(NinjaError.Types.INVALID_DATA, "Doesn't exist")
+        throw new MedusaError(MedusaError.Types.INVALID_DATA, "Doesn't exist")
       }
 
       return Promise.resolve({

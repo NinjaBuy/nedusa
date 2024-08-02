@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import { ProductCategory } from "@ninjajs/ninja"
+import { ProductCategory } from "@medusajs/medusa"
 
 export const simpleProductCategoryFactory = async (
   dataSource: DataSource,

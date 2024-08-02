@@ -1,13 +1,13 @@
 import {
   moduleLoader,
   ModulesDefinition,
-  registerNinjaModule,
-} from "@ninjajs/modules-sdk"
-import { ContainerRegistrationKeys } from "@ninjajs/utils"
+  registerMedusaModule,
+} from "@medusajs/modules-sdk"
+import { ContainerRegistrationKeys } from "@medusajs/utils"
 import { asValue, createContainer } from "awilix"
 import express from "express"
 import jwt from "jsonwebtoken"
-import { MockManager } from "ninja-test-utils"
+import { MockManager } from "medusa-test-utils"
 import querystring from "querystring"
 import supertest from "supertest"
 import apiLoader from "../../../../api"
@@ -38,7 +38,7 @@ export const createServer = async (rootDir) => {
 
   const moduleResolutions = {}
   Object.entries(ModulesDefinition).forEach(([moduleKey, module]) => {
-    moduleResolutions[moduleKey] = registerNinjaModule(
+    moduleResolutions[moduleKey] = registerMedusaModule(
       moduleKey,
       module.defaultModuleDeclaration,
       undefined,

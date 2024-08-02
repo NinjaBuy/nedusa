@@ -1,4 +1,4 @@
-import { Table } from "@ninjajs/ui"
+import { Table } from "@medusajs/ui"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 import { useTranslation } from "react-i18next"
 

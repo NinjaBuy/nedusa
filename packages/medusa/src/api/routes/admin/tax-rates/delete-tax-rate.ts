@@ -15,18 +15,18 @@ import { TaxRateService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.taxRates.delete(taxRateId)
+ *       medusa.admin.taxRates.delete(taxRateId)
  *       .then(({ id, object, deleted }) => {
  *         console.log(id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeleteTaxRate } from "ninja-react"
+ *       import { useAdminDeleteTaxRate } from "medusa-react"
  *
  *       type Props = {
  *         taxRateId: string
@@ -52,7 +52,7 @@ import { TaxRateService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/tax-rates/{id}' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

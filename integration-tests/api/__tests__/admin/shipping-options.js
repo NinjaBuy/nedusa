@@ -1,5 +1,5 @@
 const path = require("path")
-const { ShippingProfile } = require("@ninjajs/ninja")
+const { ShippingProfile } = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const startServerWithEnvironment =
@@ -15,26 +15,26 @@ const {
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 
 describe("/admin/shipping-options", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /admin/shipping-options/:id", () => {
@@ -466,25 +466,25 @@ describe("/admin/shipping-options", () => {
   })
 })
 
-describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/shipping-options", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/shipping-options", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /admin/shipping-options", () => {

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 import faker from "faker"
-import { CustomShippingOption } from "@ninjajs/ninja"
+import { CustomShippingOption } from "@medusajs/medusa"
 
 export type CustomShippingOptionFactoryData = {
   id?: string

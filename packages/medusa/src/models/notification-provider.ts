@@ -12,7 +12,7 @@ export class NotificationProvider {
 /**
  * @schema NotificationProvider
  * title: "Notification Provider"
- * description: "A notification provider represents a notification service installed in the Ninja backend, either through a plugin or backend customizations.
+ * description: "A notification provider represents a notification service installed in the Medusa backend, either through a plugin or backend customizations.
  *  It holds the notification service's installation status."
  * type: object
  * required:

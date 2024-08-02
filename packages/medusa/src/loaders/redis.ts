@@ -2,10 +2,10 @@ import { asValue } from "awilix"
 import Redis from "ioredis"
 import FakeRedis from "ioredis-mock"
 import { EOL } from "os"
-import { ConfigModule, Logger, NinjaContainer } from "../types/global"
+import { ConfigModule, Logger, MedusaContainer } from "../types/global"
 
 type Options = {
-  container: NinjaContainer
+  container: MedusaContainer
   configModule: ConfigModule
   logger: Logger
 }
@@ -38,7 +38,7 @@ async function redisLoader({
   } else {
     if (process.env.NODE_ENV === "production") {
       logger.warn(
-        `No Redis url was provided - using Ninja in production without a proper Redis instance is not recommended`
+        `No Redis url was provided - using Medusa in production without a proper Redis instance is not recommended`
       )
     }
 

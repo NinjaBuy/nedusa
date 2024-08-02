@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { Theme, ThemeContext } from "./theme-context";
 
-const THEME_KEY = "ninja_admin_theme";
+const THEME_KEY = "medusa_admin_theme";
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [state, setState] = useState<Theme>(

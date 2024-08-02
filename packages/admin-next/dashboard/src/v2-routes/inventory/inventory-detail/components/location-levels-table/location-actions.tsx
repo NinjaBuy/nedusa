@@ -1,9 +1,9 @@
-import { PencilSquare, Trash } from "@ninjajs/icons"
+import { PencilSquare, Trash } from "@medusajs/icons"
 
 import { ActionMenu } from "../../../../../components/common/action-menu"
-import { InventoryNext } from "@ninjajs/types"
+import { InventoryNext } from "@medusajs/types"
 import { useDeleteInventoryItemLevel } from "../../../../../hooks/api/inventory"
-import { usePrompt } from "@ninjajs/ui"
+import { usePrompt } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 
 export const LocationActions = ({

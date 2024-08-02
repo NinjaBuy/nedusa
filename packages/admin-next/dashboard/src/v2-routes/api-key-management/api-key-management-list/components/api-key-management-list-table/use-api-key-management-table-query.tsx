@@ -1,4 +1,4 @@
-import { GetPublishableApiKeysParams } from "@ninjajs/ninja"
+import { GetPublishableApiKeysParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 type UseApiKeyManagementTableQueryProps = {

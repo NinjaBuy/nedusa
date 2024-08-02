@@ -1,4 +1,4 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { asClass, asValue, createContainer } from "awilix"
 import { TaxCalculationContext } from "../../interfaces"
 import TaxInclusivePricingFeatureFlag from "../../loaders/feature-flags/tax-inclusive-pricing"
@@ -21,7 +21,7 @@ import { taxProviderServiceMock } from "../__mocks__/tax-provider"
 import { NewTotalsService } from "../index"
 
 describe("New totals service", () => {
-  describe("Without [NINJA_FF_TAX_INCLUSIVE_PRICING]", () => {
+  describe("Without [MEDUSA_FF_TAX_INCLUSIVE_PRICING]", () => {
     describe("getLineItemTotals", () => {
       let container
       let newTotalsService: NewTotalsService
@@ -661,7 +661,7 @@ describe("New totals service", () => {
     })
   })
 
-  describe("With [NINJA_FF_TAX_INCLUSIVE_PRICING]", () => {
+  describe("With [MEDUSA_FF_TAX_INCLUSIVE_PRICING]", () => {
     describe("getLineItemTotals", () => {
       let container
       let newTotalsService: NewTotalsService

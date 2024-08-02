@@ -1,14 +1,14 @@
-import { refundPaymentWorkflow } from "@ninjajs/core-flows"
+import { refundPaymentWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../types/routing"
 import { refetchPayment } from "../../helpers"
 import { AdminCreatePaymentRefundType } from "../../validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreatePaymentRefundType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreatePaymentRefundType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
   const { errors } = await refundPaymentWorkflow(req.scope).run({

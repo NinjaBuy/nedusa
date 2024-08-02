@@ -18,18 +18,18 @@ import { ProductService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.products.deleteOption(productId, optionId)
+ *       medusa.admin.products.deleteOption(productId, optionId)
  *       .then(({ option_id, object, deleted, product }) => {
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminDeleteProductOption } from "ninja-react"
+ *       import { useAdminDeleteProductOption } from "medusa-react"
  *
  *       type Props = {
  *         productId: string
@@ -61,7 +61,7 @@ import { ProductService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/products/{id}/options/{option_id}' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

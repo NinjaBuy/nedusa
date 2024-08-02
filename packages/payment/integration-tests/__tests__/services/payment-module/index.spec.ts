@@ -1,10 +1,10 @@
-import { Modules } from "@ninjajs/modules-sdk"
-import { IPaymentModuleService } from "@ninjajs/types"
+import { Modules } from "@medusajs/modules-sdk"
+import { IPaymentModuleService } from "@medusajs/types"
 
 import {
   moduleIntegrationTestRunner,
   SuiteOptions,
-} from "ninja-test-utils/dist"
+} from "medusa-test-utils/dist"
 import {
   createPaymentCollections,
   createPayments,

@@ -1,5 +1,5 @@
-import { EmitData, EventBusTypes, Logger, Message } from "@ninjajs/types"
-import { DatabaseErrorCode, EventBusUtils } from "@ninjajs/utils"
+import { EmitData, EventBusTypes, Logger, Message } from "@medusajs/types"
+import { DatabaseErrorCode, EventBusUtils } from "@medusajs/utils"
 import { EOL } from "os"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"

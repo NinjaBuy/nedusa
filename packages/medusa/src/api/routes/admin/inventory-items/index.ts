@@ -17,7 +17,7 @@ import {
   AdminPostInventoryItemsReq,
 } from "./create-inventory-item"
 import { DeleteResponse, PaginatedResponse } from "../../../../types/common"
-import { InventoryItemDTO, InventoryLevelDTO } from "@ninjajs/types"
+import { InventoryItemDTO, InventoryLevelDTO } from "@medusajs/types"
 import middlewares, {
   transformBody,
   transformQuery,

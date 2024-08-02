@@ -1,4 +1,4 @@
-import { AdminGetProductsVariantsParams } from "@ninjajs/ninja"
+import { AdminGetProductsVariantsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useProductVariantTableQuery = ({

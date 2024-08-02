@@ -1,5 +1,5 @@
 import { AwilixContainer } from "awilix"
-import { IPricingModuleService } from "@ninjajs/types"
+import { IPricingModuleService } from "@medusajs/types"
 
 export const createDefaultRuleTypes = async (container: AwilixContainer) => {
   const pricingModuleService: IPricingModuleService = container.resolve(

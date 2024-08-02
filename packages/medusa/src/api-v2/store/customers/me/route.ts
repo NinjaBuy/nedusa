@@ -1,13 +1,13 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.auth.actor_id
 

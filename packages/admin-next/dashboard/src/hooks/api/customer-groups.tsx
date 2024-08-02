@@ -10,10 +10,10 @@ import { queryKeysFactory } from "../../lib/query-key-factory"
 import {
   AdminCustomerGroupListResponse,
   AdminCustomerGroupResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import { z } from "zod"
 import { CreateCustomerGroupSchema } from "../../v2-routes/customer-groups/customer-group-create/components/create-customer-group-form"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { EditCustomerGroupSchema } from "../../v2-routes/customer-groups/customer-group-edit/components/edit-customer-group-form"
 import { customersQueryKeys } from "./customers"
 

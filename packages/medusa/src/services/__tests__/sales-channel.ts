@@ -1,9 +1,9 @@
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 import { EventBusService, StoreService } from "../index"
 import SalesChannelService from "../sales-channel"
 import { EventBusServiceMock } from "../__mocks__/event-bus"
 import { store, StoreServiceMock } from "../__mocks__/store"
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 
 describe("SalesChannelService", () => {
   const salesChannelData = {
@@ -81,7 +81,7 @@ describe("SalesChannelService", () => {
 
       expect(salesChannelRepositoryMock.save).toHaveBeenCalledTimes(1)
       expect(salesChannelRepositoryMock.save).toHaveBeenCalledWith({
-        description: "Created by Ninja",
+        description: "Created by Medusa",
         name: "Default Sales Channel",
         is_disabled: false,
       })

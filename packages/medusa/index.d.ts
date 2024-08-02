@@ -1,1 +1,1 @@
-declare module "ninja-interfaces"
+declare module "medusa-interfaces"

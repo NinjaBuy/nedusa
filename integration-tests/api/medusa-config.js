@@ -1,4 +1,4 @@
-const { Modules } = require("@ninjajs/modules-sdk")
+const { Modules } = require("@medusajs/modules-sdk")
 
 const DB_HOST = process.env.DB_HOST
 const DB_USERNAME = process.env.DB_USERNAME
@@ -10,7 +10,7 @@ const redisUrl = process.env.REDIS_URL
 const cacheTTL = process.env.CACHE_TTL ?? 15
 const enableResponseCompression =
   process.env.ENABLE_RESPONSE_COMPRESSION || true
-const enableNinjaV2 = process.env.NINJA_FF_NINJA_V2 == "true"
+const enableMedusaV2 = process.env.MEDUSA_FF_MEDUSA_V2 == "true"
 
 process.env.POSTGRES_URL = DB_URL
 process.env.LOG_LEVEL = "error"
@@ -28,21 +28,21 @@ module.exports = {
     },
   },
   featureFlags: {
-    ninja_v2: enableNinjaV2,
+    medusa_v2: enableMedusaV2,
   },
   modules: {
     cacheService: {
-      resolve: "@ninjajs/cache-inmemory",
+      resolve: "@medusajs/cache-inmemory",
       options: { ttl: cacheTTL },
     },
     workflows: true,
     // We don't want to load the modules if v2 is not enabled, as they run data operations and migrations on load.
-    ...(enableNinjaV2
+    ...(enableMedusaV2
       ? {
           [Modules.AUTH]: {
             scope: "internal",
             resources: "shared",
-            resolve: "@ninjajs/auth",
+            resolve: "@medusajs/auth",
             options: {
               providers: [
                 {
@@ -58,29 +58,29 @@ module.exports = {
           [Modules.USER]: {
             scope: "internal",
             resources: "shared",
-            resolve: "@ninjajs/user",
+            resolve: "@medusajs/user",
             options: {
               jwt_secret: "test",
             },
           },
           [Modules.CACHE]: {
-            resolve: "@ninjajs/cache-inmemory",
+            resolve: "@medusajs/cache-inmemory",
             options: { ttl: 0 }, // Cache disabled
           },
           [Modules.STOCK_LOCATION]: {
-            resolve: "@ninjajs/stock-location-next",
+            resolve: "@medusajs/stock-location-next",
             options: {},
           },
           [Modules.INVENTORY]: {
-            resolve: "@ninjajs/inventory-next",
+            resolve: "@medusajs/inventory-next",
             options: {},
           },
           [Modules.FILE]: {
-            resolve: "@ninjajs/file",
+            resolve: "@medusajs/file",
             options: {
               providers: [
                 {
-                  resolve: "@ninjajs/file-local-next",
+                  resolve: "@medusajs/file-local-next",
                   options: {
                     config: {
                       local: {},

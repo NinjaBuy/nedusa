@@ -7,7 +7,7 @@ import {
   RegionService,
 } from "../../../../services"
 
-import { NinjaError, NinjaV2Flag, promiseAll } from "@ninjajs/utils"
+import { MedusaError, MedusaV2Flag, promiseAll } from "@medusajs/utils"
 import { PriceSelectionParams } from "../../../../types/price-selection"
 import { cleanResponseData } from "../../../../utils"
 import { defaultStoreProductRemoteQueryObject } from "./index"
@@ -24,7 +24,7 @@ import { defaultStoreProductRemoteQueryObject } from "./index"
  *   You can alternatively use a publishable API key in the request header instead of passing a `sales_channel_id`.
  * externalDocs:
  *   description: "How to pass product pricing parameters"
- *   url: "https://docs.ninjajs.com/modules/products/storefront/show-products#product-pricing-parameters"
+ *   url: "https://docs.medusajs.com/modules/products/storefront/show-products#product-pricing-parameters"
  * parameters:
  *   - (path) id=* {string} The ID of the Product.
  *   - (query) sales_channel_id {string} The ID of the sales channel the customer is viewing the product from.
@@ -49,17 +49,17 @@ import { defaultStoreProductRemoteQueryObject } from "./index"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.products.retrieve(productId)
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.products.retrieve(productId)
  *       .then(({ product }) => {
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useProduct } from "ninja-react"
+ *       import { useProduct } from "medusa-react"
  *
  *       type Props = {
  *         productId: string
@@ -117,7 +117,7 @@ export default async (req, res) => {
   const featureFlagRouter = req.scope.resolve("featureFlagRouter")
 
   let rawProduct
-  if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+  if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
     rawProduct = await getProductWithIsolatedProductModule(req, id)
   } else {
     rawProduct = await productService.retrieve(id, req.retrieveConfig)
@@ -199,8 +199,8 @@ async function getProductWithIsolatedProductModule(req, id: string) {
   const [product] = await remoteQuery(query)
 
   if (!product) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Product with id: ${id} not found`
     )
   }

@@ -8,7 +8,7 @@ import {
 import { ProductCategory } from "../models/product-category"
 import { ExtendedFindConfig, QuerySelector } from "../types/common"
 import { dataSource } from "../loaders/database"
-import { objectToStringPath, promiseAll } from "@ninjajs/utils"
+import { objectToStringPath, promiseAll } from "@medusajs/utils"
 import { isEmpty } from "lodash"
 
 export const ProductCategoryRepository = dataSource

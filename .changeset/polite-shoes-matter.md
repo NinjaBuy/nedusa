@@ -1,6 +1,6 @@
 ---
-"@ninjajs/ninja": patch
-"ninja-test-utils": patch
+"@medusajs/medusa": patch
+"medusa-test-utils": patch
 ---
 
-chore(ninja-test-utils): create declaration file
+chore(medusa-test-utils): create declaration file

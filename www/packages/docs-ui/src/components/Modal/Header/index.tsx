@@ -2,7 +2,7 @@ import React from "react"
 import clsx from "clsx"
 import { useModal } from "@/providers"
 import { Button } from "@/components"
-import { XMark } from "@ninjajs/icons"
+import { XMark } from "@medusajs/icons"
 
 export type ModalHeaderProps = {
   title?: React.ReactNode
@@ -14,11 +14,11 @@ export const ModalHeader = ({ title }: ModalHeaderProps) => {
   return (
     <div
       className={clsx(
-        "border-ninja-border-base border-0 border-b border-solid py-docs_1.5 px-docs_2",
+        "border-medusa-border-base border-0 border-b border-solid py-docs_1.5 px-docs_2",
         "flex items-center justify-between"
       )}
     >
-      <span className={clsx("text-ninja-fg-base text-h2")}>{title}</span>
+      <span className={clsx("text-medusa-fg-base text-h2")}>{title}</span>
       <Button
         variant="clear"
         className="cursor-pointer"

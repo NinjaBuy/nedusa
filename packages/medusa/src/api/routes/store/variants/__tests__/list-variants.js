@@ -1,4 +1,4 @@
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 import { request } from "../../../../../helpers/test-request"
 
 describe("List variants", () => {

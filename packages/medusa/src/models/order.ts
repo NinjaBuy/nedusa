@@ -20,7 +20,7 @@ import {
   FeatureFlagDecorators,
 } from "../utils/feature-flag-decorators"
 
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 import { BaseEntity } from "../interfaces/models/base-entity"
 import { generateEntityId } from "../utils/generate-entity-id"
 import { manualAutoIncrement } from "../utils/manual-auto-increment"
@@ -329,7 +329,7 @@ export class Order extends BaseEntity {
   sales_channel: Relation<SalesChannel>
 
   @FeatureFlagDecorators(
-    [NinjaV2Flag.key, "sales_channels"],
+    [MedusaV2Flag.key, "sales_channels"],
     [
       ManyToMany(() => SalesChannel, { cascade: ["remove", "soft-remove"] }),
       JoinTable({
@@ -650,7 +650,7 @@ export class Order extends BaseEntity {
  *     nullable: true
  *     type: string
  *     externalDocs:
- *       url: https://docs.ninjajs.com/development/idempotency-key/overview.md
+ *       url: https://docs.medusajs.com/development/idempotency-key/overview.md
  *       description: Learn more how to use the idempotency key.
  *   external_id:
  *     description: The ID of an external order.
@@ -742,13 +742,13 @@ export class Order extends BaseEntity {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   sales_channels:
  *     description: The associated sales channels.
  *     type: array
  *     nullable: true
  *     x-expandable: "sales_channels"
- *     x-featureFlag: "ninja_v2"
+ *     x-featureFlag: "medusa_v2"
  *     items:
  *       $ref: "#/components/schemas/SalesChannel"
  */

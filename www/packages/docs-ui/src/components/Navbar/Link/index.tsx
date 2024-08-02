@@ -22,10 +22,10 @@ export const NavbarLink = ({
     <Link
       href={href}
       className={clsx(
-        isActive && "!text-ninja-fg-base",
-        !isActive && "!text-ninja-fg-subtle",
+        isActive && "!text-medusa-fg-base",
+        !isActive && "!text-medusa-fg-subtle",
         "text-compact-small-plus inline-block",
-        "hover:!text-ninja-fg-base",
+        "hover:!text-medusa-fg-base",
         className
       )}
     >

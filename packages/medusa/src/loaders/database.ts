@@ -1,4 +1,4 @@
-import { handlePostgresDatabaseError } from "@ninjajs/utils"
+import { handlePostgresDatabaseError } from "@medusajs/utils"
 import { AwilixContainer } from "awilix"
 import {
   DataSource,
@@ -21,8 +21,8 @@ type Options = {
 export let dataSource: DataSource
 
 // TODO: With the latest version of typeorm, the datasource is expected to be
-// available globally. During the integration test, the ninja
-// files are imported from @ninjajs/ninja, therefore, the repositories are
+// available globally. During the integration test, the medusa
+// files are imported from @medusajs/medusa, therefore, the repositories are
 // evaluated at the same time, unfortunately, the integration tests have their
 // own way to load and at the moment, the datasource does not exists. This is
 // why we are mocking them here

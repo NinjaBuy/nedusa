@@ -1,4 +1,4 @@
-import { Checkbox } from "@ninjajs/ui"
+import { Checkbox } from "@medusajs/ui"
 import { keepPreviousData } from "@tanstack/react-query"
 import {
   OnChangeFn,

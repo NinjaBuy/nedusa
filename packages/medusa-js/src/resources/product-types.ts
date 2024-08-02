@@ -1,14 +1,14 @@
 import {
   StoreGetProductTypesParams,
   StoreProductTypesListRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Product Type API Routes](https://docs.ninjajs.com/api/store#product-types). All its method
- * are available in the JS Client under the `ninja.productTypes` property.
+ * This class is used to send requests to [Store Product Type API Routes](https://docs.medusajs.com/api/store#product-types). All its method
+ * are available in the JS Client under the `medusa.productTypes` property.
  * 
  * Product types are string values that can be used to filter products by.
  * Products can have more than one tag, and products can share types.
@@ -24,10 +24,10 @@ class ProductTypesResource extends BaseResource {
    * To list product types:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.productTypes.list()
+   * medusa.productTypes.list()
    * .then(({ product_types }) => {
    *   console.log(product_types.length);
    * })
@@ -36,10 +36,10 @@ class ProductTypesResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.productTypes.list({
+   * medusa.productTypes.list({
    *   limit,
    *   offset
    * })

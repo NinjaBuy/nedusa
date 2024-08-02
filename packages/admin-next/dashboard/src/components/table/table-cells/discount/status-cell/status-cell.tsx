@@ -1,4 +1,4 @@
-import { Discount } from "@ninjajs/ninja"
+import { Discount } from "@medusajs/medusa"
 
 import { StatusCell as StatusCell_ } from "../../common/status-cell"
 

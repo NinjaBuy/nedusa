@@ -1,4 +1,4 @@
-import { AdminGetDiscountsParams } from "@ninjajs/ninja"
+import { AdminGetDiscountsParams } from "@medusajs/medusa"
 
 import { useQueryParams } from "../../use-query-params"
 

@@ -1,5 +1,5 @@
 const path = require("path")
-const { Note } = require("@ninjajs/ninja")
+const { Note } = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -18,19 +18,19 @@ const note = {
 }
 
 describe("/admin/notes", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/notes/:id", () => {
@@ -52,7 +52,7 @@ describe("/admin/notes", () => {
 
       const response = await api.get("/admin/notes/note1", {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       })
 
@@ -91,7 +91,7 @@ describe("/admin/notes", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -136,7 +136,7 @@ describe("/admin/notes", () => {
       const response = await api
         .get("/admin/notes?resource_id=resource1", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -169,7 +169,7 @@ describe("/admin/notes", () => {
       const response = await api
         .get("/admin/notes?limit=2", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -204,7 +204,7 @@ describe("/admin/notes", () => {
           { value: "new text" },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -215,7 +215,7 @@ describe("/admin/notes", () => {
       const response = await api
         .get("/admin/notes/note1", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -246,7 +246,7 @@ describe("/admin/notes", () => {
       await api
         .delete("/admin/notes/note1", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -257,7 +257,7 @@ describe("/admin/notes", () => {
       await api
         .get("/admin/notes/note1", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => (error = err))

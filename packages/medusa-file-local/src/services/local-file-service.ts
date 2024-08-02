@@ -1,9 +1,9 @@
-import { AbstractFileService, IFileService } from "@ninjajs/ninja"
+import { AbstractFileService, IFileService } from "@medusajs/medusa"
 import {
   FileServiceGetUploadStreamResult,
   FileServiceUploadResult,
   UploadStreamDescriptorType,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 
 import fs from "fs"
 import path from "path"

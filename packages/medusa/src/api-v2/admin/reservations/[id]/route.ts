@@ -1,19 +1,19 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   AdminGetReservationParamsType,
   AdminUpdateReservationType,
 } from "../validators"
-import { NinjaError } from "@ninjajs/utils"
-import { deleteReservationsWorkflow } from "@ninjajs/core-flows"
-import { updateReservationsWorkflow } from "@ninjajs/core-flows"
+import { MedusaError } from "@medusajs/utils"
+import { deleteReservationsWorkflow } from "@medusajs/core-flows"
+import { updateReservationsWorkflow } from "@medusajs/core-flows"
 import { refetchReservation } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetReservationParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetReservationParamsType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
 
@@ -24,8 +24,8 @@ export const GET = async (
   )
 
   if (!reservation) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Reservation with id: ${id} was not found`
     )
   }
@@ -34,8 +34,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateReservationType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateReservationType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
   const { errors } = await updateReservationsWorkflow(req.scope).run({
@@ -58,8 +58,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
 

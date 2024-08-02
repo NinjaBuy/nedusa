@@ -28,9 +28,9 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.carts.updatePaymentSession(cartId, "manual", {
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.carts.updatePaymentSession(cartId, "manual", {
  *         data: {
  *
  *         }
@@ -39,10 +39,10 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useUpdatePaymentSession } from "ninja-react"
+ *       import { useUpdatePaymentSession } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string

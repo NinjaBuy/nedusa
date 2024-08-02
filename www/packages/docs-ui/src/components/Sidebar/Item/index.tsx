@@ -55,16 +55,16 @@ export const SidebarItem = ({
       clsx(
         "flex items-center justify-between gap-docs_0.5 rounded-docs_sm px-docs_0.5 py-[6px] hover:no-underline",
         "border",
-        !canHaveTitleStyling && "text-compact-small-plus text-ninja-fg-subtle",
+        !canHaveTitleStyling && "text-compact-small-plus text-medusa-fg-subtle",
         canHaveTitleStyling &&
-          "text-compact-x-small-plus text-ninja-fg-muted uppercase",
+          "text-compact-x-small-plus text-medusa-fg-muted uppercase",
         item.path !== undefined &&
-          active && ["!text-ninja-fg-base bg-ninja-bg-base-pressed"],
+          active && ["!text-medusa-fg-base bg-medusa-bg-base-pressed"],
         (item.path === undefined || !active) && "border-transparent",
-        item.path !== undefined && active && " border-ninja-border-base",
+        item.path !== undefined && active && " border-medusa-border-base",
         item.path !== undefined &&
           !active &&
-          "hover:bg-ninja-bg-base-hover border-transparent"
+          "hover:bg-medusa-bg-base-hover border-transparent"
       ),
     [canHaveTitleStyling, active, item.path]
   )

@@ -1,5 +1,5 @@
 {
-  "name": "@ninjajs/admin-shared",
+  "name": "@medusajs/admin-shared",
   "version": "0.0.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",

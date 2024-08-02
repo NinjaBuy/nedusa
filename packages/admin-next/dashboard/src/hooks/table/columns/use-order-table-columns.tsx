@@ -1,4 +1,4 @@
-import { Order } from "@ninjajs/ninja"
+import { Order } from "@medusajs/medusa"
 import {
   ColumnDef,
   ColumnDefBase,

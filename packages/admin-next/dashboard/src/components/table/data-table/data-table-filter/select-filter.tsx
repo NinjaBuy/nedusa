@@ -1,5 +1,5 @@
-import { CheckMini, EllipseMiniSolid, XMarkMini } from "@ninjajs/icons"
-import { Text, clx } from "@ninjajs/ui"
+import { CheckMini, EllipseMiniSolid, XMarkMini } from "@medusajs/icons"
+import { Text, clx } from "@medusajs/ui"
 import * as Popover from "@radix-ui/react-popover"
 import { Command } from "cmdk"
 import { MouseEvent, useState } from "react"

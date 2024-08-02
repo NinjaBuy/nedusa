@@ -3,21 +3,21 @@ import {
   StorePostAuthReq,
   StoreAuthRes,
   StoreBearerAuthRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../typings"
 import JwtTokenManager from "../jwt-token-manager"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Auth API Routes](https://docs.ninjajs.com/api/store#auth). All its method
- * are available in the JS Client under the `ninja.auth` property.
+ * This class is used to send requests to [Store Auth API Routes](https://docs.medusajs.com/api/store#auth). All its method
+ * are available in the JS Client under the `medusa.auth` property.
  * 
  * The methods in this class allows you to manage a customer's session, such as login or log out.
  * You can send authenticated requests for a customer either using the Cookie header or using the JWT Token.
  * When you log the customer in using the {@link authenticate} method, the JS client will automatically attach the
  * cookie header in all subsequent requests.
  * 
- * Related Guide: [How to implement customer profiles in your storefront](https://docs.ninjajs.com/modules/customers/storefront/implement-customer-profiles).
+ * Related Guide: [How to implement customer profiles in your storefront](https://docs.medusajs.com/modules/customers/storefront/implement-customer-profiles).
  */
 class AuthResource extends BaseResource {
   /**
@@ -27,9 +27,9 @@ class AuthResource extends BaseResource {
    * @returns {ResponsePromise<StoreAuthRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.auth.authenticate({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.auth.authenticate({
    *   email: "user@example.com",
    *   password: "user@example.com"
    * })
@@ -48,9 +48,9 @@ class AuthResource extends BaseResource {
    * @returns {ResponsePromise<void>} Resolves when customer is logged out successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.auth.deleteSession()
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.auth.deleteSession()
    * .then(() => {
    *   // customer logged out successfully
    * })
@@ -67,10 +67,10 @@ class AuthResource extends BaseResource {
    * @returns {ResponsePromise<StoreAuthRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.auth.getSession()
+   * medusa.auth.getSession()
    * .then(({ customer }) => {
    *   console.log(customer.id);
    * })
@@ -87,9 +87,9 @@ class AuthResource extends BaseResource {
    * @returns {ResponsePromise<StoreGetAuthEmailRes>} Resolves to the result of the check.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.auth.exists("user@example.com")
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.auth.exists("user@example.com")
    */
   exists(email: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreGetAuthEmailRes> {
     const path = `/store/auth/${email}`
@@ -103,9 +103,9 @@ class AuthResource extends BaseResource {
    * @returns {ResponsePromise<StoreBearerAuthRes>} Resolves to the access token of the customer, if they're authenticated successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.auth.getToken({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.auth.getToken({
    *   email: 'user@example.com',
    *   password: 'supersecret'
    * })

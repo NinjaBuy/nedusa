@@ -46,8 +46,8 @@ export const useRequestRunner = ({
         pushLog(
           `An error ocurred: ${JSON.stringify(error, undefined, 2)}`,
           `\nThis could be a CORS error. You can resolve it by adding\nthe docs' URLto your CORS configurations:\n`,
-          `STORE_CORS=http://localhost:8000,https://docs.ninjajs.com`,
-          `ADMIN_CORS=http://localhost:7001,https://docs.ninjajs.com`
+          `STORE_CORS=http://localhost:8000,https://docs.medusajs.com`,
+          `ADMIN_CORS=http://localhost:7001,https://docs.medusajs.com`
         )
       })
       .finally(() => onFinish(`Finished running request.`))

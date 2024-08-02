@@ -1,5 +1,5 @@
-import { CurrencyDTO } from "@ninjajs/types"
-import { adminCurrenciesKeys, useAdminCustomQuery } from "ninja-react"
+import { CurrencyDTO } from "@medusajs/types"
+import { adminCurrenciesKeys, useAdminCustomQuery } from "medusa-react"
 import { V2ListRes } from "./types/common"
 
 // TODO: Add types once we export V2 API types

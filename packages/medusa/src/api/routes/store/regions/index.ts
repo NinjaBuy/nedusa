@@ -1,5 +1,5 @@
-import { PaginatedResponse } from "@ninjajs/types"
-import { TaxInclusivePricingFeatureFlag, wrapHandler } from "@ninjajs/utils"
+import { PaginatedResponse } from "@medusajs/types"
+import { TaxInclusivePricingFeatureFlag, wrapHandler } from "@medusajs/utils"
 import { Router } from "express"
 import { transformQuery } from "../../../middlewares"
 import { Region } from "./../../../../"

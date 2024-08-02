@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { transformQuery } from "../transform-query"
 import { extendedFindParamsMixin } from "../../../types/common"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 
 describe("transformQuery", () => {
   afterEach(() => {
@@ -479,8 +479,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [test_prop] are not valid`
       )
     )
@@ -534,8 +534,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [product] are not valid`
       )
     )
@@ -580,8 +580,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [store] are not valid`
       )
     )
@@ -623,8 +623,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [product] are not valid`
       )
     )
@@ -667,8 +667,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [product.variants] are not valid`
       )
     )
@@ -710,8 +710,8 @@ describe("transformQuery", () => {
     await middleware(mockRequest, mockResponse, nextFunction)
 
     expect(nextFunction).toHaveBeenCalledWith(
-      new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [product] are not valid`
       )
     )

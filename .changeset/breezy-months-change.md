@@ -1,5 +1,5 @@
 ---
-"@ninjajs/ninja": patch
+"@medusajs/medusa": patch
 ---
 
-fix(ninja): Fix get-query-config backward compatiblity
+fix(medusa): Fix get-query-config backward compatiblity

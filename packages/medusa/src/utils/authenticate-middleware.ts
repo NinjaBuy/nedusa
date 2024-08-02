@@ -1,12 +1,12 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { ApiKeyDTO, AuthUserDTO, IApiKeyModuleService } from "@ninjajs/types"
-import { stringEqualsOrRegexMatch } from "@ninjajs/utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ApiKeyDTO, AuthUserDTO, IApiKeyModuleService } from "@medusajs/types"
+import { stringEqualsOrRegexMatch } from "@medusajs/utils"
 import { NextFunction, RequestHandler } from "express"
 import jwt, { JwtPayload } from "jsonwebtoken"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaRequest,
+  MedusaResponse,
 } from "../types/routing"
 
 const SESSION_AUTH = "session"
@@ -15,7 +15,7 @@ const API_KEY_AUTH = "api-key"
 
 type AuthType = typeof SESSION_AUTH | typeof BEARER_AUTH | typeof API_KEY_AUTH
 
-type NinjaSession = {
+type MedusaSession = {
   auth_user: AuthUserDTO
   scope: string
 }
@@ -26,8 +26,8 @@ export const authenticate = (
   options: { allowUnauthenticated?: boolean; allowUnregistered?: boolean } = {}
 ): RequestHandler => {
   return async (
-    req: NinjaRequest,
-    res: NinjaResponse,
+    req: MedusaRequest,
+    res: MedusaResponse,
     next: NextFunction
   ): Promise<void> => {
     const authTypes = Array.isArray(authType) ? authType : [authType]
@@ -36,7 +36,7 @@ export const authenticate = (
     if (authTypes.includes(API_KEY_AUTH) && isAdminScope(authScope)) {
       const apiKey = await getApiKeyInfo(req)
       if (apiKey) {
-        ;(req as AuthenticatedNinjaRequest).auth = {
+        ;(req as AuthenticatedMedusaRequest).auth = {
           actor_id: apiKey.id,
           auth_user_id: "",
           app_metadata: {},
@@ -64,10 +64,10 @@ export const authenticate = (
       )
     }
 
-    const isNinjaScope = isAdminScope(authScope) || isStoreScope(authScope)
+    const isMedusaScope = isAdminScope(authScope) || isStoreScope(authScope)
 
     const isRegistered =
-      !isNinjaScope ||
+      !isMedusaScope ||
       (authUser?.app_metadata?.user_id &&
         stringEqualsOrRegexMatch(authScope, "admin")) ||
       (authUser?.app_metadata?.customer_id &&
@@ -77,8 +77,8 @@ export const authenticate = (
       authUser &&
       (isRegistered || (!isRegistered && options.allowUnregistered))
     ) {
-      ;(req as AuthenticatedNinjaRequest).auth = {
-        actor_id: getActorId(authUser, authScope) as string, // TODO: fix types for auth_users not in the ninja system
+      ;(req as AuthenticatedMedusaRequest).auth = {
+        actor_id: getActorId(authUser, authScope) as string, // TODO: fix types for auth_users not in the medusa system
         auth_user_id: authUser.id,
         app_metadata: authUser.app_metadata,
         scope: authUser.scope,
@@ -95,7 +95,7 @@ export const authenticate = (
   }
 }
 
-const getApiKeyInfo = async (req: NinjaRequest): Promise<ApiKeyDTO | null> => {
+const getApiKeyInfo = async (req: MedusaRequest): Promise<ApiKeyDTO | null> => {
   const authHeader = req.headers.authorization
   if (!authHeader) {
     return null
@@ -139,7 +139,7 @@ const getApiKeyInfo = async (req: NinjaRequest): Promise<ApiKeyDTO | null> => {
 }
 
 const getAuthUserFromSession = (
-  session: Partial<NinjaSession> = {},
+  session: Partial<MedusaSession> = {},
   authTypes: AuthType[],
   authScope: string | RegExp
 ): AuthUserDTO | null => {

@@ -1,4 +1,4 @@
-import { AdminGetProductTypesParams } from "@ninjajs/ninja"
+import { AdminGetProductTypesParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useProductTypeConditionsTableQuery = ({

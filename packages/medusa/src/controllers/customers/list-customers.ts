@@ -1,5 +1,5 @@
 import { omit, pickBy } from "lodash"
-import { isDefined } from "ninja-core-utils"
+import { isDefined } from "medusa-core-utils"
 import { AdminCustomersListRes } from "../../api"
 import { AdminGetCustomersParams } from "../../api/routes/admin/customers"
 import { Customer } from "../../models/customer"

@@ -5,8 +5,8 @@ import {
   useRef,
 } from "react"
 
-import { TrianglesMini } from "@ninjajs/icons"
-import { clx } from "@ninjajs/ui"
+import { TrianglesMini } from "@medusajs/icons"
+import { clx } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { countries } from "../../../lib/countries"
 

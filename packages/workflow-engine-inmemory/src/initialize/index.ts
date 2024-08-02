@@ -2,11 +2,11 @@ import {
   ExternalModuleDeclaration,
   InternalModuleDeclaration,
   MODULE_PACKAGE_NAMES,
-  NinjaModule,
+  MedusaModule,
   Modules,
-} from "@ninjajs/modules-sdk"
-import { ModulesSdkTypes } from "@ninjajs/types"
-import { IWorkflowEngineService } from "@ninjajs/workflows-sdk"
+} from "@medusajs/modules-sdk"
+import { ModulesSdkTypes } from "@medusajs/types"
+import { IWorkflowEngineService } from "@medusajs/workflows-sdk"
 import { moduleDefinition } from "../module-definition"
 import { InitializeModuleInjectableDependencies } from "../types"
 
@@ -20,7 +20,7 @@ export const initialize = async (
 ): Promise<IWorkflowEngineService> => {
   const loaded =
     // eslint-disable-next-line max-len
-    await NinjaModule.bootstrap<IWorkflowEngineService>({
+    await MedusaModule.bootstrap<IWorkflowEngineService>({
       moduleKey: Modules.WORKFLOW_ENGINE,
       defaultPath: MODULE_PACKAGE_NAMES[Modules.WORKFLOW_ENGINE],
       declaration: options as

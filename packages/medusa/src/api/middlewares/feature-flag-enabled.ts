@@ -1,4 +1,4 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { NextFunction, Request, Response } from "express"
 
 export function isFeatureFlagEnabled(

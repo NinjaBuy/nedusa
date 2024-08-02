@@ -1,10 +1,10 @@
-import { initialize, runMigrations } from "@ninjajs/link-modules"
-import { NinjaModule, ModuleJoinerConfig } from "@ninjajs/modules-sdk"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils/dist"
+import { initialize, runMigrations } from "@medusajs/link-modules"
+import { MedusaModule, ModuleJoinerConfig } from "@medusajs/modules-sdk"
+import { medusaIntegrationTestRunner } from "medusa-test-utils/dist"
 
 jest.setTimeout(5000000)
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   force_modules_migration: true,
   testSuite: ({ dbConnection, getContainer }) => {
     let DB_URL
@@ -55,7 +55,7 @@ ninjaIntegrationTestRunner({
         },
       }
 
-      jest.spyOn(NinjaModule, "getLoadedModules").mockImplementation((() => {
+      jest.spyOn(MedusaModule, "getLoadedModules").mockImplementation((() => {
         return [
           {
             moduleA: {

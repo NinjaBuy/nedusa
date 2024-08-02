@@ -1,5 +1,5 @@
 ---
-"@ninjajs/ninja": patch
+"@medusajs/medusa": patch
 ---
 
-feat(ninja): migrate store cart endpoints to zod
+feat(medusa): migrate store cart endpoints to zod

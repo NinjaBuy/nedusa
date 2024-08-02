@@ -1,5 +1,5 @@
-import { FlagRouter } from "@ninjajs/utils"
-import { NinjaError } from "ninja-core-utils"
+import { FlagRouter } from "@medusajs/utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager, FindOptionsWhere, ILike } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
@@ -55,8 +55,8 @@ export default class CurrencyService extends TransactionBaseService {
     })
 
     if (!currency) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Currency with code: ${code} was not found`
       )
     }

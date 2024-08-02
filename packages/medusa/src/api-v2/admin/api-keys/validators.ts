@@ -4,7 +4,7 @@ import {
   createOperatorMap,
   createSelectParams,
 } from "../../utils/validators"
-import { ApiKeyType } from "@ninjajs/utils"
+import { ApiKeyType } from "@medusajs/utils"
 
 export const AdminGetApiKeyParams = createSelectParams()
 

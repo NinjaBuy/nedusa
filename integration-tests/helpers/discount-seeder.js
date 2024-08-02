@@ -3,7 +3,7 @@ const {
   Region,
   Discount,
   DiscountRule,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 module.exports = async (dataSource, data = {}) => {
   const manager = dataSource.manager
 

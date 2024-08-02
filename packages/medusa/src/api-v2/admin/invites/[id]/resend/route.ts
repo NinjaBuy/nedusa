@@ -1,9 +1,9 @@
-import { NinjaRequest, NinjaResponse } from "../../../../../types/routing"
+import { MedusaRequest, MedusaResponse } from "../../../../../types/routing"
 
-import { refreshInviteTokensWorkflow } from "@ninjajs/core-flows"
+import { refreshInviteTokensWorkflow } from "@medusajs/core-flows"
 import { refetchInvite } from "../../helpers"
 
-export const POST = async (req: NinjaRequest, res: NinjaResponse) => {
+export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
   const workflow = refreshInviteTokensWorkflow(req.scope)
 
   const input = {

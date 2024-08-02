@@ -1,4 +1,4 @@
-import { IPricingModuleService } from "@ninjajs/types"
+import { IPricingModuleService } from "@medusajs/types"
 
 export const createDefaultRuleTypes = async (container) => {
   const pricingModuleService: IPricingModuleService = container.resolve(

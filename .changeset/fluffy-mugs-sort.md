@@ -1,7 +1,7 @@
 ---
-"@ninjajs/pricing": minor
-"@ninjajs/types": minor
-"@ninjajs/core-flows": patch
+"@medusajs/pricing": minor
+"@medusajs/types": minor
+"@medusajs/core-flows": patch
 ---
 
 Aligned pricing module price set API with convention

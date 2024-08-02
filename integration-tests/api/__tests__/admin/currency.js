@@ -8,26 +8,26 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 describe("/admin/currencies", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/currencies", function () {
@@ -84,25 +84,25 @@ describe("/admin/currencies", () => {
     })
   })
 })
-describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/currencies", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/currencies", function () {

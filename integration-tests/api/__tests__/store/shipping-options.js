@@ -4,7 +4,7 @@ const {
   ShippingProfile,
   ShippingOption,
   ShippingProfileType,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -24,7 +24,7 @@ const {
 jest.setTimeout(30000)
 
 describe("/store/shipping-options", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   describe("tax exclusive", () => {
@@ -32,16 +32,16 @@ describe("/store/shipping-options", () => {
       const cwd = path.resolve(path.join(__dirname, "..", ".."))
       const [process, conn] = await startServerWithEnvironment({
         cwd,
-        env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+        env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
       })
-      ninjaProcess = process
+      medusaProcess = process
       dbConnection = conn
     })
 
     afterAll(async () => {
       const db = useDb()
       await db.shutdown()
-      ninjaProcess.kill()
+      medusaProcess.kill()
     })
 
     describe("POST /store/shipping-options", () => {
@@ -211,16 +211,16 @@ describe("/store/shipping-options", () => {
       const cwd = path.resolve(path.join(__dirname, "..", ".."))
       const [process, conn] = await startServerWithEnvironment({
         cwd,
-        env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+        env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
       })
-      ninjaProcess = process
+      medusaProcess = process
       dbConnection = conn
     })
 
     afterAll(async () => {
       const db = useDb()
       await db.shutdown()
-      ninjaProcess.kill()
+      medusaProcess.kill()
     })
 
     beforeEach(async () => {

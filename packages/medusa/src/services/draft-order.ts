@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import {
   EntityManager,
   FindOptionsWhere,
@@ -29,7 +29,7 @@ import EventBusService from "./event-bus"
 import LineItemService from "./line-item"
 import ProductVariantService from "./product-variant"
 import ShippingOptionService from "./shipping-option"
-import { isDefined, promiseAll } from "@ninjajs/utils"
+import { isDefined, promiseAll } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -100,8 +100,8 @@ class DraftOrderService extends TransactionBaseService {
     config: FindConfig<DraftOrder> = {}
   ): Promise<DraftOrder | never> {
     if (!isDefined(draftOrderId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"draftOrderId" must be defined`
       )
     }
@@ -113,8 +113,8 @@ class DraftOrderService extends TransactionBaseService {
     const query = buildQuery({ id: draftOrderId }, config)
     const draftOrder = await draftOrderRepo.findOne(query)
     if (!draftOrder) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Draft order with ${draftOrderId} was not found`
       )
     }
@@ -139,8 +139,8 @@ class DraftOrderService extends TransactionBaseService {
     const query = buildQuery({ cart_id: cartId }, config)
     const draftOrder = await draftOrderRepo.findOne(query)
     if (!draftOrder) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Draft order was not found`
       )
     }
@@ -265,8 +265,8 @@ class DraftOrderService extends TransactionBaseService {
         )
 
         if (!data.region_id) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `region_id is required to create a draft order`
           )
         }
@@ -458,8 +458,8 @@ class DraftOrderService extends TransactionBaseService {
         const draftOrder = await this.retrieve(id)
 
         if (draftOrder.status === DraftOrderStatus.COMPLETED) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Can't update a draft order which is complete"
           )
         }

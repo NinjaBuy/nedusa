@@ -1,4 +1,4 @@
-import { CreateRegionDTO, UpdateRegionDTO } from "@ninjajs/types"
+import { CreateRegionDTO, UpdateRegionDTO } from "@medusajs/types"
 import {
   RegionDeleteRes,
   RegionListRes,

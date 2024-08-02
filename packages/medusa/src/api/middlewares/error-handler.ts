@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { Logger } from "../../types/global"
 import { formatException } from "../../utils"
 
@@ -14,7 +14,7 @@ const INVALID_STATE_ERROR = "invalid_state_error"
 
 export default () => {
   return (
-    err: NinjaError,
+    err: MedusaError,
     req: Request,
     res: Response,
     next: NextFunction
@@ -38,35 +38,35 @@ export default () => {
       case QUERY_RUNNER_RELEASED:
       case TRANSACTION_STARTED:
       case TRANSACTION_NOT_STARTED:
-      case NinjaError.Types.CONFLICT:
+      case MedusaError.Types.CONFLICT:
         statusCode = 409
         errObj.code = INVALID_STATE_ERROR
         errObj.message =
           "The request conflicted with another request. You may retry the request with the provided Idempotency-Key."
         break
-      case NinjaError.Types.UNAUTHORIZED:
+      case MedusaError.Types.UNAUTHORIZED:
         statusCode = 401
         break
-      case NinjaError.Types.PAYMENT_AUTHORIZATION_ERROR:
+      case MedusaError.Types.PAYMENT_AUTHORIZATION_ERROR:
         statusCode = 422
         break
-      case NinjaError.Types.DUPLICATE_ERROR:
+      case MedusaError.Types.DUPLICATE_ERROR:
         statusCode = 422
         errObj.code = INVALID_REQUEST_ERROR
         break
-      case NinjaError.Types.NOT_ALLOWED:
-      case NinjaError.Types.INVALID_DATA:
+      case MedusaError.Types.NOT_ALLOWED:
+      case MedusaError.Types.INVALID_DATA:
         statusCode = 400
         break
-      case NinjaError.Types.NOT_FOUND:
+      case MedusaError.Types.NOT_FOUND:
         statusCode = 404
         break
-      case NinjaError.Types.DB_ERROR:
+      case MedusaError.Types.DB_ERROR:
         statusCode = 500
         errObj.code = API_ERROR
         break
-      case NinjaError.Types.UNEXPECTED_STATE:
-      case NinjaError.Types.INVALID_ARGUMENT:
+      case MedusaError.Types.UNEXPECTED_STATE:
+      case MedusaError.Types.INVALID_ARGUMENT:
         break
       default:
         errObj.code = "unknown_error"

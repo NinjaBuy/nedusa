@@ -4,20 +4,20 @@ import {
   AdminPostShippingProfilesReq,
   AdminShippingProfilesListRes,
   AdminShippingProfilesRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Shipping Profile API Routes](https://docs.ninjajs.com/api/admin#shipping-profiles). All its method
- * are available in the JS Client under the `ninja.admin.shippingProfiles` property.
+ * This class is used to send requests to [Admin Shipping Profile API Routes](https://docs.medusajs.com/api/admin#shipping-profiles). All its method
+ * are available in the JS Client under the `medusa.admin.shippingProfiles` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A shipping profile is used to group products that can be shipped in the same manner.
  * They are created by the admin and they're not associated with a fulfillment provider.
  * 
- * Related Guide: [Shipping Profile architecture](https://docs.ninjajs.com/modules/carts-and-checkout/shipping#shipping-profile).
+ * Related Guide: [Shipping Profile architecture](https://docs.medusajs.com/modules/carts-and-checkout/shipping#shipping-profile).
  */
 class AdminShippingProfilesResource extends BaseResource {
   /**
@@ -27,11 +27,11 @@ class AdminShippingProfilesResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingProfilesRes>} Resolves to the shipping profile's details.
    * 
    * @example
-   * import { ShippingProfileType } from "@ninjajs/ninja"
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import { ShippingProfileType } from "@medusajs/medusa"
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.shippingProfiles.create({
+   * medusa.admin.shippingProfiles.create({
    *   name: "Large Products",
    *   type: ShippingProfileType.DEFAULT
    * })
@@ -55,10 +55,10 @@ class AdminShippingProfilesResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingProfilesRes>} Resolves to the shipping profile's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.shippingProfiles.update(shippingProfileId, {
+   * medusa.admin.shippingProfiles.update(shippingProfileId, {
    *   name: 'Large Products'
    * })
    * .then(({ shipping_profile }) => {
@@ -81,10 +81,10 @@ class AdminShippingProfilesResource extends BaseResource {
    * @returns {ResponsePromise<AdminDeleteShippingProfileRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.shippingProfiles.delete(profileId)
+   * medusa.admin.shippingProfiles.delete(profileId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -104,10 +104,10 @@ class AdminShippingProfilesResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingProfilesRes>} Resolves to the shipping profile's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.shippingProfiles.retrieve(profileId)
+   * medusa.admin.shippingProfiles.retrieve(profileId)
    * .then(({ shipping_profile }) => {
    *   console.log(shipping_profile.id);
    * })
@@ -126,10 +126,10 @@ class AdminShippingProfilesResource extends BaseResource {
    * @returns {ResponsePromise<AdminShippingProfilesListRes>} Resolves to the list of shipping profiles.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.shippingProfiles.list()
+   * medusa.admin.shippingProfiles.list()
    * .then(({ shipping_profiles }) => {
    *   console.log(shipping_profiles.length);
    * })

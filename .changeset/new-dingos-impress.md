@@ -1,7 +1,7 @@
 ---
-"@ninjajs/core-flows": patch
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/core-flows": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(core-flows,ninja,types): add create shipment api for fulfillments
+feat(core-flows,medusa,types): add create shipment api for fulfillments

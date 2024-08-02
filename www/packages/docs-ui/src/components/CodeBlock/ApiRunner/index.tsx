@@ -78,7 +78,7 @@ export const ApiRunner = ({
     nameInApiOptions: "pathData" | "bodyData" | "queryData"
   }) => (
     <div className="flex flex-col gap-docs_0.5">
-      <span className="text-compact-medium-plus text-ninja-fg-base">
+      <span className="text-compact-medium-plus text-medusa-fg-base">
         {title}
       </span>
       <div className="flex gap-docs_0.5">

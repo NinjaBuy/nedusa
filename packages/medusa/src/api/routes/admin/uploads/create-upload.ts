@@ -1,11 +1,11 @@
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 import fs from "fs"
 
 /**
  * @oas [post] /admin/uploads
  * operationId: "PostUploads"
  * summary: "Upload Files"
- * description: "Upload at least one file to a public bucket or storage. The file upload is handled by the file service installed on the Ninja backend."
+ * description: "Upload at least one file to a public bucket or storage. The file upload is handled by the file service installed on the Medusa backend."
  * x-authenticated: true
  * requestBody:
  *   content:
@@ -20,18 +20,18 @@ import fs from "fs"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.uploads.create(file)
+ *       medusa.admin.uploads.create(file)
  *       .then(({ uploads }) => {
  *         console.log(uploads.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminUploadFile } from "ninja-react"
+ *       import { useAdminUploadFile } from "medusa-react"
  *
  *       const UploadFile = () => {
  *         const uploadFile = useAdminUploadFile()
@@ -53,7 +53,7 @@ import fs from "fs"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/uploads' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: image/jpeg' \
  *       --form 'files=@"<FILE_PATH_1>"' \
  *       --form 'files=@"<FILE_PATH_1>"'

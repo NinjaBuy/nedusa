@@ -1,4 +1,4 @@
-import { AdminGetCustomersParams } from "@ninjajs/ninja"
+import { AdminGetCustomersParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../use-query-params"
 
 type UseCustomerTableQueryProps = {

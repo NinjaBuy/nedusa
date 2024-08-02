@@ -3,15 +3,15 @@ import type {
   AdminDraftOrdersRes,
   AdminGiftCardsRes,
   AdminOrdersRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { Outlet, RouteObject } from "react-router-dom"
 
 import { ProtectedRoute } from "../../components/authentication/require-auth"
 import { ErrorBoundary } from "../../components/error/error-boundary"
 import { MainLayout } from "../../components/layout/main-layout"
 
-import routes from "ninja-admin:routes/pages"
-import settings from "ninja-admin:settings/pages"
+import routes from "medusa-admin:routes/pages"
+import settings from "medusa-admin:settings/pages"
 
 const routeExtensions: RouteObject[] = routes.pages.map((ext) => {
   return {

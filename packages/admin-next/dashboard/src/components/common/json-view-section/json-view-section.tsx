@@ -1,4 +1,4 @@
-import { ArrowsPointingOut, XMarkMini } from "@ninjajs/icons"
+import { ArrowsPointingOut, XMarkMini } from "@medusajs/icons"
 import {
   Badge,
   Container,
@@ -6,7 +6,7 @@ import {
   Heading,
   IconButton,
   Kbd,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import Primitive from "@uiw/react-json-view"
 import { CSSProperties, Suspense } from "react"
 import { useTranslation } from "react-i18next"

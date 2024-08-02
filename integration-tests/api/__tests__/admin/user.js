@@ -1,20 +1,20 @@
 const jwt = require("jsonwebtoken")
 
-const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
+const { medusaIntegrationTestRunner } = require("medusa-test-utils")
 const {
   createAdminUser,
   adminHeaders,
 } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { ModuleRegistrationName } = require("@ninjajs/modules-sdk")
+const { ModuleRegistrationName } = require("@medusajs/modules-sdk")
 
 jest.setTimeout(30000)
 
 let userSeeder = {}
 let simpleAnalyticsConfigFactory = {}
 
-ninjaIntegrationTestRunner({
-  // env: { NINJA_FF_NINJA_V2: true },
+medusaIntegrationTestRunner({
+  // env: { MEDUSA_FF_MEDUSA_V2: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
     let userModuleService
@@ -44,7 +44,7 @@ ninjaIntegrationTestRunner({
 
         const v1Response = {
           id: "admin_user",
-          email: "admin@ninja.js",
+          email: "admin@medusa.js",
           api_token: "test_token",
           role: "admin",
           created_at: expect.any(String),
@@ -53,7 +53,7 @@ ninjaIntegrationTestRunner({
 
         const v2Response = {
           id: "admin_user",
-          email: "admin@ninja.js",
+          email: "admin@medusa.js",
           created_at: expect.any(String),
           updated_at: expect.any(String),
         }
@@ -99,7 +99,7 @@ ninjaIntegrationTestRunner({
         const v1Response = [
           expect.objectContaining({
             id: "admin_user",
-            email: "admin@ninja.js",
+            email: "admin@medusa.js",
             created_at: expect.any(String),
             updated_at: expect.any(String),
             api_token: "test_token",
@@ -119,7 +119,7 @@ ninjaIntegrationTestRunner({
         const v2Response = [
           expect.objectContaining({
             id: "admin_user",
-            email: "admin@ninja.js",
+            email: "admin@medusa.js",
             created_at: expect.any(String),
             updated_at: expect.any(String),
           }),

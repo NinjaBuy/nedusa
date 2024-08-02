@@ -1,6 +1,6 @@
 import { AdjustInventoryForm } from "./components/adjust-inventory-form"
-import { Heading } from "@ninjajs/ui"
-import { InventoryNext } from "@ninjajs/types"
+import { Heading } from "@medusajs/ui"
+import { InventoryNext } from "@medusajs/types"
 import { RouteDrawer } from "../../../../../components/route-modal"
 import { useInventoryItem } from "../../../../../hooks/api/inventory"
 import { useParams } from "react-router-dom"

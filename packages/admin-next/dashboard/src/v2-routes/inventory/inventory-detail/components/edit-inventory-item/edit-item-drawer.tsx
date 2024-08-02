@@ -1,5 +1,5 @@
 import { EditInventoryItemForm } from "./components/edit-item-form"
-import { Heading } from "@ninjajs/ui"
+import { Heading } from "@medusajs/ui"
 import { RouteDrawer } from "../../../../../components/route-modal"
 import { useInventoryItem } from "../../../../../hooks/api/inventory"
 import { useParams } from "react-router-dom"

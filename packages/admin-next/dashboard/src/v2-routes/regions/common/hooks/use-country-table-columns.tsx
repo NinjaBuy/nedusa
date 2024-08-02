@@ -1,4 +1,4 @@
-import { RegionCountryDTO } from "@ninjajs/types"
+import { RegionCountryDTO } from "@medusajs/types"
 
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"

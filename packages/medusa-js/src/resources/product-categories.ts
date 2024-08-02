@@ -3,19 +3,19 @@ import {
   StoreGetProductCategoriesRes,
   StoreGetProductCategoriesCategoryParams,
   StoreGetProductCategoriesCategoryRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Product Category API Routes](https://docs.ninjajs.com/api/store#product-categories_getproductcategories). All its method
- * are available in the JS Client under the `ninja.productCategories` property.
+ * This class is used to send requests to [Store Product Category API Routes](https://docs.medusajs.com/api/store#product-categories_getproductcategories). All its method
+ * are available in the JS Client under the `medusa.productCategories` property.
  * 
  * Products can be categoriezed into categories. A product can be associated more than one category.
  * Using the methods in this class, you can list or retrieve a category's details and products.
  * 
- * Related Guide: [How to use product categories in a storefront](https://docs.ninjajs.com/modules/products/storefront/use-categories).
+ * Related Guide: [How to use product categories in a storefront](https://docs.medusajs.com/modules/products/storefront/use-categories).
  * 
  * @featureFlag product_categories
  */
@@ -31,10 +31,10 @@ class ProductCategoriesResource extends BaseResource {
    * A simple example that retrieves a product category by its ID:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.productCategories.retrieve(productCategoryId)
+   * medusa.productCategories.retrieve(productCategoryId)
    * .then(({ product_category }) => {
    *   console.log(product_category.id);
    * })
@@ -43,10 +43,10 @@ class ProductCategoriesResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.productCategories.retrieve(productCategoryId, {
+   * medusa.productCategories.retrieve(productCategoryId, {
    *   expand: "products"
    * })
    * .then(({ product_category }) => {
@@ -80,9 +80,9 @@ class ProductCategoriesResource extends BaseResource {
    * To list product categories:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.productCategories.list()
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.productCategories.list()
    * .then(({ product_categories, limit, offset, count }) => {
    *   console.log(product_categories.length);
    * })
@@ -91,9 +91,9 @@ class ProductCategoriesResource extends BaseResource {
    * To retrieve a product category by its handle:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.productCategories.list({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.productCategories.list({
    *   handle: "women",
    * })
    * .then(({ product_categories, limit, offset, count }) => {
@@ -107,9 +107,9 @@ class ProductCategoriesResource extends BaseResource {
    * To specify relations that should be retrieved within the product categories:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.productCategories.list({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.productCategories.list({
    *   expand: "products"
    * })
    * .then(({ product_categories, limit, offset, count }) => {
@@ -120,9 +120,9 @@ class ProductCategoriesResource extends BaseResource {
    * By default, only the first `100` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.productCategories.list({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.productCategories.list({
    *   expand: "products",
    *   limit,
    *   offset

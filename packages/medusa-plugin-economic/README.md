@@ -2,9 +2,9 @@
 
 Manage your commerce accounting with e-conomic.
 
-> This plugin is not ready for production use. Community contributions are highly appreciated. You can learn more about contributing in [our repository](https://github.com/ninjajs/ninja/blob/master/CONTRIBUTING.md).
+> This plugin is not ready for production use. Community contributions are highly appreciated. You can learn more about contributing in [our repository](https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md).
 
-[Ninja Website](https://ninjajs.com/) | [Ninja Repository](https://github.com/ninjajs/ninja)
+[Medusa Website](https://medusajs.com/) | [Medusa Repository](https://github.com/medusajs/medusa)
 
 ## Features
 
@@ -15,18 +15,18 @@ Manage your commerce accounting with e-conomic.
 
 ## Prerequisites
 
-- [Ninja backend](https://docs.ninjajs.com/development/backend/install)
+- [Medusa backend](https://docs.medusajs.com/development/backend/install)
 - [Visma e-conomic account](https://www.e-conomic.com/developer/connect)
-- [Redis](https://docs.ninjajs.com/development/backend/prepare-environment#redis)
+- [Redis](https://docs.medusajs.com/development/backend/prepare-environment#redis)
 
 ---
 
 ## How to Install
 
-1\. Run the following command in the directory of the Ninja backend:
+1\. Run the following command in the directory of the Medusa backend:
 
   ```bash
-  npm install ninja-plugin-economic
+  npm install medusa-plugin-economic
   ```
 
 2\. Set the following environment variables in `.env`:
@@ -46,13 +46,13 @@ Manage your commerce accounting with e-conomic.
   ECONOMIC_RECIPIENT_NAME=<YOUR_RECIPIENT_NAME>
   ```
 
-3\. In `ninja-config.js` add the following at the end of the `plugins` array:
+3\. In `medusa-config.js` add the following at the end of the `plugins` array:
 
   ```js
   const plugins = [
     // other plugins...
     {
-      resolve: `ninja-plugin-economic`,
+      resolve: `medusa-plugin-economic`,
       options: {
         secret_token: process.env.ECONOMIC_SECRET_TOKEN,
         agreement_token: process.env.ECONOMIC_AGREEMENT_TOKEN,
@@ -75,10 +75,10 @@ Manage your commerce accounting with e-conomic.
 
 ## Test the Plugin
 
-1\. Run the following command in the directory of the Ninja backend to run the backend:
+1\. Run the following command in the directory of the Medusa backend to run the backend:
 
   ```bash
   npm run start
   ```
 
-2\. Try creating an order using the storefront or the [Store APIs](https://docs.ninjajs.com/api/store#tag/Cart). Once the order is placed, a draft invoice will be created in e-conomic.
+2\. Try creating an order using the storefront or the [Store APIs](https://docs.medusajs.com/api/store#tag/Cart). Once the order is placed, a draft invoice will be created in e-conomic.

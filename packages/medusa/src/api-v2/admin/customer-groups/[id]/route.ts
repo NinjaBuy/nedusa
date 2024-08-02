@@ -1,18 +1,18 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   deleteCustomerGroupsWorkflow,
   updateCustomerGroupsWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 
 import { refetchCustomerGroup } from "../helpers"
 import { AdminUpdateCustomerGroupType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const customerGroup = await refetchCustomerGroup(
     req.params.id,
@@ -24,8 +24,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateCustomerGroupType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateCustomerGroupType>,
+  res: MedusaResponse
 ) => {
   const updateGroups = updateCustomerGroupsWorkflow(req.scope)
   const { result, errors } = await updateGroups.run({
@@ -49,8 +49,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
   const deleteCustomerGroups = deleteCustomerGroupsWorkflow(req.scope)

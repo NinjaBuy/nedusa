@@ -3,9 +3,9 @@ import {
   DistributedTransactionStorage,
   TransactionCheckpoint,
   TransactionStep,
-} from "@ninjajs/orchestration"
-import { ModulesSdkTypes } from "@ninjajs/types"
-import { TransactionState } from "@ninjajs/utils"
+} from "@medusajs/orchestration"
+import { ModulesSdkTypes } from "@medusajs/types"
+import { TransactionState } from "@medusajs/utils"
 import { WorkflowOrchestratorService } from "@services"
 
 // eslint-disable-next-line max-len

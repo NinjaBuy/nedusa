@@ -1,4 +1,4 @@
-import { Button, ProgressStatus, ProgressTabs } from "@ninjajs/ui"
+import { Button, ProgressStatus, ProgressTabs } from "@medusajs/ui"
 import {
   RouteFocusModal,
   useRouteModal,

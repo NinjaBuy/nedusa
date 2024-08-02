@@ -15,9 +15,9 @@ import {
   ReservationItemRes,
 } from "../../types/api-responses"
 
-import { InventoryNext } from "@ninjajs/types"
+import { InventoryNext } from "@medusajs/types"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 
 const RESERVATION_ITEMS_QUERY_KEY = "reservation_items" as const

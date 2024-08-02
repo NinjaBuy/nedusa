@@ -1,4 +1,4 @@
-import { IdMap, MockManager as manager } from "ninja-test-utils"
+import { IdMap, MockManager as manager } from "medusa-test-utils"
 import { EventBusService, ProductCategoryService } from "../"
 import {
   invalidProdCategoryId,

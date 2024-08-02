@@ -2,8 +2,8 @@ import {
   CreatePriceListPriceDTO,
   PriceListDTO,
   UpdatePriceListPriceDTO,
-} from "@ninjajs/types"
-import { Button } from "@ninjajs/ui"
+} from "@medusajs/types"
+import { Button } from "@medusajs/ui"
 import { UseFormReturn, useForm, useWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"

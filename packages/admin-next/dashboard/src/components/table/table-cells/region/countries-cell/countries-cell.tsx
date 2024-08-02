@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { RegionCountryDTO } from "@ninjajs/types"
+import { RegionCountryDTO } from "@medusajs/types"
 
 import { PlaceholderCell } from "../../common/placeholder-cell"
 import { ListSummary } from "../../../../common/list-summary"

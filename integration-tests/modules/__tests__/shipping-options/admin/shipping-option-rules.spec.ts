@@ -1,15 +1,15 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IFulfillmentModuleService } from "@ninjajs/types"
-import { RuleOperator } from "@ninjajs/utils"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IFulfillmentModuleService } from "@medusajs/types"
+import { RuleOperator } from "@medusajs/utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
-const adminHeaders = { headers: { "x-ninja-access-token": "test_token" } }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
+const adminHeaders = { headers: { "x-medusa-access-token": "test_token" } }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Admin: Shipping Option Rules API", () => {

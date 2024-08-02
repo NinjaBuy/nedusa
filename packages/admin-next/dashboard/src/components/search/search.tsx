@@ -1,5 +1,5 @@
-import { MagnifyingGlass } from "@ninjajs/icons"
-import { Kbd, Text, clx } from "@ninjajs/ui"
+import { MagnifyingGlass } from "@medusajs/icons"
+import { Kbd, Text, clx } from "@medusajs/ui"
 import * as Dialog from "@radix-ui/react-dialog"
 import { Command } from "cmdk"
 import {

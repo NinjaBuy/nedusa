@@ -1,5 +1,5 @@
-import { AuthenticationInput, AuthenticationResponse } from "@ninjajs/types"
-import { AbstractAuthModuleProvider, NinjaError } from "@ninjajs/utils"
+import { AuthenticationInput, AuthenticationResponse } from "@medusajs/types"
+import { AbstractAuthModuleProvider, MedusaError } from "@medusajs/utils"
 import { AuthUserService } from "@services"
 import jwt, { JwtPayload } from "jsonwebtoken"
 
@@ -91,7 +91,7 @@ class GoogleProvider extends AbstractAuthModuleProvider {
         GoogleProvider.PROVIDER
       )
     } catch (error) {
-      if (error.type === NinjaError.Types.NOT_FOUND) {
+      if (error.type === MedusaError.Types.NOT_FOUND) {
         const [createdAuthUser] = await this.authUserService_.create([
           {
             entity_id,

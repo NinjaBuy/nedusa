@@ -5,9 +5,9 @@ import {
   PriceType,
 } from "../interfaces"
 
-import { ICacheService } from "@ninjajs/types"
-import { FlagRouter, promiseAll } from "@ninjajs/utils"
-import { isDefined } from "ninja-core-utils"
+import { ICacheService } from "@medusajs/types"
+import { FlagRouter, promiseAll } from "@medusajs/utils"
+import { isDefined } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
 import { MoneyAmountRepository } from "../repositories/money-amount"

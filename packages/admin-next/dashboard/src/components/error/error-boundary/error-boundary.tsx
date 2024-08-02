@@ -1,7 +1,7 @@
 import { Navigate, useLocation, useRouteError } from "react-router-dom"
 
-import { ExclamationCircle } from "@ninjajs/icons"
-import { Text } from "@ninjajs/ui"
+import { ExclamationCircle } from "@medusajs/icons"
+import { Text } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { isAxiosError } from "../../../lib/is-axios-error"
 

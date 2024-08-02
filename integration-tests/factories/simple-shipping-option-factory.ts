@@ -4,7 +4,7 @@ import {
   ShippingOptionRequirement,
   ShippingProfile,
   ShippingProfileType,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import faker from "faker"
 import { DataSource } from "typeorm"
 import { simpleRegionFactory } from "./simple-region-factory"
@@ -70,7 +70,7 @@ export const simpleShippingOptionFactory = async (
   }
 
   // This is purposefully managed out of the original object for the purpose of separating the data linked to a feature flag
-  // NINJA_FF_TAX_INCLUSIVE_PRICING
+  // MEDUSA_FF_TAX_INCLUSIVE_PRICING
   const { includes_tax } = data
   if (typeof includes_tax !== "undefined") {
     shippingOptionData["includes_tax"] = includes_tax

@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { DeepPartial, EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import { CustomShippingOption } from "../models"
@@ -41,8 +41,8 @@ class CustomShippingOptionService extends TransactionBaseService {
     const customShippingOption = await customShippingOptionRepo.findOne(query)
 
     if (!customShippingOption) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Custom shipping option with id: ${id} was not found.`
       )
     }

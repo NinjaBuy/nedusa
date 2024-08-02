@@ -1,4 +1,4 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { DeepPartial, EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import {
@@ -34,7 +34,7 @@ import ReturnService from "./return"
 import ShippingOptionService from "./shipping-option"
 import TaxProviderService from "./tax-provider"
 import TotalsService from "./totals"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -134,8 +134,8 @@ export default class ClaimService extends TransactionBaseService {
         })
 
         if (claim.canceled_at) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Canceled claim cannot be updated"
           )
         }
@@ -214,29 +214,29 @@ export default class ClaimService extends TransactionBaseService {
     const { type, claim_items, additional_items, refund_amount } = data
 
     if (type !== ClaimType.REFUND && type !== ClaimType.REPLACE) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Claim type must be one of "refund" or "replace".`
       )
     }
 
     if (type === ClaimType.REPLACE && !additional_items?.length) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Claims with type "replace" must have at least one additional item.`
       )
     }
 
     if (!claim_items?.length) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Claims must have at least one claim item.`
       )
     }
 
     if (refund_amount && type !== ClaimType.REFUND) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Claim has type "${type}" but must be type "refund" to have a refund_amount.`
       )
     }
@@ -252,8 +252,8 @@ export default class ClaimService extends TransactionBaseService {
         line.swap?.canceled_at ||
         line.claim_order?.canceled_at
       ) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `Cannot create a claim on a canceled item.`
         )
       }
@@ -541,8 +541,8 @@ export default class ClaimService extends TransactionBaseService {
         })
 
         if (claim.canceled_at) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Canceled claim cannot be fulfilled"
           )
         }
@@ -553,22 +553,22 @@ export default class ClaimService extends TransactionBaseService {
           claim.fulfillment_status !== "not_fulfilled" &&
           claim.fulfillment_status !== "canceled"
         ) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "The claim has already been fulfilled."
           )
         }
 
         if (claim.type !== "replace") {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             `Claims with the type "${claim.type}" can not be fulfilled.`
           )
         }
 
         if (!claim.shipping_methods?.length) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Cannot fulfill a claim without a shipping method."
           )
         }
@@ -668,8 +668,8 @@ export default class ClaimService extends TransactionBaseService {
           .cancelFulfillment(fulfillmentId)
 
         if (!canceled.claim_order_id) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             `Fufillment not related to a claim`
           )
         }
@@ -694,15 +694,15 @@ export default class ClaimService extends TransactionBaseService {
         })
 
         if (claim.canceled_at) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Canceled claim cannot be processed"
           )
         }
 
         if (claim.type !== "refund") {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             `Claim must have type "refund" to create a refund.`
           )
         }
@@ -750,8 +750,8 @@ export default class ClaimService extends TransactionBaseService {
         })
 
         if (claim.canceled_at) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Canceled claim cannot be fulfilled as shipped"
           )
         }
@@ -819,8 +819,8 @@ export default class ClaimService extends TransactionBaseService {
           relations: ["return_order", "fulfillments", "order", "order.refunds"],
         })
         if (claim.refund_amount) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Claim with a refund cannot be canceled"
           )
         }
@@ -828,8 +828,8 @@ export default class ClaimService extends TransactionBaseService {
         if (claim.fulfillments) {
           for (const f of claim.fulfillments) {
             if (!f.canceled_at) {
-              throw new NinjaError(
-                NinjaError.Types.NOT_ALLOWED,
+              throw new MedusaError(
+                MedusaError.Types.NOT_ALLOWED,
                 "All fulfillments must be canceled before the claim can be canceled"
               )
             }
@@ -837,8 +837,8 @@ export default class ClaimService extends TransactionBaseService {
         }
 
         if (claim.return_order && claim.return_order.status !== "canceled") {
-          throw new NinjaError(
-            NinjaError.Types.NOT_ALLOWED,
+          throw new MedusaError(
+            MedusaError.Types.NOT_ALLOWED,
             "Return must be canceled before the claim can be canceled"
           )
         }
@@ -892,8 +892,8 @@ export default class ClaimService extends TransactionBaseService {
     config: FindConfig<ClaimOrder> = {}
   ): Promise<ClaimOrder> {
     if (!isDefined(claimId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"claimId" must be defined`
       )
     }
@@ -904,8 +904,8 @@ export default class ClaimService extends TransactionBaseService {
     const claim = await claimRepo.findOne(query)
 
     if (!claim) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Claim with ${claimId} was not found`
       )
     }

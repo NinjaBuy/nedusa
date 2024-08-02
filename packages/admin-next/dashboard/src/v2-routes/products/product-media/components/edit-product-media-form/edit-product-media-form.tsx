@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CheckMini, Spinner, ThumbnailBadge } from "@ninjajs/icons"
-import { Image, Product } from "@ninjajs/ninja"
-import { Button, CommandBar, Tooltip, clx } from "@ninjajs/ui"
+import { CheckMini, Spinner, ThumbnailBadge } from "@medusajs/icons"
+import { Image, Product } from "@medusajs/medusa"
+import { Button, CommandBar, Tooltip, clx } from "@medusajs/ui"
 import { AnimatePresence, motion } from "framer-motion"
 import { Fragment, useCallback, useState } from "react"
 import { useFieldArray, useForm } from "react-hook-form"
@@ -85,7 +85,7 @@ export const EditProductMediaForm = ({ product }: ProductMediaViewProps) => {
     if (filesToUpload.length) {
       const files = filesToUpload.map((m) => m.file) as File[]
 
-      // TODO: Implement upload to Ninja
+      // TODO: Implement upload to Medusa
       // const uploads = await client.admin.uploads
       //   .create(files)
       //   .then((res) => {

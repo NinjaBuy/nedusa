@@ -3,9 +3,9 @@ import * as InventoryRepositories from "@repositories"
 import * as InventoryServices from "@services"
 
 import InventoryService from "./services/inventory"
-import { ModuleExports } from "@ninjajs/types"
-import { Modules } from "@ninjajs/modules-sdk"
-import { ModulesSdkUtils } from "@ninjajs/utils"
+import { ModuleExports } from "@medusajs/types"
+import { Modules } from "@medusajs/modules-sdk"
+import { ModulesSdkUtils } from "@medusajs/utils"
 
 const migrationScriptOptions = {
   moduleName: Modules.INVENTORY,

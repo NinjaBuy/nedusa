@@ -1,4 +1,4 @@
-import { Product, SalesChannel } from "@ninjajs/ninja"
+import { Product, SalesChannel } from "@medusajs/medusa"
 import faker from "faker"
 import { DataSource } from "typeorm"
 

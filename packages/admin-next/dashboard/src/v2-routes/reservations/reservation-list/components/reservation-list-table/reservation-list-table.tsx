@@ -1,4 +1,4 @@
-import { Button, Container, Heading } from "@ninjajs/ui"
+import { Button, Container, Heading } from "@medusajs/ui"
 
 import { DataTable } from "../../../../../components/table/data-table"
 import { Link } from "react-router-dom"

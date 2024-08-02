@@ -1,5 +1,5 @@
-import { IPricingModuleService, RemoteQueryFunction } from "@ninjajs/types"
-import { FlagRouter, promiseAll } from "@ninjajs/utils"
+import { IPricingModuleService, RemoteQueryFunction } from "@medusajs/types"
+import { FlagRouter, promiseAll } from "@medusajs/utils"
 import {
   CustomerService,
   ProductVariantService,
@@ -20,7 +20,7 @@ import {
   TaxedPricing,
 } from "../types/pricing"
 
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { TransactionBaseService } from "../interfaces"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
@@ -650,8 +650,8 @@ class PricingService extends TransactionBaseService {
       )
 
       if (!pricingContext) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           "Could not find pricing context for shipping option"
         )
       }

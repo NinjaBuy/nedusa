@@ -1,12 +1,12 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { ICurrencyModuleService, IStoreModuleService } from "@ninjajs/types"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ICurrencyModuleService, IStoreModuleService } from "@medusajs/types"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ getContainer }) => {
     describe("Link: Store Currency", () => {

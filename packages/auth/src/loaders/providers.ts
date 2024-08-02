@@ -5,7 +5,7 @@ import {
   AuthProviderScope,
   LoaderOptions,
   ModulesSdkTypes,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   AwilixContainer,
   ClassOrFunctionReturning,

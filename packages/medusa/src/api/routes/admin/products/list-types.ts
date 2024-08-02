@@ -13,10 +13,10 @@ import { ProductService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.products.listTypes()
+ *       medusa.admin.products.listTypes()
  *       .then(({ types }) => {
  *         console.log(types.length);
  *       })
@@ -24,7 +24,7 @@ import { ProductService } from "../../../../services"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/products/types' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

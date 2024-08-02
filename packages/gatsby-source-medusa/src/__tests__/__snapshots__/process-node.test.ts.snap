@@ -9,7 +9,7 @@ Array [
     "internal": Object {
       "content": "{\\"id\\":\\"prod_test_1234\\",\\"title\\":\\"Test Shirt\\",\\"description\\":\\"A test product\\",\\"unit_price\\":2500}",
       "contentDigest": "digest_string",
-      "type": "NinjaProduct",
+      "type": "MedusaProduct",
     },
     "parent": null,
     "title": "Test Shirt",

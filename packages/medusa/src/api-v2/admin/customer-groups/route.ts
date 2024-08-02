@@ -1,18 +1,18 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
-import { createCustomerGroupsWorkflow } from "@ninjajs/core-flows"
+import { createCustomerGroupsWorkflow } from "@medusajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { AdminCreateCustomerGroupType } from "./validators"
 import { refetchCustomerGroup } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -36,8 +36,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateCustomerGroupType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateCustomerGroupType>,
+  res: MedusaResponse
 ) => {
   const createGroups = createCustomerGroupsWorkflow(req.scope)
   const customersData = [

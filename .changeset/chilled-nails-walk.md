@@ -1,5 +1,5 @@
 ---
-"@ninjajs/ninja": patch
+"@medusajs/medusa": patch
 ---
 
-fix(ninja): associate refund with order when calling `refundFromPayment`
+fix(medusa): associate refund with order when calling `refundFromPayment`

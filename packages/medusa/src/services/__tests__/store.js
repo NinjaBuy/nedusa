@@ -1,4 +1,4 @@
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 import StoreService from "../store"
 
 describe("StoreService", () => {
@@ -56,7 +56,7 @@ describe("StoreService", () => {
         Promise.resolve([
           {
             id: IdMap.getId("store"),
-            name: "Ninja",
+            name: "Medusa",
             default_currency_code: "usd",
           },
         ]),
@@ -76,7 +76,7 @@ describe("StoreService", () => {
 
     it("successfully updates store", async () => {
       await storeService.update({
-        name: "Ninja Commerce",
+        name: "Medusa Commerce",
       })
 
       expect(storeRepository.find).toHaveBeenCalledTimes(1)
@@ -84,7 +84,7 @@ describe("StoreService", () => {
       expect(storeRepository.save).toHaveBeenCalledTimes(1)
       expect(storeRepository.save).toHaveBeenCalledWith({
         id: IdMap.getId("store"),
-        name: "Ninja Commerce",
+        name: "Medusa Commerce",
         default_currency_code: "usd",
       })
     })
@@ -106,7 +106,7 @@ describe("StoreService", () => {
         Promise.resolve([
           {
             id: IdMap.getId("store"),
-            name: "Ninja",
+            name: "Medusa",
             currencies: [{ code: "dkk" }],
           },
         ]),
@@ -143,7 +143,7 @@ describe("StoreService", () => {
       expect(storeRepository.save).toHaveBeenCalledTimes(1)
       expect(storeRepository.save).toHaveBeenCalledWith({
         id: IdMap.getId("store"),
-        name: "Ninja",
+        name: "Medusa",
         currencies: [{ code: "dkk" }, { code: "sek" }],
       })
     })
@@ -169,7 +169,7 @@ describe("StoreService", () => {
         Promise.resolve([
           {
             id: IdMap.getId("store"),
-            name: "Ninja",
+            name: "Medusa",
             currencies: [{ code: "dkk" }],
           },
         ]),
@@ -207,7 +207,7 @@ describe("StoreService", () => {
       expect(storeRepository.save).toHaveBeenCalledWith({
         id: IdMap.getId("store"),
         currencies: [],
-        name: "Ninja",
+        name: "Medusa",
       })
     })
   })

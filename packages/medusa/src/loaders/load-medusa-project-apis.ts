@@ -1,10 +1,10 @@
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 import { Express } from "express"
 import glob from "glob"
-import { trackInstallation } from "ninja-telemetry"
+import { trackInstallation } from "medusa-telemetry"
 import { EOL } from "os"
 import path from "path"
-import { ConfigModule, Logger, NinjaContainer } from "../types/global"
+import { ConfigModule, Logger, MedusaContainer } from "../types/global"
 import ScheduledJobsLoader from "./helpers/jobs"
 import { getResolvedPlugins } from "./helpers/resolve-plugins"
 import { RoutesLoader } from "./helpers/routing"
@@ -13,7 +13,7 @@ import logger from "./logger"
 
 type Options = {
   rootDirectory: string
-  container: NinjaContainer
+  container: MedusaContainer
   configModule: ConfigModule
   app: Express
   activityId: string
@@ -27,7 +27,7 @@ type PluginDetails = {
   version: string
 }
 
-export const NINJA_PROJECT_NAME = "project-plugin"
+export const MEDUSA_PROJECT_NAME = "project-plugin"
 
 /**
  * Registers all services in the services directory
@@ -79,7 +79,7 @@ export default async ({
 
 async function runLoaders(
   pluginDetails: PluginDetails,
-  container: NinjaContainer
+  container: MedusaContainer
 ): Promise<void> {
   const loaderFiles = glob.sync(
     `${pluginDetails.resolve}/loaders/[!__]*.js`,
@@ -103,7 +103,7 @@ async function runLoaders(
 
 async function registerScheduledJobs(
   pluginDetails: PluginDetails,
-  container: NinjaContainer
+  container: MedusaContainer
 ): Promise<void> {
   await new ScheduledJobsLoader(
     path.join(pluginDetails.resolve, "jobs"),
@@ -118,14 +118,14 @@ async function registerScheduledJobs(
 async function registerApi(
   pluginDetails: PluginDetails,
   app: Express,
-  container: NinjaContainer,
+  container: MedusaContainer,
   configmodule: ConfigModule,
   activityId: string
 ): Promise<Express> {
   const logger = container.resolve<Logger>("logger")
   const projectName =
-    pluginDetails.name === NINJA_PROJECT_NAME
-      ? "your Ninja project"
+    pluginDetails.name === MEDUSA_PROJECT_NAME
+      ? "your Medusa project"
       : `${pluginDetails.name}`
 
   logger.progress(activityId, `Registering custom endpoints for ${projectName}`)
@@ -162,7 +162,7 @@ async function registerApi(
  */
 async function registerSubscribers(
   pluginDetails: PluginDetails,
-  container: NinjaContainer,
+  container: MedusaContainer,
   activityId: string
 ): Promise<void> {
   await new SubscriberLoader(

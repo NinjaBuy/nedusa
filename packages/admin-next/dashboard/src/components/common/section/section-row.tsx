@@ -1,4 +1,4 @@
-import { Text, clx } from "@ninjajs/ui"
+import { Text, clx } from "@medusajs/ui"
 import { ReactNode } from "react"
 
 export type SectionRowProps = {

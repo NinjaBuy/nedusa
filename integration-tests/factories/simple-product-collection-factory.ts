@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm"
 import faker from "faker"
-import { ProductCollection } from "@ninjajs/ninja"
+import { ProductCollection } from "@medusajs/medusa"
 
 export type Data = {
   title?: string,

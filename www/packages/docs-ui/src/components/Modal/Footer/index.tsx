@@ -17,7 +17,7 @@ export const ModalFooter = ({
     <div
       className={clsx(
         "py-docs_1.5 pl-0 pr-docs_2",
-        "border-ninja-border-base border-0 border-t border-solid",
+        "border-medusa-border-base border-0 border-t border-solid",
         "flex justify-end gap-docs_0.5",
         className
       )}

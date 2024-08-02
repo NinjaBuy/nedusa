@@ -1,4 +1,4 @@
-import { IconProps } from "@ninjajs/icons/dist/types"
+import { IconProps } from "@medusajs/icons/dist/types"
 import React from "react"
 
 export const ThumbUpIcon = (props: IconProps) => {

@@ -2,7 +2,7 @@
 
 Track essential commerce analytics with Segment.
 
-[Segment Plugin Documentation](https://docs.ninjajs.com/plugins/analytics/segment) | [Ninja Website](https://ninjajs.com) | [Ninja Repository](https://github.com/ninjajs/ninja)
+[Segment Plugin Documentation](https://docs.medusajs.com/plugins/analytics/segment) | [Medusa Website](https://medusajs.com) | [Medusa Repository](https://github.com/medusajs/medusa)
 
 ## Features
 
@@ -13,17 +13,17 @@ Track essential commerce analytics with Segment.
 
 ## Prerequisites
 
-- [Ninja backend](https://docs.ninjajs.com/development/backend/install)
+- [Medusa backend](https://docs.medusajs.com/development/backend/install)
 - [Segment account](https://app.segment.com/signup)
 
 ---
 
 ## How to Install
 
-1\. Run the following command in the directory of the Ninja backend:
+1\. Run the following command in the directory of the Medusa backend:
 
   ```bash
-  npm install ninja-plugin-segment
+  npm install medusa-plugin-segment
   ```
 
 2\. Set the following environment variable in `.env`:
@@ -32,13 +32,13 @@ Track essential commerce analytics with Segment.
   SEGMENT_WRITE_KEY=<YOUR_SEGMENT_WRITE_KEY>
   ```
 
-3\. In `ninja-config.js` add the following at the end of the `plugins` array:
+3\. In `medusa-config.js` add the following at the end of the `plugins` array:
 
   ```js
   const plugins = [
     // ...
     {
-      resolve: `ninja-plugin-segment`,
+      resolve: `medusa-plugin-segment`,
       options: {
         write_key: process.env.SEGMENT_WRITE_KEY,
       },
@@ -50,16 +50,16 @@ Track essential commerce analytics with Segment.
 
 ## Test the Plugin
 
-1\. Run the following command in the directory of the Ninja backend to run the backend:
+1\. Run the following command in the directory of the Medusa backend to run the backend:
 
   ```bash
   npm run start
   ```
 
-2\. Place an order using a storefront or the [Store APIs](https://docs.ninjajs.com/api/store). You should see the event tracked in Segment.
+2\. Place an order using a storefront or the [Store APIs](https://docs.medusajs.com/api/store). You should see the event tracked in Segment.
 
 ---
 
 ## Additional Resources
 
-- [Segment Plugin Documentation](https://docs.ninjajs.com/plugins/analytics/segment)
+- [Segment Plugin Documentation](https://docs.medusajs.com/plugins/analytics/segment)

@@ -2,13 +2,13 @@ import {
   getSetDifference,
   isPresent,
   stringToSelectRelationObject,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { pick } from "lodash"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { BaseEntity } from "../interfaces"
 import { FindConfig, QueryConfig, RequestQueryFields } from "../types/common"
 import { featureFlagRouter } from "../loaders/feature-flags"
-import NinjaV2 from "../loaders/feature-flags/ninja-v2"
+import MedusaV2 from "../loaders/feature-flags/medusa-v2"
 
 export function pickByConfig<TModel extends BaseEntity>(
   obj: TModel | TModel[],
@@ -30,7 +30,7 @@ export function prepareListQuery<
   T extends RequestQueryFields,
   TEntity extends BaseEntity
 >(validated: T, queryConfig: QueryConfig<TEntity> = {}) {
-  const isNinjaV2 = featureFlagRouter.isFeatureEnabled(NinjaV2.key)
+  const isMedusaV2 = featureFlagRouter.isFeatureEnabled(MedusaV2.key)
 
   // TODO: this function will be simplified a lot once we drop support for the old api
   const { order, fields, limit = 50, expand, offset = 0 } = validated
@@ -127,8 +127,8 @@ export function prepareListQuery<
   }
 
   if (allFields.size && notAllowedFields.length) {
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       `Requested fields [${Array.from(notAllowedFields).join(
         ", "
       )}] are not valid`
@@ -159,8 +159,8 @@ export function prepareListQuery<
     )
 
     if (allRelations.size && notAllowedRelations.size) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Requested fields [${Array.from(notAllowedRelations).join(
           ", "
         )}] are not valid`
@@ -184,13 +184,13 @@ export function prepareListQuery<
       queryConfig?.allowedFields?.length &&
       !queryConfig?.allowedFields.includes(orderField)
     ) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Order field ${orderField} is not valid`
       )
     }
   } else {
-    if (!isNinjaV2) {
+    if (!isMedusaV2) {
       orderBy["created_at"] = "DESC"
     }
   }

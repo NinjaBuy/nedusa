@@ -1,5 +1,5 @@
-import { BellAlert } from "@ninjajs/icons"
-import { Drawer, Heading, IconButton } from "@ninjajs/ui"
+import { BellAlert } from "@medusajs/icons"
+import { Drawer, Heading, IconButton } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 
 export const Notifications = () => {

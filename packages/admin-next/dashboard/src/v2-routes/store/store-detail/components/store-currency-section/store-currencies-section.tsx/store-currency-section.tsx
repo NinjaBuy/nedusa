@@ -1,5 +1,5 @@
-import { Plus, Trash } from "@ninjajs/icons"
-import { CurrencyDTO } from "@ninjajs/types"
+import { Plus, Trash } from "@medusajs/icons"
+import { CurrencyDTO } from "@medusajs/types"
 import {
   Checkbox,
   CommandBar,
@@ -7,7 +7,7 @@ import {
   Heading,
   toast,
   usePrompt,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import { keepPreviousData } from "@tanstack/react-query"
 import { RowSelectionState, createColumnHelper } from "@tanstack/react-table"
 import { useMemo, useState } from "react"

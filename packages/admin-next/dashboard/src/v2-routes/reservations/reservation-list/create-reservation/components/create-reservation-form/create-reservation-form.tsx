@@ -1,6 +1,6 @@
 import * as zod from "zod"
 
-import { Button, Heading, Input, Text, Textarea, toast } from "@ninjajs/ui"
+import { Button, Heading, Input, Text, Textarea, toast } from "@medusajs/ui"
 import {
   RouteFocusModal,
   useRouteModal,
@@ -9,7 +9,7 @@ import {
 import { Combobox } from "../../../../../../components/common/combobox"
 import { Form } from "../../../../../../components/common/form"
 import { InventoryItemRes } from "../../../../../../types/api-responses"
-import { InventoryNext } from "@ninjajs/types"
+import { InventoryNext } from "@medusajs/types"
 import React from "react"
 import { useCreateReservationItem } from "../../../../../../hooks/api/reservations"
 import { useForm } from "react-hook-form"

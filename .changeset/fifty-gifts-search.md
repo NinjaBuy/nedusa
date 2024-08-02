@@ -1,5 +1,5 @@
 ---
-"@ninjajs/ninja": patch
+"@medusajs/medusa": patch
 ---
 
-feat(ninja): added endpoints for rule attribute/operator/values options
+feat(medusa): added endpoints for rule attribute/operator/values options

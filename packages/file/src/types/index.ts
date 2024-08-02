@@ -1,7 +1,7 @@
 import {
   ModuleProviderExports,
   ModuleServiceInitializeOptions,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 
 export const FileProviderIdentifierRegistrationName =
   "file_providers_identifier"

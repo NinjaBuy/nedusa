@@ -1,8 +1,8 @@
 import {
-  NinjaNextFunction,
-  NinjaRequest,
-  NinjaRequestHandler,
-  NinjaResponse,
+  MedusaNextFunction,
+  MedusaRequest,
+  MedusaRequestHandler,
+  MedusaResponse,
 } from "../../../types/routing"
 
 /**
@@ -21,11 +21,11 @@ export const HTTP_METHODS = [
 export type RouteVerb = (typeof HTTP_METHODS)[number]
 export type MiddlewareVerb = "USE" | "ALL" | RouteVerb
 
-type SyncRouteHandler = (req: NinjaRequest, res: NinjaResponse) => void
+type SyncRouteHandler = (req: MedusaRequest, res: MedusaResponse) => void
 
 export type AsyncRouteHandler = (
-  req: NinjaRequest,
-  res: NinjaResponse
+  req: MedusaRequest,
+  res: MedusaResponse
 ) => Promise<void>
 
 type RouteHandler = SyncRouteHandler | AsyncRouteHandler
@@ -46,14 +46,14 @@ export type RouteConfig = {
 }
 
 export type MiddlewareFunction =
-  | NinjaRequestHandler
+  | MedusaRequestHandler
   | ((...args: any[]) => any)
 
-export type NinjaErrorHandlerFunction = (
+export type MedusaErrorHandlerFunction = (
   error: any,
-  req: NinjaRequest,
-  res: NinjaResponse,
-  next: NinjaNextFunction
+  req: MedusaRequest,
+  res: MedusaResponse,
+  next: MedusaNextFunction
 ) => Promise<void> | void
 
 export type ParserConfigArgs = {
@@ -71,7 +71,7 @@ export type MiddlewareRoute = {
 }
 
 export type MiddlewaresConfig = {
-  errorHandler?: false | NinjaErrorHandlerFunction
+  errorHandler?: false | MedusaErrorHandlerFunction
   routes?: MiddlewareRoute[]
 }
 

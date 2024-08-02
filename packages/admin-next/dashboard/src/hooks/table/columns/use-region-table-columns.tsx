@@ -1,6 +1,6 @@
 import { createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
-import { RegionDTO } from "@ninjajs/types"
+import { RegionDTO } from "@medusajs/types"
 
 import {
   CountriesCell,

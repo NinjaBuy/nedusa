@@ -12,7 +12,7 @@ import {
 import { joinLevels } from "./utils/join-levels"
 import { joinVariants } from "./utils/join-variants"
 
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 import { Transform } from "class-transformer"
 import { IsType } from "../../../../utils/validators/is-type"
 
@@ -68,18 +68,18 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.inventoryItems.list()
+ *       medusa.admin.inventoryItems.list()
  *       .then(({ inventory_items, count, offset, limit }) => {
  *         console.log(inventory_items.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminInventoryItems } from "ninja-react"
+ *       import { useAdminInventoryItems } from "medusa-react"
  *
  *       function InventoryItems() {
  *         const {
@@ -111,7 +111,7 @@ import { IsType } from "../../../../utils/validators/is-type"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/inventory-items' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

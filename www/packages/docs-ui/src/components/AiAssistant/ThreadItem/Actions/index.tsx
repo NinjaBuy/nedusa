@@ -7,7 +7,7 @@ import {
   ThumbDownIcon,
   ThumbUpIcon,
 } from "@/components"
-import { Check, SquareTwoStack } from "@ninjajs/icons"
+import { Check, SquareTwoStack } from "@medusajs/icons"
 import { useCopy } from "@/hooks"
 import { AiAssistantFeedbackType, useAiAssistant } from "@/providers"
 
@@ -45,7 +45,7 @@ export const AiAssistantThreadItemActions = ({
     <div
       className={clsx(
         "hidden md:flex gap-docs_0.25",
-        "text-ninja-fg-muted",
+        "text-medusa-fg-muted",
         "sticky top-docs_1"
       )}
     >
@@ -55,7 +55,7 @@ export const AiAssistantThreadItemActions = ({
       {(feedback === null || feedback === "upvote") && (
         <ActionButton
           onClick={async () => handleFeedback("upvote", item.question_id)}
-          className={clsx(feedback === "upvote" && "!text-ninja-fg-subtle")}
+          className={clsx(feedback === "upvote" && "!text-medusa-fg-subtle")}
         >
           <ThumbUpIcon />
         </ActionButton>
@@ -63,7 +63,7 @@ export const AiAssistantThreadItemActions = ({
       {(feedback === null || feedback === "downvote") && (
         <ActionButton
           onClick={async () => handleFeedback("downvote", item.question_id)}
-          className={clsx(feedback === "downvote" && "!text-ninja-fg-subtle")}
+          className={clsx(feedback === "downvote" && "!text-medusa-fg-subtle")}
         >
           <ThumbDownIcon />
         </ActionButton>
@@ -77,8 +77,8 @@ const ActionButton = ({ children, className, ...props }: ButtonProps) => {
     <Button
       variant="clear"
       className={clsx(
-        "text-ninja-fg-muted hover:text-ninja-fg-subtle",
-        "hover:bg-ninja-bg-subtle-hover",
+        "text-medusa-fg-muted hover:text-medusa-fg-subtle",
+        "hover:bg-medusa-bg-subtle-hover",
         "p-docs_0.125 rounded-docs_sm",
         className
       )}

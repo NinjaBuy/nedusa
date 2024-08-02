@@ -1,4 +1,4 @@
-import { CustomerGroup } from "@ninjajs/ninja"
+import { CustomerGroup } from "@medusajs/medusa"
 import faker from "faker"
 import { DataSource } from "typeorm"
 

@@ -2,7 +2,7 @@ import glob from "glob"
 import path from "path"
 
 import formatRegistrationName from "../utils/format-registration-name"
-import { NinjaContainer } from "../types/global"
+import { MedusaContainer } from "../types/global"
 import { asValue } from "awilix"
 
 /**
@@ -12,7 +12,7 @@ export default ({
   container,
   isTest,
 }: {
-  container: NinjaContainer
+  container: MedusaContainer
   isTest?: boolean
 }): void => {
   const corePath = isTest ? "../repositories/*.ts" : "../repositories/*.js"

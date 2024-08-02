@@ -1,6 +1,6 @@
 extends: substitution
 message: "Consider using '%s' instead of '%s'."
-link: https://ninjajs.notion.site/Style-Guide-Docs-fad86dd1c5f84b48b145e959f36628e0#426bd116f42d42859d3572c2de9f73f7
+link: https://medusajs.notion.site/Style-Guide-Docs-fad86dd1c5f84b48b145e959f36628e0#426bd116f42d42859d3572c2de9f73f7
 ignorecase: true
 level: suggestion
 action:

@@ -1,6 +1,6 @@
-import { CommonTypes } from "@ninjajs/types"
+import { CommonTypes } from "@medusajs/types"
 import { Request } from "express"
-import { NinjaContainer as coreNinjaContainer } from "ninja-core-utils"
+import { MedusaContainer as coreMedusaContainer } from "medusa-core-utils"
 import { Customer, User } from "../models"
 import { FindConfig, RequestQueryFields } from "./common"
 
@@ -9,7 +9,7 @@ declare global {
   namespace Express {
     interface Request {
       user?: (User | Customer) & { customer_id?: string; userId?: string }
-      scope: NinjaContainer
+      scope: MedusaContainer
       validatedQuery: RequestQueryFields & Record<string, unknown>
       validatedBody: unknown
       /**
@@ -17,11 +17,11 @@ declare global {
        */
       allowedProperties: string[]
       /**
-       * An object containing the select, relation, skip, take and order to be used with ninja internal services
+       * An object containing the select, relation, skip, take and order to be used with medusa internal services
        */
       listConfig: FindConfig<unknown>
       /**
-       * An object containing the select, relation to be used with ninja internal services
+       * An object containing the select, relation to be used with medusa internal services
        */
       retrieveConfig: FindConfig<unknown>
       /**
@@ -64,7 +64,7 @@ export type ClassConstructor<T> = {
   new (...args: unknown[]): T
 }
 
-export type NinjaContainer = coreNinjaContainer
+export type MedusaContainer = coreMedusaContainer
 
 export type Logger = {
   panic: (data) => void

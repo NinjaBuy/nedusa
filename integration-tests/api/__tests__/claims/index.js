@@ -14,7 +14,7 @@ const {
 } = require("../../../factories")
 
 describe("Claims", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -25,13 +25,13 @@ describe("Claims", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   afterEach(async () => {
@@ -59,7 +59,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -100,7 +100,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -144,7 +144,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -183,7 +183,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -219,7 +219,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -284,7 +284,7 @@ describe("Claims", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -294,7 +294,7 @@ describe("Claims", () => {
       {},
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -333,7 +333,7 @@ describe("Claims", () => {
         },
         {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         }
       )

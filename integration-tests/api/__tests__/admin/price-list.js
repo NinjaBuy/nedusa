@@ -1,5 +1,5 @@
 const path = require("path")
-const { Region } = require("@ninjajs/ninja")
+const { Region } = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const startServerWithEnvironment =
@@ -19,26 +19,26 @@ const productSeeder = require("../../../helpers/product-seeder")
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 jest.setTimeout(50000)
 
 describe("/admin/price-lists", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /admin/price-list", () => {
@@ -1069,7 +1069,7 @@ describe("/admin/price-lists", () => {
         dbConnection,
         {
           id: "test-prod-1",
-          title: "NinjaHeadphones",
+          title: "MedusaHeadphones",
           variants: [{ id: "test-variant-1" }, { id: "test-variant-2" }],
         },
         1
@@ -1079,7 +1079,7 @@ describe("/admin/price-lists", () => {
         dbConnection,
         {
           id: "test-prod-2",
-          title: "NinjaShoes",
+          title: "MedusaShoes",
           tags: ["test-tag"],
           variants: [{ id: "test-variant-3" }, { id: "test-variant-4" }],
         },
@@ -1092,7 +1092,7 @@ describe("/admin/price-lists", () => {
         dbConnection,
         {
           id: "test-prod-3",
-          title: "NinjaShirt",
+          title: "MedusaShirt",
           variants: [{ id: "test-variant-5" }],
         },
         3
@@ -1247,7 +1247,7 @@ describe("/admin/price-lists", () => {
         expect.arrayContaining([
           expect.objectContaining({
             id: "test-prod-1",
-            title: "NinjaHeadphones",
+            title: "MedusaHeadphones",
           }),
         ])
       )
@@ -1385,25 +1385,25 @@ describe("/admin/price-lists", () => {
   })
 })
 
-describe("[NINJA_FF_TAX_INCLUSIVE_PRICING] /admin/price-lists", () => {
-  let ninjaProcess
+describe("[MEDUSA_FF_TAX_INCLUSIVE_PRICING] /admin/price-lists", () => {
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, connection] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /admin/price-list", () => {

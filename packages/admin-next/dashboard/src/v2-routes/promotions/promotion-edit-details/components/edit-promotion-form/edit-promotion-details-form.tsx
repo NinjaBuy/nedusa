@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { PromotionDTO } from "@ninjajs/types"
+import { PromotionDTO } from "@medusajs/types"
 import {
   Button,
   clx,
@@ -7,7 +7,7 @@ import {
   Input,
   RadioGroup,
   Text,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import { useForm, useWatch } from "react-hook-form"
 import { Trans, useTranslation } from "react-i18next"
 import * as zod from "zod"

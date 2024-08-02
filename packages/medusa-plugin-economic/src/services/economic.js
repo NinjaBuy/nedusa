@@ -1,14 +1,14 @@
 import axios from "axios"
 import moment from "moment"
-import { BaseService } from "ninja-interfaces"
-import { NinjaError } from "ninja-core-utils"
+import { BaseService } from "medusa-interfaces"
+import { MedusaError } from "medusa-core-utils"
 import EUCountries from "../utils/eu-countries"
 
 const ECONOMIC_BASE_URL = "https://restapi.e-conomic.com"
 
 class EconomicService extends BaseService {
   /**
-   * @param {Object} options - options defined in `ninja-config.js`
+   * @param {Object} options - options defined in `medusa-config.js`
    *    {
    *      secret_token: "foo",
    *      agreement_token: "bar",
@@ -197,8 +197,8 @@ class EconomicService extends BaseService {
       const { economicDraftId } = order.metadata
 
       if (!economicDraftId) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_ARGUMENT,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_ARGUMENT,
           "The order does not have an invoice number"
         )
       }

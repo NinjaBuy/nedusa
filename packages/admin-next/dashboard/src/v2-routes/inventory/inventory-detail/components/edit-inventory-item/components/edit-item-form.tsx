@@ -1,13 +1,13 @@
 import * as zod from "zod"
 
-import { Button, Input, toast } from "@ninjajs/ui"
+import { Button, Input, toast } from "@medusajs/ui"
 import {
   RouteDrawer,
   useRouteModal,
 } from "../../../../../../components/route-modal"
 
 import { Form } from "../../../../../../components/common/form"
-import { InventoryNext } from "@ninjajs/types"
+import { InventoryNext } from "@medusajs/types"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { useUpdateInventoryItem } from "../../../../../../hooks/api/inventory"

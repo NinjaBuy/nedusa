@@ -1,7 +1,7 @@
 {
-  "name": "@ninjajs/ninja-js",
+  "name": "@medusajs/medusa-js",
   "version": "6.1.8",
-  "description": "Client for Ninja Commerce Rest API",
+  "description": "Client for Medusa Commerce Rest API",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -34,18 +34,18 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@ninjajs/ninja": "^1.17.2"
+    "@medusajs/medusa": "^1.17.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ninjajs/ninja",
-    "directory": "packages/ninja-js"
+    "url": "https://github.com/medusajs/medusa",
+    "directory": "packages/medusa-js"
   },
   "bugs": {
-    "url": "https://github.com/ninjajs/ninja/issues"
+    "url": "https://github.com/medusajs/medusa/issues"
   },
   "devDependencies": {
-    "@ninjajs/ninja": "^1.20.3",
+    "@medusajs/medusa": "^1.20.3",
     "@types/uuid": "^9.0.0",
     "jest": "^27.4.7",
     "ts-jest": "^27.1.5",
@@ -53,5 +53,5 @@
     "typescript": "^4.9.5"
   },
   "gitHead": "cd1f5afa5aa8c0b15ea957008ee19f1d695cbd2e",
-  "homepage": "https://docs.ninjajs.com/js-client/overview"
+  "homepage": "https://docs.medusajs.com/js-client/overview"
 }

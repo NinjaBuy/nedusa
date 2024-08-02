@@ -1,5 +1,5 @@
 const path = require("path")
-const { ProductCategory } = require("@ninjajs/ninja")
+const { ProductCategory } = require("@medusajs/medusa")
 
 const setupServer = require("../../../../environment-helpers/setup-server")
 const { useApi } = require("../../../../environment-helpers/use-api")
@@ -16,12 +16,12 @@ const testProduct1Id = "test-product1"
 const testProductFilteringId1 = "test-product_filtering_1"
 const adminHeaders = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
-describe("/admin/products [NINJA_FF_PRODUCT_CATEGORIES=true]", () => {
-  let ninjaProcess
+describe("/admin/products [MEDUSA_FF_PRODUCT_CATEGORIES=true]", () => {
+  let medusaProcess
   let dbConnection
   let categoryWithProduct
   let categoryWithoutProduct
@@ -37,9 +37,9 @@ describe("/admin/products [NINJA_FF_PRODUCT_CATEGORIES=true]", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
-      env: { NINJA_FF_PRODUCT_CATEGORIES: true },
+      env: { MEDUSA_FF_PRODUCT_CATEGORIES: true },
     })
   })
 
@@ -47,7 +47,7 @@ describe("/admin/products [NINJA_FF_PRODUCT_CATEGORIES=true]", () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/products", () => {

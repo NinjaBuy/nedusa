@@ -1,6 +1,6 @@
 import { IsEmail, IsOptional, IsString } from "class-validator"
 
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { User } from "../../../.."
 import UserService from "../../../../services/user"
 import _ from "lodash"
@@ -16,7 +16,7 @@ import { EntityManager } from "typeorm"
  * password with this request."
  * externalDocs:
  *   description: How to reset a user's password
- *   url: https://docs.ninjajs.com/modules/users/admin/manage-profile#reset-password
+ *   url: https://docs.medusajs.com/modules/users/admin/manage-profile#reset-password
  * requestBody:
  *   content:
  *     application/json:
@@ -28,10 +28,10 @@ import { EntityManager } from "typeorm"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.users.resetPassword({
+ *       medusa.admin.users.resetPassword({
  *         token: "supersecrettoken",
  *         password: "supersecret"
  *       })
@@ -39,10 +39,10 @@ import { EntityManager } from "typeorm"
  *         console.log(user.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminResetPassword } from "ninja-react"
+ *       import { useAdminResetPassword } from "medusa-react"
  *
  *       const ResetPassword = () => {
  *         const resetPassword = useAdminResetPassword()
@@ -70,7 +70,7 @@ import { EntityManager } from "typeorm"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/users/reset-password' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "token": "supersecrettoken",
@@ -119,7 +119,7 @@ export default async (req, res) => {
         }
       )
     } catch (err) {
-      throw new NinjaError(NinjaError.Types.INVALID_DATA, "invalid token")
+      throw new MedusaError(MedusaError.Types.INVALID_DATA, "invalid token")
     }
 
     const verifiedToken = jwt.verify(
@@ -141,7 +141,7 @@ export default async (req, res) => {
     res.status(200).json({ user: _.omit(userResult, ["password_hash"]) })
   } catch (error) {
     if (error.message === "invalid token") {
-      throw new NinjaError(NinjaError.Types.INVALID_DATA, error.message)
+      throw new MedusaError(MedusaError.Types.INVALID_DATA, error.message)
     }
     throw error
   }

@@ -1,4 +1,4 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { calculatePriceTaxAmount } from "../calculate-price-tax-amount"
 
 describe("calculatePriceTaxAmount", () => {

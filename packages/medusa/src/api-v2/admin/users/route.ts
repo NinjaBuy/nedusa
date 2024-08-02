@@ -1,20 +1,20 @@
-import { createUserAccountWorkflow } from "@ninjajs/core-flows"
-import { CreateUserDTO } from "@ninjajs/types"
+import { createUserAccountWorkflow } from "@medusajs/core-flows"
+import { CreateUserDTO } from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
-  NinjaError,
+  MedusaError,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import jwt from "jsonwebtoken"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchUser } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -37,13 +37,13 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<CreateUserDTO>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<CreateUserDTO>,
+  res: MedusaResponse
 ) => {
   // If `actor_id` is present, the request carries authentication for an existing user
   if (req.auth.actor_id) {
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       "Request carries authentication for an existing user"
     )
   }

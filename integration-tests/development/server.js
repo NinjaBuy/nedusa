@@ -2,7 +2,7 @@ const path = require("path")
 const express = require("express")
 const importFrom = require("import-from")
 const chokidar = require("chokidar")
-const { WorkflowManager } = require("@ninjajs/orchestration")
+const { WorkflowManager } = require("@medusajs/orchestration")
 
 process.env.DEV_MODE = !!process[Symbol.for("ts-node.register.instance")]
 process.env.NODE_ENV = process.env.DEV_MODE && "development"
@@ -11,7 +11,7 @@ require("dotenv").config({ path: path.join(__dirname, ".env.development") })
 
 require("./dev-require")
 
-const ninjaCore = path
+const medusaCore = path
   .resolve(path.join(__dirname, "../../packages"))
   .replace(/\\/g, "/")
 
@@ -25,7 +25,7 @@ function getParentModulesIds(element) {
 
   const ids = [element.id]
   let parent = element.parent
-  while (parent && parent.id.replace(/\\/g, "/").includes(ninjaCore)) {
+  while (parent && parent.id.replace(/\\/g, "/").includes(medusaCore)) {
     ids.push(parent.id)
     parent = parent.parent
   }
@@ -38,7 +38,7 @@ const watchFiles = () => {
   }
   WATCHING = true
 
-  const watcher = chokidar.watch(ninjaCore, {
+  const watcher = chokidar.watch(medusaCore, {
     ignored: (rawPath) => {
       const path = rawPath.replace(/\\/g, "/")
       if (
@@ -90,7 +90,7 @@ const watchFiles = () => {
       const name = rawName.replace(/\\/g, "/")
       if (name.includes("typeorm")) {
         delete module.constructor._cache[rawName]
-      } else if (name.includes(ninjaCore)) {
+      } else if (name.includes(medusaCore)) {
         if (
           name.includes("repositories") ||
           name.includes("loaders") ||
@@ -135,7 +135,7 @@ const bootstrapApp = async () => {
   })
 
   const dir = path.resolve(
-    path.join(__dirname, "../../packages/ninja/src/loaders")
+    path.join(__dirname, "../../packages/medusa/src/loaders")
   )
   const loaders = importFrom(dir, ".").default
 

@@ -1,11 +1,11 @@
-import { AbstractSearchService } from "@ninjajs/utils"
+import { AbstractSearchService } from "@medusajs/utils"
 import { EventBusService } from "../services"
-import { Logger, NinjaContainer } from "../types/global"
+import { Logger, MedusaContainer } from "../types/global"
 
 export const SEARCH_INDEX_EVENT = "SEARCH_INDEX_EVENT"
 
 async function loadProductsIntoSearchEngine(
-  container: NinjaContainer
+  container: MedusaContainer
 ): Promise<void> {
   const logger: Logger = container.resolve<Logger>("logger")
   const eventBusService: EventBusService = container.resolve("eventBusService")
@@ -20,7 +20,7 @@ async function loadProductsIntoSearchEngine(
 export default async ({
   container,
 }: {
-  container: NinjaContainer
+  container: MedusaContainer
 }): Promise<void> => {
   const searchService =
     container.resolve<AbstractSearchService>("searchService")

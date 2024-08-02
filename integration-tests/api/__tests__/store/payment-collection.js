@@ -19,7 +19,7 @@ const {
 jest.setTimeout(30000)
 
 describe("/store/payment-collections", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   let payCol = null
@@ -29,11 +29,11 @@ describe("/store/payment-collections", () => {
       cwd,
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
 
     await simpleCustomerFactory(dbConnection, {
       id: "customer",
-      email: "test@ninjajs.com",
+      email: "test@medusajs.com",
     })
   })
 
@@ -41,7 +41,7 @@ describe("/store/payment-collections", () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /store/payment-collections/:id", () => {

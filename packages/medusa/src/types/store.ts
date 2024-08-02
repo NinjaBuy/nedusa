@@ -1,4 +1,4 @@
-import { ModulesResponse as sdkModulesResponse } from "@ninjajs/modules-sdk"
+import { ModulesResponse as sdkModulesResponse } from "@medusajs/modules-sdk"
 import { FulfillmentProvider, PaymentProvider, Store } from "../models"
 import { FeatureFlagsResponse } from "./feature-flags"
 

@@ -1,4 +1,4 @@
-import { InventoryNext, StockLocationDTO } from "@ninjajs/types"
+import { InventoryNext, StockLocationDTO } from "@medusajs/types"
 
 import { LocationActions } from "./location-actions"
 import { PlaceholderCell } from "../../../../../components/table/table-cells/common/placeholder-cell"

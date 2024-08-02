@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import Scrypt from "scrypt-kdf"
 import {
   DeepPartial,
@@ -21,7 +21,7 @@ import {
 } from "../types/common"
 import { CreateCustomerInput, UpdateCustomerInput } from "../types/customers"
 import { buildQuery, setMetadata } from "../utils"
-import { selectorConstraintsToString } from "@ninjajs/utils"
+import { selectorConstraintsToString } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -80,8 +80,8 @@ class CustomerService extends TransactionBaseService {
       })
 
       if (!customer.has_account) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "You must have an account to reset the password. Create an account first"
         )
       }
@@ -197,8 +197,8 @@ class CustomerService extends TransactionBaseService {
     if (!customer) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Customer with ${selectorConstraints} was not found`
       )
     }
@@ -218,8 +218,8 @@ class CustomerService extends TransactionBaseService {
     config: FindConfig<Customer> = {}
   ): Promise<Customer | never> {
     if (!isDefined(email)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"email" must be defined`
       )
     }
@@ -276,8 +276,8 @@ class CustomerService extends TransactionBaseService {
     config: FindConfig<Customer> = {}
   ): Promise<Customer> {
     if (!isDefined(customerId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"customerId" must be defined`
       )
     }
@@ -319,16 +319,16 @@ class CustomerService extends TransactionBaseService {
       // should validate that "existing.some(acc => acc.has_account) && password"
       if (existing) {
         if (existing.some((customer) => customer.has_account) && password) {
-          throw new NinjaError(
-            NinjaError.Types.DUPLICATE_ERROR,
+          throw new MedusaError(
+            MedusaError.Types.DUPLICATE_ERROR,
             "A customer with the given email already has an account. Log in instead"
           )
         } else if (
           existing?.some((customer) => !customer.has_account) &&
           !password
         ) {
-          throw new NinjaError(
-            NinjaError.Types.DUPLICATE_ERROR,
+          throw new MedusaError(
+            MedusaError.Types.DUPLICATE_ERROR,
             "Guest customer with email already exists"
           )
         }
@@ -439,8 +439,8 @@ class CustomerService extends TransactionBaseService {
         })
 
         if (!fetchedAddress) {
-          throw new NinjaError(
-            NinjaError.Types.NOT_FOUND,
+          throw new MedusaError(
+            MedusaError.Types.NOT_FOUND,
             `Address with id ${addressOrId} was not found`
           )
         }
@@ -485,8 +485,8 @@ class CustomerService extends TransactionBaseService {
       })
 
       if (!toUpdate) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Could not find address for customer"
         )
       }

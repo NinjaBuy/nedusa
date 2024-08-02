@@ -1,5 +1,5 @@
-import { EllipseMiniSolid, XMarkMini } from "@ninjajs/icons"
-import { DatePicker, Text, clx } from "@ninjajs/ui"
+import { EllipseMiniSolid, XMarkMini } from "@medusajs/icons"
+import { DatePicker, Text, clx } from "@medusajs/ui"
 import * as Popover from "@radix-ui/react-popover"
 import isEqual from "lodash/isEqual"
 import { MouseEvent, useMemo, useState } from "react"

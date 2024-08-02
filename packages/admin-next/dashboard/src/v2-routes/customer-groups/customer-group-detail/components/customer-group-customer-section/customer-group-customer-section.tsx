@@ -1,9 +1,9 @@
-import { PencilSquare, Trash } from "@ninjajs/icons"
+import { PencilSquare, Trash } from "@medusajs/icons"
 import {
   AdminCustomerGroupResponse,
   AdminCustomerResponse,
-} from "@ninjajs/types"
-import { Button, Checkbox, Container, Heading, usePrompt } from "@ninjajs/ui"
+} from "@medusajs/types"
+import { Button, Checkbox, Container, Heading, usePrompt } from "@medusajs/ui"
 import { RowSelectionState, createColumnHelper } from "@tanstack/react-table"
 import { useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"

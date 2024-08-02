@@ -1,4 +1,4 @@
-import { AdminGetPriceListPaginationParams } from "@ninjajs/ninja"
+import { AdminGetPriceListPaginationParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const usePricingTableQuery = ({

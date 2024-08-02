@@ -1,4 +1,4 @@
-import { Avatar, Text } from "@ninjajs/ui"
+import { Avatar, Text } from "@medusajs/ui"
 import { Link } from "react-router-dom"
 
 type UserLinkProps = {

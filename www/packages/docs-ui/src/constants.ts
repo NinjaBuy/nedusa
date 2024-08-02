@@ -2,8 +2,8 @@ import { NavbarLinkProps } from "@/components"
 import { OptionType } from "./hooks"
 import { SidebarItemType } from "types"
 
-export const GITHUB_ISSUES_PREFIX = `https://github.com/ninjajs/ninja/issues/new?assignees=&labels=type%3A+docs&template=docs.yml`
-export const GITHUB_UI_ISSUES_PREFIX = `https://github.com/ninjajs/ui/issues/new?labels=documentation`
+export const GITHUB_ISSUES_PREFIX = `https://github.com/medusajs/medusa/issues/new?assignees=&labels=type%3A+docs&template=docs.yml`
+export const GITHUB_UI_ISSUES_PREFIX = `https://github.com/medusajs/ui/issues/new?labels=documentation`
 
 export const navbarItems: NavbarLinkProps[] = [
   {

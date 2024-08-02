@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import { LearningPathStepActions } from "./Actions"
 import clsx from "clsx"
 import { IconCircleDottedLine } from "@/components/Icons"
-import { CheckCircleSolid, CircleMiniSolid, ListBullet } from "@ninjajs/icons"
+import { CheckCircleSolid, CircleMiniSolid, ListBullet } from "@medusajs/icons"
 import { Badge, Button, Link } from "@/components"
 import { CSSTransition, SwitchTransition } from "react-transition-group"
 
@@ -63,7 +63,7 @@ export const LearningPathSteps = ({ ...rest }: LearningPathStepsProps) => {
           {!collapsed && (
             <div
               className={clsx(
-                "bg-ninja-bg-base shadow-flyout dark:shadow-flyout-dark rounded",
+                "bg-medusa-bg-base shadow-flyout dark:shadow-flyout-dark rounded",
                 "transition-transform origin-bottom-right flex flex-col"
               )}
               ref={stepsRef}
@@ -72,7 +72,7 @@ export const LearningPathSteps = ({ ...rest }: LearningPathStepsProps) => {
                 {path.steps.map((step, index) => (
                   <div
                     className={clsx(
-                      "border-0 border-b border-solid border-ninja-border-base",
+                      "border-0 border-b border-solid border-medusa-border-base",
                       "relative p-docs_1"
                     )}
                     key={index}
@@ -98,7 +98,7 @@ export const LearningPathSteps = ({ ...rest }: LearningPathStepsProps) => {
                       </div>
                       <span
                         className={clsx(
-                          "text-compact-medium-plus text-ninja-fg-base"
+                          "text-compact-medium-plus text-medusa-fg-base"
                         )}
                       >
                         {step.title}
@@ -134,7 +134,7 @@ export const LearningPathSteps = ({ ...rest }: LearningPathStepsProps) => {
             <Button
               variant="secondary"
               className={clsx(
-                "!p-[10px] !shadow-flyout dark:!shadow-flyout-dark !text-ninja-fg-subtle w-fit h-fit",
+                "!p-[10px] !shadow-flyout dark:!shadow-flyout-dark !text-medusa-fg-subtle w-fit h-fit",
                 "rounded-full border-0 mr-0 ml-auto fixed md:relative max-[767px]:bottom-docs_1 max-[767px]:right-docs_1 "
               )}
               onClick={() => setCollapsed(false)}

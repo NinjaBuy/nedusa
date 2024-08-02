@@ -1,4 +1,4 @@
-import { IInventoryService } from "@ninjajs/types"
+import { IInventoryService } from "@medusajs/types"
 import { Request, Response } from "express"
 import { OrderService } from "../../../../services"
 import { extendedFindParamsMixin } from "../../../../types/common"
@@ -18,7 +18,7 @@ import { extendedFindParamsMixin } from "../../../../types/common"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/orders/{id}/reservations' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

@@ -1,4 +1,4 @@
-import { LineItem, LineItemAdjustment, LineItemTaxLine } from "@ninjajs/ninja"
+import { LineItem, LineItemAdjustment, LineItemTaxLine } from "@medusajs/medusa"
 import faker from "faker"
 import { DataSource } from "typeorm"
 

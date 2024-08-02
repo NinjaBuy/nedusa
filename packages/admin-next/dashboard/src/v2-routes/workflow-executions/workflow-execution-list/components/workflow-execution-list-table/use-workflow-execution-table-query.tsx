@@ -1,4 +1,4 @@
-import { AdminGetWorkflowExecutionsParams } from "@ninjajs/ninja"
+import { AdminGetWorkflowExecutionsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 export const useWorkflowExecutionTableQuery = ({

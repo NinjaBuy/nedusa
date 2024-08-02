@@ -1,5 +1,5 @@
 import { DeepPartial } from "typeorm"
-import { IdMap } from "ninja-test-utils"
+import { IdMap } from "medusa-test-utils"
 import {
   FulfillmentStatus,
   Order,

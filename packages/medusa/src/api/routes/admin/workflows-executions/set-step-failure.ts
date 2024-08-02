@@ -1,10 +1,10 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { TransactionHandlerType, isDefined } from "@ninjajs/utils"
-import { IWorkflowEngineService, StepResponse } from "@ninjajs/workflows-sdk"
-import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { TransactionHandlerType, isDefined } from "@medusajs/utils"
+import { IWorkflowEngineService, StepResponse } from "@medusajs/workflows-sdk"
+import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
 import { AdminPostWorkflowsAsyncResponseReq } from "./validators"
 
-export default async (req: NinjaRequest, res: NinjaResponse) => {
+export default async (req: MedusaRequest, res: MedusaResponse) => {
   const workflowEngineService: IWorkflowEngineService = req.scope.resolve(
     ModuleRegistrationName.WORKFLOW_ENGINE
   )

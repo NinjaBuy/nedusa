@@ -1,5 +1,5 @@
-import { moduleProviderLoader } from "@ninjajs/modules-sdk"
-import { LoaderOptions, ModuleProvider, ModulesSdkTypes } from "@ninjajs/types"
+import { moduleProviderLoader } from "@medusajs/modules-sdk"
+import { LoaderOptions, ModuleProvider, ModulesSdkTypes } from "@medusajs/types"
 import { Lifetime, asFunction, asValue } from "awilix"
 
 import * as providers from "../providers"

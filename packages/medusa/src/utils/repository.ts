@@ -1,4 +1,4 @@
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 import { flatten, groupBy, map, merge } from "lodash"
 import {
   EntityMetadata,

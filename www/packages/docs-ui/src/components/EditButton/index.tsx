@@ -8,7 +8,7 @@ type EditButtonProps = {
 export const EditButton = ({ filePath }: EditButtonProps) => {
   return (
     <Button variant="secondary" className="mb-docs_1">
-      <a href={`https://github.com/ninjajs/ninja/edit/develop${filePath}`}>
+      <a href={`https://github.com/medusajs/medusa/edit/develop${filePath}`}>
         Edit this page
       </a>
     </Button>

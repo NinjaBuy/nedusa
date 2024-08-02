@@ -16,20 +16,20 @@ import PriceListService from "../../../../services/price-list"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.priceLists.deleteProductPrices(priceListId, productId)
+ *       medusa.admin.priceLists.deleteProductPrices(priceListId, productId)
  *       .then(({ ids, object, deleted }) => {
  *         console.log(ids.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
  *       import {
  *         useAdminDeletePriceListProductPrices
- *       } from "ninja-react"
+ *       } from "medusa-react"
  *
  *       type Props = {
  *         priceListId: string
@@ -62,7 +62,7 @@ import PriceListService from "../../../../services/price-list"
  *     label: cURL
  *     source: |
  *       curl -X DELETE '{backend_url}/admin/price-lists/{id}/products/{product_id}/prices' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

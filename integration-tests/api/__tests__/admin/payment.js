@@ -1,13 +1,13 @@
-const { ninjaIntegrationTestRunner } = require("ninja-test-utils")
+const { medusaIntegrationTestRunner } = require("medusa-test-utils")
 const { createAdminUser } = require("../../../helpers/create-admin-user")
 const { breaking } = require("../../../helpers/breaking")
-const { ModuleRegistrationName } = require("@ninjajs/modules-sdk")
+const { ModuleRegistrationName } = require("@medusajs/modules-sdk")
 
 jest.setTimeout(30000)
 
 const adminHeaders = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
@@ -48,8 +48,8 @@ const createV1PaymentSetup = async (dbConnection, payCol, api) => {
   return response.data.payment_collection.payments[0]
 }
 
-ninjaIntegrationTestRunner({
-  // env: { NINJA_FF_NINJA_V2: true },
+medusaIntegrationTestRunner({
+  // env: { MEDUSA_FF_MEDUSA_V2: true },
   testSuite: ({ dbConnection, getContainer, api }) => {
     let container
     let paymentService

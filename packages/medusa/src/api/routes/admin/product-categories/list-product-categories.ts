@@ -31,18 +31,18 @@ import { optionalBooleanMapper } from "../../../../utils/validators/is-boolean"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.productCategories.list()
+ *       medusa.admin.productCategories.list()
  *       .then(({ product_categories, limit, offset, count }) => {
  *         console.log(product_categories.length);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminProductCategories } from "ninja-react"
+ *       import { useAdminProductCategories } from "medusa-react"
  *
  *       function Categories() {
  *         const {
@@ -74,7 +74,7 @@ import { optionalBooleanMapper } from "../../../../utils/validators/is-boolean"
  *     label: cURL
  *     source: |
  *       curl '{backend_url}/admin/product-categories' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []

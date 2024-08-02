@@ -1,17 +1,17 @@
 import {
   deleteProductsWorkflow,
   updateProductsWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
-import { UpdateProductDTO } from "@ninjajs/types"
+import { UpdateProductDTO } from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
   refetchProduct,
   remapKeysForProduct,
@@ -20,8 +20,8 @@ import {
 import { AdminUpdateProductType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -40,8 +40,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateProductType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateProductType>,
+  res: MedusaResponse
 ) => {
   const { result, errors } = await updateProductsWorkflow(req.scope).run({
     input: {
@@ -64,8 +64,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
 

@@ -1,6 +1,6 @@
 import { DeepPartial, EntityManager, In } from "typeorm"
 
-import { EventBusTypes } from "@ninjajs/types"
+import { EventBusTypes } from "@medusajs/types"
 import { FindConfig } from "../types/common"
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity"
 import { StagedJob } from "../models"

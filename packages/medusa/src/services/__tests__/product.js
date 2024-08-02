@@ -1,6 +1,6 @@
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 import ProductService from "../product"
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 
 const eventBusService = {
   emit: jest.fn(),

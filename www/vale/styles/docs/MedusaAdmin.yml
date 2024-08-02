@@ -5,6 +5,6 @@ ignorecase: false
 action:
   name: replace
 swap:
-  ninja admin: Ninja Admin
-  Ninja admin: Ninja Admin
-  ninja Admin: Ninja Admin
+  medusa admin: Medusa Admin
+  Medusa admin: Medusa Admin
+  medusa Admin: Medusa Admin

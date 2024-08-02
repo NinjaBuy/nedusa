@@ -1,12 +1,12 @@
 import {
   AdminCreateTaxRegion,
   AdminPostTaxRatesTaxRateReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import {
   AdminTaxRateResponse,
   AdminTaxRegionListResponse,
   AdminTaxRegionResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import { TaxRateDeleteRes, TaxRegionDeleteRes } from "../../types/api-responses"
 import { deleteRequest, getRequest, postRequest } from "./common"
 

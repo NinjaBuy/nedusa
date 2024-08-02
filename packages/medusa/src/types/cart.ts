@@ -8,7 +8,7 @@ import { Cart, CartType } from "../models/cart"
 import { IsType } from "../utils/validators/is-type"
 import { Region } from "../models"
 import { ValidateNested } from "class-validator"
-import { CustomerTypes } from "@ninjajs/types"
+import { CustomerTypes } from "@medusajs/types"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isCart(object: any): object is Cart {

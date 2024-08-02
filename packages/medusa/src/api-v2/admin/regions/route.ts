@@ -1,18 +1,18 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
-import { createRegionsWorkflow } from "@ninjajs/core-flows"
+import { createRegionsWorkflow } from "@medusajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { AdminCreateRegionType, AdminGetRegionsParamsType } from "./validators"
 import { refetchRegion } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetRegionsParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetRegionsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -36,8 +36,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateRegionType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateRegionType>,
+  res: MedusaResponse
 ) => {
   const input = [req.validatedBody]
 

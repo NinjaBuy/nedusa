@@ -1,6 +1,6 @@
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import { Request } from "express"
-import { IdMap, MockManager } from "ninja-test-utils"
+import { IdMap, MockManager } from "medusa-test-utils"
 import {
   AdminPostBatchesReq,
   defaultAdminProductRelations,

@@ -5,7 +5,7 @@ import {
   CampaignBudgetType,
   PromotionRuleOperator,
   PromotionType,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { z } from "zod"
 import {
   createFindParams,

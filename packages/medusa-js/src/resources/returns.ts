@@ -1,14 +1,14 @@
 import BaseResource from "./base"
 import { ResponsePromise } from "../typings"
-import { StoreReturnsRes, StorePostReturnsReq } from "@ninjajs/ninja"
+import { StoreReturnsRes, StorePostReturnsReq } from "@medusajs/medusa"
 
 /**
- * This class is used to send requests to [Store Return API Routes](https://docs.ninjajs.com/api/store#returns). All its method
- * are available in the JS Client under the `ninja.returns` property.
+ * This class is used to send requests to [Store Return API Routes](https://docs.medusajs.com/api/store#returns). All its method
+ * are available in the JS Client under the `medusa.returns` property.
  * 
  * A return can be created by a customer to return items in an order.
  * 
- * Related Guide: [How to create a return in a storefront](https://docs.ninjajs.com/modules/orders/storefront/create-return).
+ * Related Guide: [How to create a return in a storefront](https://docs.medusajs.com/modules/orders/storefront/create-return).
  */
 class ReturnsResource extends BaseResource {
   /**
@@ -18,9 +18,9 @@ class ReturnsResource extends BaseResource {
    * @returns {ResponsePromise<StoreReturnsRes>} Resolves to the return's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.returns.create({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.returns.create({
    *   order_id,
    *   items: [
    *     {

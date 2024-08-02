@@ -1,8 +1,8 @@
 import { Readable, PassThrough } from "stream"
 import { EntityManager } from "typeorm"
 
-import { FileService } from "ninja-interfaces"
-import { MockManager } from "ninja-test-utils"
+import { FileService } from "medusa-interfaces"
+import { MockManager } from "medusa-test-utils"
 
 import { User } from "../../../../models"
 import { BatchJobStatus } from "../../../../types/batch-job"
@@ -32,7 +32,7 @@ let fakeJob = {
 
 async function* generateCSVDataForStream() {
   yield "Product Variant ID,SKU,Price EUR,Price NA [USD]\n"
-  yield ",NINJA-SWEAT-SMALL,15,13.5\n"
+  yield ",MEDUSA-SWEAT-SMALL,15,13.5\n"
   yield "5VxiEkmnPV,,15,13.5\n"
 }
 

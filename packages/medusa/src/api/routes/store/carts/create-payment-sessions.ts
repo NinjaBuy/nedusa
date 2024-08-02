@@ -22,17 +22,17 @@ import { Cart } from "../../../../models"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.carts.createPaymentSessions(cartId)
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.carts.createPaymentSessions(cartId)
  *       .then(({ cart }) => {
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useCreatePaymentSession } from "ninja-react"
+ *       import { useCreatePaymentSession } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string

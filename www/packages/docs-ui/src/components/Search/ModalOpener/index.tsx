@@ -4,7 +4,7 @@ import React, { MouseEvent, useMemo } from "react"
 import clsx from "clsx"
 import { useSearch } from "@/providers"
 import { Button, InputText, Kbd } from "@/components"
-import { MagnifyingGlass } from "@ninjajs/icons"
+import { MagnifyingGlass } from "@medusajs/icons"
 import { useKeyboardShortcut } from "@/hooks"
 
 export type SearchModalOpenerProps = {
@@ -48,7 +48,7 @@ export const SearchModalOpener = ({
     <>
       {isMobile && (
         <Button variant="clear" onClick={handleOpen}>
-          <MagnifyingGlass className="text-ninja-fg-muted" />
+          <MagnifyingGlass className="text-medusa-fg-muted" />
         </Button>
       )}
       {!isMobile && (
@@ -59,7 +59,7 @@ export const SearchModalOpener = ({
           <MagnifyingGlass
             className={clsx(
               "absolute left-docs_0.5 top-[5px]",
-              "text-ninja-fg-muted"
+              "text-medusa-fg-muted"
             )}
           />
           <InputText

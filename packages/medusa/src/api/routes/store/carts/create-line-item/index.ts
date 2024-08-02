@@ -33,9 +33,9 @@ import { CartService } from "../../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.carts.lineItems.create(cart_id, {
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.carts.lineItems.create(cart_id, {
  *         variant_id,
  *         quantity: 1
  *       })
@@ -43,10 +43,10 @@ import { CartService } from "../../../../../services"
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useCreateLineItem } from "ninja-react"
+ *       import { useCreateLineItem } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string
@@ -245,7 +245,7 @@ export default async (req, res) => {
  *     description: An optional key-value map with additional details about the Line Item.
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class StorePostCartsCartLineItemsReq {
   @IsString()

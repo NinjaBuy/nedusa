@@ -1,7 +1,7 @@
 import {
   AdminSalesChannelListResponse,
   AdminSalesChannelResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   AddProductsSalesChannelReq,
   CreateSalesChannelReq,

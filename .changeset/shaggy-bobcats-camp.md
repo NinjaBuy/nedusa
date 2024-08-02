@@ -1,7 +1,7 @@
 ---
-"@ninjajs/link-modules": patch
-"@ninjajs/core-flows": patch
-"@ninjajs/ninja": patch
+"@medusajs/link-modules": patch
+"@medusajs/core-flows": patch
+"@medusajs/medusa": patch
 ---
 
-feat(link-modules, core-flows, ninja): add sales channel location management endpoint
+feat(link-modules, core-flows, medusa): add sales channel location management endpoint

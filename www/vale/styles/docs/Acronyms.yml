@@ -1,6 +1,6 @@
 extends: conditional
 message: "'%s' has no definition."
-link: https://ninjajs.notion.site/Style-Guide-Docs-fad86dd1c5f84b48b145e959f36628e0#4a59adcd20a949008302f27502921933
+link: https://medusajs.notion.site/Style-Guide-Docs-fad86dd1c5f84b48b145e959f36628e0#4a59adcd20a949008302f27502921933
 level: warning
 ignorecase: false
 scope: paragraph

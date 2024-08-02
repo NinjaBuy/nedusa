@@ -1,5 +1,5 @@
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
-import { FlagRouter } from "@ninjajs/utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
+import { FlagRouter } from "@medusajs/utils"
 import DiscountService from "../discount"
 import { TotalsServiceMock } from "../__mocks__/totals"
 import { newTotalsServiceMock } from "../__mocks__/new-totals"
@@ -645,7 +645,7 @@ describe("DiscountService", () => {
       findOne: ({ where }) => {
         if (where.id === "disc_percentage") {
           return Promise.resolve({
-            code: "NINJA",
+            code: "MEDUSA",
             rule: {
               type: "percentage",
               allocation: "total",
@@ -655,7 +655,7 @@ describe("DiscountService", () => {
         }
         if (where.id === "disc_fixed_total") {
           return Promise.resolve({
-            code: "NINJA",
+            code: "MEDUSA",
             rule: {
               type: "fixed",
               allocation: "total",
@@ -665,7 +665,7 @@ describe("DiscountService", () => {
         }
         return Promise.resolve({
           id: "disc_fixed",
-          code: "NINJA",
+          code: "MEDUSA",
           rule: {
             type: "fixed",
             allocation: "item",

@@ -1,11 +1,11 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { DeepPartial, EntityManager, FindOptionsWhere, ILike } from "typeorm"
 import { Country, Currency, Region } from "../models"
 import { FindConfig, Selector } from "../types/common"
 import { CreateRegionInput, UpdateRegionInput } from "../types/region"
 import { buildQuery, setMetadata } from "../utils"
 
-import { FlagRouter, promiseAll } from "@ninjajs/utils"
+import { FlagRouter, promiseAll } from "@medusajs/utils"
 import { TransactionBaseService } from "../interfaces"
 import TaxInclusivePricingFeatureFlag from "../loaders/feature-flags/tax-inclusive-pricing"
 import { CountryRepository } from "../repositories/country"
@@ -127,8 +127,8 @@ class RegionService extends TransactionBaseService {
         })
 
         if (!currency) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Could not find currency with code ${currency_code}`
           )
         }
@@ -199,8 +199,8 @@ class RegionService extends TransactionBaseService {
         })
 
         if (!currency) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Could not find currency with code ${currency_code}`
           )
         }
@@ -274,8 +274,8 @@ class RegionService extends TransactionBaseService {
         where: { id: (regionData as UpdateRegionInput).tax_provider_id! },
       })
       if (!tp) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Tax provider not found"
         )
       }
@@ -286,8 +286,8 @@ class RegionService extends TransactionBaseService {
         regionData.payment_providers.map(async (pId) => {
           const pp = await ppRepository.findOne({ where: { id: pId } })
           if (!pp) {
-            throw new NinjaError(
-              NinjaError.Types.INVALID_DATA,
+            throw new MedusaError(
+              MedusaError.Types.INVALID_DATA,
               "Payment provider not found"
             )
           }
@@ -302,8 +302,8 @@ class RegionService extends TransactionBaseService {
         regionData.fulfillment_providers.map(async (fId) => {
           const fp = await fpRepository.findOne({ where: { id: fId } })
           if (!fp) {
-            throw new NinjaError(
-              NinjaError.Types.INVALID_DATA,
+            throw new MedusaError(
+              MedusaError.Types.INVALID_DATA,
               "Fulfillment provider not found"
             )
           }
@@ -325,8 +325,8 @@ class RegionService extends TransactionBaseService {
    */
   protected validateTaxRate(taxRate: number): void | never {
     if (taxRate > 100 || taxRate < 0) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "The tax_rate must be between 0 and 1"
       )
     }
@@ -349,8 +349,8 @@ class RegionService extends TransactionBaseService {
     const storeCurrencies = store.currencies.map((curr) => curr.code)
 
     if (!storeCurrencies.includes(currencyCode.toLowerCase())) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "Invalid currency code"
       )
     }
@@ -377,8 +377,8 @@ class RegionService extends TransactionBaseService {
       (country) => country.alpha2 === countryCode
     )
     if (!isCountryExists) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "Invalid country code"
       )
     }
@@ -390,15 +390,15 @@ class RegionService extends TransactionBaseService {
     })
 
     if (!country) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Country with code ${code} not found`
       )
     }
 
     if (country.region_id && country.region_id !== regionId) {
-      throw new NinjaError(
-        NinjaError.Types.DUPLICATE_ERROR,
+      throw new MedusaError(
+        MedusaError.Types.DUPLICATE_ERROR,
         `${country.display_name} already exists in region ${country.region_id}`
       )
     }
@@ -425,15 +425,15 @@ class RegionService extends TransactionBaseService {
     const country = await countryRepository.findOne(query)
 
     if (!country) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Country with code ${code} not found`
       )
     }
 
     if (!country.region_id) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Country does not belong to a region`
       )
     }
@@ -451,8 +451,8 @@ class RegionService extends TransactionBaseService {
     const [region] = await this.list({ name }, { take: 1 })
 
     if (!region) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Region "${name}" was not found`
       )
     }
@@ -472,8 +472,8 @@ class RegionService extends TransactionBaseService {
     config: FindConfig<Region> = {}
   ): Promise<Region | never> {
     if (!isDefined(regionId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"regionId" must be defined`
       )
     }
@@ -486,8 +486,8 @@ class RegionService extends TransactionBaseService {
     const region = await regionRepository.findOne(query)
 
     if (!region) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Region with ${regionId} was not found`
       )
     }
@@ -694,8 +694,8 @@ class RegionService extends TransactionBaseService {
       const pp = await ppRepo.findOne({ where: { id: providerId } })
 
       if (!pp) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           `Payment provider ${providerId} was not found`
         )
       }
@@ -743,8 +743,8 @@ class RegionService extends TransactionBaseService {
       const fp = await fpRepo.findOne({ where: { id: providerId } })
 
       if (!fp) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_FOUND,
+        throw new MedusaError(
+          MedusaError.Types.NOT_FOUND,
           `Fulfillment provider ${providerId} was not found`
         )
       }

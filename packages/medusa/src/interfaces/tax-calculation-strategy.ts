@@ -3,21 +3,21 @@ import { TaxCalculationContext } from "./tax-service"
 import { LineItemTaxLine } from "../models/line-item-tax-line"
 import { ShippingMethodTaxLine } from "../models/shipping-method-tax-line"
 import { TransactionBaseService } from "./transaction-base-service"
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 
 /**
  * ## Overview
  *
- * A tax calculation strategy is used to calculate taxes when calculating a cart's totals. The Ninja
+ * A tax calculation strategy is used to calculate taxes when calculating a cart's totals. The Medusa
  * backend provides a tax calculation strategy that handles calculating the taxes, taking into account the
  * defined tax rates and settings such as whether tax-inclusive pricing is enabled.
  *
  * You can override the tax calculation strategy to implement different calculation logic or to
  * integrate a third-party service that handles the tax calculation. You can override it either
- * in a Ninja backend setup or in a plugin.
+ * in a Medusa backend setup or in a plugin.
  *
  * A tax calculation strategy should be defined in a TypeScript or JavaScript file created under the `src/strategies` directory.
- * The class must also implement the `ITaxCalculationStrategy` interface imported from the `@ninjajs/ninja` package.
+ * The class must also implement the `ITaxCalculationStrategy` interface imported from the `@medusajs/medusa` package.
  *
  * For example, you can create the file `src/strategies/tax-calculation.ts` with the following content:
  *
@@ -28,7 +28,7 @@ import { NinjaContainer } from "@ninjajs/types"
  *   LineItemTaxLine,
  *   ShippingMethodTaxLine,
  *   TaxCalculationContext,
- * } from "@ninjajs/ninja"
+ * } from "@medusajs/medusa"
  *
  * class TaxCalculationStrategy
  *   implements ITaxCalculationStrategy {
@@ -55,7 +55,7 @@ export interface ITaxCalculationStrategy {
    *
    * This method is used whenever taxes are calculated. If automatic tax calculation is disabled in a region,
    * then it's only triggered when taxes are calculated manually as explained in
-   * [this guide](https://docs.ninjajs.com/modules/taxes/storefront/manual-calculation).
+   * [this guide](https://docs.medusajs.com/modules/taxes/storefront/manual-calculation).
    *
    * @param {LineItem[]} items - The line items to calculate the tax total for.
    * @param {(ShippingMethodTaxLine | LineItemTaxLine)[]} taxLines - The tax lines used for the calculation
@@ -63,7 +63,7 @@ export interface ITaxCalculationStrategy {
    * @returns {Promise<number>} The calculated tax total
    *
    * @example
-   * An example of the general implementation of this method in the Ninja backend's tax calculation strategy:
+   * An example of the general implementation of this method in the Medusa backend's tax calculation strategy:
    *
    * ```ts
    * async calculate(
@@ -123,19 +123,19 @@ export abstract class AbstractTaxCalculationStrategy
   }
 
   /**
-   * You can use the `constructor` of your tax calculation strategy to access the different services in Ninja through dependency injection.
+   * You can use the `constructor` of your tax calculation strategy to access the different services in Medusa through dependency injection.
    *
    * You can also use the constructor to initialize your integration with the third-party provider. For example, if you use a client to connect to the third-party provider’s APIs, you can initialize it in the constructor and use it in other methods in the service.
-   * Additionally, if you’re creating your tax calculation strategy as an external plugin to be installed on any Ninja backend and you want to access the options added for the plugin, you can access it in the constructor.
+   * Additionally, if you’re creating your tax calculation strategy as an external plugin to be installed on any Medusa backend and you want to access the options added for the plugin, you can access it in the constructor.
    *
-   * @param {Record<string, unknown>} container - An instance of `NinjaContainer` that allows you to access other resources, such as services, in your Ninja backend.
+   * @param {Record<string, unknown>} container - An instance of `MedusaContainer` that allows you to access other resources, such as services, in your Medusa backend.
    * @param {Record<string, unknown>} config - If this tax calculation strategy is created in a plugin, the plugin's options are passed in this parameter.
    *
    * @example
    * import {
    *   ITaxCalculationStrategy,
    *   LineItemService,
-   * } from "@ninjajs/ninja"
+   * } from "@medusajs/medusa"
    *
    * type InjectedDependencies = {
    *   lineItemService: LineItemService

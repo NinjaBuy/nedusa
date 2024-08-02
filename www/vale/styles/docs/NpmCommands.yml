@@ -1,6 +1,6 @@
 extends: substitution
 message: Use '%s' instead of '%s'
-link: https://docs.ninjajs.com/contribution-guidelines#expand-commands
+link: https://docs.medusajs.com/contribution-guidelines#expand-commands
 level: error
 scope: raw
 ignorecase: false

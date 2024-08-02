@@ -5,7 +5,7 @@ import {
   AdminResetPasswordTokenRequest,
   AdminUserRes,
   AdminUsersListRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import {
   AdminCreateUserPayload,
@@ -15,14 +15,14 @@ import {
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin User API Routes](https://docs.ninjajs.com/api/admin#users). All its method
- * are available in the JS Client under the `ninja.admin.users` property.
+ * This class is used to send requests to [Admin User API Routes](https://docs.medusajs.com/api/admin#users). All its method
+ * are available in the JS Client under the `medusa.admin.users` property.
  *
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  *
  * A store can have more than one user, each having the same privileges. Admins can manage users, their passwords, and more.
  *
- * Related Guide: [How to manage users](https://docs.ninjajs.com/modules/users/admin/manage-users).
+ * Related Guide: [How to manage users](https://docs.medusajs.com/modules/users/admin/manage-users).
  */
 class AdminUsersResource extends BaseResource {
   /**
@@ -34,10 +34,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<void>} Resolves when the token is generated successfully.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.sendResetPasswordToken({
+   * medusa.admin.users.sendResetPasswordToken({
    *   email: "user@example.com"
    * })
    * .then(() => {
@@ -63,10 +63,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<AdminUserRes>} Resolves to the user's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.resetPassword({
+   * medusa.admin.users.resetPassword({
    *   token: "supersecrettoken",
    *   password: "supersecret"
    * })
@@ -89,10 +89,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<AdminUserRes>} Resolves to the user's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.retrieve(userId)
+   * medusa.admin.users.retrieve(userId)
    * .then(({ user }) => {
    *   console.log(user.id);
    * })
@@ -112,10 +112,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<AdminUserRes>} Resolves to the user's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.create({
+   * medusa.admin.users.create({
    *   email: "user@example.com",
    *   password: "supersecret"
    * })
@@ -139,10 +139,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<AdminUserRes>} Resolves to the user's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.update(userId, {
+   * medusa.admin.users.update(userId, {
    *   first_name: "Marcellus"
    * })
    * .then(({ user }) => {
@@ -165,10 +165,10 @@ class AdminUsersResource extends BaseResource {
    * @returns {ResponsePromise<AdminDeleteUserRes>} Resolves to the deletion operation's details.
    *
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.delete(userId)
+   * medusa.admin.users.delete(userId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -190,10 +190,10 @@ class AdminUsersResource extends BaseResource {
    * To list users:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.list()
+   * medusa.admin.users.list()
    * .then(({ users }) => {
    *   console.log(users.length);
    * })
@@ -202,10 +202,10 @@ class AdminUsersResource extends BaseResource {
    * By default, only the first `20` users are returned. You can control pagination by specifying the `limit` and `offset` properties:
    *
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.users.list({
+   * medusa.admin.users.list({
    *   limit,
    *   offset
    * })

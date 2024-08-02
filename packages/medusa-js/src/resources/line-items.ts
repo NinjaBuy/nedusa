@@ -2,13 +2,13 @@ import {
   StoreCartsRes,
   StorePostCartsCartLineItemsItemReq,
   StorePostCartsCartLineItemsReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to Line Item API Routes part of the [Store Cart API Routes](https://docs.ninjajs.com/api/store#carts). All its method
- * are available in the JS Client under the `ninja.carts.lineItems` property.
+ * This class is used to send requests to Line Item API Routes part of the [Store Cart API Routes](https://docs.medusajs.com/api/store#carts). All its method
+ * are available in the JS Client under the `medusa.carts.lineItems` property.
  */
 class LineItemsResource extends BaseResource {
   /**
@@ -19,9 +19,9 @@ class LineItemsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the associated cart's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.carts.lineItems.create(cart_id, {
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.carts.lineItems.create(cart_id, {
    *   variant_id,
    *   quantity: 1
    * })
@@ -46,9 +46,9 @@ class LineItemsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the associated cart's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.carts.lineItems.update(cartId, lineId, {
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.carts.lineItems.update(cartId, lineId, {
    *   quantity: 1
    * })
    * .then(({ cart }) => {
@@ -72,9 +72,9 @@ class LineItemsResource extends BaseResource {
    * @returns {ResponsePromise<StoreCartsRes>} Resolves to the associated cart's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.carts.lineItems.delete(cartId, lineId)
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.carts.lineItems.delete(cartId, lineId)
    * .then(({ cart }) => {
    *   console.log(cart.id);
    * })

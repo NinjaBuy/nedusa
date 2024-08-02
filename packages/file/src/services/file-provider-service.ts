@@ -1,5 +1,5 @@
-import { Constructor, DAL, FileTypes } from "@ninjajs/types"
-import { NinjaError } from "ninja-core-utils"
+import { Constructor, DAL, FileTypes } from "@medusajs/types"
+import { MedusaError } from "medusa-core-utils"
 import { FileProviderRegistrationPrefix } from "@types"
 
 type InjectedDependencies = {
@@ -17,8 +17,8 @@ export default class FileProviderService {
     )
 
     if (fileProviderKeys.length !== 1) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `File module should be initialized with exactly one provider`
       )
     }

@@ -1,14 +1,14 @@
-import { Response } from "@ninjajs/ninja-js"
-import { adminProductKeys } from "ninja-react"
+import { Response } from "@medusajs/medusa-js"
+import { adminProductKeys } from "medusa-react"
 import { LoaderFunctionArgs } from "react-router-dom"
 
-import { AdminCustomerGroupResponse } from "@ninjajs/types"
-import { ninja, queryClient } from "../../../lib/ninja"
+import { AdminCustomerGroupResponse } from "@medusajs/types"
+import { medusa, queryClient } from "../../../lib/medusa"
 
 const customerGroupDetailQuery = (id: string) => ({
   queryKey: adminProductKeys.detail(id),
   queryFn: async () =>
-    ninja.admin.customerGroups.retrieve(id, {
+    medusa.admin.customerGroups.retrieve(id, {
       fields: "+customers.id",
     }),
 })

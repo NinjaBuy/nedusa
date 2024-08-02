@@ -1,4 +1,4 @@
-const { Currency, Region } = require("@ninjajs/ninja")
+const { Currency, Region } = require("@medusajs/medusa")
 const path = require("path")
 
 const startServerWithEnvironment =
@@ -20,24 +20,24 @@ const promotionsSeeder = require("../../../helpers/price-selection-seeder")
 jest.setTimeout(30000)
 
 describe("tax inclusive prices", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     const [process, conn] = await startServerWithEnvironment({
       cwd,
-      env: { NINJA_FF_TAX_INCLUSIVE_PRICING: true },
+      env: { MEDUSA_FF_TAX_INCLUSIVE_PRICING: true },
     })
     dbConnection = conn // await initDb({ cwd })
-    ninjaProcess = process // await setupServer({ cwd })
+    medusaProcess = process // await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("Create line item with tax inclusive pricing", () => {
@@ -693,7 +693,7 @@ describe("tax inclusive prices", () => {
 
       const res = await api.get(`/admin/shipping-options`, {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       })
 

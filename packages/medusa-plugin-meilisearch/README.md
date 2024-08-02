@@ -2,29 +2,29 @@
 
 Provide powerful indexing and searching features in your commerce application with MeiliSearch.
 
-[MeiliSearch Plugin Documentation](https://docs.ninjajs.com/plugins/search/meilisearch) | [Ninja Website](https://ninjajs.com) | [Ninja Repository](https://github.com/ninjajs/ninja)
+[MeiliSearch Plugin Documentation](https://docs.medusajs.com/plugins/search/meilisearch) | [Medusa Website](https://medusajs.com) | [Medusa Repository](https://github.com/medusajs/medusa)
 
 ## Features
 
 - Flexible configurations for specifying searchable and retrievable attributes.
-- Ready-integration with [Ninja's Next.js starter storefront](https://docs.ninjajs.com/starters/nextjs-ninja-starter).
+- Ready-integration with [Medusa's Next.js starter storefront](https://docs.medusajs.com/starters/nextjs-medusa-starter).
 - Utilize MeiliSearch's powerful search functionalities including typo-tolerance, synonyms, filtering, and more.
 
 ---
 
 ## Prerequisites
 
-- [Ninja backend](https://docs.ninjajs.com/development/backend/install)
+- [Medusa backend](https://docs.medusajs.com/development/backend/install)
 - [MeiliSearch instance](https://docs.meilisearch.com/learn/getting_started/quick_start.html#setup-and-installation)
 
 ---
 
 ## How to Install
 
-1\. Run the following command in the directory of the Ninja backend:
+1\. Run the following command in the directory of the Medusa backend:
 
   ```bash
-  npm install ninja-plugin-meilisearch
+  npm install medusa-plugin-meilisearch
   ```
 
 2\. Set the following environment variables in `.env`:
@@ -34,13 +34,13 @@ Provide powerful indexing and searching features in your commerce application wi
   MEILISEARCH_API_KEY=<YOUR_MASTER_KEY>
   ```
 
-3\. In `ninja-config.js` add the following at the end of the `plugins` array:
+3\. In `medusa-config.js` add the following at the end of the `plugins` array:
 
   ```js
   const plugins = [
     // ...
     {
-      resolve: `ninja-plugin-meilisearch`,
+      resolve: `medusa-plugin-meilisearch`,
       options: {
         config: {
           host: process.env.MEILISEARCH_HOST,
@@ -78,16 +78,16 @@ Provide powerful indexing and searching features in your commerce application wi
 
 ## Test the Plugin
 
-1\. Run the following command in the directory of the Ninja backend to run the backend:
+1\. Run the following command in the directory of the Medusa backend to run the backend:
 
   ```bash
   npm run start
   ```
 
-2\. Try searching products either using your storefront or using the [Store APIs](https://docs.ninjajs.com/api/store#tag/Product/operation/PostProductsSearch).
+2\. Try searching products either using your storefront or using the [Store APIs](https://docs.medusajs.com/api/store#tag/Product/operation/PostProductsSearch).
 
 ---
 
 ## Additional Resources
 
-- [MeiliSearch Plugin Documentation](https://docs.ninjajs.com/plugins/search/meilisearch)
+- [MeiliSearch Plugin Documentation](https://docs.medusajs.com/plugins/search/meilisearch)

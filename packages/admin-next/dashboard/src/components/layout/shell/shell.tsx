@@ -10,8 +10,8 @@ import {
   MagnifyingGlass,
   SidebarRight,
   User as UserIcon,
-} from "@ninjajs/icons"
-import { Avatar, DropdownMenu, IconButton, Kbd, Text, clx } from "@ninjajs/ui"
+} from "@medusajs/icons"
+import { Avatar, DropdownMenu, IconButton, Kbd, Text, clx } from "@medusajs/ui"
 import { PropsWithChildren } from "react"
 import {
   Link,
@@ -246,13 +246,13 @@ const LoggedInUser = () => {
       <DropdownMenu.Content align="center">
         <Profile />
         <DropdownMenu.Separator />
-        <Link to="https://docs.ninjajs.com/user-guide" target="_blank">
+        <Link to="https://docs.medusajs.com/user-guide" target="_blank">
           <DropdownMenu.Item>
             <BookOpen className="text-ui-fg-subtle mr-2" />
             Documentation
           </DropdownMenu.Item>
         </Link>
-        <Link to="https://ninjajs.com/changelog/" target="_blank">
+        <Link to="https://medusajs.com/changelog/" target="_blank">
           <DropdownMenu.Item>
             <Calendar className="text-ui-fg-subtle mr-2" />
             Changelog

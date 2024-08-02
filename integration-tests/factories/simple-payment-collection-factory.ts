@@ -2,7 +2,7 @@ import { DataSource } from "typeorm"
 
 import { simpleRegionFactory } from "./simple-region-factory"
 import { simplePaymentFactory } from "./simple-payment-factory"
-import { Payment, PaymentCollection } from "@ninjajs/ninja"
+import { Payment, PaymentCollection } from "@medusajs/medusa"
 
 export const simplePaymentCollectionFactory = async (
   dataSource: DataSource,

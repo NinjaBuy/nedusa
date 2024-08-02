@@ -1,12 +1,12 @@
 # All files not owned by other teams must be reviewed by the core team
-*                                               @ninjajs/core 
-package.json                                    @ninjajs/engineering
-yarn.lock                                       @ninjajs/engineering
-/.changeset/                                    @ninjajs/engineering
-/packages/                                      @ninjajs/engineering
-/integration-tests/                             @ninjajs/engineering
-/docs-util/                                     @ninjajs/docs
-/www/                                           @ninjajs/docs
-/packages/admin                                 @ninjajs/ui
-/packages/admin-ui                              @ninjajs/ui
-/packages/design-system/                        @ninjajs/ui
+*                                               @medusajs/core 
+package.json                                    @medusajs/engineering
+yarn.lock                                       @medusajs/engineering
+/.changeset/                                    @medusajs/engineering
+/packages/                                      @medusajs/engineering
+/integration-tests/                             @medusajs/engineering
+/docs-util/                                     @medusajs/docs
+/www/                                           @medusajs/docs
+/packages/admin                                 @medusajs/ui
+/packages/admin-ui                              @medusajs/ui
+/packages/design-system/                        @medusajs/ui

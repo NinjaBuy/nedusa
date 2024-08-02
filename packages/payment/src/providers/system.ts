@@ -5,8 +5,8 @@ import {
   PaymentSessionStatus,
   ProviderWebhookPayload,
   WebhookActionResult,
-} from "@ninjajs/types"
-import { AbstractPaymentProvider, PaymentActions } from "@ninjajs/utils"
+} from "@medusajs/types"
+import { AbstractPaymentProvider, PaymentActions } from "@medusajs/utils"
 
 export class SystemProviderService extends AbstractPaymentProvider {
   static identifier = "system"

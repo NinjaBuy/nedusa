@@ -1,9 +1,9 @@
 import * as Models from "@models"
 
 import { AuthModuleService } from "@services"
-import { ModuleExports } from "@ninjajs/types"
-import { Modules } from "@ninjajs/modules-sdk"
-import { ModulesSdkUtils } from "@ninjajs/utils"
+import { ModuleExports } from "@medusajs/types"
+import { Modules } from "@medusajs/modules-sdk"
+import { ModulesSdkUtils } from "@medusajs/utils"
 import loadConnection from "./loaders/connection"
 import loadContainer from "./loaders/container"
 import loadProviders from "./loaders/providers"

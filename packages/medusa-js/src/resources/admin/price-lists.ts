@@ -13,20 +13,20 @@ import {
   AdminPriceListRes,
   AdminPriceListsListRes,
   AdminPriceListsProductsListRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Price List API Routes](https://docs.ninjajs.com/api/admin#price-lists). All its method
- * are available in the JS Client under the `ninja.admin.priceLists` property.
+ * This class is used to send requests to [Admin Price List API Routes](https://docs.medusajs.com/api/admin#price-lists). All its method
+ * are available in the JS Client under the `medusa.admin.priceLists` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A price list are special prices applied to products based on a set of conditions, such as customer group.
  * 
- * Related Guide: [How to manage price lists](https://docs.ninjajs.com/modules/price-lists/admin/manage-price-lists).
+ * Related Guide: [How to manage price lists](https://docs.medusajs.com/modules/price-lists/admin/manage-price-lists).
  */
 class AdminPriceListResource extends BaseResource {
   /**
@@ -36,7 +36,7 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListRes>} Resolves to the price list details.
    * 
    * @example
-   * ninja.admin.priceLists.create({
+   * medusa.admin.priceLists.create({
    *   name: "New Price List",
    *   description: "A new price list",
    *   type: PriceListType.SALE,
@@ -68,10 +68,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListRes>} Resolves to the price list details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.update(priceListId, {
+   * medusa.admin.priceLists.update(priceListId, {
    *   name: "New Price List"
    * })
    * .then(({ price_list }) => {
@@ -94,10 +94,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.delete(priceListId)
+   * medusa.admin.priceLists.delete(priceListId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })
@@ -117,10 +117,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListRes>} Resolves to the price list details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.retrieve(priceListId)
+   * medusa.admin.priceLists.retrieve(priceListId)
    * .then(({ price_list }) => {
    *   console.log(price_list.id);
    * })
@@ -143,10 +143,10 @@ class AdminPriceListResource extends BaseResource {
    * To list price lists:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.list()
+   * medusa.admin.priceLists.list()
    * .then(({ price_lists, limit, offset, count }) => {
    *   console.log(price_lists.length);
    * })
@@ -155,10 +155,10 @@ class AdminPriceListResource extends BaseResource {
    * To specify relations that should be retrieved within the price lists:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.list({
+   * medusa.admin.priceLists.list({
    *   expand: "prices"
    * })
    * .then(({ price_lists, limit, offset, count }) => {
@@ -169,10 +169,10 @@ class AdminPriceListResource extends BaseResource {
    * By default, only the first `10` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.list({
+   * medusa.admin.priceLists.list({
    *   expand: "prices",
    *   limit,
    *   offset
@@ -207,10 +207,10 @@ class AdminPriceListResource extends BaseResource {
    * To list products in a price list:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.listProducts(priceListId)
+   * medusa.admin.priceLists.listProducts(priceListId)
    * .then(({ products, limit, offset, count }) => {
    *   console.log(products.length);
    * })
@@ -219,10 +219,10 @@ class AdminPriceListResource extends BaseResource {
    * To specify relations that should be retrieved within the products:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.listProducts(priceListId, {
+   * medusa.admin.priceLists.listProducts(priceListId, {
    *   expand: "variants"
    * })
    * .then(({ products, limit, offset, count }) => {
@@ -233,10 +233,10 @@ class AdminPriceListResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.listProducts(priceListId, {
+   * medusa.admin.priceLists.listProducts(priceListId, {
    *   expand: "variants",
    *   limit,
    *   offset
@@ -269,10 +269,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListRes>} Resolves to the price list's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.addPrices(priceListId, {
+   * medusa.admin.priceLists.addPrices(priceListId, {
    *   prices: [
    *     {
    *       amount: 1000,
@@ -302,10 +302,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListDeleteBatchRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.deletePrices(priceListId, {
+   * medusa.admin.priceLists.deletePrices(priceListId, {
    *   price_ids: [
    *     price_id
    *   ]
@@ -331,10 +331,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListDeleteProductPricesRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.deleteProductPrices(priceListId, productId)
+   * medusa.admin.priceLists.deleteProductPrices(priceListId, productId)
    * .then(({ ids, object, deleted }) => {
    *   console.log(ids.length);
    * })
@@ -356,10 +356,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListDeleteVariantPricesRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.deleteVariantPrices(priceListId, variantId)
+   * medusa.admin.priceLists.deleteVariantPrices(priceListId, variantId)
    * .then(({ ids, object, deleted }) => {
    *   console.log(ids);
    * })
@@ -381,10 +381,10 @@ class AdminPriceListResource extends BaseResource {
    * @returns {ResponsePromise<AdminPriceListDeleteProductPricesRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.priceLists.deleteProductsPrices(priceListId, {
+   * medusa.admin.priceLists.deleteProductsPrices(priceListId, {
    *   product_ids: [
    *     productId1,
    *     productId2,

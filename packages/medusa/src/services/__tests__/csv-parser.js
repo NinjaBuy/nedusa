@@ -174,12 +174,12 @@ describe("CsvParser", () => {
 
       it("given a transformer function for a column, when building data, should transform that column's value according to the transformation function", async () => {
         const content = await csvParser.buildData([
-          { title: "ninja t-shirt", "price usd": "19.99" },
+          { title: "medusa t-shirt", "price usd": "19.99" },
         ])
 
         expect(content).toEqual([
           {
-            title: "ninja t-shirt",
+            title: "medusa t-shirt",
             "price usd": 1999,
           },
         ])
@@ -204,13 +204,13 @@ describe("CsvParser", () => {
         it("given a column with the match property as regex and a transformer, when building data, should resolve that column for all entries in the line that match the regex", async () => {
           const content = await csvParser.buildData([
             {
-              title: "ninja t-shirt",
+              title: "medusa t-shirt",
               "variant price usd": "19.99",
               "variant price cad": "26.79",
               "variant price dkk": "1389",
             },
             {
-              title: "ninja sunglasses",
+              title: "medusa sunglasses",
               "variant price usd": "9.99",
               "variant price cad": "16.79",
               "variant price dkk": "389",
@@ -219,13 +219,13 @@ describe("CsvParser", () => {
 
           expect(content).toEqual([
             {
-              title: "ninja t-shirt",
+              title: "medusa t-shirt",
               "variant price usd": 1999,
               "variant price cad": 2679,
               "variant price dkk": 138900,
             },
             {
-              title: "ninja sunglasses",
+              title: "medusa sunglasses",
               "variant price usd": 999,
               "variant price cad": 1679,
               "variant price dkk": 38900,
@@ -278,13 +278,13 @@ describe("CsvParser", () => {
         it("given a column with match and reducer properties, when building data, should return the result of the reducer function", async () => {
           const content = await csvParser.buildData([
             {
-              title: "ninja t-shirt",
+              title: "medusa t-shirt",
               "variant price usd": "19.99",
               "variant price cad": "26.79",
               "variant price dkk": "1389",
             },
             {
-              title: "ninja sunglasses",
+              title: "medusa sunglasses",
               "variant price usd": "9.99",
               "variant price cad": "16.79",
               "variant price dkk": "389",
@@ -293,7 +293,7 @@ describe("CsvParser", () => {
 
           expect(content).toEqual([
             {
-              title: "ninja t-shirt",
+              title: "medusa t-shirt",
               prices: [
                 {
                   currency_code: "usd",
@@ -310,7 +310,7 @@ describe("CsvParser", () => {
               ],
             },
             {
-              title: "ninja sunglasses",
+              title: "medusa sunglasses",
               prices: [
                 {
                   currency_code: "usd",
@@ -333,13 +333,13 @@ describe("CsvParser", () => {
           try {
             await csvParser.buildData([
               {
-                title: "ninja t-shirt",
+                title: "medusa t-shirt",
                 "variant price usd": "19.99",
                 "variant price cad": "26.79",
                 "variant price grp": "1389",
               },
               {
-                title: "ninja sunglasses",
+                title: "medusa sunglasses",
                 "variant price usd": "9.99",
                 "variant price cad": "16.79",
                 "variant price grp": "389",
@@ -368,13 +368,13 @@ describe("CsvParser", () => {
           it("given a column with match and mapTo property, when building data, then the mapTo property should be ignored", async () => {
             const content = await csvParser.buildData([
               {
-                title: "ninja t-shirt",
+                title: "medusa t-shirt",
                 "variant price usd": "19.99",
                 "variant price cad": "26.79",
                 "variant price dkk": "1389",
               },
               {
-                title: "ninja sunglasses",
+                title: "medusa sunglasses",
                 "variant price usd": "9.99",
                 "variant price cad": "16.79",
                 "variant price dkk": "389",
@@ -383,13 +383,13 @@ describe("CsvParser", () => {
 
             expect(content).toEqual([
               {
-                title: "ninja t-shirt",
+                title: "medusa t-shirt",
                 "variant price usd": "19.99",
                 "variant price cad": "26.79",
                 "variant price dkk": "1389",
               },
               {
-                title: "ninja sunglasses",
+                title: "medusa sunglasses",
                 "variant price usd": "9.99",
                 "variant price cad": "16.79",
                 "variant price dkk": "389",

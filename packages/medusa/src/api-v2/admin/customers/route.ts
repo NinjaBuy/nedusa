@@ -1,22 +1,22 @@
-import { createCustomersWorkflow } from "@ninjajs/core-flows"
+import { createCustomersWorkflow } from "@medusajs/core-flows"
 import {
   AdminCustomerListResponse,
   AdminCustomerResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { AdminCreateCustomerType } from "./validators"
 import { refetchCustomer } from "./helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse<AdminCustomerListResponse>
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse<AdminCustomerListResponse>
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -40,8 +40,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateCustomerType>,
-  res: NinjaResponse<AdminCustomerResponse>
+  req: AuthenticatedMedusaRequest<AdminCreateCustomerType>,
+  res: MedusaResponse<AdminCustomerResponse>
 ) => {
   const createCustomers = createCustomersWorkflow(req.scope)
 

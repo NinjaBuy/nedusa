@@ -1,10 +1,10 @@
 import {
   deleteProductTypesWorkflow,
   updateProductTypesWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
 import { refetchProductType } from "../helpers"
@@ -14,8 +14,8 @@ import {
 } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetProductTypeParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetProductTypeParamsType>,
+  res: MedusaResponse
 ) => {
   const productType = await refetchProductType(
     req.params.id,
@@ -27,8 +27,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateProductTypeType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateProductTypeType>,
+  res: MedusaResponse
 ) => {
   const { result, errors } = await updateProductTypesWorkflow(req.scope).run({
     input: {
@@ -52,8 +52,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
 

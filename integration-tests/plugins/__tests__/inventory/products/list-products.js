@@ -19,7 +19,7 @@ const {
   getContainer,
 } = require("../../../../environment-helpers/use-container")
 
-const adminHeaders = { headers: { "x-ninja-access-token": "test_token" } }
+const adminHeaders = { headers: { "x-medusa-access-token": "test_token" } }
 
 describe("Create Variant", () => {
   let appContainer

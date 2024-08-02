@@ -1,4 +1,4 @@
-import { CreateCampaignDTO, UpdateCampaignDTO } from "@ninjajs/types"
+import { CreateCampaignDTO, UpdateCampaignDTO } from "@medusajs/types"
 import {
   CampaignDeleteRes,
   CampaignListRes,

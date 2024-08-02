@@ -1,7 +1,7 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager, FindOptionsWhere, ILike } from "typeorm"
 
-import { selectorConstraintsToString } from "@ninjajs/utils"
+import { selectorConstraintsToString } from "@medusajs/utils"
 import { TransactionBaseService } from "../interfaces"
 import { PublishableApiKey, SalesChannel } from "../models"
 import { PublishableApiKeyRepository } from "../repositories/publishable-api-key"
@@ -95,8 +95,8 @@ class PublishableApiKeyService extends TransactionBaseService {
     config: FindConfig<PublishableApiKey> = {}
   ): Promise<PublishableApiKey | never> {
     if (!isDefined(publishableApiKeyId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"publishableApiKeyId" must be defined`
       )
     }
@@ -126,8 +126,8 @@ class PublishableApiKeyService extends TransactionBaseService {
     if (!publishableApiKey) {
       const selectorConstraints = selectorConstraintsToString(selector)
 
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Publishable key with ${selectorConstraints} was not found`
       )
     }
@@ -225,8 +225,8 @@ class PublishableApiKeyService extends TransactionBaseService {
       const pubKey = await this.retrieve(publishableApiKeyId)
 
       if (pubKey.revoked_at) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `PublishableApiKey has already been revoked.`
         )
       }

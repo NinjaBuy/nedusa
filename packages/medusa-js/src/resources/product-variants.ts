@@ -2,14 +2,14 @@ import {
   StoreGetVariantsParams,
   StoreVariantsListRes,
   StoreVariantsRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to [Store Product Variant API Routes](https://docs.ninjajs.com/api/store#product-variants). All its method
- * are available in the JS Client under the `ninja.product.variants` property.
+ * This class is used to send requests to [Store Product Variant API Routes](https://docs.medusajs.com/api/store#product-variants). All its method
+ * are available in the JS Client under the `medusa.product.variants` property.
  * 
  * Product variants are the actual salable item in your store. Each variant is a combination of the different option values available on the product.
  */
@@ -25,10 +25,10 @@ class ProductVariantsResource extends BaseResource {
    * @returns {ResponsePromise<StoreVariantsRes>} Resolves to the product variant's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.product.variants.retrieve(productVariantId)
+   * medusa.product.variants.retrieve(productVariantId)
    * .then(({ variant }) => {
    *   console.log(variant.id);
    * })
@@ -54,10 +54,10 @@ class ProductVariantsResource extends BaseResource {
    * To list product variants:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.product.variants.list()
+   * medusa.product.variants.list()
    * .then(({ variants }) => {
    *   console.log(variants.length);
    * })
@@ -66,10 +66,10 @@ class ProductVariantsResource extends BaseResource {
    * To specify relations that should be retrieved within the product variants:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.product.variants.list({
+   * medusa.product.variants.list({
    *   expand: "product"
    * })
    * .then(({ variants }) => {
@@ -80,10 +80,10 @@ class ProductVariantsResource extends BaseResource {
    * By default, only the first `100` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.product.variants.list({
+   * medusa.product.variants.list({
    *   expand: "product",
    *   limit,
    *   offset

@@ -9,9 +9,9 @@ export const Kbd = ({ children, className, ...props }: KbdProps) => {
       className={clsx(
         "rounded-docs_sm border-solid py-0 px-[6px]",
         "inline-flex items-center justify-center",
-        "border-ninja-tag-neutral-border border",
-        "bg-ninja-tag-neutral-bg",
-        "text-ninja-tag-neutral-text",
+        "border-medusa-tag-neutral-border border",
+        "bg-medusa-tag-neutral-bg",
+        "text-medusa-tag-neutral-text",
         "text-compact-x-small-plus font-base shadow-none",
         className
       )}

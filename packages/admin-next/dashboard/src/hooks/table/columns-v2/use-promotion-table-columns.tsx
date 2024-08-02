@@ -1,4 +1,4 @@
-import { PromotionDTO } from "@ninjajs/types"
+import { PromotionDTO } from "@medusajs/types"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"

@@ -15,20 +15,20 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 jest.setTimeout(30000)
 
 describe("Shipping Options Totals Calculations", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   beforeEach(async () => {
@@ -60,7 +60,7 @@ describe("Shipping Options Totals Calculations", () => {
 
     const res = await api.get(`/admin/shipping-options`, {
       headers: {
-        "x-ninja-access-token": "test_token",
+        "x-medusa-access-token": "test_token",
       },
     })
 

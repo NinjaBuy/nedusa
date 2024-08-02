@@ -1,23 +1,23 @@
 import {
   deletePromotionsWorkflow,
   updatePromotionsWorkflow,
-} from "@ninjajs/core-flows"
-import { NinjaError } from "@ninjajs/utils"
+} from "@medusajs/core-flows"
+import { MedusaError } from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import {
   AdminGetPromotionParamsType,
   AdminUpdatePromotionType,
 } from "../validators"
-import { ContainerRegistrationKeys } from "@ninjajs/utils"
-import { remoteQueryObjectFromString } from "@ninjajs/utils"
+import { ContainerRegistrationKeys } from "@medusajs/utils"
+import { remoteQueryObjectFromString } from "@medusajs/utils"
 import { refetchPromotion } from "../helpers"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetPromotionParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetPromotionParamsType>,
+  res: MedusaResponse
 ) => {
   const idOrCode = req.params.id
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -31,8 +31,8 @@ export const GET = async (
 
   const [promotion] = await remoteQuery(queryObject)
   if (!promotion) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Promotion with id or code: does-not-exist was not found`
     )
   }
@@ -41,8 +41,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdatePromotionType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdatePromotionType>,
+  res: MedusaResponse
 ) => {
   const updatePromotions = updatePromotionsWorkflow(req.scope)
   const promotionsData = [
@@ -71,8 +71,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
   const deletePromotions = deletePromotionsWorkflow(req.scope)

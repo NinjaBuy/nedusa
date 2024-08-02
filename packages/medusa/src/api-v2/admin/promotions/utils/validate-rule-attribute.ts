@@ -1,4 +1,4 @@
-import { NinjaError } from "@ninjajs/utils"
+import { MedusaError } from "@medusajs/utils"
 import { ruleAttributesMap } from "./rule-attributes-map"
 
 export function validateRuleAttribute(
@@ -9,8 +9,8 @@ export function validateRuleAttribute(
   const ruleAttribute = ruleAttributes.find((obj) => obj.id === ruleAttributeId)
 
   if (!ruleAttribute) {
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       `Invalid rule attribute - ${ruleAttributeId}`
     )
   }

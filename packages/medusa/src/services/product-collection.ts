@@ -1,4 +1,4 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import {
   EntityManager,
   FindManyOptions,
@@ -70,8 +70,8 @@ class ProductCollectionService extends TransactionBaseService {
     config: FindConfig<ProductCollection> = {}
   ): Promise<ProductCollection> {
     if (!isDefined(collectionId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"collectionId" must be defined`
       )
     }
@@ -84,8 +84,8 @@ class ProductCollectionService extends TransactionBaseService {
     const collection = await collectionRepo.findOne(query)
 
     if (!collection) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Product collection with id: ${collectionId} was not found`
       )
     }
@@ -111,8 +111,8 @@ class ProductCollectionService extends TransactionBaseService {
     const collection = await collectionRepo.findOne(query)
 
     if (!collection) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Product collection with handle: ${collectionHandle} was not found`
       )
     }

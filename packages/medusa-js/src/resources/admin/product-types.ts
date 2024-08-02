@@ -1,14 +1,14 @@
 import {
   AdminGetProductTypesParams,
   AdminProductTypesListRes,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Product Type API Routes](https://docs.ninjajs.com/api/admin#product-types). All its method
- * are available in the JS Client under the `ninja.admin.productTypes` property.
+ * This class is used to send requests to [Admin Product Type API Routes](https://docs.medusajs.com/api/admin#product-types). All its method
+ * are available in the JS Client under the `medusa.admin.productTypes` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
@@ -27,10 +27,10 @@ class AdminProductTypesResource extends BaseResource {
    * To list product types:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.productTypes.list()
+   * medusa.admin.productTypes.list()
    * .then(({ product_types }) => {
    *   console.log(product_types.length);
    * })
@@ -39,10 +39,10 @@ class AdminProductTypesResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.productTypes.list({
+   * medusa.admin.productTypes.list({
    *   limit,
    *   offset
    * })

@@ -1,7 +1,7 @@
 import {
   buildPriceListRules,
   buildPriceSetPricesForCore,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 import { AdminPriceListRemoteQueryDTO } from "../types"
 

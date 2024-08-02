@@ -1,4 +1,4 @@
-import { Customer } from "@ninjajs/ninja"
+import { Customer } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
 
 export const CustomerCell = ({ customer }: { customer: Customer | null }) => {

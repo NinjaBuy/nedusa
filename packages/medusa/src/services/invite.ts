@@ -1,5 +1,5 @@
 import jwt, { JwtPayload } from "jsonwebtoken"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { UserService } from "."
 import { User } from ".."
@@ -60,8 +60,8 @@ class InviteService extends TransactionBaseService {
     if (jwt_secret) {
       return jwt.sign(data, jwt_secret)
     }
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       "Please configure jwt_secret"
     )
   }
@@ -97,8 +97,8 @@ class InviteService extends TransactionBaseService {
       })
 
       if (userEntity) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Can't invite a user with an existing account"
         )
       }
@@ -173,8 +173,8 @@ class InviteService extends TransactionBaseService {
     try {
       decoded = this.verifyToken(token)
     } catch (err) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "Token is not valid"
       )
     }
@@ -194,7 +194,7 @@ class InviteService extends TransactionBaseService {
         invite?.user_email !== user_email ||
         new Date() > invite.expires_at
       ) {
-        throw new NinjaError(NinjaError.Types.INVALID_DATA, `Invalid invite`)
+        throw new MedusaError(MedusaError.Types.INVALID_DATA, `Invalid invite`)
       }
 
       const exists = await userRepo.findOne({
@@ -203,8 +203,8 @@ class InviteService extends TransactionBaseService {
       })
 
       if (exists) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "User already joined"
         )
       }
@@ -233,8 +233,8 @@ class InviteService extends TransactionBaseService {
       return jwt.verify(token, jwt_secret)
     }
 
-    throw new NinjaError(
-      NinjaError.Types.INVALID_DATA,
+    throw new MedusaError(
+      MedusaError.Types.INVALID_DATA,
       "Please configure jwt_secret"
     )
   }
@@ -245,8 +245,8 @@ class InviteService extends TransactionBaseService {
     const invite = await inviteRepo.findOne({ where: { id } })
 
     if (!invite) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         `Invite doesn't exist`
       )
     }

@@ -2,7 +2,7 @@ import {
   AdminInventoryItemListResponse,
   AdminInventoryItemResponse,
   AdminInventoryLevelResponse,
-} from "@ninjajs/types"
+} from "@medusajs/types"
 import {
   CreateInventoryItemReq,
   InventoryItemLocationBatch,

@@ -1,5 +1,5 @@
-import { IPricingModuleService, NinjaContainer } from "@ninjajs/types"
-import { NinjaError, promiseAll } from "@ninjajs/utils"
+import { IPricingModuleService, MedusaContainer } from "@medusajs/types"
+import { MedusaError, promiseAll } from "@medusajs/utils"
 
 import { ProductVariantService } from "../../services"
 import dotenv from "dotenv"
@@ -10,7 +10,7 @@ dotenv.config()
 const BATCH_SIZE = 100
 
 export const migrateProductVariantPricing = async function (
-  container: NinjaContainer
+  container: MedusaContainer
 ) {
   const variantService: ProductVariantService = await container.resolve(
     "productVariantService"
@@ -23,8 +23,8 @@ export const migrateProductVariantPricing = async function (
   const link = await container.resolve("remoteLink")
 
   if (!link) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_ALLOWED,
+    throw new MedusaError(
+      MedusaError.Types.NOT_ALLOWED,
       "Can't migrate money_amounts: Pricing module is not configured correctly"
     )
   }

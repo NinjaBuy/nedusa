@@ -1,4 +1,4 @@
-import { Table } from "@ninjajs/ui"
+import { Table } from "@medusajs/ui"
 import { ColumnDef } from "@tanstack/react-table"
 import { Skeleton } from "../../../common/skeleton"
 

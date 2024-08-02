@@ -3,7 +3,7 @@ const startServerWithEnvironment =
 const path = require("path")
 const { useApi } = require("../../../../../environment-helpers/use-api")
 const { useDb } = require("../../../../../environment-helpers/use-db")
-const { GiftCard } = require("@ninjajs/ninja")
+const { GiftCard } = require("@medusajs/medusa")
 
 const {
   simpleRegionFactory,
@@ -16,7 +16,7 @@ const {
 jest.setTimeout(30000)
 
 describe("Gift Card - Tax calculations", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
   let customerData
 
@@ -27,14 +27,14 @@ describe("Gift Card - Tax calculations", () => {
       env: {},
     })
     dbConnection = connection
-    ninjaProcess = process
+    medusaProcess = process
   })
 
   afterEach(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /store/carts/:id", () => {
@@ -52,12 +52,12 @@ describe("Gift Card - Tax calculations", () => {
       })
 
       customer = await simpleCustomerFactory(dbConnection, {
-        password: "ninjatest",
+        password: "medusatest",
       })
 
       customerData = {
         email: customer.email,
-        password: "ninjatest",
+        password: "medusatest",
         first_name: customer.first_name,
         last_name: customer.last_name,
       }

@@ -7,11 +7,11 @@ import {
   useQuery,
 } from "@tanstack/react-query"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 import { CreateApiKeyReq, UpdateApiKeyReq } from "../../types/api-payloads"
 import { ApiKeyDeleteRes } from "../../types/api-responses"
-import { AdminApiKeyResponse, AdminApiKeyListResponse } from "@ninjajs/types"
+import { AdminApiKeyResponse, AdminApiKeyListResponse } from "@medusajs/types"
 import { salesChannelsQueryKeys } from "./sales-channels"
 
 const API_KEYS_QUERY_KEY = "api_keys" as const

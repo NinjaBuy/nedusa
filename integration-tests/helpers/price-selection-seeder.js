@@ -1,5 +1,5 @@
-const { ProductVariantMoneyAmount } = require("@ninjajs/ninja")
-const { MoneyAmount } = require("@ninjajs/ninja")
+const { ProductVariantMoneyAmount } = require("@medusajs/medusa")
+const { MoneyAmount } = require("@medusajs/medusa")
 const {
   Customer,
   CustomerGroup,
@@ -12,7 +12,7 @@ const {
   Cart,
   PriceList,
   ShippingProfileType,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 
 module.exports = async (dataSource, data = {}) => {
   const yesterday = ((today) => new Date(today.setDate(today.getDate() - 1)))(

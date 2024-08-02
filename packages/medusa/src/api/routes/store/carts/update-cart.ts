@@ -11,7 +11,7 @@ import {
   ProductVariantInventoryService,
 } from "../../../../services"
 
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 import { Type } from "class-transformer"
 import { EntityManager } from "typeorm"
 import SalesChannelFeatureFlag from "../../../../loaders/feature-flags/sales-channels"
@@ -38,19 +38,19 @@ import { IsType } from "../../../../utils/validators/is-type"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
- *       ninja.carts.update(cartId, {
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.carts.update(cartId, {
  *         email: "user@example.com"
  *       })
  *       .then(({ cart }) => {
  *         console.log(cart.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useUpdateCart } from "ninja-react"
+ *       import { useUpdateCart } from "medusa-react"
  *
  *       type Props = {
  *         cartId: string
@@ -119,7 +119,7 @@ export default async (req, res) => {
   }
 
   let cart
-  if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
+  if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
     cart = await retrieveCartWithIsolatedProductModule(req, id)
   }
 

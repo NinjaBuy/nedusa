@@ -1,4 +1,4 @@
-import { MockManager } from "ninja-test-utils"
+import { MockManager } from "medusa-test-utils"
 
 export const IdempotencyKeyService = {
   withTransaction: function () {

@@ -1,5 +1,5 @@
 const path = require("path")
-const { Region, GiftCard } = require("@ninjajs/ninja")
+const { Region, GiftCard } = require("@medusajs/medusa")
 
 const setupServer = require("../../../environment-helpers/setup-server")
 const { useApi } = require("../../../environment-helpers/use-api")
@@ -9,20 +9,20 @@ const adminSeeder = require("../../../helpers/admin-seeder")
 jest.setTimeout(30000)
 
 describe("/admin/gift-cards", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/gift-cards", () => {
@@ -63,7 +63,7 @@ describe("/admin/gift-cards", () => {
       const response = await api
         .get("/admin/gift-cards", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -91,7 +91,7 @@ describe("/admin/gift-cards", () => {
       const response = await api
         .get("/admin/gift-cards?q=gc", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -116,7 +116,7 @@ describe("/admin/gift-cards", () => {
       const response = await api
         .get("/admin/gift-cards?q=bla", {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         })
         .catch((err) => {
@@ -165,7 +165,7 @@ describe("/admin/gift-cards", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )
@@ -192,7 +192,7 @@ describe("/admin/gift-cards", () => {
           },
           {
             headers: {
-              "x-ninja-access-token": "test_token",
+              "x-medusa-access-token": "test_token",
             },
           }
         )

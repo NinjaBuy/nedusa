@@ -1,8 +1,8 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IPromotionModuleService } from "@ninjajs/types"
-import { CampaignBudgetType } from "@ninjajs/utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IPromotionModuleService } from "@medusajs/types"
+import { CampaignBudgetType } from "@medusajs/utils"
 import { createAdminUser } from "../../../../helpers/create-admin-user"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 
 jest.setTimeout(50000)
 
@@ -37,12 +37,12 @@ export const campaignsData = [
   },
 ]
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 const adminHeaders = {
-  headers: { "x-ninja-access-token": "test_token" },
+  headers: { "x-medusa-access-token": "test_token" },
 }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("GET /admin/campaigns", () => {

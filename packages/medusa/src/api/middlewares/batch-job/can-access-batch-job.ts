@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import BatchJobService from "../../../services/batch-job"
 
 export async function canAccessBatchJob(req, res, next) {
@@ -9,8 +9,8 @@ export async function canAccessBatchJob(req, res, next) {
   const userId = req.user.id ?? req.user.userId
   if (batch_job.created_by !== userId) {
     return next(
-      new NinjaError(
-        NinjaError.Types.NOT_ALLOWED,
+      new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
         "Cannot access a batch job that does not belong to the logged in user"
       )
     )

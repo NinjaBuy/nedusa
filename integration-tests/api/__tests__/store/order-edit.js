@@ -11,7 +11,7 @@ const {
 const {
   simpleOrderEditFactory,
 } = require("../../../factories/simple-order-edit-factory")
-const { IdMap } = require("ninja-test-utils")
+const { IdMap } = require("medusa-test-utils")
 const {
   simpleOrderItemChangeFactory,
 } = require("../../../factories/simple-order-item-change-factory")
@@ -21,25 +21,25 @@ const {
   simpleOrderFactory,
   simpleCustomerFactory,
 } = require("../../../factories")
-const { OrderEditItemChangeType } = require("@ninjajs/ninja")
+const { OrderEditItemChangeType } = require("@medusajs/medusa")
 const setupServer = require("../../../environment-helpers/setup-server")
 
 jest.setTimeout(30000)
 
 describe("/store/order-edits", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({
+    medusaProcess = await setupServer({
       cwd,
     })
 
     await simpleCustomerFactory(dbConnection, {
       id: "customer",
-      email: "test@ninjajs.com",
+      email: "test@medusajs.com",
     })
   })
 
@@ -47,7 +47,7 @@ describe("/store/order-edits", () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /store/order-edits/:id", () => {

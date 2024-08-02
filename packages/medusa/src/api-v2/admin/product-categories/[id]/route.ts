@@ -1,8 +1,8 @@
-import { updateProductCategoryWorkflow } from "@ninjajs/core-flows"
-import { AdminProductCategoryResponse } from "@ninjajs/types"
+import { updateProductCategoryWorkflow } from "@medusajs/core-flows"
+import { AdminProductCategoryResponse } from "@medusajs/types"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import { refetchCategory } from "../helpers"
 import {
@@ -11,8 +11,8 @@ import {
 } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminProductCategoryParamsType>,
-  res: NinjaResponse<AdminProductCategoryResponse>
+  req: AuthenticatedMedusaRequest<AdminProductCategoryParamsType>,
+  res: MedusaResponse<AdminProductCategoryResponse>
 ) => {
   const category = await refetchCategory(
     req.params.id,
@@ -25,8 +25,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateProductCategoryType>,
-  res: NinjaResponse<AdminProductCategoryResponse>
+  req: AuthenticatedMedusaRequest<AdminUpdateProductCategoryType>,
+  res: MedusaResponse<AdminProductCategoryResponse>
 ) => {
   const { id } = req.params
 

@@ -1,7 +1,7 @@
 import boxen from "boxen"
 import { execSync, fork } from "child_process"
 import chokidar from "chokidar"
-import Store from "ninja-telemetry/dist/store"
+import Store from "medusa-telemetry/dist/store"
 import { EOL } from "os"
 import path from "path"
 
@@ -29,9 +29,9 @@ export default async function ({ port, directory }) {
     const hasPrompted = configStore.getConfig("star.prompted") ?? false
     if (!hasPrompted) {
       const defaultMessage =
-        `✨ Thanks for using Ninja. ✨${EOL}${EOL}` +
+        `✨ Thanks for using Medusa. ✨${EOL}${EOL}` +
         `If you liked it, please consider starring us on GitHub${EOL}` +
-        `https://ninjajs.com/star${EOL}` +
+        `https://medusajs.com/star${EOL}` +
         `${EOL}` +
         `Note: you will not see this message again.`
 
@@ -57,10 +57,10 @@ export default async function ({ port, directory }) {
   }
 
   const cliPath = path.resolve(
-    require.resolve("@ninjajs/ninja"),
+    require.resolve("@medusajs/medusa"),
     "../",
     "bin",
-    "ninja.js"
+    "medusa.js"
   )
   let child = fork(cliPath, [`start`, ...args], {
     execArgv: argv,

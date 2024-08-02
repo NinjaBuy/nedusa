@@ -1,5 +1,5 @@
 ---
-"create-ninja-app": patch
+"create-medusa-app": patch
 ---
 
-feat(create-ninja-app): Add a `--verbose` option.
+feat(create-medusa-app): Add a `--verbose` option.

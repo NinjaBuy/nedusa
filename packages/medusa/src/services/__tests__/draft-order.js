@@ -1,4 +1,4 @@
-import { MockManager, MockRepository } from "ninja-test-utils"
+import { MockManager, MockRepository } from "medusa-test-utils"
 import { EventBusServiceMock } from "../__mocks__/event-bus"
 import DraftOrderService from "../draft-order"
 import { LineItemAdjustmentServiceMock } from "../__mocks__/line-item-adjustment"

@@ -81,7 +81,7 @@ describe("Sales channels", () => {
       ).toHaveLength(1)
 
       await api.delete(`/admin/stock-locations/${loc.id}`, {
-        headers: { "x-ninja-access-token": "test_token" },
+        headers: { "x-medusa-access-token": "test_token" },
       })
 
       expect(

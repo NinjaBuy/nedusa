@@ -158,8 +158,8 @@ export const CodeBlockLine = ({
       className={clsx(
         // TODO change code colors and class names based on figma colors
         isHighlighted && [
-          "lg:py-px lg:px-[6px] lg:border-ninja-code-icon lg:rounded-docs_sm",
-          "lg:bg-ninja-code-border lg:cursor-pointer",
+          "lg:py-px lg:px-[6px] lg:border-medusa-code-icon lg:rounded-docs_sm",
+          "lg:bg-medusa-code-border lg:cursor-pointer",
         ]
       )}
     >
@@ -187,7 +187,7 @@ export const CodeBlockLine = ({
       {...lineProps}
       className={clsx(
         "table-row",
-        isHighlightedLine && "bg-ninja-code-bg-header",
+        isHighlightedLine && "bg-medusa-code-bg-header",
         lineProps.className
       )}
     >

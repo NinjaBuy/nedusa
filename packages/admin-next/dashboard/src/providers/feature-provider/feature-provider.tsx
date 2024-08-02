@@ -1,4 +1,4 @@
-import { useAdminStore } from "ninja-react"
+import { useAdminStore } from "medusa-react"
 import { PropsWithChildren, useEffect, useState } from "react"
 import { FeatureContext } from "./feature-context"
 import { Feature } from "./types"

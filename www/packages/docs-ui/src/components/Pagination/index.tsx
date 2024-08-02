@@ -3,7 +3,7 @@
 import React from "react"
 import { usePagination } from "../../providers"
 import { Card } from "../Card"
-import { ChevronLeft, ChevronRight } from "@ninjajs/icons"
+import { ChevronLeft, ChevronRight } from "@medusajs/icons"
 
 export const Pagination = () => {
   const { previousPage, nextPage } = usePagination()

@@ -1,5 +1,5 @@
 ---
-"ninja-core-utils": patch
+"medusa-core-utils": patch
 ---
 
-fix(ninja-core-utils): add missing awilix dependency
+fix(medusa-core-utils): add missing awilix dependency

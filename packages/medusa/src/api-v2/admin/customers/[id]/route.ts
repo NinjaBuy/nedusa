@@ -1,19 +1,19 @@
 import {
   deleteCustomersWorkflow,
   updateCustomersWorkflow,
-} from "@ninjajs/core-flows"
-import { AdminCustomerResponse } from "@ninjajs/types"
-import { NinjaError } from "@ninjajs/utils"
+} from "@medusajs/core-flows"
+import { AdminCustomerResponse } from "@medusajs/types"
+import { MedusaError } from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 import { refetchCustomer } from "../helpers"
 import { AdminUpdateCustomerType } from "../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse<AdminCustomerResponse>
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse<AdminCustomerResponse>
 ) => {
   const customer = await refetchCustomer(
     req.params.id,
@@ -22,8 +22,8 @@ export const GET = async (
   )
 
   if (!customer) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Customer with id: ${req.params.id} not found`
     )
   }
@@ -32,8 +32,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateCustomerType>,
-  res: NinjaResponse<AdminCustomerResponse>
+  req: AuthenticatedMedusaRequest<AdminUpdateCustomerType>,
+  res: MedusaResponse<AdminCustomerResponse>
 ) => {
   const { errors } = await updateCustomersWorkflow(req.scope).run({
     input: {
@@ -56,8 +56,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.params.id
   const deleteCustomers = deleteCustomersWorkflow(req.scope)

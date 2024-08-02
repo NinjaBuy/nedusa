@@ -1,14 +1,14 @@
-import { capturePaymentWorkflow } from "@ninjajs/core-flows"
+import { capturePaymentWorkflow } from "@medusajs/core-flows"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../types/routing"
 import { refetchPayment } from "../../helpers"
 import { AdminCreatePaymentCaptureType } from "../../validators"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreatePaymentCaptureType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreatePaymentCaptureType>,
+  res: MedusaResponse
 ) => {
   const { id } = req.params
 

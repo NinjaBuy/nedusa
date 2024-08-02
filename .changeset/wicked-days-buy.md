@@ -1,6 +1,6 @@
 ---
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja,types): added tax flows end to end
+feat(medusa,types): added tax flows end to end

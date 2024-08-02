@@ -1,4 +1,4 @@
-import { Prompt } from "@ninjajs/ui"
+import { Prompt } from "@medusajs/ui"
 import { PropsWithChildren } from "react"
 import { FieldValues, UseFormReturn } from "react-hook-form"
 import { useTranslation } from "react-i18next"

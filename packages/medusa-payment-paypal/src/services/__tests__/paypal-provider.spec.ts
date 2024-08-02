@@ -1,5 +1,5 @@
 import { PaymentIntentDataByStatus } from "../../__fixtures__/data"
-import { PaymentProcessorContext, PaymentSessionStatus } from "@ninjajs/ninja"
+import { PaymentProcessorContext, PaymentSessionStatus } from "@medusajs/medusa"
 import PaypalProvider from "../paypal-provider"
 import {
   authorizePaymentSuccessData,
@@ -22,7 +22,7 @@ import {
 import axios from "axios"
 import { INVOICE_ID, PayPalMock } from "../../core/__mocks__/paypal-sdk"
 import { roundToTwo } from "../utils/utils"
-import { humanizeAmount } from "ninja-core-utils"
+import { humanizeAmount } from "medusa-core-utils"
 
 jest.mock("axios")
 const mockedAxios = axios as jest.Mocked<typeof axios>

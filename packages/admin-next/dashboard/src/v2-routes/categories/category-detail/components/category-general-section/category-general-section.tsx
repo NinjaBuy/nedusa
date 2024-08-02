@@ -1,5 +1,5 @@
-import { AdminProductCategoryResponse } from "@ninjajs/types"
-import { Container, Heading, StatusBadge, Text } from "@ninjajs/ui"
+import { AdminProductCategoryResponse } from "@medusajs/types"
+import { Container, Heading, StatusBadge, Text } from "@medusajs/ui"
 import { useTranslation } from "react-i18next"
 import { ActionMenu } from "../../../../../components/common/action-menu"
 import { getIsActiveProps, getIsInternalProps } from "../../../common/utils"

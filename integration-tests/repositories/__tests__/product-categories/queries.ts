@@ -1,4 +1,4 @@
-import { ProductCategoryRepository } from "@ninjajs/ninja/dist/repositories/product-category"
+import { ProductCategoryRepository } from "@medusajs/medusa/dist/repositories/product-category"
 import path from "path"
 import { initDb, useDb } from "../../../environment-helpers/use-db"
 import { simpleProductCategoryFactory } from "../../../factories"

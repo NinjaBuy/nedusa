@@ -1,13 +1,13 @@
 import {
   AdminCustomerGroupResponse,
   AdminCustomerResponse,
-} from "@ninjajs/types"
-import { Container, Heading } from "@ninjajs/ui"
+} from "@medusajs/types"
+import { Container, Heading } from "@medusajs/ui"
 import { createColumnHelper } from "@tanstack/react-table"
 import { t } from "i18next"
 import { useMemo } from "react"
 
-import { PencilSquare } from "@ninjajs/icons"
+import { PencilSquare } from "@medusajs/icons"
 import { keepPreviousData } from "@tanstack/react-query"
 import { useTranslation } from "react-i18next"
 import { ActionMenu } from "../../../../../components/common/action-menu"

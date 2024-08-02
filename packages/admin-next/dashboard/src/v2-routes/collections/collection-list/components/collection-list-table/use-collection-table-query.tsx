@@ -1,4 +1,4 @@
-import { AdminGetCollectionsParams } from "@ninjajs/ninja"
+import { AdminGetCollectionsParams } from "@medusajs/medusa"
 import { useQueryParams } from "../../../../../hooks/use-query-params"
 
 type UseCollectionTableQueryProps = {

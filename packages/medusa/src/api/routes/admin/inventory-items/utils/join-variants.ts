@@ -3,7 +3,7 @@ import {
   ProductVariantService,
 } from "../../../../../services"
 
-import { InventoryItemDTO } from "@ninjajs/types"
+import { InventoryItemDTO } from "@medusajs/types"
 import { ProductVariant } from "../../../../../models"
 
 export type InventoryItemsWithVariants = Partial<InventoryItemDTO> & {

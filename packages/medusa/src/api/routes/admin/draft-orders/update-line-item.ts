@@ -9,7 +9,7 @@ import {
 import { DraftOrder } from "../../../.."
 import { EntityManager } from "typeorm"
 import { LineItemUpdate } from "../../../../types/cart"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { validator } from "../../../../utils/validator"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
 
@@ -33,20 +33,20 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.draftOrders.updateLineItem(draftOrderId, lineId, {
+ *       medusa.admin.draftOrders.updateLineItem(draftOrderId, lineId, {
  *         quantity: 1
  *       })
  *       .then(({ draft_order }) => {
  *         console.log(draft_order.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminDraftOrderUpdateLineItem } from "ninja-react"
+ *       import { useAdminDraftOrderUpdateLineItem } from "medusa-react"
  *
  *       type Props = {
  *         draftOrderId: string
@@ -76,7 +76,7 @@ import { cleanResponseData } from "../../../../utils/clean-response-data"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/draft-orders/{id}/line-items/{line_id}' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "quantity": 1
@@ -130,8 +130,8 @@ export default async (req, res) => {
       })
 
     if (draftOrder.status === "completed") {
-      throw new NinjaError(
-        NinjaError.Types.NOT_ALLOWED,
+      throw new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
         "You are only allowed to update open draft orders"
       )
     }
@@ -144,8 +144,8 @@ export default async (req, res) => {
       const existing = draftOrder.cart.items.find((i) => i.id === line_id)
 
       if (!existing) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Could not find the line item"
         )
       }
@@ -196,7 +196,7 @@ export default async (req, res) => {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostDraftOrdersDraftOrderLineItemsItemReq {
   @IsString()

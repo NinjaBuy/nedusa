@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next"
 import { useMemo } from "react"
 import { createColumnHelper } from "@tanstack/react-table"
-import { ProductTag } from "@ninjajs/ninja"
-import { Checkbox } from "@ninjajs/ui"
+import { ProductTag } from "@medusajs/medusa"
+import { Checkbox } from "@medusajs/ui"
 
 const columnHelper = createColumnHelper<ProductTag>()
 

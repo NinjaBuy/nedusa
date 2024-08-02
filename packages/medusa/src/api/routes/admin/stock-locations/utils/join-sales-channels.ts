@@ -1,5 +1,5 @@
-import { StockLocationDTO, StockLocationExpandedDTO } from "@ninjajs/types"
-import { promiseAll } from "@ninjajs/utils"
+import { StockLocationDTO, StockLocationExpandedDTO } from "@medusajs/types"
+import { promiseAll } from "@medusajs/utils"
 import {
   SalesChannelLocationService,
   SalesChannelService,

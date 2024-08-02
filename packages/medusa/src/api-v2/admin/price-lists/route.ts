@@ -1,18 +1,18 @@
-import { createPriceListsWorkflow } from "@ninjajs/core-flows"
+import { createPriceListsWorkflow } from "@medusajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { fetchPriceList, transformPriceList } from "./helpers"
 import { AdminCreatePriceListType } from "./validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -36,8 +36,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreatePriceListType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreatePriceListType>,
+  res: MedusaResponse
 ) => {
   const workflow = createPriceListsWorkflow(req.scope)
   const { result, errors } = await workflow.run({

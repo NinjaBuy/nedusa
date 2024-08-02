@@ -2,7 +2,7 @@ import {
   createStep,
   createWorkflow,
   StepResponse,
-} from "@ninjajs/workflows-sdk"
+} from "@medusajs/workflows-sdk"
 
 const step_1 = createStep(
   "step_1",

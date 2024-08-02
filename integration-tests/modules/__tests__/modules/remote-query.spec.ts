@@ -1,15 +1,15 @@
-import { ModuleRegistrationName, Modules } from "@ninjajs/modules-sdk"
-import { IPaymentModuleService, IRegionModuleService } from "@ninjajs/types"
-import { ContainerRegistrationKeys } from "@ninjajs/utils"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { ModuleRegistrationName, Modules } from "@medusajs/modules-sdk"
+import { IPaymentModuleService, IRegionModuleService } from "@medusajs/types"
+import { ContainerRegistrationKeys } from "@medusajs/utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import { createAdminUser } from "../../..//helpers/create-admin-user"
 import { adminHeaders } from "../../../helpers/create-admin-user"
 
 jest.setTimeout(50000)
 
-const env = { NINJA_FF_NINJA_V2: true }
+const env = { MEDUSA_FF_MEDUSA_V2: true }
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   env,
   testSuite: ({ dbConnection, getContainer, api }) => {
     describe("Remote Query", () => {

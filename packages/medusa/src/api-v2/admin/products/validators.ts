@@ -1,4 +1,4 @@
-import { ProductStatus } from "@ninjajs/utils"
+import { ProductStatus } from "@medusajs/utils"
 import { z } from "zod"
 import { optionalBooleanMapper } from "../../../utils/validators/is-boolean"
 import {

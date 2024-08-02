@@ -1,6 +1,6 @@
 async function generateCurrencies() {
   const { currencies } = await import(
-    "@ninjajs/ninja/dist/utils/currencies.js"
+    "@medusajs/medusa/dist/utils/currencies.js"
   )
   const fs = await import("fs")
   const path = await import("path")

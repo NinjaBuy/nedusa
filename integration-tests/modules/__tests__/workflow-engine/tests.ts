@@ -3,8 +3,8 @@ import {
   createWorkflow,
   StepResponse,
   WorkflowData,
-} from "@ninjajs/workflows-sdk"
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+} from "@medusajs/workflows-sdk"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 import { createAdminUser } from "../../../helpers/create-admin-user"
 
 export const workflowEngineTestSuite = (
@@ -13,23 +13,23 @@ export const workflowEngineTestSuite = (
 ) => {
   const adminHeaders = {
     headers: {
-      "x-ninja-access-token": "test_token",
+      "x-medusa-access-token": "test_token",
     },
   }
 
-  return ninjaIntegrationTestRunner({
+  return medusaIntegrationTestRunner({
     env,
     force_modules_migration: extraParams.force_modules_migration,
     testSuite: ({ dbConnection, getContainer, api }) => {
       describe("Workflow Engine API", () => {
-        let ninjaContainer
+        let medusaContainer
 
         beforeAll(() => {
-          ninjaContainer = getContainer()
+          medusaContainer = getContainer()
         })
 
         beforeEach(async () => {
-          await createAdminUser(dbConnection, adminHeaders, ninjaContainer)
+          await createAdminUser(dbConnection, adminHeaders, medusaContainer)
         })
 
         describe("running workflows", () => {

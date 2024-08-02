@@ -1,7 +1,7 @@
 import InviteService from "../invite"
-import { MockManager, MockRepository } from "ninja-test-utils"
+import { MockManager, MockRepository } from "medusa-test-utils"
 import { EventBusServiceMock } from "../__mocks__/event-bus"
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 
 // const _MockManager
 
@@ -63,9 +63,9 @@ describe("InviteService", () => {
         }
         if (q.where.id === "existingUser") {
           return Promise.resolve({
-            user_email: "existing@ninja-commerce.com",
+            user_email: "existing@medusa-commerce.com",
             token: inviteService.generateToken({
-              user_email: "existing@ninja-commerce.com",
+              user_email: "existing@medusa-commerce.com",
               invite_id: "existingUser",
             }),
           })
@@ -87,7 +87,7 @@ describe("InviteService", () => {
         if (q.where.user_id === "test_user") {
           return Promise.resolve({})
         }
-        if (q.where.email === "existing@ninja-commerce.com") {
+        if (q.where.email === "existing@medusa-commerce.com") {
           return Promise.resolve("usr_test123")
         }
         return Promise.resolve(null)
@@ -123,14 +123,14 @@ describe("InviteService", () => {
       await inviteService
         .accept(
           inviteService.generateToken({
-            user_email: "accepted@ninja-commerce.com",
+            user_email: "accepted@medusa-commerce.com",
             invite_id: "accepted",
           }),
           {}
         )
         .catch((err) => {
           expect(err).toEqual(
-            new NinjaError(NinjaError.Types.INVALID_DATA, "Invalid invite")
+            new MedusaError(MedusaError.Types.INVALID_DATA, "Invalid invite")
           )
         })
     })
@@ -148,15 +148,15 @@ describe("InviteService", () => {
       await inviteService
         .accept(
           inviteService.generateToken({
-            user_email: "existing@ninja-commerce.com",
+            user_email: "existing@medusa-commerce.com",
             invite_id: "existingUser",
           }),
           {}
         )
         .catch((err) => {
           expect(err).toEqual(
-            new NinjaError(
-              NinjaError.Types.INVALID_DATA,
+            new MedusaError(
+              MedusaError.Types.INVALID_DATA,
               "User already joined"
             )
           )

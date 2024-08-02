@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 
-import { ProductCollectionDTO } from "@ninjajs/types"
+import { ProductCollectionDTO } from "@medusajs/types"
 import { PlaceholderCell } from "../../common/placeholder-cell"
 
 type CollectionCellProps = {

@@ -1,4 +1,4 @@
-import { Heading } from "@ninjajs/ui"
+import { Heading } from "@medusajs/ui"
 import { ManageLocationsForm } from "./components/manage-locations-form"
 import { RouteDrawer } from "../../../../../components/route-modal"
 import { useInventoryItem } from "../../../../../hooks/api/inventory"

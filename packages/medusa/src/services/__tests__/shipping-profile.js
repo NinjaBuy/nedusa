@@ -1,5 +1,5 @@
-import { FlagRouter } from "@ninjajs/utils"
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { FlagRouter } from "@medusajs/utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 import ShippingProfileService from "../shipping-profile"
 
 describe("ShippingProfileService", () => {

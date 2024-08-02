@@ -1,5 +1,5 @@
-import { Currency } from "@ninjajs/ninja"
-import { Button, Checkbox, Hint, toast, Tooltip } from "@ninjajs/ui"
+import { Currency } from "@medusajs/medusa"
+import { Button, Checkbox, Hint, toast, Tooltip } from "@medusajs/ui"
 import {
   OnChangeFn,
   RowSelectionState,
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next"
 import * as zod from "zod"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { StoreDTO } from "@ninjajs/types"
+import { StoreDTO } from "@medusajs/types"
 import { keepPreviousData } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 import {

@@ -1,24 +1,24 @@
-import { createDefaultsWorkflow } from "@ninjajs/core-flows"
+import { createDefaultsWorkflow } from "@medusajs/core-flows"
 import {
   InternalModuleDeclaration,
   ModulesDefinition,
-} from "@ninjajs/modules-sdk"
-import { ConfigModule, MODULE_RESOURCE_TYPE } from "@ninjajs/types"
+} from "@medusajs/modules-sdk"
+import { ConfigModule, MODULE_RESOURCE_TYPE } from "@medusajs/types"
 import {
   ContainerRegistrationKeys,
-  NinjaV2Flag,
+  MedusaV2Flag,
   isString,
   promiseAll,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { asValue } from "awilix"
 import { Express, NextFunction, Request, Response } from "express"
-import { createNinjaContainer } from "ninja-core-utils"
-import { track } from "ninja-telemetry"
+import { createMedusaContainer } from "medusa-core-utils"
+import { track } from "medusa-telemetry"
 import { EOL } from "os"
 import requestIp from "request-ip"
 import { Connection } from "typeorm"
 import { v4 } from "uuid"
-import { NinjaContainer } from "../types/global"
+import { MedusaContainer } from "../types/global"
 import apiLoader from "./api"
 import loadConfig from "./config"
 import databaseLoader, { dataSource } from "./database"
@@ -26,9 +26,9 @@ import defaultsLoader from "./defaults"
 import expressLoader from "./express"
 import featureFlagsLoader from "./feature-flags"
 import { registerProjectWorkflows } from "./helpers/register-workflows"
-import ninjaProjectApisLoader from "./load-ninja-project-apis"
+import medusaProjectApisLoader from "./load-medusa-project-apis"
 import Logger from "./logger"
-import loadNinjaApp, { mergeDefaultModules } from "./ninja-app"
+import loadMedusaApp, { mergeDefaultModules } from "./medusa-app"
 import modelsLoader from "./models"
 import passportLoader from "./passport"
 import pgConnectionLoader from "./pg-connection"
@@ -85,13 +85,13 @@ async function loadLegacyModulesEntities(configModules, container) {
   }
 }
 
-async function loadNinjaV2({
+async function loadMedusaV2({
   rootDirectory,
   configModule,
   featureFlagRouter,
   expressApp,
 }) {
-  const container = createNinjaContainer()
+  const container = createMedusaContainer()
 
   const shouldStartAPI = configModule.projectConfig.worker_mode !== "worker"
 
@@ -109,9 +109,9 @@ async function loadNinjaV2({
   await registerProjectWorkflows({ rootDirectory, configModule })
 
   const {
-    onApplicationShutdown: ninjaAppOnApplicationShutdown,
-    onApplicationPrepareShutdown: ninjaAppOnApplicationPrepareShutdown,
-  } = await loadNinjaApp({
+    onApplicationShutdown: medusaAppOnApplicationShutdown,
+    onApplicationPrepareShutdown: medusaAppOnApplicationPrepareShutdown,
+  } = await loadMedusaApp({
     configModule,
     container,
   })
@@ -123,7 +123,7 @@ async function loadNinjaV2({
     expressShutdown = shutdown
 
     expressApp.use((req: Request, res: Response, next: NextFunction) => {
-      req.scope = container.createScope() as NinjaContainer
+      req.scope = container.createScope() as MedusaContainer
       req.requestId = (req.headers["x-request-id"] as string) ?? v4()
       next()
     })
@@ -147,24 +147,24 @@ async function loadNinjaV2({
     })
   }
 
-  await ninjaProjectApisLoader({
+  await medusaProjectApisLoader({
     rootDirectory,
     container,
     app: expressApp,
     configModule,
-    activityId: "ninja-project-apis",
+    activityId: "medusa-project-apis",
   })
 
   await createDefaultsWorkflow(container).run()
 
   const shutdown = async () => {
-    await ninjaAppOnApplicationShutdown()
+    await medusaAppOnApplicationShutdown()
 
     await promiseAll([
       container.dispose(),
       pgConnection?.context?.destroy(),
       expressShutdown(),
-      ninjaAppOnApplicationShutdown(),
+      medusaAppOnApplicationShutdown(),
     ])
   }
 
@@ -174,7 +174,7 @@ async function loadNinjaV2({
     app: expressApp,
     pgConnection,
     shutdown,
-    prepareShutdown: ninjaAppOnApplicationPrepareShutdown,
+    prepareShutdown: medusaAppOnApplicationPrepareShutdown,
   }
 }
 
@@ -184,7 +184,7 @@ export default async ({
   isTest,
 }: Options): Promise<{
   configModule: ConfigModule
-  container: NinjaContainer
+  container: MedusaContainer
   dbConnection?: Connection
   app: Express
   pgConnection: unknown
@@ -195,8 +195,8 @@ export default async ({
   const featureFlagRouter = featureFlagsLoader(configModule, Logger)
   track("FEATURE_FLAGS_LOADED")
 
-  if (featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)) {
-    return await loadNinjaV2({
+  if (featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)) {
+    return await loadMedusaV2({
       rootDirectory,
       configModule,
       featureFlagRouter,
@@ -204,7 +204,7 @@ export default async ({
     })
   }
 
-  const container = createNinjaContainer()
+  const container = createMedusaContainer()
   container.register(
     ContainerRegistrationKeys.CONFIG_MODULE,
     asValue(configModule)
@@ -289,9 +289,9 @@ export default async ({
 
   // Move before services init once all modules are migrated and do not rely on core resources anymore
   const {
-    onApplicationShutdown: ninjaAppOnApplicationShutdown,
-    onApplicationPrepareShutdown: ninjaAppOnApplicationPrepareShutdown,
-  } = await loadNinjaApp({
+    onApplicationShutdown: medusaAppOnApplicationShutdown,
+    onApplicationPrepareShutdown: medusaAppOnApplicationPrepareShutdown,
+  } = await loadMedusaApp({
     configModule,
     container,
   })
@@ -312,7 +312,7 @@ export default async ({
   // Add the registered services to the request scope
   expressApp.use((req: Request, res: Response, next: NextFunction) => {
     container.register({ manager: asValue(dataSource.manager) })
-    req.scope = container.createScope() as NinjaContainer
+    req.scope = container.createScope() as MedusaContainer
     req.requestId = (req.headers["x-request-id"] as string) ?? v4()
     next()
   })
@@ -362,7 +362,7 @@ export default async ({
   track("SEARCH_ENGINE_INDEXING_COMPLETED", { duration: searchAct.duration })
 
   async function shutdown() {
-    await ninjaAppOnApplicationShutdown()
+    await medusaAppOnApplicationShutdown()
 
     await promiseAll([
       container.dispose(),
@@ -380,6 +380,6 @@ export default async ({
     app: expressApp,
     pgConnection,
     shutdown,
-    prepareShutdown: async () => ninjaAppOnApplicationPrepareShutdown(),
+    prepareShutdown: async () => medusaAppOnApplicationPrepareShutdown(),
   }
 }

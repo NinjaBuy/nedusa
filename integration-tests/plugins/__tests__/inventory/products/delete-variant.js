@@ -71,7 +71,7 @@ describe("Delete Variant", () => {
           ],
           prices: [{ currency_code: "usd", amount: 2300 }],
         },
-        { headers: { "x-ninja-access-token": "test_token" } }
+        { headers: { "x-medusa-access-token": "test_token" } }
       )
 
       const variantId = response.data.product.variants.find(
@@ -99,7 +99,7 @@ describe("Delete Variant", () => {
       ).toHaveLength(2)
 
       await api.delete(`/admin/products/test-product/variants/${variantId}`, {
-        headers: { "x-ninja-access-token": "test_token" },
+        headers: { "x-medusa-access-token": "test_token" },
       })
 
       await expect(variantService.retrieve(variantId)).rejects.toThrow(

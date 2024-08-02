@@ -2,9 +2,9 @@ import {
   Handlers,
   updateProducts,
   UpdateProductsActions,
-} from "@ninjajs/core-flows"
-import { WorkflowTypes } from "@ninjajs/types"
-import { pipe } from "@ninjajs/workflows-sdk"
+} from "@medusajs/core-flows"
+import { WorkflowTypes } from "@medusajs/types"
+import { pipe } from "@medusajs/workflows-sdk"
 import path from "path"
 
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
@@ -16,14 +16,14 @@ jest.setTimeout(100000)
 
 describe.skip("UpdateProduct workflow", function () {
   let dbConnection
-  let ninjaContainer
+  let medusaContainer
   let shutdownServer
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
     shutdownServer = await startBootstrapApp({ cwd, skipExpressListen: true })
-    ninjaContainer = getContainer()
+    medusaContainer = getContainer()
   })
 
   afterAll(async () => {
@@ -41,7 +41,7 @@ describe.skip("UpdateProduct workflow", function () {
   })
 
   it("should compensate all the invoke if something fails", async () => {
-    const workflow = updateProducts(ninjaContainer)
+    const workflow = updateProducts(medusaContainer)
 
     workflow.appendAction(
       "fail_step",
@@ -71,7 +71,7 @@ describe.skip("UpdateProduct workflow", function () {
         ],
       }
 
-    const manager = ninjaContainer.resolve("manager")
+    const manager = medusaContainer.resolve("manager")
     const context = {
       manager,
     }
@@ -95,7 +95,7 @@ describe.skip("UpdateProduct workflow", function () {
     expect(transaction.getState()).toEqual("reverted")
 
     let [product] = await Handlers.ProductHandlers.listProducts({
-      container: ninjaContainer,
+      container: medusaContainer,
       context,
       data: {
         ids: ["to-update"],

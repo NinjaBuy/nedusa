@@ -1,11 +1,11 @@
-import { createSalesChannelsWorkflow } from "@ninjajs/core-flows"
+import { createSalesChannelsWorkflow } from "@medusajs/core-flows"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchSalesChannel } from "./helpers"
 import {
@@ -14,8 +14,8 @@ import {
 } from "./validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetSalesChannelsParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetSalesChannelsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -39,8 +39,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateSalesChannelType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateSalesChannelType>,
+  res: MedusaResponse
 ) => {
   const salesChannelsData = [req.validatedBody]
 

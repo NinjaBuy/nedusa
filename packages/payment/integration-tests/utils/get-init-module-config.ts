@@ -1,4 +1,4 @@
-import { Modules, ModulesDefinition } from "@ninjajs/modules-sdk"
+import { Modules, ModulesDefinition } from "@medusajs/modules-sdk"
 
 import { DB_URL } from "./database"
 
@@ -7,12 +7,12 @@ export function getInitModuleConfig() {
     defaultAdapterOptions: {
       database: {
         clientUrl: DB_URL,
-        schema: process.env.NINJA_PAYMENT_DB_SCHEMA,
+        schema: process.env.MEDUSA_PAYMENT_DB_SCHEMA,
       },
     },
     providers: [
       {
-        resolve: "@ninjajs/payment-stripe",
+        resolve: "@medusajs/payment-stripe",
         options: {
           config: {
             dkk: {
@@ -41,7 +41,7 @@ export function getInitModuleConfig() {
     modulesConfig: modulesConfig_,
     databaseConfig: {
       clientUrl: DB_URL,
-      schema: process.env.NINJA_PAYMENT_DB_SCHEMA,
+      schema: process.env.MEDUSA_PAYMENT_DB_SCHEMA,
     },
     joinerConfig: [],
   }

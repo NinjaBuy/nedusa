@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Product, ProductVariant } from "@ninjajs/ninja"
-import { Button, Heading, Input, Switch } from "@ninjajs/ui"
+import { Product, ProductVariant } from "@medusajs/medusa"
+import { Button, Heading, Input, Switch } from "@medusajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"

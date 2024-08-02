@@ -1,6 +1,6 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from "axios"
 
-function ninjaRequest(
+function medusaRequest(
   storeURL: string,
   path = "",
   headers = {}
@@ -17,7 +17,7 @@ function ninjaRequest(
   return client(options)
 }
 
-export const createClient = (options: NinjaPluginOptions): any => {
+export const createClient = (options: MedusaPluginOptions): any => {
   const { storeUrl, apiKey } = options
 
   /**
@@ -34,7 +34,7 @@ export const createClient = (options: NinjaPluginOptions): any => {
         path += `&updated_at[gt]=${_date}`
       }
 
-      await ninjaRequest(storeUrl, path).then(({ data }) => {
+      await medusaRequest(storeUrl, path).then(({ data }) => {
         products = [...products, ...data.products]
         count = data.count
         offset = data.products.length
@@ -43,7 +43,7 @@ export const createClient = (options: NinjaPluginOptions): any => {
 
     if (!products.length && !_date) {
       console.warn(
-        "[gatsby-source-ninja]: 📣 No products were retrieved. If this is a new store, please ensure that you have at least one published product in your store. You can create a product by using the Ninja admin dashboard."
+        "[gatsby-source-medusa]: 📣 No products were retrieved. If this is a new store, please ensure that you have at least one published product in your store. You can create a product by using the Medusa admin dashboard."
       )
     }
 
@@ -61,13 +61,13 @@ export const createClient = (options: NinjaPluginOptions): any => {
       path += `?updated_at[gt]=${_date}`
     }
 
-    const regions = await ninjaRequest(storeUrl, path).then(({ data }) => {
+    const regions = await medusaRequest(storeUrl, path).then(({ data }) => {
       return data.regions
     })
 
     if (!regions.length && !_date) {
       console.warn(
-        "[gatsby-source-ninja]: 📣 No regions were retrieved. If this is a new store, please ensure that you have configured at least one region in the Ninja admin dashboard."
+        "[gatsby-source-medusa]: 📣 No regions were retrieved. If this is a new store, please ensure that you have configured at least one region in the Medusa admin dashboard."
       )
     }
 
@@ -80,7 +80,7 @@ export const createClient = (options: NinjaPluginOptions): any => {
    * @return {Promise<any[]>} orders to create nodes from
    */
   async function orders(_date?: string): Promise<any[]> {
-    const orders = await ninjaRequest(storeUrl, `/admin/orders`, {
+    const orders = await medusaRequest(storeUrl, `/admin/orders`, {
       Authorization: `Bearer ${apiKey}`,
     })
       .then(({ data }) => {
@@ -110,7 +110,7 @@ export const createClient = (options: NinjaPluginOptions): any => {
       if (_date) {
         path += `&updated_at[gt]=${_date}`
       }
-      await ninjaRequest(storeUrl, path).then(({ data }) => {
+      await medusaRequest(storeUrl, path).then(({ data }) => {
         collections = [...collections, ...data.collections]
         count = data.count
         offset = data.collections.length
@@ -119,7 +119,7 @@ export const createClient = (options: NinjaPluginOptions): any => {
 
     if (!collections.length && !_date) {
       console.warn(
-        "[gatsby-source-ninja]: 📣 No collections were retrieved. You can create collections using the Ninja admin dasbboard."
+        "[gatsby-source-medusa]: 📣 No collections were retrieved. You can create collections using the Medusa admin dasbboard."
       )
     }
 

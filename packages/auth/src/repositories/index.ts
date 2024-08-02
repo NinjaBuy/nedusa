@@ -1,1 +1,1 @@
-export { MikroOrmBaseRepository as BaseRepository } from "@ninjajs/utils"
+export { MikroOrmBaseRepository as BaseRepository } from "@medusajs/utils"

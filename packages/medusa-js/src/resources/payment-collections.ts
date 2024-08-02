@@ -5,14 +5,14 @@ import {
   StorePaymentCollectionsSessionRes,
   StorePostPaymentCollectionsBatchSessionsAuthorizeReq,
   StorePostPaymentCollectionsBatchSessionsReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 import qs from "qs"
 
 /**
- * This class is used to send requests to [Store Payment Collection API Routes](https://docs.ninjajs.com/api/store#payment-collections). All its method
- * are available in the JS Client under the `ninja.paymentCollections` property.
+ * This class is used to send requests to [Store Payment Collection API Routes](https://docs.medusajs.com/api/store#payment-collections). All its method
+ * are available in the JS Client under the `medusa.paymentCollections` property.
  * 
  * A payment collection is useful for managing additional payments, such as for Order Edits, or installment payments.
  */
@@ -29,10 +29,10 @@ class PaymentCollectionsResource extends BaseResource {
    * A simple example that retrieves a payment collection by its ID:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.paymentCollections.retrieve(paymentCollectionId)
+   * medusa.paymentCollections.retrieve(paymentCollectionId)
    * .then(({ payment_collection }) => {
    *   console.log(payment_collection.id)
    * })
@@ -41,10 +41,10 @@ class PaymentCollectionsResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.paymentCollections.retrieve(paymentCollectionId, {
+   * medusa.paymentCollections.retrieve(paymentCollectionId, {
    *   expand: "region"
    * })
    * .then(({ payment_collection }) => {
@@ -75,10 +75,10 @@ class PaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<StorePaymentCollectionsRes>} Resolves to the payment collection's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.paymentCollections.authorize(paymentId, sessionId)
+   * medusa.paymentCollections.authorize(paymentId, sessionId)
    * .then(({ payment_collection }) => {
    *   console.log(payment_collection.id);
    * })
@@ -100,10 +100,10 @@ class PaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<StorePaymentCollectionsRes>} Resolves to the payment collection's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.paymentCollections.authorizePaymentSessionsBatch(paymentCollectionId, {
+   * medusa.paymentCollections.authorizePaymentSessionsBatch(paymentCollectionId, {
    *  session_ids: ["ps_123456"]
    * })
    * .then(({ payment_collection }) => {
@@ -130,12 +130,12 @@ class PaymentCollectionsResource extends BaseResource {
    * To add two new payment sessions:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
    *
    * // Total amount = 10000
-   * ninja.paymentCollections.managePaymentSessionsBatch(paymentId, {
+   * medusa.paymentCollections.managePaymentSessionsBatch(paymentId, {
    *   sessions: [
    *     {
    *       provider_id: "stripe",
@@ -155,7 +155,7 @@ class PaymentCollectionsResource extends BaseResource {
    * To update a payment session and another one by not including it in the payload:
    * 
    * ```ts
-   * ninja.paymentCollections.managePaymentSessionsBatch(paymentId, {
+   * medusa.paymentCollections.managePaymentSessionsBatch(paymentId, {
    *   sessions: [
    *     {
    *       provider_id: "stripe",
@@ -186,10 +186,10 @@ class PaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<StorePaymentCollectionsRes>} Resolves to the payment collection's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.paymentCollections.managePaymentSession(payment_id, { provider_id: "stripe" })
+   * medusa.paymentCollections.managePaymentSession(payment_id, { provider_id: "stripe" })
    * .then(({ payment_collection }) => {
    *   console.log(payment_collection.id);
    * })
@@ -211,9 +211,9 @@ class PaymentCollectionsResource extends BaseResource {
    * @returns {ResponsePromise<StorePaymentCollectionsSessionRes>} Resolves to the refreshed payment session's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.paymentCollections.refreshPaymentSession(paymentCollectionId, sessionId)
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.paymentCollections.refreshPaymentSession(paymentCollectionId, sessionId)
    * .then(({ payment_session }) => {
    *   console.log(payment_session.status);
    * })

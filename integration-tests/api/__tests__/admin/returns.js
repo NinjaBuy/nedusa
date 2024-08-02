@@ -1,6 +1,6 @@
 const path = require("path")
 
-import { ReturnReason, ShippingMethod } from "@ninjajs/ninja"
+import { ReturnReason, ShippingMethod } from "@medusajs/medusa"
 
 import { createReturnableOrder } from "../claims"
 
@@ -15,25 +15,25 @@ jest.setTimeout(30000)
 
 const authHeader = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 describe("/admin/returns", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("POST /admin/returns/:id", () => {
@@ -181,7 +181,7 @@ describe("/admin/returns", () => {
         {},
         {
           headers: {
-            "x-ninja-access-token": "test_token",
+            "x-medusa-access-token": "test_token",
           },
         }
       )

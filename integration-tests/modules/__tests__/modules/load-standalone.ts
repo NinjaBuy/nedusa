@@ -1,8 +1,8 @@
-import { ninjaIntegrationTestRunner } from "ninja-test-utils"
+import { medusaIntegrationTestRunner } from "medusa-test-utils"
 
 jest.setTimeout(30000)
 
-ninjaIntegrationTestRunner({
+medusaIntegrationTestRunner({
   force_modules_migration: true,
   testSuite: ({ dbConnection }) => {
     describe("Standalone Modules", () => {
@@ -15,7 +15,7 @@ ninjaIntegrationTestRunner({
       })
 
       it("Should migrate database and initialize Product module using connection string from environment variable ", async function () {
-        const { initialize, runMigrations } = require("@ninjajs/product")
+        const { initialize, runMigrations } = require("@medusajs/product")
         await runMigrations()
 
         const product = await initialize()

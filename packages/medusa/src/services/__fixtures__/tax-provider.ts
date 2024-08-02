@@ -2,7 +2,7 @@ import { cacheServiceMock } from "../__mocks__/cache";
 import TaxProviderService from "../tax-provider";
 import { EventBusServiceMock } from "../__mocks__/event-bus";
 import { asClass, asValue, createContainer } from "awilix";
-import { MockManager, MockRepository } from "ninja-test-utils"
+import { MockManager, MockRepository } from "medusa-test-utils"
 
 export function getCacheKey(id, regionId) {
   return `txrtcache:${id}:${regionId}`

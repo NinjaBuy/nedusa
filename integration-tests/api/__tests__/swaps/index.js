@@ -15,7 +15,7 @@ const {
 jest.setTimeout(30000)
 
 describe("Swaps", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   const doAfterEach = async () => {
@@ -26,13 +26,13 @@ describe("Swaps", () => {
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   afterEach(async () => {
@@ -63,7 +63,7 @@ describe("Swaps", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -122,7 +122,7 @@ describe("Swaps", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -182,7 +182,7 @@ describe("Swaps", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -193,7 +193,7 @@ describe("Swaps", () => {
       `/admin/swaps/${response.data.order.swaps[0].id}`,
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )
@@ -281,7 +281,7 @@ describe("Swaps", () => {
       },
       {
         headers: {
-          "x-ninja-access-token": "test_token",
+          "x-medusa-access-token": "test_token",
         },
       }
     )

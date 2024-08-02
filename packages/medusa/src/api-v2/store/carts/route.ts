@@ -1,14 +1,14 @@
-import { createCartWorkflow } from "@ninjajs/core-flows"
-import { CreateCartWorkflowInputDTO } from "@ninjajs/types"
+import { createCartWorkflow } from "@medusajs/core-flows"
+import { CreateCartWorkflowInputDTO } from "@medusajs/types"
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import { refetchCart } from "./helpers"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<CreateCartWorkflowInputDTO>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<CreateCartWorkflowInputDTO>,
+  res: MedusaResponse
 ) => {
   const workflowInput = {
     ...req.validatedBody,

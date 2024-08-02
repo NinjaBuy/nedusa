@@ -1,16 +1,16 @@
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 import {
   buildPriceListRules,
   buildPriceSetPricesForCore,
   ContainerRegistrationKeys,
   isPresent,
-  NinjaError,
+  MedusaError,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
 export const fetchPriceList = async (
   id: string,
-  scope: NinjaContainer,
+  scope: MedusaContainer,
   fields: string[]
 ) => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
@@ -26,8 +26,8 @@ export const fetchPriceList = async (
   const [priceList] = await remoteQuery(queryObject)
 
   if (!isPresent(priceList)) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Price list with id: ${id} was not found`
     )
   }
@@ -47,7 +47,7 @@ export const transformPriceList = (priceList) => {
 export const fetchPriceListPriceIdsForProduct = async (
   priceListId: string,
   productIds: string[],
-  scope: NinjaContainer
+  scope: MedusaContainer
 ): Promise<string[]> => {
   const remoteQuery = scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
   const priceSetIds: string[] = []

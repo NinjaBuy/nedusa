@@ -9,7 +9,7 @@ import { Request, Response } from "express"
 import { Transform, Type } from "class-transformer"
 
 import { FindParams } from "../../../../types/common"
-import { IStockLocationService } from "@ninjajs/types"
+import { IStockLocationService } from "@medusajs/types"
 
 /**
  * @oas [post] /admin/stock-locations
@@ -31,20 +31,20 @@ import { IStockLocationService } from "@ninjajs/types"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.stockLocations.create({
+ *       medusa.admin.stockLocations.create({
  *         name: "Main Warehouse",
  *       })
  *       .then(({ stock_location }) => {
  *         console.log(stock_location.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateStockLocation } from "ninja-react"
+ *       import { useAdminCreateStockLocation } from "medusa-react"
  *
  *       const CreateStockLocation = () => {
  *         const createStockLocation = useAdminCreateStockLocation()
@@ -68,7 +68,7 @@ import { IStockLocationService } from "@ninjajs/types"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/stock-locations' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "name": "App"
@@ -208,7 +208,7 @@ class StockLocationAddress {
  *     example: {car: "white"}
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *   address:
  *     description: A new stock location address to create and associate with the stock location. Only required if `address_id` is not provided.
  *     $ref: "#/components/schemas/StockLocationAddressInput"

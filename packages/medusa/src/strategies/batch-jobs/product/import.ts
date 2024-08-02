@@ -4,10 +4,10 @@ import {
   UpdateProductVariants,
   createProducts,
   updateProducts,
-} from "@ninjajs/core-flows"
-import { ProductWorkflow } from "@ninjajs/types"
-import { FlagRouter, NinjaV2Flag, promiseAll } from "@ninjajs/utils"
-import { NinjaError, computerizeAmount } from "ninja-core-utils"
+} from "@medusajs/core-flows"
+import { ProductWorkflow } from "@medusajs/types"
+import { FlagRouter, MedusaV2Flag, promiseAll } from "@medusajs/utils"
+import { MedusaError, computerizeAmount } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { AbstractBatchJobStrategy, IFileService } from "../../../interfaces"
 import ProductCategoryFeatureFlag from "../../../loaders/feature-flags/product-categories"
@@ -132,7 +132,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
   }
 
   /**
-   * Create a description of a row on which the error occurred and throw a Ninja error.
+   * Create a description of a row on which the error occurred and throw a Medusa error.
    *
    * @param row - Parsed CSV row data
    * @param errorDescription - Concrete error
@@ -148,7 +148,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       (variant sku: ${row["variant.sku"]})]: 
       ${errorDescription}`
 
-    throw new NinjaError(NinjaError.Types.INVALID_DATA, message)
+    throw new MedusaError(MedusaError.Types.INVALID_DATA, message)
   }
 
   /**
@@ -228,8 +228,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
           record.region_id = region.id
           record.currency_code = region.currency_code
         } catch (e) {
-          throw new NinjaError(
-            NinjaError.Types.INVALID_DATA,
+          throw new MedusaError(
+            MedusaError.Types.INVALID_DATA,
             `Trying to set a price for a region ${price.regionName} that doesn't exist`
           )
         }
@@ -271,8 +271,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       const parsedData = await this.csvParser_.parse(csvStream)
       builtData = await this.csvParser_.buildData(parsedData)
     } catch (e) {
-      throw new NinjaError(
-        NinjaError.Types.INVALID_DATA,
+      throw new MedusaError(
+        MedusaError.Types.INVALID_DATA,
         "The csv file parsing failed due to: " + e.message
       )
     }
@@ -423,8 +423,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       return
     }
 
-    const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-      NinjaV2Flag.key
+    const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+      MedusaV2Flag.key
     )
 
     const transactionManager = this.transactionManager_ ?? this.manager_
@@ -478,7 +478,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
           )
         }
 
-        if (isNinjaV2Enabled) {
+        if (isMedusaV2Enabled) {
           const createProductWorkflow = createProducts(this.__container__)
 
           const input = {
@@ -517,8 +517,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       return
     }
 
-    const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-      NinjaV2Flag.key
+    const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+      MedusaV2Flag.key
     )
 
     const transactionManager = this.transactionManager_ ?? this.manager_
@@ -572,7 +572,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
           )
         }
 
-        if (isNinjaV2Enabled) {
+        if (isMedusaV2Enabled) {
           const updateProductWorkflow = updateProducts(this.__container__)
 
           const input = {
@@ -616,8 +616,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       return
     }
 
-    const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-      NinjaV2Flag.key
+    const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+      MedusaV2Flag.key
     )
 
     const transactionManager = this.transactionManager_ ?? this.manager_
@@ -655,7 +655,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
         delete variant.id
         delete variant.product
 
-        if (isNinjaV2Enabled) {
+        if (isMedusaV2Enabled) {
           const createProductVariantsWorkflow =
             CreateProductVariants.createProductVariants(this.__container__)
 
@@ -697,8 +697,8 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
       return
     }
 
-    const isNinjaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
-      NinjaV2Flag.key
+    const isMedusaV2Enabled = this.featureFlagRouter_.isFeatureEnabled(
+      MedusaV2Flag.key
     )
 
     const transactionManager = this.transactionManager_ ?? this.manager_
@@ -723,7 +723,7 @@ class ProductImportStrategy extends AbstractBatchJobStrategy {
         delete updateData.product
         delete updateData["product.handle"]
 
-        if (isNinjaV2Enabled) {
+        if (isMedusaV2Enabled) {
           const updateProductVariantsWorkflow =
             UpdateProductVariants.updateProductVariants(this.__container__)
 

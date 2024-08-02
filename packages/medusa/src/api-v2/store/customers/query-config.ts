@@ -1,4 +1,4 @@
-import { CustomerDTO } from "@ninjajs/types"
+import { CustomerDTO } from "@medusajs/types"
 
 export const defaultStoreCustomersRelations = []
 export const allowedStoreCustomersRelations = ["addresses", "groups"]

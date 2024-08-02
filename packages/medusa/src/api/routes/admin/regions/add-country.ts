@@ -25,20 +25,20 @@ import { validator } from "../../../../utils/validator"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.regions.addCountry(regionId, {
+ *       medusa.admin.regions.addCountry(regionId, {
  *         country_code: "dk"
  *       })
  *       .then(({ region }) => {
  *         console.log(region.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminRegionAddCountry } from "ninja-react"
+ *       import { useAdminRegionAddCountry } from "medusa-react"
  *
  *       type Props = {
  *         regionId: string
@@ -70,7 +70,7 @@ import { validator } from "../../../../utils/validator"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/regions/{region_id}/countries' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "country_code": "dk"

@@ -1,4 +1,4 @@
-import { AbstractFileService } from "@ninjajs/ninja"
+import { AbstractFileService } from "@medusajs/medusa"
 import stream from "stream"
 import { resolve } from "path"
 import * as fs from "fs"

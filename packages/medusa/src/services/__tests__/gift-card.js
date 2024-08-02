@@ -1,4 +1,4 @@
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 
 import GiftCardService from "../gift-card"
 

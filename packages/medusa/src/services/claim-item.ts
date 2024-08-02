@@ -1,5 +1,5 @@
-import { promiseAll } from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { promiseAll } from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { TransactionBaseService } from "../interfaces"
 import { ClaimImage, ClaimItem, ClaimTag } from "../models"
 import { ClaimImageRepository } from "../repositories/claim-image"
@@ -53,8 +53,8 @@ class ClaimItemService extends TransactionBaseService {
         reason !== "production_failure" &&
         reason !== "other"
       ) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           `Claim Item reason must be one of "missing_item", "wrong_item", "production_failure" or "other".`
         )
       }
@@ -64,15 +64,15 @@ class ClaimItemService extends TransactionBaseService {
         .retrieve(item_id)
 
       if (!lineItem.variant_id) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Cannot claim a custom line item"
         )
       }
 
       if (lineItem.fulfilled_quantity! < quantity) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Cannot claim more of an item than has been fulfilled."
         )
       }
@@ -227,8 +227,8 @@ class ClaimItemService extends TransactionBaseService {
     config: FindConfig<ClaimItem> = {}
   ): Promise<ClaimItem> {
     if (!isDefined(claimItemId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"claimItemId" must be defined`
       )
     }
@@ -240,8 +240,8 @@ class ClaimItemService extends TransactionBaseService {
     const item = await claimItemRepo.findOne(query)
 
     if (!item) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Claim item with id: ${claimItemId} was not found.`
       )
     }

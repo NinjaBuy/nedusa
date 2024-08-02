@@ -20,7 +20,7 @@ export const processNode = (
           parent: nodeId,
           children: [],
           internal: {
-            type: "NinjaImages",
+            type: "MedusaImages",
             content: nodeImageContent,
             contentDigest: nodeImageContentDigest,
           },
@@ -32,8 +32,8 @@ export const processNode = (
     delete node.images
   }
 
-  // TODO: use upperFirstCase from ninjajs/utils when it's available
-  const type = `Ninja${fieldName[0].toUpperCase() + fieldName.slice(1)}`
+  // TODO: use upperFirstCase from medusajs/utils when it's available
+  const type = `Medusa${fieldName[0].toUpperCase() + fieldName.slice(1)}`
   const nodeData = Object.assign({}, node, {
     id: nodeId,
     parent: null,

@@ -1,20 +1,20 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
-import { CustomerAddressDTO, ICustomerModuleService } from "@ninjajs/types"
+import { CustomerAddressDTO, ICustomerModuleService } from "@medusajs/types"
 import {
   deleteCustomerAddressesWorkflow,
   updateCustomerAddressesWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 
-import { NinjaError } from "@ninjajs/utils"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
+import { MedusaError } from "@medusajs/utils"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.auth.actor_id
 
@@ -34,8 +34,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<Partial<CustomerAddressDTO>>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<Partial<CustomerAddressDTO>>,
+  res: MedusaResponse
 ) => {
   const id = req.auth.actor_id!
   const service = req.scope.resolve<ICustomerModuleService>(
@@ -61,8 +61,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const id = req.auth.actor_id
 
@@ -100,8 +100,8 @@ const validateCustomerAddress = async (
   )
 
   if (!address) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `Address with id: ${addressId} was not found`
     )
   }

@@ -1,7 +1,7 @@
 ---
-"ninja-react": patch
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"medusa-react": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja-react,ninja,types,dashboard): added empty state for promotions list page
+feat(medusa-react,medusa,types,dashboard): added empty state for promotions list page

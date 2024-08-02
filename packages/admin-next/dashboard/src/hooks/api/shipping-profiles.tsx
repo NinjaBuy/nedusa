@@ -11,9 +11,9 @@ import {
   ShippingProfileRes,
 } from "../../types/api-responses"
 
-import { DeleteResponse } from "@ninjajs/types"
+import { DeleteResponse } from "@medusajs/types"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { queryKeysFactory } from "../../lib/query-key-factory"
 
 const SHIPPING_PROFILE_QUERY_KEY = "shipping_profile" as const

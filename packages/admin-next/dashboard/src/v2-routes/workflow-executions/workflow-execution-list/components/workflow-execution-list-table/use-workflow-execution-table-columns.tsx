@@ -1,4 +1,4 @@
-import { Badge } from "@ninjajs/ui"
+import { Badge } from "@medusajs/ui"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"

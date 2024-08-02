@@ -1,4 +1,4 @@
-import { Text, clx } from "@ninjajs/ui"
+import { Text, clx } from "@medusajs/ui"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"

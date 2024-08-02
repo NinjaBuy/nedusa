@@ -1,4 +1,4 @@
-import { SalesChannel } from "@ninjajs/ninja"
+import { SalesChannel } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
 
 export const SalesChannelCell = ({

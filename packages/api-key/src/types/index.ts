@@ -1,5 +1,5 @@
-import { ApiKeyType, RevokeApiKeyDTO, UpdateApiKeyDTO } from "@ninjajs/types"
-import { IEventBusModuleService, Logger } from "@ninjajs/types"
+import { ApiKeyType, RevokeApiKeyDTO, UpdateApiKeyDTO } from "@medusajs/types"
+import { IEventBusModuleService, Logger } from "@medusajs/types"
 
 export type InitializeModuleInjectableDependencies = {
   logger?: Logger

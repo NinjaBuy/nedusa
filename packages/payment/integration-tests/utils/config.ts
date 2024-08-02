@@ -1,6 +1,6 @@
-import { ModuleServiceInitializeOptions } from "@ninjajs/types"
+import { ModuleServiceInitializeOptions } from "@medusajs/types"
 
 export const databaseOptions: ModuleServiceInitializeOptions["database"] = {
   schema: "public",
-  clientUrl: "ninja-payment-test",
+  clientUrl: "medusa-payment-test",
 }

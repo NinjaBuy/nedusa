@@ -5,7 +5,7 @@ import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt"
 import { Strategy as LocalStrategy } from "passport-local"
 import { AuthService } from "../services"
 import { ConfigModule } from "../types/global"
-import { NinjaRequest } from "../types/routing"
+import { MedusaRequest } from "../types/routing"
 
 export default async ({
   app,
@@ -22,7 +22,7 @@ export default async ({
         passwordField: "password",
         passReqToCallback: true,
       },
-      async (req: NinjaRequest, email, password, done) => {
+      async (req: MedusaRequest, email, password, done) => {
         const authService = req.scope.resolve<AuthService>("authService")
         try {
           const { success, user } = await authService.authenticate(
@@ -75,7 +75,7 @@ export default async ({
     "admin-api-token",
     new CustomStrategy(async (req, done) => {
       // extract the token from the header
-      const token = req.headers["x-ninja-access-token"]
+      const token = req.headers["x-medusa-access-token"]
 
       // check if header exists and is string
       // typescript will complain if we don't check for type

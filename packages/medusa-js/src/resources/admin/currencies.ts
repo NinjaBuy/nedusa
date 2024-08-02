@@ -3,21 +3,21 @@ import {
   AdminCurrenciesRes,
   AdminGetCurrenciesParams,
   AdminPostCurrenciesCurrencyReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 /**
- * This class is used to send requests to [Admin Currency API Routes](https://docs.ninjajs.com/api/admin#currencies). All its method
- * are available in the JS Client under the `ninja.admin.currencies` property.
+ * This class is used to send requests to [Admin Currency API Routes](https://docs.medusajs.com/api/admin#currencies). All its method
+ * are available in the JS Client under the `medusa.admin.currencies` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * A store can use unlimited currencies, and each region must be associated with at least one currency.
- * Currencies are defined within the Ninja backend. The methods in this class allow admins to list and update currencies.
+ * Currencies are defined within the Medusa backend. The methods in this class allow admins to list and update currencies.
  * 
- * Related Guide: [How to manage currencies](https://docs.ninjajs.com/modules/regions-and-currencies/admin/manage-currencies).
+ * Related Guide: [How to manage currencies](https://docs.medusajs.com/modules/regions-and-currencies/admin/manage-currencies).
  */
 class AdminCurrenciesResource extends BaseResource {
   /**
@@ -30,10 +30,10 @@ class AdminCurrenciesResource extends BaseResource {
    * To list currencies:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.currencies.list()
+   * medusa.admin.currencies.list()
    * .then(({ currencies, count, offset, limit }) => {
    *   console.log(currencies.length);
    * })
@@ -42,10 +42,10 @@ class AdminCurrenciesResource extends BaseResource {
    * By default, only the first `20` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.currencies.list({
+   * medusa.admin.currencies.list({
    *   limit,
    *   offset
    * })
@@ -76,10 +76,10 @@ class AdminCurrenciesResource extends BaseResource {
    * @returns {ResponsePromise<AdminCurrenciesRes>} Resolves to the currency's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.currencies.update(code, {
+   * medusa.admin.currencies.update(code, {
    *   includes_tax: true
    * })
    * .then(({ currency }) => {

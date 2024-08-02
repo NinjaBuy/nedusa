@@ -6,7 +6,7 @@ import {
   StorePostCustomersCustomerReq,
   StorePostCustomersReq,
   StorePostCustomersResetPasswordReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../typings"
 import AddressesResource from "./addresses"
@@ -14,20 +14,20 @@ import BaseResource from "./base"
 import PaymentMethodsResource from "./payment-methods"
 
 /**
- * This class is used to send requests to [Store Customer API Routes](https://docs.ninjajs.com/api/store#customers_postcustomers). All its method
- * are available in the JS Client under the `ninja.customers` property.
+ * This class is used to send requests to [Store Customer API Routes](https://docs.medusajs.com/api/store#customers_postcustomers). All its method
+ * are available in the JS Client under the `medusa.customers` property.
  * 
  * A customer can register and manage their information such as addresses, orders, payment methods, and more.
  * 
- * Related Guide: [How to implement customer profiles in your storefront](https://docs.ninjajs.com/modules/customers/storefront/implement-customer-profiles).
+ * Related Guide: [How to implement customer profiles in your storefront](https://docs.medusajs.com/modules/customers/storefront/implement-customer-profiles).
  */
 class CustomerResource extends BaseResource {
   /**
-   * An instance of {@link PaymentMethodsResource} used to send requests to payment-related routes part of the [Store Customer API Routes](https://docs.ninjajs.com/api/store#customers_postcustomers).
+   * An instance of {@link PaymentMethodsResource} used to send requests to payment-related routes part of the [Store Customer API Routes](https://docs.medusajs.com/api/store#customers_postcustomers).
    */
   public paymentMethods = new PaymentMethodsResource(this.client)
   /**
-   * An instance of {@link AddressesResource} used to send requests to address-related routes part of the [Store Customer API Routes](https://docs.ninjajs.com/api/store#customers_postcustomers).
+   * An instance of {@link AddressesResource} used to send requests to address-related routes part of the [Store Customer API Routes](https://docs.medusajs.com/api/store#customers_postcustomers).
    */
   public addresses = new AddressesResource(this.client)
 
@@ -39,9 +39,9 @@ class CustomerResource extends BaseResource {
    * @returns { ResponsePromise<StoreCustomersRes>} Resolves to the created customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.customers.create({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.customers.create({
    *   first_name: "Alec",
    *   last_name: "Reynolds",
    *   email: "user@example.com",
@@ -65,10 +65,10 @@ class CustomerResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the logged-in customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.retrieve()
+   * medusa.customers.retrieve()
    * .then(({ customer }) => {
    *   console.log(customer.id);
    * })
@@ -87,10 +87,10 @@ class CustomerResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the logged-in customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.update({
+   * medusa.customers.update({
    *   first_name: "Laury"
    * })
    * .then(({ customer }) => {
@@ -113,10 +113,10 @@ class CustomerResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersListOrdersRes>} Resolves to the list of orders with pagination fields.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.listOrders()
+   * medusa.customers.listOrders()
    * .then(({ orders, limit, offset, count }) => {
    *   console.log(orders);
    * })
@@ -143,9 +143,9 @@ class CustomerResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the customer's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.customers.resetPassword({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.customers.resetPassword({
    *   email: "user@example.com",
    *   password: "supersecret",
    *   token: "supersecrettoken"
@@ -164,15 +164,15 @@ class CustomerResource extends BaseResource {
 
   /**
    * Create a reset password token to be used when sending a request with the {@link resetPassword} method. This emits the event `customer.password_reset`. If a notification provider is
-   * installed in the Ninja backend and is configured to handle this event, a notification to the customer, such as an email, may be sent with reset instructions.
+   * installed in the Medusa backend and is configured to handle this event, a notification to the customer, such as an email, may be sent with reset instructions.
    * @param {StorePostCustomersCustomerPasswordTokenReq} payload - The necessary details to create the reset password token.
    * @param {Record<string, any>} customHeaders - Custom headers to attach to the request.
    * @returns {ResponsePromise} Resolves when reset password token is created successfully.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
-   * ninja.customers.generatePasswordToken({
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+   * medusa.customers.generatePasswordToken({
    *   email: "user@example.com"
    * })
    * .then(() => {

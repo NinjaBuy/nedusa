@@ -2,10 +2,10 @@ import {
   CreateProductsActions,
   Handlers,
   createProducts,
-} from "@ninjajs/core-flows"
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IProductModuleService, WorkflowTypes } from "@ninjajs/types"
-import { pipe } from "@ninjajs/workflows-sdk"
+} from "@medusajs/core-flows"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IProductModuleService, WorkflowTypes } from "@medusajs/types"
+import { pipe } from "@medusajs/workflows-sdk"
 import path from "path"
 import { startBootstrapApp } from "../../../../environment-helpers/bootstrap-app"
 import { getContainer } from "../../../../environment-helpers/use-container"
@@ -14,14 +14,14 @@ import { initDb, useDb } from "../../../../environment-helpers/use-db"
 jest.setTimeout(50000)
 
 describe.skip("CreateProduct workflow", function () {
-  let ninjaContainer
+  let medusaContainer
   let shutdownServer
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     await initDb({ cwd })
     shutdownServer = await startBootstrapApp({ cwd, skipExpressListen: true })
-    ninjaContainer = getContainer()
+    medusaContainer = getContainer()
   })
 
   afterAll(async () => {
@@ -31,7 +31,7 @@ describe.skip("CreateProduct workflow", function () {
   })
 
   it("should compensate all the invoke if something fails", async () => {
-    const workflow = createProducts(ninjaContainer)
+    const workflow = createProducts(medusaContainer)
 
     workflow.appendAction(
       "fail_step",
@@ -74,7 +74,7 @@ describe.skip("CreateProduct workflow", function () {
         ],
       }
 
-    const manager = ninjaContainer.resolve("manager")
+    const manager = medusaContainer.resolve("manager")
     const context = {
       manager,
     }
@@ -107,7 +107,7 @@ describe.skip("CreateProduct workflow", function () {
     const productId = result[0].id
 
     let [product] = await Handlers.ProductHandlers.listProducts({
-      container: ninjaContainer,
+      container: medusaContainer,
       context,
       data: {
         ids: [productId],
@@ -116,7 +116,7 @@ describe.skip("CreateProduct workflow", function () {
 
     expect(product).toBeUndefined()
 
-    const productModule = ninjaContainer.resolve(
+    const productModule = medusaContainer.resolve(
       ModuleRegistrationName.PRODUCT
     ) as IProductModuleService
 

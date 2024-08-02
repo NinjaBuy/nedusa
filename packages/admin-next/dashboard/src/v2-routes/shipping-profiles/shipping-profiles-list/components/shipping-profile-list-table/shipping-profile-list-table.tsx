@@ -1,4 +1,4 @@
-import { Button, Container, Heading } from "@ninjajs/ui"
+import { Button, Container, Heading } from "@medusajs/ui"
 import { Link } from "react-router-dom"
 
 import { keepPreviousData } from "@tanstack/react-query"

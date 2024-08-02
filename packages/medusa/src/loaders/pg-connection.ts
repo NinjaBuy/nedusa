@@ -1,4 +1,4 @@
-import { ContainerRegistrationKeys, ModulesSdkUtils } from "@ninjajs/utils"
+import { ContainerRegistrationKeys, ModulesSdkUtils } from "@medusajs/utils"
 import { asValue, AwilixContainer } from "awilix"
 import { ConfigModule } from "../types/global"
 

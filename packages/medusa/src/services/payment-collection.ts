@@ -1,4 +1,4 @@
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { DeepPartial, EntityManager } from "typeorm"
 
 import {
@@ -20,7 +20,7 @@ import {
   PaymentCollectionsSessionsInput,
 } from "../types/payment-collection"
 import EventBusService from "./event-bus"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 type InjectedDependencies = {
   manager: EntityManager
@@ -70,8 +70,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
     config: FindConfig<PaymentCollection> = {}
   ): Promise<PaymentCollection> {
     if (!isDefined(paymentCollectionId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"paymentCollectionId" must be defined`
       )
     }
@@ -87,8 +87,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
     }
 
     if (!paymentCollection.length) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Payment collection with id ${paymentCollectionId} was not found`
       )
     }
@@ -192,8 +192,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
           PaymentCollectionStatus.NOT_PAID,
         ].includes(paymentCollection.status)
       ) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `Cannot delete payment collection with status ${paymentCollection.status}`
         )
       }
@@ -244,8 +244,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
         : paymentCollectionOrId
 
       if (payCol.status !== PaymentCollectionStatus.NOT_PAID) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `Cannot set payment sessions for a payment collection with status ${payCol.status}`
         )
       }
@@ -261,8 +261,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
       })
 
       if (!this.isValidTotalAmount(payCol.amount, sessionsInput)) {
-        throw new NinjaError(
-          NinjaError.Types.UNEXPECTED_STATE,
+        throw new MedusaError(
+          MedusaError.Types.UNEXPECTED_STATE,
           `The sum of sessions is not equal to ${payCol.amount} on Payment Collection`
         )
       }
@@ -373,8 +373,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
       )
 
       if (!hasProvider) {
-        throw new NinjaError(
-          NinjaError.Types.INVALID_DATA,
+        throw new MedusaError(
+          MedusaError.Types.INVALID_DATA,
           "Payment provider not found"
         )
       }
@@ -428,8 +428,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
         )
 
       if (paymentCollectionId !== payCol.id) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `Payment Session ${sessionId} does not belong to Payment Collection ${paymentCollectionId}`
         )
       }
@@ -439,8 +439,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
       )
 
       if (!session) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `Session with id ${sessionId} was not found`
         )
       }
@@ -551,8 +551,8 @@ export default class PaymentCollectionService extends TransactionBaseService {
       }
 
       if (!payCol.payment_sessions?.length) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "You cannot complete a Payment Collection without a payment session."
         )
       }

@@ -24,7 +24,7 @@ export const NavbarLogo = ({
     <Link href={`/`} className={clsx("flex-1", className)}>
       <img
         src={colorMode === "light" ? light : dark || light}
-        alt="Ninja Logo"
+        alt="Medusa Logo"
         height={20}
         width={20}
         className={clsx("align-middle", imageClassName)}

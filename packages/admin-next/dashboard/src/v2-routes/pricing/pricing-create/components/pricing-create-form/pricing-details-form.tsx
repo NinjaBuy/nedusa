@@ -8,13 +8,13 @@ import {
   Switch,
   Text,
   Textarea,
-} from "@ninjajs/ui"
+} from "@medusajs/ui"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { useFieldArray, type UseFormReturn } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 
-import { XMarkMini } from "@ninjajs/icons"
-import { AdminCustomerGroupResponse } from "@ninjajs/types"
+import { XMarkMini } from "@medusajs/icons"
+import { AdminCustomerGroupResponse } from "@medusajs/types"
 import { keepPreviousData } from "@tanstack/react-query"
 import {
   OnChangeFn,

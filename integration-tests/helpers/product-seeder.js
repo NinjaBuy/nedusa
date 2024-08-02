@@ -11,7 +11,7 @@ const {
   ShippingProfileType,
   MoneyAmount,
   ProductVariantMoneyAmount,
-} = require("@ninjajs/ninja")
+} = require("@medusajs/medusa")
 const { breaking } = require("./breaking")
 
 module.exports = async (dataSource, data = {}) => {

@@ -1,4 +1,4 @@
-import { Button, Container, Heading } from "@ninjajs/ui"
+import { Button, Container, Heading } from "@medusajs/ui"
 
 import { InventoryItemRes } from "../../../../types/api-responses"
 import { ItemLocationListTable } from "./location-levels-table/location-list-table"

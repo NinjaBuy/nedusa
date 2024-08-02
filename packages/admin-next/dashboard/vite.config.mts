@@ -1,4 +1,4 @@
-import inject from "@ninjajs/vite-plugin-extension"
+import inject from "@medusajs/vite-plugin-extension"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 

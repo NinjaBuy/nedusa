@@ -1,5 +1,5 @@
-import { promiseAll } from "@ninjajs/utils"
-import { isDefined, NinjaError } from "ninja-core-utils"
+import { promiseAll } from "@medusajs/utils"
+import { isDefined, MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { ProductVariantInventoryService, ShippingProfileService } from "."
 import { TransactionBaseService } from "../interfaces"
@@ -139,13 +139,13 @@ class FulfillmentService extends TransactionBaseService {
     if (!item) {
       // This will in most cases be called by a webhook so to ensure that
       // things go through smoothly in instances where extra items outside
-      // of Ninja are added we allow unknown items
+      // of Medusa are added we allow unknown items
       return null
     }
 
     if (quantity > item.quantity - item.fulfilled_quantity!) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_ALLOWED,
+      throw new MedusaError(
+        MedusaError.Types.NOT_ALLOWED,
         "Cannot fulfill more items than have been purchased"
       )
     }
@@ -166,8 +166,8 @@ class FulfillmentService extends TransactionBaseService {
     config: FindConfig<Fulfillment> = {}
   ): Promise<Fulfillment> {
     if (!isDefined(fulfillmentId)) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `"fulfillmentId" must be defined`
       )
     }
@@ -181,8 +181,8 @@ class FulfillmentService extends TransactionBaseService {
     const fulfillment = await fulfillmentRepository.findOne(query)
 
     if (!fulfillment) {
-      throw new NinjaError(
-        NinjaError.Types.NOT_FOUND,
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
         `Fulfillment with id: ${fulfillmentId} was not found`
       )
     }
@@ -268,8 +268,8 @@ class FulfillmentService extends TransactionBaseService {
       })
 
       if (fulfillment.shipped_at) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           `The fulfillment has already been shipped. Shipped fulfillments cannot be canceled`
         )
       }
@@ -329,8 +329,8 @@ class FulfillmentService extends TransactionBaseService {
       })
 
       if (fulfillment.canceled_at) {
-        throw new NinjaError(
-          NinjaError.Types.NOT_ALLOWED,
+        throw new MedusaError(
+          MedusaError.Types.NOT_ALLOWED,
           "Fulfillment has been canceled"
         )
       }

@@ -1,4 +1,4 @@
-import { NinjaError } from "ninja-core-utils"
+import { MedusaError } from "medusa-core-utils"
 import { PaymentSessionStatus } from "../../../../models"
 import { PaymentCollectionService } from "../../../../services"
 
@@ -17,18 +17,18 @@ import { PaymentCollectionService } from "../../../../services"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.paymentCollections.authorize(paymentId, sessionId)
+ *       medusa.paymentCollections.authorize(paymentId, sessionId)
  *       .then(({ payment_collection }) => {
  *         console.log(payment_collection.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAuthorizePaymentSession } from "ninja-react"
+ *       import { useAuthorizePaymentSession } from "medusa-react"
  *
  *       type Props = {
  *         paymentCollectionId: string
@@ -102,8 +102,8 @@ export default async (req, res) => {
   )
 
   if (session?.status !== PaymentSessionStatus.AUTHORIZED) {
-    throw new NinjaError(
-      NinjaError.Types.PAYMENT_AUTHORIZATION_ERROR,
+    throw new MedusaError(
+      MedusaError.Types.PAYMENT_AUTHORIZATION_ERROR,
       `Failed to authorize Payment Session id "${id}"`
     )
   }

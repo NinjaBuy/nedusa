@@ -1,11 +1,11 @@
 import {
   ExternalModuleDeclaration,
   InternalModuleDeclaration,
-  NinjaModule,
+  MedusaModule,
   MODULE_PACKAGE_NAMES,
   Modules,
-} from "@ninjajs/modules-sdk"
-import { IAuthModuleService, ModulesSdkTypes } from "@ninjajs/types"
+} from "@medusajs/modules-sdk"
+import { IAuthModuleService, ModulesSdkTypes } from "@medusajs/types"
 
 import { InitializeModuleInjectableDependencies } from "@types"
 import { moduleDefinition } from "../module-definition"
@@ -17,7 +17,7 @@ export const initialize = async (
     | ModulesSdkTypes.ModuleServiceInitializeCustomDataLayerOptions,
   injectedDependencies?: InitializeModuleInjectableDependencies
 ): Promise<IAuthModuleService> => {
-  const loaded = await NinjaModule.bootstrap<IAuthModuleService>({
+  const loaded = await MedusaModule.bootstrap<IAuthModuleService>({
     moduleKey: Modules.AUTH,
     defaultPath: MODULE_PACKAGE_NAMES[Modules.AUTH],
     declaration: options as

@@ -15,24 +15,24 @@ import {
   AdminPostTaxRatesTaxRateProductsReq,
   AdminPostTaxRatesTaxRateProductTypesReq,
   AdminPostTaxRatesTaxRateShippingOptionsReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import qs from "qs"
 import { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
-import { AdminPostTaxRatesTaxRateProductsParams } from "@ninjajs/ninja"
-import { AdminPostTaxRatesTaxRateShippingOptionsParams } from "@ninjajs/ninja"
-import { AdminPostTaxRatesParams } from "@ninjajs/ninja"
-import { AdminPostTaxRatesTaxRateParams } from "@ninjajs/ninja"
+import { AdminPostTaxRatesTaxRateProductsParams } from "@medusajs/medusa"
+import { AdminPostTaxRatesTaxRateShippingOptionsParams } from "@medusajs/medusa"
+import { AdminPostTaxRatesParams } from "@medusajs/medusa"
+import { AdminPostTaxRatesTaxRateParams } from "@medusajs/medusa"
 
 /**
- * This class is used to send requests to [Admin Tax Rate API Routes](https://docs.ninjajs.com/api/admin#tax-rates). All its method
- * are available in the JS Client under the `ninja.admin.taxRates` property.
+ * This class is used to send requests to [Admin Tax Rate API Routes](https://docs.medusajs.com/api/admin#tax-rates). All its method
+ * are available in the JS Client under the `medusa.admin.taxRates` property.
  * 
  * All methods in this class require {@link AdminAuthResource.createSession | user authentication}.
  * 
  * Each region has at least a default tax rate. Admins can create and manage additional tax rates that can be applied for certain conditions, such as for specific product types.
  * 
- * Related Guide: [How to manage tax rates](https://docs.ninjajs.com/modules/taxes/admin/manage-tax-rates).
+ * Related Guide: [How to manage tax rates](https://docs.medusajs.com/modules/taxes/admin/manage-tax-rates).
  */
 class AdminTaxRatesResource extends BaseResource {
   /**
@@ -46,10 +46,10 @@ class AdminTaxRatesResource extends BaseResource {
    * A simple example that retrieves a tax rate by its ID:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.retrieve(taxRateId)
+   * medusa.admin.taxRates.retrieve(taxRateId)
    * .then(({ tax_rate }) => {
    *   console.log(tax_rate.id);
    * })
@@ -58,10 +58,10 @@ class AdminTaxRatesResource extends BaseResource {
    * To specify relations that should be retrieved:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.retrieve(taxRateId, {
+   * medusa.admin.taxRates.retrieve(taxRateId, {
    *   expand: "shipping_options"
    * })
    * .then(({ tax_rate }) => {
@@ -94,10 +94,10 @@ class AdminTaxRatesResource extends BaseResource {
    * To list tax rates:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.list()
+   * medusa.admin.taxRates.list()
    * .then(({ tax_rates, limit, offset, count }) => {
    *   console.log(tax_rates.length);
    * })
@@ -106,10 +106,10 @@ class AdminTaxRatesResource extends BaseResource {
    * To specify relations that should be retrieved within the tax rates:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.list({
+   * medusa.admin.taxRates.list({
    *   expand: ["shipping_options"]
    * })
    * .then(({ tax_rates, limit, offset, count }) => {
@@ -120,10 +120,10 @@ class AdminTaxRatesResource extends BaseResource {
    * By default, only the first `50` records are retrieved. You can control pagination by specifying the `limit` and `offset` properties:
    * 
    * ```ts
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.list({
+   * medusa.admin.taxRates.list({
    *   expand: ["shipping_options"],
    *   limit,
    *   offset
@@ -155,10 +155,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.create({
+   * medusa.admin.taxRates.create({
    *   code: "TEST",
    *   name: "New Tax Rate",
    *   region_id
@@ -191,10 +191,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.update(taxRateId, {
+   * medusa.admin.taxRates.update(taxRateId, {
    *   name: "New Tax Rate"
    * })
    * .then(({ tax_rate }) => {
@@ -226,10 +226,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.addProducts(taxRateId, {
+   * medusa.admin.taxRates.addProducts(taxRateId, {
    *   products: [
    *     productId
    *   ]
@@ -263,10 +263,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.addProductTypes(taxRateId, {
+   * medusa.admin.taxRates.addProductTypes(taxRateId, {
    *   product_types: [
    *     productTypeId
    *   ]
@@ -300,10 +300,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.addShippingOptions(taxRateId, {
+   * medusa.admin.taxRates.addShippingOptions(taxRateId, {
    *   shipping_options: [
    *     shippingOptionId
    *   ]
@@ -337,10 +337,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.removeProducts(taxRateId, {
+   * medusa.admin.taxRates.removeProducts(taxRateId, {
    *   products: [
    *     productId
    *   ]
@@ -374,10 +374,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.removeProductTypes(taxRateId, {
+   * medusa.admin.taxRates.removeProductTypes(taxRateId, {
    *   product_types: [
    *     productTypeId
    *   ]
@@ -411,10 +411,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesRes>} Resolves to the tax rate's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.removeShippingOptions(taxRateId, {
+   * medusa.admin.taxRates.removeShippingOptions(taxRateId, {
    *   shipping_options: [
    *     shippingOptionId
    *   ]
@@ -446,10 +446,10 @@ class AdminTaxRatesResource extends BaseResource {
    * @returns {ResponsePromise<AdminTaxRatesDeleteRes>} Resolves to the deletion operation's details.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged in or use api token
-   * ninja.admin.taxRates.delete(taxRateId)
+   * medusa.admin.taxRates.delete(taxRateId)
    * .then(({ id, object, deleted }) => {
    *   console.log(id);
    * })

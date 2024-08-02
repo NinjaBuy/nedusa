@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
-import { NinjaV2Flag } from "@ninjajs/utils"
+import { MedusaV2Flag } from "@medusajs/utils"
 
-export const featureFlag = NinjaV2Flag.key
+export const featureFlag = MedusaV2Flag.key
 
 export class ProductSalesChannelsLink1698056997411
   implements MigrationInterface

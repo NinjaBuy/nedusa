@@ -1,13 +1,13 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../types/routing"
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 
-import { createInventoryItemsWorkflow } from "@ninjajs/core-flows"
+import { createInventoryItemsWorkflow } from "@medusajs/core-flows"
 import {
   AdminCreateInventoryItemType,
   AdminGetInventoryItemsParamsType,
@@ -15,8 +15,8 @@ import {
 import { refetchInventoryItem } from "./helpers"
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminCreateInventoryItemType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminCreateInventoryItemType>,
+  res: MedusaResponse
 ) => {
   const { result } = await createInventoryItemsWorkflow(req.scope).run({
     input: { items: [req.validatedBody] },
@@ -32,8 +32,8 @@ export const POST = async (
 }
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest<AdminGetInventoryItemsParamsType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminGetInventoryItemsParamsType>,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 

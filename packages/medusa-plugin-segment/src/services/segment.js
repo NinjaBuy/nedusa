@@ -1,11 +1,11 @@
 import Analytics from "analytics-node"
 import axios from "axios"
-import { BaseService } from "ninja-interfaces"
-import { humanizeAmount } from "ninja-core-utils"
+import { BaseService } from "medusa-interfaces"
+import { humanizeAmount } from "medusa-core-utils"
 
 class SegmentService extends BaseService {
   /**
-   * @param {Object} options - options defined in `ninja-config.js`
+   * @param {Object} options - options defined in `medusa-config.js`
    *    e.g.
    *    {
    *      write_key: Segment write key given in Segment dashboard

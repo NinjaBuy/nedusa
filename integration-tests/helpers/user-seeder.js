@@ -1,4 +1,4 @@
-const { User, Invite } = require("@ninjajs/ninja")
+const { User, Invite } = require("@medusajs/medusa")
 import jwt from "jsonwebtoken"
 
 const generateToken = (data) => {

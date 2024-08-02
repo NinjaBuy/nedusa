@@ -11,7 +11,7 @@ const paths: LearningPathType[] = [
       {
         title: "Create a Next.js Starter Template",
         description:
-          "Create a Next.js Starter Template and connect it to your Ninja backend.",
+          "Create a Next.js Starter Template and connect it to your Medusa backend.",
         path: "#",
       },
       {
@@ -86,7 +86,7 @@ const paths: LearningPathType[] = [
         path: "/plugins/payment",
         descriptionJSX: (
           <>
-            Add a payment provider to your Ninja backend. You can choose to
+            Add a payment provider to your Medusa backend. You can choose to
             install a plugin or{" "}
             <Link href="/modules/carts-and-checkout/backend/add-payment-provider">
               create your own provider
@@ -118,7 +118,7 @@ const paths: LearningPathType[] = [
       },
       {
         title: "Create a storefront",
-        path: "/starters/nextjs-ninja-starter",
+        path: "/starters/nextjs-medusa-starter",
         descriptionJSX: (
           <>
             Build a storefront either using the Next.js Starter Template or{" "}
@@ -173,7 +173,7 @@ const paths: LearningPathType[] = [
             Create a subscriber that listens to the <code>order.placed</code>{" "}
             event, or other{" "}
             <Link href="/development/events/events-list">events</Link>, and
-            handles creating the subscription in Ninja.
+            handles creating the subscription in Medusa.
           </>
         ),
         path: "/development/events/create-subscriber",
@@ -201,7 +201,7 @@ const paths: LearningPathType[] = [
       },
       {
         title: "Create a storefront",
-        path: "/starters/nextjs-ninja-starter",
+        path: "/starters/nextjs-medusa-starter",
         descriptionJSX: (
           <>
             Build a storefront either using the Next.js Starter Template or{" "}
@@ -233,7 +233,7 @@ const paths: LearningPathType[] = [
     name: "b2b",
     label: "Build a B2B store",
     description:
-      "Utilize Ninja's features and customization capabilities to build a B2B store.",
+      "Utilize Medusa's features and customization capabilities to build a B2B store.",
     steps: [
       {
         title: "Create a B2B Sales Channel",
@@ -243,7 +243,7 @@ const paths: LearningPathType[] = [
             You can create a B2B sales channel that will include only your
             wholesale products.
             <br />
-            You can either use the Ninja admin, or the{" "}
+            You can either use the Medusa admin, or the{" "}
             <Link href="/modules/sales-channels/admin/manage">
               Admin REST APIs
             </Link>
@@ -260,7 +260,7 @@ const paths: LearningPathType[] = [
             channels. You can then use the publishable API key in your
             storefront or client.
             <br />
-            You can either use the Ninja admin, or the{" "}
+            You can either use the Medusa admin, or the{" "}
             <Link href="/development/publishable-api-keys/admin/manage-publishable-api-keys">
               Admin REST APIs
             </Link>
@@ -276,7 +276,7 @@ const paths: LearningPathType[] = [
             You can add your wholesale products and make them only available in
             the B2B sales channel.
             <br />
-            You can use the Ninja admin to add the products. Other alternatives
+            You can use the Medusa admin to add the products. Other alternatives
             are:
             <ul>
               <li>
@@ -286,7 +286,7 @@ const paths: LearningPathType[] = [
               </li>
               <li>
                 <Link href="/user-guide/products/import">
-                  Import Products Using Ninja Admin
+                  Import Products Using Medusa Admin
                 </Link>
               </li>
               <li>
@@ -306,7 +306,7 @@ const paths: LearningPathType[] = [
             Customer groups can be used to apply different prices for different
             subsets of customers, in this case B2B customers.
             <br />
-            You can either use the Ninja admin, or the{" "}
+            You can either use the Medusa admin, or the{" "}
             <Link href="/modules/customers/admin/manage-customer-groups">
               Admin REST APIs
             </Link>
@@ -323,7 +323,7 @@ const paths: LearningPathType[] = [
             group. Alternatively, if you want to allow B2B customers to register
             themselves, you can implement that logic within your storefront.
             <br />
-            You can either use the Ninja admin, or the{" "}
+            You can either use the Medusa admin, or the{" "}
             <Link href="/modules/customers/admin/manage-customers">
               Admin REST APIs
             </Link>
@@ -340,7 +340,7 @@ const paths: LearningPathType[] = [
             for different conditions. You can use this when building a B2B store
             to assign different prices for B2B customer groups.
             <br />
-            You can use the Ninja admin to add the price list. Other
+            You can use the Medusa admin to add the price list. Other
             alternatives are:
             <ul>
               <li>
@@ -350,7 +350,7 @@ const paths: LearningPathType[] = [
               </li>
               <li>
                 <Link href="/user-guide/price-lists/import">
-                  Import Prices Using Ninja Admin
+                  Import Prices Using Medusa Admin
                 </Link>
               </li>
               <li>
@@ -370,11 +370,11 @@ const paths: LearningPathType[] = [
             Your use case may be more elaborate than what is shown in this
             recipe.
             <br />
-            Ninja can be customized to add custom entities, API Routes,
+            Medusa can be customized to add custom entities, API Routes,
             services, and more.
             <br />
             You can find additional development resources in the{" "}
-            <Link href="/development/overview">Ninja development section</Link>
+            <Link href="/development/overview">Medusa development section</Link>
             .
           </>
         ),
@@ -410,7 +410,7 @@ const paths: LearningPathType[] = [
       },
       {
         title: "Customize Storefront",
-        path: "/starters/nextjs-ninja-starter",
+        path: "/starters/nextjs-medusa-starter",
         descriptionJSX: (
           <>
             You may need to customize your storefront to add different
@@ -454,14 +454,14 @@ const paths: LearningPathType[] = [
     name: "integrate-ecommerce-stack",
     label: "Integrate Ecommerce Stack",
     description:
-      "Use Ninja’s architecture and functionalities to integrate third-party systems and build flows around them.",
+      "Use Medusa’s architecture and functionalities to integrate third-party systems and build flows around them.",
     steps: [
       {
         title: "Connect to External Systems with Services",
         path: "/development/services/create-service",
         descriptionJSX: (
           <>
-            Ninja’s Services let you implement a client that connects and
+            Medusa’s Services let you implement a client that connects and
             performs functionalities with your third-party system.
             <br />
             <br />
@@ -475,7 +475,7 @@ const paths: LearningPathType[] = [
         path: "/development/workflows",
         descriptionJSX: (
           <>
-            With Ninja’s workflows, you can build flows with steps that may
+            With Medusa’s workflows, you can build flows with steps that may
             perform actions on different systems. Workflows can be executed from
             anywhere.
             <br />
@@ -499,7 +499,7 @@ const paths: LearningPathType[] = [
             your systems.
             <br />
             <br />
-            Webhook listeners can be created in Ninja using API Routes.
+            Webhook listeners can be created in Medusa using API Routes.
           </>
         ),
       },
@@ -517,7 +517,7 @@ const paths: LearningPathType[] = [
   {
     name: "rbac",
     label: "Role-based access control (RBAC)",
-    description: "Implement roles and permissions for admin users in Ninja",
+    description: "Implement roles and permissions for admin users in Medusa",
     steps: [
       {
         title: "Create Role and Permission Entities",
@@ -628,29 +628,29 @@ const paths: LearningPathType[] = [
     steps: [
       {
         title: "Choose your client",
-        path: "/ninja-react/overview",
+        path: "/medusa-react/overview",
         descriptionJSX: (
           <>
-            As your storefront connect to the Ninja backend, you need a way to
+            As your storefront connect to the Medusa backend, you need a way to
             interact with the backend&apos;s REST APIs. There are three ways to
             do so, based on your type of project:
             <ul>
               <li>
-                <Link href="/ninja-react/overview">Ninja React</Link>: Can be
+                <Link href="/medusa-react/overview">Medusa React</Link>: Can be
                 used in any React-based project. For example, in a Next.js
                 storefront.
               </li>
               <li>
-                <Link href="/js-client/overview">Ninja JS Client</Link>: Can be
+                <Link href="/js-client/overview">Medusa JS Client</Link>: Can be
                 used in any JavaScript and NPM based project. For example, in a
                 Nuxt storefront.
               </li>
               <li>
-                <Link href={`https://docs.ninjajs.com/api/store`}>
+                <Link href={`https://docs.medusajs.com/api/store`}>
                   Store REST APIs
                 </Link>
                 : You can send requests directly to the API Routes without using
-                Ninja&apos;s clients.
+                Medusa&apos;s clients.
               </li>
             </ul>
           </>
@@ -730,7 +730,7 @@ const paths: LearningPathType[] = [
               </li>
               <li>
                 You can also checkout the{" "}
-                <Link href={`https://docs.ninjajs.com/api/store`}>
+                <Link href={`https://docs.medusajs.com/api/store`}>
                   Store REST APIs
                 </Link>{" "}
                 for a full list of available REST APIs.
@@ -753,13 +753,13 @@ const paths: LearningPathType[] = [
     name: "plugin",
     label: "Create a Plugin",
     description:
-      "Learn how to create a plugin that can be re-used across Ninja backends.",
+      "Learn how to create a plugin that can be re-used across Medusa backends.",
     steps: [
       {
         title: "Setup plugin project",
         path: "/development/backend/install",
         description:
-          "A plugin is initially a Ninja backend with customizations. If you don't have a project ready, you can create one using Ninja's CLI tool.",
+          "A plugin is initially a Medusa backend with customizations. If you don't have a project ready, you can create one using Medusa's CLI tool.",
       },
       {
         title: "Implement Customizations",
@@ -834,7 +834,7 @@ const paths: LearningPathType[] = [
         title: "Optionally test locally",
         path: "/development/plugins/create#test-your-plugin",
         description:
-          "If necessary, you can test your plugin in a separate local Ninja backend. It's recommended, however, to do your plugin testing within the plugin project.",
+          "If necessary, you can test your plugin in a separate local Medusa backend. It's recommended, however, to do your plugin testing within the plugin project.",
       },
       {
         title: "Publish plugin",

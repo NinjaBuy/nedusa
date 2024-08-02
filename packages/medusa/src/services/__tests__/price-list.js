@@ -1,7 +1,7 @@
-import { NinjaError } from "ninja-core-utils"
-import { IdMap, MockManager, MockRepository } from "ninja-test-utils"
+import { MedusaError } from "medusa-core-utils"
+import { IdMap, MockManager, MockRepository } from "medusa-test-utils"
 import { MoneyAmountRepository } from "../../repositories/money-amount"
-import { FlagRouter } from "@ninjajs/utils"
+import { FlagRouter } from "@medusajs/utils"
 import PriceListService from "../price-list"
 import { RegionServiceMock } from "../__mocks__/region"
 
@@ -24,8 +24,8 @@ const customerGroupService = {
       return Promise.resolve({ id: IdMap.getId("group") })
     }
 
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `CustomerGroup with id ${id} was not found`
     )
   }),

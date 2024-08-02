@@ -1,5 +1,5 @@
-import { Heading } from "@ninjajs/ui"
-import { useAdminOrder } from "ninja-react"
+import { Heading } from "@medusajs/ui"
+import { useAdminOrder } from "medusa-react"
 import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
 import { RouteDrawer } from "../../../components/route-modal"

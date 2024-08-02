@@ -1,8 +1,8 @@
-import { ModuleExports } from "@ninjajs/types"
+import { ModuleExports } from "@medusajs/types"
 import { FileModuleService } from "@services"
 import loadProviders from "./loaders/providers"
 import * as ModuleServices from "@services"
-import { ModulesSdkUtils } from "@ninjajs/utils"
+import { ModulesSdkUtils } from "@medusajs/utils"
 
 export const runMigrations = () => {
   return Promise.resolve()

@@ -1,5 +1,5 @@
-import { Workflows, createProducts } from "@ninjajs/core-flows"
-import { IInventoryService, WorkflowTypes } from "@ninjajs/types"
+import { Workflows, createProducts } from "@medusajs/core-flows"
+import { IInventoryService, WorkflowTypes } from "@medusajs/types"
 import {
   IsArray,
   IsBoolean,
@@ -39,8 +39,8 @@ import {
   revertVariantTransaction,
 } from "./transaction/create-product-variant"
 
-import { DistributedTransaction } from "@ninjajs/orchestration"
-import { FlagRouter, NinjaV2Flag, promiseAll } from "@ninjajs/utils"
+import { DistributedTransaction } from "@medusajs/orchestration"
+import { FlagRouter, MedusaV2Flag, promiseAll } from "@medusajs/utils"
 import { Type } from "class-transformer"
 import { EntityManager } from "typeorm"
 import SalesChannelFeatureFlag from "../../../../loaders/feature-flags/sales-channels"
@@ -66,10 +66,10 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.products.create({
+ *       medusa.admin.products.create({
  *         title: "Shirt",
  *         is_giftcard: false,
  *         discountable: true
@@ -78,10 +78,10 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *         console.log(product.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCreateProduct } from "ninja-react"
+ *       import { useAdminCreateProduct } from "medusa-react"
  *
  *       type CreateProductData = {
  *         title: string
@@ -132,7 +132,7 @@ import { FeatureFlagDecorators } from "../../../../utils/feature-flag-decorators
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/products' \
- *       -H 'x-ninja-access-token: {api_token}' \
+ *       -H 'x-medusa-access-token: {api_token}' \
  *       -H 'Content-Type: application/json' \
  *       --data-raw '{
  *           "title": "Shirt"
@@ -188,17 +188,17 @@ export default async (req, res) => {
 
   const entityManager: EntityManager = req.scope.resolve("manager")
   const productModuleService = req.scope.resolve("productModuleService")
-  const isNinjaV2Enabled = featureFlagRouter.isFeatureEnabled(NinjaV2Flag.key)
+  const isMedusaV2Enabled = featureFlagRouter.isFeatureEnabled(MedusaV2Flag.key)
 
-  if (isNinjaV2Enabled && !productModuleService) {
+  if (isMedusaV2Enabled && !productModuleService) {
     logger.warn(
-      `Cannot run ${Workflows.CreateProducts} workflow without '@ninjajs/product' installed`
+      `Cannot run ${Workflows.CreateProducts} workflow without '@medusajs/product' installed`
     )
   }
 
   let product
 
-  if (isNinjaV2Enabled && !!productModuleService) {
+  if (isMedusaV2Enabled && !!productModuleService) {
     const createProductWorkflow = createProducts(req.scope)
 
     const input = {
@@ -308,7 +308,7 @@ export default async (req, res) => {
   }
 
   let rawProduct
-  if (isNinjaV2Enabled) {
+  if (isMedusaV2Enabled) {
     rawProduct = await retrieveProduct(
       req.scope,
       product.id,
@@ -555,7 +555,7 @@ class ProductVariantReq {
  *           description: Whether the Product Variant can be purchased when out of stock.
  *           type: boolean
  *         manage_inventory:
- *           description: Whether Ninja should keep track of the inventory of this Product Variant.
+ *           description: Whether Medusa should keep track of the inventory of this Product Variant.
  *           type: boolean
  *         weight:
  *           description: The wieght of the Product Variant.
@@ -583,12 +583,12 @@ class ProductVariantReq {
  *           type: object
  *           externalDocs:
  *             description: "Learn about the metadata attribute, and how to delete and update it."
- *             url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *             url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  *         prices:
  *           type: array
  *           description: An array of product variant prices. A product variant can have different prices for each region or currency code.
  *           externalDocs:
- *             url: https://docs.ninjajs.com/modules/products/admin/manage-products#product-variant-prices
+ *             url: https://docs.medusajs.com/modules/products/admin/manage-products#product-variant-prices
  *             description: Product variant pricing.
  *           items:
  *             type: object
@@ -617,7 +617,7 @@ class ProductVariantReq {
  *           type: array
  *           description: An array of Product Option values that the variant corresponds to. The option values should be added into the array in the same index as in the `options` field of the product.
  *           externalDocs:
- *             url: https://docs.ninjajs.com/modules/products/admin/manage-products#create-a-product
+ *             url: https://docs.medusajs.com/modules/products/admin/manage-products#create-a-product
  *             description: Example of how to create a product with options and variants
  *           items:
  *             type: object
@@ -656,7 +656,7 @@ class ProductVariantReq {
  *     type: object
  *     externalDocs:
  *       description: "Learn about the metadata attribute, and how to delete and update it."
- *       url: "https://docs.ninjajs.com/development/entities/overview#metadata-attribute"
+ *       url: "https://docs.medusajs.com/development/entities/overview#metadata-attribute"
  */
 export class AdminPostProductsReq {
   @IsString()

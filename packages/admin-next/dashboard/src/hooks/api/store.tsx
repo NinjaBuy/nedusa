@@ -6,9 +6,9 @@ import {
   useQuery,
 } from "@tanstack/react-query"
 
-import { queryKeysFactory } from "ninja-react"
+import { queryKeysFactory } from "medusa-react"
 import { client } from "../../lib/client"
-import { queryClient } from "../../lib/ninja"
+import { queryClient } from "../../lib/medusa"
 import { UpdateStoreReq } from "../../types/api-payloads"
 import { StoreRes } from "../../types/api-responses"
 

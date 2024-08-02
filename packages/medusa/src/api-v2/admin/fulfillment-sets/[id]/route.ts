@@ -1,14 +1,14 @@
-import { AdminFulfillmentSetsDeleteResponse } from "@ninjajs/types"
-import { deleteFulfillmentSetsWorkflow } from "@ninjajs/core-flows"
+import { AdminFulfillmentSetsDeleteResponse } from "@medusajs/types"
+import { deleteFulfillmentSetsWorkflow } from "@medusajs/core-flows"
 
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../types/routing"
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse<AdminFulfillmentSetsDeleteResponse>
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse<AdminFulfillmentSetsDeleteResponse>
 ) => {
   const { id } = req.params
 

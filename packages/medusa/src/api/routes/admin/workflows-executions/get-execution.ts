@@ -1,8 +1,8 @@
-import { ModuleRegistrationName } from "@ninjajs/modules-sdk"
-import { IWorkflowEngineService } from "@ninjajs/workflows-sdk"
-import { NinjaRequest, NinjaResponse } from "../../../../types/routing"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { IWorkflowEngineService } from "@medusajs/workflows-sdk"
+import { MedusaRequest, MedusaResponse } from "../../../../types/routing"
 
-export default async (req: NinjaRequest, res: NinjaResponse) => {
+export default async (req: MedusaRequest, res: MedusaResponse) => {
   const workflowEngineService: IWorkflowEngineService = req.scope.resolve(
     ModuleRegistrationName.WORKFLOW_ENGINE
   )

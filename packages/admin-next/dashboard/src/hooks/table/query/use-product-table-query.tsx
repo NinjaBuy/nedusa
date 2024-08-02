@@ -1,5 +1,5 @@
-import { AdminGetProductsParams } from "@ninjajs/ninja"
-import { ProductStatus } from "@ninjajs/types"
+import { AdminGetProductsParams } from "@medusajs/medusa"
+import { ProductStatus } from "@medusajs/types"
 
 import { useQueryParams } from "../../use-query-params"
 

@@ -1,6 +1,6 @@
 ---
-"@ninjajs/workflows-sdk": patch
-"@ninjajs/types": patch
+"@medusajs/workflows-sdk": patch
+"@medusajs/types": patch
 ---
 
 Add workflow idempotencyKey to shared context

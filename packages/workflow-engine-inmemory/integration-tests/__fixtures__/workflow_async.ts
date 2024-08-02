@@ -2,7 +2,7 @@ import {
   StepResponse,
   createStep,
   createWorkflow,
-} from "@ninjajs/workflows-sdk"
+} from "@medusajs/workflows-sdk"
 import { setTimeout } from "timers/promises"
 
 const step_1_background = createStep(

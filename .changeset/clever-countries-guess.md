@@ -1,5 +1,5 @@
 ---
-"@ninjajs/orchestration": patch
+"@medusajs/orchestration": patch
 ---
 
 Serialize orchestrator error

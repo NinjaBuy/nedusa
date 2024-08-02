@@ -1,8 +1,8 @@
 import { LoaderFunctionArgs } from "react-router-dom"
-import { adminStockLocationsKeys } from "ninja-react"
+import { adminStockLocationsKeys } from "medusa-react"
 
 import { client } from "../../../lib/client"
-import { queryClient } from "../../../lib/ninja"
+import { queryClient } from "../../../lib/medusa"
 import { StockLocationListRes } from "../../../types/api-responses"
 
 const shippingListQuery = () => ({

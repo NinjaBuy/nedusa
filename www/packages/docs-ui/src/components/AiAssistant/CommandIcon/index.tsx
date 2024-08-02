@@ -1,4 +1,4 @@
-import { SparklesSolid } from "@ninjajs/icons"
+import { SparklesSolid } from "@medusajs/icons"
 import clsx from "clsx"
 import React from "react"
 
@@ -12,8 +12,8 @@ export const AiAssistantCommandIcon = ({
   return (
     <span
       className={clsx(
-        "bg-button-inverted bg-ninja-button-inverted dark:bg-button-inverted-dark",
-        "rounded-md p-[2px] text-ninja-fg-on-inverted flex",
+        "bg-button-inverted bg-medusa-button-inverted dark:bg-button-inverted-dark",
+        "rounded-md p-[2px] text-medusa-fg-on-inverted flex",
         className
       )}
       {...props}

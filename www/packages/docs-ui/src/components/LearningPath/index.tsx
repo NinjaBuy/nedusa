@@ -7,7 +7,7 @@ import { getLearningPath } from "@/utils"
 import { useLearningPath } from "@/providers"
 import { Button, Link } from "@/components"
 import { useNotifications } from "@/providers"
-import { CircleMiniSolid } from "@ninjajs/icons"
+import { CircleMiniSolid } from "@medusajs/icons"
 
 type LearningPathProps = {
   pathName: string
@@ -41,14 +41,14 @@ export const LearningPath = ({
     >
       <div
         className={clsx(
-          "flex items-center gap-docs_1 p-docs_1 border-0 border-b border-solid border-ninja-border-base"
+          "flex items-center gap-docs_1 p-docs_1 border-0 border-b border-solid border-medusa-border-base"
         )}
       >
         <LearningPathIcon />
         <div className={clsx("basis-3/4")}>
           <span
             className={clsx(
-              "text-ninja-fg-base text-compact-large-plus block"
+              "text-medusa-fg-base text-compact-large-plus block"
             )}
           >
             {path.label}
@@ -56,7 +56,7 @@ export const LearningPath = ({
           {path.description && (
             <span
               className={clsx(
-                "text-ninja-fg-subtle text-compact-medium mt-docs_0.25 inline-block"
+                "text-medusa-fg-subtle text-compact-medium mt-docs_0.25 inline-block"
               )}
             >
               {path.description}
@@ -72,15 +72,15 @@ export const LearningPath = ({
           className={clsx(
             "flex items-center p-docs_1 gap-docs_1 relative",
             index !== path.steps.length - 1 &&
-              "border-0 border-b border-solid border-ninja-border-base"
+              "border-0 border-b border-solid border-medusa-border-base"
           )}
           key={index}
         >
           <div className={clsx("w-docs_3 flex items-center justify-center")}>
-            <CircleMiniSolid className="text-ninja-fg-muted" />
+            <CircleMiniSolid className="text-medusa-fg-muted" />
           </div>
           <span
-            className={clsx("text-ninja-fg-base text-compact-medium-plus")}
+            className={clsx("text-medusa-fg-base text-compact-medium-plus")}
           >
             {step.title}
           </span>

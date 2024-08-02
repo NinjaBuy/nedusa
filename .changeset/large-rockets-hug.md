@@ -1,7 +1,7 @@
 ---
-"@ninjajs/core-flows": patch
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/core-flows": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(core-flows,ninja,types): cancel fulfillments API
+feat(core-flows,medusa,types): cancel fulfillments API

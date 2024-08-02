@@ -1,9 +1,9 @@
-import { Container, Heading } from "@ninjajs/ui"
-import { ProductVariantDTO } from "@ninjajs/types"
+import { Container, Heading } from "@medusajs/ui"
+import { ProductVariantDTO } from "@medusajs/types"
 
 import { ActionMenu } from "../../../../components/common/action-menu"
 import { InventoryItemRes } from "../../../../types/api-responses"
-import { PencilSquare } from "@ninjajs/icons"
+import { PencilSquare } from "@medusajs/icons"
 import { SectionRow } from "../../../../components/common/section"
 import { useTranslation } from "react-i18next"
 

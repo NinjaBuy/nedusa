@@ -6,8 +6,8 @@ const {
   CustomShippingOption,
   ShippingMethod,
   Fulfillment,
-} = require("@ninjajs/ninja")
-const idMap = require("ninja-test-utils/src/id-map").default
+} = require("@medusajs/medusa")
+const idMap = require("medusa-test-utils/src/id-map").default
 
 const setupServer = require("../../../../environment-helpers/setup-server")
 const { useApi } = require("../../../../environment-helpers/use-api")
@@ -34,27 +34,27 @@ const {
 
 const adminReqConfig = {
   headers: {
-    "x-ninja-access-token": "test_token",
+    "x-medusa-access-token": "test_token",
   },
 }
 
 jest.setTimeout(30000)
 
 describe("/admin/orders", () => {
-  let ninjaProcess
+  let medusaProcess
   let dbConnection
 
   beforeAll(async () => {
     const cwd = path.resolve(path.join(__dirname, "..", "..", ".."))
     dbConnection = await initDb({ cwd })
-    ninjaProcess = await setupServer({ cwd })
+    medusaProcess = await setupServer({ cwd })
   })
 
   afterAll(async () => {
     const db = useDb()
     await db.shutdown()
 
-    ninjaProcess.kill()
+    medusaProcess.kill()
   })
 
   describe("GET /admin/orders", () => {

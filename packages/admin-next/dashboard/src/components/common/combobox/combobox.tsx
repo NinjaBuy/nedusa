@@ -13,8 +13,8 @@ import {
   PlusMini,
   TrianglesMini,
   XMarkMini,
-} from "@ninjajs/icons"
-import { Text, clx } from "@ninjajs/ui"
+} from "@medusajs/icons"
+import { Text, clx } from "@medusajs/ui"
 import { matchSorter } from "match-sorter"
 import {
   ComponentPropsWithoutRef,

@@ -1,4 +1,4 @@
-import { NinjaContainer } from "@ninjajs/types"
+import { MedusaContainer } from "@medusajs/types"
 
 export type ScheduledJobConfig<T = unknown> = {
   /**
@@ -16,7 +16,7 @@ export type ScheduledJobConfig<T = unknown> = {
 }
 
 export type ScheduledJobArgs<T = unknown> = {
-  container: NinjaContainer
+  container: MedusaContainer
   data?: T
   pluginOptions?: Record<string, unknown>
 }

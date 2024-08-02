@@ -1,4 +1,4 @@
-import { Logger } from "@ninjajs/ninja"
+import { Logger } from "@medusajs/medusa"
 import axios, { AxiosInstance, AxiosRequestConfig, Method } from "axios"
 import {
   PaypalApiPath,

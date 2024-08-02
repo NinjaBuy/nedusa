@@ -1,6 +1,6 @@
 ---
-"@ninjajs/ninja": patch
-"@ninjajs/types": patch
+"@medusajs/medusa": patch
+"@medusajs/types": patch
 ---
 
-feat(ninja,types): create promotion flows
+feat(medusa,types): create promotion flows

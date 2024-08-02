@@ -1,4 +1,4 @@
-import { GiftCard } from "@ninjajs/ninja"
+import { GiftCard } from "@medusajs/medusa"
 import faker from "faker"
 import { DataSource } from "typeorm"
 

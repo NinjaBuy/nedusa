@@ -1,11 +1,11 @@
 import * as AuthModels from "@models"
 
-import { DALUtils, ModulesSdkUtils } from "@ninjajs/utils"
-import { LoaderOptions, Logger, ModulesSdkTypes } from "@ninjajs/types"
+import { DALUtils, ModulesSdkUtils } from "@medusajs/utils"
+import { LoaderOptions, Logger, ModulesSdkTypes } from "@medusajs/types"
 
 import { EOL } from "os"
 import { EntitySchema } from "@mikro-orm/core"
-import { Modules } from "@ninjajs/modules-sdk"
+import { Modules } from "@medusajs/modules-sdk"
 import { resolve } from "path"
 
 export async function run({

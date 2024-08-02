@@ -31,7 +31,7 @@ export const LearningPathFinish = ({
         <Rating event={step.eventName} onRating={onRating} />
       )}
       {type === "custom" && (
-        <span className="text-compact-small text-ninja-fg-subtle">
+        <span className="text-compact-small text-medusa-fg-subtle">
           {step.descriptionJSX}
         </span>
       )}

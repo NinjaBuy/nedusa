@@ -1,22 +1,22 @@
 import {
-  AuthenticatedNinjaRequest,
-  NinjaResponse,
+  AuthenticatedMedusaRequest,
+  MedusaResponse,
 } from "../../../../../../types/routing"
 import {
   deleteProductOptionsWorkflow,
   updateProductOptionsWorkflow,
-} from "@ninjajs/core-flows"
+} from "@medusajs/core-flows"
 
 import {
   ContainerRegistrationKeys,
   remoteQueryObjectFromString,
-} from "@ninjajs/utils"
+} from "@medusajs/utils"
 import { refetchProduct, remapProductResponse } from "../../../helpers"
 import { AdminUpdateProductOptionType } from "../../../validators"
 
 export const GET = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const remoteQuery = req.scope.resolve(ContainerRegistrationKeys.REMOTE_QUERY)
 
@@ -36,8 +36,8 @@ export const GET = async (
 }
 
 export const POST = async (
-  req: AuthenticatedNinjaRequest<AdminUpdateProductOptionType>,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest<AdminUpdateProductOptionType>,
+  res: MedusaResponse
 ) => {
   const productId = req.params.id
   const optionId = req.params.option_id
@@ -63,8 +63,8 @@ export const POST = async (
 }
 
 export const DELETE = async (
-  req: AuthenticatedNinjaRequest,
-  res: NinjaResponse
+  req: AuthenticatedMedusaRequest,
+  res: MedusaResponse
 ) => {
   const productId = req.params.id
   const optionId = req.params.option_id

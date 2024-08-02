@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import clsx from "clsx"
-import { Star, StarSolid } from "@ninjajs/icons"
+import { Star, StarSolid } from "@medusajs/icons"
 import { Button, Label, TextArea } from "@/components"
 import { useAnalytics, useNotifications } from "@/providers"
 
@@ -102,7 +102,7 @@ export const Rating: React.FC<RatingProps> = ({
             >
               {!isSelected && <Star />}
               {isSelected && (
-                <StarSolid className="text-ninja-tag-orange-icon" />
+                <StarSolid className="text-medusa-tag-orange-icon" />
               )}
             </Button>
           )
@@ -111,7 +111,7 @@ export const Rating: React.FC<RatingProps> = ({
       {rating !== 0 && rating < 4 && (
         <div
           className={clsx(
-            "text-ninja-fg-subtle",
+            "text-medusa-fg-subtle",
             "flex flex-col gap-docs_0.5"
           )}
         >

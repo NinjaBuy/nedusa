@@ -2,19 +2,19 @@ import {
   AdminCreateInventoryLocationLevelType,
   AdminUpdateInventoryLocationLevelType,
 } from "../../../validators"
-import { NinjaRequest, NinjaResponse } from "../../../../../../types/routing"
+import { MedusaRequest, MedusaResponse } from "../../../../../../types/routing"
 
-import { bulkCreateDeleteLevelsWorkflow } from "@ninjajs/core-flows"
-import { BatchMethodRequest } from "@ninjajs/types"
+import { bulkCreateDeleteLevelsWorkflow } from "@medusajs/core-flows"
+import { BatchMethodRequest } from "@medusajs/types"
 
 export const POST = async (
-  req: NinjaRequest<
+  req: MedusaRequest<
     BatchMethodRequest<
       AdminCreateInventoryLocationLevelType,
       AdminUpdateInventoryLocationLevelType
     >
   >,
-  res: NinjaResponse
+  res: MedusaResponse
 ) => {
   const { id } = req.params
 

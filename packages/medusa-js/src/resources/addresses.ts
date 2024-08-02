@@ -2,13 +2,13 @@ import {
   StoreCustomersRes,
   StorePostCustomersCustomerAddressesAddressReq,
   StorePostCustomersCustomerAddressesReq,
-} from "@ninjajs/ninja"
+} from "@medusajs/medusa"
 import { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 /**
- * This class is used to send requests to Address API Routes part of the [Store Customer API Routes](https://docs.ninjajs.com/api/store#customers_postcustomers). All its method
- * are available in the JS Client under the `ninja.customers.addresses` property.
+ * This class is used to send requests to Address API Routes part of the [Store Customer API Routes](https://docs.medusajs.com/api/store#customers_postcustomers). All its method
+ * are available in the JS Client under the `medusa.customers.addresses` property.
  * 
  * All methods in this class require {@link AuthResource.authenticate | customer authentication}.
  */
@@ -20,10 +20,10 @@ class AddressesResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the customer's details, including the customer's addresses in the `shipping_addresses` attribute.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.addresses.addAddress({
+   * medusa.customers.addresses.addAddress({
    *   address: {
    *     first_name: "Celia",
    *     last_name: "Schumm",
@@ -55,10 +55,10 @@ class AddressesResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the customer's details, including the customer's addresses in the `shipping_addresses` attribute.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.addresses.deleteAddress(addressId)
+   * medusa.customers.addresses.deleteAddress(addressId)
    * .then(({ customer }) => {
    *   console.log(customer.id);
    * })
@@ -79,10 +79,10 @@ class AddressesResource extends BaseResource {
    * @returns {ResponsePromise<StoreCustomersRes>} Resolves to the customer's details, including the customer's addresses in the `shipping_addresses` attribute.
    * 
    * @example
-   * import Ninja from "@ninjajs/ninja-js"
-   * const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+   * import Medusa from "@medusajs/medusa-js"
+   * const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
    * // must be previously logged
-   * ninja.customers.addresses.updateAddress(addressId, {
+   * medusa.customers.addresses.updateAddress(addressId, {
    *   first_name: "Gina"
    * })
    * .then(({ customer }) => {

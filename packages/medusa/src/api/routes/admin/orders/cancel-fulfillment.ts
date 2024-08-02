@@ -4,13 +4,13 @@ import {
   ProductVariantInventoryService,
 } from "../../../../services"
 
-import { IInventoryService } from "@ninjajs/types"
-import { NinjaError } from "ninja-core-utils"
+import { IInventoryService } from "@medusajs/types"
+import { MedusaError } from "medusa-core-utils"
 import { EntityManager } from "typeorm"
 import { Fulfillment } from "../../../../models"
 import { FindParams } from "../../../../types/common"
 import { cleanResponseData } from "../../../../utils/clean-response-data"
-import { promiseAll } from "@ninjajs/utils"
+import { promiseAll } from "@medusajs/utils"
 
 /**
  * @oas [post] /admin/orders/{id}/fulfillments/{fulfillment_id}/cancel
@@ -30,18 +30,18 @@ import { promiseAll } from "@ninjajs/utils"
  *   - lang: JavaScript
  *     label: JS Client
  *     source: |
- *       import Ninja from "@ninjajs/ninja-js"
- *       const ninja = new Ninja({ baseUrl: NINJA_BACKEND_URL, maxRetries: 3 })
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
  *       // must be previously logged in or use api token
- *       ninja.admin.orders.cancelFulfillment(orderId, fulfillmentId)
+ *       medusa.admin.orders.cancelFulfillment(orderId, fulfillmentId)
  *       .then(({ order }) => {
  *         console.log(order.id);
  *       })
  *   - lang: tsx
- *     label: Ninja React
+ *     label: Medusa React
  *     source: |
  *       import React from "react"
- *       import { useAdminCancelFulfillment } from "ninja-react"
+ *       import { useAdminCancelFulfillment } from "medusa-react"
  *
  *       type Props = {
  *         orderId: string
@@ -71,7 +71,7 @@ import { promiseAll } from "@ninjajs/utils"
  *     label: cURL
  *     source: |
  *       curl -X POST '{backend_url}/admin/orders/{id}/fulfillments/{fulfillment_id}/cancel' \
- *       -H 'x-ninja-access-token: {api_token}'
+ *       -H 'x-medusa-access-token: {api_token}'
  * security:
  *   - api_token: []
  *   - cookie_auth: []
@@ -113,8 +113,8 @@ export default async (req, res) => {
   const fulfillment = await fulfillmentService.retrieve(fulfillment_id)
 
   if (fulfillment.order_id !== id) {
-    throw new NinjaError(
-      NinjaError.Types.NOT_FOUND,
+    throw new MedusaError(
+      MedusaError.Types.NOT_FOUND,
       `no fulfillment was found with the id: ${fulfillment_id} related to order: ${id}`
     )
   }

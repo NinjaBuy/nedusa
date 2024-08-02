@@ -1,4 +1,4 @@
-import { Address } from "@ninjajs/ninja"
+import { Address } from "@medusajs/medusa"
 import { countries } from "./countries"
 
 export const isSameAddress = (a: Address | null, b: Address | null) => {

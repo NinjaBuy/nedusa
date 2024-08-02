@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AdminCustomerResponse } from "@ninjajs/types"
-import { Button, Input, toast } from "@ninjajs/ui"
+import { AdminCustomerResponse } from "@medusajs/types"
+import { Button, Input, toast } from "@medusajs/ui"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import * as zod from "zod"
